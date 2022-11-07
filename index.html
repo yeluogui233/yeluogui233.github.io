@@ -131,6 +131,11 @@
     <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
+        <li class="menu-item menu-item-photos">
+
+    <a href="/photos" rel="section"><i class="camera-retro fa-fw"></i>photos</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -169,6 +174,177 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/07/%E5%8A%A8%E6%84%9F%E7%88%B1%E5%BF%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="丁一诺">
+      <meta itemprop="description" content="春山眉黛低">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="papaiu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/07/%E5%8A%A8%E6%84%9F%E7%88%B1%E5%BF%83/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-07 12:04:17 / 修改时间：12:04:35" itemprop="dateCreated datePublished" datetime="2022-11-07T12:04:17+08:00">2022-11-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+  <style>
+  html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: #000;
+}
+canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+  </style>
+ </HEAD>
+
+ <BODY>
+  <canvas id="pinkboard"></canvas>
+  <script>
+  /*
+ * Settings
+ */
+var settings = {
+  particles: {
+    length:   500, // maximum amount of particles
+    duration:   2, // particle duration in sec
+    velocity: 100, // particle velocity in pixels/sec
+    effect: -0.75, // play with this for a nice effect
+    size:      30, // particle size in pixels
+  },
+};
+
+<p>&#x2F;*</p>
+<ul>
+<li>RequestAnimationFrame polyfill by Erik Möller<br> *&#x2F;<br>(function(){var b&#x3D;0;var c&#x3D;[“ms”,”moz”,”webkit”,”o”];for(var a&#x3D;0;a&lt;c.length&amp;&amp;!window.requestAnimationFrame;++a){window.requestAnimationFrame&#x3D;window[c[a]+”RequestAnimationFrame”];window.cancelAnimationFrame&#x3D;window[c[a]+”CancelAnimationFrame”]||window[c[a]+”CancelRequestAnimationFrame”]}if(!window.requestAnimationFrame){window.requestAnimationFrame&#x3D;function(h,e){var d&#x3D;new Date().getTime();var f&#x3D;Math.max(0,16-(d-b));var g&#x3D;window.setTimeout(function(){h(d+f)},f);b&#x3D;d+f;return g}}if(!window.cancelAnimationFrame){window.cancelAnimationFrame&#x3D;function(d){clearTimeout(d)}}}());</li>
+</ul>
+<p>&#x2F;*</p>
+<ul>
+<li>Point class<br> *&#x2F;<br>var Point &#x3D; (function() {<br>  function Point(x, y) {<br> this.x &#x3D; (typeof x !&#x3D;&#x3D; ‘undefined’) ? x : 0;<br> this.y &#x3D; (typeof y !&#x3D;&#x3D; ‘undefined’) ? y : 0;<br>  }<br>  Point.prototype.clone &#x3D; function() {<br> return new Point(this.x, this.y);<br>  };<br>  Point.prototype.length &#x3D; function(length) {<br> if (typeof length &#x3D;&#x3D; ‘undefined’)<br>   return Math.sqrt(this.x * this.x + this.y * this.y);<br> this.normalize();<br> this.x *&#x3D; length;<br> this.y *&#x3D; length;<br> return this;<br>  };<br>  Point.prototype.normalize &#x3D; function() {<br> var length &#x3D; this.length();<br> this.x &#x2F;&#x3D; length;<br> this.y &#x2F;&#x3D; length;<br> return this;<br>  };<br>  return Point;<br>})();</li>
+</ul>
+<p>&#x2F;*</p>
+<ul>
+<li>Particle class<br> *&#x2F;<br>var Particle &#x3D; (function() {<br>  function Particle() {<br> this.position &#x3D; new Point();<br> this.velocity &#x3D; new Point();<br> this.acceleration &#x3D; new Point();<br> this.age &#x3D; 0;<br>  }<br>  Particle.prototype.initialize &#x3D; function(x, y, dx, dy) {<br> this.position.x &#x3D; x;<br> this.position.y &#x3D; y;<br> this.velocity.x &#x3D; dx;<br> this.velocity.y &#x3D; dy;<br> this.acceleration.x &#x3D; dx * settings.particles.effect;<br> this.acceleration.y &#x3D; dy * settings.particles.effect;<br> this.age &#x3D; 0;<br>  };<br>  Particle.prototype.update &#x3D; function(deltaTime) {<br> this.position.x +&#x3D; this.velocity.x * deltaTime;<br> this.position.y +&#x3D; this.velocity.y * deltaTime;<br> this.velocity.x +&#x3D; this.acceleration.x * deltaTime;<br> this.velocity.y +&#x3D; this.acceleration.y * deltaTime;<br> this.age +&#x3D; deltaTime;<br>  };<br>  Particle.prototype.draw &#x3D; function(context, image) {<br> function ease(t) {<br>   return (–t) * t * t + 1;<br> }<br> var size &#x3D; image.width * ease(this.age &#x2F; settings.particles.duration);<br> context.globalAlpha &#x3D; 1 - this.age &#x2F; settings.particles.duration;<br> context.drawImage(image, this.position.x - size &#x2F; 2, this.position.y - size &#x2F; 2, size, size);<br>  };<br>  return Particle;<br>})();</li>
+</ul>
+<p>&#x2F;*</p>
+<ul>
+<li>ParticlePool class<br> *&#x2F;<br>var ParticlePool &#x3D; (function() {<br>  var particles,<br>   firstActive &#x3D; 0,<br>   firstFree   &#x3D; 0,<br>   duration    &#x3D; settings.particles.duration;</li>
+</ul>
+<p>  function ParticlePool(length) {<br>    &#x2F;&#x2F; create and populate particle pool<br>    particles &#x3D; new Array(length);<br>    for (var i &#x3D; 0; i &lt; particles.length; i++)<br>      particles[i] &#x3D; new Particle();<br>  }<br>  ParticlePool.prototype.add &#x3D; function(x, y, dx, dy) {<br>    particles[firstFree].initialize(x, y, dx, dy);</p>
+<pre><code>// handle circular queue
+firstFree++;
+if (firstFree   == particles.length) firstFree   = 0;
+if (firstActive == firstFree       ) firstActive++;
+if (firstActive == particles.length) firstActive = 0;
+</code></pre>
+<p>  };<br>  ParticlePool.prototype.update &#x3D; function(deltaTime) {<br>    var i;</p>
+<pre><code>// update active particles
+if (firstActive &lt; firstFree) &#123;
+  for (i = firstActive; i &lt; firstFree; i++)
+    particles[i].update(deltaTime);
+&#125;
+if (firstFree &lt; firstActive) &#123;
+  for (i = firstActive; i &lt; particles.length; i++)
+    particles[i].update(deltaTime);
+  for (i = 0; i &lt; firstFree; i++)
+    particles[i].update(deltaTime);
+&#125;
+
+// remove inactive particles
+while (particles[firstActive].age &gt;= duration &amp;&amp; firstActive != firstFree) &#123;
+  firstActive++;
+  if (firstActive == particles.length) firstActive = 0;
+&#125;
+</code></pre>
+<p>  };<br>  ParticlePool.prototype.draw &#x3D; function(context, image) {<br>    &#x2F;&#x2F; draw active particles<br>    if (firstActive &lt; firstFree) {<br>      for (i &#x3D; firstActive; i &lt; firstFree; i++)<br>        particles[i].draw(context, image);<br>    }<br>    if (firstFree &lt; firstActive) {<br>      for (i &#x3D; firstActive; i &lt; particles.length; i++)<br>        particles[i].draw(context, image);<br>      for (i &#x3D; 0; i &lt; firstFree; i++)<br>        particles[i].draw(context, image);<br>    }<br>  };<br>  return ParticlePool;<br>})();</p>
+<p>&#x2F;*</p>
+<ul>
+<li>Putting it all together<br> *&#x2F;<br>(function(canvas) {<br>  var context &#x3D; canvas.getContext(‘2d’),<br>   particles &#x3D; new ParticlePool(settings.particles.length),<br>   particleRate &#x3D; settings.particles.length &#x2F; settings.particles.duration, &#x2F;&#x2F; particles&#x2F;sec<br>   time;</li>
+</ul>
+<p>  &#x2F;&#x2F; get point on heart with -PI &lt;&#x3D; t &lt;&#x3D; PI<br>  function pointOnHeart(t) {<br>    return new Point(<br>      160 * Math.pow(Math.sin(t), 3),<br>      130 * Math.cos(t) - 50 * Math.cos(2 * t) - 20 * Math.cos(3 * t) - 10 * Math.cos(4 * t) + 25<br>    );<br>  }</p>
+<p>  &#x2F;&#x2F; creating the particle image using a dummy canvas<br>  var image &#x3D; (function() {<br>    var canvas  &#x3D; document.createElement(‘canvas’),<br>        context &#x3D; canvas.getContext(‘2d’);<br>    canvas.width  &#x3D; settings.particles.size;<br>    canvas.height &#x3D; settings.particles.size;<br>    &#x2F;&#x2F; helper function to create the path<br>    function to(t) {<br>      var point &#x3D; pointOnHeart(t);<br>      point.x &#x3D; settings.particles.size &#x2F; 2 + point.x * settings.particles.size &#x2F; 350;<br>      point.y &#x3D; settings.particles.size &#x2F; 2 - point.y * settings.particles.size &#x2F; 350;<br>      return point;<br>    }<br>    &#x2F;&#x2F; create the path<br>    context.beginPath();<br>    var t &#x3D; -Math.PI;<br>    var point &#x3D; to(t);<br>    context.moveTo(point.x, point.y);<br>    while (t &lt; Math.PI) {<br>      t +&#x3D; 0.01; &#x2F;&#x2F; baby steps!<br>      point &#x3D; to(t);<br>      context.lineTo(point.x, point.y);<br>    }<br>    context.closePath();<br>    &#x2F;&#x2F; create the fill<br>    context.fillStyle &#x3D; ‘#ea80b0’;<br>    context.fill();<br>    &#x2F;&#x2F; create the image<br>    var image &#x3D; new Image();<br>    image.src &#x3D; canvas.toDataURL();<br>    return image;<br>  })();</p>
+<p>  &#x2F;&#x2F; render that thing!<br>  function render() {<br>    &#x2F;&#x2F; next animation frame<br>    requestAnimationFrame(render);</p>
+<pre><code>// update time
+var newTime   = new Date().getTime() / 1000,
+    deltaTime = newTime - (time || newTime);
+time = newTime;
+
+// clear canvas
+context.clearRect(0, 0, canvas.width, canvas.height);
+
+// create new particles
+var amount = particleRate * deltaTime;
+for (var i = 0; i &lt; amount; i++) &#123;
+  var pos = pointOnHeart(Math.PI - 2 * Math.PI * Math.random());
+  var dir = pos.clone().length(settings.particles.velocity);
+  particles.add(canvas.width / 2 + pos.x, canvas.height / 2 - pos.y, dir.x, -dir.y);
+&#125;
+
+// update and draw particles
+particles.update(deltaTime);
+particles.draw(context, image);
+</code></pre>
+<p>  }</p>
+<p>  &#x2F;&#x2F; handle (re-)sizing of the canvas<br>  function onResize() {<br>    canvas.width  &#x3D; canvas.clientWidth;<br>    canvas.height &#x3D; canvas.clientHeight;<br>  }<br>  window.onresize &#x3D; onResize;</p>
+<p>  &#x2F;&#x2F; delay rendering bootstrap<br>  setTimeout(function() {<br>    onResize();<br>    render();<br>  }, 10);<br>})(document.getElementById(‘pinkboard’));<br>  </script><br> </BODY><br></HTML>
+ </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -320,7 +496,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
