@@ -284,8 +284,10 @@
     });
   }
 </script>
-  <div class="giscus-comments">
-    <script src="https://giscus.app/client.js"
+  
+  <div class="comments" id="comments">
+    <div class="giscus-frame">
+      <script src="https://giscus.app/client.js"
         data-repo="yeluogui233/yeluogui233.github.io"
         data-repo-id="R_kgDOPT5T4w"
         data-category="Announcements"
@@ -299,9 +301,25 @@
         data-lang="zh-CN"
         crossorigin="anonymous"
         async>
+      </script>
+    </div>
+  </div>
+  
+  
+  <style>
+    .giscus-frame {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    @media (max-width: 767px) {
+      .giscus-frame {
+        padding: 15px;
+      }
+    }
+  </style>
 </script>
   </div>
-
         </div>
           
   
