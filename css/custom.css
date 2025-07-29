@@ -1,0 +1,12 @@
+/* 不蒜子统计修复 */
+#busuanzi_value_site_pv,
+#busuanzi_value_site_uv {
+  font-family: Arial, sans-serif;
+  unicode-bidi: plaintext;
+  font-feature-settings: "tnum";
+}
+
+/* 可选：隐藏分隔线（若不需要） */
+.post-meta-divider {
+  display: none;
+}
