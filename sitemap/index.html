@@ -1,0 +1,30 @@
+<div id="sitemap-tree"></div>
+
+<script>
+fetch('/sitemap.xml')
+  .then(r => r.text())
+  .then(xml => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(xml, "text/xml");
+    const urls = Array.from(doc.querySelectorAll('url'));
+    
+    let html = '<ul class="sitemap-list">';
+    urls.forEach(url => {
+      const loc = url.querySelector('loc').textContent;
+      html += `<li><a href="${loc}">${loc.split('/').pop() || '首页'}</a></li>`;
+    });
+    html += '</ul>';
+    
+    document.getElementById('sitemap-tree').innerHTML = html;
+  });
+
+<style>
+.sitemap-list {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.8;
+}
+.sitemap-list li {
+  margin-left: 20px;
+  list-style-type: '🌐 ';
+}
+</style>
