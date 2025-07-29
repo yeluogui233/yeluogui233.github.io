@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yeluogui.cloud/gallery/index.html</loc>
+    
+    <lastmod>2025-07-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yeluogui.cloud/steamgames/index.html</loc>
     
     <lastmod>2025-07-29</lastmod>
@@ -30,15 +39,6 @@
   
   <url>
     <loc>http://yeluogui.cloud/tags/index-1.html</loc>
-    
-    <lastmod>2025-07-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/gallery/index.html</loc>
     
     <lastmod>2025-07-29</lastmod>
     
