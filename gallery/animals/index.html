@@ -218,6 +218,12 @@
             
 <div class="main-inner">
   
+  <header class="page-header">
+    <h1 class="page-title">如果它们闪光，即使坠入尘埃，也不重要！</h1>
+    
+  </header>
+
+  
   <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="叶落归"
       src="/images/avatar.png">
@@ -288,148 +294,164 @@
 
 
   
-  <header class="album-header">
-    <h1>如果它们闪光，即使坠入尘埃，也不重要！</h1>
-  </header>
-
-  
-  <div class="photo-wall">
+  <div class="photo-wall-enhanced">
     
-      <div class="photo-item">
-        <img src="https://s21.ax1x.com/2025/07/29/pVYfVhD.jpg"
-             alt="睡胖人"
-             loading="lazy"
-             class="full-size-image"
-             onclick="enlargeImage(this)">
-        
-          <p class="photo-caption">睡胖人</p>
-        
+      <div class="photo-card-enhanced">
+        <div class="photo-container">
+          <img src="https://s21.ax1x.com/2025/07/29/pVYfVhD.jpg"
+               alt="睡胖人"
+               loading="lazy"
+               class="photo-image-enhanced"
+               onclick="enhancedLightbox(this)">
+          <div class="photo-hover-effect"></div>
+        </div>
+        <div class="photo-meta">
+          
+            <p class="photo-desc">睡胖人</p>
+          
+          
+        </div>
       </div>
     
-      <div class="photo-item">
-        <img src="https://s21.ax1x.com/2025/07/29/pVYfVhD.jpg"
-             alt="干脆面"
-             loading="lazy"
-             class="full-size-image"
-             onclick="enlargeImage(this)">
-        
-          <p class="photo-caption">干脆面</p>
-        
+      <div class="photo-card-enhanced">
+        <div class="photo-container">
+          <img src="https://s21.ax1x.com/2025/07/29/pVYfVhD.jpg"
+               alt="干脆面"
+               loading="lazy"
+               class="photo-image-enhanced"
+               onclick="enhancedLightbox(this)">
+          <div class="photo-hover-effect"></div>
+        </div>
+        <div class="photo-meta">
+          
+            <p class="photo-desc">干脆面</p>
+          
+          
+        </div>
       </div>
     
   </div>
+
+  
+  
 </div>
 
 <style>
-  /* 图片墙样式 */
-  .photo-wall {
+  /* ================= 增强样式 ================= */
+  .photo-wall-enhanced {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    gap: 25px;
-    padding: 0 20px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 20px;
   }
 
-  .photo-item {
-    margin: 0;
-    transition: transform 0.3s;
-  }
-
-  .full-size-image {
-    width: 100%;
-    height: auto;
+  .photo-card-enhanced {
+    background: var(--content-bg-color);
     border-radius: 0;
-    cursor: zoom-in;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: box-shadow 0.3s;
+    box-shadow: var(--shadow-l1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
   }
 
-  .photo-item:hover {
-    transform: translateY(-3px);
+  .photo-card-enhanced:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-l2);
   }
 
-  .full-size-image:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  .photo-container {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
   }
 
-  .photo-caption {
-    margin-top: 0.8rem;
-    color: var(--text-color-secondary);
-    font-size: 0.9rem;
-    text-align: center;
+  .photo-image-enhanced {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
   }
 
-  /* 点击放大效果 */
-  .image-zoomed {
-    position: fixed;
-    z-index: 1000;
-    max-width: 90vw;
-    max-height: 90vh;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) scale(1.05);
-    box-shadow: 0 0 40px rgba(0,0,0,0.6);
-    cursor: zoom-out;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .overlay-dark {
-    position: fixed;
+  .photo-hover-effect {
+    position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.8);
-    z-index: 999;
-    cursor: zoom-out;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .photo-card-enhanced:hover .photo-hover-effect {
+    opacity: 1;
+  }
+
+  .photo-card-enhanced:hover .photo-image-enhanced {
+    transform: scale(1.05);
+  }
+
+  .photo-meta {
+    padding: 15px;
+  }
+
+  .photo-desc {
+    margin: 0 0 5px;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .photo-date {
+    display: block;
+    color: var(--text-color-secondary);
+    font-size: 0.8rem;
+  }
+
+  /* ================= 灯箱增强 ================= */
+  .enhanced-lightbox {
+    background: rgba(0,0,0,0.95) !important;
+  }
+
+  .enhanced-lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border: 2px solid white;
+    box-shadow: 0 0 40px rgba(0,0,0,0.8);
+  }
+
+  /* ================= 响应式 ================= */
+  @media (max-width: 768px) {
+    .photo-wall-enhanced {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 10px;
+    }
   }
 </style>
 
 <script>
-  // 高级点击放大函数
-  function enlargeImage(img) {
-    // 创建遮罩
-    const overlay = document.createElement('div');
-    overlay.className = 'overlay-dark';
-    overlay.style.opacity = '0';
-    document.body.appendChild(overlay);
-    
-    // 克隆图片
-    const clonedImg = img.cloneNode();
-    clonedImg.classList.add('image-zoomed');
-    
-    // 记录原始位置
-    const rect = img.getBoundingClientRect();
-    clonedImg.style.position = 'absolute';
-    clonedImg.style.top = `${rect.top}px`;
-    clonedImg.style.left = `${rect.left}px`;
-    clonedImg.style.width = `${rect.width}px`;
-    clonedImg.style.height = `${rect.height}px`;
-    
-    document.body.appendChild(clonedImg);
-    
-    // 触发动画
-    setTimeout(() => {
-      overlay.style.opacity = '1';
-      clonedImg.style.transform = 'translate(-50%, -50%) scale(1)';
-    }, 10);
-    
-    // 关闭函数
-    const close = () => {
-      clonedImg.style.transform = 'translate(-50%, -50%) scale(0.9)';
-      clonedImg.style.opacity = '0';
-      overlay.style.opacity = '0';
-      
-      setTimeout(() => {
-        document.body.removeChild(clonedImg);
-        document.body.removeChild(overlay);
-      }, 300);
-    };
-    
-    overlay.onclick = close;
-    clonedImg.onclick = (e) => {
-      e.stopPropagation();
-      close();
-    };
+  // ================= 增强灯箱函数 =================
+  function enhancedLightbox(img) {
+    const lightbox = basicLightbox.create(`
+      <div class="lightbox-content">
+        <img src="${img.src}" alt="${img.alt}">
+        ${img.alt ? `<p class="lightbox-caption">${img.alt}</p>` : ''}
+      </div>
+    `, {
+      className: 'enhanced-lightbox',
+      onShow: () => {
+        document.addEventListener('keydown', handleKeyPress);
+      },
+      onClose: () => {
+        document.removeEventListener('keydown', handleKeyPress);
+      }
+    });
+
+    function handleKeyPress(e) {
+      if (e.key === 'Escape') lightbox.close();
+    }
+
+    lightbox.show();
   }
 </script>
 
