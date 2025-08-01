@@ -53,7 +53,7 @@
 </script>
 
   <title>
-  令人陶醉的街头小吃 | 
+  令人陶醉的街头小吃 | 穿过长长的隧道，便是雪国
 </title>
   
 
@@ -221,19 +221,22 @@
           <div class="content ">
             
 <div class="main-inner">
-  <!-- 顶部标题 -->
   <header class="page-header" style="text-align:center;margin-bottom:30px;">
     <h1 class="page-title">令人陶醉的街头小吃</h1>
     
   </header>
 
-  <!-- 照片网格 -->
   <div class="album-content-container">
-    <div class="photo-wall">
+    <div class="photo-wall" id="gallery">
       
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s21.ax1x.com/2025/07/28/pVYaeSO.jpg" data-alt="保定回忆">
-            <img src="https://s21.ax1x.com/2025/07/28/pVYaeSO.jpg" alt="保定回忆" loading="lazy" class="photo-image" />
+        <div class="photo-item" 
+             data-src="https://s21.ax1x.com/2025/07/28/pVYaeSO.jpg"
+             data-sub-html="<h4>保定回忆</h4>">
+          <div class="photo-frame">
+            <img src="https://s21.ax1x.com/2025/07/28/pVYaeSO.jpg" 
+                 alt="保定回忆" 
+                 loading="lazy" 
+                 class="photo-image" />
             <div class="photo-zoom-icon">⤡</div>
           </div>
           
@@ -241,9 +244,14 @@
           
         </div>
       
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s21.ax1x.com/2025/07/30/pVtQIw8.jpg" data-alt="小番茄感觉不错">
-            <img src="https://s21.ax1x.com/2025/07/30/pVtQIw8.jpg" alt="小番茄感觉不错" loading="lazy" class="photo-image" />
+        <div class="photo-item" 
+             data-src="https://s21.ax1x.com/2025/07/30/pVtQIw8.jpg"
+             data-sub-html="<h4>小番茄感觉不错</h4>">
+          <div class="photo-frame">
+            <img src="https://s21.ax1x.com/2025/07/30/pVtQIw8.jpg" 
+                 alt="小番茄感觉不错" 
+                 loading="lazy" 
+                 class="photo-image" />
             <div class="photo-zoom-icon">⤡</div>
           </div>
           
@@ -255,94 +263,53 @@
   </div>
 </div>
 
-<style>
-/* [保持原有所有样式不变] */
-.album-content-container { margin: 0 auto; max-width: 1200px; padding: 10px 15px; }
-.photo-wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
-.photo-item { margin: 0; }
-.photo-frame {
-  position: relative; cursor: zoom-in; overflow: hidden; border-radius: 8px;
-  background: var(--content-bg-color);
-  box-shadow: var(--card-shadow, 0 2px 8px rgba(0,0,0,.08));
-  transition: all 0.3s ease;
-}
-.photo-frame:hover { transform: translateY(-3px); box-shadow: var(--card-hover-shadow, 0 4px 12px rgba(0,0,0,.12)); }
-.photo-image { width: 100%; display: block; transition: transform 0.4s ease; object-fit: cover; }
-.photo-frame:hover .photo-image { transform: scale(1.03); }
-.photo-zoom-icon {
-  position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.6); color: white;
-  width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center;
-  justify-content: center; opacity: 0; transition: opacity 0.3s; font-size: 0.8rem;
-}
-.photo-frame:hover .photo-zoom-icon { opacity: 1; }
-.photo-caption { margin-top: 8px; font-size: 0.95rem; color: var(--text-color); text-align: center; }
-
-/* 灯箱样式 */
-.ultimate-lightbox { 
-  background: rgba(0,0,0,0.96) !important; 
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-}
-.ultimate-lightbox img { 
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: 4px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  cursor: zoom-out;
-}
-
-/* 响应式 */
-@media (max-width: 992px) { .photo-wall { grid-template-columns: 1fr; } }
-</style>
+<!-- lightgallery JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/lightgallery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/plugins/zoom/lg-zoom.min.js"></script>
 
 <script>
-// 增强版灯箱实现
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('灯箱脚本已加载'); // 调试输出
+  // 调试输出
+  console.log('图片数量:', [{"url":"https://s21.ax1x.com/2025/07/28/pVYaeSO.jpg","desc":"保定回忆"},{"url":"https://s21.ax1x.com/2025/07/30/pVtQIw8.jpg","desc":"小番茄感觉不错"}].length);
   
-  // 验证数据
-  console.log('相册数据:', {
-    photos: [{"url":"https://s21.ax1x.com/2025/07/28/pVYaeSO.jpg","desc":"保定回忆"},{"url":"https://s21.ax1x.com/2025/07/30/pVtQIw8.jpg","desc":"小番茄感觉不错"}],
-    count: 2
+  // 初始化 lightgallery
+  const gallery = lightGallery(document.getElementById('gallery'), {
+    selector: '.photo-item',
+    download: false,
+    zoom: true,
+    thumbnail: false,
+    animateThumb: false,
+    showThumbByDefault: false,
+    actualSize: false,
+    fullScreen: false,
+    autoplay: false,
+    progressBar: false,
+    escKey: true,
+    closable: true,
+    loop: true,
+    speed: 300,
+    mode: 'lg-fade',
+    hideBarsDelay: 2000,
+    controls: true,
+    slideEndAnimatoin: true,
+    hideControlOnEnd: false,
+    mousewheel: true,
+    getCaptionFromTitleOrAlt: false,
+    addClass: 'custom-gallery',
+    counter: false,
+    enableDrag: true,
+    enableSwipe: true
   });
 
-  // 灯箱实现
-  document.addEventListener('click', function(e) {
-    const frame = e.target.closest('.photo-frame');
-    if (!frame) return;
-    
-    const src = frame.dataset.src;
-    const alt = frame.dataset.alt || '';
-    
-    console.log('点击的图片:', { src, alt }); // 调试输出
-
-    if (!src) {
-      console.error('缺少图片URL');
-      return;
-    }
-
-    const img = new Image();
-    img.src = src;
-    img.alt = alt;
-    img.style.maxWidth = '90vw';
-    img.style.maxHeight = '90vh';
-    img.style.cursor = 'zoom-out';
-    img.onclick = function() { instance.close(); };
-
-    const instance = basicLightbox.create(img, {
-      className: 'ultimate-lightbox',
-      onShow: () => {
-        document.body.style.overflow = 'hidden';
-        console.log('灯箱已打开');
-      },
-      onClose: () => {
-        document.body.style.overflow = '';
-        console.log('灯箱已关闭');
-      }
-    });
-    
-    instance.show();
+  // 调试输出
+  gallery.on('onAfterOpen', function() {
+    console.log('灯箱已打开');
+    document.body.style.overflow = 'hidden';
+  });
+  
+  gallery.on('onCloseAfter', function() {
+    console.log('灯箱已关闭');
+    document.body.style.overflow = '';
   });
 });
 </script>
