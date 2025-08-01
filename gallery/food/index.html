@@ -86,6 +86,45 @@
 </noscript>
 
 </head>
+<!-- 固定在左下角的网易云播放器（手动控制版） -->
+<div id="netease-music" style="
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  width: 330px;
+  height: 86px;
+  transition: all 0.3s ease;
+">
+  <iframe 
+    frameborder="no" 
+    border="0" 
+    marginwidth="0" 
+    marginheight="0" 
+    width="330" 
+    height="86" 
+    src="//music.163.com/outchain/player?type=2&id=541326593&auto=0&height=66"
+    style="
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      overflow: hidden;
+    "
+  ></iframe>
+</div>
+
+<!-- 响应式适配 -->
+<style>
+  @media (max-width: 768px) {
+    #netease-music {
+      width: 280px !important;
+      left: 10px !important;
+      bottom: 10px !important;
+    }
+    #netease-music iframe {
+      width: 280px !important;
+    }
+  }
+</style>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
