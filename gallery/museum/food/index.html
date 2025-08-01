@@ -231,10 +231,7 @@
       
         <div class="photo-item">
           <div class="photo-frame" data-src="https://s21.ax1x.com/2025/07/28/pVYaeSO.jpg" data-alt="保定回忆">
-            <img src="https://s21.ax1x.com/2025/07/28/pVYaeSO.jpg"
-                 alt="保定回忆"
-                 loading="lazy"
-                 class="photo-image">
+            <img src="https://s21.ax1x.com/2025/07/28/pVYaeSO.jpg" alt="保定回忆" loading="lazy" class="photo-image" />
             <div class="photo-zoom-icon">⤡</div>
           </div>
           
@@ -244,10 +241,7 @@
       
         <div class="photo-item">
           <div class="photo-frame" data-src="https://s21.ax1x.com/2025/07/30/pVtQIw8.jpg" data-alt="小番茄感觉不错">
-            <img src="https://s21.ax1x.com/2025/07/30/pVtQIw8.jpg"
-                 alt="小番茄感觉不错"
-                 loading="lazy"
-                 class="photo-image">
+            <img src="https://s21.ax1x.com/2025/07/30/pVtQIw8.jpg" alt="小番茄感觉不错" loading="lazy" class="photo-image" />
             <div class="photo-zoom-icon">⤡</div>
           </div>
           
@@ -273,7 +267,9 @@
   gap: 24px;
 }
 
-.photo-item { margin: 0; }
+.photo-item {
+  margin: 0;
+}
 
 .photo-frame {
   position: relative;
@@ -284,6 +280,7 @@
   box-shadow: var(--card-shadow, 0 2px 8px rgba(0,0,0,.08));
   transition: all 0.3s ease;
 }
+
 .photo-frame:hover {
   transform: translateY(-3px);
   box-shadow: var(--card-hover-shadow, 0 4px 12px rgba(0,0,0,.12));
@@ -296,6 +293,7 @@
   transition: transform 0.4s ease;
   object-fit: cover;
 }
+
 .photo-frame:hover .photo-image {
   transform: scale(1.03);
 }
@@ -316,6 +314,7 @@
   transition: opacity 0.3s;
   font-size: 0.8rem;
 }
+
 .photo-frame:hover .photo-zoom-icon {
   opacity: 1;
 }
@@ -334,12 +333,14 @@
   justify-content: center;
   align-items: center;
 }
+
 .ultimate-lightbox img {
   max-width: 90vw;
   max-height: 90vh;
   transition: transform 0.3s;
   cursor: zoom-in;
 }
+
 .ultimate-lightbox img.zoomed {
   transform: scale(1.5);
   cursor: zoom-out;
@@ -347,18 +348,19 @@
 
 /* 响应式 */
 @media (max-width: 992px) {
-  .photo-wall { grid-template-columns: 1fr; }
+  .photo-wall {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  // 给所有.photo-frame绑定点击事件
   document.querySelectorAll('.photo-frame').forEach(function(frame){
     frame.addEventListener('click', function(){
       const src = this.getAttribute('data-src');
       const alt = this.getAttribute('data-alt') || '';
-      const html = '<img src="' + src + '" alt="' + alt + '" onclick="this.classList.toggle(\\'zoomed\\')">';
+      const html = '<img src="' + src + '" alt="' + alt + '" onclick="this.classList.toggle(\'zoomed\')">';
       const lightbox = basicLightbox.create(html, { className: 'ultimate-lightbox' });
       lightbox.show();
     });
@@ -410,6 +412,8 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
         </div>
           
+  
+
       </div>
     </main>
 
