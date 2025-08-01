@@ -330,54 +330,48 @@
 </style>
 
 <script>
-// 增强版灯箱实现
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('灯箱脚本已加载'); // 调试输出
-  
-  // 验证数据
-  console.log('相册数据:', {
-    photos: [{"url":"https://s21.ax1x.com/2025/08/01/pVt5yWT.jpg","desc":"联想到绿房子"},{"url":"https://s21.ax1x.com/2025/07/30/pVtQ7Fg.jpg","desc":"青岛街头"},{"url":"https://s21.ax1x.com/2025/07/29/pVYfncd.jpg","desc":"没有天花板的地方！"},{"url":"https://s21.ax1x.com/2025/07/29/pVYfF76.jpg","desc":"光很漂亮"},{"url":"https://s21.ax1x.com/2025/07/30/pVtQoTS.jpg","desc":"火锅店拍的"}],
-    count: 5
-  });
+// 确保基础库已加载
+if (typeof basicLightbox === 'undefined') {
+  console.error('basicLightbox未加载！请检查CDN链接');
+} else {
+  document.addEventListener('DOMContentLoaded', function() {
+    // 更可靠的事件委托方式
+    document.querySelector('.photo-wall').addEventListener('click', function(e) {
+      const frame = e.target.closest('.photo-frame');
+      if (!frame) return;
 
-  // 灯箱实现
-  document.addEventListener('click', function(e) {
-    const frame = e.target.closest('.photo-frame');
-    if (!frame) return;
-    
-    const src = frame.dataset.src;
-    const alt = frame.dataset.alt || '';
-    
-    console.log('点击的图片:', { src, alt }); // 调试输出
+      const img = frame.querySelector('img');
+      if (!img || !img.src) return;
 
-    if (!src) {
-      console.error('缺少图片URL');
-      return;
-    }
+      // 创建灯箱内容（保留您的样式类）
+      const content = `
+        <div class="ultimate-lightbox">
+          <img src="${img.src}" 
+               alt="${img.alt || ''}" 
+               style="max-width:90vw; max-height:90vh; cursor:zoom-out;"
+               onclick="this.parentNode.parentNode.close()">
+          ${img.alt ? `<div class="lightbox-caption">${img.alt}</div>` : ''}
+        </div>
+      `;
 
-    const img = new Image();
-    img.src = src;
-    img.alt = alt;
-    img.style.maxWidth = '90vw';
-    img.style.maxHeight = '90vh';
-    img.style.cursor = 'zoom-out';
-    img.onclick = function() { instance.close(); };
-
-    const instance = basicLightbox.create(img, {
-      className: 'ultimate-lightbox',
-      onShow: () => {
-        document.body.style.overflow = 'hidden';
-        console.log('灯箱已打开');
-      },
-      onClose: () => {
-        document.body.style.overflow = '';
-        console.log('灯箱已关闭');
-      }
+      // 初始化灯箱
+      const instance = basicLightbox.create(content, {
+        className: 'custom-lightbox',
+        onShow: () => {
+          document.documentElement.style.overflow = 'hidden';
+          console.log('灯箱已打开');
+        },
+        onClose: () => {
+          document.documentElement.style.overflow = '';
+          console.log('灯箱已关闭');
+        }
+      });
+      
+      instance.show();
+      e.preventDefault(); // 防止可能的默认行为
     });
-    
-    instance.show();
   });
-});
+}
 </script>
 
           </div>
