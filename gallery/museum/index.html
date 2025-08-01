@@ -229,7 +229,7 @@
     <div class="photo-wall">
       
         <div class="photo-item">
-          <div class="photo-frame" onclick="openLightbox('https://s21.ax1x.com/2025/08/01/pVt5glF.jpg','在石家庄')">
+          <div class="photo-frame" data-src="https://s21.ax1x.com/2025/08/01/pVt5glF.jpg" data-alt="在石家庄">
             <img src="https://s21.ax1x.com/2025/08/01/pVt5glF.jpg"
                  alt="在石家庄"
                  loading="lazy"
@@ -338,17 +338,19 @@
 </style>
 
 <script>
-  // 简单灯箱
-  function openLightbox(src, alt) {
-    // 使用普通字符串拼接，避免 Swig 对模板字符串干扰
-    const html = '<img src="' + src + '" alt="' + alt + '" onclick="this.classList.toggle(\'zoomed\')">';
-    const lightbox = basicLightbox.create(html, {
-      className: 'ultimate-lightbox'
+document.addEventListener('DOMContentLoaded', function () {
+  // 给所有.photo-frame绑定点击事件
+  document.querySelectorAll('.photo-frame').forEach(function(frame){
+    frame.addEventListener('click', function(){
+      const src = this.getAttribute('data-src');
+      const alt = this.getAttribute('data-alt') || '';
+      const html = '<img src="' + src + '" alt="' + alt + '" onclick="this.classList.toggle(\\'zoomed\\')">';
+      const lightbox = basicLightbox.create(html, { className: 'ultimate-lightbox' });
+      lightbox.show();
     });
-    lightbox.show();
-  }
+  });
+});
 </script>
-
 
           </div>
           

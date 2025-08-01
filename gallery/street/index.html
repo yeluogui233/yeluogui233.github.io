@@ -233,7 +233,7 @@
     <div class="photo-wall">
       
         <div class="photo-item">
-          <div class="photo-frame" onclick="openLightbox('https://s21.ax1x.com/2025/08/01/pVt5yWT.jpg','联想到绿房子')">
+          <div class="photo-frame" data-src="https://s21.ax1x.com/2025/08/01/pVt5yWT.jpg" data-alt="联想到绿房子">
             <img src="https://s21.ax1x.com/2025/08/01/pVt5yWT.jpg"
                  alt="联想到绿房子"
                  loading="lazy"
@@ -246,7 +246,7 @@
         </div>
       
         <div class="photo-item">
-          <div class="photo-frame" onclick="openLightbox('https://s21.ax1x.com/2025/07/30/pVtQ7Fg.jpg','青岛街头')">
+          <div class="photo-frame" data-src="https://s21.ax1x.com/2025/07/30/pVtQ7Fg.jpg" data-alt="青岛街头">
             <img src="https://s21.ax1x.com/2025/07/30/pVtQ7Fg.jpg"
                  alt="青岛街头"
                  loading="lazy"
@@ -259,7 +259,7 @@
         </div>
       
         <div class="photo-item">
-          <div class="photo-frame" onclick="openLightbox('https://s21.ax1x.com/2025/07/29/pVYfncd.jpg','没有天花板的地方！')">
+          <div class="photo-frame" data-src="https://s21.ax1x.com/2025/07/29/pVYfncd.jpg" data-alt="没有天花板的地方！">
             <img src="https://s21.ax1x.com/2025/07/29/pVYfncd.jpg"
                  alt="没有天花板的地方！"
                  loading="lazy"
@@ -272,7 +272,7 @@
         </div>
       
         <div class="photo-item">
-          <div class="photo-frame" onclick="openLightbox('https://s21.ax1x.com/2025/07/29/pVYfF76.jpg','光很漂亮')">
+          <div class="photo-frame" data-src="https://s21.ax1x.com/2025/07/29/pVYfF76.jpg" data-alt="光很漂亮">
             <img src="https://s21.ax1x.com/2025/07/29/pVYfF76.jpg"
                  alt="光很漂亮"
                  loading="lazy"
@@ -285,7 +285,7 @@
         </div>
       
         <div class="photo-item">
-          <div class="photo-frame" onclick="openLightbox('https://s21.ax1x.com/2025/07/30/pVtQoTS.jpg','火锅店拍的')">
+          <div class="photo-frame" data-src="https://s21.ax1x.com/2025/07/30/pVtQoTS.jpg" data-alt="火锅店拍的">
             <img src="https://s21.ax1x.com/2025/07/30/pVtQoTS.jpg"
                  alt="火锅店拍的"
                  loading="lazy"
@@ -394,17 +394,19 @@
 </style>
 
 <script>
-  // 简单灯箱
-  function openLightbox(src, alt) {
-    // 使用普通字符串拼接，避免 Swig 对模板字符串干扰
-    const html = '<img src="' + src + '" alt="' + alt + '" onclick="this.classList.toggle(\'zoomed\')">';
-    const lightbox = basicLightbox.create(html, {
-      className: 'ultimate-lightbox'
+document.addEventListener('DOMContentLoaded', function () {
+  // 给所有.photo-frame绑定点击事件
+  document.querySelectorAll('.photo-frame').forEach(function(frame){
+    frame.addEventListener('click', function(){
+      const src = this.getAttribute('data-src');
+      const alt = this.getAttribute('data-alt') || '';
+      const html = '<img src="' + src + '" alt="' + alt + '" onclick="this.classList.toggle(\\'zoomed\\')">';
+      const lightbox = basicLightbox.create(html, { className: 'ultimate-lightbox' });
+      lightbox.show();
     });
-    lightbox.show();
-  }
+  });
+});
 </script>
-
 
           </div>
           

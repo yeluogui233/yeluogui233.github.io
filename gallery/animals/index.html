@@ -231,7 +231,7 @@
     <div class="photo-wall">
       
         <div class="photo-item">
-          <div class="photo-frame" onclick="openLightbox('https://s21.ax1x.com/2025/07/29/pVYfVhD.jpg','睡胖人')">
+          <div class="photo-frame" data-src="https://s21.ax1x.com/2025/07/29/pVYfVhD.jpg" data-alt="睡胖人">
             <img src="https://s21.ax1x.com/2025/07/29/pVYfVhD.jpg"
                  alt="睡胖人"
                  loading="lazy"
@@ -244,7 +244,7 @@
         </div>
       
         <div class="photo-item">
-          <div class="photo-frame" onclick="openLightbox('https://s21.ax1x.com/2025/07/29/pVYfi0x.jpg','干脆面')">
+          <div class="photo-frame" data-src="https://s21.ax1x.com/2025/07/29/pVYfi0x.jpg" data-alt="干脆面">
             <img src="https://s21.ax1x.com/2025/07/29/pVYfi0x.jpg"
                  alt="干脆面"
                  loading="lazy"
@@ -257,7 +257,7 @@
         </div>
       
         <div class="photo-item">
-          <div class="photo-frame" onclick="openLightbox('https://s11.ax1x.com/2023/04/17/p9PAFxS.jpg','打光棍的鸳鸯')">
+          <div class="photo-frame" data-src="https://s11.ax1x.com/2023/04/17/p9PAFxS.jpg" data-alt="打光棍的鸳鸯">
             <img src="https://s11.ax1x.com/2023/04/17/p9PAFxS.jpg"
                  alt="打光棍的鸳鸯"
                  loading="lazy"
@@ -366,17 +366,19 @@
 </style>
 
 <script>
-  // 简单灯箱
-  function openLightbox(src, alt) {
-    // 使用普通字符串拼接，避免 Swig 对模板字符串干扰
-    const html = '<img src="' + src + '" alt="' + alt + '" onclick="this.classList.toggle(\'zoomed\')">';
-    const lightbox = basicLightbox.create(html, {
-      className: 'ultimate-lightbox'
+document.addEventListener('DOMContentLoaded', function () {
+  // 给所有.photo-frame绑定点击事件
+  document.querySelectorAll('.photo-frame').forEach(function(frame){
+    frame.addEventListener('click', function(){
+      const src = this.getAttribute('data-src');
+      const alt = this.getAttribute('data-alt') || '';
+      const html = '<img src="' + src + '" alt="' + alt + '" onclick="this.classList.toggle(\\'zoomed\\')">';
+      const lightbox = basicLightbox.create(html, { className: 'ultimate-lightbox' });
+      lightbox.show();
     });
-    lightbox.show();
-  }
+  });
+});
 </script>
-
 
           </div>
           
