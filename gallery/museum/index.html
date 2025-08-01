@@ -216,18 +216,90 @@
           <div class="content ">
             
 <div class="main-inner">
-  <header class="page-header">
+  
+  <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="叶落归"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">叶落归</p>
+  <div class="site-description" itemprop="description">”我这辈子一直想信仰某种东西，“圣地亚哥说道,”然而却一直在撒谎，我没有信仰“</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yeluogui233" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yeluogui233" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1399099158@qq.com" title="E-Mail → 1399099158@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6553184492" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6553184492" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/yeluoguihhh@gmail.com" title="Google → yeluoguihhh@gmail.com"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://x.com/yeluo_gui" title="Twitter → https:&#x2F;&#x2F;x.com&#x2F;yeluo_gui" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@%E5%8F%B6%E8%90%BD%E5%BD%92" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@%E5%8F%B6%E8%90%BD%E5%BD%92" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://steamcommunity.com/id/yeluogui/" title="https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;yeluogui&#x2F;" rel="noopener" target="_blank">steam主页(欢迎扩列)</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://store.steampowered.com/curator/36773728/" title="https:&#x2F;&#x2F;store.steampowered.com&#x2F;curator&#x2F;36773728&#x2F;" rel="noopener" target="_blank">延燃游戏鉴赏家</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://tieba.baidu.com/f?kw=minecraft%E5%9B%BE%E6%96%87&fp=0" title="https:&#x2F;&#x2F;tieba.baidu.com&#x2F;f?kw&#x3D;minecraft%E5%9B%BE%E6%96%87&amp;fp&#x3D;0" rel="noopener" target="_blank">minecraft图文吧</a>
+        </li>
+    </ul>
+  </div>
+
+
+  
+  <header class="album-header">
     <h1>千年遗泪</h1>
   </header>
 
+  
   <div class="photo-wall">
     
       <div class="photo-item">
         <img src="https://s21.ax1x.com/2025/08/01/pVt5glF.jpg"
              alt="在石家庄"
              loading="lazy"
-             onclick="openLightbox(this)"
-             class="full-size-image">
+             class="full-size-image"
+             onclick="enlargeImage(this)">
         
           <p class="photo-caption">在石家庄</p>
         
@@ -237,29 +309,34 @@
 </div>
 
 <style>
+  /* 图片墙样式 */
   .photo-wall {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    gap: 1.5rem;
-    padding: 0 var(--content-padding);
+    gap: 25px;
+    padding: 0 20px;
   }
 
   .photo-item {
     margin: 0;
+    transition: transform 0.3s;
   }
 
   .full-size-image {
     width: 100%;
     height: auto;
-    border-radius: 0 !important;
+    border-radius: 0;
     cursor: zoom-in;
-    transition: transform 0.3s;
-    box-shadow: var(--shadow-l1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s;
+  }
+
+  .photo-item:hover {
+    transform: translateY(-3px);
   }
 
   .full-size-image:hover {
-    transform: scale(1.01);
-    box-shadow: var(--shadow-l2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   }
 
   .photo-caption {
@@ -269,30 +346,78 @@
     text-align: center;
   }
 
-  @media (max-width: 767px) {
-    .photo-wall {
-      grid-template-columns: 1fr;
-    }
+  /* 点击放大效果 */
+  .image-zoomed {
+    position: fixed;
+    z-index: 1000;
+    max-width: 90vw;
+    max-height: 90vh;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    cursor: zoom-out;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .overlay-dark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 999;
+    cursor: zoom-out;
   }
 </style>
 
 <script>
-  // 灯箱函数
-  function openLightbox(img) {
-    const instance = basicLightbox.create(`
-      <div class="lightbox-content">
-        <img src="${img.src}" class="lightbox-image">
-        ${img.alt ? `<p class="lightbox-caption">${img.alt}</p>` : ''}
-      </div>
-    `, {
-      className: 'custom-lightbox'
-    });
-    instance.show();
+  // 高级点击放大函数
+  function enlargeImage(img) {
+    // 创建遮罩
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay-dark';
+    overlay.style.opacity = '0';
+    document.body.appendChild(overlay);
     
-    // 键盘控制
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') instance.close();
-    });
+    // 克隆图片
+    const clonedImg = img.cloneNode();
+    clonedImg.classList.add('image-zoomed');
+    
+    // 记录原始位置
+    const rect = img.getBoundingClientRect();
+    clonedImg.style.position = 'absolute';
+    clonedImg.style.top = `${rect.top}px`;
+    clonedImg.style.left = `${rect.left}px`;
+    clonedImg.style.width = `${rect.width}px`;
+    clonedImg.style.height = `${rect.height}px`;
+    
+    document.body.appendChild(clonedImg);
+    
+    // 触发动画
+    setTimeout(() => {
+      overlay.style.opacity = '1';
+      clonedImg.style.transform = 'translate(-50%, -50%) scale(1)';
+    }, 10);
+    
+    // 关闭函数
+    const close = () => {
+      clonedImg.style.transform = 'translate(-50%, -50%) scale(0.9)';
+      clonedImg.style.opacity = '0';
+      overlay.style.opacity = '0';
+      
+      setTimeout(() => {
+        document.body.removeChild(clonedImg);
+        document.body.removeChild(overlay);
+      }, 300);
+    };
+    
+    overlay.onclick = close;
+    clonedImg.onclick = (e) => {
+      e.stopPropagation();
+      close();
+    };
   }
 </script>
 
