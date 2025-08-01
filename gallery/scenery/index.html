@@ -63,7 +63,7 @@
 </script>
 
   <title>
-  不要去回避一个春天 | 
+  不要去回避一个春天 | 穿过长长的隧道，便是雪国
 </title>
   
 
@@ -407,48 +407,54 @@
 </style>
 
 <script>
-// 确保基础库已加载
-if (typeof basicLightbox === 'undefined') {
-  console.error('basicLightbox未加载！请检查CDN链接');
-} else {
-  document.addEventListener('DOMContentLoaded', function() {
-    // 更可靠的事件委托方式
-    document.querySelector('.photo-wall').addEventListener('click', function(e) {
-      const frame = e.target.closest('.photo-frame');
-      if (!frame) return;
-
-      const img = frame.querySelector('img');
-      if (!img || !img.src) return;
-
-      // 创建灯箱内容（保留您的样式类）
-      const content = `
-        <div class="ultimate-lightbox">
-          <img src="${img.src}" 
-               alt="${img.alt || ''}" 
-               style="max-width:90vw; max-height:90vh; cursor:zoom-out;"
-               onclick="this.parentNode.parentNode.close()">
-          ${img.alt ? `<div class="lightbox-caption">${img.alt}</div>` : ''}
-        </div>
-      `;
-
-      // 初始化灯箱
-      const instance = basicLightbox.create(content, {
-        className: 'custom-lightbox',
-        onShow: () => {
-          document.documentElement.style.overflow = 'hidden';
-          console.log('灯箱已打开');
-        },
-        onClose: () => {
-          document.documentElement.style.overflow = '';
-          console.log('灯箱已关闭');
-        }
-      });
-      
-      instance.show();
-      e.preventDefault(); // 防止可能的默认行为
-    });
+// 增强版灯箱实现
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('灯箱脚本已加载'); // 调试输出
+  
+  // 验证数据
+  console.log('相册数据:', {
+    photos: [{"url":"https://s21.ax1x.com/2025/07/30/pVtQOln.jpg","desc":"钓鱼“老”"},{"url":"https://s21.ax1x.com/2025/08/01/pVt5ROJ.jpg","desc":"23年的一个周末"},{"url":"https://s21.ax1x.com/2025/08/01/pVt5sYV.jpg","desc":"蓝调前夕"},{"url":"https://s21.ax1x.com/2025/07/30/pVtQbWj.jpg","desc":"不要停止我的音乐"},{"url":"https://s21.ax1x.com/2025/07/29/pVYfujA.jpg","desc":"NO投喂"},{"url":"https://s21.ax1x.com/2025/07/29/pVYfPn1.jpg","desc":"和大华点点点国殇小付在海上"},{"url":"https://s21.ax1x.com/2025/07/29/pVYfMnI.jpg","desc":"鹄突泉拍到的"},{"url":"https://s21.ax1x.com/2025/07/30/pVtQHYQ.jpg","desc":"大卫带"},{"url":"https://s21.ax1x.com/2025/07/30/pVtQLSs.jpg","desc":"巧妙的木构"},{"url":"https://s21.ax1x.com/2025/08/01/pVt52y4.jpg","desc":"虔诚拜三拜"},{"url":"https://s21.ax1x.com/2025/08/01/pVt5hwR.jpg","desc":"天津之眼"},{"url":"https://s21.ax1x.com/2025/08/01/pVt5fm9.jpg","desc":"无比震撼！"}],
+    count: 12
   });
-}
+
+  // 灯箱实现
+  document.addEventListener('click', function(e) {
+    const frame = e.target.closest('.photo-frame');
+    if (!frame) return;
+    
+    const src = frame.dataset.src;
+    const alt = frame.dataset.alt || '';
+    
+    console.log('点击的图片:', { src, alt }); // 调试输出
+
+    if (!src) {
+      console.error('缺少图片URL');
+      return;
+    }
+
+    const img = new Image();
+    img.src = src;
+    img.alt = alt;
+    img.style.maxWidth = '90vw';
+    img.style.maxHeight = '90vh';
+    img.style.cursor = 'zoom-out';
+    img.onclick = function() { instance.close(); };
+
+    const instance = basicLightbox.create(img, {
+      className: 'ultimate-lightbox',
+      onShow: () => {
+        document.body.style.overflow = 'hidden';
+        console.log('灯箱已打开');
+      },
+      onClose: () => {
+        document.body.style.overflow = '';
+        console.log('灯箱已关闭');
+      }
+    });
+    
+    instance.show();
+  });
+});
 </script>
 
           </div>
