@@ -218,178 +218,147 @@
           <div class="content ">
             
 <div class="main-inner">
+
   
-  <header class="page-header" style="margin: 0 auto 40px; max-width: 1200px; padding: 0 20px;">
-    <h1 class="page-title" style="text-align: center; font-size: 2.2rem; margin-bottom: 10px;">令人陶醉的街头小吃</h1>
+  <header class="page-header" style="text-align:center;margin-bottom:30px;">
+    <h1 class="page-title">令人陶醉的街头小吃</h1>
     
   </header>
 
   
-  <div class="album-content-container" style="background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding: 30px; margin: 0 auto; max-width: 1200px;">
-    
-    
-    <div class="photo-wall-ultimate">
+  <div class="album-content-container">
+    <div class="photo-wall">
       
-        <div class="photo-item-ultimate">
-          <div class="photo-frame" onclick="ultimateLightbox(this)">
+        <div class="photo-item">
+          <div class="photo-frame" onclick="openLightbox('https://s21.ax1x.com/2025/07/28/pVYaeSO.jpg','保定回忆')">
             <img src="https://s21.ax1x.com/2025/07/28/pVYaeSO.jpg"
                  alt="保定回忆"
                  loading="lazy"
-                 class="photo-image-ultimate">
+                 class="photo-image">
             <div class="photo-zoom-icon">⤡</div>
           </div>
           
-            <p class="photo-caption-ultimate">保定回忆</p>
+            <p class="photo-caption">保定回忆</p>
           
         </div>
       
-        <div class="photo-item-ultimate">
-          <div class="photo-frame" onclick="ultimateLightbox(this)">
+        <div class="photo-item">
+          <div class="photo-frame" onclick="openLightbox('https://s21.ax1x.com/2025/07/30/pVtQIw8.jpg','小番茄感觉不错')">
             <img src="https://s21.ax1x.com/2025/07/30/pVtQIw8.jpg"
                  alt="小番茄感觉不错"
                  loading="lazy"
-                 class="photo-image-ultimate">
+                 class="photo-image">
             <div class="photo-zoom-icon">⤡</div>
           </div>
           
-            <p class="photo-caption-ultimate">小番茄感觉不错</p>
+            <p class="photo-caption">小番茄感觉不错</p>
           
         </div>
       
     </div>
-
-    
-    
   </div>
+
 </div>
 
 <style>
-  /* ============= 图片网格系统 ============= */
-  .photo-wall-ultimate {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    gap: 30px;
-  }
+.album-content-container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 10px 15px;
+}
 
-  .photo-item-ultimate {
-    margin: 0;
-  }
+.photo-wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+}
 
-  .photo-frame {
-    position: relative;
-    cursor: zoom-in;
-    overflow: hidden;
-    border-radius: 4px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-  }
+.photo-item { margin: 0; }
 
-  .photo-image-ultimate {
-    width: 100%;
-    height: auto;
-    min-height: 300px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s;
-  }
+.photo-frame {
+  position: relative;
+  cursor: zoom-in;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--content-bg-color);
+  box-shadow: var(--card-shadow, 0 2px 8px rgba(0,0,0,.08));
+  transition: all 0.3s ease;
+}
+.photo-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-hover-shadow, 0 4px 12px rgba(0,0,0,.12));
+}
 
-  .photo-zoom-icon {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(0,0,0,0.6);
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
+.photo-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+  object-fit: cover;
+}
+.photo-frame:hover .photo-image {
+  transform: scale(1.03);
+}
 
-  .photo-frame:hover {
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-  }
+.photo-zoom-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.8rem;
+}
+.photo-frame:hover .photo-zoom-icon {
+  opacity: 1;
+}
 
-  .photo-frame:hover .photo-image-ultimate {
-    transform: scale(1.03);
-  }
+.photo-caption {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  text-align: center;
+}
 
-  .photo-frame:hover .photo-zoom-icon {
-    opacity: 1;
-  }
+/* 灯箱样式 */
+.ultimate-lightbox {
+  background: rgba(0,0,0,0.95) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ultimate-lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  transition: transform 0.3s;
+  cursor: zoom-in;
+}
+.ultimate-lightbox img.zoomed {
+  transform: scale(1.5);
+  cursor: zoom-out;
+}
 
-  .photo-caption-ultimate {
-    margin-top: 12px;
-    color: var(--text-color);
-    font-size: 0.95rem;
-    line-height: 1.5;
-    padding: 0 5px;
-  }
-
-  /* ============= 灯箱系统 ============= */
-  .ultimate-lightbox {
-    background: rgba(0,0,0,0.96) !important;
-    cursor: zoom-out;
-  }
-
-  .ultimate-lightbox img {
-    max-width: 90vw;
-    max-height: 90vh;
-    transition: transform 0.3s;
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .ultimate-lightbox img.zoomed {
-    transform: scale(1.5);
-    cursor: zoom-in;
-  }
-
-  /* ============= 响应式设计 ============= */
-  @media (max-width: 992px) {
-    .photo-wall-ultimate {
-      grid-template-columns: 1fr;
-    }
-    .album-content-container {
-      padding: 20px;
-    }
-  }
+/* 响应式 */
+@media (max-width: 992px) {
+  .photo-wall { grid-template-columns: 1fr; }
+}
 </style>
 
 <script>
-  // ============= 终极灯箱交互 =============
-  function ultimateLightbox(element) {
-    const img = element.querySelector('img');
-    let isZoomed = false;
-    
-    const lightbox = basicLightbox.create(`
-      <img src="${img.src}" 
-           alt="${img.alt}" 
-           class="${isZoomed ? 'zoomed' : ''}"
-           onclick="this.classList.toggle('zoomed')">
-    `, {
-      className: 'ultimate-lightbox',
-      onShow: () => {
-        document.addEventListener('keydown', handleKeyPress);
-      },
-      onClose: () => {
-        document.removeEventListener('keydown', handleKeyPress);
-      }
+  // 简单灯箱
+  function openLightbox(src, alt) {
+    const lightbox = basicLightbox.create(\`
+      <img src="\${src}" alt="\${alt}" onclick="this.classList.toggle('zoomed')">
+    \`, {
+      className: 'ultimate-lightbox'
     });
-
-    function handleKeyPress(e) {
-      if (e.key === 'Escape') lightbox.close();
-      if (e.key === 'z') toggleZoom();
-    }
-
-    function toggleZoom() {
-      isZoomed = !isZoomed;
-      const lbImg = document.querySelector('.ultimate-lightbox img');
-      if (lbImg) lbImg.classList.toggle('zoomed', isZoomed);
-    }
-
     lightbox.show();
   }
 </script>
