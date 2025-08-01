@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
   <script src="/lib/pace/pace.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yeluogui.cloud","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
@@ -215,32 +216,36 @@
 
           <div class="content ">
             
-<div class="main-inner">
+<div class="main-inner posts-expand">
   
-  <header class="page-header" style="margin: 0 auto 40px; max-width: 1200px; padding: 0 20px;">
-    <h1 class="page-title" style="text-align: center; font-size: 2.2rem; margin-bottom: 10px;">千年遗泪</h1>
+  <div class="post-block" style="padding-top: 20px;">
     
-  </header>
+    
+    <header class="post-header">
+      <h1 class="post-title" style="text-align: center; margin-bottom: 30px;">
+        千年遗泪
+      </h1>
+      
+    </header>
 
-  
-  <div class="album-content-container" style="background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding: 30px; margin: 0 auto; max-width: 1200px;">
     
-    
-    <div class="photo-wall-ultimate">
-      
-        <div class="photo-item-ultimate">
-          <div class="photo-frame" onclick="ultimateLightbox(this)">
-            <img src="https://s21.ax1x.com/2025/08/01/pVt5glF.jpg"
-                 alt="在石家庄"
-                 loading="lazy"
-                 class="photo-image-ultimate">
-            <div class="photo-zoom-icon">⤡</div>
+    <div class="post-body">
+      <div class="photo-wall-ultimate">
+        
+          <div class="photo-item-ultimate">
+            <div class="photo-frame" data-src="https://s21.ax1x.com/2025/08/01/pVt5glF.jpg" data-desc="在石家庄">
+              <img src="https://s21.ax1x.com/2025/08/01/pVt5glF.jpg"
+                   alt="在石家庄"
+                   loading="lazy"
+                   class="photo-image-ultimate">
+              <div class="photo-zoom-icon">⤡</div>
+            </div>
+            
+              <p class="photo-caption-ultimate">在石家庄</p>
+            
           </div>
-          
-            <p class="photo-caption-ultimate">在石家庄</p>
-          
-        </div>
-      
+        
+      </div>
     </div>
 
     
@@ -249,13 +254,15 @@
 </div>
 
 <style>
-  /* ============= 图片网格系统 ============= */
+  /* ============= NexT主题兼容样式 ============= */
   .photo-wall-ultimate {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     gap: 30px;
+    padding: 20px 0;
   }
 
+  /* ============= 图片卡片 ============= */
   .photo-item-ultimate {
     margin: 0;
   }
@@ -271,8 +278,7 @@
 
   .photo-image-ultimate {
     width: 100%;
-    height: auto;
-    min-height: 300px;
+    height: 350px; /* 增大图片高度 */
     object-fit: cover;
     display: block;
     transition: transform 0.5s;
@@ -284,22 +290,24 @@
     right: 15px;
     background: rgba(0,0,0,0.6);
     color: white;
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 18px;
     opacity: 0;
     transition: opacity 0.3s;
+    z-index: 2;
   }
 
   .photo-frame:hover {
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
   }
 
   .photo-frame:hover .photo-image-ultimate {
-    transform: scale(1.03);
+    transform: scale(1.05);
   }
 
   .photo-frame:hover .photo-zoom-icon {
@@ -307,76 +315,118 @@
   }
 
   .photo-caption-ultimate {
-    margin-top: 12px;
+    margin-top: 15px;
     color: var(--text-color);
     font-size: 0.95rem;
-    line-height: 1.5;
-    padding: 0 5px;
+    line-height: 1.6;
+    text-align: center;
   }
 
-  /* ============= 灯箱系统 ============= */
+  /* ============= 增强灯箱 ============= */
   .ultimate-lightbox {
-    background: rgba(0,0,0,0.96) !important;
+    background: rgba(0,0,0,0.97) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+
+  .lightbox-image {
+    max-height: 85vh;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 40px rgba(0,0,0,0.8);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .lightbox-image.zoomed {
+    transform: scale(1.8);
     cursor: zoom-out;
   }
 
-  .ultimate-lightbox img {
-    max-width: 90vw;
-    max-height: 90vh;
-    transition: transform 0.3s;
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .ultimate-lightbox img.zoomed {
-    transform: scale(1.5);
-    cursor: zoom-in;
+  .lightbox-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-size: 1rem;
   }
 
   /* ============= 响应式设计 ============= */
   @media (max-width: 992px) {
     .photo-wall-ultimate {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     }
-    .album-content-container {
-      padding: 20px;
+    .photo-image-ultimate {
+      height: 300px;
+    }
+  }
+  @media (max-width: 768px) {
+    .photo-wall-ultimate {
+      grid-template-columns: 1fr;
     }
   }
 </style>
 
 <script>
   // ============= 终极灯箱交互 =============
-  function ultimateLightbox(element) {
-    const img = element.querySelector('img');
-    let isZoomed = false;
-    
-    const lightbox = basicLightbox.create(`
-      <img src="${img.src}" 
-           alt="${img.alt}" 
-           class="${isZoomed ? 'zoomed' : ''}"
-           onclick="this.classList.toggle('zoomed')">
-    `, {
-      className: 'ultimate-lightbox',
-      onShow: () => {
-        document.addEventListener('keydown', handleKeyPress);
-      },
-      onClose: () => {
-        document.removeEventListener('keydown', handleKeyPress);
-      }
+  document.addEventListener('DOMContentLoaded', function() {
+    // 为所有图片框架添加点击事件
+    document.querySelectorAll('.photo-frame').forEach(frame => {
+      frame.addEventListener('click', function(e) {
+        // 阻止事件冒泡避免多次触发
+        if (e.target.classList.contains('photo-zoom-icon')) return;
+        
+        const imgSrc = this.dataset.src;
+        const imgDesc = this.dataset.desc;
+        let isZoomed = false;
+
+        // 创建灯箱
+        const lightbox = basicLightbox.create(`
+          <div class="lightbox-content">
+            <img src="${imgSrc}" 
+                 alt="${imgDesc}" 
+                 class="lightbox-image"
+                 onclick="toggleZoom(this)">
+            ${imgDesc ? `<p class="lightbox-caption">${imgDesc}</p>` : ''}
+          </div>
+        `, {
+          className: 'ultimate-lightbox',
+          onShow: () => {
+            document.addEventListener('keydown', handleKeyPress);
+          },
+          onClose: () => {
+            document.removeEventListener('keydown', handleKeyPress);
+          }
+        });
+
+        // 全局缩放切换函数
+        window.toggleZoom = function(img) {
+          isZoomed = !isZoomed;
+          img.classList.toggle('zoomed', isZoomed);
+        };
+
+        // 键盘控制
+        function handleKeyPress(e) {
+          if (e.key === 'Escape') lightbox.close();
+          if (e.key === 'z' || e.key === ' ') {
+            const img = document.querySelector('.lightbox-image');
+            if (img) toggleZoom(img);
+          }
+        }
+
+        lightbox.show();
+      });
     });
-
-    function handleKeyPress(e) {
-      if (e.key === 'Escape') lightbox.close();
-      if (e.key === 'z') toggleZoom();
-    }
-
-    function toggleZoom() {
-      isZoomed = !isZoomed;
-      const lbImg = document.querySelector('.ultimate-lightbox img');
-      if (lbImg) lbImg.classList.toggle('zoomed', isZoomed);
-    }
-
-    lightbox.show();
-  }
+  });
 </script>
 
           </div>
