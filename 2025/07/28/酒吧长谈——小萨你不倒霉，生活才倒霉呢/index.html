@@ -34,8 +34,8 @@
 <meta property="article:published_time" content="2025-07-28T08:00:27.000Z">
 <meta property="article:modified_time" content="2025-07-30T13:18:51.237Z">
 <meta property="article:author" content="叶落归">
-<meta property="article:tag" content="拉美文学&#x2F;文学">
 <meta property="article:tag" content="书评">
+<meta property="article:tag" content="拉美文学&#x2F;文学">
 <meta property="article:tag" content="马里奥·巴尔加斯·略萨">
 <meta name="twitter:card" content="summary">
 
@@ -377,8 +377,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%8B%89%E7%BE%8E%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" rel="tag"># 拉美文学/文学</a>
               <a href="/tags/%E4%B9%A6%E8%AF%84/" rel="tag"># 书评</a>
+              <a href="/tags/%E6%8B%89%E7%BE%8E%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" rel="tag"># 拉美文学/文学</a>
               <a href="/tags/%E9%A9%AC%E9%87%8C%E5%A5%A5%C2%B7%E5%B7%B4%E5%B0%94%E5%8A%A0%E6%96%AF%C2%B7%E7%95%A5%E8%90%A8/" rel="tag"># 马里奥·巴尔加斯·略萨</a>
           </div>
 
@@ -568,11 +568,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
+      <span class="post-meta-item-text">站点总字数：</span>
     <span title="站点总字数">3k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     <span title="站点阅读时长">3 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -582,34 +584,47 @@
   <span class="post-count">博客全站共2.9k字</span>
 </div>
 
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="footer-statistics">
+  <div class="stat-item">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_container_site_pv">
+      总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  
+  <div class="stat-item">
+    <i class="fa fa-user"></i>
+    <span id="busuanzi_count_container_site_uv">
+      总访客数: <span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
 
-    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-    <span class="post-meta-divider">|</span>
-    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
-    <span class="post-meta-divider">|</span>
-<!-- 不蒜子计数初始值纠正 -->
-<script>
-$(document).ready(function() {
+  
+  <div class="stat-item">
+    <i class="fa fa-file-text"></i>
+    <span>全站字数: 2.9k</span>
+  </div>
+  
+</div>
 
-    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-    var countOffset = 20000;  // 初始化首次数据
-
-    function fixCount() {            
-       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
-        {
-            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
-            clearInterval(int);
-        }                  
-        if ($("#busuanzi_container_site_pv").css("display") != "none")
-        {
-            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
-            clearInterval(int); // 停止检测
-        }  
-    }
-       	
-});
-</script> 
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<style>
+.footer-statistics {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 15px 0;
+  font-size: 14px;
+}
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.stat-item i {
+  color: var(--theme-color);
+}
+</style>
 
         
 <div class="busuanzi-count">
