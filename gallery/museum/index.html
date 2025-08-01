@@ -220,19 +220,20 @@
           <div class="content ">
             
 <div class="main-inner">
+
   <!-- 顶部标题 -->
   <header class="page-header" style="text-align:center;margin-bottom:30px;">
     <h1 class="page-title">千年遗泪</h1>
     
   </header>
 
-  <!-- 照片网格 -->
-  <div class="album-content-container">
+  <!-- 白色画布包裹照片墙 -->
+  <div class="album-wrapper">
     <div class="photo-wall">
       
         <div class="photo-item">
-          <div class="photo-frame" data-src="https://s21.ax1x.com/2025/08/01/pVt5glF.jpg" data-alt="在石家庄">
-            <img src="https://s21.ax1x.com/2025/08/01/pVt5glF.jpg" alt="在石家庄" loading="lazy" class="photo-image" />
+          <div class="photo-frame" data-src="https://s21.ax1x.com/2025/08/01/pVt5glF.jpg" data-index="0" data-alt="在石家庄">
+            <img src="https://s21.ax1x.com/2025/08/01/pVt5glF.jpg" alt="在石家庄" loading="lazy" class="photo-image">
             <div class="photo-zoom-icon">⤡</div>
           </div>
           
@@ -242,96 +243,157 @@
       
     </div>
   </div>
+
 </div>
 
 <style>
-/* [保持原有所有样式不变] */
-.album-content-container { margin: 0 auto; max-width: 1200px; padding: 10px 15px; }
-.photo-wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
+.album-wrapper {
+  background: #fff;
+  border-radius: 14px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+}
+
+.photo-wall {
+  display: grid;
+  grid-template-columns: repeat(2, 360px);
+  justify-content: center;
+  gap: 24px;
+}
+
 .photo-item { margin: 0; }
+
 .photo-frame {
-  position: relative; cursor: zoom-in; overflow: hidden; border-radius: 8px;
+  position: relative;
+  cursor: zoom-in;
+  overflow: hidden;
+  border-radius: 8px;
   background: var(--content-bg-color);
   box-shadow: var(--card-shadow, 0 2px 8px rgba(0,0,0,.08));
   transition: all 0.3s ease;
 }
-.photo-frame:hover { transform: translateY(-3px); box-shadow: var(--card-hover-shadow, 0 4px 12px rgba(0,0,0,.12)); }
-.photo-image { width: 100%; display: block; transition: transform 0.4s ease; object-fit: cover; }
-.photo-frame:hover .photo-image { transform: scale(1.03); }
-.photo-zoom-icon {
-  position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.6); color: white;
-  width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center;
-  justify-content: center; opacity: 0; transition: opacity 0.3s; font-size: 0.8rem;
+.photo-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-hover-shadow, 0 4px 12px rgba(0,0,0,.12));
 }
-.photo-frame:hover .photo-zoom-icon { opacity: 1; }
-.photo-caption { margin-top: 8px; font-size: 0.95rem; color: var(--text-color); text-align: center; }
 
-/* 灯箱样式 */
-.ultimate-lightbox { 
-  background: rgba(0,0,0,0.96) !important; 
-  display: flex !important;
+.photo-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+  object-fit: cover;
+}
+.photo-frame:hover .photo-image { transform: scale(1.03); }
+
+.photo-zoom-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.8rem;
 }
-.ultimate-lightbox img { 
+.photo-frame:hover .photo-zoom-icon { opacity: 1; }
+
+.photo-caption {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+/* 灯箱样式 */
+.ultimate-lightbox {
+  background: rgba(0,0,0,0.95) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ultimate-lightbox img {
   max-width: 90vw;
   max-height: 90vh;
-  border-radius: 4px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+  cursor: zoom-in;
+}
+.ultimate-lightbox img.zoomed {
+  transform: scale(1.5);
   cursor: zoom-out;
 }
+
+/* 左右箭头 */
+.lightbox-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  padding: 0 15px;
+  user-select: none;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  z-index: 10001;
+}
+.lightbox-arrow:hover { opacity: 1; }
+.lightbox-prev { left: 15px; }
+.lightbox-next { right: 15px; }
 
 /* 响应式 */
 @media (max-width: 992px) { .photo-wall { grid-template-columns: 1fr; } }
 </style>
 
 <script>
-// 增强版灯箱实现
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('灯箱脚本已加载'); // 调试输出
-  
-  // 验证数据
-  console.log('相册数据:', {
-    photos: [{"url":"https://s21.ax1x.com/2025/08/01/pVt5glF.jpg","desc":"在石家庄"}],
-    count: 1
-  });
+  const frames = Array.from(document.querySelectorAll('.photo-frame'));
+  let currentIndex = 0;
+  let lightboxInstance = null;
 
-  // 灯箱实现
-  document.addEventListener('click', function(e) {
-    const frame = e.target.closest('.photo-frame');
-    if (!frame) return;
-    
+  function showLightbox(index) {
+    currentIndex = index;
+    const frame = frames[index];
     const src = frame.dataset.src;
     const alt = frame.dataset.alt || '';
-    
-    console.log('点击的图片:', { src, alt }); // 调试输出
 
-    if (!src) {
-      console.error('缺少图片URL');
-      return;
-    }
+    const html = `
+      <img src="${src}" alt="${alt}" id="lightbox-img">
+      <div class="lightbox-arrow lightbox-prev">&#10094;</div>
+      <div class="lightbox-arrow lightbox-next">&#10095;</div>
+    `;
 
-    const img = new Image();
-    img.src = src;
-    img.alt = alt;
-    img.style.maxWidth = '90vw';
-    img.style.maxHeight = '90vh';
-    img.style.cursor = 'zoom-out';
-    img.onclick = function() { instance.close(); };
+    lightboxInstance = basicLightbox.create(html, { className: 'ultimate-lightbox' });
+    lightboxInstance.show();
 
-    const instance = basicLightbox.create(img, {
-      className: 'ultimate-lightbox',
-      onShow: () => {
-        document.body.style.overflow = 'hidden';
-        console.log('灯箱已打开');
-      },
-      onClose: () => {
-        document.body.style.overflow = '';
-        console.log('灯箱已关闭');
-      }
-    });
-    
-    instance.show();
+    document.querySelector('.lightbox-prev').onclick = () => navigate(-1);
+    document.querySelector('.lightbox-next').onclick = () => navigate(1);
+
+    document.onkeydown = (e) => {
+      if (e.key === 'Escape') lightboxInstance.close();
+      if (e.key === 'ArrowLeft') navigate(-1);
+      if (e.key === 'ArrowRight') navigate(1);
+    };
+  }
+
+  function navigate(step) {
+    currentIndex = (currentIndex + step + frames.length) % frames.length;
+    const newSrc = frames[currentIndex].dataset.src;
+    const newAlt = frames[currentIndex].dataset.alt || '';
+    const img = document.getElementById('lightbox-img');
+    img.src = newSrc;
+    img.alt = newAlt;
+  }
+
+  frames.forEach((frame, idx) => {
+    frame.addEventListener('click', () => showLightbox(idx));
   });
 });
 </script>
@@ -380,7 +442,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
         </div>
           
-
+  
 
       </div>
     </main>
