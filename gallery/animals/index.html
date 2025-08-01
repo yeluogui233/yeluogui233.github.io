@@ -368,14 +368,15 @@
 <script>
   // 简单灯箱
   function openLightbox(src, alt) {
-    const lightbox = basicLightbox.create(\`
-      <img src="\${src}" alt="\${alt}" onclick="this.classList.toggle('zoomed')">
-    \`, {
+    // 使用普通字符串拼接，避免 Swig 对模板字符串干扰
+    const html = '<img src="' + src + '" alt="' + alt + '" onclick="this.classList.toggle(\'zoomed\')">';
+    const lightbox = basicLightbox.create(html, {
       className: 'ultimate-lightbox'
     });
     lightbox.show();
   }
 </script>
+
 
           </div>
           
