@@ -537,7 +537,7 @@
 
   
 
-<!-- 左下角网易云播放器 -->
+<!-- 网易云播放器 -->
 <div id="netease-player">
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0"
     width="330" height="86"
@@ -545,32 +545,27 @@
   </iframe>
 </div>
 
-<!-- Sakana Widget 左下角略上方 -->
+<!-- Sakana Widget 容器 -->
 <div id="sakana-widget-container">
   <div id="sakana-widget"></div>
 </div>
 
 <style>
-  /* 网易云播放器位置 */
   #netease-player {
     position: fixed;
     left: 20px;
-    bottom: 20px; /* 紧贴底部 */
+    bottom: 20px;
     z-index: 99998;
   }
-
-  /* 石蒜模拟器容器 */
   #sakana-widget-container {
     position: fixed;
     left: 20px;
-    bottom: 120px; /* 在播放器上方，避免重叠 */
+    bottom: 120px; /* 让出网易云播放器空间 */
     z-index: 99999;
-    width: 260px !important;  /* 显示更大 */
-    height: 260px !important;
+    width: 180px !important;
+    height: 180px !important;
     pointer-events: auto;
   }
-
-  /* 抗锯齿优化 */
   #sakana-widget-container img {
     image-rendering: auto;
     -webkit-font-smoothing: antialiased;
@@ -579,38 +574,57 @@
 </style>
 
 <script>
-  // 动态加载 CSS
+  // 动态加载 Sakana Widget CSS
   const sakanaCss = document.createElement('link');
   sakanaCss.rel = 'stylesheet';
   sakanaCss.href = 'https://cdn.jsdelivr.net/npm/sakana-widget@2.7.1/lib/sakana.min.css';
   document.head.appendChild(sakanaCss);
 
-  // 动态加载 JS 并初始化
+  // 动态加载 Sakana Widget JS 并初始化
   const sakanaJs = document.createElement('script');
   sakanaJs.src = 'https://cdn.jsdelivr.net/npm/sakana-widget@2.7.1/lib/sakana.min.js';
   sakanaJs.onload = function() {
-    // 原角色
+    // 取默认角色
     const chisato = SakanaWidget.getCharacter('chisato');
     const takina = SakanaWidget.getCharacter('takina');
 
-    // 自定义角色
-    const custom = SakanaWidget.getCharacter('chisato');
-    custom.image = 'https://youke1.picui.cn/s1/2025/08/02/688da48566189.png';
-    SakanaWidget.registerCharacter('custom', custom);
+    // 自定义角色1
+    const custom1 = SakanaWidget.getCharacter('chisato');
+    custom1.image = 'https://youke1.picui.cn/s1/2025/08/02/688db2632116a.png';
+    SakanaWidget.registerCharacter('custom1', custom1);
 
-    // 初始化挂载
-    new SakanaWidget({
-      size: 260,        // 更大尺寸，显示更完整
-      controls: true,   // 开底座切换角色
+    // 自定义角色2
+    const custom2 = SakanaWidget.getCharacter('chisato');
+    custom2.image = 'https://youke1.picui.cn/s1/2025/08/02/688db263394a9.png';
+    SakanaWidget.registerCharacter('custom2', custom2);
+
+    // 按顺序放入数组，先显示 custom1
+    const charactersOrder = ['custom1', 'custom2', 'chisato', 'takina'];
+    
+    // 创建实例，初始角色 custom1
+    const widget = new SakanaWidget({
+      size: 180,
+      controls: true,
       draggable: true,
       rod: true,
-      character: 'chisato'
+      character: charactersOrder[0],
     }).mount('#sakana-widget');
+
+    // 重写切换角色逻辑，让切换顺序符合 charactersOrder
+    let currentIdx = 0;
+    const origNextCharacter = widget.nextCharacter.bind(widget);
+    widget.nextCharacter = () => {
+      currentIdx = (currentIdx + 1) % charactersOrder.length;
+      widget.setCharacter(charactersOrder[currentIdx]);
+    };
+
+    // 绑定底座切换按钮的事件，使它调用新的 nextCharacter
+    // 这里监听控件切换角色按钮点击（默认控件中左侧切换按钮 class 名可在控制台查看）
+    // 也可以全局捕获键盘事件实现切换
+    // 这里用简单轮换逻辑替代默认方法
   };
   document.body.appendChild(sakanaJs);
 </script>
-
-
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
