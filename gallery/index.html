@@ -439,7 +439,9 @@
         </div>
           
   <aside class="sidebar">
-    <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <!-- 个人资料卡片 -->
+    <div class="widget site-author-widget">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="叶落归"
       src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">叶落归</p>
@@ -507,7 +509,91 @@
     </ul>
   </div>
 
+    </div>
   </aside>
+
+  <style>
+    /* 卡片样式 */
+    .site-author-widget {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+      text-align: center; /* 内容居中 */
+    }
+
+    /* 头像 */
+    .site-author-widget .site-author-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 12px;
+      display: block;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    /* 名字 */
+    .site-author-widget .site-author-name {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin: 8px 0 4px;
+      color: var(--text-color);
+    }
+
+    /* 描述 */
+    .site-author-widget .site-description {
+      font-size: 0.95rem;
+      color: var(--text-color-secondary);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    /* 社交链接容器，如果有 */
+    .site-author-widget .links-of-author {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .site-author-widget .links-of-author-item a {
+      color: var(--text-color);
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    .site-author-widget .links-of-author-item a:hover {
+      color: var(--primary-color);
+    }
+
+    /* 友情链接列表，如果有，居中显示 */
+    .links-of-blogroll-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .links-of-blogroll-item a {
+      display: inline-block;
+      color: var(--text-color);
+      padding: 4px 10px;
+      border-radius: 10px;
+      background: #f5f5f5;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .links-of-blogroll-item a:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+  </style>
 
       </div>
     </main>
