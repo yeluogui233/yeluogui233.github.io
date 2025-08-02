@@ -222,7 +222,6 @@
     
   </header>
 
-  <!-- 白色画布背景包裹整个相册 -->
   <div class="album-wrapper">
     <div class="album-grid">
       
@@ -321,14 +320,12 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.05);
       margin-bottom: 40px;
     }
-
     .album-grid {
       display: grid;
       grid-template-columns: repeat(3, 220px);
       justify-content: center;
       gap: 20px;
     }
-
     .album-card {
       width: 220px;
       height: 160px;
@@ -341,7 +338,6 @@
       transform: translateY(-4px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
-
     .album-thumb {
       position: relative;
       width: 100%;
@@ -353,7 +349,6 @@
       object-fit: cover;
       display: block;
     }
-
     .album-info {
       position: absolute;
       bottom: 0;
@@ -380,8 +375,6 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-
-    /* 响应式 */
     @media (max-width: 992px) {
       .album-grid {
         grid-template-columns: repeat(2, 220px);
@@ -439,7 +432,6 @@
         </div>
           
   <aside class="sidebar">
-    <!-- 个人资料卡片 -->
     <div class="widget site-author-widget">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="叶落归"
@@ -513,17 +505,14 @@
   </aside>
 
   <style>
-    /* 卡片样式 */
     .site-author-widget {
       background: #fff;
       border-radius: 14px;
       padding: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       margin-bottom: 40px;
-      text-align: center; /* 内容居中 */
+      text-align: center;
     }
-
-    /* 头像 */
     .site-author-widget .site-author-image {
       width: 100px;
       height: 100px;
@@ -533,42 +522,41 @@
       display: block;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
-
-    /* 名字 */
     .site-author-widget .site-author-name {
       font-weight: 700;
       font-size: 1.3rem;
       margin: 8px 0 4px;
       color: var(--text-color);
     }
-
-    /* 描述 */
     .site-author-widget .site-description {
       font-size: 0.95rem;
       color: var(--text-color-secondary);
       margin-bottom: 16px;
       line-height: 1.4;
     }
-
-    /* 社交链接容器，如果有 */
+    /* 社交3行2列 */
     .site-author-widget .links-of-author {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(3, auto);
       justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
+      gap: 8px 12px;
+      max-width: 120px;
+      margin: 0 auto 16px;
     }
-
     .site-author-widget .links-of-author-item a {
+      font-size: 0.85rem;
       color: var(--text-color);
-      font-size: 1.1rem;
       text-decoration: none;
       transition: color 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
     .site-author-widget .links-of-author-item a:hover {
       color: var(--primary-color);
     }
-
-    /* 友情链接列表，如果有，居中显示 */
+    /* 友情链接 */
     .links-of-blogroll-list {
       padding: 0;
       margin: 0;
@@ -578,7 +566,6 @@
       justify-content: center;
       gap: 10px;
     }
-
     .links-of-blogroll-item a {
       display: inline-block;
       color: var(--text-color);
