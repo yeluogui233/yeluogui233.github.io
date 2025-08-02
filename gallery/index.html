@@ -535,27 +535,34 @@
       line-height: 1.4;
     }
     /* 社交3行2列 */
-    .site-author-widget .links-of-author {
-      display: grid;
-      grid-template-columns: repeat(2, auto);
-      grid-template-rows: repeat(3, auto);
-      justify-content: center;
-      gap: 8px 12px;
-      max-width: 120px;
-      margin: 0 auto 16px;
-    }
-    .site-author-widget .links-of-author-item a {
-      font-size: 0.85rem;
-      color: var(--text-color);
-      text-decoration: none;
-      transition: color 0.25s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .site-author-widget .links-of-author-item a:hover {
-      color: var(--primary-color);
-    }
+.site-author-widget .links-of-author {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  grid-template-rows: repeat(3, auto);
+  justify-content: center;
+  gap: 8px 12px;
+  max-width: 140px;
+  margin: 0 auto 16px;
+  text-align: left;
+}
+
+.site-author-widget .links-of-author-item a {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: normal;      /* 允许换行 */
+  word-break: break-word;   /* 长单词换行 */
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.site-author-widget .links-of-author-item a:hover {
+  color: var(--primary-color);
+}
     /* 友情链接 */
     .links-of-blogroll-list {
       padding: 0;
