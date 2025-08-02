@@ -433,28 +433,26 @@
 
         
 
-<div class="copyright">
+<div class="copyright" style="text-align:center; display:flex; justify-content:center; align-items:center; gap: 12px; flex-wrap: wrap;">
   
   &copy; 
   <span itemprop="copyrightYear">2025</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
   <span class="author" itemprop="copyrightHolder">叶落归</span>
+
+  <span class="stat-wordcount" style="display:flex; align-items:center; gap:6px; font-size: 14px; color: var(--text-color-secondary);">
+    <i class="fa fa-file-alt" aria-hidden="true" style="width:16px; text-align:center;"></i>
+    <span>总字数: <span id="local_word_count">计算中...</span></span>
+  </span>
 </div>
 
 <div class="footer-statistics" style="margin-top: 15px; display: flex; justify-content: center; gap: 30px; font-size: 14px;">
   <div class="stat-item" style="display: flex; align-items: center; gap: 6px;">
-    <i class="fa fa-eye" aria-hidden="true" style="color:#4CAF50; width:16px; text-align:center;"></i>
-    <span id="local_pv_container" style="min-width:120px;">
-      总访问量: <span id="local_pv_count">加载中...</span>
-    </span>
+    <i class="fa fa-eye" aria-hidden="true" style="width:16px; text-align:center;"></i>
+    <span>总访问量: <span id="local_pv_count">加载中...</span></span>
   </div>
   <div class="stat-item" style="display: flex; align-items: center; gap: 6px;">
-    <i class="fa fa-users" aria-hidden="true" style="color:#2196F3; width:16px; text-align:center;"></i>
-    <span id="local_uv_container" style="min-width:120px;">
-      总访客数: <span id="local_uv_count">加载中...</span>
-    </span>
+    <i class="fa fa-users" aria-hidden="true" style="width:16px; text-align:center;"></i>
+    <span>总访客数: <span id="local_uv_count">加载中...</span></span>
   </div>
 </div>
   <div class="powered-by" style="margin-top: 10px; text-align: center; font-size: 13px; color: var(--text-color-secondary);">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -469,8 +467,9 @@
 
     const pvElem = document.getElementById('local_pv_count');
     const uvElem = document.getElementById('local_uv_count');
+    const wordElem = document.getElementById('local_word_count');
 
-    if (!pvElem || !uvElem) {
+    if (!pvElem || !uvElem || !wordElem) {
       console.warn('统计元素未找到，跳过统计');
       return;
     }
@@ -496,6 +495,17 @@
     // 更新页面显示
     pvElem.textContent = pvCount.toLocaleString();
     uvElem.textContent = uvCount.toLocaleString();
+
+    // 计算总字数（取 .main-inner 内文本）
+    let content = document.querySelector('.main-inner');
+    if (content) {
+      let text = content.innerText || content.textContent || '';
+      let length = text.trim().length;
+      wordElem.textContent = length.toLocaleString();
+    } else {
+      wordElem.textContent = '未知';
+    }
+
   } catch(e) {
     console.error('统计脚本错误:', e);
   }
