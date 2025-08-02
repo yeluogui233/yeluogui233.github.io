@@ -431,18 +431,17 @@
       <div class="footer-inner">
         
 
-        <div class="footer-wrapper" style="text-align:center; font-size:14px; color:#222; max-width:900px; margin:auto; padding:20px 0;">
+        <!-- Footer -->
+<div class="footer-wrapper" style="text-align:center; font-size:14px; color:#222; max-width:900px; margin:auto; padding:20px 0;">
 
   <!-- 第一行：版权 + 总字数 + 阅读时间 -->
   <div class="footer-line footer-line-1" style="display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap;">
-    <span>© 2025</span>
-    <span style="color:#e25555; font-size:18px;">&#10084;</span>
-    <span>叶落归</span>
+    <span>© 2025 <span style="color:#e25555;">&#10084;</span> 叶落归</span>
 
-    <i class="fa-solid fa-file-lines" aria-hidden="true" style="color:#000;"></i>
+    <i class="fa-solid fa-file-lines" style="color:#000;"></i>
     <span>总字数: <span id="local_word_count">0</span></span>
 
-    <i class="fa-regular fa-clock" aria-hidden="true" style="color:#000;"></i>
+    <i class="fa-regular fa-clock" style="color:#000;"></i>
     <span>预计阅读时间: <span id="local_read_time">0</span> 分钟</span>
   </div>
 
@@ -457,20 +456,20 @@
 
   <!-- 第三行：访客数 | 浏览量 -->
   <div class="footer-line footer-line-3" style="margin-top:15px; display:flex; justify-content:center; gap:30px; font-size:14px; color:#222;">
-    <div style="display:flex; align-items:center; gap:6px; white-space:nowrap;">
-      <i class="fa-regular fa-eye" aria-hidden="true" style="color:#000; font-size:18px;"></i>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <i class="fa-regular fa-eye" style="color:#000; font-size:18px;"></i>
       <span>访客数 <span id="local_uv_count">0</span></span>
     </div>
-    <div style="display:flex; align-items:center; gap:6px; white-space:nowrap;">
-      <i class="fa-solid fa-user" aria-hidden="true" style="color:#000; font-size:18px;"></i>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <i class="fa-solid fa-user" style="color:#000; font-size:18px;"></i>
       <span>浏览量 <span id="local_pv_count">0</span></span>
     </div>
   </div>
 
 </div>
 
+<!-- 本地统计脚本 -->
 <script>
-// 本地统计脚本，加载更快
 (function() {
   const pvKey = 'local_pv_count';
   const uvKey = 'local_uv_count';
@@ -479,18 +478,17 @@
   let pvCount = parseInt(localStorage.getItem(pvKey)) || 0;
   let uvCount = parseInt(localStorage.getItem(uvKey)) || 0;
 
-  // PV 每次访问都+1
+  // PV 每次访问+1
   pvCount++;
   localStorage.setItem(pvKey, pvCount);
 
-  // UV 仅第一次访问增加
+  // UV 仅第一次访问+1
   if (!localStorage.getItem(uvFlagKey)) {
     uvCount++;
     localStorage.setItem(uvKey, uvCount);
     localStorage.setItem(uvFlagKey, 'true');
   }
 
-  // 页面加载完成后更新数字
   document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('local_pv_count').textContent = pvCount.toLocaleString();
     document.getElementById('local_uv_count').textContent = uvCount.toLocaleString();
@@ -504,6 +502,9 @@
   });
 })();
 </script>
+
+<!-- 确保在 head 里引入 Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
         
 <div class="busuanzi-count">
