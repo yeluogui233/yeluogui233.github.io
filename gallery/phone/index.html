@@ -253,61 +253,242 @@
 </div>
 
 <style>
-/* --- 省略了你原本的所有样式 --- */
-
-/* 个人信息栏样式 */
-.personal-card {
+/* 画布宽度贴近 Next 内容宽度 */
+.album-wrapper {
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  padding: 20px 15px;
-  margin-top: 20px;
-  text-align: center;
-  position: sticky;
-  top: 20px; /* 距离浏览器顶部 20px，可根据菜单高度调整 */
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.personal-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-.personal-name {
-  font-weight: 600;
-  font-size: 1rem;
-  margin: 6px 0;
-}
-
-.personal-bio {
-  font-size: 0.85rem;
-  color: var(--text-color-secondary);
-  margin-bottom: 12px;
-}
-
-.personal-social {
+/* 两列更大卡片 */
+.photo-wall {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 6px;
+  gap: 24px;
 }
 
-.personal-social a {
-  display: block;
-  padding: 6px 0;
-  font-size: 0.75rem;
-  color: var(--link-color);
-  background: #f7f7f7;
-  border-radius: 6px;
-  text-decoration: none;
+.photo-frame {
+  position: relative;
+  cursor: zoom-in;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  border-radius: 12px;
+  background: var(--content-bg-color);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.photo-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
 }
 
-.personal-social a:hover {
-  background: var(--link-hover-bg, #eee);
+.photo-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.photo-frame:hover .photo-image { transform: scale(1.05); }
+
+.photo-zoom-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.85rem;
+}
+.photo-frame:hover .photo-zoom-icon { opacity: 1; }
+
+.photo-caption {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+/* 灯箱样式覆盖全屏并固定定位 */
+.ultimate-lightbox {
+  background: rgba(0,0,0,0.92) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed !important;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 99999;
+}
+.ultimate-lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  transition: transform 0.3s;
+  cursor: zoom-in;
+}
+.ultimate-lightbox img.zoomed {
+  transform: scale(1.5);
+  cursor: zoom-out;
+}
+
+/* 左右切换箭头 */
+.lightbox-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  padding: 0 20px;
+  user-select: none;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  z-index: 100000;
+}
+.lightbox-arrow:hover { opacity: 1; }
+.lightbox-prev { left: 10px; }
+.lightbox-next { right: 10px; }
+
+/* 响应式 */
+@media (max-width: 992px) {
+  .photo-wall { grid-template-columns: 1fr; }
+  .photo-image { height: 240px; }
+}
+
+/* 拟态日夜切换按钮样式，移到右上角 */
+#g-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 220px;
+  height: 90px;
+  border-radius: 90px;
+  background:
+    radial-gradient(circle at 18% 20px, #fff, #fff 6px, transparent 7px, transparent),
+    radial-gradient(circle at 35% 45px, #fff, #fff 1px, transparent 2px, transparent),
+    radial-gradient(circle at 10% 70px, #fff, #fff 2.5px, transparent 3.5px, transparent),
+    radial-gradient(circle at 25% 15px, #fff, #fff 3px, transparent 4px, transparent),
+    radial-gradient(circle at 15% 50px, #fff, #fff 1.5px, transparent 2.5px, transparent),
+    radial-gradient(circle at 30% 75px, #fff, #fff 5px, transparent 6px, transparent),
+    radial-gradient(circle at 5% 30px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+    radial-gradient(circle at 25% 60px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+    radial-gradient(circle at 7% 35px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+    linear-gradient(90deg, #2b303e, #2b303e 50%, #5a81b4 50%, #5a81b4);
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  box-shadow:
+    0 -3px 4px #999,
+    inset 0 3px 5px #333,
+    0 4px 4px #ffe,
+    inset 0 -3px 5px #ddd;
+  cursor: pointer;
+  overflow: hidden;
+  transition: .5s all;
+  outline: none; /* 去掉蓝色边框 */
+}
+#g-btn:focus { outline: none; box-shadow: none; }
+
+/* 保留按钮的伪元素和激活效果 */
+#g-btn::before,
+#g-btn::after {
+  content: "";
+  position: absolute;
+  transition: .5s all;
+}
+#g-btn::before {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: #e9cb50;
+  inset: 7.5px;
+  box-shadow:
+    0 0 5px #333,
+    inset 2px 2px 3px #f8f4e4,
+    inset -2px -2px 3px #665613;
+  z-index: 1;
+}
+#g-btn::after {
+  width: 70px;
+  height: 70px;
+  inset: 10px;
+  border-radius: 50%;
+  box-shadow:
+    10px 60px 0 10px #fff,
+    65px 60px 0 5px #fff,
+    95px 70px 0 10px #fff,
+    135px 45px 0 5px #fff,
+    170px 35px 0 10px #fff,
+    195px -5px 0 10px #fff,
+    -10px 0 0 50px rgba(255, 255, 255, .2),
+    15px 0 0 50px rgba(255, 255, 255, .15),
+    40px 0 0 50px rgba(255, 255, 255, .21),
+    10px 40px 0 10px #abc1d9,
+    70px 35px 0 10px #abc1d9,
+    95px 40px 0 10px #abc1d9,
+    135px 20px 0 10px #abc1d9,
+    155px 15px 0 10px #abc1d9,
+    190px -20px 0 10px #abc1d9;
+}
+#g-btn.active {
+  background-position: 0 0;
+}
+#g-btn.active::before {
+  translate: 130px;
+  background:
+    radial-gradient(circle at 50% 20px, #939aa5, #939aa5 6.5px, transparent 7px, transparent),
+    radial-gradient(circle at 35% 45px, #939aa5, #939aa5 11.5px, transparent 12px, transparent),
+    radial-gradient(circle at 72% 50px, #939aa5, #939aa5 8.5px, transparent 9px, transparent),
+    radial-gradient(#cbcdda, #cbcdda);
+}
+#g-btn.active::after {
+  transform: translate(130px);
+  box-shadow:
+    10px 60px 0 10px transparent,
+    65px 60px 0 5px transparent,
+    95px 70px 0 10px transparent,
+    135px 45px 0 5px transparent,
+    170px 35px 0 10px transparent,
+    195px -5px 0 10px transparent,
+    10px 0 0 50px rgba(255, 255, 255, .2),
+    -15px 0 0 50px rgba(255, 255, 255, .15),
+    -40px 0 0 50px rgba(255, 255, 255, .21),
+    10px 40px 0 10px transparent,
+    70px 35px 0 10px transparent,
+    95px 40px 0 10px transparent,
+    135px 20px 0 10px transparent,
+    155px 15px 0 10px transparent,
+    190px -20px 0 10px transparent;
+}
+
+/* Dark Mode 样式 */
+body.dark-mode {
+  background-color: #121212;
+  color: #ddd;
+}
+body.dark-mode .album-wrapper {
+  background: #222;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+}
+body.dark-mode .photo-frame {
+  background: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+body.dark-mode .photo-frame:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+}
+body.dark-mode .photo-caption {
+  color: #ccc;
 }
 </style>
 
@@ -421,20 +602,165 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
         </div>
           
-  
-  <div class="personal-card">
-    <img src="/images/avatar.jpg" alt="我的头像" class="personal-avatar">
-    <div class="personal-name">落归 叶</div>
-    <div class="personal-bio">分享生活与代码</div>
-    <div class="personal-social">
-      <a href="mailto:xxx@example.com">Email</a>
-      <a href="https://github.com/xxx" target="_blank">GitHub</a>
-      <a href="https://weibo.com/xxx" target="_blank">Weibo</a>
-      <a href="https://twitter.com/xxx" target="_blank">Twitter</a>
-      <a href="#">Link1</a>
-      <a href="#">Link2</a>
-    </div>
+  <aside class="sidebar">
+    <div class="widget site-author-widget">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="叶落归"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">叶落归</p>
+  <div class="site-description" itemprop="description">”我这辈子一直想信仰某种东西，“圣地亚哥说道,”然而却一直在撒谎，我没有信仰“</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yeluogui233" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yeluogui233" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1399099158@qq.com" title="E-Mail → 1399099158@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6553184492" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6553184492" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/yeluoguihhh@gmail.com" title="Google → yeluoguihhh@gmail.com"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://x.com/yeluo_gui" title="Twitter → https:&#x2F;&#x2F;x.com&#x2F;yeluo_gui" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@%E5%8F%B6%E8%90%BD%E5%BD%92" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@%E5%8F%B6%E8%90%BD%E5%BD%92" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
   </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://steamcommunity.com/id/yeluogui/" title="https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;yeluogui&#x2F;" rel="noopener" target="_blank">steam主页(欢迎扩列)</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://store.steampowered.com/curator/36773728/" title="https:&#x2F;&#x2F;store.steampowered.com&#x2F;curator&#x2F;36773728&#x2F;" rel="noopener" target="_blank">延燃游戏鉴赏家</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://tieba.baidu.com/f?kw=minecraft%E5%9B%BE%E6%96%87&fp=0" title="https:&#x2F;&#x2F;tieba.baidu.com&#x2F;f?kw&#x3D;minecraft%E5%9B%BE%E6%96%87&amp;fp&#x3D;0" rel="noopener" target="_blank">minecraft图文吧</a>
+        </li>
+    </ul>
+  </div>
+
+    </div>
+  </aside>
+
+  <style>
+    .site-author-widget {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .site-author-widget .site-author-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 12px;
+      display: block;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    .site-author-widget .site-author-name {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin: 8px 0 4px;
+      color: var(--text-color);
+    }
+    .site-author-widget .site-description {
+      font-size: 0.95rem;
+      color: var(--text-color-secondary);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    /* 社交3行2列 */
+.site-author-widget .links-of-author {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 两列平均分 */
+  grid-auto-rows: auto;
+  justify-content: center;
+  gap: 8px 12px;
+  max-width: 200px; /* 增加容器宽度 */
+  margin: 0 auto 16px;
+  text-align: center;
+}
+
+.site-author-widget .links-of-author-item a {
+  font-size: 0.75rem;       /* 字体缩小一点 */
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.25s ease;
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.03);
+  white-space: nowrap;      /* 单行显示，不换行 */
+  overflow: hidden;
+  text-overflow: ellipsis;  /* 如果过长就用省略号 */
+}
+
+.site-author-widget .links-of-author-item a:hover {
+  color: var(--primary-color);
+  background: rgba(0,0,0,0.05);
+}
+
+    /* 友情链接 */
+    .links-of-blogroll-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .links-of-blogroll-item a {
+      display: inline-block;
+      color: var(--text-color);
+      padding: 4px 10px;
+      border-radius: 10px;
+      background: #f5f5f5;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .links-of-blogroll-item a:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+  </style>
 
       </div>
     </main>
