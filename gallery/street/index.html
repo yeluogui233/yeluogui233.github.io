@@ -842,6 +842,69 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
 
+  <!-- 左下角网易云播放器 -->
+<div id="netease-player">
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0"
+    width="330" height="86"
+    src="//music.163.com/outchain/player?type=2&id=541326593&auto=1&height=66">
+  </iframe>
+</div>
+
+<!-- Sakana Widget 左下角略上方 -->
+<div id="sakana-widget-container">
+  <div id="sakana-widget"></div>
+</div>
+
+<style>
+  #netease-player {
+    position: fixed;
+    left: 20px;
+    bottom: 20px; /* 紧贴底部 */
+    z-index: 99998;
+  }
+  #sakana-widget-container {
+    position: fixed;
+    left: 20px;
+    bottom: 120px; /* 撑开播放器高度，避免重叠 */
+    z-index: 99999;
+    width: 180px !important;
+    height: 180px !important;
+    pointer-events: auto;
+  }
+  #sakana-widget-container img {
+    image-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>
+
+<script>
+  // 动态加载 Sakana Widget
+  const sakanaCss = document.createElement('link');
+  sakanaCss.rel = 'stylesheet';
+  sakanaCss.href = 'https://cdn.jsdelivr.net/npm/sakana-widget@2.7.1/lib/sakana.min.css';
+  document.head.appendChild(sakanaCss);
+
+  const sakanaJs = document.createElement('script');
+  sakanaJs.src = 'https://cdn.jsdelivr.net/npm/sakana-widget@2.7.1/lib/sakana.min.js';
+  sakanaJs.onload = function() {
+    const chisato = SakanaWidget.getCharacter('chisato');
+    const takina = SakanaWidget.getCharacter('takina');
+    const custom = SakanaWidget.getCharacter('chisato');
+    custom.image = 'https://youke1.picui.cn/s1/2025/08/02/688da48566189.png';
+    SakanaWidget.registerCharacter('custom', custom);
+
+    new SakanaWidget({
+      size: 180,
+      controls: true,
+      draggable: true,
+      rod: true,
+      character: 'chisato'
+    }).mount('#sakana-widget');
+  };
+  document.body.appendChild(sakanaJs);
+</script>
+
 <!-- Sakana Widget -->
 <!-- Sakana Widget 纯 script 版 -->
 <div id="sakana-widget-container">
