@@ -223,6 +223,9 @@
             
 <div class="main-inner">
 
+  <!-- 拟态日夜模式切换按钮，居中放在标题上方 -->
+  <div id="g-btn" title="切换日夜模式" role="button" tabindex="0" aria-label="切换日夜模式"></div>
+
   <!-- 白色画布整体包裹 -->
   <div class="album-wrapper">
 
@@ -307,7 +310,7 @@
 
 .photo-image {
   width: 100%;
-  height: 280px; /* 稍大一些 */
+  height: 280px;
   object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
@@ -383,10 +386,145 @@
   .photo-wall { grid-template-columns: 1fr; }
   .photo-image { height: 240px; }
 }
+
+/* 拟态日夜切换按钮样式，放大且居中 */
+#g-btn {
+  margin: 0 auto 30px;
+  width: 220px;
+  height: 90px;
+  border-radius: 90px;
+  background:
+    radial-gradient(circle at 18% 20px, #fff, #fff 6px, transparent 7px, transparent),
+    radial-gradient(circle at 35% 45px, #fff, #fff 1px, transparent 2px, transparent),
+    radial-gradient(circle at 10% 70px, #fff, #fff 2.5px, transparent 3.5px, transparent),
+    radial-gradient(circle at 25% 15px, #fff, #fff 3px, transparent 4px, transparent),
+    radial-gradient(circle at 15% 50px, #fff, #fff 1.5px, transparent 2.5px, transparent),
+    radial-gradient(circle at 30% 75px, #fff, #fff 5px, transparent 6px, transparent),
+    radial-gradient(circle at 5% 30px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+    radial-gradient(circle at 25% 60px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+    radial-gradient(circle at 7% 35px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+    linear-gradient(90deg, #2b303e, #2b303e 50%, #5a81b4 50%, #5a81b4);
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  box-shadow:
+    0 -3px 4px #999,
+    inset 0 3px 5px #333,
+    0 4px 4px #ffe,
+    inset 0 -3px 5px #ddd;
+  cursor: pointer;
+  overflow: hidden;
+  transition: .5s all;
+  outline-offset: 4px;
+  position: relative;
+}
+#g-btn::before,
+#g-btn::after {
+  content: "";
+  position: absolute;
+  transition: .5s all;
+}
+#g-btn::before {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: #e9cb50;
+  inset: 7.5px;
+  box-shadow:
+    0 0 5px #333,
+    inset 2px 2px 3px #f8f4e4,
+    inset -2px -2px 3px #665613;
+  z-index: 1;
+}
+#g-btn::after {
+  width: 70px;
+  height: 70px;
+  inset: 10px;
+  border-radius: 50%;
+  box-shadow:
+    10px 60px 0 10px #fff,
+    65px 60px 0 5px #fff,
+    95px 70px 0 10px #fff,
+    135px 45px 0 5px #fff,
+    170px 35px 0 10px #fff,
+    195px -5px 0 10px #fff,
+    -10px 0 0 50px rgba(255, 255, 255, .2),
+    15px 0 0 50px rgba(255, 255, 255, .15),
+    40px 0 0 50px rgba(255, 255, 255, .21),
+    10px 40px 0 10px #abc1d9,
+    70px 35px 0 10px #abc1d9,
+    95px 40px 0 10px #abc1d9,
+    135px 20px 0 10px #abc1d9,
+    155px 15px 0 10px #abc1d9,
+    190px -20px 0 10px #abc1d9;
+}
+#g-btn:hover::before {
+  filter: contrast(90%) brightness(110%);
+  scale: 1.05;
+}
+#g-btn.active {
+  background-position: 0 0;
+}
+#g-btn.active::before {
+  translate: 130px;
+  background:
+    radial-gradient(circle at 50% 20px, #939aa5, #939aa5 6.5px, transparent 7px, transparent),
+    radial-gradient(circle at 35% 45px, #939aa5, #939aa5 11.5px, transparent 12px, transparent),
+    radial-gradient(circle at 72% 50px, #939aa5, #939aa5 8.5px, transparent 9px, transparent),
+    radial-gradient(#cbcdda, #cbcdda);
+}
+#g-btn.active::after {
+  transform: translate(130px);
+  box-shadow:
+    10px 60px 0 10px transparent,
+    65px 60px 0 5px transparent,
+    95px 70px 0 10px transparent,
+    135px 45px 0 5px transparent,
+    170px 35px 0 10px transparent,
+    195px -5px 0 10px transparent,
+    10px 0 0 50px rgba(255, 255, 255, .2),
+    -15px 0 0 50px rgba(255, 255, 255, .15),
+    -40px 0 0 50px rgba(255, 255, 255, .21),
+    10px 40px 0 10px transparent,
+    70px 35px 0 10px transparent,
+    95px 40px 0 10px transparent,
+    135px 20px 0 10px transparent,
+    155px 15px 0 10px transparent,
+    190px -20px 0 10px transparent;
+}
+
+/* 可键盘访问聚焦样式 */
+#g-btn:focus {
+  outline: 2px solid #5390ff;
+  outline-offset: 3px;
+}
+
+/* 你可以在这里定义 dark-mode 下 body 的样式，比如背景和文字颜色 */
+body.dark-mode {
+  background-color: #121212;
+  color: #ddd;
+}
+
+body.dark-mode .album-wrapper {
+  background: #222;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+}
+
+body.dark-mode .photo-frame {
+  background: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+body.dark-mode .photo-frame:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+}
+body.dark-mode .photo-caption {
+  color: #ccc;
+}
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // 灯箱代码
   const frames = Array.from(document.querySelectorAll('.photo-frame'));
   let currentIndex = 0;
   let lightboxInstance = null;
@@ -397,11 +535,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const src = frame.dataset.src;
     const alt = frame.dataset.alt || '';
 
-    const html = 
+    const html = `
       <img src="${src}" alt="${alt}" id="lightbox-img">
       <div class="lightbox-arrow lightbox-prev">&#10094;</div>
       <div class="lightbox-arrow lightbox-next">&#10095;</div>
-    ;
+    `;
 
     lightboxInstance = basicLightbox.create(html, { className: 'ultimate-lightbox' });
     lightboxInstance.show();
@@ -409,14 +547,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.lightbox-prev').onclick = () => navigate(-1);
     document.querySelector('.lightbox-next').onclick = () => navigate(1);
 
-    // ESC 和方向键
     document.onkeydown = (e) => {
       if (e.key === 'Escape') lightboxInstance.close();
       if (e.key === 'ArrowLeft') navigate(-1);
       if (e.key === 'ArrowRight') navigate(1);
     };
 
-    // 点击图片缩放
     document.getElementById('lightbox-img').onclick = function() {
       this.classList.toggle('zoomed');
     }
@@ -434,6 +570,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
   frames.forEach((frame, idx) => {
     frame.addEventListener('click', () => showLightbox(idx));
+  });
+
+  // 拟态按钮日夜模式切换
+  const btn = document.getElementById('g-btn');
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('active');
+    document.body.classList.toggle('dark-mode');
+  });
+
+  btn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      btn.click();
+    }
   });
 });
 </script>
@@ -491,48 +641,42 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="footer-inner">
         
 
-        
+        <div class="footer-wrapper" style="text-align:center; font-size:14px; color:#222; max-width: 900px; margin: auto; padding: 20px 0;">
 
-<div class="copyright" style="text-align:center; display:flex; justify-content:center; align-items:center; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--text-color-secondary);">
-  
-  <span>&copy; 2025</span>
-
-  <span class="author" itemprop="copyrightHolder" style="white-space: nowrap;">
-    叶落归
-    <span style="color:#e25555; margin-left: 4px;">&#10084;</span>  
-  </span>
-
-  <span class="stat-wordcount" style="display:flex; align-items:center; gap:6px; white-space: nowrap;">
-    <i class="fa fa-file-alt" aria-hidden="true" style="width:16px; text-align:center;"></i>
+  <div class="footer-line footer-line-1" style="display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap: wrap;">
+    <span>© 2025 叶落归</span>
+    <span style="color:#e25555; font-size:18px; margin-left:4px;">&#10084;</span>
+    <i class="fa-solid fa-file-lines" aria-hidden="true" style="color:#000;"></i>
     <span>总字数: <span id="local_word_count">计算中...</span></span>
-  </span>
-
-  <span class="stat-readtime" style="display:flex; align-items:center; gap:6px; white-space: nowrap;">
-    <i class="fa fa-clock" aria-hidden="true" style="width:16px; text-align:center;"></i>
+    <i class="fa-regular fa-clock" aria-hidden="true" style="color:#000;"></i>
     <span>预计阅读时间: <span id="local_read_time">计算中...</span> 分钟</span>
-  </span>
-</div>
+  </div>
 
-<div class="footer-statistics" style="margin-top: 15px; display: flex; justify-content: center; gap: 30px; font-size: 14px; color: var(--text-color-secondary);">
-  <div class="stat-item" style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
-    <span style="font-size:18px;">👁️</span>
-    <span>访问量: <span id="local_pv_count">加载中...</span></span>
+  <div class="footer-line footer-line-2" style="margin-top:10px; color:#555; font-size:13px;">
+    由 
+    <a href="https://hexo.io" target="_blank" rel="noopener" style="color:#555; text-decoration:none; font-weight:600;">Hexo</a>
+    &amp;
+    <a href="https://theme-next.org/" target="_blank" rel="noopener" style="color:#555; text-decoration:none; font-weight:600;">NexT.Gemini</a>
+    强力驱动
   </div>
-  <div class="stat-item" style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
-    <span style="font-size:18px;">👥</span>
-    <span>访客数: <span id="local_uv_count">加载中...</span></span>
+
+  <div class="footer-line footer-line-3" style="margin-top:15px; display:flex; justify-content:center; gap:30px; font-size:14px; color:#222;">
+    <div style="display:flex; align-items:center; gap:6px; white-space: nowrap;">
+      <i class="fa-regular fa-eye" aria-hidden="true" style="color:#000; font-size:18px;"></i>
+      <span>访客数: <span id="local_uv_count">加载中...</span></span>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px; white-space: nowrap;">
+      <i class="fa-solid fa-user" aria-hidden="true" style="color:#000; font-size:18px;"></i>
+      <span>人访客数: <span id="local_pv_count">加载中...</span></span>
+    </div>
   </div>
+
 </div>
-  <div class="powered-by" style="margin-top: 10px; text-align: center; font-size: 13px; color: var(--text-color-secondary);">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
 
 <script>
 (function() {
   try {
-    const pvKey = 'local_pv_count';
-    const uvFlagKey = 'local_uv_flag';
-    const uvCountKey = 'local_uv_count';
-
+    // 统计元素
     const pvElem = document.getElementById('local_pv_count');
     const uvElem = document.getElementById('local_uv_count');
     const wordElem = document.getElementById('local_word_count');
@@ -543,36 +687,33 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    // 访问量 PV 自增
-    let pvCount = parseInt(localStorage.getItem(pvKey));
+    // PV 访问量计数
+    let pvCount = parseInt(localStorage.getItem('local_pv_count'));
     if (isNaN(pvCount)) pvCount = 0;
     pvCount++;
-    localStorage.setItem(pvKey, pvCount);
+    localStorage.setItem('local_pv_count', pvCount);
 
-    // 访客数 UV
-    let uvCount = parseInt(localStorage.getItem(uvCountKey));
+    // UV 访客数计数（只增一次）
+    let uvCount = parseInt(localStorage.getItem('local_uv_count'));
     if (isNaN(uvCount)) uvCount = 0;
-    const visitedFlag = localStorage.getItem(uvFlagKey);
-    if (!visitedFlag) {
+    const uvFlag = localStorage.getItem('local_uv_flag');
+    if (!uvFlag) {
       uvCount++;
-      localStorage.setItem(uvCountKey, uvCount);
-      localStorage.setItem(uvFlagKey, 'true');
+      localStorage.setItem('local_uv_count', uvCount);
+      localStorage.setItem('local_uv_flag', 'true');
     }
 
-    // 更新页面数字显示
+    // 更新数字显示
     pvElem.textContent = pvCount.toLocaleString();
     uvElem.textContent = uvCount.toLocaleString();
 
-    // 计算总字数
+    // 计算正文字数
     let content = document.querySelector('.main-inner');
-    let text = '';
-    if (content) {
-      text = content.innerText || content.textContent || '';
-    }
+    let text = content ? content.innerText || content.textContent || '' : '';
     let length = text.trim().length;
     wordElem.textContent = length.toLocaleString();
 
-    // 计算预计阅读时间，按每分钟200字计算，向上取整
+    // 预计阅读时间，每200字1分钟，向上取整
     let readTime = Math.ceil(length / 200);
     readTimeElem.textContent = readTime;
 
