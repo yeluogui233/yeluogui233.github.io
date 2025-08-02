@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yeluogui.cloud/gallery/index.html</loc>
+    
+    <lastmod>2025-08-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yeluogui.cloud/gallery/phone/index.html</loc>
     
     <lastmod>2025-08-01</lastmod>
@@ -48,15 +57,6 @@
   
   <url>
     <loc>http://yeluogui.cloud/gallery/scenery/index.html</loc>
-    
-    <lastmod>2025-08-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/gallery/index.html</loc>
     
     <lastmod>2025-08-01</lastmod>
     
@@ -207,7 +207,7 @@
   </url>
   
   <url>
-    <loc>http://yeluogui.cloud/tags/%E4%B9%A6%E8%AF%84/</loc>
+    <loc>http://yeluogui.cloud/tags/%E4%B9%A6%E6%91%98/</loc>
     <lastmod>2025-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -221,7 +221,7 @@
   </url>
   
   <url>
-    <loc>http://yeluogui.cloud/tags/%E4%B9%A6%E6%91%98/</loc>
+    <loc>http://yeluogui.cloud/tags/%E4%B9%A6%E8%AF%84/</loc>
     <lastmod>2025-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

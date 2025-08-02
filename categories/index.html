@@ -401,84 +401,66 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">叶落归</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-area"></i>
-    </span>
-      <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">3k</span>
-    <span class="post-meta-divider"></span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3 分钟</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
 
-
-<div class="footer-statistics">
-  <div class="stat-item" id="busuanzi_container_site_pv">
-    <i class="fa fa-eye"></i>
-    <span>
-      总访问量: <span id="busuanzi_value_site_pv">加载中...</span>
+<div class="footer-statistics" style="margin-top: 15px; display: flex; justify-content: center; gap: 30px; font-size: 14px;">
+  <div class="stat-item" style="display: flex; align-items: center; gap: 6px;">
+    <i class="fa fa-eye" aria-hidden="true" style="color:#4CAF50; width:16px; text-align:center;"></i>
+    <span id="local_pv_container" style="min-width:120px;">
+      总访问量: <span id="local_pv_count">加载中...</span>
     </span>
   </div>
-  
-  <div class="stat-item" id="busuanzi_container_site_uv">
-    <i class="fa fa-user"></i>
-    <span>
-      总访客数: <span id="busuanzi_value_site_uv">加载中...</span>
+  <div class="stat-item" style="display: flex; align-items: center; gap: 6px;">
+    <i class="fa fa-users" aria-hidden="true" style="color:#2196F3; width:16px; text-align:center;"></i>
+    <span id="local_uv_container" style="min-width:120px;">
+      总访客数: <span id="local_uv_count">加载中...</span>
     </span>
   </div>
 </div>
+  <div class="powered-by" style="margin-top: 10px; text-align: center; font-size: 13px; color: var(--text-color-secondary);">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(function() {
-    const pvText = document.getElementById('busuanzi_value_site_pv').textContent;
-    const uvText = document.getElementById('busuanzi_value_site_uv').textContent;
-    if (!pvText.match(/\d+/)) {
-      document.getElementById('busuanzi_container_site_pv').style.display = 'none';
+(function() {
+  try {
+    const pvKey = 'local_pv_count';
+    const uvFlagKey = 'local_uv_flag';
+    const uvCountKey = 'local_uv_count';
+
+    const pvElem = document.getElementById('local_pv_count');
+    const uvElem = document.getElementById('local_uv_count');
+
+    if (!pvElem || !uvElem) {
+      console.warn('统计元素未找到，跳过统计');
+      return;
     }
-    if (!uvText.match(/\d+/)) {
-      document.getElementById('busuanzi_container_site_uv').style.display = 'none';
+
+    // 访问量 PV
+    let pvCount = parseInt(localStorage.getItem(pvKey));
+    if (isNaN(pvCount)) pvCount = 0;
+    pvCount++;
+    localStorage.setItem(pvKey, pvCount);
+
+    // 访客数 UV
+    let uvCount = parseInt(localStorage.getItem(uvCountKey));
+    if (isNaN(uvCount)) uvCount = 0;
+
+    // 新访客检测
+    const visitedFlag = localStorage.getItem(uvFlagKey);
+    if (!visitedFlag) {
+      uvCount++;
+      localStorage.setItem(uvCountKey, uvCount);
+      localStorage.setItem(uvFlagKey, 'true');
     }
-  }, 6000); // 延长到6秒
-});
+
+    // 更新页面显示
+    pvElem.textContent = pvCount.toLocaleString();
+    uvElem.textContent = uvCount.toLocaleString();
+  } catch(e) {
+    console.error('统计脚本错误:', e);
+  }
+})();
 </script>
-
-<style>
-.footer-statistics {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 15px 0;
-  font-size: 14px;
-  color: var(--text-color); /* 确保文字颜色 */
-}
-.stat-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: inherit;
-}
-.stat-item i {
-  color: var(--theme-color);
-  width: 16px;
-  text-align: center;
-}
-
-/* 用CSS伪元素控制分割线，防止尾部多余竖线 */
-.post-meta-item-text:not(:last-child)::after,
-.post-meta-item-icon:not(:last-child)::after {
-  content: "|";
-  margin: 0 8px;
-  color: #ccc;
-}
-</style>
-
 
         
 <div class="busuanzi-count">
