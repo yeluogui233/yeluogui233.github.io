@@ -385,26 +385,34 @@
 
         
 
-<div class="copyright" style="text-align:center; display:flex; justify-content:center; align-items:center; gap: 12px; flex-wrap: wrap;">
+<div class="copyright" style="text-align:center; display:flex; justify-content:center; align-items:center; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--text-color-secondary);">
   
-  &copy; 
-  <span itemprop="copyrightYear">2025</span>
-  <span class="author" itemprop="copyrightHolder">叶落归</span>
+  <span>&copy; 2025</span>
 
-  <span class="stat-wordcount" style="display:flex; align-items:center; gap:6px; font-size: 14px; color: var(--text-color-secondary);">
+  <span class="author" itemprop="copyrightHolder" style="white-space: nowrap;">
+    叶落归
+    <span style="color:#e25555; margin-left: 4px;">&#10084;</span>  
+  </span>
+
+  <span class="stat-wordcount" style="display:flex; align-items:center; gap:6px; white-space: nowrap;">
     <i class="fa fa-file-alt" aria-hidden="true" style="width:16px; text-align:center;"></i>
     <span>总字数: <span id="local_word_count">计算中...</span></span>
   </span>
+
+  <span class="stat-readtime" style="display:flex; align-items:center; gap:6px; white-space: nowrap;">
+    <i class="fa fa-clock" aria-hidden="true" style="width:16px; text-align:center;"></i>
+    <span>预计阅读时间: <span id="local_read_time">计算中...</span> 分钟</span>
+  </span>
 </div>
 
-<div class="footer-statistics" style="margin-top: 15px; display: flex; justify-content: center; gap: 30px; font-size: 14px;">
-  <div class="stat-item" style="display: flex; align-items: center; gap: 6px;">
-    <i class="fa fa-eye" aria-hidden="true" style="width:16px; text-align:center;"></i>
-    <span>总访问量: <span id="local_pv_count">加载中...</span></span>
+<div class="footer-statistics" style="margin-top: 15px; display: flex; justify-content: center; gap: 30px; font-size: 14px; color: var(--text-color-secondary);">
+  <div class="stat-item" style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+    <span style="font-size:18px;">👁️</span>
+    <span>访问量: <span id="local_pv_count">加载中...</span></span>
   </div>
-  <div class="stat-item" style="display: flex; align-items: center; gap: 6px;">
-    <i class="fa fa-users" aria-hidden="true" style="width:16px; text-align:center;"></i>
-    <span>总访客数: <span id="local_uv_count">加载中...</span></span>
+  <div class="stat-item" style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+    <span style="font-size:18px;">👥</span>
+    <span>访客数: <span id="local_uv_count">加载中...</span></span>
   </div>
 </div>
   <div class="powered-by" style="margin-top: 10px; text-align: center; font-size: 13px; color: var(--text-color-secondary);">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -420,13 +428,14 @@
     const pvElem = document.getElementById('local_pv_count');
     const uvElem = document.getElementById('local_uv_count');
     const wordElem = document.getElementById('local_word_count');
+    const readTimeElem = document.getElementById('local_read_time');
 
-    if (!pvElem || !uvElem || !wordElem) {
+    if (!pvElem || !uvElem || !wordElem || !readTimeElem) {
       console.warn('统计元素未找到，跳过统计');
       return;
     }
 
-    // 访问量 PV
+    // 访问量 PV 自增
     let pvCount = parseInt(localStorage.getItem(pvKey));
     if (isNaN(pvCount)) pvCount = 0;
     pvCount++;
@@ -435,8 +444,6 @@
     // 访客数 UV
     let uvCount = parseInt(localStorage.getItem(uvCountKey));
     if (isNaN(uvCount)) uvCount = 0;
-
-    // 新访客检测
     const visitedFlag = localStorage.getItem(uvFlagKey);
     if (!visitedFlag) {
       uvCount++;
@@ -444,19 +451,22 @@
       localStorage.setItem(uvFlagKey, 'true');
     }
 
-    // 更新页面显示
+    // 更新页面数字显示
     pvElem.textContent = pvCount.toLocaleString();
     uvElem.textContent = uvCount.toLocaleString();
 
-    // 计算总字数（取 .main-inner 内文本）
+    // 计算总字数
     let content = document.querySelector('.main-inner');
+    let text = '';
     if (content) {
-      let text = content.innerText || content.textContent || '';
-      let length = text.trim().length;
-      wordElem.textContent = length.toLocaleString();
-    } else {
-      wordElem.textContent = '未知';
+      text = content.innerText || content.textContent || '';
     }
+    let length = text.trim().length;
+    wordElem.textContent = length.toLocaleString();
+
+    // 计算预计阅读时间，按每分钟200字计算，向上取整
+    let readTime = Math.ceil(length / 200);
+    readTimeElem.textContent = readTime;
 
   } catch(e) {
     console.error('统计脚本错误:', e);

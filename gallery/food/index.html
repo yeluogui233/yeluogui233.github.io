@@ -260,190 +260,172 @@
 
 </div>
 
-<!-- MG动画风格日夜切换按钮 -->
-<div id="darkModeToggle" role="switch" tabindex="0" aria-checked="false" aria-label="切换日夜模式">
-  <div class="toggle-track">
-    <div class="toggle-thumb">
-      <i class="fa-solid fa-sun"></i>
-      <i class="fa-solid fa-moon"></i>
-    </div>
-  </div>
-</div>
-
 <style>
-/* 画布和画廊保持原样，这里只贴日夜按钮相关样式 */
-
-/* 日夜切换按钮整体定位 */
-#darkModeToggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 70px;
-  height: 36px;
-  background: linear-gradient(145deg, #f0f0f3, #cacaca);
-  border-radius: 20px;
-  box-shadow:
-    6px 6px 10px #bebebe,
-    -6px -6px 10px #ffffff;
-  cursor: pointer;
-  user-select: none;
-  outline: none;
-  z-index: 100001;
-  transition: background 0.3s, box-shadow 0.3s;
+/* 画布宽度贴近 Next 内容宽度 */
+.album-wrapper {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* 切换按钮hover效果 */
-#darkModeToggle:hover {
-  background: linear-gradient(145deg, #e2e2e2, #c0c0c0);
-  box-shadow:
-    4px 4px 8px #b3b3b3,
-    -4px -4px 8px #ffffff;
+/* 两列更大卡片 */
+.photo-wall {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 }
 
-/* dark模式下按钮背景和阴影 */
-body.dark-mode #darkModeToggle {
-  background: linear-gradient(145deg, #3b3b3b, #1e1e1e);
-  box-shadow:
-    6px 6px 10px #1a1a1a,
-    -6px -6px 10px #545454;
-}
-
-body.dark-mode #darkModeToggle:hover {
-  background: linear-gradient(145deg, #2f2f2f, #171717);
-  box-shadow:
-    4px 4px 8px #121212,
-    -4px -4px 8px #626262;
-}
-
-/* 轨道 */
-.toggle-track {
+.photo-frame {
   position: relative;
+  cursor: zoom-in;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--content-bg-color);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.photo-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.photo-image {
   width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  background: linear-gradient(145deg, #e0e0e3, #c7c7cc);
-  box-shadow:
-    inset 4px 4px 6px #bebebe,
-    inset -4px -4px 6px #ffffff;
-  transition: background 0.3s, box-shadow 0.3s;
+  height: 280px; /* 稍大一些 */
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
 }
+.photo-frame:hover .photo-image { transform: scale(1.05); }
 
-/* dark模式轨道 */
-body.dark-mode .toggle-track {
-  background: linear-gradient(145deg, #242424, #353535);
-  box-shadow:
-    inset 4px 4px 6px #1a1a1a,
-    inset -4px -4px 6px #484848;
-}
-
-/* 滑块 */
-.toggle-thumb {
+.photo-zoom-icon {
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(145deg, #f5f5f7, #d9d9df);
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  box-shadow:
-    6px 6px 8px #bebebe,
-    -6px -6px 8px #ffffff;
-  transition:
-    left 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    background 0.3s,
-    box-shadow 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #f39c12;
-  font-size: 18px;
-  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.85rem;
+}
+.photo-frame:hover .photo-zoom-icon { opacity: 1; }
+
+.photo-caption {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+/* 灯箱样式覆盖全屏并固定定位 */
+.ultimate-lightbox {
+  background: rgba(0,0,0,0.92) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed !important;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 99999;
+}
+.ultimate-lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  transition: transform 0.3s;
+  cursor: zoom-in;
+}
+.ultimate-lightbox img.zoomed {
+  transform: scale(1.5);
+  cursor: zoom-out;
+}
+
+/* 左右切换箭头 */
+.lightbox-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: white;
   cursor: pointer;
+  padding: 0 20px;
+  user-select: none;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  z-index: 100000;
 }
+.lightbox-arrow:hover { opacity: 1; }
+.lightbox-prev { left: 10px; }
+.lightbox-next { right: 10px; }
 
-/* dark模式滑块 */
-body.dark-mode .toggle-thumb {
-  background: linear-gradient(145deg, #292929, #3f3f3f);
-  box-shadow:
-    6px 6px 8px #1a1a1a,
-    -6px -6px 8px #545454;
-  color: #f1c40f;
-  left: calc(100% - 34px);
-}
-
-/* 太阳和月亮图标重叠，用透明控制显示 */
-.toggle-thumb i.fa-sun {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.4s;
-  opacity: 1;
-  pointer-events: none;
-}
-
-body.dark-mode .toggle-thumb i.fa-sun {
-  opacity: 0;
-}
-
-.toggle-thumb i.fa-moon {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.4s;
-  opacity: 0;
-  pointer-events: none;
-}
-
-body.dark-mode .toggle-thumb i.fa-moon {
-  opacity: 1;
-}
-
-/* 可访问性焦点框 */
-#darkModeToggle:focus {
-  box-shadow:
-    0 0 0 3px #6fa8dc,
-    6px 6px 10px #bebebe,
-    -6px -6px 10px #ffffff;
+/* 响应式 */
+@media (max-width: 992px) {
+  .photo-wall { grid-template-columns: 1fr; }
+  .photo-image { height: 240px; }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const toggleBtn = document.getElementById('darkModeToggle');
+  const frames = Array.from(document.querySelectorAll('.photo-frame'));
+  let currentIndex = 0;
+  let lightboxInstance = null;
 
-  function setDarkMode(enabled) {
-    if (enabled) {
-      document.body.classList.add('dark-mode');
-      toggleBtn.setAttribute('aria-checked', 'true');
-      localStorage.setItem('darkMode', 'enabled');
-    } else {
-      document.body.classList.remove('dark-mode');
-      toggleBtn.setAttribute('aria-checked', 'false');
-      localStorage.setItem('darkMode', 'disabled');
+  function showLightbox(index) {
+    currentIndex = index;
+    const frame = frames[index];
+    const src = frame.dataset.src;
+    const alt = frame.dataset.alt || '';
+
+    const html = 
+      <img src="${src}" alt="${alt}" id="lightbox-img">
+      <div class="lightbox-arrow lightbox-prev">&#10094;</div>
+      <div class="lightbox-arrow lightbox-next">&#10095;</div>
+    ;
+
+    lightboxInstance = basicLightbox.create(html, { className: 'ultimate-lightbox' });
+    lightboxInstance.show();
+
+    document.querySelector('.lightbox-prev').onclick = () => navigate(-1);
+    document.querySelector('.lightbox-next').onclick = () => navigate(1);
+
+    // ESC 和方向键
+    document.onkeydown = (e) => {
+      if (e.key === 'Escape') lightboxInstance.close();
+      if (e.key === 'ArrowLeft') navigate(-1);
+      if (e.key === 'ArrowRight') navigate(1);
+    };
+
+    // 点击图片缩放
+    document.getElementById('lightbox-img').onclick = function() {
+      this.classList.toggle('zoomed');
     }
   }
 
-  // 初始化状态
-  const savedMode = localStorage.getItem('darkMode');
-  setDarkMode(savedMode === 'enabled');
-
-  // 切换函数
-  function toggle() {
-    setDarkMode(!document.body.classList.contains('dark-mode'));
+  function navigate(step) {
+    currentIndex = (currentIndex + step + frames.length) % frames.length;
+    const newSrc = frames[currentIndex].dataset.src;
+    const newAlt = frames[currentIndex].dataset.alt || '';
+    const img = document.getElementById('lightbox-img');
+    img.src = newSrc;
+    img.alt = newAlt;
+    img.classList.remove('zoomed');
   }
 
-  toggleBtn.addEventListener('click', toggle);
-  toggleBtn.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggle();
-    }
+  frames.forEach((frame, idx) => {
+    frame.addEventListener('click', () => showLightbox(idx));
   });
 });
 </script>
-
 
           </div>
           
@@ -500,26 +482,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
         
 
-<div class="copyright" style="text-align:center; display:flex; justify-content:center; align-items:center; gap: 12px; flex-wrap: wrap;">
+<div class="copyright" style="text-align:center; display:flex; justify-content:center; align-items:center; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--text-color-secondary);">
   
-  &copy; 
-  <span itemprop="copyrightYear">2025</span>
-  <span class="author" itemprop="copyrightHolder">叶落归</span>
+  <span>&copy; 2025</span>
 
-  <span class="stat-wordcount" style="display:flex; align-items:center; gap:6px; font-size: 14px; color: var(--text-color-secondary);">
+  <span class="author" itemprop="copyrightHolder" style="white-space: nowrap;">
+    叶落归
+    <span style="color:#e25555; margin-left: 4px;">&#10084;</span>  
+  </span>
+
+  <span class="stat-wordcount" style="display:flex; align-items:center; gap:6px; white-space: nowrap;">
     <i class="fa fa-file-alt" aria-hidden="true" style="width:16px; text-align:center;"></i>
     <span>总字数: <span id="local_word_count">计算中...</span></span>
   </span>
+
+  <span class="stat-readtime" style="display:flex; align-items:center; gap:6px; white-space: nowrap;">
+    <i class="fa fa-clock" aria-hidden="true" style="width:16px; text-align:center;"></i>
+    <span>预计阅读时间: <span id="local_read_time">计算中...</span> 分钟</span>
+  </span>
 </div>
 
-<div class="footer-statistics" style="margin-top: 15px; display: flex; justify-content: center; gap: 30px; font-size: 14px;">
-  <div class="stat-item" style="display: flex; align-items: center; gap: 6px;">
-    <i class="fa fa-eye" aria-hidden="true" style="width:16px; text-align:center;"></i>
-    <span>总访问量: <span id="local_pv_count">加载中...</span></span>
+<div class="footer-statistics" style="margin-top: 15px; display: flex; justify-content: center; gap: 30px; font-size: 14px; color: var(--text-color-secondary);">
+  <div class="stat-item" style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+    <span style="font-size:18px;">👁️</span>
+    <span>访问量: <span id="local_pv_count">加载中...</span></span>
   </div>
-  <div class="stat-item" style="display: flex; align-items: center; gap: 6px;">
-    <i class="fa fa-users" aria-hidden="true" style="width:16px; text-align:center;"></i>
-    <span>总访客数: <span id="local_uv_count">加载中...</span></span>
+  <div class="stat-item" style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+    <span style="font-size:18px;">👥</span>
+    <span>访客数: <span id="local_uv_count">加载中...</span></span>
   </div>
 </div>
   <div class="powered-by" style="margin-top: 10px; text-align: center; font-size: 13px; color: var(--text-color-secondary);">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -535,13 +525,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const pvElem = document.getElementById('local_pv_count');
     const uvElem = document.getElementById('local_uv_count');
     const wordElem = document.getElementById('local_word_count');
+    const readTimeElem = document.getElementById('local_read_time');
 
-    if (!pvElem || !uvElem || !wordElem) {
+    if (!pvElem || !uvElem || !wordElem || !readTimeElem) {
       console.warn('统计元素未找到，跳过统计');
       return;
     }
 
-    // 访问量 PV
+    // 访问量 PV 自增
     let pvCount = parseInt(localStorage.getItem(pvKey));
     if (isNaN(pvCount)) pvCount = 0;
     pvCount++;
@@ -550,8 +541,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // 访客数 UV
     let uvCount = parseInt(localStorage.getItem(uvCountKey));
     if (isNaN(uvCount)) uvCount = 0;
-
-    // 新访客检测
     const visitedFlag = localStorage.getItem(uvFlagKey);
     if (!visitedFlag) {
       uvCount++;
@@ -559,19 +548,22 @@ document.addEventListener('DOMContentLoaded', function() {
       localStorage.setItem(uvFlagKey, 'true');
     }
 
-    // 更新页面显示
+    // 更新页面数字显示
     pvElem.textContent = pvCount.toLocaleString();
     uvElem.textContent = uvCount.toLocaleString();
 
-    // 计算总字数（取 .main-inner 内文本）
+    // 计算总字数
     let content = document.querySelector('.main-inner');
+    let text = '';
     if (content) {
-      let text = content.innerText || content.textContent || '';
-      let length = text.trim().length;
-      wordElem.textContent = length.toLocaleString();
-    } else {
-      wordElem.textContent = '未知';
+      text = content.innerText || content.textContent || '';
     }
+    let length = text.trim().length;
+    wordElem.textContent = length.toLocaleString();
+
+    // 计算预计阅读时间，按每分钟200字计算，向上取整
+    let readTime = Math.ceil(length / 200);
+    readTimeElem.textContent = readTime;
 
   } catch(e) {
     console.error('统计脚本错误:', e);
