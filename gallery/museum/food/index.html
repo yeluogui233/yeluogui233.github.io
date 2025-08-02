@@ -222,14 +222,16 @@
             
 <div class="main-inner">
 
-  <!-- 顶部标题 -->
-  <header class="page-header" style="text-align:center;margin-bottom:30px;">
-    <h1 class="page-title">令人陶醉的街头小吃</h1>
-    
-  </header>
-
-  <!-- 白色画布包裹照片墙 -->
+  <!-- 白色画布整体包裹 -->
   <div class="album-wrapper">
+
+    <!-- 标题在画布顶部居中 -->
+    <header class="page-header" style="text-align:center; margin-bottom: 30px;">
+      <h1 class="page-title">令人陶醉的街头小吃</h1>
+      
+    </header>
+
+    <!-- 两列大卡片 -->
     <div class="photo-wall">
       
         <div class="photo-item">
@@ -253,6 +255,7 @@
         </div>
       
     </div>
+
   </div>
 
 </div>
@@ -260,43 +263,41 @@
 <style>
 .album-wrapper {
   background: #fff;
-  border-radius: 14px;
-  padding: 30px 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
   margin-bottom: 40px;
 }
 
 .photo-wall {
   display: grid;
-  grid-template-columns: repeat(2, 360px);
+  grid-template-columns: repeat(2, 480px); /* 卡片更大 */
   justify-content: center;
-  gap: 24px;
+  gap: 28px;
 }
-
-.photo-item { margin: 0; }
 
 .photo-frame {
   position: relative;
   cursor: zoom-in;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 12px;
   background: var(--content-bg-color);
-  box-shadow: var(--card-shadow, 0 2px 8px rgba(0,0,0,.08));
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
 }
 .photo-frame:hover {
   transform: translateY(-3px);
-  box-shadow: var(--card-hover-shadow, 0 4px 12px rgba(0,0,0,.12));
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
 }
 
 .photo-image {
   width: 100%;
-  height: auto;
+  height: 320px; /* 固定高度更整齐 */
+  object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
-  object-fit: cover;
 }
-.photo-frame:hover .photo-image { transform: scale(1.03); }
+.photo-frame:hover .photo-image { transform: scale(1.05); }
 
 .photo-zoom-icon {
   position: absolute;
@@ -304,28 +305,28 @@
   right: 12px;
   background: rgba(0,0,0,0.6);
   color: white;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 .photo-frame:hover .photo-zoom-icon { opacity: 1; }
 
 .photo-caption {
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 0.95rem;
   color: var(--text-color);
   text-align: center;
 }
 
-/* 灯箱样式 */
+/* 灯箱样式覆盖全屏 */
 .ultimate-lightbox {
-  background: rgba(0,0,0,0.95) !important;
+  background: rgba(0,0,0,0.92) !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -341,7 +342,7 @@
   cursor: zoom-out;
 }
 
-/* 左右箭头 */
+/* 左右切换箭头 */
 .lightbox-arrow {
   position: fixed;
   top: 50%;
@@ -349,18 +350,18 @@
   font-size: 2rem;
   color: white;
   cursor: pointer;
-  padding: 0 15px;
+  padding: 0 20px;
   user-select: none;
   opacity: 0.5;
   transition: opacity 0.3s;
   z-index: 10001;
 }
 .lightbox-arrow:hover { opacity: 1; }
-.lightbox-prev { left: 15px; }
-.lightbox-next { right: 15px; }
+.lightbox-prev { left: 10px; }
+.lightbox-next { right: 10px; }
 
 /* 响应式 */
-@media (max-width: 992px) { .photo-wall { grid-template-columns: 1fr; } }
+@media (max-width: 1100px) { .photo-wall { grid-template-columns: 1fr; } }
 </style>
 
 <script>
@@ -387,11 +388,17 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.lightbox-prev').onclick = () => navigate(-1);
     document.querySelector('.lightbox-next').onclick = () => navigate(1);
 
+    // ESC 和方向键
     document.onkeydown = (e) => {
       if (e.key === 'Escape') lightboxInstance.close();
       if (e.key === 'ArrowLeft') navigate(-1);
       if (e.key === 'ArrowRight') navigate(1);
     };
+
+    // 点击图片缩放
+    document.getElementById('lightbox-img').onclick = function() {
+      this.classList.toggle('zoomed');
+    }
   }
 
   function navigate(step) {
@@ -401,6 +408,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const img = document.getElementById('lightbox-img');
     img.src = newSrc;
     img.alt = newAlt;
+    img.classList.remove('zoomed');
   }
 
   frames.forEach((frame, idx) => {
