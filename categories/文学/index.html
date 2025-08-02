@@ -441,13 +441,12 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">叶落归</span>
-    <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     <span title="站点总字数">3k</span>
-    <span class="post-meta-divider">|</span>
+    <span class="post-meta-divider"></span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
@@ -459,16 +458,16 @@
 
 
 <div class="footer-statistics">
-  <div class="stat-item">
+  <div class="stat-item" id="busuanzi_container_site_pv">
     <i class="fa fa-eye"></i>
-    <span id="busuanzi_container_site_pv" style="display: inline-block; min-width: 100px;">
+    <span>
       总访问量: <span id="busuanzi_value_site_pv">加载中...</span>
     </span>
   </div>
   
-  <div class="stat-item">
+  <div class="stat-item" id="busuanzi_container_site_uv">
     <i class="fa fa-user"></i>
-    <span id="busuanzi_container_site_uv" style="display: inline-block; min-width: 100px;">
+    <span>
       总访客数: <span id="busuanzi_value_site_uv">加载中...</span>
     </span>
   </div>
@@ -476,18 +475,20 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script>
-// 防止不蒜子加载失败导致文字消失
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(function() {
-    if (!document.getElementById('busuanzi_value_site_pv').textContent.match(/\d+/)) {
+    const pvText = document.getElementById('busuanzi_value_site_pv').textContent;
+    const uvText = document.getElementById('busuanzi_value_site_uv').textContent;
+    if (!pvText.match(/\d+/)) {
       document.getElementById('busuanzi_container_site_pv').style.display = 'none';
     }
-    if (!document.getElementById('busuanzi_value_site_uv').textContent.match(/\d+/)) {
+    if (!uvText.match(/\d+/)) {
       document.getElementById('busuanzi_container_site_uv').style.display = 'none';
     }
-  }, 3000); // 3秒后检查
+  }, 6000); // 延长到6秒
 });
 </script>
+
 <style>
 .footer-statistics {
   display: flex;
@@ -495,18 +496,29 @@ document.addEventListener('DOMContentLoaded', function() {
   gap: 20px;
   margin: 15px 0;
   font-size: 14px;
+  color: var(--text-color); /* 确保文字颜色 */
 }
 .stat-item {
   display: flex;
   align-items: center;
   gap: 5px;
+  color: inherit;
 }
 .stat-item i {
   color: var(--theme-color);
   width: 16px;
   text-align: center;
 }
+
+/* 用CSS伪元素控制分割线，防止尾部多余竖线 */
+.post-meta-item-text:not(:last-child)::after,
+.post-meta-item-icon:not(:last-child)::after {
+  content: "|";
+  margin: 0 8px;
+  color: #ccc;
+}
 </style>
+
 
         
 <div class="busuanzi-count">
