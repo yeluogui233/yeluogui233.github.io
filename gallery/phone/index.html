@@ -253,242 +253,61 @@
 </div>
 
 <style>
-/* 画布宽度贴近 Next 内容宽度 */
-.album-wrapper {
+/* --- 省略了你原本的所有样式 --- */
+
+/* 个人信息栏样式 */
+.personal-card {
   background: #fff;
-  border-radius: 16px;
-  padding: 40px 30px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-  margin-bottom: 40px;
-  max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 20px 15px;
+  margin-top: 20px;
+  text-align: center;
+  position: sticky;
+  top: 20px; /* 距离浏览器顶部 20px，可根据菜单高度调整 */
 }
 
-/* 两列更大卡片 */
-.photo-wall {
+.personal-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.personal-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 6px 0;
+}
+
+.personal-bio {
+  font-size: 0.85rem;
+  color: var(--text-color-secondary);
+  margin-bottom: 12px;
+}
+
+.personal-social {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 6px;
 }
 
-.photo-frame {
-  position: relative;
-  cursor: zoom-in;
-  overflow: hidden;
-  border-radius: 12px;
-  background: var(--content-bg-color);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
-.photo-frame:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-}
-
-.photo-image {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
+.personal-social a {
   display: block;
-  transition: transform 0.4s ease;
-}
-.photo-frame:hover .photo-image { transform: scale(1.05); }
-
-.photo-zoom-icon {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s;
-  font-size: 0.85rem;
-}
-.photo-frame:hover .photo-zoom-icon { opacity: 1; }
-
-.photo-caption {
-  margin-top: 10px;
-  font-size: 0.95rem;
-  color: var(--text-color);
-  text-align: center;
-}
-
-/* 灯箱样式覆盖全屏并固定定位 */
-.ultimate-lightbox {
-  background: rgba(0,0,0,0.92) !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed !important;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  z-index: 99999;
-}
-.ultimate-lightbox img {
-  max-width: 90vw;
-  max-height: 90vh;
-  transition: transform 0.3s;
-  cursor: zoom-in;
-}
-.ultimate-lightbox img.zoomed {
-  transform: scale(1.5);
-  cursor: zoom-out;
-}
-
-/* 左右切换箭头 */
-.lightbox-arrow {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  padding: 0 20px;
-  user-select: none;
-  opacity: 0.5;
-  transition: opacity 0.3s;
-  z-index: 100000;
-}
-.lightbox-arrow:hover { opacity: 1; }
-.lightbox-prev { left: 10px; }
-.lightbox-next { right: 10px; }
-
-/* 响应式 */
-@media (max-width: 992px) {
-  .photo-wall { grid-template-columns: 1fr; }
-  .photo-image { height: 240px; }
-}
-
-/* 拟态日夜切换按钮样式，移到右上角 */
-#g-btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 220px;
-  height: 90px;
-  border-radius: 90px;
-  background:
-    radial-gradient(circle at 18% 20px, #fff, #fff 6px, transparent 7px, transparent),
-    radial-gradient(circle at 35% 45px, #fff, #fff 1px, transparent 2px, transparent),
-    radial-gradient(circle at 10% 70px, #fff, #fff 2.5px, transparent 3.5px, transparent),
-    radial-gradient(circle at 25% 15px, #fff, #fff 3px, transparent 4px, transparent),
-    radial-gradient(circle at 15% 50px, #fff, #fff 1.5px, transparent 2.5px, transparent),
-    radial-gradient(circle at 30% 75px, #fff, #fff 5px, transparent 6px, transparent),
-    radial-gradient(circle at 5% 30px, #fff, #fff 0.5px, transparent 1.5px, transparent),
-    radial-gradient(circle at 25% 60px, #fff, #fff 0.5px, transparent 1.5px, transparent),
-    radial-gradient(circle at 7% 35px, #fff, #fff 0.5px, transparent 1.5px, transparent),
-    linear-gradient(90deg, #2b303e, #2b303e 50%, #5a81b4 50%, #5a81b4);
-  background-repeat: no-repeat;
-  background-size: 200% 100%;
-  background-position: 100% 0;
-  box-shadow:
-    0 -3px 4px #999,
-    inset 0 3px 5px #333,
-    0 4px 4px #ffe,
-    inset 0 -3px 5px #ddd;
-  cursor: pointer;
+  padding: 6px 0;
+  font-size: 0.75rem;
+  color: var(--link-color);
+  background: #f7f7f7;
+  border-radius: 6px;
+  text-decoration: none;
   overflow: hidden;
-  transition: .5s all;
-  outline: none; /* 去掉蓝色边框 */
-}
-#g-btn:focus { outline: none; box-shadow: none; }
-
-/* 保留按钮的伪元素和激活效果 */
-#g-btn::before,
-#g-btn::after {
-  content: "";
-  position: absolute;
-  transition: .5s all;
-}
-#g-btn::before {
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  background: #e9cb50;
-  inset: 7.5px;
-  box-shadow:
-    0 0 5px #333,
-    inset 2px 2px 3px #f8f4e4,
-    inset -2px -2px 3px #665613;
-  z-index: 1;
-}
-#g-btn::after {
-  width: 70px;
-  height: 70px;
-  inset: 10px;
-  border-radius: 50%;
-  box-shadow:
-    10px 60px 0 10px #fff,
-    65px 60px 0 5px #fff,
-    95px 70px 0 10px #fff,
-    135px 45px 0 5px #fff,
-    170px 35px 0 10px #fff,
-    195px -5px 0 10px #fff,
-    -10px 0 0 50px rgba(255, 255, 255, .2),
-    15px 0 0 50px rgba(255, 255, 255, .15),
-    40px 0 0 50px rgba(255, 255, 255, .21),
-    10px 40px 0 10px #abc1d9,
-    70px 35px 0 10px #abc1d9,
-    95px 40px 0 10px #abc1d9,
-    135px 20px 0 10px #abc1d9,
-    155px 15px 0 10px #abc1d9,
-    190px -20px 0 10px #abc1d9;
-}
-#g-btn.active {
-  background-position: 0 0;
-}
-#g-btn.active::before {
-  translate: 130px;
-  background:
-    radial-gradient(circle at 50% 20px, #939aa5, #939aa5 6.5px, transparent 7px, transparent),
-    radial-gradient(circle at 35% 45px, #939aa5, #939aa5 11.5px, transparent 12px, transparent),
-    radial-gradient(circle at 72% 50px, #939aa5, #939aa5 8.5px, transparent 9px, transparent),
-    radial-gradient(#cbcdda, #cbcdda);
-}
-#g-btn.active::after {
-  transform: translate(130px);
-  box-shadow:
-    10px 60px 0 10px transparent,
-    65px 60px 0 5px transparent,
-    95px 70px 0 10px transparent,
-    135px 45px 0 5px transparent,
-    170px 35px 0 10px transparent,
-    195px -5px 0 10px transparent,
-    10px 0 0 50px rgba(255, 255, 255, .2),
-    -15px 0 0 50px rgba(255, 255, 255, .15),
-    -40px 0 0 50px rgba(255, 255, 255, .21),
-    10px 40px 0 10px transparent,
-    70px 35px 0 10px transparent,
-    95px 40px 0 10px transparent,
-    135px 20px 0 10px transparent,
-    155px 15px 0 10px transparent,
-    190px -20px 0 10px transparent;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* Dark Mode 样式 */
-body.dark-mode {
-  background-color: #121212;
-  color: #ddd;
-}
-body.dark-mode .album-wrapper {
-  background: #222;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.7);
-}
-body.dark-mode .photo-frame {
-  background: #333;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-}
-body.dark-mode .photo-frame:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.8);
-}
-body.dark-mode .photo-caption {
-  color: #ccc;
+.personal-social a:hover {
+  background: var(--link-hover-bg, #eee);
 }
 </style>
 
@@ -603,29 +422,18 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
           
   
-  <!-- 个人信息栏卡片 -->
-  <div class="site-author-widget" style="background:#fff; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.05); padding:16px; margin-top:20px; text-align:center;">
-    
-    <div class="site-author-name" style="font-weight:bold;font-size:1rem;">叶落归</div>
-    <div class="site-description" style="font-size:0.85rem;color:var(--text-color-secondary);margin-top:4px;"></div>
-
-    
-      <div class="links-of-author">
-        
-          <div class="links-of-author-item"><a href="https://github.com/yeluogui233 || fab fa-github" target="_blank">GitHub</a></div>
-        
-          <div class="links-of-author-item"><a href="1399099158@qq.com || fa fa-envelope" target="_blank">E-Mail</a></div>
-        
-          <div class="links-of-author-item"><a href="https://weibo.com/u/6553184492 || fab fa-weibo" target="_blank">Weibo</a></div>
-        
-          <div class="links-of-author-item"><a href="yeluoguihhh@gmail.com || fab fa-google" target="_blank">Google</a></div>
-        
-          <div class="links-of-author-item"><a href="https://x.com/yeluo_gui || fab fa-twitter" target="_blank">Twitter</a></div>
-        
-          <div class="links-of-author-item"><a href="https://www.youtube.com/@%E5%8F%B6%E8%90%BD%E5%BD%92 || fab fa-youtube" target="_blank">YouTube</a></div>
-        
-      </div>
-    
+  <div class="personal-card">
+    <img src="/images/avatar.jpg" alt="我的头像" class="personal-avatar">
+    <div class="personal-name">落归 叶</div>
+    <div class="personal-bio">分享生活与代码</div>
+    <div class="personal-social">
+      <a href="mailto:xxx@example.com">Email</a>
+      <a href="https://github.com/xxx" target="_blank">GitHub</a>
+      <a href="https://weibo.com/xxx" target="_blank">Weibo</a>
+      <a href="https://twitter.com/xxx" target="_blank">Twitter</a>
+      <a href="#">Link1</a>
+      <a href="#">Link2</a>
+    </div>
   </div>
 
       </div>
