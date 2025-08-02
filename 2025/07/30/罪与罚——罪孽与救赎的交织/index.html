@@ -668,7 +668,7 @@
 
   
 
-  <!-- 左下角网易云播放器 -->
+<!-- 左下角网易云播放器 -->
 <div id="netease-player">
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0"
     width="330" height="86"
@@ -681,7 +681,10 @@
   <div id="sakana-widget"></div>
 </div>
 
-<style>
+<script>
+// 样式和位置
+const style = document.createElement('style');
+style.textContent = `
   #netease-player {
     position: fixed;
     left: 20px;
@@ -693,61 +696,8 @@
     left: 20px;
     bottom: 120px; /* 撑开播放器高度，避免重叠 */
     z-index: 99999;
-    width: 180px !important;
-    height: 180px !important;
-    pointer-events: auto;
-  }
-  #sakana-widget-container img {
-    image-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-</style>
-
-<script>
-  // 动态加载 Sakana Widget
-  const sakanaCss = document.createElement('link');
-  sakanaCss.rel = 'stylesheet';
-  sakanaCss.href = 'https://cdn.jsdelivr.net/npm/sakana-widget@2.7.1/lib/sakana.min.css';
-  document.head.appendChild(sakanaCss);
-
-  const sakanaJs = document.createElement('script');
-  sakanaJs.src = 'https://cdn.jsdelivr.net/npm/sakana-widget@2.7.1/lib/sakana.min.js';
-  sakanaJs.onload = function() {
-    const chisato = SakanaWidget.getCharacter('chisato');
-    const takina = SakanaWidget.getCharacter('takina');
-    const custom = SakanaWidget.getCharacter('chisato');
-    custom.image = 'https://youke1.picui.cn/s1/2025/08/02/688da48566189.png';
-    SakanaWidget.registerCharacter('custom', custom);
-
-    new SakanaWidget({
-      size: 180,
-      controls: true,
-      draggable: true,
-      rod: true,
-      character: 'chisato'
-    }).mount('#sakana-widget');
-  };
-  document.body.appendChild(sakanaJs);
-</script>
-
-<!-- Sakana Widget -->
-<!-- Sakana Widget 纯 script 版 -->
-<div id="sakana-widget-container">
-  <div id="sakana-widget"></div>
-</div>
-
-<script>
-// 样式和位置
-const style = document.createElement('style');
-style.textContent = `
-  #sakana-widget-container {
-    position: fixed;
-    left: 20px;
-    bottom: 20px; /* 稍微上移 */
-    z-index: 99999;
-    width: 180px !important;
-    height: 180px !important;
+    width: 220px !important;   /* 更大一点 */
+    height: 220px !important;
     pointer-events: auto;
   }
   #sakana-widget-container img {
@@ -778,7 +728,7 @@ sakanaJs.onload = function() {
 
   // 初始化挂载
   new SakanaWidget({
-    size: 180,        // 稍大一点
+    size: 220,        // 大一点
     controls: true,   // 开底座切换角色
     draggable: true,
     rod: true,
@@ -787,6 +737,7 @@ sakanaJs.onload = function() {
 };
 document.body.appendChild(sakanaJs);
 </script>
+
 
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
