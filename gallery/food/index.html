@@ -776,5 +776,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
 
+  <!-- Sakana Widget 挂件 -->
+<div id="sakana-widget"></div>
+
+<style>
+  #sakana-widget {
+    width: 200px;
+    height: 200px;
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 9999;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/sakana-widget@2.5.0/lib/sakana.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    new SakanaWidget({
+      character: 'takina',
+      scale: 1,
+      translateY: 0,
+      canSwitchCharacter: true
+    }).mount('#sakana-widget');
+  });
+</script>
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
