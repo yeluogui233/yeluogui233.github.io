@@ -932,61 +932,64 @@ document.addEventListener('DOMContentLoaded', function() {
   <div id="sakana-widget"></div>
 </div>
 
-<script>
-// 样式和位置
-const style = document.createElement('style');
-style.textContent = `
+<style>
+  /* 网易云播放器位置 */
   #netease-player {
     position: fixed;
     left: 20px;
     bottom: 20px; /* 紧贴底部 */
     z-index: 99998;
   }
+
+  /* 石蒜模拟器容器 */
   #sakana-widget-container {
     position: fixed;
     left: 20px;
-    bottom: 120px; /* 撑开播放器高度，避免重叠 */
+    bottom: 120px; /* 在播放器上方，避免重叠 */
     z-index: 99999;
-    width: 220px !important;   /* 更大一点 */
-    height: 220px !important;
+    width: 260px !important;  /* 显示更大 */
+    height: 260px !important;
     pointer-events: auto;
   }
+
+  /* 抗锯齿优化 */
   #sakana-widget-container img {
     image-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-`;
-document.head.appendChild(style);
+</style>
 
-// 动态加载 CSS
-const sakanaCss = document.createElement('link');
-sakanaCss.rel = 'stylesheet';
-sakanaCss.href = 'https://cdn.jsdelivr.net/npm/sakana-widget@2.7.1/lib/sakana.min.css';
-document.head.appendChild(sakanaCss);
+<script>
+  // 动态加载 CSS
+  const sakanaCss = document.createElement('link');
+  sakanaCss.rel = 'stylesheet';
+  sakanaCss.href = 'https://cdn.jsdelivr.net/npm/sakana-widget@2.7.1/lib/sakana.min.css';
+  document.head.appendChild(sakanaCss);
 
-// 动态加载 JS 并初始化
-const sakanaJs = document.createElement('script');
-sakanaJs.src = 'https://cdn.jsdelivr.net/npm/sakana-widget@2.7.1/lib/sakana.min.js';
-sakanaJs.onload = function() {
-  // 获取原角色
-  const chisato = SakanaWidget.getCharacter('chisato');
-  const takina = SakanaWidget.getCharacter('takina');
-  // 自定义角色
-  const custom = SakanaWidget.getCharacter('chisato');
-  custom.image = 'https://youke1.picui.cn/s1/2025/08/02/688da48566189.png';
-  SakanaWidget.registerCharacter('custom', custom);
+  // 动态加载 JS 并初始化
+  const sakanaJs = document.createElement('script');
+  sakanaJs.src = 'https://cdn.jsdelivr.net/npm/sakana-widget@2.7.1/lib/sakana.min.js';
+  sakanaJs.onload = function() {
+    // 原角色
+    const chisato = SakanaWidget.getCharacter('chisato');
+    const takina = SakanaWidget.getCharacter('takina');
 
-  // 初始化挂载
-  new SakanaWidget({
-    size: 220,        // 大一点
-    controls: true,   // 开底座切换角色
-    draggable: true,
-    rod: true,
-    character: 'chisato'
-  }).mount('#sakana-widget');
-};
-document.body.appendChild(sakanaJs);
+    // 自定义角色
+    const custom = SakanaWidget.getCharacter('chisato');
+    custom.image = 'https://youke1.picui.cn/s1/2025/08/02/688da48566189.png';
+    SakanaWidget.registerCharacter('custom', custom);
+
+    // 初始化挂载
+    new SakanaWidget({
+      size: 260,        // 更大尺寸，显示更完整
+      controls: true,   // 开底座切换角色
+      draggable: true,
+      rod: true,
+      character: 'chisato'
+    }).mount('#sakana-widget');
+  };
+  document.body.appendChild(sakanaJs);
 </script>
 
 
