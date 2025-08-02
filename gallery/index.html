@@ -537,32 +537,34 @@
     /* 社交3行2列 */
 .site-author-widget .links-of-author {
   display: grid;
-  grid-template-columns: repeat(2, max-content);
-  grid-template-rows: repeat(3, auto);
+  grid-template-columns: repeat(2, 1fr); /* 两列平均分 */
+  grid-auto-rows: auto;
   justify-content: center;
   gap: 8px 12px;
-  max-width: 140px;
+  max-width: 200px; /* 增加容器宽度 */
   margin: 0 auto 16px;
-  text-align: left;
+  text-align: center;
 }
 
 .site-author-widget .links-of-author-item a {
-  font-size: 0.85rem;
+  font-size: 0.75rem;       /* 字体缩小一点 */
   color: var(--text-color);
   text-decoration: none;
   transition: color 0.25s ease;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  white-space: normal;      /* 允许换行 */
-  word-break: break-word;   /* 长单词换行 */
-  max-width: 100%;
-  overflow-wrap: break-word;
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.03);
+  white-space: nowrap;      /* 单行显示，不换行 */
+  overflow: hidden;
+  text-overflow: ellipsis;  /* 如果过长就用省略号 */
 }
 
 .site-author-widget .links-of-author-item a:hover {
   color: var(--primary-color);
+  background: rgba(0,0,0,0.05);
 }
+
     /* 友情链接 */
     .links-of-blogroll-list {
       padding: 0;
