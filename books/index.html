@@ -285,7 +285,9 @@
     padding: 30px 24px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.05);
     margin-bottom: 40px;
-    max-width: 960px;
+
+    /* --- 修改：放宽最大宽度，方便4列显示 --- */
+    max-width: 1200px;  /* 之前960改成1200 */
     margin-left: auto;
     margin-right: auto;
   }
@@ -300,10 +302,13 @@
     font-size: 1rem;
   }
 
-  /* 多列自适应网格 */
+  /* 多列固定4列网格 */
   .books-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
+    /* --- 修改：固定4列，每列宽度自适应，最小180px --- */
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+
     gap: 28px 20px;
     justify-content: center;
   }
@@ -400,6 +405,11 @@
     width: 280px;
     margin-left: 32px;
     flex-shrink: 0;
+
+    /* --- 追加：侧边栏贴合菜单栏，滚动时固定 --- */
+    position: sticky;
+    top: 60px; /* 根据菜单栏高度调整 */
+    align-self: flex-start; /* 保证顶部对齐 */
   }
   .site-author-widget {
     background: var(--content-bg-color, #fff);
@@ -408,6 +418,7 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     margin-bottom: 40px;
     text-align: center;
+    color: var(--text-color);
   }
   .site-author-widget .site-author-image {
     width: 100px;
@@ -524,7 +535,7 @@
   }
   #g-btn:focus {
     outline: none;
-    box-shadow: none;
+    box-shadow: none; /* 去除蓝色阴影 */
   }
   #g-btn::before,
   #g-btn::after {
@@ -614,10 +625,27 @@
   body.dark-mode .btn-secondary:hover {
     background-color: #666;
   }
+
+  /* --- 修复暗黑模式下侧边栏颜色问题 --- */
+  body.dark-mode aside.sidebar {
+    background: var(--content-bg-color);
+  }
   body.dark-mode .site-author-widget {
     background: #252a44;
     box-shadow: 0 3px 12px rgba(0,0,0,0.8);
     color: var(--text-color);
+  }
+  body.dark-mode .site-author-widget .site-author-name,
+  body.dark-mode .site-author-widget .site-description {
+    color: var(--text-color);
+  }
+  body.dark-mode .site-author-widget .links-of-author-item a {
+    color: #b0bfff; /* 保证侧边栏链接暗夜模式可读 */
+    background: rgba(0,0,0,0.1);
+  }
+  body.dark-mode .site-author-widget .links-of-author-item a:hover {
+    color: #e0e8ff;
+    background-color: var(--primary-color);
   }
   body.dark-mode .links-of-blogroll-item a {
     background: #2a2f51;
@@ -627,7 +655,6 @@
     background-color: #4a63ff;
     color: #fff;
   }
-
 </style>
 
 <script>
@@ -795,35 +822,35 @@
       line-height: 1.4;
     }
     /* 社交3行2列 */
-.site-author-widget .links-of-author {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 两列平均分 */
-  grid-auto-rows: auto;
-  justify-content: center;
-  gap: 8px 12px;
-  max-width: 200px; /* 增加容器宽度 */
-  margin: 0 auto 16px;
-  text-align: center;
-}
+    .site-author-widget .links-of-author {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 两列平均分 */
+      grid-auto-rows: auto;
+      justify-content: center;
+      gap: 8px 12px;
+      max-width: 200px; /* 增加容器宽度 */
+      margin: 0 auto 16px;
+      text-align: center;
+    }
 
-.site-author-widget .links-of-author-item a {
-  font-size: 0.75rem;       /* 字体缩小一点 */
-  color: var(--text-color);
-  text-decoration: none;
-  transition: color 0.25s ease;
-  display: inline-block;
-  padding: 2px 6px;
-  border-radius: 6px;
-  background: rgba(0,0,0,0.03);
-  white-space: nowrap;      /* 单行显示，不换行 */
-  overflow: hidden;
-  text-overflow: ellipsis;  /* 如果过长就用省略号 */
-}
+    .site-author-widget .links-of-author-item a {
+      font-size: 0.75rem;       /* 字体缩小一点 */
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.25s ease;
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.03);
+      white-space: nowrap;      /* 单行显示，不换行 */
+      overflow: hidden;
+      text-overflow: ellipsis;  /* 如果过长就用省略号 */
+    }
 
-.site-author-widget .links-of-author-item a:hover {
-  color: var(--primary-color);
-  background: rgba(0,0,0,0.05);
-}
+    .site-author-widget .links-of-author-item a:hover {
+      color: var(--primary-color);
+      background: rgba(0,0,0,0.05);
+    }
 
     /* 友情链接 */
     .links-of-blogroll-list {
