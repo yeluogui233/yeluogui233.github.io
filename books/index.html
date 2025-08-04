@@ -1302,6 +1302,7 @@
 }
 
 .dark-mode {
+  /* 黑夜模式 - 仅修改必要的颜色变量 */
   --content-bg-color: #383838;
   --page-bg-color: #202020;
   --sidebar-bg-color: #383838;
@@ -1311,30 +1312,19 @@
   --text-color-secondary: #b0b0b0;
   --primary-color: #5a5a5a;
   --primary-color-hover: #3a3a3a;
-  --title-overlay-text: #000000; /* 书名保持黑色 */
+  --title-overlay-text: #000000;
 }
 
-.dark-mode {
-    --content-bg-color: #383838;    /* 书单容器背景 - 深灰 */
-    --page-bg-color: #202020;      /* 全局背景 - 更深的灰 */
-    --sidebar-bg-color: #383838;   /* 侧边栏背景 - 与书单一致 */
-    --menu-text-color: #ffffff;    /* 菜单文字 - 纯白 */
-    --card-bg: #4e4e4e;            /* 卡片背景 - 中灰 */
-    --text-color: #ffffff;         /* 主要文字 - 白 */
-    --text-color-secondary: #b0b0b0; /* 次要文字 - 浅灰 */
-    --primary-color: #5a5a5a;      /* 按钮背景 - 深灰 */
-    --primary-color-hover: #3a3a3a; /* 按钮悬停 - 更深灰 */
-    --title-overlay-text: #000000;  /* 书名保持黑色 */
-}
 /* 设置页面背景 */
 body {
   background-color: var(--page-bg-color);
   transition: background-color 0.3s ease;
 }
+
 .header {
-    background-color: var(--sidebar-bg-color);
-    color: var(--menu-text-color) !important;
-    transition: all 0.3s ease;
+  background-color: var(--sidebar-bg-color);
+  color: var(--menu-text-color) !important;
+  transition: all 0.3s ease;
 }
 
 /* === 主题切换按钮样式 === */
@@ -1519,7 +1509,7 @@ body {
   padding: 4px 6px;
   background: rgba(255 255 255 / 0.25);
   backdrop-filter: blur(8px);
-  color: var(--title-overlay-text) !important; /* 强制黑色 */
+  color: var(--title-overlay-text) !important;
   font-weight: 600;
   font-size: 0.8rem;
   text-align: center;
@@ -1712,20 +1702,16 @@ document.addEventListener('DOMContentLoaded', function() {
   </aside>
 
   <style>
+    /* 个人信息侧边栏样式 - 白天黑夜模式保持一致 */
     .site-author-widget {
       background: var(--content-bg-color);
       border-radius: 14px;
       padding: 20px;
-	  overflow: hidden;
+      overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       margin-bottom: 40px;
       text-align: center;
     }
-	.site-author-widget .site-author-name,
-	.site-author-widget .site-description,
-	.site-author-widget .links-of-author-item a {
-    color: var(--text-color); /* 使用白色文字 */
-	}
     .site-author-widget .site-author-image {
       width: 100px;
       height: 100px;
@@ -1739,14 +1725,15 @@ document.addEventListener('DOMContentLoaded', function() {
       font-weight: 700;
       font-size: 1.3rem;
       margin: 8px 0 4px;
-      color: #dddddd;
+      color: var(--text-color);
     }
     .site-author-widget .site-description {
       font-size: 0.95rem;
-      color: #939393;
-      margin-bottom: 0px;
+      color: var(--text-color-secondary);
+      margin-bottom: 16px;
       line-height: 1.4;
     }
+    /* 社交链接 */
     .site-author-widget .links-of-author {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -1757,7 +1744,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     .site-author-widget .links-of-author-item a {
       font-size: 0.75rem;
-      color: #efefef;
+      color: var(--text-color);
       text-decoration: none;
       transition: color 0.25s ease;
       display: inline-block;
@@ -1769,9 +1756,10 @@ document.addEventListener('DOMContentLoaded', function() {
       text-overflow: ellipsis;
     }
     .site-author-widget .links-of-author-item a:hover {
-      color: #4a5568;
+      color: var(--primary-color);
       background: rgba(0,0,0,0.05);
     }
+    /* 友情链接 */
     .links-of-blogroll-list {
       padding: 0;
       margin: 0;
@@ -1783,23 +1771,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     .links-of-blogroll-item a {
       display: inline-block;
-      color: #e0e0e0;
+      color: var(--text-color);
       padding: 4px 10px;
       border-radius: 10px;
-      background: #4e4e4e;
+      background: var(--primary-color);
       font-size: 0.9rem;
       text-decoration: none;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
     }
     .links-of-blogroll-item a:hover {
-    transform: translateY(-1px);
-    transition: all 0.2s ease;
-}
-	.site-author-widget .links-of-author-item a,
-.links-of-blogroll-item a {
-    border-radius: 6px; /* 统一按钮圆角 */
-    box-shadow: none;   /* 移除可能造成棱角的阴影 */
-}
+      background-color: var(--primary-color-hover);
+      transform: translateY(-1px);
+    }
   </style>
 
       </div>
