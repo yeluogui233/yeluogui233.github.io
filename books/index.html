@@ -227,10 +227,9 @@
           <div class="content ">
             
 <div class="books-wrapper">
-  <header class="page-header" style="text-align:center; margin-bottom: 30px; position: relative;">
+  <header class="page-header" style="text-align:center; margin-bottom: 30px;">
     <h1 class="page-title">书单</h1>
     
-    <div id="theme-toggle" class="theme-toggle"></div>
   </header>
 
   <div class="books-grid">
@@ -1286,179 +1285,31 @@
 </div>
 
 <style>
-/* === 主题变量定义 === */
-:root {
-  /* 白天模式默认值 */
-  --content-bg-color: #fff;
-  --page-bg-color: #f5f7fa;
-  --sidebar-bg-color: #fff;
-  --menu-text-color: #333;
-  --card-bg: #fff;
-  --text-color: #333;
-  --text-color-secondary: #666;
-  --primary-color: #f0f0f0;
-  --primary-color-hover: #e0e0e0;
-  --title-overlay-text: #333;
-}
-
-.dark-mode {
-  /* 黑夜模式 - 仅修改必要的颜色变量 */
-  --content-bg-color: #383838;
-  --page-bg-color: #202020;
-  --sidebar-bg-color: #383838;
-  --menu-text-color: #ffffff;
-  --card-bg: #4e4e4e;
-  --text-color: #ffffff;
-  --text-color-secondary: #b0b0b0;
-  --primary-color: #5a5a5a;
-  --primary-color-hover: #3a3a3a;
-  --title-overlay-text: #000000;
-}
-
-/* 设置页面背景 */
-body {
-  background-color: var(--page-bg-color);
-  transition: background-color 0.3s ease;
-}
-
-.header {
-  background-color: var(--sidebar-bg-color);
-  color: var(--menu-text-color) !important;
-  transition: all 0.3s ease;
-}
-
-/* === 主题切换按钮样式 === */
-.theme-toggle {
-  position: absolute;
-  top: 50%;
-  right: 30px;
-  transform: translateY(-50%);
-  width: 60px;
-  height: 30px;
-  background: linear-gradient(90deg, #2b303e, #2b303e 50%, #5a81b4 50%, #5a81b4);
-  background-size: 200% 100%;
-  background-position: 100% 0;
-  border-radius: 30px;
-  box-shadow: 
-    0 -2px 3px rgba(0,0,0,0.3),
-    inset 0 2px 4px rgba(0,0,0,0.5),
-    0 3px 3px rgba(255,255,238,0.8),
-    inset 0 -2px 4px rgba(221,221,221,0.8);
-  cursor: pointer;
-  overflow: hidden;
-  transition: .5s all;
-  z-index: 10;
-}
-
-.theme-toggle::before,
-.theme-toggle::after {
-  content: "";
-  position: absolute;
-  transition: .5s all;
-}
-
-.theme-toggle::before {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #e9cb50;
-  top: 3px;
-  left: 3px;
-  box-shadow: 
-    0 0 3px rgba(0,0,0,0.5),
-    inset 1px 1px 2px rgba(248,244,228,0.8),
-    inset -1px -1px 2px rgba(102,86,19,0.8);
-  z-index: 2;
-}
-
-.theme-toggle::after {
-  width: 22px;
-  height: 22px;
-  top: 4px;
-  left: 4px;
-  border-radius: 50%;
-  box-shadow: 
-    5px 30px 0 5px #fff,
-    30px 30px 0 3px #fff,
-    45px 35px 0 5px #fff,
-    65px 22px 0 3px #fff,
-    85px 17px 0 5px #fff,
-    95px -3px 0 5px #fff,
-    -5px 0 0 25px rgba(255,255,255,0.2),
-    8px 0 0 25px rgba(255,255,255,0.15),
-    20px 0 0 25px rgba(255,255,255,0.21),
-    5px 20px 0 5px #abc1d9,
-    35px 17px 0 5px #abc1d9,
-    45px 20px 0 5px #abc1d9,
-    65px 10px 0 5px #abc1d9,
-    75px 7px 0 5px #abc1d9,
-    95px -10px 0 5px #abc1d9;
-}
-
-.theme-toggle:hover::before {
-  filter: contrast(90%) brightness(110%);
-  transform: scale(1.05);
-}
-
-.theme-toggle.active {
-  background-position: 0 0;
-}
-
-.theme-toggle.active::before {
-  transform: translateX(30px);
-  background: 
-    radial-gradient(circle at 50% 8px, #939aa5, #939aa5 3px, transparent 3.5px, transparent),
-    radial-gradient(circle at 35% 18px, #939aa5, #939aa5 5px, transparent 5.5px, transparent),
-    radial-gradient(circle at 72% 20px, #939aa5, #939aa5 4px, transparent 4.5px, transparent),
-    radial-gradient(#cbcdda, #cbcdda);
-}
-
-.theme-toggle.active::after {
-  transform: translateX(30px);
-  box-shadow: 
-    5px 30px 0 5px transparent,
-    30px 30px 0 3px transparent,
-    45px 35px 0 5px transparent,
-    65px 22px 0 3px transparent,
-    85px 17px 0 5px transparent,
-    95px -3px 0 5px transparent,
-    5px 0 0 25px rgba(255,255,255,0.2),
-    -8px 0 0 25px rgba(255,255,255,0.15),
-    -20px 0 0 25px rgba(255,255,255,0.21),
-    5px 20px 0 5px transparent,
-    35px 17px 0 5px transparent,
-    45px 20px 0 5px transparent,
-    65px 10px 0 5px transparent,
-    75px 7px 0 5px transparent,
-    95px -10px 0 5px transparent;
-}
-
-/* === 书籍列表样式 === */
+/* 书单整体画布 */
 .books-wrapper {
-  background: var(--content-bg-color);
+  background: var(--content-bg-color, #fff);
   border-radius: 14px;
   padding: 30px 24px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.05);
   margin-bottom: 40px;
-  max-width: 1140px;
+
+  max-width: 1140px; /* Next默认主体宽度 */
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  transition: background-color 0.3s ease;
 }
 
+/* 标题样式 */
 .page-header h1.page-title {
   font-weight: 700;
   font-size: 2rem;
   margin: 0;
-  color: var(--text-color);
 }
-
 .page-subtitle {
   font-size: 1rem;
-  color: var(--text-color-secondary);
 }
 
+/* 六列网格布局 */
 .books-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(120px, 1fr));
@@ -1466,30 +1317,30 @@ body {
   justify-content: center;
 }
 
+/* 书籍卡片 */
 .book-card {
-  background: var(--card-bg);
+  background: var(--card-bg, #fff);
   border-radius: 14px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .book-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 10px 28px rgba(0,0,0,0.15);
 }
 
+/* 封面容器 */
 .book-cover {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3 / 4; /* 保持3:4比例 */
   overflow: hidden;
   border-radius: 14px 14px 0 0;
 }
-
 .book-cover img {
   width: 100%;
   height: 100%;
@@ -1497,11 +1348,11 @@ body {
   display: block;
   transition: transform 0.5s ease;
 }
-
 .book-cover:hover img {
   transform: scale(1.05);
 }
 
+/* 磨砂书名覆盖底部 */
 .book-title-overlay {
   position: absolute;
   bottom: 0;
@@ -1509,7 +1360,7 @@ body {
   padding: 4px 6px;
   background: rgba(255 255 255 / 0.25);
   backdrop-filter: blur(8px);
-  color: var(--title-overlay-text) !important;
+  color: var(--text-color);
   font-weight: 600;
   font-size: 0.8rem;
   text-align: center;
@@ -1519,6 +1370,7 @@ body {
   box-sizing: border-box;
 }
 
+/* 按钮组 */
 .book-buttons {
   margin: 8px 0;
   display: flex;
@@ -1528,10 +1380,11 @@ body {
   padding: 0 10px;
 }
 
+/* 统一按钮样式 - 最终修正版 */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-flex; /* 改为flex布局 */
+  align-items: center;  /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
   padding: 4px 0;
   font-size: 0.75rem;
   border-radius: 12px;
@@ -1540,49 +1393,19 @@ body {
   user-select: none;
   transition: all 0.2s ease;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  width: 56px;
-  height: 24px;
-  box-sizing: border-box;
+  width: 56px; /* 固定宽度 */
+  height: 24px; /* 固定高度 */
+  box-sizing: border-box; /* 确保宽高包含padding */
   background-color: var(--primary-color);
-  color: #414141;
+  color: #333;
   border: none;
 }
-
 .btn:hover {
   background-color: var(--primary-color-hover);
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
 </style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const toggle = document.getElementById('theme-toggle');
-  const html = document.documentElement;
-  
-  // 检查本地存储的主题偏好
-  const currentTheme = localStorage.getItem('books-theme') || 'light';
-  if (currentTheme === 'dark') {
-    html.classList.add('dark-mode');
-    toggle.classList.add('active');
-  }
-  
-  // 切换主题
-  toggle.addEventListener('click', function() {
-    const isDark = html.classList.contains('dark-mode');
-    
-    if (isDark) {
-      html.classList.remove('dark-mode');
-      localStorage.setItem('books-theme', 'light');
-      toggle.classList.remove('active');
-    } else {
-      html.classList.add('dark-mode');
-      localStorage.setItem('books-theme', 'dark');
-      toggle.classList.add('active');
-    }
-  });
-});
-</script>
 
           </div>
           
@@ -1702,24 +1525,6 @@ document.addEventListener('DOMContentLoaded', function() {
   </aside>
 
   <style>
-    /* 强制Next菜单保持白天模式 */
-    .header,
-    .navbar,
-    .menu,
-    .menu * {
-      background: #fff !important;
-      color: #333 !important;
-    }
-    .menu a,
-    .menu .menu-item a {
-      color: #333 !important;
-      border-color: #eee !important;
-    }
-    .menu a:hover {
-      color: #4a5568 !important;
-      background: #f5f5f5 !important;
-    }
-    
     /* 个人信息侧边栏样式 */
     .site-author-widget {
       background: #fff;
@@ -1742,11 +1547,11 @@ document.addEventListener('DOMContentLoaded', function() {
       font-weight: 700;
       font-size: 1.3rem;
       margin: 8px 0 4px;
-      color: #333 !important;
+      color: var(--text-color);
     }
     .site-author-widget .site-description {
       font-size: 0.95rem;
-      color: #666 !important;
+      color: var(--text-color-secondary);
       margin-bottom: 16px;
       line-height: 1.4;
     }
@@ -1761,7 +1566,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     .site-author-widget .links-of-author-item a {
       font-size: 0.75rem;
-      color: #333 !important;
+      color: var(--text-color);
       text-decoration: none;
       transition: color 0.25s ease;
       display: inline-block;
@@ -1773,7 +1578,7 @@ document.addEventListener('DOMContentLoaded', function() {
       text-overflow: ellipsis;
     }
     .site-author-widget .links-of-author-item a:hover {
-      color: #4a5568 !important;
+      color: var(--primary-color);
       background: rgba(0,0,0,0.05);
     }
     /* 友情链接 */
@@ -1788,17 +1593,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     .links-of-blogroll-item a {
       display: inline-block;
-      color: #333 !important;
+      color: var(--text-color);
       padding: 4px 10px;
       border-radius: 10px;
-      background: #f5f5f5 !important;
+      background: #f5f5f5;
       font-size: 0.9rem;
       text-decoration: none;
       transition: background-color 0.3s ease;
     }
     .links-of-blogroll-item a:hover {
-      background: #e0e0e0 !important;
-      color: #333 !important;
+      background-color: var(--primary-color);
+      color: #fff;
     }
   </style>
 
