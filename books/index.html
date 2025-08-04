@@ -1303,16 +1303,16 @@
 }
 
 .dark-mode {
-    --content-bg-color: #383838;
-    --page-bg-color: #202020;
-    --sidebar-bg-color: #2d3748;
-    --menu-text-color: #030303;
-    --card-bg: #6e6e6e;
-    --text-color: #ffffff;
-    --text-color-secondary: #474b50;
-    --primary-color: #4a5568;
-    --primary-color-hover: #242424;
-    --title-overlay-text: #000000;
+    --content-bg-color: #383838;    /* 书单容器背景 - 深灰 */
+    --page-bg-color: #202020;      /* 全局背景 - 更深的灰 */
+    --sidebar-bg-color: #383838;   /* 侧边栏背景 - 与书单一致 */
+    --menu-text-color: #ffffff;    /* 菜单文字 - 纯白 */
+    --card-bg: #4e4e4e;            /* 卡片背景 - 中灰 */
+    --text-color: #ffffff;         /* 主要文字 - 白 */
+    --text-color-secondary: #b0b0b0; /* 次要文字 - 浅灰 */
+    --primary-color: #5a5a5a;      /* 按钮背景 - 深灰 */
+    --primary-color-hover: #3a3a3a; /* 按钮悬停 - 更深灰 */
+    --title-overlay-text: #000000;  /* 书名保持黑色 */
 }
 /* 设置页面背景 */
 body {
@@ -1321,7 +1321,7 @@ body {
 }
 .header {
     background-color: var(--sidebar-bg-color);
-    color: var(--menu-text-color);
+    color: var(--menu-text-color) !important;
     transition: all 0.3s ease;
 }
 
@@ -1701,7 +1701,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <style>
     .site-author-widget {
-      background: var(--sidebar-bg-color);
+      background: var(--content-bg-color);
       border-radius: 14px;
       padding: 20px;
 	  overflow: hidden;
@@ -1709,6 +1709,11 @@ document.addEventListener('DOMContentLoaded', function() {
       margin-bottom: 40px;
       text-align: center;
     }
+	.site-author-widget .site-author-name,
+	.site-author-widget .site-description,
+	.site-author-widget .links-of-author-item a {
+    color: var(--text-color); /* 使用白色文字 */
+	}
     .site-author-widget .site-author-image {
       width: 100px;
       height: 100px;
@@ -1766,10 +1771,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     .links-of-blogroll-item a {
       display: inline-block;
-      color: #cbcbcb;
+      color: #e0e0e0;
       padding: 4px 10px;
       border-radius: 10px;
-      background: #151f31;
+      background: #4e4e4e;
       font-size: 0.9rem;
       text-decoration: none;
       transition: background-color 0.3s ease;
