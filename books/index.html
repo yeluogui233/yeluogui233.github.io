@@ -1702,32 +1702,34 @@ document.addEventListener('DOMContentLoaded', function() {
   </aside>
 
   <style>
-    /* 纯净圆角解决方案 */
+    /* ===== 核心解决方案 ===== */
     .site-author-widget {
       position: relative;
-      background: transparent !important;
+      background: transparent;
       border-radius: 14px;
       padding: 20px;
       margin-bottom: 40px;
       text-align: center;
+      overflow: hidden; /* 关键裁剪 */
       z-index: 1;
-      overflow: hidden; /* 确保圆角裁剪内容 */
     }
     
-    /* 使用伪元素创建视觉背景层 */
+    /* 纯白遮罩层（完美解决棱角） */
     .site-author-widget::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: inherit; /* 继承父级背景 */
-      border-radius: inherit; /* 继承圆角 */
+      top: -1px;  /* 微调覆盖边界 */
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+      background: #fff;
+      border-radius: 15px; /* 比容器大1px */
       z-index: -1;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
-    /* 保持原有样式不变 */
+    /* ===== 内容样式 ===== */
+    /* 头像 */
     .site-author-widget .site-author-image {
       width: 100px;
       height: 100px;
@@ -1736,20 +1738,83 @@ document.addEventListener('DOMContentLoaded', function() {
       margin: 0 auto 12px;
       display: block;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      position: relative; /* 确保在遮罩层上方 */
     }
+
+    /* 文字内容 */
     .site-author-widget .site-author-name {
       font-weight: 700;
       font-size: 1.3rem;
       margin: 8px 0 4px;
-      color: var(--text-color);
+      color: #333;
+      position: relative;
     }
+    
     .site-author-widget .site-description {
       font-size: 0.95rem;
-      color: var(--text-color-secondary);
+      color: #666;
       margin-bottom: 16px;
       line-height: 1.4;
+      position: relative;
     }
-    /* 其他原有样式保持不变... */
+
+    /* 社交链接 */
+    .site-author-widget .links-of-author {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 12px;
+      max-width: 200px;
+      margin: 0 auto 16px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .site-author-widget .links-of-author-item a {
+      font-size: 0.75rem;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.03);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .site-author-widget .links-of-author-item a:hover {
+      background: rgba(0,0,0,0.05);
+      color: #4a5568;
+    }
+
+    /* 友情链接 */
+    .links-of-blogroll-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+    }
+    
+    .links-of-blogroll-item a {
+      display: inline-block;
+      color: #333;
+      padding: 4px 10px;
+      border-radius: 10px;
+      background: #f0f0f0;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    
+    .links-of-blogroll-item a:hover {
+      background: #e0e0e0;
+      transform: translateY(-1px);
+    }
   </style>
 
       </div>
