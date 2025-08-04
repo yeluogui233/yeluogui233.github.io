@@ -227,9 +227,10 @@
           <div class="content ">
             
 <div class="books-wrapper">
-  <header class="page-header" style="text-align:center; margin-bottom: 30px;">
+  <header class="page-header" style="text-align:center; margin-bottom: 30px; position: relative;">
     <h1 class="page-title">书单</h1>
     
+    <div id="theme-toggle" class="theme-toggle"></div>
   </header>
 
   <div class="books-grid">
@@ -1285,31 +1286,135 @@
 </div>
 
 <style>
-/* 书单整体画布 */
+/* 新增主题切换按钮样式 */
+.theme-toggle {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 30px;
+  background: linear-gradient(90deg, #2b303e, #2b303e 50%, #5a81b4 50%, #5a81b4);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  border-radius: 30px;
+  box-shadow: 
+    0 -2px 3px rgba(0,0,0,0.3),
+    inset 0 2px 4px rgba(0,0,0,0.5),
+    0 3px 3px rgba(255,255,238,0.8),
+    inset 0 -2px 4px rgba(221,221,221,0.8);
+  cursor: pointer;
+  overflow: hidden;
+  transition: .5s all;
+  z-index: 10;
+}
+
+.theme-toggle::before,
+.theme-toggle::after {
+  content: "";
+  position: absolute;
+  transition: .5s all;
+}
+
+.theme-toggle::before {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #e9cb50;
+  top: 3px;
+  left: 3px;
+  box-shadow: 
+    0 0 3px rgba(0,0,0,0.5),
+    inset 1px 1px 2px rgba(248,244,228,0.8),
+    inset -1px -1px 2px rgba(102,86,19,0.8);
+  z-index: 2;
+}
+
+.theme-toggle::after {
+  width: 22px;
+  height: 22px;
+  top: 4px;
+  left: 4px;
+  border-radius: 50%;
+  box-shadow: 
+    5px 30px 0 5px #fff,
+    30px 30px 0 3px #fff,
+    45px 35px 0 5px #fff,
+    65px 22px 0 3px #fff,
+    85px 17px 0 5px #fff,
+    95px -3px 0 5px #fff,
+    -5px 0 0 25px rgba(255,255,255,0.2),
+    8px 0 0 25px rgba(255,255,255,0.15),
+    20px 0 0 25px rgba(255,255,255,0.21),
+    5px 20px 0 5px #abc1d9,
+    35px 17px 0 5px #abc1d9,
+    45px 20px 0 5px #abc1d9,
+    65px 10px 0 5px #abc1d9,
+    75px 7px 0 5px #abc1d9,
+    95px -10px 0 5px #abc1d9;
+}
+
+.theme-toggle:hover::before {
+  filter: contrast(90%) brightness(110%);
+  transform: scale(1.05);
+}
+
+.theme-toggle.active {
+  background-position: 0 0;
+}
+
+.theme-toggle.active::before {
+  transform: translateX(30px);
+  background: 
+    radial-gradient(circle at 50% 8px, #939aa5, #939aa5 3px, transparent 3.5px, transparent),
+    radial-gradient(circle at 35% 18px, #939aa5, #939aa5 5px, transparent 5.5px, transparent),
+    radial-gradient(circle at 72% 20px, #939aa5, #939aa5 4px, transparent 4.5px, transparent),
+    radial-gradient(#cbcdda, #cbcdda);
+}
+
+.theme-toggle.active::after {
+  transform: translateX(30px);
+  box-shadow: 
+    5px 30px 0 5px transparent,
+    30px 30px 0 3px transparent,
+    45px 35px 0 5px transparent,
+    65px 22px 0 3px transparent,
+    85px 17px 0 5px transparent,
+    95px -3px 0 5px transparent,
+    5px 0 0 25px rgba(255,255,255,0.2),
+    -8px 0 0 25px rgba(255,255,255,0.15),
+    -20px 0 0 25px rgba(255,255,255,0.21),
+    5px 20px 0 5px transparent,
+    35px 17px 0 5px transparent,
+    45px 20px 0 5px transparent,
+    65px 10px 0 5px transparent,
+    75px 7px 0 5px transparent,
+    95px -10px 0 5px transparent;
+}
+
+/* 原有样式保持不变 */
 .books-wrapper {
   background: var(--content-bg-color, #fff);
   border-radius: 14px;
   padding: 30px 24px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.05);
   margin-bottom: 40px;
-
-  max-width: 1140px; /* Next默认主体宽度 */
+  max-width: 1140px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* 标题样式 */
 .page-header h1.page-title {
   font-weight: 700;
   font-size: 2rem;
   margin: 0;
 }
+
 .page-subtitle {
   font-size: 1rem;
 }
 
-/* 六列网格布局 */
 .books-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(120px, 1fr));
@@ -1317,7 +1422,6 @@
   justify-content: center;
 }
 
-/* 书籍卡片 */
 .book-card {
   background: var(--card-bg, #fff);
   border-radius: 14px;
@@ -1328,19 +1432,20 @@
   flex-direction: column;
   align-items: center;
 }
+
 .book-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 10px 28px rgba(0,0,0,0.15);
 }
 
-/* 封面容器 */
 .book-cover {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4; /* 保持3:4比例 */
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 14px 14px 0 0;
 }
+
 .book-cover img {
   width: 100%;
   height: 100%;
@@ -1348,11 +1453,11 @@
   display: block;
   transition: transform 0.5s ease;
 }
+
 .book-cover:hover img {
   transform: scale(1.05);
 }
 
-/* 磨砂书名覆盖底部 */
 .book-title-overlay {
   position: absolute;
   bottom: 0;
@@ -1370,7 +1475,6 @@
   box-sizing: border-box;
 }
 
-/* 按钮组 */
 .book-buttons {
   margin: 8px 0;
   display: flex;
@@ -1380,11 +1484,10 @@
   padding: 0 10px;
 }
 
-/* 统一按钮样式 - 最终修正版 */
 .btn {
-  display: inline-flex; /* 改为flex布局 */
-  align-items: center;  /* 垂直居中 */
-  justify-content: center; /* 水平居中 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 4px 0;
   font-size: 0.75rem;
   border-radius: 12px;
@@ -1393,19 +1496,49 @@
   user-select: none;
   transition: all 0.2s ease;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  width: 56px; /* 固定宽度 */
-  height: 24px; /* 固定高度 */
-  box-sizing: border-box; /* 确保宽高包含padding */
+  width: 56px;
+  height: 24px;
+  box-sizing: border-box;
   background-color: var(--primary-color);
   color: #333;
   border: none;
 }
+
 .btn:hover {
   background-color: var(--primary-color-hover);
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.getElementById('theme-toggle');
+  
+  // 检查本地存储的主题偏好
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  if (currentTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    toggle.classList.add('active');
+  }
+  
+  // 切换主题
+  toggle.addEventListener('click', function() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    
+    if (isDark) {
+      html.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+      toggle.classList.remove('active');
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      toggle.classList.add('active');
+    }
+  });
+});
+</script>
 
           </div>
           
@@ -1525,7 +1658,6 @@
   </aside>
 
   <style>
-    /* 个人信息侧边栏样式 */
     .site-author-widget {
       background: #fff;
       border-radius: 14px;
@@ -1555,7 +1687,6 @@
       margin-bottom: 16px;
       line-height: 1.4;
     }
-    /* 社交链接 */
     .site-author-widget .links-of-author {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -1581,7 +1712,6 @@
       color: var(--primary-color);
       background: rgba(0,0,0,0.05);
     }
-    /* 友情链接 */
     .links-of-blogroll-list {
       padding: 0;
       margin: 0;
