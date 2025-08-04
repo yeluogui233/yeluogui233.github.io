@@ -1289,7 +1289,8 @@
 /* === 主题变量定义 === */
 :root {
   /* 白天模式默认值 */
-  --content-bg-color: #fff;
+  --content-bg-color: #fff;          /* 书单画布背景 */
+  --page-bg-color: #f5f7fa;          /* 页面背景 */
   --card-bg: #fff;
   --text-color: #333;
   --text-color-secondary: #666;
@@ -1299,14 +1300,19 @@
 
 .dark-mode {
   /* 黑夜模式变量 */
-  --content-bg-color: #2d3748;
+  --content-bg-color: #2d3748;       /* 书单画布背景 */
+  --page-bg-color: #1a202c;          /* 页面背景 */
   --card-bg: #1a202c;
   --text-color: #f7fafc;
   --text-color-secondary: #cbd5e0;
   --primary-color: #4a5568;
   --primary-color-hover: #718096;
 }
-
+/* 设置页面背景 */
+body {
+  background-color: var(--page-bg-color);
+  transition: background-color 0.3s ease;
+}
 /* === 主题切换按钮样式 === */
 .theme-toggle {
   position: absolute;
