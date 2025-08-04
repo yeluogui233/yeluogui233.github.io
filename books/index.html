@@ -1286,7 +1286,28 @@
 </div>
 
 <style>
-/* 新增主题切换按钮样式 */
+/* === 主题变量定义 === */
+.books-wrapper {
+  /* 白天模式默认值 */
+  --content-bg-color: #fff;
+  --card-bg: #fff;
+  --text-color: #333;
+  --text-color-secondary: #666;
+  --primary-color: #f0f0f0;
+  --primary-color-hover: #e0e0e0;
+}
+
+.books-wrapper.dark-mode {
+  /* 黑夜模式变量 */
+  --content-bg-color: #2d3748;
+  --card-bg: #1a202c;
+  --text-color: #f7fafc;
+  --text-color-secondary: #cbd5e0;
+  --primary-color: #4a5568;
+  --primary-color-hover: #718096;
+}
+
+/* === 主题切换按钮样式 === */
 .theme-toggle {
   position: absolute;
   top: 50%;
@@ -1392,9 +1413,8 @@
     95px -10px 0 5px transparent;
 }
 
-/* 原有样式保持不变 */
+/* === 书籍列表样式 === */
 .books-wrapper {
-  background: var(--content-bg-color, #fff);
   border-radius: 14px;
   padding: 30px 24px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.05);
@@ -1403,16 +1423,19 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  transition: background-color 0.3s ease;
 }
 
 .page-header h1.page-title {
   font-weight: 700;
   font-size: 2rem;
   margin: 0;
+  color: var(--text-color);
 }
 
 .page-subtitle {
   font-size: 1rem;
+  color: var(--text-color-secondary);
 }
 
 .books-grid {
@@ -1423,11 +1446,11 @@
 }
 
 .book-card {
-  background: var(--card-bg, #fff);
+  background: var(--card-bg);
   border-radius: 14px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1500,7 +1523,7 @@
   height: 24px;
   box-sizing: border-box;
   background-color: var(--primary-color);
-  color: #333;
+  color: var(--text-color);
   border: none;
 }
 
@@ -1514,26 +1537,26 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const toggle = document.getElementById('theme-toggle');
+  const booksWrapper = document.querySelector('.books-wrapper');
   
   // 检查本地存储的主题偏好
-  const currentTheme = localStorage.getItem('theme') || 'light';
+  const currentTheme = localStorage.getItem('books-theme') || 'light';
   if (currentTheme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
+    booksWrapper.classList.add('dark-mode');
     toggle.classList.add('active');
   }
   
   // 切换主题
   toggle.addEventListener('click', function() {
-    const html = document.documentElement;
-    const isDark = html.getAttribute('data-theme') === 'dark';
+    const isDark = booksWrapper.classList.contains('dark-mode');
     
     if (isDark) {
-      html.removeAttribute('data-theme');
-      localStorage.setItem('theme', 'light');
+      booksWrapper.classList.remove('dark-mode');
+      localStorage.setItem('books-theme', 'light');
       toggle.classList.remove('active');
     } else {
-      html.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
+      booksWrapper.classList.add('dark-mode');
+      localStorage.setItem('books-theme', 'dark');
       toggle.classList.add('active');
     }
   });
@@ -1679,11 +1702,11 @@ document.addEventListener('DOMContentLoaded', function() {
       font-weight: 700;
       font-size: 1.3rem;
       margin: 8px 0 4px;
-      color: var(--text-color);
+      color: #333;
     }
     .site-author-widget .site-description {
       font-size: 0.95rem;
-      color: var(--text-color-secondary);
+      color: #666;
       margin-bottom: 16px;
       line-height: 1.4;
     }
@@ -1697,7 +1720,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     .site-author-widget .links-of-author-item a {
       font-size: 0.75rem;
-      color: var(--text-color);
+      color: #333;
       text-decoration: none;
       transition: color 0.25s ease;
       display: inline-block;
@@ -1709,7 +1732,7 @@ document.addEventListener('DOMContentLoaded', function() {
       text-overflow: ellipsis;
     }
     .site-author-widget .links-of-author-item a:hover {
-      color: var(--primary-color);
+      color: #4a5568;
       background: rgba(0,0,0,0.05);
     }
     .links-of-blogroll-list {
@@ -1723,7 +1746,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     .links-of-blogroll-item a {
       display: inline-block;
-      color: var(--text-color);
+      color: #333;
       padding: 4px 10px;
       border-radius: 10px;
       background: #f5f5f5;
@@ -1732,7 +1755,7 @@ document.addEventListener('DOMContentLoaded', function() {
       transition: background-color 0.3s ease;
     }
     .links-of-blogroll-item a:hover {
-      background-color: var(--primary-color);
+      background-color: #4a5568;
       color: #fff;
     }
   </style>
