@@ -49,7 +49,8 @@
   };
 </script>
 
-  <title>书单 | 穿过长长的隧道，便是雪国
+  <title>
+  书单 | 穿过长长的隧道，便是雪国
 </title>
   
 
@@ -223,40 +224,427 @@
   
   
 
-          <div class="content page posts-expand">
+          <div class="content ">
             
+<div class="main-inner">
 
-    
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
+  <!-- 日夜切换按钮 -->
+  <div id="g-btn" title="切换日夜模式" role="button" tabindex="0" aria-label="切换日夜模式"></div>
 
-<h1 class="post-title" itemprop="name headline">书单
-</h1>
-
-<div class="post-meta">
-  
-
-</div>
-
-</header>
-
+  <div class="books-wrapper">
+    <header class="page-header" style="text-align:center; margin-bottom: 30px;">
+      <h1 class="page-title">书单</h1>
       
+    </header>
+
+    <div class="books-grid">
       
+        <div class="book-card card">
+          <div class="book-cover">
+            <img src="https://covers.openlibrary.org/b/isbn/9787020128341-L.jpg" alt="《酒吧长谈》" loading="lazy">
+            <div class="book-title-overlay">
+              <h3>《酒吧长谈》</h3>
+            </div>
+          </div>
+          <div class="book-buttons">
+            
+              <a href="/2025/08/01/酒吧长谈——小萨你不倒霉，生活才倒霉呢/" class="btn btn-primary" target="_blank" rel="noopener">书评</a>
+            
+            
+              <a href="/2025/08/01/酒吧长谈——小萨你不倒霉，生活才倒霉呢/#摘抄" class="btn btn-secondary" target="_blank" rel="noopener">摘抄</a>
+            
+          </div>
+        </div>
       
-      <div class="post-body">
-          
-      </div>
-      
-      
+        <div class="book-card card">
+          <div class="book-cover">
+            <img src="https://covers.openlibrary.org/b/isbn/9787020115822-L.jpg" alt="《罪与罚》" loading="lazy">
+            <div class="book-title-overlay">
+              <h3>《罪与罚》</h3>
+            </div>
+          </div>
+          <div class="book-buttons">
+            
+              <a href="/2025/07/30/罪与罚——罪孽与救赎的交织/" class="btn btn-primary" target="_blank" rel="noopener">书评</a>
+            
+            
+              <a href="/2025/07/30/文摘-1/#摘抄" class="btn btn-secondary" target="_blank" rel="noopener">摘抄</a>
+            
+          </div>
+        </div>
       
     </div>
-    
+  </div>
+</div>
 
-    
-    
-    
+<style>
+  /* ---------------------- 书单整体白色画布 ---------------------- */
+  .books-wrapper {
+    background: var(--content-bg-color, #fff);
+    border-radius: 14px;
+    padding: 30px 24px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 标题样式 */
+  .page-header h1.page-title {
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 0;
+  }
+  .page-subtitle {
+    font-size: 1rem;
+  }
+
+  /* 多列自适应网格 */
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 28px 20px;
+    justify-content: center;
+  }
+
+  /* 书籍卡片 */
+  .book-card {
+    background: var(--card-bg, #fff);
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 14px;
+  }
+  .book-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+  }
+
+  /* 封面容器 */
+  .book-cover {
+    position: relative;
+    width: 180px;
+    height: 260px;
+    overflow: hidden;
+    border-radius: 14px 14px 0 0;
+    flex-shrink: 0;
+  }
+  .book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* 磨砂书名覆盖底部 */
+  .book-title-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 8px 10px;
+    background: rgba(255 255 255 / 0.25);
+    backdrop-filter: blur(10px);
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+  }
+
+  /* 按钮组 */
+  .book-buttons {
+    margin-top: 14px;
+    display: flex;
+    gap: 14px;
+  }
+
+  /* 圆角按钮基础样式 */
+  .btn {
+    display: inline-block;
+    padding: 6px 18px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  }
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+  }
+  .btn-primary:hover {
+    background-color: var(--primary-color-hover);
+  }
+  .btn-secondary {
+    background-color: var(--text-color-secondary);
+    color: #fff;
+    border: none;
+  }
+  .btn-secondary:hover {
+    background-color: var(--text-color-secondary-hover);
+  }
+
+  /* ---------------------- 侧边栏，模仿画廊页 ---------------------- */
+  aside.sidebar {
+    width: 280px;
+    margin-left: 32px;
+    flex-shrink: 0;
+  }
+  .site-author-widget {
+    background: var(--content-bg-color, #fff);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .site-author-widget .site-author-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 12px;
+    display: block;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+  .site-author-widget .site-author-name {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 8px 0 4px;
+    color: var(--text-color);
+  }
+  .site-author-widget .site-description {
+    font-size: 0.95rem;
+    color: var(--text-color-secondary);
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  .site-author-widget .links-of-author {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    justify-content: center;
+    gap: 8px 12px;
+    max-width: 200px;
+    margin: 0 auto 16px;
+    text-align: center;
+  }
+  .site-author-widget .links-of-author-item a {
+    font-size: 0.75rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.25s ease;
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.03);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .site-author-widget .links-of-author-item a:hover {
+    color: var(--primary-color);
+    background: rgba(0,0,0,0.05);
+  }
+  .links-of-blogroll-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .links-of-blogroll-item a {
+    display: inline-block;
+    color: var(--text-color);
+    padding: 4px 10px;
+    border-radius: 10px;
+    background: #f5f5f5;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  .links-of-blogroll-item a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+
+  /* 主体布局和侧边栏并排 */
+  .main-inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  /* ---------------------- 日夜切换按钮 ---------------------- */
+  #g-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 220px;
+    height: 90px;
+    border-radius: 90px;
+    background:
+      radial-gradient(circle at 18% 20px, #fff, #fff 6px, transparent 7px, transparent),
+      radial-gradient(circle at 35% 45px, #fff, #fff 1px, transparent 2px, transparent),
+      radial-gradient(circle at 10% 70px, #fff, #fff 2.5px, transparent 3.5px, transparent),
+      radial-gradient(circle at 25% 15px, #fff, #fff 3px, transparent 4px, transparent),
+      radial-gradient(circle at 15% 50px, #fff, #fff 1.5px, transparent 2.5px, transparent),
+      radial-gradient(circle at 30% 75px, #fff, #fff 5px, transparent 6px, transparent),
+      radial-gradient(circle at 5% 30px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+      radial-gradient(circle at 25% 60px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+      radial-gradient(circle at 7% 35px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+      linear-gradient(90deg, #2b303e, #2b303e 50%, #5a81b4 50%, #5a81b4);
+    background-repeat: no-repeat;
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    box-shadow:
+      0 -3px 4px #999,
+      inset 0 3px 5px #333,
+      0 4px 4px #ffe,
+      inset 0 -3px 5px #ddd;
+    cursor: pointer;
+    overflow: hidden;
+    transition: .5s all;
+    outline: none;
+    z-index: 99999;
+  }
+  #g-btn:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  #g-btn::before,
+  #g-btn::after {
+    content: "";
+    position: absolute;
+    transition: .5s all;
+  }
+  #g-btn::before {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: #e9cb50;
+    inset: 7.5px;
+    box-shadow:
+      0 0 5px #333,
+      inset 2px 2px 3px #f8f4e4,
+      inset -2px -2px 3px #665613;
+    z-index: 1;
+  }
+  #g-btn::after {
+    width: 70px;
+    height: 70px;
+    inset: 10px;
+    border-radius: 50%;
+    box-shadow:
+      10px 60px 0 10px #fff,
+      65px 60px 0 5px #fff,
+      95px 70px 0 10px #fff,
+      135px 45px 0 5px #fff,
+      170px 35px 0 10px #fff,
+      190px 20px 0 5px #fff;
+    z-index: 2;
+  }
+  #g-btn.active {
+    background-position: 0 0;
+    box-shadow:
+      0 0 4px 3px #888,
+      inset 0 0 4px 2px #fff,
+      0 0 7px 5px #ffe,
+      inset 0 0 6px 4px #ff9;
+  }
+  #g-btn.active::before {
+    background: linear-gradient(90deg, #fff8e1 0%, #f3dc69 100%);
+    box-shadow:
+      0 0 15px #ffe45d,
+      inset 2px 2px 3px #fff8cc,
+      inset -2px -2px 3px #a88913;
+  }
+  #g-btn.active::after {
+    box-shadow:
+      10px 60px 0 10px #fffdc9,
+      65px 60px 0 5px #fff6a6,
+      95px 70px 0 10px #fffcaa,
+      135px 45px 0 5px #fffa9e,
+      170px 35px 0 10px #fff288,
+      190px 20px 0 5px #fff26e;
+  }
+
+  /* 暗黑模式 */
+  body.dark-mode {
+    --primary-color: #83a1ff;
+    --primary-color-hover: #5c7fff;
+    --text-color: #d8d8d8;
+    --text-color-secondary: #a0a0a0;
+    --text-color-secondary-hover: #a0a0a0;
+    --card-bg: #1f2335;
+    --content-bg-color: #1b1e2a;
+    background: #12141f;
+    color: var(--text-color);
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+  body.dark-mode .book-card {
+    box-shadow: 0 3px 12px rgba(0,0,0,0.6);
+  }
+  body.dark-mode .book-title-overlay {
+    background: rgba(40 40 40 / 0.8);
+  }
+  body.dark-mode .btn-primary {
+    background-color: #4a63ff;
+  }
+  body.dark-mode .btn-primary:hover {
+    background-color: #2f44ff;
+  }
+  body.dark-mode .btn-secondary {
+    background-color: #444;
+  }
+  body.dark-mode .btn-secondary:hover {
+    background-color: #666;
+  }
+  body.dark-mode .site-author-widget {
+    background: #252a44;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.8);
+    color: var(--text-color);
+  }
+  body.dark-mode .links-of-blogroll-item a {
+    background: #2a2f51;
+    color: #9aa9ff;
+  }
+  body.dark-mode .links-of-blogroll-item a:hover {
+    background-color: #4a63ff;
+    color: #fff;
+  }
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    const btn = document.getElementById('g-btn');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      btn.classList.toggle('active');
+    });
+    btn.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  });
+</script>
 
 
           </div>
@@ -303,32 +691,9 @@
   </div>
         </div>
           
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+<aside class="sidebar">
+  <div class="widget site-author-widget">
+    <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="叶落归"
       src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">叶落归</p>
@@ -396,12 +761,8 @@
     </ul>
   </div>
 
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
+  </div>
+</aside>
 
       </div>
     </main>
