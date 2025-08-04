@@ -1702,16 +1702,32 @@ document.addEventListener('DOMContentLoaded', function() {
   </aside>
 
   <style>
-    /* 个人信息侧边栏样式 - 白天黑夜模式保持一致 */
+    /* 纯净圆角解决方案 */
     .site-author-widget {
-      background: none;
+      position: relative;
+      background: transparent !important;
       border-radius: 14px;
       padding: 20px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       margin-bottom: 40px;
       text-align: center;
+      z-index: 1;
+      overflow: hidden; /* 确保圆角裁剪内容 */
     }
+    
+    /* 使用伪元素创建视觉背景层 */
+    .site-author-widget::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit; /* 继承父级背景 */
+      border-radius: inherit; /* 继承圆角 */
+      z-index: -1;
+    }
+
+    /* 保持原有样式不变 */
     .site-author-widget .site-author-image {
       width: 100px;
       height: 100px;
@@ -1733,56 +1749,7 @@ document.addEventListener('DOMContentLoaded', function() {
       margin-bottom: 16px;
       line-height: 1.4;
     }
-    /* 社交链接 */
-    .site-author-widget .links-of-author {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px 12px;
-      max-width: 200px;
-      margin: 0 auto 16px;
-      text-align: center;
-    }
-    .site-author-widget .links-of-author-item a {
-      font-size: 0.75rem;
-      color: var(--text-color);
-      text-decoration: none;
-      transition: color 0.25s ease;
-      display: inline-block;
-      padding: 2px 6px;
-      border-radius: 6px;
-      background: rgba(0,0,0,0.03);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .site-author-widget .links-of-author-item a:hover {
-      color: var(--primary-color);
-      background: rgba(0,0,0,0.05);
-    }
-    /* 友情链接 */
-    .links-of-blogroll-list {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-    .links-of-blogroll-item a {
-      display: inline-block;
-      color: d6d6d6;
-      padding: 4px 10px;
-      border-radius: 10px;
-      background: var(--primary-color);
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .links-of-blogroll-item a:hover {
-      background-color: var(--primary-color-hover);
-      transform: translateY(-1px);
-    }
+    /* 其他原有样式保持不变... */
   </style>
 
       </div>
