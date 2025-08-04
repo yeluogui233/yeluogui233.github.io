@@ -244,10 +244,10 @@
         
         <div class="book-buttons">
           
-            <a href="/2025/08/01/酒吧长谈——小萨你不倒霉，生活才倒霉呢/" class="btn btn-primary" target="_blank" rel="noopener">书评</a>
+            <a href="/2025/08/01/酒吧长谈——小萨你不倒霉，生活才倒霉呢/" class="btn" target="_blank" rel="noopener">书评</a>
           
           
-            <a href="/2025/08/01/酒吧长谈——小萨你不倒霉，生活才倒霉呢/#摘抄" class="btn btn-secondary" target="_blank" rel="noopener">摘要</a>
+            <a href="/2025/08/01/酒吧长谈——小萨你不倒霉，生活才倒霉呢/#摘抄" class="btn" target="_blank" rel="noopener">摘要</a>
           
         </div>
         
@@ -263,10 +263,10 @@
         
         <div class="book-buttons">
           
-            <a href="/2025/07/30/罪与罚——罪孽与救赎的交织/" class="btn btn-primary" target="_blank" rel="noopener">书评</a>
+            <a href="/2025/07/30/罪与罚——罪孽与救赎的交织/" class="btn" target="_blank" rel="noopener">书评</a>
           
           
-            <a href="/2025/07/30/文摘-1/#摘抄" class="btn btn-secondary" target="_blank" rel="noopener">摘要</a>
+            <a href="/2025/07/30/文摘-1/#摘抄" class="btn" target="_blank" rel="noopener">摘要</a>
           
         </div>
         
@@ -283,7 +283,7 @@
         <div class="book-buttons">
           
           
-            <a href="/2025/07/30/文摘-1/#摘抄" class="btn btn-secondary" target="_blank" rel="noopener">摘要</a>
+            <a href="/2025/07/30/文摘-1/#摘抄" class="btn" target="_blank" rel="noopener">摘要</a>
           
         </div>
         
@@ -1337,12 +1337,12 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 6px 8px;
+  padding: 4px 6px;
   background: rgba(255 255 255 / 0.25);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
   color: var(--text-color);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -1352,43 +1352,35 @@
 
 /* 按钮组 */
 .book-buttons {
-  margin: 12px 0;
+  margin: 10px 0;
   display: flex;
-  gap: 12px;
+  gap: 10px;
   width: 100%;
   justify-content: center;
   padding: 0 10px;
 }
 
-/* 圆角按钮基础样式 */
+/* 统一按钮样式 */
 .btn {
   display: inline-block;
-  padding: 6px 14px;
-  font-size: 0.85rem;
-  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border-radius: 16px;
   font-weight: 600;
   text-decoration: none;
   user-select: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-  min-width: 60px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  min-width: 56px;
   text-align: center;
-}
-.btn-primary {
   background-color: var(--primary-color);
   color: #333;
   border: none;
 }
-.btn-primary:hover {
+.btn:hover {
   background-color: var(--primary-color-hover);
-}
-.btn-secondary {
-  background-color: #333;
-  color: #fff;
-  border: none;
-}
-.btn-secondary:hover {
-  background-color: #555;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 }
 </style>
 
