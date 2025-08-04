@@ -1316,6 +1316,10 @@
   flex-direction: column;
   align-items: center;
 }
+.book-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+}
 
 /* 封面容器 */
 .book-cover {
@@ -1330,6 +1334,10 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.5s ease;
+}
+.book-cover:hover img {
+  transform: scale(1.05);
 }
 
 /* 磨砂书名覆盖底部 */
@@ -1363,7 +1371,7 @@
 /* 统一按钮样式 */
 .btn {
   display: inline-block;
-  padding: 4px 8px;
+  padding: 4px 0; /* 改为左右0，宽度由min-width控制 */
   font-size: 0.75rem;
   border-radius: 12px;
   font-weight: 600;
@@ -1371,7 +1379,8 @@
   user-select: none;
   transition: all 0.2s ease;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  min-width: 48px;
+  min-width: 52px; /* 增加最小宽度 */
+  width: 52px; /* 新增固定宽度 */
   text-align: center;
   background-color: var(--primary-color);
   color: #333;
