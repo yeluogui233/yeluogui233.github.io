@@ -1287,7 +1287,7 @@
 
 <style>
 /* === 主题变量定义 === */
-.books-wrapper {
+:root {
   /* 白天模式默认值 */
   --content-bg-color: #fff;
   --card-bg: #fff;
@@ -1297,7 +1297,7 @@
   --primary-color-hover: #e0e0e0;
 }
 
-.books-wrapper.dark-mode {
+.dark-mode {
   /* 黑夜模式变量 */
   --content-bg-color: #2d3748;
   --card-bg: #1a202c;
@@ -1415,6 +1415,7 @@
 
 /* === 书籍列表样式 === */
 .books-wrapper {
+  background: var(--content-bg-color);
   border-radius: 14px;
   padding: 30px 24px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.05);
@@ -1537,25 +1538,25 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const toggle = document.getElementById('theme-toggle');
-  const booksWrapper = document.querySelector('.books-wrapper');
+  const html = document.documentElement;
   
   // 检查本地存储的主题偏好
   const currentTheme = localStorage.getItem('books-theme') || 'light';
   if (currentTheme === 'dark') {
-    booksWrapper.classList.add('dark-mode');
+    html.classList.add('dark-mode');
     toggle.classList.add('active');
   }
   
   // 切换主题
   toggle.addEventListener('click', function() {
-    const isDark = booksWrapper.classList.contains('dark-mode');
+    const isDark = html.classList.contains('dark-mode');
     
     if (isDark) {
-      booksWrapper.classList.remove('dark-mode');
+      html.classList.remove('dark-mode');
       localStorage.setItem('books-theme', 'light');
       toggle.classList.remove('active');
     } else {
-      booksWrapper.classList.add('dark-mode');
+      html.classList.add('dark-mode');
       localStorage.setItem('books-theme', 'dark');
       toggle.classList.add('active');
     }
