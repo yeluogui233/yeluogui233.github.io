@@ -1303,17 +1303,16 @@
 }
 
 .dark-mode {
-  /* 黑夜模式变量 */
-  --content-bg-color: #2d3748;
-  --page-bg-color: #1a202c;
-  --sidebar-bg-color: #2d3748;
-  --menu-text-color: #f7fafc;
-  --card-bg: #1a202c;
-  --text-color: #f7fafc;
-  --text-color-secondary: #cbd5e0;
-  --primary-color: #4a5568;
-  --primary-color-hover: #718096;
-  --title-overlay-text: #333; /* 保持书名黑色 */
+    --content-bg-color: #383838;
+    --page-bg-color: #202020;
+    --sidebar-bg-color: #2d3748;
+    --menu-text-color: #030303;
+    --card-bg: #6e6e6e;
+    --text-color: #ffffff;
+    --text-color-secondary: #474b50;
+    --primary-color: #4a5568;
+    --primary-color-hover: #242424;
+    --title-overlay-text: #000000;
 }
 /* 设置页面背景 */
 body {
@@ -1321,7 +1320,9 @@ body {
   transition: background-color 0.3s ease;
 }
 .header {
-  color: var(--menu-text-color);
+    background-color: var(--sidebar-bg-color);
+    color: var(--menu-text-color);
+    transition: all 0.3s ease;
 }
 
 /* === 主题切换按钮样式 === */
@@ -1541,7 +1542,7 @@ body {
   height: 24px;
   box-sizing: border-box;
   background-color: var(--primary-color);
-  color: var(--text-color);
+  color: #414141;
   border: none;
 }
 
@@ -1703,6 +1704,7 @@ document.addEventListener('DOMContentLoaded', function() {
       background: var(--sidebar-bg-color);
       border-radius: 14px;
       padding: 20px;
+	  overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       margin-bottom: 40px;
       text-align: center;
@@ -1720,11 +1722,11 @@ document.addEventListener('DOMContentLoaded', function() {
       font-weight: 700;
       font-size: 1.3rem;
       margin: 8px 0 4px;
-      color: #333;
+      color: #dddddd;
     }
     .site-author-widget .site-description {
       font-size: 0.95rem;
-      color: #666;
+      color: #939393;
       margin-bottom: 0px;
       line-height: 1.4;
     }
@@ -1738,7 +1740,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     .site-author-widget .links-of-author-item a {
       font-size: 0.75rem;
-      color: #333;
+      color: #efefef;
       text-decoration: none;
       transition: color 0.25s ease;
       display: inline-block;
@@ -1764,18 +1766,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     .links-of-blogroll-item a {
       display: inline-block;
-      color: var(--menu-text-color);
+      color: #cbcbcb;
       padding: 4px 10px;
       border-radius: 10px;
-      background: #f5f5f5;
+      background: #151f31;
       font-size: 0.9rem;
       text-decoration: none;
       transition: background-color 0.3s ease;
     }
     .links-of-blogroll-item a:hover {
-      background-color: #4a5568;
-      color: #fff;
-    }
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+}
+	.site-author-widget .links-of-author-item a,
+.links-of-blogroll-item a {
+    border-radius: 6px; /* 统一按钮圆角 */
+    box-shadow: none;   /* 移除可能造成棱角的阴影 */
+}
   </style>
 
       </div>
