@@ -1287,32 +1287,43 @@
 
 <style>
 /* === 主题变量定义 === */
+/* === 主题变量定义 === */
 :root {
   /* 白天模式默认值 */
-  --content-bg-color: #fff;          /* 书单画布背景 */
-  --page-bg-color: #f5f7fa;          /* 页面背景 */
+  --content-bg-color: #fff;
+  --page-bg-color: #f5f7fa;
+  --sidebar-bg-color: #fff;
+  --menu-text-color: #333;
   --card-bg: #fff;
   --text-color: #333;
   --text-color-secondary: #666;
   --primary-color: #f0f0f0;
   --primary-color-hover: #e0e0e0;
+  --title-overlay-text: #333; /* 书名文字颜色 */
 }
 
 .dark-mode {
   /* 黑夜模式变量 */
-  --content-bg-color: #2d3748;       /* 书单画布背景 */
-  --page-bg-color: #1a202c;          /* 页面背景 */
+  --content-bg-color: #2d3748;
+  --page-bg-color: #1a202c;
+  --sidebar-bg-color: #2d3748;
+  --menu-text-color: #f7fafc;
   --card-bg: #1a202c;
   --text-color: #f7fafc;
   --text-color-secondary: #cbd5e0;
   --primary-color: #4a5568;
   --primary-color-hover: #718096;
+  --title-overlay-text: #333; /* 保持书名黑色 */
 }
 /* 设置页面背景 */
 body {
   background-color: var(--page-bg-color);
   transition: background-color 0.3s ease;
 }
+.header {
+  color: var(--menu-text-color);
+}
+
 /* === 主题切换按钮样式 === */
 .theme-toggle {
   position: absolute;
@@ -1495,7 +1506,7 @@ body {
   padding: 4px 6px;
   background: rgba(255 255 255 / 0.25);
   backdrop-filter: blur(8px);
-  color: var(--text-color);
+  color: var(--title-overlay-text) !important; /* 强制黑色 */
   font-weight: 600;
   font-size: 0.8rem;
   text-align: center;
@@ -1689,7 +1700,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <style>
     .site-author-widget {
-      background: #fff;
+      background: var(--sidebar-bg-color);
       border-radius: 14px;
       padding: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -1714,7 +1725,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .site-author-widget .site-description {
       font-size: 0.95rem;
       color: #666;
-      margin-bottom: 16px;
+      margin-bottom: 0px;
       line-height: 1.4;
     }
     .site-author-widget .links-of-author {
@@ -1753,7 +1764,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     .links-of-blogroll-item a {
       display: inline-block;
-      color: #333;
+      color: var(--menu-text-color);
       padding: 4px 10px;
       border-radius: 10px;
       background: #f5f5f5;
