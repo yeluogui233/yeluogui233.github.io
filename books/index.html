@@ -691,9 +691,9 @@
   </div>
         </div>
           
-<aside class="sidebar">
-  <div class="widget site-author-widget">
-    <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <aside class="sidebar">
+    <div class="widget site-author-widget">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="叶落归"
       src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">叶落归</p>
@@ -761,8 +761,95 @@
     </ul>
   </div>
 
-  </div>
-</aside>
+    </div>
+  </aside>
+
+  <style>
+    .site-author-widget {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .site-author-widget .site-author-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 12px;
+      display: block;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    .site-author-widget .site-author-name {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin: 8px 0 4px;
+      color: var(--text-color);
+    }
+    .site-author-widget .site-description {
+      font-size: 0.95rem;
+      color: var(--text-color-secondary);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    /* 社交3行2列 */
+.site-author-widget .links-of-author {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 两列平均分 */
+  grid-auto-rows: auto;
+  justify-content: center;
+  gap: 8px 12px;
+  max-width: 200px; /* 增加容器宽度 */
+  margin: 0 auto 16px;
+  text-align: center;
+}
+
+.site-author-widget .links-of-author-item a {
+  font-size: 0.75rem;       /* 字体缩小一点 */
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.25s ease;
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.03);
+  white-space: nowrap;      /* 单行显示，不换行 */
+  overflow: hidden;
+  text-overflow: ellipsis;  /* 如果过长就用省略号 */
+}
+
+.site-author-widget .links-of-author-item a:hover {
+  color: var(--primary-color);
+  background: rgba(0,0,0,0.05);
+}
+
+    /* 友情链接 */
+    .links-of-blogroll-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .links-of-blogroll-item a {
+      display: inline-block;
+      color: var(--text-color);
+      padding: 4px 10px;
+      border-radius: 10px;
+      background: #f5f5f5;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .links-of-blogroll-item a:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+  </style>
 
       </div>
     </main>
