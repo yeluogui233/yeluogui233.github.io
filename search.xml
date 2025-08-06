@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>next数组和nextval数组求法</title>
+      <link href="/2025/08/06/KMP%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/"/>
+      <url>/2025/08/06/KMP%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://s3.bmp.ovh/imgs/2025/08/06/4207db52450d0d5d.png"></p><h1 id="next数组的用法"><a href="#next数组的用法" class="headerlink" title="next数组的用法"></a>next数组的用法</h1><p>首先，当我们进行KMP匹配的时候，我们会用主串和模式串进行对比。当失配的时候我们需要把 指向模式串的指针指向next[j]。</p><p>原因是因为在主串指针前的所有内容是可以用共同的前后缀来进行匹配的，next数组也是用共同的前后缀来得出的<img src="https://s3.bmp.ovh/imgs/2025/08/06/54d11ee81a85518a.gif"></p><h1 id="next数组的求法"><a href="#next数组的求法" class="headerlink" title="next数组的求法"></a>next数组的求法</h1><p>将指向模式串的指针Pj，前面的部分比如目前指向了j=5的位置。我们可以看到1234中最大的前后缀匹配就是{ab}也就是说，我们直接指向前缀ab之后的元素即可，也就是令模式串的指针的j=3<img src="https://s3.bmp.ovh/imgs/2025/08/06/19c8ad6ab9d10af5.gif"></p><p>由此我们得到的next数组就可以用于KMP算法模式串指针的移动</p><h1 id="nextval的求法"><a href="#nextval的求法" class="headerlink" title="nextval的求法"></a>nextval的求法</h1><p>但是如果我们按照next数组可能会出现，指针在5失配，指针又转向3同时又失配，不得不转向1结果又失配，因为他们失配的原因是跳转到的字母和目前失配的字母一样，所以会连续失配</p><p>因此我们只需要从头到后检查，自己要跳转的字母是否和自己一致，若和自己一致，则追根溯源到最开始这个字母的失配next[j]<img src="https://s3.bmp.ovh/imgs/2025/08/06/36f6df3463625890.gif"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 408 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>原函数和变限积分的区别</title>
       <link href="/2025/08/05/%E5%8E%9F%E5%87%BD%E6%95%B0%E5%92%8C%E5%8F%98%E9%99%90%E7%A7%AF%E5%88%86%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
       <url>/2025/08/05/%E5%8E%9F%E5%87%BD%E6%95%B0%E5%92%8C%E5%8F%98%E9%99%90%E7%A7%AF%E5%88%86%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
