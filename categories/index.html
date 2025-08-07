@@ -226,83 +226,142 @@
 
           <div class="content categories-page">
             
-<div class="categories-page">
-  <div class="category-grid">
-    
+<div class="categories-wrapper">
+  <!-- 顶部标题 -->
+  <h1 class="categories-title">分类</h1>
+  
+  <!-- 毛玻璃画布容器 -->
+  <div class="categories-canvas">
+    <div class="category-grid">
       
+        
+        
+        
+        
+        
+        
+        
+        <a class="category-card" href="/categories/">
+          <div class="cover" style="background-image:url('')"></div>
+          <div class="info">
+            <h3 title=""></h3>
+            <p> 篇文章</p>
+          </div>
+        </a>
       
+        
+        
+        
+        
+        
+        
+        
+        <a class="category-card" href="/categories/">
+          <div class="cover" style="background-image:url('')"></div>
+          <div class="info">
+            <h3 title=""></h3>
+            <p> 篇文章</p>
+          </div>
+        </a>
       
+        
+        
+        
+        
+        
+        
+        
+        <a class="category-card" href="/categories/">
+          <div class="cover" style="background-image:url('')"></div>
+          <div class="info">
+            <h3 title=""></h3>
+            <p> 篇文章</p>
+          </div>
+        </a>
       
-      <a class="category-card" href="/">
-        <div class="cover" style="background-image:url('/images/default-cover.jpg')"></div>
-        <div class="info">
-          <h3></h3>
-          <p> 篇文章</p>
-        </div>
-      </a>
-    
-      
-      
-      
-      
-      <a class="category-card" href="/">
-        <div class="cover" style="background-image:url('/images/default-cover.jpg')"></div>
-        <div class="info">
-          <h3></h3>
-          <p> 篇文章</p>
-        </div>
-      </a>
-    
-      
-      
-      
-      
-      <a class="category-card" href="/">
-        <div class="cover" style="background-image:url('/images/default-cover.jpg')"></div>
-        <div class="info">
-          <h3></h3>
-          <p> 篇文章</p>
-        </div>
-      </a>
-    
+    </div>
   </div>
 </div>
 
 <style>
-.categories-page { padding: 40px 5%; }
+/* 页面整体内边距 */
+.categories-wrapper {
+  padding: 40px 5%;
+}
+
+/* 顶部大标题 */
+.categories-title {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* 毛玻璃画布容器 */
+.categories-canvas {
+  background: rgba(255, 255, 255, 0.2); /* 半透明白色 */
+  backdrop-filter: blur(15px);           /* 毛玻璃效果 */
+  -webkit-backdrop-filter: blur(15px);   /* Safari 兼容 */
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* 网格布局：大屏五列 */
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
 }
+
+/* 卡片 */
 .category-card {
   position: relative;
   display: block;
   overflow: hidden;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transition: transform 0.3s ease;
   text-decoration: none;
 }
 .category-card:hover { transform: translateY(-5px); }
+
+/* 封面背景 */
 .category-card .cover {
   width: 100%;
   padding-top: 70%;
   background-size: cover;
   background-position: center;
 }
+
+/* 磨砂信息栏 */
 .category-card .info {
   position: absolute;
   bottom: 0;
   width: 100%;
   padding: 12px;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(6px);
   color: #000;
   text-align: center;
 }
-.category-card .info h3 { margin: 0; font-size: 16px; font-weight: 600; }
+.category-card .info h3 { 
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .category-card .info p { margin: 2px 0 0; font-size: 12px; }
+
+/* 响应式 */
+@media (max-width: 1024px) {
+  .category-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+}
+@media (max-width: 768px) {
+  .category-grid { grid-template-columns: 1fr; }
+}
 </style>
 
           </div>
