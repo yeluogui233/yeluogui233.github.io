@@ -50,7 +50,7 @@
 </script>
 
   <title>
-  title.categories | 穿过长长的隧道，便是雪国
+  分类 | 穿过长长的隧道，便是雪国
 </title>
   
 
@@ -227,10 +227,8 @@
           <div class="content categories-page">
             
 <div class="categories-wrapper">
-  <!-- 顶部标题 -->
   <h1 class="categories-title">分类</h1>
   
-  <!-- 毛玻璃画布容器 -->
   <div class="categories-canvas">
     <div class="category-grid">
       
@@ -238,6 +236,7 @@
         
         
         
+          
         
         
         
@@ -246,6 +245,8 @@
           <div class="info">
             <h3 title=""></h3>
             <p> 篇文章</p>
+            
+            
           </div>
         </a>
       
@@ -253,6 +254,7 @@
         
         
         
+          
         
         
         
@@ -261,6 +263,8 @@
           <div class="info">
             <h3 title=""></h3>
             <p> 篇文章</p>
+            
+            
           </div>
         </a>
       
@@ -268,6 +272,7 @@
         
         
         
+          
         
         
         
@@ -276,6 +281,8 @@
           <div class="info">
             <h3 title=""></h3>
             <p> 篇文章</p>
+            
+            
           </div>
         </a>
       
@@ -284,12 +291,10 @@
 </div>
 
 <style>
-/* 页面整体内边距 */
 .categories-wrapper {
   padding: 40px 5%;
 }
 
-/* 顶部大标题 */
 .categories-title {
   font-size: 32px;
   font-weight: 700;
@@ -297,55 +302,52 @@
   margin-bottom: 30px;
 }
 
-/* 毛玻璃画布容器 */
 .categories-canvas {
-  background: rgba(255, 255, 255, 0.2); /* 半透明白色 */
-  backdrop-filter: blur(15px);           /* 毛玻璃效果 */
-  -webkit-backdrop-filter: blur(15px);   /* Safari 兼容 */
+  background: #fff; /* 纯白背景 */
   border-radius: 16px;
   padding: 30px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
-/* 网格布局：大屏五列 */
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
 }
 
-/* 卡片 */
 .category-card {
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 16px; /* 卡片圆角 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
   text-decoration: none;
+  background: rgba(255, 255, 255, 0.5); /* 半透明白背景 */
+  backdrop-filter: blur(8px); /* 磨砂效果 */
+  -webkit-backdrop-filter: blur(8px);
 }
-.category-card:hover { transform: translateY(-5px); }
+.category-card:hover {
+  transform: translateY(-5px);
+}
 
-/* 封面背景 */
+/* 封面图 */
 .category-card .cover {
   width: 100%;
   padding-top: 70%;
   background-size: cover;
   background-position: center;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
-/* 磨砂信息栏 */
+/* 卡片文字区域 */
 .category-card .info {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   padding: 12px;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(6px);
   color: #000;
   text-align: center;
 }
-.category-card .info h3 { 
+.category-card .info h3 {
   margin: 0;
   font-size: 16px;
   font-weight: 600;
@@ -353,14 +355,21 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.category-card .info p { margin: 2px 0 0; font-size: 12px; }
+.category-card .info p {
+  margin: 4px 0 0;
+  font-size: 12px;
+}
 
 /* 响应式 */
 @media (max-width: 1024px) {
-  .category-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .category-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
 }
 @media (max-width: 768px) {
-  .category-grid { grid-template-columns: 1fr; }
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 
