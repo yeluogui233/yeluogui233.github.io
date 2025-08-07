@@ -242,13 +242,15 @@
 
         
 
-        <a class="category-card" href="/categories/">
-          <div class="cover" style="background-image:url('https://s21.ax1x.com/2025/08/03/pVNLAlq.jpg')"></div>
+        <div class="category-card">
+          <a class="category-top-bar" href="/categories/"></a>
+          <a class="category-cover-link" href="/categories/">
+            <div class="cover" style="background-image:url('https://s21.ax1x.com/2025/08/03/pVNLAlq.jpg')"></div>
+          </a>
           <div class="info">
-            <h3 title=""></h3>
             <p> 篇文章</p>
           </div>
-        </a>
+        </div>
       
         
         
@@ -260,13 +262,15 @@
 
         
 
-        <a class="category-card" href="/categories/">
-          <div class="cover" style="background-image:url('https://s21.ax1x.com/2025/08/03/pVNLAlq.jpg')"></div>
+        <div class="category-card">
+          <a class="category-top-bar" href="/categories/"></a>
+          <a class="category-cover-link" href="/categories/">
+            <div class="cover" style="background-image:url('https://s21.ax1x.com/2025/08/03/pVNLAlq.jpg')"></div>
+          </a>
           <div class="info">
-            <h3 title=""></h3>
             <p> 篇文章</p>
           </div>
-        </a>
+        </div>
       
         
         
@@ -278,13 +282,15 @@
 
         
 
-        <a class="category-card" href="/categories/">
-          <div class="cover" style="background-image:url('https://s21.ax1x.com/2025/08/03/pVNLAlq.jpg')"></div>
+        <div class="category-card">
+          <a class="category-top-bar" href="/categories/"></a>
+          <a class="category-cover-link" href="/categories/">
+            <div class="cover" style="background-image:url('https://s21.ax1x.com/2025/08/03/pVNLAlq.jpg')"></div>
+          </a>
           <div class="info">
-            <h3 title=""></h3>
             <p> 篇文章</p>
           </div>
-        </a>
+        </div>
       
     </div>
   </div>
@@ -306,7 +312,8 @@
   background: #fff;
   border-radius: 16px;
   padding: 30px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  /* 去掉阴影 */
+  /* box-shadow: 0 8px 20px rgba(0,0,0,0.05); */
 }
 
 .category-grid {
@@ -315,58 +322,63 @@
   gap: 20px;
 }
 
+/* 卡片整体无阴影 */
 .category-card {
-  position: relative;
-  display: block;
-  overflow: hidden;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  text-decoration: none;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* 顶部文字条，磨砂效果 */
+.category-top-bar {
+  display: block;
+  padding: 8px 12px;
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  color: #000;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+.category-top-bar:hover {
+  background: rgba(255, 255, 255, 0.7);
 }
 
-.category-card:hover {
-  transform: translateY(-5px);
+/* 封面图链接 */
+.category-cover-link {
+  display: block;
+  border-radius: 0 0 16px 16px;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-.category-card .cover {
+.cover {
   width: 100%;
   padding-top: 70%;
   background-size: cover;
   background-position: center;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
 }
 
-.category-card .info {
-  padding: 12px;
+/* 文章数文字 */
+.info {
+  padding: 8px 12px;
   color: #000;
+  font-size: 12px;
   text-align: center;
 }
 
-.category-card .info h3 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.category-card .info p {
-  margin: 4px 0 0;
-  font-size: 12px;
-}
-
+/* 响应式 */
 @media (max-width: 1024px) {
   .category-grid {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
 }
-
 @media (max-width: 768px) {
   .category-grid {
     grid-template-columns: 1fr;
