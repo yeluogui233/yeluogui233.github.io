@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>基本积分公式</title>
+      <link href="/2025/08/08/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86%E5%85%AC%E5%BC%8F/"/>
+      <url>/2025/08/08/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86%E5%85%AC%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<ul><li><h2 id="基本积分公式"><a href="#基本积分公式" class="headerlink" title="基本积分公式"></a>基本积分公式</h2><p>以下10组公式，要牢记。</p><p>1.<br>   [ \int x^k , dx = \frac{1}{k+1} x^{k+1} + C, \quad k \neq -1; ]</p><p>2.<br>   [ \int \frac{1}{x} , dx = \ln |x| + C. ]</p><p>3.<br>   [ \int e^x , dx = e^x + C; ]<br>   [ \int a^x , dx = \frac{a^x}{\ln a} + C, \quad a &gt; 0 \text{ 且 } a \neq 1. ]</p><ol start="4"><li><p>[ \int \sin x , dx = -\cos x + C; ]<br>[ \int \cos x , dx = \sin x + C; ]</p></li><li><p>[ \int \tan x , dx = -\ln |\cos x| + C; ]<br>[ \int \cot x , dx = \ln |\sin x| + C; ]</p></li><li><p>[ \int \sec x , dx = \ln |\sec x + \tan x| + C; ]<br>[ \int \csc x , dx = \ln |\csc x - \cot x| + C; ]</p></li><li><p>[ \int \sec^2 x , dx = \tan x + C; ]<br>[ \int \csc^2 x , dx = -\cot x + C; ]</p></li><li><p>[ \int \sec x \tan x , dx = \sec x + C; ]<br>[ \int \csc x \cot x , dx = -\csc x + C. ]</p></li><li><p>[ \int \frac{1}{1+x^2} , dx = \arctan x + C; ]<br>[ \int \frac{1}{a^2 + x^2} , dx = \frac{1}{a} \arctan \frac{x}{a} + C \quad (a &gt; 0). ]</p></li><li><p>[ \int \frac{1}{\sqrt{1-x^2}} , dx = \arcsin x + C; ]<br>[ \int \frac{1}{\sqrt{a^2 - x^2}} , dx = \arcsin \frac{x}{a} + C \quad (a &gt; 0). ]</p></li><li><p>[ \int \frac{1}{\sqrt{x^2 + a^2}} , dx = \ln \left( x + \sqrt{x^2 + a^2} \right) + C \quad (\text{常见 } a = 1); ]<br>[ \int \frac{1}{\sqrt{x^2 - a^2}} , dx = \ln \left| x + \sqrt{x^2 - a^2} \right| + C \quad (|x| &gt; |a|). ]</p></li><li><p>[ \int \frac{1}{x^2 - a^2} , dx = \frac{1}{2a} \ln \left| \frac{x - a}{x + a} \right| + C; ]<br>[ \int \frac{1}{a^2 - x^2} , dx = \frac{1}{2a} \ln \left| \frac{x + a}{x - a} \right| + C. ]</p></li><li><p>[ \int \sqrt{a^2 - x^2} , dx = \frac{a^2}{2} \arcsin \frac{x}{a} + \frac{x}{2} \sqrt{a^2 - x^2} + C \quad (a &gt; |x| \geq 0). ]</p></li><li><p>[ \int \sin^2 x , dx = \frac{x}{2} - \frac{\sin 2x}{4} + C \quad \left( \sin^2 x = \frac{1 - \cos 2x}{2} \right); ]<br>[ \int \cos^2 x , dx = \frac{x}{2} + \frac{\sin 2x}{4} + C \quad \left( \cos^2 x = \frac{1 + \cos 2x}{2} \right); ]<br>[ \int \tan^2 x , dx = \tan x - x + C \quad (\tan^2 x = \sec^2 x - 1); ]<br>[ \int \cot^2 x , dx = -\cot x - x + C \quad (\cot^2 x = \csc^2 x - 1). ]</p></li></ol></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 高等数学 </tag>
+            
+            <tag> 积分 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>next数组和nextval数组求法</title>
       <link href="/2025/08/06/KMP%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/"/>
       <url>/2025/08/06/KMP%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</url>
