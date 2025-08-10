@@ -343,13 +343,6 @@
   </url>
   
   <url>
-    <loc>http://yeluogui.cloud/tags/%E6%A0%91/</loc>
-    <lastmod>2025-08-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://yeluogui.cloud/tags/%E4%BF%84%E5%9B%BD%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/</loc>
     <lastmod>2025-08-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -372,6 +365,13 @@
   
   <url>
     <loc>http://yeluogui.cloud/tags/%E7%83%98%E7%84%99/</loc>
+    <lastmod>2025-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/tags/%E6%A0%91/</loc>
     <lastmod>2025-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
