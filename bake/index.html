@@ -229,18 +229,18 @@
 
           <div class="content bake-page">
             
-  <!-- 测试元素（发布时可移除） -->
-  <div class="bake-test" style="display: none;">CSS注入测试</div>
+  <!-- 强制样式测试（发布后可删除） -->
+  <div style="display:none;color:red!important;font-size:30px!important;">STYLE_TEST</div>
 
-  <div class="bake-container">
-    <div class="bake-header">
-      <h1 class="bake-title">个人烘焙心得</h1>
+  <div class="bake-container" style="width:100%;max-width:none;margin:0;padding:40px 5%;box-sizing:border-box;">
+    <div class="bake-header" style="text-align:center;margin:0 auto 60px;max-width:1200px;">
+      <h1 class="bake-title" style="font-size:3em;margin-bottom:20px;font-weight:300;color:#333;line-height:1.2;">个人烘焙心得</h1>
       
-        <p class="bake-subtitle">以甜品击碎黑暗！</p>
+        <p class="bake-subtitle" style="color:#999;font-size:1.5em;font-weight:300;">以甜品击碎黑暗！</p>
       
     </div>
 
-    <div class="bake-canvas">
+    <div class="bake-canvas" style="display:flex;flex-direction:column;gap:50px;max-width:1400px;margin:0 auto;">
       
         
         
@@ -253,19 +253,20 @@
         
 
         
-          <article class="bake-column">
-            <div class="bake-card">
-              <a href="/2025/08/09/%E6%B5%8B%E8%AF%95/" class="bake-card-link">
-                <div class="bake-card-image-wrapper">
+          <article class="bake-column" style="width:100%;">
+            <div class="bake-card" style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 15px 30px -10px rgba(0,0,0,0.1);transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);height:400px;">
+              <a href="/2025/08/09/%E6%B5%8B%E8%AF%95/" class="bake-card-link" style="display:flex;height:100%;width:100%;text-decoration:none;color:inherit;">
+                <div class="bake-card-image-wrapper" style="width:45%;height:100%;overflow:hidden;position:relative;flex-shrink:0;">
                   <img src="https://s3.bmp.ovh/imgs/2025/08/10/bcf749d2fa59315b.png" 
                        alt="测试" 
                        class="bake-card-image"
+                       style="width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);"
                        loading="lazy">
                 </div>
-                <div class="bake-card-content">
-                  <h2 class="bake-card-title">测试</h2>
-                  <div class="bake-card-excerpt">这是一款美味的抹茶慕斯制作过程</div>
-                  <div class="bake-card-meta">
+                <div class="bake-card-content" style="width:55%;padding:50px;display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;">
+                  <h2 class="bake-card-title" style="font-size:2.2em;margin-bottom:25px;color:#333;font-weight:400;line-height:1.3;">测试</h2>
+                  <div class="bake-card-excerpt" style="color:#666;font-size:1.1em;line-height:1.8;margin-bottom:30px;">这是一款美味的抹茶慕斯制作过程</div>
+                  <div class="bake-card-meta" style="font-size:0.9em;color:#999;letter-spacing:0.5px;">
                     <time datetime="2025-08-09T14:46:12.000Z" class="bake-card-date">2025-08-09</time>
                   </div>
                 </div>
