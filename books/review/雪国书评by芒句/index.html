@@ -35,7 +35,7 @@
 <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yeluogui.cloud","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yeluogui.cloud","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="《雪国》是川端诺奖三部曲之一，读之令人绝美（洁净之美，虚无之美，悲哀之美），很难想象仅三个人物，几个简单场景就能写出那么令人印象深刻的文字。   表面看是一男二女的感情戏码，实际内在的却是镜面反射般的三位一体，某种程度上是本我（驹子），自我（岛村），超我（叶子）的一体两面而又各自救赎之路。   所以从这个角度出发，《雪国》可以说是把个体的多重思想写活了，你甚至可以从中看出自己的影子。   文中借助">
@@ -694,6 +694,39 @@
     // 这里用简单轮换逻辑替代默认方法
   };
   document.body.appendChild(sakanaJs);
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 为每个代码块添加功能
+  document.querySelectorAll('.highlight-container').forEach(function(container) {
+    const highlight = container.querySelector('.highlight');
+    const code = highlight.querySelector('pre code') || highlight.querySelector('pre');
+    
+    // 添加语言标签
+    if (!container.querySelector('.highlight-lang')) {
+      const langMatch = code.className.match(/language-(\w+)/) || 
+                       highlight.className.match(/highlight-(\w+)/);
+      if (langMatch) {
+        const lang = document.createElement('div');
+        lang.className = 'highlight-lang';
+        lang.textContent = langMatch[1].toUpperCase();
+        container.appendChild(lang);
+      }
+    }
+    
+    // 添加折叠按钮
+    if (!container.querySelector('.code-expand-btn')) {
+      const expandBtn = document.createElement('i');
+      expandBtn.className = 'fa fa-chevron-down code-expand-btn';
+      expandBtn.title = '折叠代码';
+      container.appendChild(expandBtn);
+      
+      expandBtn.addEventListener('click', function() {
+        container.classList.toggle('code-collapsed');
+      });
+    }
+  });
+});
 </script>
 <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
 <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
