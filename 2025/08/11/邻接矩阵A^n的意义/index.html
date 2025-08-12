@@ -935,39 +935,6 @@ mjx-container[display="true"] + br {
   };
   document.body.appendChild(sakanaJs);
 </script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // 为每个代码块添加功能
-  document.querySelectorAll('.highlight-container').forEach(function(container) {
-    const highlight = container.querySelector('.highlight');
-    const code = highlight.querySelector('pre code') || highlight.querySelector('pre');
-    
-    // 添加语言标签
-    if (!container.querySelector('.highlight-lang')) {
-      const langMatch = code.className.match(/language-(\w+)/) || 
-                       highlight.className.match(/highlight-(\w+)/);
-      if (langMatch) {
-        const lang = document.createElement('div');
-        lang.className = 'highlight-lang';
-        lang.textContent = langMatch[1].toUpperCase();
-        container.appendChild(lang);
-      }
-    }
-    
-    // 添加折叠按钮
-    if (!container.querySelector('.code-expand-btn')) {
-      const expandBtn = document.createElement('i');
-      expandBtn.className = 'fa fa-chevron-down code-expand-btn';
-      expandBtn.title = '折叠代码';
-      container.appendChild(expandBtn);
-      
-      expandBtn.addEventListener('click', function() {
-        container.classList.toggle('code-collapsed');
-      });
-    }
-  });
-});
-</script>
 <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
 <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
 <script type="text/javascript" src="/js/firework.js"></script>
