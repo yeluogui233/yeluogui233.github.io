@@ -1175,7 +1175,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #6a09d6;
+  background: #93ffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2689,55 +2689,34 @@ mjx-container + br {
     margin: 8px 0 0;
   }
 }
-code {
+/* ========== 单行内联代码（文章正文中的 `code`） ========== */
+.post-body code {
   padding: 1px 5px;
   font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
-/* font-size: 0.91rem; */
+  font-size: 0.91rem;
   color: #e96900;
   background-color: #f8f8f8;
   border-radius: 2px;
 }
-pre code {
-  padding: 0;
-  color: #e8eaf6;
-  background-color: #272822;
-}
-pre[class*="language-"] {
-  padding: 1.2em;
-  margin: 0.5em 0;
-}
-code[class*="language-"],
-pre[class*="language-"] {
-  color: #e8eaf6;
-  white-space: pre-wrap !important;
-}
-*
-.line-numbers-rows {
-  border-right-width: 0px !important;
-}
-.line-numbers {
-  padding: 1.5rem 1.5rem 1.5rem 3.2rem !important;
-  margin: 1rem 0 !important;
-  background: #272822;
-  overflow: auto;
-  border-radius: 0.35rem;
-  tab-size: 4;
-}
-pre {
+/* ========== 多行代码块外层（`pre`） ========== */
+.post-body pre {
+  position: relative; /* 让三个点定位正常 */
   padding: 1.5rem !important;
   margin: 1rem 0 !important;
-  background: #272822;
+  background: #272822; /* 深色背景 */
   overflow: auto;
   border-radius: 0.35rem;
   tab-size: 4;
 }
-pre::before {
-  content: "";
-  height: 16px;
-  margin-bottom: 0;
-  display: block;
+/* ========== 多行代码块内容（`pre code`） ========== */
+.post-body pre code {
+  padding: 0;
+  color: #e8eaf6; /* 默认文字颜色 */
+  background-color: transparent; /* 避免背景叠加 */
+  white-space: pre !important; /* 保持换行 */
 }
-pre::after {
+/* ========== 三个点装饰（左上角） ========== */
+.post-body pre::after {
   content: " ";
   position: absolute;
   border-radius: 50%;
@@ -2747,17 +2726,21 @@ pre::after {
   top: 0;
   left: 12px;
   margin-top: 12px;
-  -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
   box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
 }
-code {
-  padding: 1px 5px;
-  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
-  font-size: 0.91rem;
-  color: #e96900;
-  background-color: #f8f8f8;
-  border-radius: 2px;
+/* ========== 行号样式（如果你启用了 line-numbers 插件） ========== */
+.post-body .line-numbers {
+  padding: 1.5rem 1.5rem 1.5rem 3.2rem !important;
+  margin: 1rem 0 !important;
+  background: #272822;
+  overflow: auto;
+  border-radius: 0.35rem;
+  tab-size: 4;
 }
+.post-body .line-numbers-rows {
+  border-right-width: 0px !important;
+}
+/* ========== 复制按钮、语言标签、展开按钮定位 ========== */
 .code_copy {
   position: absolute;
   top: 0.7rem;
@@ -2772,7 +2755,6 @@ code {
   right: 60px;
   line-height: 0;
   font-weight: bold;
-  font-family: normal;
   z-index: 1;
   filter: invert(50%);
   cursor: pointer;
@@ -2790,30 +2772,11 @@ code {
 }
 .code-closed .code-expand {
   transform: rotate(-180deg) !important;
-  transition: all 0.3s;
 }
 .code-closed pre::before {
   height: 0px;
 }
-pre code {
-  padding: 0;
-  color: #e8eaf6;
-  background-color: #272822;
-}
-pre[class*="language-"] {
-  padding: 1.2em;
-  margin: 0.5em 0;
-}
-code[class*="language-"],
-pre[class*="language-"] {
-  color: #e8eaf6;
-  white-space: pre-wrap !important;
-}
-.post-body code[class*="language-"],
-.post-body pre[class*="language-"] {
-  white-space: pre !important;
-}
-/* Tomorrow Theme - 只保留语法颜色，不包含布局 */
+/* ========== Tomorrow Theme 颜色 ========== */
 .token.comment,
 .token.block-comment,
 .token.prolog,
