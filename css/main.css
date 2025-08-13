@@ -1175,7 +1175,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c83301;
+  background: #3df9ed;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2689,130 +2689,90 @@ mjx-container + br {
     margin: 8px 0 0;
   }
 }
-/* ================== 单行内联代码 ================== */
-.post-body code {
-  padding: 1px 5px !important;
-  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace !important;
-  font-size: 0.91rem !important;
-  color: #e96900 !important;
-  background-color: #f8f8f8 !important;
-  border-radius: 2px !important;
+/* ================== 浅色 Mac 风格代码块 + 三个点 ================== */
+/* 代码块容器 */
+.post-body pre {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+  color: #333;
+  padding: 24px 20px 16px 20px; /* 上方多留空间给三点 */
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  overflow-x: auto;
+  font-family: 'SF Mono', 'Fira Code', 'Source Code Pro', monospace;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  border: 1px solid rgba(0,0,0,0.1);
+  position: relative;
+  transition: all 0.3s ease;
+  white-space: pre;
 }
-/* ================== 多行代码块外层 (Mac 风格窗口) ================== */
-.post-body .code-editor-wrapper {
-  background: #f5f5f5 !important /* 窗口背景 */;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-  border-radius: 8px !important;
-  position: relative !important;
-  margin: 1rem 0 !important;
-  padding: 0 !important;
-}
-/* ================== 顶部栏 ================== */
-.post-body .code-editor-header {
-  background: #eaeaea !important /* 顶部栏颜色 */;
-  height: 28px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-}
-/* ================== 顶部三点装饰 ================== */
-.post-body .code-editor-header .dot {
+/* macOS 三个点 */
+.post-body pre::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 16px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  margin-right: 6px;
-  background: #ff5f56;
-  box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+  background: #ff5f56; /* 红色 */
+  box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f; /* 黄、绿 */
 }
-/* ================== 内部代码区域 ================== */
-.post-body .code-editor-content {
-  padding: 1rem !important;
-  overflow: auto !important;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+/* 滚动条美化 */
+.post-body pre::-webkit-scrollbar {
+  height: 8px;
 }
-.post-body .code-editor-content pre {
-  background: #272822 !important /* 内部深色背景 */;
-  color: #e8eaf6 !important /* 默认文字颜色 */;
-  padding: 1rem !important;
-  margin: 0 !important;
-  border-radius: 0 !important;
-  overflow: auto !important;
-  white-space: pre !important;
+.post-body pre::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 4px;
 }
-/* ================== 针对 Prism 生成的 language-xxx 类 ================== */
-.post-body pre[class*="language-"],
-.post-body pre[class*="language-"] code {
-  background: #272822 !important;
-  color: #e8eaf6 !important;
-  padding: 1rem !important;
+.post-body pre::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
 }
-/* ================== 行号样式 ================== */
-.post-body .line-numbers {
-  padding: 1rem 1rem 1rem 3.2rem !important;
-  margin: 0 !important;
-  background: transparent !important /* 内部透明，让外层 Mac 窗口背景显示 */;
-  overflow: auto !important;
-  border-radius: 0 !important;
-  tab-size: 4 !important;
+/* 高亮行 */
+.post-body .highlighted {
+  background: rgba(255,200,0,0.15);
+  display: block;
+  margin: 0 -20px;
+  padding: 0 20px;
+  border-left: 3px solid #fc0;
 }
-.post-body .line-numbers-rows {
-  border-right-width: 0px !important;
+/* 内联代码 */
+.post-body code {
+  background: rgba(255,200,0,0.1);
+  color: #b85c00;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-family: 'SF Mono', 'Fira Code', monospace;
 }
-/* ================== 复制按钮、语言标签、展开按钮 ================== */
-.code_copy {
-  position: absolute !important;
-  top: 0.7rem !important;
-  right: 35px !important;
-  z-index: 1 !important;
-  filter: invert(50%) !important;
-  cursor: pointer !important;
+/* 悬停效果 */
+.post-body pre:hover {
+  box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
 }
-.code_lang {
-  position: absolute !important;
-  top: 1.2rem !important;
-  right: 60px !important;
-  line-height: 0 !important;
-  font-weight: bold !important;
-  z-index: 1 !important;
-  filter: invert(50%) !important;
-  cursor: pointer !important;
-}
-.code-expand {
-  position: absolute !important;
-  top: 4px !important;
-  right: 0px !important;
-  filter: invert(50%) !important;
-  padding: 7px 10px !important;
-  z-index: 1 !important;
-  cursor: pointer !important;
-  transition: all 0.3s !important;
-  transform: rotate(0deg) !important;
-}
-.code-closed .code-expand {
-  transform: rotate(-180deg) !important;
-}
-/* ===== Prism 高亮示例 ===== */
+/* 彩色语法高亮（Prism 默认支持） */
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #998;
+  color: #999;
   font-style: italic;
 }
 .token.punctuation {
-  color: #333;
+  color: #555;
 }
 .token.property,
 .token.tag,
-.token.boolean,
-.token.number,
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #905;
+  color: #d73a49;
+}
+.token.boolean,
+.token.number {
+  color: #005cc5;
 }
 .token.selector,
 .token.attr-name,
@@ -2820,36 +2780,33 @@ mjx-container + br {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #690;
+  color: #22863a;
 }
 .token.operator,
 .token.entity,
 .token.url,
-.token.language-css .token.string,
+.language-css .token.string,
 .style .token.string {
-  color: #9a6e3a;
+  color: #6f42c1;
 }
 .token.atrule,
-.token.attr-value,
 .token.keyword {
-  color: #07a;
+  color: #d73a49;
 }
 .token.function,
 .token.class-name {
-  color: #dd4a68;
+  color: #6f42c1;
 }
 .token.regex,
-.token.important,
-.token.variable {
-  color: #e90;
+.token.important {
+  color: #e36209;
 }
-.token.important,
+.token.variable {
+  color: #e36209;
+}
 .token.bold {
   font-weight: bold;
 }
 .token.italic {
   font-style: italic;
-}
-.token.entity {
-  cursor: help;
 }
