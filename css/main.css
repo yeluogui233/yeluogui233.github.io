@@ -1176,7 +1176,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #040f32;
+  background: #8cff2e;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2690,165 +2690,162 @@ mjx-container + br {
     margin: 8px 0 0;
   }
 }
-/* ====== 单行内联代码，仅非 pre code ====== */
-.post-body code:not(pre code) {
-  background-color: var(--code-background);
-  padding: 1px 5px;
-  border-radius: 2px;
-  color: #d14; /* 深红文字，浅色背景下可读 */
+blockquote {
+  background: rgba(255,248,220,0.051);
+  border-left: 4px solid #f0c674;
+  color: #555;
+  margin: 0;
+  padding: 0 15px;
+}
+blockquote cite::before {
+  content: '-';
+  padding: 0 5px;
+}
+.code-editor-wrapper {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
   font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
   font-size: 0.91rem;
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  position: relative;
 }
-/* ====== 禁用主题自带 pre::before 装饰点 ====== */
-.post-body pre::before {
-  content: none;
+.code-editor-header {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  background: #e0e0e0;
+  border-bottom: 1px solid #d0d0d0;
 }
-/* ====== 三个点装饰（只保留一套） ====== */
-.post-body pre::after {
-  content: " ";
-  position: absolute;
-  border-radius: 50%;
-  background: #ff5f56; /* 红点 */
+.code-editor-header .dot {
   width: 12px;
   height: 12px;
-  top: 12px;
-  left: 12px;
-  box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f; /* 黄绿点 */
-  z-index: 2;
+  border-radius: 50%;
+  margin-right: 6px;
 }
-/* ====== 多行代码块样式 ====== */
-.post-body pre {
+.code-editor-header .dot.red {
+  background: #ff5f56;
+}
+.code-editor-header .dot.yellow {
+  background: #ffbd2e;
+}
+.code-editor-header .dot.green {
+  background: #27c93f;
+}
+.code-editor-content {
   position: relative;
-  padding: 1.5rem;
-  margin: 1rem 0;
-  background: var(--pre-background); /* 浅色背景 */
+  padding: 1rem;
+  background: #fff;
   overflow: auto;
-  border-radius: 0.35rem;
-  tab-size: 4;
-  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
-  font-size: 0.91rem;
 }
-/* ====== 多行代码块内容 ====== */
-.post-body pre code {
-  padding: 0;
-  color: #333; /* 浅色背景下文字为深色 */
-  background-color: transparent;
+.code-editor-content pre {
+  margin: 0;
+  background: transparent;
+  color: #333;
   white-space: pre;
   font-family: inherit;
   font-size: inherit;
 }
-/* ====== Prism 语言类背景统一 ====== */
-.post-body pre[class*="language-"],
-.post-body pre[class*="language-"] code {
+.code-editor-content pre[class*="language-"],
+.code-editor-content pre[class*="language-"] code {
   background: transparent;
   color: inherit;
   padding: 0;
 }
-/* ====== 行号插件 ====== */
-.post-body .line-numbers {
-  padding: 1.5rem 1.5rem 1.5rem 3.2rem;
-  margin: 1rem 0;
-  background: var(--pre-background);
-  overflow: auto;
-  border-radius: 0.35rem;
+.code-editor-content .line-numbers {
+  padding-left: 3rem;
   tab-size: 4;
 }
-.post-body .line-numbers-rows {
+.code-editor-content .line-numbers-rows {
   border-right-width: 0px;
 }
-/* ====== 复制按钮、语言标签、折叠按钮 ====== */
-.code_copy {
-  position: absolute;
-  top: 0.7rem;
-  right: 35px;
-  z-index: 3;
-  filter: invert(0%); /* 浅色下不用反色太强 */
-  cursor: pointer;
+.post-body code:not(pre code) {
+  background-color: #f5f5f5;
+  padding: 1px 5px;
+  border-radius: 2px;
+  color: #d14;
+  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
+  font-size: 0.91rem;
 }
-.code_lang {
-  position: absolute;
-  top: 1.2rem;
-  right: 60px;
-  line-height: 0;
-  font-weight: bold;
-  z-index: 3;
-  filter: invert(0%);
-  cursor: pointer;
-}
+.code_copy,
+.code_lang,
 .code-expand {
   position: absolute;
-  top: 4px;
-  right: 0px;
-  filter: invert(0%);
-  padding: 7px 10px;
+  top: 6px;
   z-index: 3;
   cursor: pointer;
-  transition: all 0.3s;
-  transform: rotate(0deg);
+  filter: invert(0%);
+}
+.code_copy {
+  right: 35px;
+}
+.code_lang {
+  right: 60px;
+}
+.code-expand {
+  right: 0;
 }
 .code-closed .code-expand {
   transform: rotate(-180deg);
 }
-.code-closed pre::before {
-  height: 0px;
-}
-/* ========== Tomorrow Theme 颜色 ========== */
 .token.comment,
-.token.block-comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #8e908c !important;
+  color: #998;
+  font-style: italic;
 }
 .token.punctuation {
-  color: #999 !important;
-}
-.token.tag,
-.token.attr-name,
-.token.namespace,
-.token.deleted {
-  color: #e2777a !important;
-}
-.token.function-name {
-  color: #6196cc !important;
-}
-.token.boolean,
-.token.number,
-.token.function {
-  color: #f08d49 !important;
+  color: #333;
 }
 .token.property,
-.token.class-name,
+.token.tag,
+.token.boolean,
+.token.number,
 .token.constant,
-.token.symbol {
-  color: #f8c555 !important;
+.token.symbol,
+.token.deleted {
+  color: #905;
 }
 .token.selector,
-.token.important,
-.token.atrule,
-.token.keyword,
-.token.builtin {
-  color: #cc99cd !important;
-}
+.token.attr-name,
 .token.string,
 .token.char,
-.token.attr-value,
-.token.regex,
-.token.variable {
-  color: #7ec699 !important;
+.token.builtin,
+.token.inserted {
+  color: #690;
 }
 .token.operator,
 .token.entity,
-.token.url {
-  color: #67cdcc !important;
+.token.url,
+.token.language-css .token.string,
+.style .token.string {
+  color: #9a6e3a;
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #07a;
+}
+.token.function,
+.token.class-name {
+  color: #dd4a68;
+}
+.token.regex,
+.token.important,
+.token.variable {
+  color: #e90;
 }
 .token.important,
 .token.bold {
-  font-weight: bold !important;
+  font-weight: bold;
 }
 .token.italic {
-  font-style: italic !important;
+  font-style: italic;
 }
 .token.entity {
-  cursor: help !important;
+  cursor: help;
 }
