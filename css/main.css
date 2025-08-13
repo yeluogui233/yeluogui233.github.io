@@ -249,8 +249,8 @@ hr {
   margin: 40px 0;
 }
 blockquote {
-  background: rgba(208,167,2,0.051);
-  border-left: 4px solid #d0a702;
+  background: #7d7d1d;
+  border-left: 4px solid #676767;
   color: #333;
   margin: 0;
   padding: 0 15px;
@@ -1176,7 +1176,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #3d3620;
+  background: #ff7ebb;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2690,100 +2690,109 @@ mjx-container + br {
     margin: 8px 0 0;
   }
 }
-/* ===== Mac 风格代码块窗口 ===== */
-.post-body .code-editor-wrapper {
-  margin: 2rem 0 !important;
-  border-radius: 8px !important;
-  overflow: hidden !important;
+/* ================== 单行内联代码 ================== */
+.post-body code {
+  padding: 1px 5px !important;
   font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace !important;
   font-size: 0.91rem !important;
-  background: #1e1e1e !important;
-  border: 1px solid #e0e0e0 !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+  color: #e96900 !important;
+  background-color: #f8f8f8 !important;
+  border-radius: 2px !important;
+}
+/* ================== 多行代码块外层 (Mac 风格窗口) ================== */
+.post-body .code-editor-wrapper {
+  background: #f5f5f5 !important /* 窗口背景 */;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  border-radius: 8px !important;
   position: relative !important;
-}
-/* ===== 顶部栏及三个点 ===== */
-.post-body .code-editor-header {
-  display: flex !important;
-  align-items: center !important;
-  height: 28px !important;
-  padding: 0 10px !important;
-  background: #e0e0e0 !important;
-  border-bottom: 1px solid #d0d0d0 !important;
-}
-.post-body .code-editor-header .dot {
-  width: 12px !important;
-  height: 12px !important;
-  border-radius: 50% !important;
-  margin-right: 6px !important;
-}
-.post-body .code-editor-header .dot.red {
-  background: #ff5f56 !important;
-}
-.post-body .code-editor-header .dot.yellow {
-  background: #ffbd2e !important;
-}
-.post-body .code-editor-header .dot.green {
-  background: #27c93f !important;
-}
-/* ===== 内容区域 ===== */
-.post-body .code-editor-content {
-  position: relative !important;
-  padding: 1rem !important;
-  background: #1e1e1e !important;
-  overflow: auto !important;
-}
-.post-body .code-editor-content pre {
-  margin: 0 !important;
-  background: transparent !important;
-  color: #e8eaf6 !important;
-  white-space: pre !important;
-  font-family: inherit !important;
-  font-size: inherit !important;
-}
-.post-body .code-editor-content pre[class*="language-"],
-.post-body .code-editor-content pre[class*="language-"] code {
-  background: transparent !important;
-  color: inherit !important;
+  margin: 1rem 0 !important;
   padding: 0 !important;
 }
-/* ===== 行号插件 ===== */
-.post-body .code-editor-content .line-numbers {
-  padding-left: 3rem !important;
+/* ================== 顶部栏 ================== */
+.post-body .code-editor-header {
+  background: #eaeaea !important /* 顶部栏颜色 */;
+  height: 28px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+/* ================== 顶部三点装饰 ================== */
+.post-body .code-editor-header .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+  background: #ff5f56;
+  box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+}
+/* ================== 内部代码区域 ================== */
+.post-body .code-editor-content {
+  padding: 1rem !important;
+  overflow: auto !important;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.post-body .code-editor-content pre {
+  background: #272822 !important /* 内部深色背景 */;
+  color: #e8eaf6 !important /* 默认文字颜色 */;
+  padding: 1rem !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  overflow: auto !important;
+  white-space: pre !important;
+}
+/* ================== 针对 Prism 生成的 language-xxx 类 ================== */
+.post-body pre[class*="language-"],
+.post-body pre[class*="language-"] code {
+  background: #272822 !important;
+  color: #e8eaf6 !important;
+  padding: 1rem !important;
+}
+/* ================== 行号样式 ================== */
+.post-body .line-numbers {
+  padding: 1rem 1rem 1rem 3.2rem !important;
+  margin: 0 !important;
+  background: transparent !important /* 内部透明，让外层 Mac 窗口背景显示 */;
+  overflow: auto !important;
+  border-radius: 0 !important;
   tab-size: 4 !important;
 }
-.post-body .code-editor-content .line-numbers-rows {
+.post-body .line-numbers-rows {
   border-right-width: 0px !important;
 }
-/* ===== 单行 inline code ===== */
-.post-body code:not(pre code) {
-  background-color: #f8f8f8 !important;
-  padding: 1px 5px !important;
-  border-radius: 2px !important;
-  color: #d14 !important;
-  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace !important;
-  font-size: 0.91rem !important;
-}
-/* ===== 按钮 ===== */
-.post-body .code_copy,
-.post-body .code_lang,
-.post-body .code-expand {
+/* ================== 复制按钮、语言标签、展开按钮 ================== */
+.code_copy {
   position: absolute !important;
-  top: 6px !important;
-  z-index: 3 !important;
-  cursor: pointer !important;
-  filter: invert(0%) !important;
-}
-.post-body .code_copy {
+  top: 0.7rem !important;
   right: 35px !important;
+  z-index: 1 !important;
+  filter: invert(50%) !important;
+  cursor: pointer !important;
 }
-.post-body .code_lang {
+.code_lang {
+  position: absolute !important;
+  top: 1.2rem !important;
   right: 60px !important;
+  line-height: 0 !important;
+  font-weight: bold !important;
+  z-index: 1 !important;
+  filter: invert(50%) !important;
+  cursor: pointer !important;
 }
-.post-body .code-expand {
-  right: 0 !important;
+.code-expand {
+  position: absolute !important;
+  top: 4px !important;
+  right: 0px !important;
+  filter: invert(50%) !important;
+  padding: 7px 10px !important;
+  z-index: 1 !important;
+  cursor: pointer !important;
+  transition: all 0.3s !important;
+  transform: rotate(0deg) !important;
 }
-.post-body .code-closed .code-expand {
+.code-closed .code-expand {
   transform: rotate(-180deg) !important;
 }
 /* ===== Prism 高亮示例 ===== */
