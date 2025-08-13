@@ -1175,7 +1175,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #93ffff;
+  background: #88ffa4;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2691,90 +2691,97 @@ mjx-container + br {
 }
 /* ========== 单行内联代码（文章正文中的 `code`） ========== */
 .post-body code {
-  padding: 1px 5px;
-  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
-  font-size: 0.91rem;
-  color: #e96900;
-  background-color: #f8f8f8;
-  border-radius: 2px;
+  padding: 1px 5px !important;
+  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace !important;
+  font-size: 0.91rem !important;
+  color: #e96900 !important;
+  background-color: #f8f8f8 !important;
+  border-radius: 2px !important;
 }
 /* ========== 多行代码块外层（`pre`） ========== */
 .post-body pre {
-  position: relative; /* 让三个点定位正常 */
+  position: relative !important; /* 让三个点定位正常 */
   padding: 1.5rem !important;
   margin: 1rem 0 !important;
-  background: #272822; /* 深色背景 */
-  overflow: auto;
-  border-radius: 0.35rem;
-  tab-size: 4;
+  background: #272822 !important; /* 深色背景 */
+  overflow: auto !important;
+  border-radius: 0.35rem !important;
+  tab-size: 4 !important;
 }
 /* ========== 多行代码块内容（`pre code`） ========== */
 .post-body pre code {
-  padding: 0;
-  color: #e8eaf6; /* 默认文字颜色 */
-  background-color: transparent; /* 避免背景叠加 */
+  padding: 0 !important;
+  color: #e8eaf6 !important; /* 默认文字颜色 */
+  background-color: transparent !important; /* 避免背景叠加 */
   white-space: pre !important; /* 保持换行 */
+}
+/* ========== 针对 Prism 生成的 language-xxx 类 ========= */
+.post-body pre[class*="language-"],
+.post-body pre[class*="language-"] code {
+  background: #272822 !important;
+  color: #e8eaf6 !important;
+  padding: 1.5rem !important;
 }
 /* ========== 三个点装饰（左上角） ========== */
 .post-body pre::after {
   content: " ";
-  position: absolute;
-  border-radius: 50%;
-  background: #ff5f56;
-  width: 12px;
-  height: 12px;
-  top: 0;
-  left: 12px;
-  margin-top: 12px;
-  box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+  position: absolute !important;
+  border-radius: 50% !important;
+  background: #ff5f56 !important;
+  width: 12px !important;
+  height: 12px !important;
+  top: 0 !important;
+  left: 12px !important;
+  margin-top: 12px !important;
+  box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f !important;
 }
-/* ========== 行号样式（如果你启用了 line-numbers 插件） ========== */
+/* ========== 行号样式（如果启用了 line-numbers 插件） ========== */
 .post-body .line-numbers {
   padding: 1.5rem 1.5rem 1.5rem 3.2rem !important;
   margin: 1rem 0 !important;
-  background: #272822;
-  overflow: auto;
-  border-radius: 0.35rem;
-  tab-size: 4;
+  background: #272822 !important;
+  overflow: auto !important;
+  border-radius: 0.35rem !important;
+  tab-size: 4 !important;
 }
 .post-body .line-numbers-rows {
   border-right-width: 0px !important;
 }
 /* ========== 复制按钮、语言标签、展开按钮定位 ========== */
 .code_copy {
-  position: absolute;
-  top: 0.7rem;
-  right: 35px;
-  z-index: 1;
-  filter: invert(50%);
-  cursor: pointer;
+  position: absolute !important;
+  top: 0.7rem !important;
+  right: 35px !important;
+  z-index: 1 !important;
+  filter: invert(50%) !important;
+  cursor: pointer !important;
 }
 .code_lang {
-  position: absolute;
-  top: 1.2rem;
-  right: 60px;
-  line-height: 0;
-  font-weight: bold;
-  z-index: 1;
-  filter: invert(50%);
-  cursor: pointer;
+  position: absolute !important;
+  top: 1.2rem !important;
+  right: 60px !important;
+  line-height: 0 !important;
+  font-weight: bold !important;
+  z-index: 1 !important;
+  filter: invert(50%) !important;
+  cursor: pointer !important;
 }
 .code-expand {
-  position: absolute;
-  top: 4px;
-  right: 0px;
-  filter: invert(50%);
-  padding: 7px 10px;
-  z-index: 1;
-  cursor: pointer;
-  transition: all 0.3s;
-  transform: rotate(0deg);
+  position: absolute !important;
+  top: 4px !important;
+  right: 0px !important;
+  filter: invert(50%) !important;
+  padding: 7px 10px !important;
+  z-index: 1 !important;
+  cursor: pointer !important;
+  transition: all 0.3s !important;
+  transform: rotate(0deg) !important;
 }
 .code-closed .code-expand {
   transform: rotate(-180deg) !important;
 }
 .code-closed pre::before {
-  height: 0px;
+  height: 0px !important;
 }
 /* ========== Tomorrow Theme 颜色 ========== */
 .token.comment,
@@ -2782,57 +2789,57 @@ mjx-container + br {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #8e908c;
+  color: #8e908c !important;
 }
 .token.punctuation {
-  color: #999;
+  color: #999 !important;
 }
 .token.tag,
 .token.attr-name,
 .token.namespace,
 .token.deleted {
-  color: #e2777a;
+  color: #e2777a !important;
 }
 .token.function-name {
-  color: #6196cc;
+  color: #6196cc !important;
 }
 .token.boolean,
 .token.number,
 .token.function {
-  color: #f08d49;
+  color: #f08d49 !important;
 }
 .token.property,
 .token.class-name,
 .token.constant,
 .token.symbol {
-  color: #f8c555;
+  color: #f8c555 !important;
 }
 .token.selector,
 .token.important,
 .token.atrule,
 .token.keyword,
 .token.builtin {
-  color: #cc99cd;
+  color: #cc99cd !important;
 }
 .token.string,
 .token.char,
 .token.attr-value,
 .token.regex,
 .token.variable {
-  color: #7ec699;
+  color: #7ec699 !important;
 }
 .token.operator,
 .token.entity,
 .token.url {
-  color: #67cdcc;
+  color: #67cdcc !important;
 }
 .token.important,
 .token.bold {
-  font-weight: bold;
+  font-weight: bold !important;
 }
 .token.italic {
-  font-style: italic;
+  font-style: italic !important;
 }
 .token.entity {
-  cursor: help;
+  cursor: help !important;
 }
