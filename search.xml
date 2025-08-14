@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>408算法题解法</title>
+      <link href="/2025/08/14/408%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3%E6%B3%95/"/>
+      <url>/2025/08/14/408%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<p>[TOC]</p><h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本文整合自王道和里昂学长的PPT，是完整的408代码大题解题方案，整合好的pdf文档可以联系我获取</p><h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h6 id=""><a href="#" class="headerlink" title=""></a><img src="https://s3.bmp.ovh/imgs/2025/08/14/b31df34148c3f86a.png" alt="王道强化课快速排序代码"></h6><p>快速排序算法以huafen()函数为核心</p><h3 id="如何划分？"><a href="#如何划分？" class="headerlink" title="如何划分？"></a>如何划分？</h3><h4 id="第一趟"><a href="#第一趟" class="headerlink" title="第一趟"></a>第一趟</h4><p>首先将左指针L对应的数组元素设为mid值，我们之后要将mid值和其他值对比然后找到mid值该在的位置</p><p>先从R向前寻找第一个小于mid的值（如果没有R–一直找），如果有，就把他和目前存着mid值的A[L]互换位置</p><p>再从L向后寻找第一个大于mid的值（如果没有L++一直找），如果有，就把上一步的A[R]换过来</p><h4 id="第二趟"><a href="#第二趟" class="headerlink" title="第二趟"></a>第二趟</h4><p>上一趟完成了第一次交换，把小于mid的换到了右边，而把大于mid的换到了左边</p><p>第二趟又在新的R找到了小于mid的元素，放在之前发现的左边覆盖，以此类推</p><h4 id="最后一趟"><a href="#最后一趟" class="headerlink" title="最后一趟"></a>最后一趟</h4><p><strong>当最后一趟开始时，若是L++导致L==R则</strong></p><p>A[L]换上了右边更小一点的元素。</p><p>而下一步L++，已不满足L&lt;R的条件。而这一步的L就是上一步的R(<strong>L==R</strong>)，A[R]的值已经迁移到了其左边。</p><p>因此设A[L]=mid，就把两者很好的拆开了</p><p><strong>当最后一趟开始时，若是R–导致L=R则</strong></p><p>也就是上一趟将**大于mid的A[L]**的值放到右边时，将较大的值换到了A[R]中。</p><p>此时R–到<strong>R==L</strong>，因此此时A[L]中的存储的是已经是到了还没有**R–**时的右边。</p><p>因此A[L]=mid，即可拆开</p><h3 id="快速排序算法"><a href="#快速排序算法" class="headerlink" title="快速排序算法"></a>快速排序算法</h3><p>因此在快排中调用这段代码</p><p><strong>先将A中的LR成以mid为中间的两段，左边小于mid，右边大于mid</strong></p><p>我们的划分传来的是mid的位置，因此要想把整个数组排序好，只需要排好左右一直调用。</p><p>将数组的最左边L和mid的前一个位置进行划分，穷举下去即可解决</p><h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Qsort</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> L, <span class="type">int</span> R)</span> {</span><br><span class="line">    <span class="keyword">if</span>(L &gt; R) <span class="keyword">return</span>; <span class="comment">//递归终止</span></span><br><span class="line">    <span class="type">int</span> M = huafen(A, L, R);</span><br><span class="line">    Qsort(A, L, M<span class="number">-1</span>); <span class="comment">//左半部分快排</span></span><br><span class="line">    Qsort(A, M+<span class="number">1</span>, R); <span class="comment">//右半部分快排</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">hualen</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> L, <span class="type">int</span> R)</span> {</span><br><span class="line">    <span class="type">int</span> mid = A[L];</span><br><span class="line">    <span class="keyword">while</span>(L &lt; R) {</span><br><span class="line">        <span class="keyword">while</span>(A[R] &gt;= mid &amp;&amp; L &lt; R) R--;<span class="comment">//等于号能保证其相对位置不变，稳定性这一块</span></span><br><span class="line">        A[L] = A[R];</span><br><span class="line">        <span class="keyword">while</span>(A[L] &lt;= mid &amp;&amp; L &lt; R) L++;</span><br><span class="line">        A[R] = A[L];</span><br><span class="line">    }</span><br><span class="line">    A[L] = mid;</span><br><span class="line">    <span class="keyword">return</span> L;</span><br><span class="line">}</span><br></pre></td></tr></table></figure><h2 id="划分函数的妙用"><a href="#划分函数的妙用" class="headerlink" title="划分函数的妙用"></a>划分函数的妙用</h2><p>求数组中第k小元素的方法</p><p><img src="https://s3.bmp.ovh/imgs/2025/08/14/717cb264da519ef4.png" alt="王道强化课huafen函数"></p><p>按理说我们只需要快速排序好，再直接利用数组的随机查找特性找到A[k-1]就可以</p><p>但是huafen函数可以直接找到某个元素的具体位置，我们可以直接用M接收huafen函数传来的此时的位置</p><p>若这个位置比已知位置小，则k-1在M前面，则设L=M+1继续试</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">func</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> n, <span class="type">int</span> k)</span> {</span><br><span class="line">    <span class="type">int</span> L = <span class="number">0</span>, R = n - <span class="number">1</span>, M = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>) {</span><br><span class="line">        M = huafor(A, L, R);</span><br><span class="line">        <span class="keyword">if</span>(M == k - <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(M &gt; k - <span class="number">1</span>) R = M - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(M &lt; k - <span class="number">1</span>) L = M + <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> A[k<span class="number">-1</span>];</span><br><span class="line">}</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 408 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 408 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>如何用DPS实现拓扑排序</title>
       <link href="/2025/08/14/dps%E5%AE%9E%E7%8E%B0%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/"/>
       <url>/2025/08/14/dps%E5%AE%9E%E7%8E%B0%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/</url>

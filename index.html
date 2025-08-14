@@ -358,6 +358,115 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yeluogui.cloud/2025/08/14/408%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="叶落归">
+      <meta itemprop="description" content="”我这辈子一直想信仰某种东西，“圣地亚哥说道,”然而却一直在撒谎，我没有信仰“">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="穿过长长的隧道，便是雪国">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/08/14/408%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3%E6%B3%95/" class="post-title-link" itemprop="url">408算法题解法</a>
+        </h2>
+
+        <div class="post-meta">
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-08-14 23:05:25 / 修改时间：23:46:17" itemprop="dateCreated datePublished" datetime="2025-08-14T23:05:25+08:00">2025-08-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/408/" itemprop="url" rel="index"><span itemprop="name">408</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>[TOC]</p>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本文整合自王道和里昂学长的PPT，是完整的408代码大题解题方案，整合好的pdf文档可以联系我获取</p>
+<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h6 id=""><a href="#" class="headerlink" title=""></a><img src="https://s3.bmp.ovh/imgs/2025/08/14/b31df34148c3f86a.png" alt="王道强化课快速排序代码"></h6><p>快速排序算法以huafen()函数为核心</p>
+<h3 id="如何划分？"><a href="#如何划分？" class="headerlink" title="如何划分？"></a>如何划分？</h3><h4 id="第一趟"><a href="#第一趟" class="headerlink" title="第一趟"></a>第一趟</h4><p>首先将左指针L对应的数组元素设为mid值，我们之后要将mid值和其他值对比然后找到mid值该在的位置</p>
+<p>先从R向前寻找第一个小于mid的值（如果没有R–一直找），如果有，就把他和目前存着mid值的A[L]互换位置</p>
+<p>再从L向后寻找第一个大于mid的值（如果没有L++一直找），如果有，就把上一步的A[R]换过来</p>
+<h4 id="第二趟"><a href="#第二趟" class="headerlink" title="第二趟"></a>第二趟</h4><p>上一趟完成了第一次交换，把小于mid的换到了右边，而把大于mid的换到了左边</p>
+<p>第二趟又在新的R找到了小于mid的元素，放在之前发现的左边覆盖，以此类推</p>
+<h4 id="最后一趟"><a href="#最后一趟" class="headerlink" title="最后一趟"></a>最后一趟</h4><p><strong>当最后一趟开始时，若是L++导致L==R则</strong></p>
+<p>A[L]换上了右边更小一点的元素。</p>
+<p>而下一步L++，已不满足L&lt;R的条件。而这一步的L就是上一步的R(<strong>L==R</strong>)，A[R]的值已经迁移到了其左边。</p>
+<p>因此设A[L]=mid，就把两者很好的拆开了</p>
+<p><strong>当最后一趟开始时，若是R–导致L=R则</strong></p>
+<p>也就是上一趟将**大于mid的A[L]**的值放到右边时，将较大的值换到了A[R]中。</p>
+<p>此时R–到<strong>R==L</strong>，因此此时A[L]中的存储的是已经是到了还没有**R–**时的右边。</p>
+<p>因此A[L]=mid，即可拆开</p>
+<h3 id="快速排序算法"><a href="#快速排序算法" class="headerlink" title="快速排序算法"></a>快速排序算法</h3><p>因此在快排中调用这段代码</p>
+<p><strong>先将A中的LR成以mid为中间的两段，左边小于mid，右边大于mid</strong></p>
+<p>我们的划分传来的是mid的位置，因此要想把整个数组排序好，只需要排好左右一直调用。</p>
+<p>将数组的最左边L和mid的前一个位置进行划分，穷举下去即可解决</p>
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Qsort</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> L, <span class="type">int</span> R)</span> {</span><br><span class="line">    <span class="keyword">if</span>(L &gt; R) <span class="keyword">return</span>; <span class="comment">//递归终止</span></span><br><span class="line">    <span class="type">int</span> M = huafen(A, L, R);</span><br><span class="line">    Qsort(A, L, M<span class="number">-1</span>); <span class="comment">//左半部分快排</span></span><br><span class="line">    Qsort(A, M+<span class="number">1</span>, R); <span class="comment">//右半部分快排</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">hualen</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> L, <span class="type">int</span> R)</span> {</span><br><span class="line">    <span class="type">int</span> mid = A[L];</span><br><span class="line">    <span class="keyword">while</span>(L &lt; R) {</span><br><span class="line">        <span class="keyword">while</span>(A[R] &gt;= mid &amp;&amp; L &lt; R) R--;<span class="comment">//等于号能保证其相对位置不变，稳定性这一块</span></span><br><span class="line">        A[L] = A[R];</span><br><span class="line">        <span class="keyword">while</span>(A[L] &lt;= mid &amp;&amp; L &lt; R) L++;</span><br><span class="line">        A[R] = A[L];</span><br><span class="line">    }</span><br><span class="line">    A[L] = mid;</span><br><span class="line">    <span class="keyword">return</span> L;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="划分函数的妙用"><a href="#划分函数的妙用" class="headerlink" title="划分函数的妙用"></a>划分函数的妙用</h2><p>求数组中第k小元素的方法</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/14/717cb264da519ef4.png" alt="王道强化课huafen函数"></p>
+<p>按理说我们只需要快速排序好，再直接利用数组的随机查找特性找到A[k-1]就可以</p>
+<p>但是huafen函数可以直接找到某个元素的具体位置，我们可以直接用M接收huafen函数传来的此时的位置</p>
+<p>若这个位置比已知位置小，则k-1在M前面，则设L=M+1继续试</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">func</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> n, <span class="type">int</span> k)</span> {</span><br><span class="line">    <span class="type">int</span> L = <span class="number">0</span>, R = n - <span class="number">1</span>, M = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>) {</span><br><span class="line">        M = huafor(A, L, R);</span><br><span class="line">        <span class="keyword">if</span>(M == k - <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(M &gt; k - <span class="number">1</span>) R = M - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(M &lt; k - <span class="number">1</span>) L = M + <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> A[k<span class="number">-1</span>];</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yeluogui.cloud/2025/08/14/dps%E5%AE%9E%E7%8E%B0%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1325,109 +1434,11 @@ mjx-container[display="true"] + br {
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yeluogui.cloud/2025/07/30/%E7%BD%AA%E4%B8%8E%E7%BD%9A%E2%80%94%E2%80%94%E7%BD%AA%E5%AD%BD%E4%B8%8E%E6%95%91%E8%B5%8E%E7%9A%84%E4%BA%A4%E7%BB%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="叶落归">
-      <meta itemprop="description" content="”我这辈子一直想信仰某种东西，“圣地亚哥说道,”然而却一直在撒谎，我没有信仰“">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="穿过长长的隧道，便是雪国">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/07/30/%E7%BD%AA%E4%B8%8E%E7%BD%9A%E2%80%94%E2%80%94%E7%BD%AA%E5%AD%BD%E4%B8%8E%E6%95%91%E8%B5%8E%E7%9A%84%E4%BA%A4%E7%BB%87/" class="post-title-link" itemprop="url">罪与罚——罪孽与救赎的交织</a>
-        </h2>
-
-        <div class="post-meta">
-		  
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-07-30 21:15:09 / 修改时间：21:29:02" itemprop="dateCreated datePublished" datetime="2025-07-30T21:15:09+08:00">2025-07-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">文学</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="生活让你犯下罪，爱给你带来救赎"><a href="#生活让你犯下罪，爱给你带来救赎" class="headerlink" title="生活让你犯下罪，爱给你带来救赎"></a>生活让你犯下罪，爱给你带来救赎</h1><p><img src="https://s21.ax1x.com/2025/07/30/pVtQhOP.png" alt="罪与罚人物关系图(转自知乎@七日暴雨，侵删)"></p>
-<p>本图出自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/609154805">挑战最全《罪与罚》人物关系图 - 知乎</a></p>
-<p>本书的主人公拉斯柯尔尼科夫有一个犯罪学的理论是英雄-虱子之间存在极大的区别，而他的杀人行为不是为了钱财而是为了高尚的事业乃至是英雄般的事业。因此他下定决心杀死一只自认为最无用的虱子，但是事后良心上的谴责和检察官的问话几乎逼疯了他<br>斯维德里盖洛夫和拉斯柯尔尼科夫是这本书的两面体，如果拉斯柯尔尼科夫没有遇到索妮娅或许就是另一个斯维德里盖洛夫。而如果斯维德里盖洛夫如果早一点遇到杜尼娅，也不会是这样的结局</p>
-<h2 id="斯和拉的罪孽"><a href="#斯和拉的罪孽" class="headerlink" title="斯和拉的罪孽"></a>斯和拉的罪孽</h2><p>如豆瓣一篇讨论中所说，这两人实则是过去和未来，都是年轻时期杀人，但是斯靠金钱脱罪，俨然就是英雄-虱子理论中的英雄，拥有金钱肆意作恶，害死房东的14岁女儿，又以钱让房东又招来了一位16岁的少女。甚至在得知男主的秘密后想以此要挟男主，他的恶是纯粹丑恶的<br>男主却并非这样彻头彻尾的坏人，他的一切都基于他的伟大事业，他的困倦，他在狭窄的屋子里变得心胸愈发狭窄，一个脱产的身陷囫囵的大学生会有的困境在他身上体现淋漓尽致。<br>他想做好事，他冲入火海救下两个孩子，他将身上的钱都大方的捐给可怜的遗孀。但是他又又如斯所说的随手杀掉一个放高利贷的老太婆<br>这不是伟大事业的牺牲，我们知道真正伟大的事业是对强权者的勇气，敢于斗争的精神，而非是对同样底层的小市民小人物的暴政专权。此时的拉就像他自己所说，被恶魔吸引杀了人，但是恶魔又让他在事后忏悔</p>
-<h2 id="斯和拉的救赎"><a href="#斯和拉的救赎" class="headerlink" title="斯和拉的救赎"></a>斯和拉的救赎</h2><p>当斯最后威逼杜尼娅就范时，杜尼娅在面对被强迫和杀死斯的抉择中，在必中的枪击距离下，两枪净全空，最后甚至丢掉了枪</p>
-<blockquote>
-<p>“她把枪扔了！”斯维德利盖洛夫心里说，暗暗吃惊，深深地喘了一口气。仿佛有个什么东西一下子从他心头卸下似的，也许那不只是怕死的沉重心情，而且这当儿他也未必有这种怕死的心情。这是他摆脱了另外一种更为凄凉和阴暗的心情，至于那种心情是什么，他却无论如何也说不清楚。</p>
-<p>他走到杜尼雅跟前，伸出胳膊轻轻搂住她的腰。她没抗拒，可是浑身抖得跟一片树叶似的，她抬起恳求的眼睛瞧着他。他本想说一句什么话，却光是撇了撇嘴唇，没能说出口。</p>
-<p>“你放开我！”杜尼雅央求道。</p>
-<p>斯维德利盖洛夫全身一震：她这次说“你”字，已经有点不像原先的那种口气了。</p>
-<p>“那么你不爱我？”他平静地问道。</p>
-<p>杜尼雅摇摇头表示不爱。</p>
-<p>“那么……你真办不到？……永远办不到？”他绝望地低声说。</p>
-<p>“永远办不到！”杜尼雅低声说。</p>
-<p>斯维德利盖洛夫的心里，一时间发生了一场可怕的，然而无声的斗争，他用难以形容的目光看着她。突然，他放下胳膊，回转身，很快走到窗前，站在那儿不动。</p>
-</blockquote>
-<p>斯此刻已经不是放下了死亡威胁的解放，那种奇妙的感觉，正是杜尼娅——这位宽厚仁慈善良勇敢，为了家人敢于牺牲自己，不会被困倦的生活打倒而反而感恩的女性，拯救了斯的内心，斯此刻终于明白没有“虱子和英雄”，只有芸芸平等的众生，他作恶多端又企图用钱得到自己想要的。他在杜尼娅的感化下洗脱一生的罪恶，抵住太阳穴，用了最后一颗子弹<br>而拉作为大学生，犯下这种罪过，却仍然热爱家人，对这个黑暗吃人的社会感到仇恨，因此在狭窄的公寓中诞生了他疯狂的想法。可是索妮娅听了之后没有企图想让他脱罪反而想让他自首。<br>也就是<br>他骤然记起索尼雅的话：“你要走到十字路口，向人们膜拜，亲吻土地，因为你对土地也有罪。你要对全世界大声说道：‘我是杀人犯！’”<br>没错，正如索妮娅和杜尼娅所说，你杀死的并不是虱子而是活生生的人，有人流血了。<br>可索妮娅依旧同情男主的不幸，依旧感动于男主的道德，又依旧无法自拔的爱上男主，随他去西伯利亚，直到尾声男主才真正认识到自己的错误，认识到眼前的幸福，意识到自己无限的爱着索妮娅。意识到即使在无比困苦的生活中，也有人铿锵不倒，怀抱善意。<br>正如男主曾经对索妮娅所说的“我不是对您下跪，我是对人类的全部苦难下跪。”</p>
-<p>没错，索妮娅在苦难中活下去的信念，最终救赎了男主，也救赎了她自己。</p>
-<p>或许这也正是我们常常提到的爱具体的人而不是爱抽象的概念，男主终于认识到自己不是拿破仑一样的非常人，是普通人，是杀了人会良心不安纠结痛苦的人。也因此被爱救赎被拯救，文章达到升华，坚强不屈的意志的主旋律奏起，男主将为自己赎罪，而身边会有那位善意美丽的女性永远陪伴</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1493,7 +1504,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1506,7 +1517,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
