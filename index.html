@@ -384,7 +384,7 @@ mjx-container[display="true"] + br {
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2025-08-14 23:05:25 / 修改时间：23:50:10" itemprop="dateCreated datePublished" datetime="2025-08-14T23:05:25+08:00">2025-08-14</time>
+              <time title="创建时间：2025-08-14 23:05:25 / 修改时间：23:55:30" itemprop="dateCreated datePublished" datetime="2025-08-14T23:05:25+08:00">2025-08-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -423,12 +423,15 @@ mjx-container[display="true"] + br {
       
           <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本文整合自王道和里昂学长的PPT，是完整的408代码大题解题方案，整合好的pdf文档可以联系我获取</p>
 <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h6 id=""><a href="#" class="headerlink" title=""></a><img src="https://s3.bmp.ovh/imgs/2025/08/14/b31df34148c3f86a.png" alt="王道强化课快速排序代码"></h6><p>快速排序算法以huafen()函数为核心</p>
-<h3 id="如何划分？"><a href="#如何划分？" class="headerlink" title="如何划分？"></a>如何划分？</h3><h4 id="第一趟"><a href="#第一趟" class="headerlink" title="第一趟"></a>第一趟</h4><p>首先将左指针L对应的数组元素设为mid值，我们之后要将mid值和其他值对比然后找到mid值该在的位置</p>
+<h3 id="如何划分？"><a href="#如何划分？" class="headerlink" title="如何划分？"></a>如何划分？</h3><p><em><strong>第一趟</strong></em></p>
+<p>首先将左指针L对应的数组元素设为mid值，我们之后要将mid值和其他值对比然后找到mid值该在的位置</p>
 <p>先从R向前寻找第一个小于mid的值（如果没有R–一直找），如果有，就把他和目前存着mid值的A[L]互换位置</p>
 <p>再从L向后寻找第一个大于mid的值（如果没有L++一直找），如果有，就把上一步的A[R]换过来</p>
-<h4 id="第二趟"><a href="#第二趟" class="headerlink" title="第二趟"></a>第二趟</h4><p>上一趟完成了第一次交换，把小于mid的换到了右边，而把大于mid的换到了左边</p>
+<p><em><strong>第二趟</strong></em></p>
+<p>上一趟完成了第一次交换，把小于mid的换到了右边，而把大于mid的换到了左边</p>
 <p>第二趟又在新的R找到了小于mid的元素，放在之前发现的左边覆盖，以此类推</p>
-<h4 id="最后一趟"><a href="#最后一趟" class="headerlink" title="最后一趟"></a>最后一趟</h4><p><strong>当最后一趟开始时，若是L++导致L==R则</strong></p>
+<p><em><strong>最后一趟</strong></em></p>
+<p><strong>当最后一趟开始时，若是L++导致L==R则</strong></p>
 <p>A[L]换上了右边更小一点的元素。</p>
 <p>而下一步L++，已不满足L&lt;R的条件。而这一步的L就是上一步的R(<strong>L==R</strong>)，A[R]的值已经迁移到了其左边。</p>
 <p>因此设A[L]=mid，就把两者很好的拆开了</p>
