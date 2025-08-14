@@ -41,17 +41,17 @@
     var CONFIG = {"hostname":"yeluogui.cloud","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="[TOC] 说明本文整合自王道和里昂学长的PPT，是完整的408代码大题解题方案，整合好的pdf文档可以联系我获取 快速排序代码实现快速排序算法以huafen()函数为核心 如何划分？第一趟首先将左指针L对应的数组元素设为mid值，我们之后要将mid值和其他值对比然后找到mid值该在的位置 先从R向前寻找第一个小于mid的值（如果没有R–一直找），如果有，就把他和目前存着mid值的A[L]互换位置">
+  <meta name="description" content="说明本文整合自王道和里昂学长的PPT，是完整的408代码大题解题方案，整合好的pdf文档可以联系我获取 快速排序代码实现快速排序算法以huafen()函数为核心 如何划分？第一趟首先将左指针L对应的数组元素设为mid值，我们之后要将mid值和其他值对比然后找到mid值该在的位置 先从R向前寻找第一个小于mid的值（如果没有R–一直找），如果有，就把他和目前存着mid值的A[L]互换位置 再从L向后">
 <meta property="og:type" content="article">
 <meta property="og:title" content="408算法题解法">
 <meta property="og:url" content="http://yeluogui.cloud/2025/08/14/408%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3%E6%B3%95/index.html">
 <meta property="og:site_name" content="穿过长长的隧道，便是雪国">
-<meta property="og:description" content="[TOC] 说明本文整合自王道和里昂学长的PPT，是完整的408代码大题解题方案，整合好的pdf文档可以联系我获取 快速排序代码实现快速排序算法以huafen()函数为核心 如何划分？第一趟首先将左指针L对应的数组元素设为mid值，我们之后要将mid值和其他值对比然后找到mid值该在的位置 先从R向前寻找第一个小于mid的值（如果没有R–一直找），如果有，就把他和目前存着mid值的A[L]互换位置">
+<meta property="og:description" content="说明本文整合自王道和里昂学长的PPT，是完整的408代码大题解题方案，整合好的pdf文档可以联系我获取 快速排序代码实现快速排序算法以huafen()函数为核心 如何划分？第一趟首先将左指针L对应的数组元素设为mid值，我们之后要将mid值和其他值对比然后找到mid值该在的位置 先从R向前寻找第一个小于mid的值（如果没有R–一直找），如果有，就把他和目前存着mid值的A[L]互换位置 再从L向后">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/14/b31df34148c3f86a.png">
 <meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/14/717cb264da519ef4.png">
 <meta property="article:published_time" content="2025-08-14T15:05:25.000Z">
-<meta property="article:modified_time" content="2025-08-14T15:46:17.096Z">
+<meta property="article:modified_time" content="2025-08-14T15:50:10.751Z">
 <meta property="article:author" content="叶落归">
 <meta property="article:tag" content="408">
 <meta property="article:tag" content="数据结构">
@@ -392,7 +392,7 @@ mjx-container[display="true"] + br {
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2025-08-14 23:05:25 / 修改时间：23:46:17" itemprop="dateCreated datePublished" datetime="2025-08-14T23:05:25+08:00">2025-08-14</time>
+              <time title="创建时间：2025-08-14 23:05:25 / 修改时间：23:50:10" itemprop="dateCreated datePublished" datetime="2025-08-14T23:05:25+08:00">2025-08-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -436,8 +436,7 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>[TOC]</p>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本文整合自王道和里昂学长的PPT，是完整的408代码大题解题方案，整合好的pdf文档可以联系我获取</p>
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本文整合自王道和里昂学长的PPT，是完整的408代码大题解题方案，整合好的pdf文档可以联系我获取</p>
 <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h6 id=""><a href="#" class="headerlink" title=""></a><img src="https://s3.bmp.ovh/imgs/2025/08/14/b31df34148c3f86a.png" alt="王道强化课快速排序代码"></h6><p>快速排序算法以huafen()函数为核心</p>
 <h3 id="如何划分？"><a href="#如何划分？" class="headerlink" title="如何划分？"></a>如何划分？</h3><h4 id="第一趟"><a href="#第一趟" class="headerlink" title="第一趟"></a>第一趟</h4><p>首先将左指针L对应的数组元素设为mid值，我们之后要将mid值和其他值对比然后找到mid值该在的位置</p>
 <p>先从R向前寻找第一个小于mid的值（如果没有R–一直找），如果有，就把他和目前存着mid值的A[L]互换位置</p>
