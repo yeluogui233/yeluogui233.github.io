@@ -55,13 +55,13 @@
 <meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/17/18b3007bbb7bd2d6.png">
 <meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/17/66637fafb0ba0956.jpg">
 <meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/17/5b193c4a5a360768.png">
-<meta property="og:image" content="c:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250817163335096.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/17/06e1bbc4c485c2d2.png">
 <meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/17/084728c3f7def865.png">
-<meta property="og:image" content="c:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250817163631084.png">
-<meta property="og:image" content="c:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250817163938525.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/17/366b42791725dd19.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/17/0f2ded20fb24c30a.png">
 <meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/17/128fa305fa31136f.jpg">
 <meta property="article:published_time" content="2025-08-16T08:08:32.000Z">
-<meta property="article:modified_time" content="2025-08-17T08:46:38.866Z">
+<meta property="article:modified_time" content="2025-08-17T08:58:22.397Z">
 <meta property="article:author" content="叶落归">
 <meta property="article:tag" content="408">
 <meta property="article:tag" content="数据结构">
@@ -408,7 +408,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-08-17 16:46:38" itemprop="dateModified" datetime="2025-08-17T16:46:38+08:00">2025-08-17</time>
+                <time title="修改时间：2025-08-17 16:58:22" itemprop="dateModified" datetime="2025-08-17T16:58:22+08:00">2025-08-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -433,7 +433,7 @@ mjx-container[display="true"] + br {
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>791</span>
+              <span>822</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -468,15 +468,16 @@ mjx-container[display="true"] + br {
 <p><img src="https://s3.bmp.ovh/imgs/2025/08/17/66637fafb0ba0956.jpg"></p>
 <h1 id="平衡二叉树的删除"><a href="#平衡二叉树的删除" class="headerlink" title="平衡二叉树的删除"></a>平衡二叉树的删除</h1><p><img src="https://s3.bmp.ovh/imgs/2025/08/17/5b193c4a5a360768.png"></p>
 <p>王道课上的删除步骤</p>
-<h2 id="LL-RR情况-1"><a href="#LL-RR情况-1" class="headerlink" title="LL&RR情况"></a>LL&amp;RR情况</h2><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250817163335096.png" alt="image-20250817163335096"></p>
+<p>这里不讨论调整完二次失衡的情况，只需要根据以下步骤再来一次即可</p>
+<h2 id="LL-RR情况-1"><a href="#LL-RR情况-1" class="headerlink" title="LL&RR情况"></a>LL&amp;RR情况</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/17/06e1bbc4c485c2d2.png"></p>
 <p>以此图为例，在其中75就是第一个失调的结点A</p>
 <p>然后找到他最高子树的父节点B也就是80，因为是A的右节点B的右树较高破坏了平衡，所以使用RR，直接令80旋转到75的位置并给75一个77的右节点</p>
 <p><img src="https://s3.bmp.ovh/imgs/2025/08/17/084728c3f7def865.png"></p>
-<h2 id="LR-RL情况-1"><a href="#LR-RL情况-1" class="headerlink" title="LR&RL情况"></a>LR&amp;RL情况</h2><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250817163631084.png" alt="image-20250817163631084"></p>
+<h2 id="LR-RL情况-1"><a href="#LR-RL情况-1" class="headerlink" title="LR&RL情况"></a>LR&amp;RL情况</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/17/366b42791725dd19.png"></p>
 <p>以此图为例，首先找到第一个失衡的A也就是44，他最高的树的父节点是78也就是B</p>
 <p>我们这里找到是B的左树过高导致失调，因此是LR</p>
 <p>将50右旋送到78的位置并给78一个62的右节点，再左旋到44的位置并给48的右节点</p>
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250817163938525.png" alt="image-20250817163938525"></p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/17/0f2ded20fb24c30a.png"></p>
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>是自己总结的规律，原本的太难记了</p>
 <p>我的规律插入和删除是一样的：</p>
 <ol>
