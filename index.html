@@ -610,7 +610,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-08-25 00:54:54" itemprop="dateModified" datetime="2025-08-25T00:54:54+08:00">2025-08-25</time>
+                <time title="修改时间：2025-08-25 12:11:32" itemprop="dateModified" datetime="2025-08-25T12:11:32+08:00">2025-08-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -628,14 +628,14 @@ mjx-container[display="true"] + br {
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5.1k</span>
+              <span>6.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -709,11 +709,31 @@ mjx-container[display="true"] + br {
 
 <p>调用时用**<code>PreOrder(T, 1</code>**)</p>
 <p>原理是每过一层则+1并和目前高度比较</p>
-<h3 id="方法二-后序遍历"><a href="#方法二-后序遍历" class="headerlink" title="(方法二)后序遍历"></a>(方法二)后序遍历</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int PostOrder(BiTree T){</span><br><span class="line">    if (T == NULL)</span><br><span class="line">        return 0;</span><br><span class="line">    int left = PostOrder(T-&gt;lchild);</span><br><span class="line">    int right = PostOrder(T-&gt;rchild);</span><br><span class="line">    if (left &gt; right) </span><br><span class="line">        return left + 1;</span><br><span class="line">    else </span><br><span class="line">        return right + 1;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h3 id="方法二-后序遍历"><a href="#方法二-后序遍历" class="headerlink" title="(方法二)后序遍历"></a>(方法二)后序遍历</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">PostOrder</span><span class="params">(BiTree T)</span>{</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> left = PostOrder(T-&gt;lchild);</span><br><span class="line">    <span class="type">int</span> right = PostOrder(T-&gt;rchild);</span><br><span class="line">    <span class="keyword">if</span> (left &gt; right) </span><br><span class="line">        <span class="keyword">return</span> left + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> right + <span class="number">1</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://s3.bmp.ovh/imgs/2025/08/25/230bc34dea6966e2.png"></p>
 <p>以该图为例，g和h没有左右结点了，故直接返回0+1给e作为e的left和right，e再进行比较以大的深度+1作为自己的深度交给b，b也这么做并和c一起交给a</p>
 <p>后序遍历以孩子出发从孩子开始数并返给根节点最长的版本</p>
+<h2 id="求树宽"><a href="#求树宽" class="headerlink" title="求树宽"></a>求树宽</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/25/68f6fe2304759243.png"></p>
+<p>此处先用先序遍历统计每一层的结点数，也就是使用先序遍历先根后孩子的特点来统计</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> width[MAX];  <span class="comment">//用于统计各层的结点总数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//先序遍历，同时统计各层结点总数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">PreOrder</span><span class="params">(BiTree T, <span class="type">int</span> level)</span> {</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    width[level]++;  <span class="comment">//累加该层结点总数</span></span><br><span class="line">    PreOrder(T-&gt;lchild, level + <span class="number">1</span>);  <span class="comment">//遍历左子树</span></span><br><span class="line">    PreOrder(T-&gt;rchild, level + <span class="number">1</span>);  <span class="comment">//遍历右子树</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>再找到宽度数组中最大的一项，将其作为树宽</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">treeWidth</span><span class="params">(BiTree T)</span> {</span><br><span class="line">    <span class="comment">// 初始化宽度数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; MAX; i++)</span><br><span class="line">        width[i] = <span class="number">0</span>;</span><br><span class="line">    PreOrder(T, <span class="number">0</span>);  <span class="comment">// 从第0层开始遍历</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 找出最大宽度（某一层最多的节点数）</span></span><br><span class="line">    <span class="type">int</span> maxWidth = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; MAX; i++) {</span><br><span class="line">        <span class="keyword">if</span> (width[i] &gt; maxWidth)</span><br><span class="line">            maxWidth = width[i];</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"树的宽度是%d"</span>, maxWidth);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="求树WPL"><a href="#求树WPL" class="headerlink" title="求树WPL"></a>求树WPL</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/25/840b545681b07964.png"></p>
+<p>求树的WPL还是要使用树的先序遍历</p>
+<p>使用了求树高和树宽的思想</p>
+<p>先找到叶子节点（也就是左右孩子为空）并且将此处的带权路径长度加入WPL</p>
+<p>如果不是叶子结点则向下找到其他叶子节点高度</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">PreOrder</span> <span class="params">(BiTree T, <span class="type">int</span> level)</span>{</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(T-&gt;lchild==<span class="literal">NULL</span> &amp;&amp; T-&gt;rchild==<span class="literal">NULL</span>)</span><br><span class="line">    WPL += level*T-&gt;weight; <span class="comment">//累加叶结点带权路径长度</span></span><br><span class="line">    PreOrder(T-&gt;lchild, level + <span class="number">1</span>); <span class="comment">//遍历左子树</span></span><br><span class="line">    PreOrder(T-&gt;rchild, level + <span class="number">1</span>); </span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="特殊树型判断"><a href="#特殊树型判断" class="headerlink" title="特殊树型判断"></a>特殊树型判断</h1><h2 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/25/1825ad153c697882.png"></p>
+<p>中序遍历出来的序列是升序序列，所以二叉排序树序列中下一个结点必然大于前面所有的结点（也就是MAX{前面结点}）这里用temp表示</p>
+<p>所以只要后面遍历到的小于temp，则直接判定失败</p>
+<p>若不小于则继续向右子树遍历，直到为NULL退回</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> temp=MIN_INT; <span class="comment">//记录当前遍历到的最小值</span></span><br><span class="line"><span class="type">bool</span> isBST=<span class="literal">true</span>;    <span class="comment">//是否为二叉排序树？</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">InOrder</span><span class="params">(BiTree T)</span>{</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    InOrder(T-&gt;lchild);</span><br><span class="line">    <span class="keyword">if</span> (T-&gt;data &gt;= temp)    temp=T-&gt;data;</span><br><span class="line">    <span class="keyword">else</span>    isBST=<span class="literal">false</span>;</span><br><span class="line">    InOrder(T-&gt;rchild);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
