@@ -2149,23 +2149,14 @@
   color: #ddd; /* 空星 */
 }
 
-/* 半星样式 - 修正为左黄右灰 */
+/* 半星样式 - 黄色部分占50% */
 .star.half {
-  position: relative;
-  color: #ffc107; /* 基础颜色为黄色 */
+  background: linear-gradient(to right, #ffc107 50%, #ddd 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.star.half::after {
-  content: '';
-  position: absolute;
-  left: 40%;  /* 调整这里：40%位置开始覆盖灰色 */
-  top: 0;
-  width: 60%; /* 灰色部分占60% */
-  height: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  mask: linear-gradient(to right, transparent 0%, #000 100%);
-  -webkit-mask: linear-gradient(to right, transparent 0%, #000 100%);
-}
 
 /* 正在读标志 */
 .reading-indicator {
