@@ -360,6 +360,23 @@
 
   /* 灯箱适配（保持轻量） */
   .lightbox-content { width: 94%; max-width: 640px; padding: 16px; margin: 8% auto; }
+  .lightbox-content {
+  max-height: 90vh; /* 限制最大高度不超过视口 */
+  overflow-y: auto; /* 内容超出时允许垂直滚动 */
+  -webkit-overflow-scrolling: touch; /* 支持 iOS 惯性滚动 */
+}
+
+/* 优化滚动条美观（可选） */
+.lightbox-content::-webkit-scrollbar {
+  width: 6px;
+}
+.lightbox-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+}
+.lightbox-content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
   .book-info-container { flex-direction: column; align-items: center; gap: 10px; }
   .book-cover-large { width: 96px; }
   .book-meta { text-align: center; font-size: 0.88rem; }
