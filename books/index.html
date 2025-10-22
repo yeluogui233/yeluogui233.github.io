@@ -291,17 +291,18 @@
     top: 6px;
     right: 6px;
     padding: 3px 5px;
-    font-size: 0.65rem;
   }
   .stars {
     gap: 1px;
   }
   .star {
-    width: 8px;
-    height: 8px;
+    font-size: 0.65rem;
+  }
+  .star.half {
+    width: 0.65rem;
+    height: 0.65rem;
   }
 }
-
 @media (max-width: 480px) {
   .books-grid {
     grid-template-columns: 1fr;
@@ -333,7 +334,7 @@
       
       
         <!-- 完整星 -->
-        <span class="star active">★</span>
+        <span class="star full">★</span>
       
     
       
@@ -341,7 +342,7 @@
       
       
         <!-- 完整星 -->
-        <span class="star active">★</span>
+        <span class="star full">★</span>
       
     
       
@@ -349,7 +350,7 @@
       
       
         <!-- 完整星 -->
-        <span class="star active">★</span>
+        <span class="star full">★</span>
       
     
       
@@ -357,7 +358,10 @@
       
       
         <!-- 半星 -->
-        <span class="star half">★</span>
+        <span class="star half">
+          <span class="star-half-left">★</span>
+          <span class="star-half-right">☆</span>
+        </span>
       
     
       
@@ -365,7 +369,7 @@
       
       
         <!-- 空星 -->
-        <span class="star">☆</span>
+        <span class="star empty">☆</span>
       
     
   </div>
@@ -399,6 +403,55 @@
       <div class="book-card card">
         <!-- 星级评分 -->
 
+<div class="book-rating">
+  <div class="stars">
+    
+      
+      
+      
+      
+        <!-- 完整星 -->
+        <span class="star full">★</span>
+      
+    
+      
+      
+      
+      
+        <!-- 完整星 -->
+        <span class="star full">★</span>
+      
+    
+      
+      
+      
+      
+        <!-- 完整星 -->
+        <span class="star full">★</span>
+      
+    
+      
+      
+      
+      
+        <!-- 完整星 -->
+        <span class="star full">★</span>
+      
+    
+      
+      
+      
+      
+        <!-- 半星 -->
+        <span class="star half">
+          <span class="star-half-left">★</span>
+          <span class="star-half-right">☆</span>
+        </span>
+      
+    
+  </div>
+</div>
+
 		
         
         <div class="book-cover">
@@ -420,6 +473,52 @@
       <div class="book-card card">
         <!-- 星级评分 -->
 
+<div class="book-rating">
+  <div class="stars">
+    
+      
+      
+      
+      
+        <!-- 完整星 -->
+        <span class="star full">★</span>
+      
+    
+      
+      
+      
+      
+        <!-- 完整星 -->
+        <span class="star full">★</span>
+      
+    
+      
+      
+      
+      
+        <!-- 完整星 -->
+        <span class="star full">★</span>
+      
+    
+      
+      
+      
+      
+        <!-- 完整星 -->
+        <span class="star full">★</span>
+      
+    
+      
+      
+      
+      
+        <!-- 空星 -->
+        <span class="star empty">☆</span>
+      
+    
+  </div>
+</div>
+
 		
         
         <div class="book-cover">
@@ -433,6 +532,52 @@
     
       <div class="book-card card">
         <!-- 星级评分 -->
+
+<div class="book-rating">
+  <div class="stars">
+    
+      
+      
+      
+      
+        <!-- 完整星 -->
+        <span class="star full">★</span>
+      
+    
+      
+      
+      
+      
+        <!-- 完整星 -->
+        <span class="star full">★</span>
+      
+    
+      
+      
+      
+      
+        <!-- 完整星 -->
+        <span class="star full">★</span>
+      
+    
+      
+      
+      
+      
+        <!-- 完整星 -->
+        <span class="star full">★</span>
+      
+    
+      
+      
+      
+      
+        <!-- 完整星 -->
+        <span class="star full">★</span>
+      
+    
+  </div>
+</div>
 
 		
         
@@ -2090,16 +2235,42 @@
 
 .star {
   font-size: 0.7rem;
-  color: #ddd; /* 默认灰色 */
-  transition: color 0.2s ease;
+  position: relative;
+  display: inline-block;
 }
 
-.star.active {
-  color: #ffc107; /* 亮黄色 */
+.star.full {
+  color: #ffc107; /* 完整亮星 */
 }
+
+.star.empty {
+  color: #ddd; /* 空星 */
+}
+
+/* 半星样式 */
 .star.half {
-  color: #ffc107; /* 亮黄色 */
-  opacity: 0.7; /* 半星稍微淡一些 */
+  position: relative;
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+.star-half-left, .star-half-right {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.star-half-left {
+  color: #ffc107; /* 左半部分亮黄色 */
+  text-align: left;
+}
+
+.star-half-right {
+  color: #ddd; /* 右半部分灰色 */
+  text-align: right;
 }
 /* 封面容器 */
 .book-cover {
