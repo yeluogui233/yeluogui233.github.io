@@ -251,9 +251,9 @@
 <style>
 /* === 新增的响应式样式 === */
 @media (max-width: 767px) {
-  /* 调整书籍网格布局 */
+  /* 调整书籍网格布局 - 改为三列 */
   .books-grid {
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
     gap: 16px 12px;
   }
 
@@ -302,14 +302,28 @@
     font-size: 0.65rem;
   }
 }
+
 @media (max-width: 480px) {
   .books-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+    gap: 12px 8px;
   }
   
   .book-card {
-    max-width: 180px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
+  }
+  
+  /* 超小屏幕进一步调整 */
+  .book-buttons {
+    gap: 6px;
+    padding: 0 8px;
+  }
+  
+  .btn {
+    width: 44px;
+    font-size: 0.65rem;
+    height: 22px;
   }
 }
 
