@@ -251,123 +251,125 @@
 <style>
 /* === 新增的响应式样式 === */
 /* === 改进后的响应式样式（手机端三列优化） === */
+/* ====== 强力修复：手机端严格三列（替换原有移动端 media 查询） ====== */
 @media (max-width: 767px) {
-  /* 三列布局 */
+  /* 三列：每列等分并允许内容缩放（minmax(0,1fr) 防止伸出） */
   .books-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px 10px;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px 8px !important;
+    align-items: start;
+    justify-items: stretch;
+    width: 100%;
   }
 
-  .books-wrapper {
-    padding: 18px 12px;
-    margin-bottom: 24px;
-    border-radius: 10px;
-    box-shadow: none; /* 去掉大阴影，轻量化 */
+  /* 全局盒模型保证 padding 不影响宽度计算 */
+  .books-wrapper,
+  .books-grid,
+  .book-card,
+  .book-cover,
+  .book-cover img {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
   }
 
-  /* 卡片尺寸与比例 */
+  /* 每个卡片强制占满一列宽度，去掉左右 margin */
   .book-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
     border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0; /* 防止内部 flex/item 撑开 */
   }
 
+  /* 使用 padding-bottom 保持 3:4 比例并避免 img 高度撑开布局 */
   .book-cover {
-    aspect-ratio: 3 / 4;
+    width: 100%;
+    height: 0;
+    padding-bottom: calc(100% * 4 / 3); /* 3:4 -> padding-bottom = 133.33% */
+    position: relative;
     border-radius: 10px 10px 0 0;
+    overflow: hidden;
+  }
+  .book-cover img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保证图片裁切而不拉伸 */
+    display: block;
+    transform: none !important;
   }
 
+  /* 书名遮罩适配多行，避免换行裁剪 */
   .book-title-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 6px 8px;
+    white-space: normal;
+    text-overflow: unset;
+    overflow: hidden;
     font-size: 0.75rem;
-    padding: 2px 4px;
+    line-height: 1.1;
   }
 
-  /* 星级 & 阅读标识 */
+  /* 星级和正在读标识小一号，位置微调 */
   .book-rating {
-    top: 5px;
-    right: 5px;
-    padding: 2px 4px;
+    top: 6px;
+    right: 6px;
+    padding: 3px 5px;
     border-radius: 8px;
     box-shadow: none;
   }
-  .star {
-    font-size: 0.6rem;
-  }
-  .reading-indicator {
-    font-size: 0.6rem;
-  }
+  .star { font-size: 0.62rem; }
+  .reading-indicator { font-size: 0.62rem; }
 
-  /* 按钮组 */
+  /* 按钮组在卡片底部横向排列并居中 */
   .book-buttons {
-    margin-top: 4px;
-    gap: 4px;
-    padding: 0;
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    padding: 8px 6px 12px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .btn {
-    width: 44px;
-    height: 22px;
-    font-size: 0.65rem;
-    border-radius: 8px;
-    padding: 2px 0;
+    width: 44px !important;
+    height: 22px !important;
+    font-size: 0.62rem !important;
+    padding: 2px 6px !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
   }
 
-  /* 页面标题 */
-  .page-header h1.page-title {
-    font-size: 1.4rem;
-    margin-bottom: 6px;
+  /* 页面容器、标题等微调 */
+  .books-wrapper {
+    padding: 14px 12px;
+    margin-bottom: 20px;
+    box-shadow: none;
   }
-  .page-subtitle {
-    font-size: 0.9rem;
-  }
+  .page-header h1.page-title { font-size: 1.4rem; margin-bottom: 6px; }
+  .page-subtitle { font-size: 0.9rem; }
 
-  /* 灯箱适配 */
-  .lightbox-content {
-    width: 92%;
-    margin: 10% auto;
-    padding: 20px 16px;
-    border-radius: 14px;
-  }
-  .book-detail-header h2 {
-    font-size: 1.2rem;
-  }
-  .book-info-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-  .book-cover-large {
-    width: 90px;
-  }
-  .book-meta {
-    font-size: 0.85rem;
-    text-align: center;
-  }
-  .book-summary {
-    font-size: 0.9rem;
-    padding: 14px;
-  }
-  .download-btn {
-    font-size: 0.85rem;
-    padding: 10px 22px;
-    border-radius: 10px;
-  }
+  /* 灯箱适配（保持轻量） */
+  .lightbox-content { width: 94%; max-width: 640px; padding: 16px; margin: 8% auto; }
+  .book-info-container { flex-direction: column; align-items: center; gap: 10px; }
+  .book-cover-large { width: 96px; }
+  .book-meta { text-align: center; font-size: 0.88rem; }
 }
 
-/* 超小屏幕进一步优化（<=480px） */
+/* 超小屏幕再减小一些间距（<=480px） */
 @media (max-width: 480px) {
-  .books-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px 8px;
-  }
-  .book-buttons {
-    gap: 4px;
-  }
-  .btn {
-    width: 40px;
-    font-size: 0.6rem;
-  }
-  .book-title-overlay {
-    font-size: 0.7rem;
-  }
+  .books-grid { gap: 8px 6px; }
+  .btn { width: 40px !important; height: 20px !important; font-size: 0.58rem !important; }
+  .book-title-overlay { font-size: 0.68rem; padding: 5px 6px; }
 }
 
 
