@@ -520,7 +520,7 @@
   </url>
   
   <url>
-    <loc>http://yeluogui.cloud/tags/%E7%AE%97%E6%B3%95/</loc>
+    <loc>http://yeluogui.cloud/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/</loc>
     <lastmod>2025-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -534,7 +534,7 @@
   </url>
   
   <url>
-    <loc>http://yeluogui.cloud/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/</loc>
+    <loc>http://yeluogui.cloud/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2025-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -597,6 +597,13 @@
   </url>
   
   <url>
+    <loc>http://yeluogui.cloud/tags/%E6%A0%91/</loc>
+    <lastmod>2025-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://yeluogui.cloud/tags/%E7%83%98%E7%84%99/</loc>
     <lastmod>2025-10-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -605,13 +612,6 @@
   
   <url>
     <loc>http://yeluogui.cloud/tags/%E6%85%95%E6%96%AF%E8%9B%8B%E7%B3%95/</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/tags/%E6%A0%91/</loc>
     <lastmod>2025-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
