@@ -437,7 +437,7 @@
   75% { transform: translateY(2px) rotate(5deg); }
 }
 
-/* 画布翻转动画 - 修复高度问题 */
+/* 画布翻转动画 - 保持原有画布样式 */
 .books-container {
   position: relative;
   width: 100%;
@@ -467,7 +467,7 @@
 .books-front, .books-friends {
   backface-visibility: hidden;
   width: 100%;
-  height: auto; /* 改为自动高度 */
+  height: auto;
 }
 
 .books-front {
@@ -479,7 +479,7 @@
   top: 0;
   left: 0;
   transform: rotateY(180deg);
-  display: none; /* 默认隐藏 */
+  display: none;
 }
 
 .books-wrapper.flipped .books-front {
@@ -488,7 +488,7 @@
 
 .books-wrapper.flipped .books-friends {
   display: block;
-  position: relative; /* 翻转后变为相对定位 */
+  position: relative;
 }
 
 /* 页面标题区域定位 */
@@ -497,190 +497,6 @@
   text-align: center;
   margin-bottom: 30px;
   padding: 0 80px; /* 为兔子按钮留出空间 */
-}
-
-/* 推荐人样式 */
-.book-referee {
-  color: #e91e63;
-  font-weight: 600;
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px dashed rgba(233, 30, 99, 0.3);
-}
-
-.book-referee strong {
-  color: inherit !important;
-}
-
-/* 书单整体画布 */
-.books-wrapper {
-  background: var(--content-bg-color, #fff);
-  border-radius: 14px;
-  padding: 30px 24px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-  margin-bottom: 40px;
-  max-width: 1140px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* 标题样式 */
-.page-header h1.page-title {
-  font-weight: 700;
-  font-size: 2rem;
-  margin: 0;
-}
-.page-subtitle {
-  font-size: 1rem;
-}
-
-/* 六列网格布局 */
-.books-grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(120px, 1fr));
-  gap: 28px 20px;
-  justify-content: center;
-}
-
-/* 书籍卡片 */
-.book-card {
-  background: var(--card-bg, #fff);
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative; /* 为星级定位 */
-  cursor: pointer;
-}
-.book-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.15);
-}
-
-/* 星级评分样式 */
-.book-rating {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 4px 6px;
-  z-index: 2;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
-.stars {
-  display: flex;
-  gap: 1px;
-  align-items: center;
-}
-
-.star {
-  font-size: 0.7rem;
-  position: relative;
-  display: inline-block;
-}
-
-.star.full {
-  color: #ffc107; /* 完整亮星 */
-}
-
-.star.empty {
-  color: #ddd; /* 空星 */
-}
-
-/* 半星样式 - 黄色部分占50% */
-.star.half {
-  background: linear-gradient(to right, #ffc107 50%, #ddd 50%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* 正在读标志 */
-.reading-indicator {
-  font-size: 0.7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 封面容器 */
-.book-cover {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 4; /* 保持3:4比例 */
-  overflow: hidden;
-  border-radius: 14px 14px 0 0;
-}
-.book-cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-.book-cover:hover img {
-  transform: scale(1.05);
-}
-
-/* 磨砂书名覆盖底部 */
-.book-title-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 4px 6px;
-  background: rgba(255 255 255 / 0.25);
-  backdrop-filter: blur(8px);
-  color: var(--text-color);
-  font-weight: 600;
-  font-size: 0.8rem;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  box-sizing: border-box;
-}
-
-/* 按钮组 */
-.book-buttons {
-  margin: 8px 0;
-  display: flex;
-  gap: 8px;
-  width: 100%;
-  justify-content: center;
-  padding: 0 10px;
-}
-
-/* 统一按钮样式 */
-.btn {
-  display: inline-flex; /* 改为flex布局 */
-  align-items: center;  /* 垂直居中 */
-  justify-content: center; /* 水平居中 */
-  padding: 4px 0;
-  font-size: 0.75rem;
-  border-radius: 12px;
-  font-weight: 600;
-  text-decoration: none;
-  user-select: none;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  width: 56px; /* 固定宽度 */
-  height: 24px; /* 固定高度 */
-  box-sizing: border-box; /* 确保宽高包含padding */
-  background-color: var(--primary-color);
-  color: #333;
-  border: none;
-}
-.btn:hover {
-  background-color: var(--primary-color-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
 </style>
 
@@ -7657,7 +7473,7 @@
   </div>
 </div>
 
-<!-- 灯箱弹窗 -->
+<!-- 灯箱弹窗 - 完全保持您的原有样式 -->
 <div id="bookLightbox" class="lightbox">
   <div class="lightbox-overlay"></div>
   <div class="lightbox-content">
@@ -7679,6 +7495,320 @@
     </div>
   </div>
 </div>
+
+<style>
+/* 灯箱样式 - 完全保持您的原有样式 */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.lightbox-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.lightbox-content {
+  position: relative;
+  background: var(--content-bg-color, #fff);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 600px;
+  width: 80%;
+  margin: 5% auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: lightboxFadeIn 0.3s ease;
+}
+
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-color-secondary);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.lightbox-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+}
+
+/* 书籍详情样式 */
+.book-detail-header h2 {
+  margin: 0 0 20px 0;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.book-info-container {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.book-cover-large {
+  flex-shrink: 0;
+  width: 140px;
+}
+
+.book-cover-large img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.book-meta {
+  color: var(--text-color-secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  flex: 1;
+  text-align: left;
+}
+
+.book-meta div {
+  margin-bottom: 8px;
+  padding: 4px 0;
+}
+
+.book-meta strong {
+  color: var(--text-color);
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+/* 个人评分样式 */
+.personal-rating {
+  font-weight: 600;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.personal-rating strong {
+  color: inherit !important; /* 继承评分颜色 */
+}
+
+.book-summary {
+  color: var(--text-color);
+  line-height: 1.7;
+  margin-bottom: 30px;
+  font-size: 0.95rem;
+  background: rgba(0, 0, 0, 0.02);
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.book-detail-footer {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.download-btn {
+  display: inline-block;
+  background: var(--primary-color);
+  color: #333;
+  padding: 14px 32px;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.download-btn:hover {
+  background: var(--primary-color-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 六列网格布局 */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(120px, 1fr));
+  gap: 28px 20px;
+  justify-content: center;
+}
+
+/* 书籍卡片 */
+.book-card {
+  background: var(--card-bg, #fff);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* 为星级定位 */
+  cursor: pointer;
+}
+.book-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+}
+
+/* 星级评分样式 */
+.book-rating {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 4px 6px;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.stars {
+  display: flex;
+  gap: 1px;
+  align-items: center;
+}
+
+.star {
+  font-size: 0.7rem;
+  position: relative;
+  display: inline-block;
+}
+
+.star.full {
+  color: #ffc107; /* 完整亮星 */
+}
+
+.star.empty {
+  color: #ddd; /* 空星 */
+}
+
+/* 半星样式 - 黄色部分占50% */
+.star.half {
+  background: linear-gradient(to right, #ffc107 50%, #ddd 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 正在读标志 */
+.reading-indicator {
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 封面容器 */
+.book-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4; /* 保持3:4比例 */
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+}
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.book-cover:hover img {
+  transform: scale(1.05);
+}
+
+/* 磨砂书名覆盖底部 */
+.book-title-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 4px 6px;
+  background: rgba(255 255 255 / 0.25);
+  backdrop-filter: blur(8px);
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+/* 按钮组 */
+.book-buttons {
+  margin: 8px 0;
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+/* 统一按钮样式 */
+.btn {
+  display: inline-flex; /* 改为flex布局 */
+  align-items: center;  /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  padding: 4px 0;
+  font-size: 0.75rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  user-select: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  width: 56px; /* 固定宽度 */
+  height: 24px; /* 固定高度 */
+  box-sizing: border-box; /* 确保宽高包含padding */
+  background-color: var(--primary-color);
+  color: #333;
+  border: none;
+}
+.btn:hover {
+  background-color: var(--primary-color-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -7729,69 +7859,62 @@ document.addEventListener('DOMContentLoaded', function() {
     return '#6b7280'; // 默认灰色
   }
 
-  // 点击书籍卡片打开灯箱
-  function setupBookCardListeners() {
-    document.querySelectorAll('.book-card').forEach(card => {
-      card.addEventListener('click', function(e) {
-        // 防止点击按钮时触发
-        if (e.target.closest('.btn') || e.target.closest('.book-rating')) {
-          return;
+  // 点击书籍卡片打开灯箱 - 完全保持您的原有逻辑
+  document.querySelectorAll('.book-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      // 防止点击按钮时触发
+      if (e.target.closest('.btn') || e.target.closest('.book-rating')) {
+        return;
+      }
+      
+      const bookIndex = this.getAttribute('data-book-index');
+      const book = books[bookIndex];
+      
+      if (book) {
+        lightboxTitle.textContent = book.title;
+        lightboxCover.src = book.cover;
+        lightboxCover.alt = book.title;
+        
+        // 构建元数据 - 只有有值的字段才显示
+        let metaHTML = `<div><strong>作者:</strong> ${book.author}</div>`;
+        if (book.publisher) {
+          metaHTML += `<div><strong>出版社:</strong> ${book.publisher}</div>`;
+        }
+        if (book.translator && book.translator.trim() !== '') {
+          metaHTML += `<div><strong>译者:</strong> ${book.translator}</div>`;
         }
         
-        const bookIndex = this.getAttribute('data-book-index');
-        const book = books[bookIndex];
-        
-        if (book) {
-          lightboxTitle.textContent = book.title;
-          lightboxCover.src = book.cover;
-          lightboxCover.alt = book.title;
-          
-          // 构建元数据 - 只有有值的字段才显示
-          let metaHTML = `<div><strong>作者:</strong> ${book.author}</div>`;
-          if (book.publisher) {
-            metaHTML += `<div><strong>出版社:</strong> ${book.publisher}</div>`;
-          }
-          if (book.translator && book.translator.trim() !== '') {
-            metaHTML += `<div><strong>译者:</strong> ${book.translator}</div>`;
-          }
-          
-          // 添加推荐人信息（如果有）
-          if (book.referee && book.referee.trim() !== '') {
-            metaHTML += `<div class="book-referee">
-              <strong>推荐人:</strong> ${book.referee}
-            </div>`;
-          }
-          
-          // 添加个人评分（只有当stars存在且不是'reading'时显示）
-          if (book.stars && book.stars !== 'reading') {
-            const ratingColor = getRatingColor(book.stars);
-            metaHTML += `<div class="personal-rating" style="color: ${ratingColor}">
-              <strong>个人评分🍂:</strong> ${book.stars}/10.0
-            </div>`;
-          }
-          
-          lightboxMeta.innerHTML = metaHTML;
-          
-          // 简评
-          lightboxSummary.textContent = book.summary || '暂无简介';
-          
-          // 下载链接
-          if (book.download) {
-            lightboxDownload.href = book.download;
-            lightboxDownload.style.display = 'inline-block';
-          } else {
-            lightboxDownload.style.display = 'none';
-          }
-          
-          lightbox.style.display = 'block';
-          document.body.style.overflow = 'hidden';
+        // 添加推荐人信息（如果有）
+        if (book.referee && book.referee.trim() !== '') {
+          metaHTML += `<div><strong>推荐人:</strong> ${book.referee}</div>`;
         }
-      });
+        
+        // 添加个人评分（只有当stars存在且不是'reading'时显示）
+        if (book.stars && book.stars !== 'reading') {
+          const ratingColor = getRatingColor(book.stars);
+          metaHTML += `<div class="personal-rating" style="color: ${ratingColor}">
+            <strong>个人评分🍂:</strong> ${book.stars}/10.0
+          </div>`;
+        }
+        
+        lightboxMeta.innerHTML = metaHTML;
+        
+        // 简评
+        lightboxSummary.textContent = book.summary || '暂无简介';
+        
+        // 下载链接
+        if (book.download) {
+          lightboxDownload.href = book.download;
+          lightboxDownload.style.display = 'inline-block';
+        } else {
+          lightboxDownload.style.display = 'none';
+        }
+        
+        lightbox.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
     });
-  }
-
-  // 初始化书籍卡片监听
-  setupBookCardListeners();
+  });
 
   // 关闭灯箱
   function closeLightbox() {
