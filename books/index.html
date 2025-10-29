@@ -7623,6 +7623,19 @@
   color: inherit !important; /* 继承评分颜色 */
 }
 
+/* 推荐人样式 */
+.book-referee {
+  color: #2F4F4F; /* 墨青色 */
+  font-weight: 600;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.book-referee strong {
+  color: inherit !important;
+}
+
 .book-summary {
   color: var(--text-color);
   line-height: 1.7;
@@ -7886,7 +7899,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 添加推荐人信息（如果有）
         if (book.referee && book.referee.trim() !== '') {
-          metaHTML += `<div><strong>推荐人:</strong> ${book.referee}</div>`;
+          metaHTML += `<div class="book-referee">
+            <strong>推荐人:</strong> ${book.referee}
+          </div>`;
         }
         
         // 添加个人评分（只有当stars存在且不是'reading'时显示）
