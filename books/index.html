@@ -437,17 +437,27 @@
   75% { transform: translateY(2px) rotate(5deg); }
 }
 
-/* 画布翻转动画 */
+/* 画布翻转动画 - 保持原有画布样式 */
 .books-container {
   position: relative;
   width: 100%;
 }
 
 .books-wrapper {
+  background: var(--content-bg-color, #fff);
+  border-radius: 14px;
+  padding: 30px 24px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+  max-width: 1140px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  
+  /* 翻转动画 */
   transition: transform 0.6s ease;
   transform-style: preserve-3d;
   position: relative;
-  width: 100%;
   min-height: 400px; /* 确保有足够高度 */
 }
 
@@ -462,6 +472,8 @@
   left: 0;
   width: 100%;
   height: 100%;
+  padding: 30px 24px;
+  box-sizing: border-box;
 }
 
 .books-front {
@@ -7667,30 +7679,6 @@
   background: var(--primary-color-hover);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* 书单整体画布 */
-.books-wrapper {
-  background: var(--content-bg-color, #fff);
-  border-radius: 14px;
-  padding: 30px 24px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-  margin-bottom: 40px;
-
-  max-width: 1140px; /* Next默认主体宽度 */
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* 标题样式 */
-.page-header h1.page-title {
-  font-weight: 700;
-  font-size: 2rem;
-  margin: 0;
-}
-.page-subtitle {
-  font-size: 1rem;
 }
 
 /* 六列网格布局 */
