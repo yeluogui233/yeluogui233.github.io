@@ -437,7 +437,7 @@
   75% { transform: translateY(2px) rotate(5deg); }
 }
 
-/* 画布翻转动画 - 保持原有画布样式 */
+/* 画布翻转动画 - 修复高度问题 */
 .books-container {
   position: relative;
   width: 100%;
@@ -458,7 +458,6 @@
   transition: transform 0.6s ease;
   transform-style: preserve-3d;
   position: relative;
-  min-height: 400px; /* 确保有足够高度 */
 }
 
 .books-wrapper.flipped {
@@ -467,27 +466,20 @@
 
 .books-front, .books-friends {
   backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  padding: 30px 24px;
-  box-sizing: border-box;
+  height: auto; /* 改为自动高度 */
 }
 
 .books-front {
-  z-index: 2;
+  transform: rotateY(0deg);
 }
 
 .books-friends {
+  position: absolute;
+  top: 0;
+  left: 0;
   transform: rotateY(180deg);
-  z-index: 1;
-}
-
-/* 隐藏朋友书单默认状态 */
-.books-friends {
-  display: none;
+  display: none; /* 默认隐藏 */
 }
 
 .books-wrapper.flipped .books-front {
@@ -496,6 +488,7 @@
 
 .books-wrapper.flipped .books-friends {
   display: block;
+  position: relative; /* 翻转后变为相对定位 */
 }
 
 /* 页面标题区域定位 */
@@ -517,6 +510,177 @@
 
 .book-referee strong {
   color: inherit !important;
+}
+
+/* 书单整体画布 */
+.books-wrapper {
+  background: var(--content-bg-color, #fff);
+  border-radius: 14px;
+  padding: 30px 24px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+  max-width: 1140px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 标题样式 */
+.page-header h1.page-title {
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0;
+}
+.page-subtitle {
+  font-size: 1rem;
+}
+
+/* 六列网格布局 */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(120px, 1fr));
+  gap: 28px 20px;
+  justify-content: center;
+}
+
+/* 书籍卡片 */
+.book-card {
+  background: var(--card-bg, #fff);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* 为星级定位 */
+  cursor: pointer;
+}
+.book-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+}
+
+/* 星级评分样式 */
+.book-rating {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 4px 6px;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.stars {
+  display: flex;
+  gap: 1px;
+  align-items: center;
+}
+
+.star {
+  font-size: 0.7rem;
+  position: relative;
+  display: inline-block;
+}
+
+.star.full {
+  color: #ffc107; /* 完整亮星 */
+}
+
+.star.empty {
+  color: #ddd; /* 空星 */
+}
+
+/* 半星样式 - 黄色部分占50% */
+.star.half {
+  background: linear-gradient(to right, #ffc107 50%, #ddd 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 正在读标志 */
+.reading-indicator {
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 封面容器 */
+.book-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4; /* 保持3:4比例 */
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+}
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.book-cover:hover img {
+  transform: scale(1.05);
+}
+
+/* 磨砂书名覆盖底部 */
+.book-title-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 4px 6px;
+  background: rgba(255 255 255 / 0.25);
+  backdrop-filter: blur(8px);
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+/* 按钮组 */
+.book-buttons {
+  margin: 8px 0;
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+/* 统一按钮样式 */
+.btn {
+  display: inline-flex; /* 改为flex布局 */
+  align-items: center;  /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  padding: 4px 0;
+  font-size: 0.75rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  user-select: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  width: 56px; /* 固定宽度 */
+  height: 24px; /* 固定高度 */
+  box-sizing: border-box; /* 确保宽高包含padding */
+  background-color: var(--primary-color);
+  color: #333;
+  border: none;
+}
+.btn:hover {
+  background-color: var(--primary-color-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
 </style>
 
@@ -7515,320 +7679,6 @@
     </div>
   </div>
 </div>
-
-<style>
-/* 灯箱样式 */
-.lightbox {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-}
-
-.lightbox-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
-}
-
-.lightbox-content {
-  position: relative;
-  background: var(--content-bg-color, #fff);
-  border-radius: 20px;
-  padding: 30px;
-  max-width: 600px;
-  width: 80%;
-  margin: 5% auto;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  animation: lightboxFadeIn 0.3s ease;
-}
-
-@keyframes lightboxFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9) translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--text-color-secondary);
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-}
-
-.lightbox-close:hover {
-  background: rgba(0, 0, 0, 0.1);
-  color: var(--text-color);
-}
-
-/* 书籍详情样式 */
-.book-detail-header h2 {
-  margin: 0 0 20px 0;
-  color: var(--text-color);
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-align: center;
-}
-
-.book-info-container {
-  display: flex;
-  gap: 25px;
-  align-items: flex-start;
-  margin-bottom: 25px;
-}
-
-.book-cover-large {
-  flex-shrink: 0;
-  width: 140px;
-}
-
-.book-cover-large img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.book-meta {
-  color: var(--text-color-secondary);
-  font-size: 0.95rem;
-  line-height: 1.8;
-  flex: 1;
-  text-align: left;
-}
-
-.book-meta div {
-  margin-bottom: 8px;
-  padding: 4px 0;
-}
-
-.book-meta strong {
-  color: var(--text-color);
-  margin-right: 8px;
-  font-weight: 600;
-}
-
-/* 个人评分样式 */
-.personal-rating {
-  font-weight: 600;
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.personal-rating strong {
-  color: inherit !important; /* 继承评分颜色 */
-}
-
-.book-summary {
-  color: var(--text-color);
-  line-height: 1.7;
-  margin-bottom: 30px;
-  font-size: 0.95rem;
-  background: rgba(0, 0, 0, 0.02);
-  padding: 20px;
-  border-radius: 12px;
-  border-left: 4px solid var(--primary-color);
-}
-
-.book-detail-footer {
-  text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.download-btn {
-  display: inline-block;
-  background: var(--primary-color);
-  color: #333;
-  padding: 14px 32px;
-  border-radius: 16px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.download-btn:hover {
-  background: var(--primary-color-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* 六列网格布局 */
-.books-grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(120px, 1fr));
-  gap: 28px 20px;
-  justify-content: center;
-}
-
-/* 书籍卡片 */
-.book-card {
-  background: var(--card-bg, #fff);
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative; /* 为星级定位 */
-  cursor: pointer;
-}
-.book-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.15);
-}
-
-/* 星级评分样式 */
-.book-rating {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 4px 6px;
-  z-index: 2;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
-.stars {
-  display: flex;
-  gap: 1px;
-  align-items: center;
-}
-
-.star {
-  font-size: 0.7rem;
-  position: relative;
-  display: inline-block;
-}
-
-.star.full {
-  color: #ffc107; /* 完整亮星 */
-}
-
-.star.empty {
-  color: #ddd; /* 空星 */
-}
-
-/* 半星样式 - 黄色部分占50% */
-.star.half {
-  background: linear-gradient(to right, #ffc107 50%, #ddd 50%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* 正在读标志 */
-.reading-indicator {
-  font-size: 0.7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 封面容器 */
-.book-cover {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 4; /* 保持3:4比例 */
-  overflow: hidden;
-  border-radius: 14px 14px 0 0;
-}
-.book-cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-.book-cover:hover img {
-  transform: scale(1.05);
-}
-
-/* 磨砂书名覆盖底部 */
-.book-title-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 4px 6px;
-  background: rgba(255 255 255 / 0.25);
-  backdrop-filter: blur(8px);
-  color: var(--text-color);
-  font-weight: 600;
-  font-size: 0.8rem;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  box-sizing: border-box;
-}
-
-/* 按钮组 */
-.book-buttons {
-  margin: 8px 0;
-  display: flex;
-  gap: 8px;
-  width: 100%;
-  justify-content: center;
-  padding: 0 10px;
-}
-
-/* 统一按钮样式 */
-.btn {
-  display: inline-flex; /* 改为flex布局 */
-  align-items: center;  /* 垂直居中 */
-  justify-content: center; /* 水平居中 */
-  padding: 4px 0;
-  font-size: 0.75rem;
-  border-radius: 12px;
-  font-weight: 600;
-  text-decoration: none;
-  user-select: none;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  width: 56px; /* 固定宽度 */
-  height: 24px; /* 固定高度 */
-  box-sizing: border-box; /* 确保宽高包含padding */
-  background-color: var(--primary-color);
-  color: #333;
-  border: none;
-}
-.btn:hover {
-  background-color: var(--primary-color-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-}
-</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
