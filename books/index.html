@@ -376,6 +376,16 @@
   .book-info-container { flex-direction: column; align-items: center; gap: 10px; }
   .book-cover-large { width: 96px; }
   .book-meta { text-align: center; font-size: 0.88rem; }
+
+  /* 移动端兔子按钮调整 */
+  .rabbit-toggle {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    margin: 10px auto !important;
+    display: block !important;
+  }
 }
 
 /* 超小屏幕再减小一些间距（<=480px） */
@@ -429,14 +439,16 @@
 
 /* 画布翻转动画 */
 .books-container {
-  perspective: 1000px;
   position: relative;
+  width: 100%;
 }
 
 .books-wrapper {
   transition: transform 0.6s ease;
   transform-style: preserve-3d;
   position: relative;
+  width: 100%;
+  min-height: 400px; /* 确保有足够高度 */
 }
 
 .books-wrapper.flipped {
@@ -479,6 +491,20 @@
   position: relative;
   text-align: center;
   margin-bottom: 30px;
+  padding: 0 80px; /* 为兔子按钮留出空间 */
+}
+
+/* 推荐人样式 */
+.book-referee {
+  color: #e91e63;
+  font-weight: 600;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(233, 30, 99, 0.3);
+}
+
+.book-referee strong {
+  color: inherit !important;
 }
 </style>
 
@@ -7157,7 +7183,7 @@
     <!-- 朋友推荐书单 -->
     <div class="books-friends">
       <header class="page-header">
-        <h1 class="page-title">朋友推荐的书单</h1>
+        <h1 class="page-title">书友推荐</h1>
         <p class="page-subtitle" style="color:var(--text-color-secondary); margin-top:6px;">
           感谢朋友们分享的好书
         </p>
@@ -7591,19 +7617,6 @@
   color: var(--text-color);
   margin-right: 8px;
   font-weight: 600;
-}
-
-/* 推荐人样式 */
-.book-referee {
-  color: #e91e63;
-  font-weight: 600;
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px dashed rgba(233, 30, 99, 0.3);
-}
-
-.book-referee strong {
-  color: inherit !important;
 }
 
 /* 个人评分样式 */
