@@ -254,170 +254,114 @@
           <div class="content ">
             
   <div class="cover-generator-page">
-    <!-- 页面头部 -->
-    <header class="page-header" style="text-align:center; margin-bottom: 40px;">
+    <header class="page-header">
       <h1 class="page-title">小红书封面生成器</h1>
       
-        <p class="page-subtitle" style="color:var(--text-color-secondary); margin-top:8px;">
-          犹豫就会败北
-        </p>
+        <p class="page-subtitle">犹豫就会败北</p>
       
     </header>
 
-    <!-- 封面生成器主体 -->
-    <div class="cover-generator-container">
-      <!-- 控制面板 -->
-      <div class="control-panel">
-        <div class="control-section">
-          <h3>📝 文字内容</h3>
-          <div class="control-group">
-            <label for="cover-title">主标题</label>
-            <input type="text" id="cover-title" placeholder="输入吸引人的标题" value="记录美好生活">
-            <div class="char-count"><span id="title-count">0</span>/20</div>
-          </div>
-          
-          <div class="control-group">
-            <label for="cover-subtitle">副标题</label>
-            <input type="text" id="cover-subtitle" placeholder="输入补充描述" value="每一天都值得被珍藏">
-            <div class="char-count"><span id="subtitle-count">0</span>/30</div>
-          </div>
+    <div class="generator-container">
+      <!-- 工具栏 -->
+      <div class="toolbar">
+        <div class="tool-group">
+          <h3>📝 文字工具</h3>
+          <button class="tool-btn" onclick="addText()">
+            <i class="fa fa-font"></i> 添加文字
+          </button>
+          <button class="tool-btn" onclick="importSticker()">
+            <i class="fa fa-image"></i> 导入贴纸
+          </button>
+          <input type="file" id="sticker-upload" accept="image/*" style="display: none;" onchange="handleStickerUpload(this.files)">
         </div>
 
-        <div class="control-section">
-          <h3>🎨 颜色样式</h3>
-          <div class="control-row">
-            <div class="control-group">
-              <label for="cover-bgcolor">背景颜色</label>
-              <input type="color" id="cover-bgcolor" value="#ff2442">
-            </div>
-            <div class="control-group">
-              <label for="cover-textcolor">文字颜色</label>
-              <input type="color" id="cover-textcolor" value="#ffffff">
-            </div>
+        <div class="tool-group">
+          <h3>🎨 背景设置</h3>
+          <div class="color-picker-group">
+            <label>背景颜色:</label>
+            <input type="color" id="bg-color" value="#ff2442" onchange="changeBackgroundColor(this.value)">
           </div>
-          
-          <div class="control-group">
-            <label for="cover-gradient">渐变效果</label>
-            <select id="cover-gradient">
-              <option value="none">无渐变</option>
-              <option value="horizontal">水平渐变</option>
-              <option value="vertical">垂直渐变</option>
-              <option value="diagonal">对角渐变</option>
-              <option value="radial">径向渐变</option>
-            </select>
+          <div class="color-picker-group">
+            <label>渐变颜色:</label>
+            <input type="color" id="gradient-color" value="#ff6b6b" onchange="changeGradientColor(this.value)">
           </div>
+          <select id="gradient-type" onchange="changeGradientType(this.value)">
+            <option value="none">无渐变</option>
+            <option value="horizontal">水平渐变</option>
+            <option value="vertical">垂直渐变</option>
+            <option value="diagonal">对角渐变</option>
+          </select>
         </div>
 
-        <div class="control-section">
-          <h3>✨ 字体布局</h3>
-          <div class="control-row">
-            <div class="control-group">
-              <label for="cover-font">字体样式</label>
-              <select id="cover-font">
-                <option value="'PingFang SC', 'Microsoft YaHei', sans-serif">系统字体</option>
-                <option value="'Helvetica Neue', Arial, sans-serif">现代字体</option>
-                <option value="'SimSun', 'Songti SC', serif">传统字体</option>
-                <option value="'KaiTi', 'STKaiti', serif">楷体</option>
-              </select>
-            </div>
-            <div class="control-group">
-              <label for="cover-layout">布局样式</label>
-              <select id="cover-layout">
-                <option value="centered">居中布局</option>
-                <option value="left-aligned">左对齐</option>
-                <option value="right-aligned">右对齐</option>
-                <option value="diagonal">斜角创意</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <label for="cover-shadow">文字阴影</label>
-            <select id="cover-shadow">
-              <option value="none">无阴影</option>
-              <option value="light">轻微阴影</option>
-              <option value="medium">中等阴影</option>
-              <option value="heavy">强烈阴影</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="control-section">
-          <h3>🎯 快速模板</h3>
-          <div class="template-grid">
-            <div class="template-item" data-template="red" style="background: linear-gradient(135deg, #ff2442, #ff6b6b);">
-              <span>小红书红</span>
-            </div>
-            <div class="template-item" data-template="pink" style="background: linear-gradient(135deg, #ff85a2, #ffafcc);">
-              <span>温柔粉</span>
-            </div>
-            <div class="template-item" data-template="blue" style="background: linear-gradient(135deg, #4a90e2, #74b9ff);">
-              <span>清新蓝</span>
-            </div>
-            <div class="template-item" data-template="green" style="background: linear-gradient(135deg, #07c160, #55efc4);">
-              <span>自然绿</span>
-            </div>
-            <div class="template-item" data-template="purple" style="background: linear-gradient(135deg, #a29bfe, #6c5ce7);">
-              <span>梦幻紫</span>
-            </div>
-            <div class="template-item" data-template="orange" style="background: linear-gradient(135deg, #fdcb6e, #e17055);">
-              <span>活力橙</span>
-            </div>
-          </div>
+        <div class="tool-group">
+          <h3>💾 导出设置</h3>
+          <button class="tool-btn btn-primary" onclick="exportImage()">
+            <i class="fa fa-download"></i> 导出图片
+          </button>
+          <button class="tool-btn btn-secondary" onclick="clearCanvas()">
+            <i class="fa fa-trash"></i> 清空画布
+          </button>
         </div>
       </div>
 
-      <!-- 预览面板 -->
-      <div class="preview-panel">
-        <div class="preview-container">
-          <div class="cover-preview" id="cover-preview">
-            <div class="cover-content" id="cover-content">
-              <h1 class="cover-main-title" id="cover-main-title">记录美好生活</h1>
-              <p class="cover-sub-title" id="cover-sub-title">每一天都值得被珍藏</p>
-            </div>
+      <!-- 画布区域 -->
+      <div class="canvas-container">
+        <div class="canvas-wrapper">
+          <div class="cover-canvas" id="cover-canvas">
+            <!-- 动态生成的元素会在这里 -->
           </div>
-          
-          <div class="preview-actions">
-            <button class="btn btn-primary" onclick="updatePreview()">
-              <i class="fa fa-sync-alt"></i> 更新预览
-            </button>
-            <button class="btn btn-success" onclick="downloadCover()">
-              <i class="fa fa-download"></i> 下载封面
-            </button>
-            <button class="btn btn-secondary" onclick="resetSettings()">
-              <i class="fa fa-redo"></i> 重置设置
-            </button>
-            <button class="btn btn-info" onclick="copySettings()">
-              <i class="fa fa-copy"></i> 复制配置
-            </button>
+        </div>
+        
+        <div class="canvas-controls">
+          <div class="zoom-controls">
+            <button class="control-btn" onclick="zoomOut()">-</button>
+            <span id="zoom-level">100%</span>
+            <button class="control-btn" onclick="zoomIn()">+</button>
+          </div>
+          <button class="control-btn" onclick="centerElements()">
+            <i class="fa fa-crosshairs"></i> 居中元素
+          </button>
+        </div>
+      </div>
+
+      <!-- 属性面板 -->
+      <div class="property-panel" id="property-panel">
+        <div class="property-header">
+          <h3>⚙️ 属性设置</h3>
+          <span class="hint">选择画布上的元素进行编辑</span>
+        </div>
+        <div class="property-content" id="property-content">
+          <div class="no-selection">
+            <i class="fa fa-mouse-pointer"></i>
+            <p>点击选择画布上的元素进行编辑</p>
           </div>
         </div>
       </div>
     </div>
 
     <!-- 使用说明 -->
-    <div class="usage-guide">
-      <h3>📖 使用指南</h3>
-      <div class="guide-grid">
-        <div class="guide-item">
-          <div class="guide-icon">🎯</div>
-          <h4>标题技巧</h4>
-          <p>主标题建议6-12字，副标题15字以内，确保信息传达清晰</p>
+    <div class="usage-section">
+      <h3>🎯 使用指南</h3>
+      <div class="guide-cards">
+        <div class="guide-card">
+          <div class="guide-icon">✨</div>
+          <h4>添加文字</h4>
+          <p>点击"添加文字"按钮，在画布上创建文字元素，双击文字可编辑内容</p>
         </div>
-        <div class="guide-item">
+        <div class="guide-card">
+          <div class="guide-icon">🖼️</div>
+          <h4>导入贴纸</h4>
+          <p>支持 PNG、JPG 格式图片，导入后可以自由调整大小和位置</p>
+        </div>
+        <div class="guide-card">
           <div class="guide-icon">🎨</div>
-          <h4>配色建议</h4>
-          <p>选择对比度明显的颜色组合，确保文字清晰可读</p>
+          <h4>自定义样式</h4>
+          <p>选中元素后，在右侧属性面板调整颜色、字体、大小等属性</p>
         </div>
-        <div class="guide-item">
-          <div class="guide-icon">💡</div>
-          <h4>设计要点</h4>
-          <p>尝试不同布局和字体，找到最适合内容的展示方式</p>
-        </div>
-        <div class="guide-item">
-          <div class="guide-icon">📱</div>
-          <h4>平台适配</h4>
-          <p>生成图片比例为3:4，完美适配小红书封面要求</p>
+        <div class="guide-card">
+          <div class="guide-icon">💾</div>
+          <h4>导出图片</h4>
+          <p>支持高清导出，完美适配小红书封面 3:4 比例要求</p>
         </div>
       </div>
     </div>
@@ -425,41 +369,58 @@
 
   <style>
     .cover-generator-page {
-      max-width: 1400px;
+      max-width: 100%;
       margin: 0 auto;
       padding: 20px;
     }
 
-    .cover-generator-container {
+    .page-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      margin: 0 0 10px 0;
+      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-color-secondary);
+      margin: 0;
+    }
+
+    .generator-container {
       display: grid;
-      grid-template-columns: 400px 1fr;
-      gap: 30px;
+      grid-template-columns: 280px 1fr 300px;
+      gap: 20px;
+      min-height: 600px;
       margin-bottom: 50px;
     }
 
-    .control-panel {
+    /* 工具栏样式 */
+    .toolbar {
       background: #fff;
       border-radius: 16px;
       padding: 25px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       height: fit-content;
-      position: sticky;
-      top: 20px;
     }
 
-    .control-section {
+    .tool-group {
       margin-bottom: 30px;
-      padding-bottom: 25px;
-      border-bottom: 1px solid #f0f0f0;
     }
 
-    .control-section:last-child {
-      border-bottom: none;
+    .tool-group:last-child {
       margin-bottom: 0;
     }
 
-    .control-section h3 {
-      margin: 0 0 18px 0;
+    .tool-group h3 {
+      margin: 0 0 15px 0;
       font-size: 1.1rem;
       color: #333;
       display: flex;
@@ -467,219 +428,290 @@
       gap: 8px;
     }
 
-    .control-group {
-      margin-bottom: 18px;
-      position: relative;
-    }
-
-    .control-group label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #555;
-      font-size: 0.9rem;
-    }
-
-    .control-group input,
-    .control-group select {
+    .tool-btn {
       width: 100%;
-      padding: 10px 12px;
+      padding: 12px 16px;
+      margin-bottom: 10px;
       border: 2px solid #e1e8ed;
       border-radius: 10px;
-      font-size: 14px;
-      transition: all 0.3s ease;
       background: #fff;
-    }
-
-    .control-group input:focus,
-    .control-group select:focus {
-      outline: none;
-      border-color: #ff2442;
-      box-shadow: 0 0 0 3px rgba(255, 36, 66, 0.1);
-    }
-
-    .control-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .char-count {
-      position: absolute;
-      right: 8px;
-      top: 35px;
-      font-size: 0.75rem;
-      color: #999;
-    }
-
-    .template-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .template-item {
-      height: 60px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-    }
-
-    .template-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .template-item.active {
-      border-color: #ff2442;
-      box-shadow: 0 0 0 3px rgba(255, 36, 66, 0.2);
-    }
-
-    .template-item span {
-      color: white;
-      font-weight: 600;
-      font-size: 0.8rem;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    }
-
-    .preview-panel {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
-
-    .preview-container {
-      text-align: center;
-    }
-
-    .cover-preview {
-      width: 300px;
-      height: 400px;
-      background: #ff2442;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-      position: relative;
-      overflow: hidden;
-      margin: 0 auto 25px;
-      transition: all 0.3s ease;
-    }
-
-    .cover-preview:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-    }
-
-    .cover-content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-      color: white;
-      font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    }
-
-    .cover-main-title {
-      font-size: 32px;
-      margin: 0 0 15px 0;
-      text-align: center;
-      line-height: 1.3;
-      font-weight: 700;
-    }
-
-    .cover-sub-title {
-      font-size: 16px;
-      margin: 0;
-      text-align: center;
-      opacity: 0.95;
-      font-weight: 500;
-    }
-
-    .preview-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      max-width: 300px;
-      margin: 0 auto;
-    }
-
-    .btn {
-      padding: 12px 16px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 600;
+      color: #333;
       font-size: 0.9rem;
+      cursor: pointer;
       transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
     }
 
-    .btn:hover {
+    .tool-btn:hover {
+      border-color: #ff2442;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(255, 36, 66, 0.1);
     }
 
     .btn-primary {
       background: #ff2442;
       color: white;
-    }
-
-    .btn-success {
-      background: #07c160;
-      color: white;
+      border-color: #ff2442;
     }
 
     .btn-secondary {
       background: #6c757d;
       color: white;
+      border-color: #6c757d;
     }
 
-    .btn-info {
-      background: #17a2b8;
-      color: white;
+    .color-picker-group {
+      margin-bottom: 12px;
     }
 
-    .usage-guide {
+    .color-picker-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    .color-picker-group input {
+      width: 100%;
+      height: 40px;
+      border: 2px solid #e1e8ed;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .tool-group select {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #e1e8ed;
+      border-radius: 8px;
       background: #fff;
+      font-size: 0.9rem;
+    }
+
+    /* 画布区域 */
+    .canvas-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .canvas-wrapper {
+      flex: 1;
+      background: #f8f9fa;
       border-radius: 16px;
       padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+      min-height: 500px;
+    }
+
+    .cover-canvas {
+      width: 375px;
+      height: 500px;
+      background: #ff2442;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .cover-canvas.zoomed {
+      transform: scale(var(--zoom-level));
+    }
+
+    .canvas-element {
+      position: absolute;
+      cursor: move;
+      user-select: none;
+    }
+
+    .text-element {
+      padding: 10px;
+      border: 2px dashed transparent;
+      border-radius: 8px;
+      min-width: 100px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .text-element.selected {
+      border-color: #ff2442;
+      background: rgba(255, 36, 66, 0.1);
+    }
+
+    .text-element.editing {
+      border-color: #4ecdc4;
+      background: rgba(78, 205, 196, 0.1);
+    }
+
+    .sticker-element {
+      border: 2px dashed transparent;
+      border-radius: 8px;
+    }
+
+    .sticker-element.selected {
+      border-color: #ff2442;
+      background: rgba(255, 36, 66, 0.1);
+    }
+
+    .sticker-element img {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+    }
+
+    .canvas-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding: 0 10px;
+    }
+
+    .zoom-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .control-btn {
+      padding: 8px 12px;
+      border: 1px solid #e1e8ed;
+      border-radius: 6px;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .control-btn:hover {
+      border-color: #ff2442;
+      color: #ff2442;
+    }
+
+    /* 属性面板 */
+    .property-panel {
+      background: #fff;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      height: fit-content;
+    }
+
+    .property-header h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.1rem;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      color: #999;
+    }
+
+    .no-selection {
+      text-align: center;
+      color: #999;
+      padding: 40px 20px;
+    }
+
+    .no-selection i {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      opacity: 0.5;
+    }
+
+    .property-control {
+      margin-bottom: 15px;
+    }
+
+    .property-control label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    .property-control input,
+    .property-control select,
+    .property-control textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 2px solid #e1e8ed;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .property-control input:focus,
+    .property-control select:focus,
+    .property-control textarea:focus {
+      outline: none;
+      border-color: #ff2442;
+    }
+
+    .color-controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .delete-btn {
+      width: 100%;
+      padding: 10px;
+      background: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .delete-btn:hover {
+      background: #c82333;
+    }
+
+    /* 使用说明 */
+    .usage-section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
 
-    .usage-guide h3 {
+    .usage-section h3 {
       text-align: center;
       margin-bottom: 30px;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       color: #333;
     }
 
-    .guide-grid {
+    .guide-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 25px;
     }
 
-    .guide-item {
-      padding: 20px;
-      border-radius: 12px;
+    .guide-card {
       text-align: center;
+      padding: 25px 20px;
+      border-radius: 12px;
       background: #f8f9fa;
       transition: transform 0.3s ease;
     }
 
-    .guide-item:hover {
+    .guide-card:hover {
       transform: translateY(-5px);
     }
 
@@ -688,13 +720,13 @@
       margin-bottom: 15px;
     }
 
-    .guide-item h4 {
+    .guide-card h4 {
       margin: 0 0 12px 0;
       color: #333;
       font-size: 1.1rem;
     }
 
-    .guide-item p {
+    .guide-card p {
       margin: 0;
       color: #666;
       line-height: 1.5;
@@ -702,40 +734,28 @@
     }
 
     /* 响应式设计 */
-    @media (max-width: 1024px) {
-      .cover-generator-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    @media (max-width: 1200px) {
+      .generator-container {
+        grid-template-columns: 250px 1fr;
       }
       
-      .control-panel {
-        position: static;
-      }
-      
-      .template-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .property-panel {
+        grid-column: 1 / -1;
+        margin-top: 20px;
       }
     }
 
     @media (max-width: 768px) {
-      .cover-generator-page {
-        padding: 15px;
-      }
-      
-      .control-panel {
-        padding: 20px;
-      }
-      
-      .preview-actions {
+      .generator-container {
         grid-template-columns: 1fr;
       }
       
-      .cover-preview {
-        width: 280px;
-        height: 373px;
+      .cover-canvas {
+        width: 300px;
+        height: 400px;
       }
       
-      .guide-grid {
+      .guide-cards {
         grid-template-columns: 1fr;
       }
     }
@@ -857,111 +877,6 @@
 
     </div>
   </aside>
-
-  <style>
-    .site-author-widget {
-      background: #fff;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      margin-bottom: 40px;
-      text-align: center;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .site-author-widget:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-
-    .site-author-widget .site-author-image {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 12px;
-      display: block;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
-    }
-
-    .site-author-widget:hover .site-author-image {
-      transform: scale(1.05);
-    }
-
-    .site-author-widget .site-author-name {
-      font-weight: 700;
-      font-size: 1.3rem;
-      margin: 8px 0 4px;
-      color: var(--text-color);
-    }
-
-    .site-author-widget .site-description {
-      font-size: 0.95rem;
-      color: var(--text-color-secondary);
-      margin-bottom: 16px;
-      line-height: 1.4;
-    }
-
-    /* 社交链接网格布局 */
-    .site-author-widget .links-of-author {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: auto;
-      justify-content: center;
-      gap: 8px 12px;
-      max-width: 200px;
-      margin: 0 auto 16px;
-      text-align: center;
-    }
-
-    .site-author-widget .links-of-author-item a {
-      font-size: 0.75rem;
-      color: var(--text-color);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: inline-block;
-      padding: 4px 8px;
-      border-radius: 8px;
-      background: rgba(0,0,0,0.03);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .site-author-widget .links-of-author-item a:hover {
-      color: var(--primary-color);
-      background: rgba(0,0,0,0.05);
-      transform: translateY(-1px);
-    }
-
-    /* 友情链接 */
-    .links-of-blogroll-list {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .links-of-blogroll-item a {
-      display: inline-block;
-      color: var(--text-color);
-      padding: 4px 12px;
-      border-radius: 12px;
-      background: #f8f9fa;
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .links-of-blogroll-item a:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-  </style>
 
       </div>
     </main>
