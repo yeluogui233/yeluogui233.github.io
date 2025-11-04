@@ -8155,16 +8155,7 @@ function initCategoryDropdown(dropdownElement, currentCategoryElement, gridEleme
   }
   
   // 添加分类选项
-  // 添加分类信息（如果有）
-if (book.category && book.category.trim() !== '') {
-  // 分割分类字符串并创建彩色标签
-  const categories = book.category.split(' ').filter(cat => cat.trim() !== '');
-  const categoryTags = categories.map(cat => 
-    `<span class="book-category-tag category-${cat}">${cat}</span>`
-  ).join('');
-  
-  metaHTML += `<div><strong>分类:</strong> ${categoryTags}</div>`;
-}
+
   categories.forEach(category => {
     if (category !== 'all') {
       const option = document.createElement('button');
