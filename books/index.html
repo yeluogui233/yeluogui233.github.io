@@ -8090,8 +8090,8 @@ function extractCategories() {
       // 分割分类字符串，支持空格分隔的多个分类
       const categoryList = book.category.split(' ').filter(cat => cat.trim() !== '');
       categoryList.forEach(cat => {
-        // 将分类转换为与模板相同的格式：小写并用连字符替换空格
-        const formattedCategory = cat.toLowerCase().replace(' ', '-');
+        // 将分类转换为与模板相同的格式：小写并用连字符替换所有空格
+        const formattedCategory = cat.toLowerCase().split(' ').join('-');
         categories.add(formattedCategory);
       });
     }
@@ -8114,8 +8114,8 @@ function initCategoryDropdown(dropdownElement, currentCategoryElement, gridEleme
       const option = document.createElement('button');
       option.className = 'category-option';
       option.setAttribute('data-category', category);
-      // 显示原始分类名称（将连字符转换回空格）
-      option.textContent = category.replace('-', ' ');
+      // 显示原始分类名称（将所有连字符转换回空格）
+      option.textContent = category.split('-').join(' ');
       dropdownElement.appendChild(option);
     }
   });
