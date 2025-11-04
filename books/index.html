@@ -404,7 +404,67 @@
   .btn { width: 40px !important; height: 20px !important; font-size: 0.58rem !important; }
   .book-title-overlay { font-size: 0.68rem; padding: 5px 6px; }
 }
+/* 分类标签样式 - 多巴胺配色 */
+.book-category-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 2px;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
+/* 多巴胺配色方案 - 基于您的书籍分类 */
+.category-文学 { background-color: #FFD6E7; } /* 粉色 */
+.category-小说 { background-color: #D6E8FF; } /* 蓝色 */
+.category-科幻 { background-color: #D4FFD6; } /* 绿色 */
+.category-历史 { background-color: #FFF9D6; } /* 黄色 */
+.category-哲学 { background-color: #E8D6FF; } /* 紫色 */
+.category-心理学 { background-color: #FFE6D6; } /* 橙色 */
+.category-传记 { background-color: #D6FFF9; } /* 青色 */
+.category-科普 { background-color: #FFD6D6; } /* 红色 */
+.category-艺术 { background-color: #F0D6FF; } /* 淡紫 */
+.category-经济 { background-color: #D6FFE8; } /* 薄荷绿 */
+.category-政治 { background-color: #FFD6A5; } /* 珊瑚色 */
+.category-社会学 { background-color: #D6F0FF; } /* 天蓝色 */
+.category-中国文学 { background-color: #FFE4E1; } /* 玫瑰色 */
+.category-中国古典文学 { background-color: #F5F5DC; } /* 米色 */
+.category-乡土文学 { background-color: #E6E6FA; } /* 淡紫色 */
+.category-红色文学 { background-color: #FFB6C1; } /* 浅红色 */
+.category-英国文学 { background-color: #B0E0E6; } /* 粉蓝色 */
+.category-美国文学 { background-color: #98FB98; } /* 淡绿色 */
+.category-法国文学 { background-color: #DDA0DD; } /* 梅红色 */
+.category-俄国文学 { background-color: #F0E68C; } /* 卡其色 */
+.category-德国文学 { background-color: #87CEEB; } /* 天蓝色 */
+.category-日本文学 { background-color: #FFA07A; } /* 浅橙色 */
+.category-拉美文学 { background-color: #20B2AA; color: white; } /* 浅海绿色 */
+.category-韩国文学 { background-color: #FF69B4; color: white; } /* 热粉色 */
+.category-推理小说 { background-color: #778899; color: white; } /* 浅灰色 */
+.category-恐怖小说 { background-color: #2F4F4F; color: white; } /* 深灰色 */
+.category-反乌托邦 { background-color: #8B0000; color: white; } /* 深红色 */
+.category-中国史 { background-color: #DEB887; } /* 实木色 */
+.category-宋史 { background-color: #D2B48C; } /* 棕褐色 */
+.category-明史 { background-color: #BC8F8F; } /* 玫瑰棕色 */
+.category-全球史 { background-color: #4682B4; color: white; } /* 钢蓝色 */
+.category-世界史 { background-color: #5F9EA0; } /* 军蓝色 */
+.category-西方哲学 { background-color: #9370DB; color: white; } /* 中紫色 */
+.category-马哲 { background-color: #DC143C; color: white; } /* 深红色 */
+.category-商业 { background-color: #FFD700; } /* 金色 */
+.category-散文 { background-color: #DA70D6; color: white; } /* 兰花紫 */
+.category-诗歌 { background-color: #BA55D3; color: white; } /* 中兰花紫 */
+.category-史诗 { background-color: #9932CC; color: white; } /* 深兰花紫 */
+.category-杂文 { background-color: #8A2BE2; color: white; } /* 蓝紫色 */
+.category-书信 { background-color: #4B0082; color: white; } /* 靛蓝色 */
+.category-戏剧 { background-color: #6A5ACD; color: white; } /* 板岩蓝 */
+.category-漫画 { background-color: #FF4500; color: white; } /* 橙红色 */
+
+/* 默认分类样式 */
+.book-category {
+  background-color: #F0F0F0;
+  color: #666;
+}
 /* 兔子按钮样式 */
 .rabbit-toggle {
   position: absolute;
@@ -8095,6 +8155,16 @@ function initCategoryDropdown(dropdownElement, currentCategoryElement, gridEleme
   }
   
   // 添加分类选项
+  // 添加分类信息（如果有）
+if (book.category && book.category.trim() !== '') {
+  // 分割分类字符串并创建彩色标签
+  const categories = book.category.split(' ').filter(cat => cat.trim() !== '');
+  const categoryTags = categories.map(cat => 
+    `<span class="book-category-tag category-${cat}">${cat}</span>`
+  ).join('');
+  
+  metaHTML += `<div><strong>分类:</strong> ${categoryTags}</div>`;
+}
   categories.forEach(category => {
     if (category !== 'all') {
       const option = document.createElement('button');
