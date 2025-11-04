@@ -41,15 +41,15 @@
     var CONFIG = {"hostname":"yeluogui.cloud","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="”我这辈子一直想信仰某种东西，“圣地亚哥说道,”然而却一直在撒谎，我没有信仰“">
+  <meta name="description" content="📝 文字内容                主标题                  0&#x2F;20            &lt;div class&#x3D;&quot;control-group&quot;&gt;     &lt;label for&#x3D;&quot;cover-subtitle&quot;&gt;副标题&lt;&#x2F;label&gt;     &lt;inpu">
 <meta property="og:type" content="website">
-<meta property="og:title" content="穿过长长的隧道，便是雪国">
+<meta property="og:title" content="小红书封面生成器">
 <meta property="og:url" content="http://yeluogui.cloud/lab/cover-generator/index.html">
 <meta property="og:site_name" content="穿过长长的隧道，便是雪国">
-<meta property="og:description" content="”我这辈子一直想信仰某种东西，“圣地亚哥说道,”然而却一直在撒谎，我没有信仰“">
+<meta property="og:description" content="📝 文字内容                主标题                  0&#x2F;20            &lt;div class&#x3D;&quot;control-group&quot;&gt;     &lt;label for&#x3D;&quot;cover-subtitle&quot;&gt;副标题&lt;&#x2F;label&gt;     &lt;inpu">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-11-04T14:40:56.087Z">
-<meta property="article:modified_time" content="2025-11-04T14:40:52.196Z">
+<meta property="article:published_time" content="2025-11-04T15:01:10.420Z">
+<meta property="article:modified_time" content="2025-11-04T15:01:10.420Z">
 <meta property="article:author" content="叶落归">
 <meta name="twitter:card" content="summary">
 
@@ -66,7 +66,7 @@
   };
 </script>
 
-  <title> | 穿过长长的隧道，便是雪国
+  <title>小红书封面生成器 | 穿过长长的隧道，便是雪国
 </title>
   
 
@@ -259,7 +259,7 @@
     <div class="post-block" lang="zh-CN">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">
+<h1 class="post-title" itemprop="name headline">小红书封面生成器
 </h1>
 
 <div class="post-meta">
@@ -279,7 +279,767 @@
       
       
       <div class="post-body">
-          
+          <div class="cover-generator-container">
+  <!-- 控制面板 -->
+  <div class="control-panel">
+    <div class="control-section">
+      <h3>📝 文字内容</h3>
+      <div class="control-group">
+        <label for="cover-title">主标题</label>
+        <input type="text" id="cover-title" placeholder="输入吸引人的标题" value="犹豫就会败北">
+        <div class="char-count"><span id="title-count">0</span>/20</div>
+      </div>
+
+
+<pre><code>  &lt;div class=&quot;control-group&quot;&gt;
+    &lt;label for=&quot;cover-subtitle&quot;&gt;副标题&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;cover-subtitle&quot; placeholder=&quot;输入补充描述&quot; value=&quot;每一天都值得被珍藏&quot;&gt;
+    &lt;div class=&quot;char-count&quot;&gt;&lt;span id=&quot;subtitle-count&quot;&gt;0&lt;/span&gt;/30&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;control-section&quot;&gt;
+  &lt;h3&gt;🎨 颜色样式&lt;/h3&gt;
+  &lt;div class=&quot;control-row&quot;&gt;
+    &lt;div class=&quot;control-group&quot;&gt;
+      &lt;label for=&quot;cover-bgcolor&quot;&gt;背景颜色&lt;/label&gt;
+      &lt;input type=&quot;color&quot; id=&quot;cover-bgcolor&quot; value=&quot;#ff2442&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;control-group&quot;&gt;
+      &lt;label for=&quot;cover-textcolor&quot;&gt;文字颜色&lt;/label&gt;
+      &lt;input type=&quot;color&quot; id=&quot;cover-textcolor&quot; value=&quot;#ffffff&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class=&quot;control-group&quot;&gt;
+    &lt;label for=&quot;cover-gradient&quot;&gt;渐变效果&lt;/label&gt;
+    &lt;select id=&quot;cover-gradient&quot;&gt;
+      &lt;option value=&quot;none&quot;&gt;无渐变&lt;/option&gt;
+      &lt;option value=&quot;horizontal&quot;&gt;水平渐变&lt;/option&gt;
+      &lt;option value=&quot;vertical&quot;&gt;垂直渐变&lt;/option&gt;
+      &lt;option value=&quot;diagonal&quot;&gt;对角渐变&lt;/option&gt;
+      &lt;option value=&quot;radial&quot;&gt;径向渐变&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;control-section&quot;&gt;
+  &lt;h3&gt;✨ 字体布局&lt;/h3&gt;
+  &lt;div class=&quot;control-row&quot;&gt;
+    &lt;div class=&quot;control-group&quot;&gt;
+      &lt;label for=&quot;cover-font&quot;&gt;字体样式&lt;/label&gt;
+      &lt;select id=&quot;cover-font&quot;&gt;
+        &lt;option value=&quot;&#39;PingFang SC&#39;, &#39;Microsoft YaHei&#39;, sans-serif&quot;&gt;系统字体&lt;/option&gt;
+        &lt;option value=&quot;&#39;Helvetica Neue&#39;, Arial, sans-serif&quot;&gt;现代字体&lt;/option&gt;
+        &lt;option value=&quot;&#39;SimSun&#39;, &#39;Songti SC&#39;, serif&quot;&gt;传统字体&lt;/option&gt;
+        &lt;option value=&quot;&#39;KaiTi&#39;, &#39;STKaiti&#39;, serif&quot;&gt;楷体&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;control-group&quot;&gt;
+      &lt;label for=&quot;cover-layout&quot;&gt;布局样式&lt;/label&gt;
+      &lt;select id=&quot;cover-layout&quot;&gt;
+        &lt;option value=&quot;centered&quot;&gt;居中布局&lt;/option&gt;
+        &lt;option value=&quot;left-aligned&quot;&gt;左对齐&lt;/option&gt;
+        &lt;option value=&quot;right-aligned&quot;&gt;右对齐&lt;/option&gt;
+        &lt;option value=&quot;diagonal&quot;&gt;斜角创意&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class=&quot;control-group&quot;&gt;
+    &lt;label for=&quot;cover-shadow&quot;&gt;文字阴影&lt;/label&gt;
+    &lt;select id=&quot;cover-shadow&quot;&gt;
+      &lt;option value=&quot;none&quot;&gt;无阴影&lt;/option&gt;
+      &lt;option value=&quot;light&quot;&gt;轻微阴影&lt;/option&gt;
+      &lt;option value=&quot;medium&quot;&gt;中等阴影&lt;/option&gt;
+      &lt;option value=&quot;heavy&quot;&gt;强烈阴影&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;control-section&quot;&gt;
+  &lt;h3&gt;🎯 快速模板&lt;/h3&gt;
+  &lt;div class=&quot;template-grid&quot;&gt;
+    &lt;div class=&quot;template-item&quot; data-template=&quot;red&quot; style=&quot;background: linear-gradient(135deg, #ff2442, #ff6b6b);&quot;&gt;
+      &lt;span&gt;小红书红&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;template-item&quot; data-template=&quot;pink&quot; style=&quot;background: linear-gradient(135deg, #ff85a2, #ffafcc);&quot;&gt;
+      &lt;span&gt;温柔粉&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;template-item&quot; data-template=&quot;blue&quot; style=&quot;background: linear-gradient(135deg, #4a90e2, #74b9ff);&quot;&gt;
+      &lt;span&gt;清新蓝&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;template-item&quot; data-template=&quot;green&quot; style=&quot;background: linear-gradient(135deg, #07c160, #55efc4);&quot;&gt;
+      &lt;span&gt;自然绿&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;template-item&quot; data-template=&quot;purple&quot; style=&quot;background: linear-gradient(135deg, #a29bfe, #6c5ce7);&quot;&gt;
+      &lt;span&gt;梦幻紫&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;template-item&quot; data-template=&quot;orange&quot; style=&quot;background: linear-gradient(135deg, #fdcb6e, #e17055);&quot;&gt;
+      &lt;span&gt;活力橙&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+  <!-- 预览面板 -->
+  <div class="preview-panel">
+    <div class="preview-container">
+      <div class="cover-preview" id="cover-preview">
+        <div class="cover-content" id="cover-content">
+          <h1 class="cover-main-title" id="cover-main-title">记录美好生活</h1>
+          <p class="cover-sub-title" id="cover-sub-title">每一天都值得被珍藏</p>
+        </div>
+      </div>
+
+<pre><code>  &lt;div class=&quot;preview-actions&quot;&gt;
+    &lt;button class=&quot;btn btn-primary&quot; onclick=&quot;updatePreview()&quot;&gt;
+      &lt;i class=&quot;fa fa-sync-alt&quot;&gt;&lt;/i&gt; 更新预览
+    &lt;/button&gt;
+    &lt;button class=&quot;btn btn-success&quot; onclick=&quot;downloadCover()&quot;&gt;
+      &lt;i class=&quot;fa fa-download&quot;&gt;&lt;/i&gt; 下载封面
+    &lt;/button&gt;
+    &lt;button class=&quot;btn btn-secondary&quot; onclick=&quot;resetSettings()&quot;&gt;
+      &lt;i class=&quot;fa fa-redo&quot;&gt;&lt;/i&gt; 重置设置
+    &lt;/button&gt;
+    &lt;button class=&quot;btn btn-info&quot; onclick=&quot;copySettings()&quot;&gt;
+      &lt;i class=&quot;fa fa-copy&quot;&gt;&lt;/i&gt; 复制配置
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+</div>
+
+<!-- 使用说明 -->
+<div class="usage-guide">
+  <h3>📖 使用指南</h3>
+  <div class="guide-grid">
+    <div class="guide-item">
+      <div class="guide-icon">🎯</div>
+      <h4>标题技巧</h4>
+      <p>主标题建议6-12字，副标题15字以内，确保信息传达清晰</p>
+    </div>
+    <div class="guide-item">
+      <div class="guide-icon">🎨</div>
+      <h4>配色建议</h4>
+      <p>选择对比度明显的颜色组合，确保文字清晰可读</p>
+    </div>
+    <div class="guide-item">
+      <div class="guide-icon">💡</div>
+      <h4>设计要点</h4>
+      <p>尝试不同布局和字体，找到最适合内容的展示方式</p>
+    </div>
+    <div class="guide-item">
+      <div class="guide-icon">📱</div>
+      <h4>平台适配</h4>
+      <p>生成图片比例为3:4，完美适配小红书封面要求</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.cover-generator-container {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.control-panel {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.control-section {
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.control-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.control-section h3 {
+  margin: 0 0 18px 0;
+  font-size: 1.1rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-group {
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.control-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.control-group input,
+.control-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #e1e8ed;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.control-group input:focus,
+.control-group select:focus {
+  outline: none;
+  border-color: #ff2442;
+  box-shadow: 0 0 0 3px rgba(255, 36, 66, 0.1);
+}
+
+.control-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.char-count {
+  position: absolute;
+  right: 8px;
+  top: 35px;
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.template-item {
+  height: 60px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.template-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.template-item.active {
+  border-color: #ff2442;
+  box-shadow: 0 0 0 3px rgba(255, 36, 66, 0.2);
+}
+
+.template-item span {
+  color: white;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.preview-panel {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.preview-container {
+  text-align: center;
+}
+
+.cover-preview {
+  width: 300px;
+  height: 400px;
+  background: #ff2442;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto 25px;
+  transition: all 0.3s ease;
+}
+
+.cover-preview:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+}
+
+.cover-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  color: white;
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.cover-main-title {
+  font-size: 32px;
+  margin: 0 0 15px 0;
+  text-align: center;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.cover-sub-title {
+  font-size: 16px;
+  margin: 0;
+  text-align: center;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+.preview-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.btn {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn-primary {
+  background: #ff2442;
+  color: white;
+}
+
+.btn-success {
+  background: #07c160;
+  color: white;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-info {
+  background: #17a2b8;
+  color: white;
+}
+
+.usage-guide {
+  max-width: 1200px;
+  margin: 50px auto 0;
+  padding: 0 20px;
+}
+
+.usage-guide h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.guide-item {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.guide-item:hover {
+  transform: translateY(-5px);
+}
+
+.guide-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.guide-item h4 {
+  margin: 0 0 12px 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.guide-item p {
+  margin: 0;
+  color: #666;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .cover-generator-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .control-panel {
+    position: static;
+  }
+
+  .template-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .cover-generator-container {
+    padding: 15px;
+  }
+
+  .control-panel {
+    padding: 20px;
+  }
+
+  .preview-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .cover-preview {
+    width: 280px;
+    height: 373px;
+  }
+
+  .guide-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+// 预设模板配置
+const templates = {
+  red: {
+    bgColor: '#ff2442',
+    textColor: '#ffffff',
+    title: '记录美好生活',
+    subtitle: '分享我的日常点滴',
+    gradient: 'none'
+  },
+  pink: {
+    bgColor: '#ff85a2',
+    textColor: '#ffffff',
+    title: '温柔时光',
+    subtitle: '遇见更好的自己',
+    gradient: 'vertical'
+  },
+  blue: {
+    bgColor: '#4a90e2',
+    textColor: '#ffffff',
+    title: '清新日常',
+    subtitle: '简单生活中的小确幸',
+    gradient: 'horizontal'
+  },
+  green: {
+    bgColor: '#07c160',
+    textColor: '#ffffff',
+    title: '自然生活',
+    subtitle: '回归本真的美好',
+    gradient: 'diagonal'
+  },
+  purple: {
+    bgColor: '#a29bfe',
+    textColor: '#ffffff',
+    title: '梦幻之旅',
+    subtitle: '探索未知的世界',
+    gradient: 'radial'
+  },
+  orange: {
+    bgColor: '#fdcb6e',
+    textColor: '#333333',
+    title: '活力满满',
+    subtitle: '积极向上的每一天',
+    gradient: 'none'
+  }
+};
+
+// 初始化函数
+function initCoverGenerator() {
+  updateCharCount();
+  updatePreview();
+  setupEventListeners();
+}
+
+// 更新字符计数
+function updateCharCount() {
+  const title = document.getElementById('cover-title').value;
+  const subtitle = document.getElementById('cover-subtitle').value;
+
+  document.getElementById('title-count').textContent = title.length;
+  document.getElementById('subtitle-count').textContent = subtitle.length;
+}
+
+// 设置事件监听
+function setupEventListeners() {
+  // 输入框实时更新
+  const inputs = ['cover-title', 'cover-subtitle', 'cover-bgcolor', 'cover-textcolor', 
+                 'cover-font', 'cover-layout', 'cover-gradient', 'cover-shadow'];
+
+  inputs.forEach(id => {
+    document.getElementById(id).addEventListener('input', updatePreview);
+  });
+
+  // 选择框变化更新
+  const selects = ['cover-font', 'cover-layout', 'cover-gradient', 'cover-shadow'];
+  selects.forEach(id => {
+    document.getElementById(id).addEventListener('change', updatePreview);
+  });
+
+  // 模板点击事件
+  document.querySelectorAll('.template-item').forEach(item => {
+    item.addEventListener('click', function() {
+      const templateName = this.dataset.template;
+      applyTemplate(templateName);
+      
+      // 更新激活状态
+      document.querySelectorAll('.template-item').forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+}
+
+// 应用模板
+function applyTemplate(templateName) {
+  const template = templates[templateName];
+  if (!template) return;
+
+  document.getElementById('cover-title').value = template.title;
+  document.getElementById('cover-subtitle').value = template.subtitle;
+  document.getElementById('cover-bgcolor').value = template.bgColor;
+  document.getElementById('cover-textcolor').value = template.textColor;
+  document.getElementById('cover-gradient').value = template.gradient;
+
+  updateCharCount();
+  updatePreview();
+}
+
+// 更新预览
+function updatePreview() {
+  const title = document.getElementById('cover-title').value || '请输入标题';
+  const subtitle = document.getElementById('cover-subtitle').value || '请输入副标题';
+  const bgColor = document.getElementById('cover-bgcolor').value;
+  const textColor = document.getElementById('cover-textcolor').value;
+  const font = document.getElementById('cover-font').value;
+  const layout = document.getElementById('cover-layout').value;
+  const gradient = document.getElementById('cover-gradient').value;
+  const shadow = document.getElementById('cover-shadow').value;
+
+  const preview = document.getElementById('cover-preview');
+  const coverContent = document.getElementById('cover-content');
+
+  // 更新背景
+  let background = bgColor;
+  if (gradient !== 'none') {
+    const gradientColors = getGradientColors(bgColor);
+    background = createGradient(gradient, gradientColors);
+  }
+  preview.style.background = background;
+
+  // 更新内容
+  coverContent.style.color = textColor;
+  coverContent.style.fontFamily = font;
+
+  document.getElementById('cover-main-title').textContent = title;
+  document.getElementById('cover-sub-title').textContent = subtitle;
+
+  // 应用布局
+  applyLayout(coverContent, layout);
+
+  // 应用文字阴影
+  applyTextShadow(coverContent, shadow);
+}
+
+// 创建渐变背景
+function createGradient(type, colors) {
+  const [color1, color2] = colors;
+  switch(type) {
+    case 'horizontal':
+      return `linear-gradient(90deg, ${color1} 0%, ${color2} 100%)`;
+    case 'vertical':
+      return `linear-gradient(180deg, ${color1} 0%, ${color2} 100%)`;
+    case 'diagonal':
+      return `linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`;
+    case 'radial':
+      return `radial-gradient(circle, ${color1} 0%, ${color2} 100%)`;
+    default:
+      return color1;
+  }
+}
+
+// 获取渐变颜色
+function getGradientColors(baseColor) {
+  // 简单的颜色变亮算法
+  const color = baseColor.substring(1);
+  const r = parseInt(color.substr(0, 2), 16);
+  const g = parseInt(color.substr(2, 2), 16);
+  const b = parseInt(color.substr(4, 2), 16);
+
+  const lightR = Math.min(255, r + 30);
+  const lightG = Math.min(255, g + 30);
+  const lightB = Math.min(255, b + 30);
+
+  const lightColor = `#${lightR.toString(16).padStart(2, '0')}${lightG.toString(16).padStart(2, '0')}${lightB.toString(16).padStart(2, '0')}`;
+
+  return [baseColor, lightColor];
+}
+
+// 应用布局
+function applyLayout(container, layout) {
+  // 重置样式
+  container.style.transform = 'none';
+  container.style.justifyContent = 'center';
+  container.style.alignItems = 'center';
+  container.style.textAlign = 'center';
+  container.style.padding = '40px';
+
+  switch(layout) {
+    case 'left-aligned':
+      container.style.justifyContent = 'center';
+      container.style.alignItems = 'flex-start';
+      container.style.textAlign = 'left';
+      container.style.paddingLeft = '50px';
+      break;
+      
+    case 'right-aligned':
+      container.style.justifyContent = 'center';
+      container.style.alignItems = 'flex-end';
+      container.style.textAlign = 'right';
+      container.style.paddingRight = '50px';
+      break;
+      
+    case 'diagonal':
+      container.style.transform = 'rotate(-5deg)';
+      break;
+  }
+}
+
+// 应用文字阴影
+function applyTextShadow(container, shadow) {
+  const title = container.querySelector('.cover-main-title');
+  const subtitle = container.querySelector('.cover-sub-title');
+
+  switch(shadow) {
+    case 'light':
+      title.style.textShadow = '2px 2px 4px rgba(0,0,0,0.3)';
+      subtitle.style.textShadow = '1px 1px 2px rgba(0,0,0,0.3)';
+      break;
+    case 'medium':
+      title.style.textShadow = '3px 3px 6px rgba(0,0,0,0.4)';
+      subtitle.style.textShadow = '2px 2px 4px rgba(0,0,0,0.4)';
+      break;
+    case 'heavy':
+      title.style.textShadow = '4px 4px 8px rgba(0,0,0,0.5)';
+      subtitle.style.textShadow = '3px 3px 6px rgba(0,0,0,0.5)';
+      break;
+    default:
+      title.style.textShadow = 'none';
+      subtitle.style.textShadow = 'none';
+  }
+}
+
+// 下载封面
+function downloadCover() {
+  const preview = document.getElementById('cover-preview');
+
+  html2canvas(preview, {
+    scale: 2, // 提高分辨率
+    backgroundColor: null
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = `小红书封面-${Date.now()}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+}
+
+// 重置设置
+function resetSettings() {
+  document.getElementById('cover-title').value = '记录美好生活';
+  document.getElementById('cover-subtitle').value = '每一天都值得被珍藏';
+  document.getElementById('cover-bgcolor').value = '#ff2442';
+  document.getElementById('cover-textcolor').value = '#ffffff';
+  document.getElementById('cover-font').value = "'PingFang SC', 'Microsoft YaHei', sans-serif";
+  document.getElementById('cover-layout').value = 'centered';
+  document.getElementById('cover-gradient').value = 'none';
+  document.getElementById('cover-shadow').value = 'none';
+
+  document.querySelectorAll('.template-item').forEach(item => item.classList.remove('active'));
+
+  updateCharCount();
+  updatePreview();
+}
+
+// 复制配置（用于分享）
+function copySettings() {
+  const settings = {
+    title: document.getElementById('cover-title').value,
+    subtitle: document.getElementById('cover-subtitle').value,
+    bgColor: document.getElementById('cover-bgcolor').value,
+    textColor: document.getElementById('cover-textcolor').value,
+    font: document.getElementById('cover-font').value,
+    layout: document.getElementById('cover-layout').value,
+    gradient: document.getElementById('cover-gradient').value,
+    shadow: document.getElementById('cover-shadow').value
+  };
+
+  const settingsString = JSON.stringify(settings, null, 2);
+  navigator.clipboard.writeText(settingsString).then(() => {
+    alert('配置已复制到剪贴板！你可以分享这个配置给其他人。');
+  });
+}
+
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', initCoverGenerator);
+</script>
       </div>
       
       
@@ -363,6 +1123,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">📝 文字内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cover-main-title"><span class="nav-number"></span> <span class="nav-text">记录美好生活</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">📖 使用指南</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">标题技巧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">配色建议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">设计要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">平台适配</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
