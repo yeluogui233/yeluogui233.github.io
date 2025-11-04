@@ -621,7 +621,7 @@
         
           
           <div class="book-card card" data-book-index="0" 
-               data-category="文学-小说-英国文学-推理小说">
+               data-category="文学 小说 英国文学 推理小说">
             <!-- 星级评分 -->
             
             <div class="book-rating">
@@ -694,7 +694,7 @@
         
           
           <div class="book-card card" data-book-index="1" 
-               data-category="文学-小说-法国文学">
+               data-category="文学 小说 法国文学">
             <!-- 星级评分 -->
             
             <div class="book-rating">
@@ -726,7 +726,7 @@
         
           
           <div class="book-card card" data-book-index="2" 
-               data-category="文学-小说-俄国文学">
+               data-category="文学 小说 俄国文学">
             <!-- 星级评分 -->
             
             <div class="book-rating">
@@ -751,7 +751,7 @@
         
           
           <div class="book-card card" data-book-index="3" 
-               data-category="文学-小说-俄国文学">
+               data-category="文学 小说 俄国文学">
             <!-- 星级评分 -->
             
             <div class="book-rating">
@@ -776,7 +776,7 @@
         
           
           <div class="book-card card" data-book-index="4" 
-               data-category="文学-小说-俄国文学">
+               data-category="文学 小说 俄国文学">
             <!-- 星级评分 -->
             
             <div class="book-rating">
@@ -911,7 +911,7 @@
         
           
           <div class="book-card card" data-book-index="6" 
-               data-category="文学-小说-拉美文学">
+               data-category="文学 小说 拉美文学">
             <!-- 星级评分 -->
             
             <div class="book-rating">
@@ -8090,9 +8090,7 @@ function extractCategories() {
       // 分割分类字符串，支持空格分隔的多个分类
       const categoryList = book.category.split(' ').filter(cat => cat.trim() !== '');
       categoryList.forEach(cat => {
-        // 将分类转换为与模板相同的格式：小写并用连字符替换所有空格
-        const formattedCategory = cat.toLowerCase().split(' ').join('-');
-        categories.add(formattedCategory);
+        categories.add(cat);
       });
     }
   });
@@ -8114,8 +8112,7 @@ function initCategoryDropdown(dropdownElement, currentCategoryElement, gridEleme
       const option = document.createElement('button');
       option.className = 'category-option';
       option.setAttribute('data-category', category);
-      // 显示原始分类名称（将所有连字符转换回空格）
-      option.textContent = category.split('-').join(' ');
+      option.textContent = category;
       dropdownElement.appendChild(option);
     }
   });
@@ -8131,7 +8128,7 @@ function initCategoryDropdown(dropdownElement, currentCategoryElement, gridEleme
       });
       this.classList.add('active');
       
-      // 更新显示文本（显示原始分类名称）
+      // 更新显示文本
       currentCategoryElement.textContent = this.textContent;
       
       // 筛选书籍
@@ -8143,23 +8140,23 @@ function initCategoryDropdown(dropdownElement, currentCategoryElement, gridEleme
   });
 }
 
-  // 筛选书籍（支持多分类）
-  function filterBooks(category, gridElement) {
-    const bookCards = gridElement.querySelectorAll('.book-card');
-    
-    bookCards.forEach(card => {
-      if (category === 'all') {
+// 筛选书籍（支持多分类）
+function filterBooks(category, gridElement) {
+  const bookCards = gridElement.querySelectorAll('.book-card');
+  
+  bookCards.forEach(card => {
+    if (category === 'all') {
+      card.style.display = 'flex';
+    } else {
+      const bookCategories = card.getAttribute('data-category').split(' ');
+      if (bookCategories.includes(category)) {
         card.style.display = 'flex';
       } else {
-        const bookCategories = card.getAttribute('data-category').split(' ');
-        if (bookCategories.includes(category)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+        card.style.display = 'none';
       }
-    });
-  }
+    }
+  });
+}
 
   // 初始化分类功能
   initCategoryDropdown(categoryDropdown, currentCategory, document.getElementById('myBooksGrid'));
