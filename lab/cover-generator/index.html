@@ -254,10 +254,12 @@
           <div class="content ">
             
   <div class="cover-generator-page">
-    <header class="page-header">
+    <header class="page-header" style="text-align:center; margin-bottom: 40px;">
       <h1 class="page-title">小红书封面生成器</h1>
       
-        <p class="page-subtitle">犹豫就会败北</p>
+        <p class="page-subtitle" style="color:var(--text-color-secondary); margin-top:8px;">
+          犹豫就会败北
+        </p>
       
     </header>
 
@@ -266,26 +268,26 @@
       <div class="toolbar">
         <div class="tool-group">
           <h3>📝 文字工具</h3>
-          <button class="tool-btn" onclick="addText()">
+          <button class="tool-btn" id="add-text-btn">
             <i class="fa fa-font"></i> 添加文字
           </button>
-          <button class="tool-btn" onclick="importSticker()">
+          <button class="tool-btn" id="import-sticker-btn">
             <i class="fa fa-image"></i> 导入贴纸
           </button>
-          <input type="file" id="sticker-upload" accept="image/*" style="display: none;" onchange="handleStickerUpload(this.files)">
+          <input type="file" id="sticker-upload" accept="image/*" style="display: none;">
         </div>
 
         <div class="tool-group">
           <h3>🎨 背景设置</h3>
           <div class="color-picker-group">
             <label>背景颜色:</label>
-            <input type="color" id="bg-color" value="#ff2442" onchange="changeBackgroundColor(this.value)">
+            <input type="color" id="bg-color" value="#ff2442">
           </div>
           <div class="color-picker-group">
             <label>渐变颜色:</label>
-            <input type="color" id="gradient-color" value="#ff6b6b" onchange="changeGradientColor(this.value)">
+            <input type="color" id="gradient-color" value="#ff6b6b">
           </div>
-          <select id="gradient-type" onchange="changeGradientType(this.value)">
+          <select id="gradient-type">
             <option value="none">无渐变</option>
             <option value="horizontal">水平渐变</option>
             <option value="vertical">垂直渐变</option>
@@ -295,10 +297,10 @@
 
         <div class="tool-group">
           <h3>💾 导出设置</h3>
-          <button class="tool-btn btn-primary" onclick="exportImage()">
+          <button class="tool-btn btn-primary" id="export-btn">
             <i class="fa fa-download"></i> 导出图片
           </button>
-          <button class="tool-btn btn-secondary" onclick="clearCanvas()">
+          <button class="tool-btn btn-secondary" id="clear-btn">
             <i class="fa fa-trash"></i> 清空画布
           </button>
         </div>
@@ -314,11 +316,11 @@
         
         <div class="canvas-controls">
           <div class="zoom-controls">
-            <button class="control-btn" onclick="zoomOut()">-</button>
+            <button class="control-btn" id="zoom-out-btn">-</button>
             <span id="zoom-level">100%</span>
-            <button class="control-btn" onclick="zoomIn()">+</button>
+            <button class="control-btn" id="zoom-in-btn">+</button>
           </div>
-          <button class="control-btn" onclick="centerElements()">
+          <button class="control-btn" id="center-btn">
             <i class="fa fa-crosshairs"></i> 居中元素
           </button>
         </div>
@@ -372,26 +374,6 @@
       max-width: 100%;
       margin: 0 auto;
       padding: 20px;
-    }
-
-    .page-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .page-title {
-      font-size: 2.5rem;
-      margin: 0 0 10px 0;
-      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .page-subtitle {
-      font-size: 1.2rem;
-      color: var(--text-color-secondary);
-      margin: 0;
     }
 
     .generator-container {
@@ -519,10 +501,6 @@
       position: relative;
       overflow: hidden;
       transition: all 0.3s ease;
-    }
-
-    .cover-canvas.zoomed {
-      transform: scale(var(--zoom-level));
     }
 
     .canvas-element {
@@ -877,6 +855,111 @@
 
     </div>
   </aside>
+
+  <style>
+    .site-author-widget {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      margin-bottom: 40px;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .site-author-widget:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .site-author-widget .site-author-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 12px;
+      display: block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .site-author-widget:hover .site-author-image {
+      transform: scale(1.05);
+    }
+
+    .site-author-widget .site-author-name {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin: 8px 0 4px;
+      color: var(--text-color);
+    }
+
+    .site-author-widget .site-description {
+      font-size: 0.95rem;
+      color: var(--text-color-secondary);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    /* 社交链接网格布局 */
+    .site-author-widget .links-of-author {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: auto;
+      justify-content: center;
+      gap: 8px 12px;
+      max-width: 200px;
+      margin: 0 auto 16px;
+      text-align: center;
+    }
+
+    .site-author-widget .links-of-author-item a {
+      font-size: 0.75rem;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.03);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .site-author-widget .links-of-author-item a:hover {
+      color: var(--primary-color);
+      background: rgba(0,0,0,0.05);
+      transform: translateY(-1px);
+    }
+
+    /* 友情链接 */
+    .links-of-blogroll-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .links-of-blogroll-item a {
+      display: inline-block;
+      color: var(--text-color);
+      padding: 4px 12px;
+      border-radius: 12px;
+      background: #f8f9fa;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .links-of-blogroll-item a:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+  </style>
 
       </div>
     </main>
