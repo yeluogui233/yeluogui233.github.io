@@ -474,7 +474,6 @@
   box-shadow: 
     0 0 15px rgba(255, 215, 0, 0.4);
   position: relative;
-  overflow: hidden;
   /* 去掉黄色边框 */
   border: none;
   /* 保持和其他分类一样的高度 */
@@ -8120,144 +8119,7 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* 🆕 精致黑金站长推荐特效 */
-.webmaster-recommend-glowing {
-  background: linear-gradient(135deg, 
-    rgba(0, 0, 0, 0.9), 
-    rgba(26, 26, 26, 0.9),
-    rgba(0, 0, 0, 0.9));
-  /* 去掉黄色边框 */
-  border: none;
-  border-radius: 12px;
-  padding: 15px 20px;
-  margin: 0 0 20px 0;
-  position: relative;
-  overflow: hidden;
-  text-align: right; /* 右对齐 */
-  animation: subtleGoldPulse 4s ease-in-out infinite;
-  box-shadow: 
-    0 0 20px rgba(255, 215, 0, 0.3),
-    inset 0 0 15px rgba(255, 215, 0, 0.05);
-  max-width: 280px; /* 缩小宽度 */
-  margin-left: auto; /* 右对齐 */
-}
 
-@keyframes subtleGoldPulse {
-  0%, 100% { 
-    box-shadow: 
-      0 0 20px rgba(255, 215, 0, 0.3),
-      inset 0 0 15px rgba(255, 215, 0, 0.05);
-  }
-  50% { 
-    box-shadow: 
-      0 0 30px rgba(255, 215, 0, 0.5),
-      inset 0 0 20px rgba(255, 215, 0, 0.1);
-  }
-}
-
-.recommend-crown {
-  font-size: 1.8rem; /* 缩小皇冠 */
-  margin-bottom: 8px;
-  animation: subtleCrownGlow 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
-  display: block;
-}
-
-@keyframes subtleCrownGlow {
-  0%, 100% { 
-    transform: scale(1) rotate(0deg);
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
-  }
-  50% { 
-    transform: scale(1.05) rotate(2deg);
-    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
-  }
-}
-
-.recommend-title {
-  font-size: 1.1rem; /* 缩小标题 */
-  font-weight: 700;
-  background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 4px;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-  letter-spacing: 0.5px;
-}
-
-.recommend-subtitle {
-  font-size: 0.85rem; /* 缩小副标题 */
-  color: #FFA500;
-  font-weight: 500;
-  text-shadow: 0 0 6px rgba(255, 165, 0, 0.3);
-}
-
-.recommend-sparkle {
-  position: absolute;
-  font-size: 1rem; /* 缩小星星 */
-  animation: subtleSparkle 3s ease-in-out infinite;
-  z-index: 2;
-}
-
-.recommend-sparkle:nth-child(1) {
-  top: 8px;
-  left: 12px;
-  animation-delay: 0s;
-}
-
-.recommend-sparkle:nth-child(2) {
-  top: 8px;
-  right: 12px;
-  animation-delay: 1s;
-}
-
-.recommend-sparkle:nth-child(3) {
-  bottom: 8px;
-  left: 12px;
-  animation-delay: 2s;
-}
-
-.recommend-sparkle:nth-child(4) {
-  bottom: 8px;
-  right: 12px;
-  animation-delay: 1.5s;
-}
-
-@keyframes subtleSparkle {
-  0%, 100% { 
-    opacity: 0.2; 
-    transform: scale(0.7) rotate(0deg);
-  }
-  50% { 
-    opacity: 0.6; 
-    transform: scale(1) rotate(90deg);
-  }
-}
-
-/* 更 subtle 的金色流光效果 */
-.webmaster-recommend-glowing::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 40%,
-    rgba(255, 215, 0, 0.08) 50%,
-    transparent 60%
-  );
-  animation: subtleGoldStream 6s linear infinite;
-  transform: rotate(45deg);
-  z-index: 1;
-}
-
-@keyframes subtleGoldStream {
-  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-}
 /* 六列网格布局 */
 .books-grid {
   display: grid;
@@ -8607,22 +8469,6 @@ if (book.category && book.category.trim() !== '') {
   ).join('');
   
   metaHTML += `<div><strong>分类:</strong> ${categoryTags}</div>`;
-}
-if (book.category && book.category.includes('站长推荐')) {
-  // 在元数据前面插入黑金炫酷推荐区域
-  metaHTML = `
-    <div class="webmaster-recommend-glowing">
-      <span class="recommend-sparkle">💫</span>
-      <span class="recommend-sparkle">⭐</span>
-      <span class="recommend-sparkle">✨</span>
-      <span class="recommend-sparkle">🌟</span>
-      <div class="recommend-crown">👑</div>
-      <div class="recommend-content">
-        <div class="recommend-title">站长推荐</div>
-        <div class="recommend-subtitle">殿堂级作品</div>
-      </div>
-    </div>
-  ` + metaHTML;
 }
         
         // 添加推荐人信息（如果有）
