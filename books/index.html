@@ -472,17 +472,20 @@
   color: #FFD700 !important;
   font-weight: 700;
   box-shadow: 
-    0 0 20px #FFD700,
-    0 0 30px rgba(255, 215, 0, 0.5);
+    0 0 15px rgba(255, 215, 0, 0.4);
   position: relative;
   overflow: hidden;
-  border: 2px solid #FFD700;
+  /* 去掉黄色边框 */
+  border: none;
+  /* 保持和其他分类一样的高度 */
+  padding: 4px 10px;
+  font-size: 0.75rem;
 }
 
 .category-站长推荐::before {
   content: "👑 ";
-  font-size: 0.9em;
-  margin-right: 4px;
+  font-size: 0.8em;
+  margin-right: 3px;
 }
 
 /* 默认分类样式 */
@@ -8117,143 +8120,141 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* 🆕 黑金闪闪发光的站长推荐特效 */
+/* 🆕 精致黑金站长推荐特效 */
 .webmaster-recommend-glowing {
   background: linear-gradient(135deg, 
-    #000000, 
-    #1a1a1a, 
-    #2a2a2a,
-    #1a1a1a,
-    #000000);
-  border: 3px solid;
-  border-image: linear-gradient(45deg, #FFD700, #FFA500, #FFD700, #FFA500) 1;
-  border-radius: 16px;
-  padding: 25px 20px;
-  margin: 0 0 25px 0;
+    rgba(0, 0, 0, 0.9), 
+    rgba(26, 26, 26, 0.9),
+    rgba(0, 0, 0, 0.9));
+  /* 去掉黄色边框 */
+  border: none;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin: 0 0 20px 0;
   position: relative;
   overflow: hidden;
-  text-align: center;
-  animation: goldPulse 3s ease-in-out infinite;
+  text-align: right; /* 右对齐 */
+  animation: subtleGoldPulse 4s ease-in-out infinite;
   box-shadow: 
-    0 0 40px rgba(255, 215, 0, 0.4),
-    inset 0 0 30px rgba(255, 215, 0, 0.1);
+    0 0 20px rgba(255, 215, 0, 0.3),
+    inset 0 0 15px rgba(255, 215, 0, 0.05);
+  max-width: 280px; /* 缩小宽度 */
+  margin-left: auto; /* 右对齐 */
 }
 
-@keyframes goldPulse {
+@keyframes subtleGoldPulse {
   0%, 100% { 
     box-shadow: 
-      0 0 40px rgba(255, 215, 0, 0.4),
-      inset 0 0 30px rgba(255, 215, 0, 0.1);
+      0 0 20px rgba(255, 215, 0, 0.3),
+      inset 0 0 15px rgba(255, 215, 0, 0.05);
   }
   50% { 
     box-shadow: 
-      0 0 60px rgba(255, 215, 0, 0.7),
-      inset 0 0 40px rgba(255, 215, 0, 0.2);
+      0 0 30px rgba(255, 215, 0, 0.5),
+      inset 0 0 20px rgba(255, 215, 0, 0.1);
   }
 }
 
 .recommend-crown {
-  font-size: 3rem;
-  margin-bottom: 15px;
-  animation: crownGlow 2s ease-in-out infinite;
-  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+  font-size: 1.8rem; /* 缩小皇冠 */
+  margin-bottom: 8px;
+  animation: subtleCrownGlow 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
   display: block;
 }
 
-@keyframes crownGlow {
+@keyframes subtleCrownGlow {
   0%, 100% { 
     transform: scale(1) rotate(0deg);
-    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
   }
   50% { 
-    transform: scale(1.1) rotate(5deg);
-    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1));
+    transform: scale(1.05) rotate(2deg);
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
   }
 }
 
 .recommend-title {
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: 1.1rem; /* 缩小标题 */
+  font-weight: 700;
   background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 8px;
-  text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
-  letter-spacing: 1px;
+  margin-bottom: 4px;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  letter-spacing: 0.5px;
 }
 
 .recommend-subtitle {
-  font-size: 1rem;
+  font-size: 0.85rem; /* 缩小副标题 */
   color: #FFA500;
-  font-weight: 600;
-  text-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+  font-weight: 500;
+  text-shadow: 0 0 6px rgba(255, 165, 0, 0.3);
 }
 
 .recommend-sparkle {
   position: absolute;
-  font-size: 1.5rem;
-  animation: sparkleFlash 2s ease-in-out infinite;
+  font-size: 1rem; /* 缩小星星 */
+  animation: subtleSparkle 3s ease-in-out infinite;
   z-index: 2;
 }
 
 .recommend-sparkle:nth-child(1) {
-  top: 15px;
-  left: 20px;
+  top: 8px;
+  left: 12px;
   animation-delay: 0s;
 }
 
 .recommend-sparkle:nth-child(2) {
-  top: 15px;
-  right: 20px;
-  animation-delay: 0.5s;
-}
-
-.recommend-sparkle:nth-child(3) {
-  bottom: 15px;
-  left: 20px;
+  top: 8px;
+  right: 12px;
   animation-delay: 1s;
 }
 
+.recommend-sparkle:nth-child(3) {
+  bottom: 8px;
+  left: 12px;
+  animation-delay: 2s;
+}
+
 .recommend-sparkle:nth-child(4) {
-  bottom: 15px;
-  right: 20px;
+  bottom: 8px;
+  right: 12px;
   animation-delay: 1.5s;
 }
 
-@keyframes sparkleFlash {
+@keyframes subtleSparkle {
   0%, 100% { 
-    opacity: 0.3; 
-    transform: scale(0.8) rotate(0deg);
-    filter: drop-shadow(0 0 5px gold);
+    opacity: 0.2; 
+    transform: scale(0.7) rotate(0deg);
   }
   50% { 
-    opacity: 1; 
-    transform: scale(1.3) rotate(180deg);
-    filter: drop-shadow(0 0 15px gold);
+    opacity: 0.6; 
+    transform: scale(1) rotate(90deg);
   }
 }
 
-/* 金色流光背景效果 */
+/* 更 subtle 的金色流光效果 */
 .webmaster-recommend-glowing::before {
   content: "";
   position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 300%;
-  height: 300%;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
   background: linear-gradient(
     45deg,
-    transparent 30%,
-    rgba(255, 215, 0, 0.1) 50%,
-    transparent 70%
+    transparent 40%,
+    rgba(255, 215, 0, 0.08) 50%,
+    transparent 60%
   );
-  animation: goldStream 4s linear infinite;
+  animation: subtleGoldStream 6s linear infinite;
   transform: rotate(45deg);
   z-index: 1;
 }
 
-@keyframes goldStream {
+@keyframes subtleGoldStream {
   0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
   100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
 }
@@ -8617,8 +8618,8 @@ if (book.category && book.category.includes('站长推荐')) {
       <span class="recommend-sparkle">🌟</span>
       <div class="recommend-crown">👑</div>
       <div class="recommend-content">
-        <div class="recommend-title">站长至尊推荐</div>
-        <div class="recommend-subtitle">殿堂级珍藏佳作</div>
+        <div class="recommend-title">站长推荐</div>
+        <div class="recommend-subtitle">殿堂级作品</div>
       </div>
     </div>
   ` + metaHTML;
