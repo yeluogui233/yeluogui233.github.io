@@ -251,37 +251,65 @@
 
           <div class="content quiz-page">
             
-<div class="quiz-container">
+<div class="quiz-wrapper">
 
-  <h1 class="quiz-title">前端知识测试</h1>
+  <!-- 顶部标题 -->
+  <h1 class="quiz-heading">前端知识测试</h1>
 
-  <div id="quiz-app">
-    <!-- 题目卡片 -->
-    <div class="quiz-card">
-      <div class="quiz-stem"></div>
+  <!-- 进度条 -->
+  <div class="quiz-progress">
+    
+      <span class="dot"></span>
+    
+      <span class="dot"></span>
+    
+      <span class="dot"></span>
+    
+      <span class="dot"></span>
+    
+      <span class="dot"></span>
+    
+      <span class="dot"></span>
+    
+  </div>
 
-      <div class="quiz-options"></div>
+  <!-- 主卡片 -->
+  <div id="quiz-card" class="quiz-card fade-in">
 
-      <div class="quiz-answer" style="display:none;">
-        <p class="quiz-correct"></p>
-        <p class="quiz-explanation"></p>
-      </div>
+    <div class="quiz-stem"></div>
 
-      <div class="quiz-nav">
-        <button class="btn prev-btn">上一题</button>
-        <button class="btn next-btn">下一题</button>
-        <button class="btn submit-btn">交卷</button>
-      </div>
+    <div class="quiz-options"></div>
+
+    <!-- 答案反馈 -->
+    <div class="quiz-answer" style="display:none;">
+      <p class="quiz-correct"></p>
+      <p class="quiz-explanation"></p>
     </div>
 
-    <!-- 成绩部分 -->
-    <div class="quiz-result" style="display:none;">
-      <h2>成绩报告</h2>
-      <p>总分：<span class="result-score">0</span></p>
-      <p>正确率：<span class="result-acc">0%</span></p>
-
-      <button class="btn restart-btn">再做一次</button>
+    <!-- 导航按钮 -->
+    <div class="quiz-nav">
+      <button class="btn gray-btn prev-btn">上一题</button>
+      <button class="btn next-btn">下一题</button>
+      <button class="btn submit-btn">提交</button>
     </div>
+  </div>
+
+  <!-- 成绩报告 -->
+  <div id="quiz-result" class="quiz-result" style="display:none;">
+    <h2>🎉 测验完成！</h2>
+
+    <!-- 圆形进度条 -->
+    <div class="score-circle">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" class="bg"></circle>
+        <circle cx="50" cy="50" r="45" class="progress"></circle>
+      </svg>
+      <div class="score-text">0</div>
+    </div>
+
+    <p class="result-acc"></p>
+
+    <button class="btn restart-btn">再做一次</button>
   </div>
 
 </div>
