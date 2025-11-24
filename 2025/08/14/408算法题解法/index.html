@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/cardlink"></script>
   <link rel="stylesheet" href="/css/_common/codeblock.css">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -95,6 +96,7 @@
   };
 </script>
 
+  
   <title>408算法题解法 | 穿过长长的隧道，便是雪国</title>
   
 
@@ -1177,6 +1179,19 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 <script src="/libs/codeBlock/codeCopy.js"></script>
 <script src="/libs/codeBlock/clipboard.min.js"></script>
 <script src="/libs/codeBlock/codeShrink.js"></script>
-
+<script>
+// 为文章内容中的所有外部链接生成卡片
+document.addEventListener('DOMContentLoaded', function() {
+  var postContent = document.querySelector('.post-body') || 
+                    document.querySelector('.post-block') ||
+                    document.querySelector('.entry-content');
+  if (postContent) {
+    var externalLinks = postContent.querySelectorAll('a[target="_blank"]');
+    if (externalLinks.length > 0) {
+      cardLink(externalLinks);
+    }
+  }
+});
+</script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
