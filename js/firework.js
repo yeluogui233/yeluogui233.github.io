@@ -14,8 +14,8 @@ function setParticuleDirection(e) {
 }
 function createParticule(e, t) {
 	var a = {};
-    // 修改粒子大小
-	return a.x = e, a.y = t, a.color = colors[anime.random(0, colors.length - 1)], a.radius = anime.random(12, 24), a.endPos = setParticuleDirection(a), a.draw = function() {
+    // 减小粒子大小
+	return a.x = e, a.y = t, a.color = colors[anime.random(0, colors.length - 1)], a.radius = anime.random(8, 16), a.endPos = setParticuleDirection(a), a.draw = function() {
 		ctx.beginPath(), ctx.arc(a.x, a.y, a.radius, 0, 2 * Math.PI, !0), ctx.fillStyle = a.color, ctx.fill()
 	}, a
 }
@@ -43,19 +43,19 @@ function animateParticules(e, t) {
 			return e.endPos.y
 		},
 		radius: 0.1,
-		duration: anime.random(1200, 1800),
+		duration: anime.random(800, 1200), // 缩短动画时间
 		easing: "easeOutExpo",
 		update: renderParticule
 	}).add({
 		targets: a,
-		radius: anime.random(80, 120),	// 修改圆圈大小
+		radius: anime.random(60, 90),	// 减小圆圈大小
 		lineWidth: 0,
 		alpha: {
 			value: 0,
 			easing: "linear",
-			duration: anime.random(600, 800)
+			duration: anime.random(400, 600) // 缩短淡出时间
 		},
-		duration: anime.random(1200, 1800),
+		duration: anime.random(800, 1200), // 缩短动画时间
 		easing: "easeOutExpo",
 		update: renderParticule,
 		offset: 0
@@ -71,16 +71,29 @@ function debounce(e, t) {
 		}, t)
 	}
 }
+
+// 设备检测函数
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+}
+
 var canvasEl = document.querySelector(".fireworks");
 if (canvasEl) {
 	var ctx = canvasEl.getContext("2d"),
-		numberOfParticules = 30,
+		// 根据设备类型动态设置粒子数量
+		numberOfParticules = isMobileDevice() ? 30 : 15, // 电脑端减少粒子数量
 		pointerX = 0,
 		pointerY = 0,
 		tap = "mousedown",
 		colors = ["#FF1461", "#18FF92", "#5A87FF", "#FBF38C"],
 		setCanvasSize = debounce(function() {
-			canvasEl.width = 2 * window.innerWidth, canvasEl.height = 2 * window.innerHeight, canvasEl.style.width = window.innerWidth + "px", canvasEl.style.height = window.innerHeight + "px", canvasEl.getContext("2d").scale(2, 2)
+			// 根据设备类型动态设置Canvas缩放
+			var pixelRatio = isMobileDevice() ? 2 : 1; // 电脑端取消2倍缩放
+			canvasEl.width = pixelRatio * window.innerWidth;
+			canvasEl.height = pixelRatio * window.innerHeight;
+			canvasEl.style.width = window.innerWidth + "px";
+			canvasEl.style.height = window.innerHeight + "px";
+			canvasEl.getContext("2d").scale(pixelRatio, pixelRatio);
 		}, 500),
 		render = anime({
 			duration: 1 / 0,
@@ -88,7 +101,25 @@ if (canvasEl) {
 				ctx.clearRect(0, 0, canvasEl.width, canvasEl.height)
 			}
 		});
+		
+	// 添加点击节流
+	var lastClickTime = 0;
+	var clickThrottle = 200; // 200毫秒内只能点击一次
+	
 	document.addEventListener(tap, function(e) {
-		"sidebar" !== e.target.id && "toggle-sidebar" !== e.target.id && "A" !== e.target.nodeName && "IMG" !== e.target.nodeName && (render.play(), updateCoords(e), animateParticules(pointerX, pointerY))
-	}, !1), setCanvasSize(), window.addEventListener("resize", setCanvasSize, !1)
+		var currentTime = Date.now();
+		if (currentTime - lastClickTime < clickThrottle) {
+			return; // 节流，避免快速连续点击
+		}
+		lastClickTime = currentTime;
+		
+		if ("sidebar" !== e.target.id && "toggle-sidebar" !== e.target.id && "A" !== e.target.nodeName && "IMG" !== e.target.nodeName) {
+			render.play();
+			updateCoords(e);
+			animateParticules(pointerX, pointerY);
+		}
+	}, !1);
+	
+	setCanvasSize();
+	window.addEventListener("resize", setCanvasSize, !1);
 }
