@@ -14,8 +14,8 @@ function setParticuleDirection(e) {
 }
 function createParticule(e, t) {
 	var a = {};
-    // 减小粒子大小
-	return a.x = e, a.y = t, a.color = colors[anime.random(0, colors.length - 1)], a.radius = anime.random(8, 16), a.endPos = setParticuleDirection(a), a.draw = function() {
+    // 恢复原来的粒子大小，保持美观
+	return a.x = e, a.y = t, a.color = colors[anime.random(0, colors.length - 1)], a.radius = anime.random(12, 24), a.endPos = setParticuleDirection(a), a.draw = function() {
 		ctx.beginPath(), ctx.arc(a.x, a.y, a.radius, 0, 2 * Math.PI, !0), ctx.fillStyle = a.color, ctx.fill()
 	}, a
 }
@@ -43,19 +43,19 @@ function animateParticules(e, t) {
 			return e.endPos.y
 		},
 		radius: 0.1,
-		duration: anime.random(800, 1200), // 缩短动画时间
+		duration: anime.random(1000, 1500), // 稍微缩短但仍保持流畅感
 		easing: "easeOutExpo",
 		update: renderParticule
 	}).add({
 		targets: a,
-		radius: anime.random(60, 90),	// 减小圆圈大小
+		radius: anime.random(80, 120),	// 恢复原来的圆圈大小
 		lineWidth: 0,
 		alpha: {
 			value: 0,
 			easing: "linear",
-			duration: anime.random(400, 600) // 缩短淡出时间
+			duration: anime.random(500, 700)
 		},
-		duration: anime.random(800, 1200), // 缩短动画时间
+		duration: anime.random(1000, 1500),
 		easing: "easeOutExpo",
 		update: renderParticule,
 		offset: 0
@@ -80,15 +80,15 @@ function isMobileDevice() {
 var canvasEl = document.querySelector(".fireworks");
 if (canvasEl) {
 	var ctx = canvasEl.getContext("2d"),
-		// 根据设备类型动态设置粒子数量
-		numberOfParticules = isMobileDevice() ? 30 : 15, // 电脑端减少粒子数量
+		// 电脑端稍微减少粒子数量，但仍保持丰富效果
+		numberOfParticules = isMobileDevice() ? 30 : 25,
 		pointerX = 0,
 		pointerY = 0,
 		tap = "mousedown",
 		colors = ["#FF1461", "#18FF92", "#5A87FF", "#FBF38C"],
 		setCanvasSize = debounce(function() {
-			// 根据设备类型动态设置Canvas缩放
-			var pixelRatio = isMobileDevice() ? 2 : 1; // 电脑端取消2倍缩放
+			// 电脑端使用1.5倍缩放，平衡清晰度和性能
+			var pixelRatio = isMobileDevice() ? 2 : 1.5;
 			canvasEl.width = pixelRatio * window.innerWidth;
 			canvasEl.height = pixelRatio * window.innerHeight;
 			canvasEl.style.width = window.innerWidth + "px";
@@ -102,21 +102,33 @@ if (canvasEl) {
 			}
 		});
 		
-	// 添加点击节流
+	// 更宽松的点击节流，保持响应性
 	var lastClickTime = 0;
-	var clickThrottle = 200; // 200毫秒内只能点击一次
+	var clickThrottle = 150; // 150毫秒节流，保持流畅点击感
+	
+	// 添加同时动画数量限制
+	var activeAnimations = 0;
+	var maxConcurrentAnimations = 3;
 	
 	document.addEventListener(tap, function(e) {
 		var currentTime = Date.now();
-		if (currentTime - lastClickTime < clickThrottle) {
-			return; // 节流，避免快速连续点击
+		if (currentTime - lastClickTime < clickThrottle || activeAnimations >= maxConcurrentAnimations) {
+			return;
 		}
 		lastClickTime = currentTime;
+		activeAnimations++;
 		
 		if ("sidebar" !== e.target.id && "toggle-sidebar" !== e.target.id && "A" !== e.target.nodeName && "IMG" !== e.target.nodeName) {
 			render.play();
 			updateCoords(e);
 			animateParticules(pointerX, pointerY);
+			
+			// 动画结束后减少计数
+			setTimeout(() => {
+				activeAnimations--;
+			}, 1600); // 略长于最长动画时间
+		} else {
+			activeAnimations--;
 		}
 	}, !1);
 	
