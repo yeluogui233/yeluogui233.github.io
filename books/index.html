@@ -473,46 +473,34 @@
 .category-神话 { background: linear-gradient(45deg, #9B30FF, #FF00FF); color: white; } /* 紫红渐变 */
 
 .category-漫画 {
-  background: 
-    linear-gradient(135deg, #FF6B6B 0%, #FFE66D 25%, #4ECDC4 50%, #FF6B9D 75%, #6B5B95 100%);
+  background: #FF6B6B;
   color: white;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
   position: relative;
-  overflow: hidden;
+  border: 2px solid #333;
+  box-shadow: 4px 4px 0 #333;
 }
 
 .category-漫画::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
   background: 
-    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.3) 2%, transparent 5%),
-    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 3%, transparent 6%),
-    radial-gradient(circle at 40% 40%, rgba(255,255,255,0.4) 1%, transparent 4%);
-  animation: comicSparkle 3s ease-in-out infinite alternate;
-}
-
-@keyframes comicSparkle {
-  0% { opacity: 0.3; }
-  100% { opacity: 0.7; }
+    radial-gradient(circle at 20% 30%, #4ECDC4 15px, transparent 16px),
+    radial-gradient(circle at 80% 70%, #FFE66D 12px, transparent 13px),
+    radial-gradient(circle at 40% 80%, #FF6B9D 10px, transparent 11px);
+  z-index: -1;
 }
 
 .category-漫画::after {
-  content: "✦";
+  content: "✎";
   position: absolute;
-  font-size: 24px;
-  top: 5px;
+  top: 2px;
   right: 8px;
+  font-size: 16px;
   opacity: 0.8;
-  animation: twinkle 2s ease-in-out infinite;
-}
-
-@keyframes twinkle {
-  0%, 100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.2); opacity: 1; }
 }
 
 .category-站长推荐 {
