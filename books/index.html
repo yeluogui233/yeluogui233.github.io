@@ -467,11 +467,53 @@
 .category-杂文 { background-color: #A347FF; color: white; } /* 亮蓝紫色 */
 .category-书信 { background-color: #7A47FF; color: white; } /* 亮靛蓝色 */
 .category-戏剧 { background-color: #7A7AFF; color: white; } /* 亮板岩蓝 */
-.category-漫画 { background-color: #FF4747; color: white; } /* 亮橙红色 */
 .category-医学 { background: linear-gradient(135deg, #FF6B6B, #FF8E8E); color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.1); } /* 柔和的急救红渐变 */
 .category-科普 { background: linear-gradient(135deg, #4ECDC4, #66CCFF); color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.1); } /* 科技感蓝绿渐变 */
 .category-传说 { background: linear-gradient(45deg, #FFD700, #FFA500); color: #333; } /* 黄金渐变 */
 .category-神话 { background: linear-gradient(45deg, #9B30FF, #FF00FF); color: white; } /* 紫红渐变 */
+
+.category-漫画 {
+  background: 
+    linear-gradient(135deg, #FF6B6B 0%, #FFE66D 25%, #4ECDC4 50%, #FF6B9D 75%, #6B5B95 100%);
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-漫画::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.3) 2%, transparent 5%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 3%, transparent 6%),
+    radial-gradient(circle at 40% 40%, rgba(255,255,255,0.4) 1%, transparent 4%);
+  animation: comicSparkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes comicSparkle {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.7; }
+}
+
+.category-漫画::after {
+  content: "✦";
+  position: absolute;
+  font-size: 24px;
+  top: 5px;
+  right: 8px;
+  opacity: 0.8;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
 
 .category-站长推荐 {
   background: linear-gradient(135deg, #000000, #2a2a2a, #000000);
