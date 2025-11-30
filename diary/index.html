@@ -270,20 +270,20 @@
   </header>
 
   <div class="diary-wrapper">
-    <div class="diary-container">
+    <div class="diary-grid">
       
         <article class="diary-card" data-date="Wed Mar 20 2024 08:00:00 GMT+0800 (中国标准时间)">
           <div class="diary-content">
             <header class="diary-header">
               <div class="diary-date-wrapper">
                 <h2 class="diary-date">Wed Mar 20 2024 08:00:00 GMT+0800 (中国标准时间)</h2>
-                
-                  <span class="diary-weekday">星期三</span>
-                
               </div>
               <div class="diary-meta">
                 
-                  <span class="diary-weather">☀️ 晴朗</span>
+                  <span class="diary-weekday">星期三</span>
+                
+                
+                  <span class="diary-weather" data-weather="晴朗">晴朗</span>
                 
                 
                   <span class="diary-mood">😊 开心</span>
@@ -335,13 +335,13 @@
             <header class="diary-header">
               <div class="diary-date-wrapper">
                 <h2 class="diary-date">Tue Mar 19 2024 08:00:00 GMT+0800 (中国标准时间)</h2>
-                
-                  <span class="diary-weekday">星期二</span>
-                
               </div>
               <div class="diary-meta">
                 
-                  <span class="diary-weather">☀️ 多云</span>
+                  <span class="diary-weekday">星期二</span>
+                
+                
+                  <span class="diary-weather" data-weather="多云">多云</span>
                 
                 
                   <span class="diary-mood">🤔 思考</span>
@@ -383,13 +383,13 @@
             <header class="diary-header">
               <div class="diary-date-wrapper">
                 <h2 class="diary-date">Mon Mar 18 2024 08:00:00 GMT+0800 (中国标准时间)</h2>
-                
-                  <span class="diary-weekday">星期一</span>
-                
               </div>
               <div class="diary-meta">
                 
-                  <span class="diary-weather">☀️ 小雨</span>
+                  <span class="diary-weekday">星期一</span>
+                
+                
+                  <span class="diary-weather" data-weather="小雨">小雨</span>
                 
                 
                   <span class="diary-mood">🎵 放松</span>
@@ -437,13 +437,13 @@
             <header class="diary-header">
               <div class="diary-date-wrapper">
                 <h2 class="diary-date">Sun Mar 17 2024 08:00:00 GMT+0800 (中国标准时间)</h2>
-                
-                  <span class="diary-weekday">星期日</span>
-                
               </div>
               <div class="diary-meta">
                 
-                  <span class="diary-weather">☀️ 晴朗</span>
+                  <span class="diary-weekday">星期日</span>
+                
+                
+                  <span class="diary-weather" data-weather="晴朗">晴朗</span>
                 
                 
                   <span class="diary-mood">🚴 活力</span>
@@ -512,16 +512,17 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.08);
       margin-bottom: 40px;
       position: relative;
-      max-width: 1200px;
+      max-width: 1400px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    /* 单列布局，让卡片自然排列 */
-    .diary-container {
-      display: flex;
-      flex-direction: column;
+    /* Masonry 双列网格布局 */
+    .diary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 30px;
+      align-items: start;
     }
 
     /* 日记卡片基础样式 */
@@ -529,6 +530,7 @@
       opacity: 0;
       transform: translateY(30px);
       animation: fadeInUp 0.6s ease forwards;
+      break-inside: avoid;
     }
 
     @keyframes fadeInUp {
@@ -542,7 +544,7 @@
     .diary-content {
       background: #ffffff;
       border-radius: 16px;
-      padding: 32px;
+      padding: 28px;
       box-shadow: 
         0 4px 20px rgba(0,0,0,0.06),
         0 1px 4px rgba(0,0,0,0.08);
@@ -550,6 +552,7 @@
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
       overflow: hidden;
+      height: fit-content;
     }
 
     .diary-content::before {
@@ -577,62 +580,147 @@
 
     /* 日记头部 */
     .diary-header {
-      margin-bottom: 24px;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      padding-bottom: 20px;
+      margin-bottom: 20px;
     }
 
     .diary-date-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 16px;
       margin-bottom: 12px;
-      flex-wrap: wrap;
     }
 
     /* 日期使用特殊颜色 */
     .diary-date {
       font-size: 1.5rem;
       font-weight: 800;
-      margin: 0;
+      margin: 0 0 8px 0;
       background: linear-gradient(135deg, #667eea, #764ba2);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: -0.5px;
     }
 
-    /* 其他文字保持黑色 */
-    .diary-weekday {
-      font-size: 0.95rem;
-      color: #666;
-      background: #f5f5f5;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-weight: 500;
-    }
-
+    /* 元信息布局 - 星期、天气、心情在一行 */
     .diary-meta {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
+      align-items: center;
     }
 
-    .diary-weather {
-      font-size: 0.9rem;
-      color: #333;
-      background: #f8f9fa;
-      padding: 6px 12px;
-      border-radius: 8px;
-      border: 1px solid #e9ecef;
+    /* 星期样式 */
+    .diary-weekday {
+      font-size: 0.85rem;
+      color: #666;
+      background: #f0f4ff;
+      padding: 4px 10px;
+      border-radius: 6px;
       font-weight: 500;
+      border: 1px solid #e1e8ff;
     }
 
+    /* 天气样式 */
+    .diary-weather {
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 500;
+      border: 1px solid;
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .diary-weather::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    /* 不同天气的图标和颜色 */
+    .diary-weather[data-weather*="晴"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='5' fill='%23F59E0B'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="晴"] {
+      color: #B45309;
+      background: #FEF3C7;
+      border-color: #FBBF24;
+    }
+
+    .diary-weather[data-weather*="云"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236B7280' d='M20 13a4 4 0 0 0-4-4 4 4 0 0 0-4 4 4 4 0 0 0-4 4 4 4 0 0 0 4 4h8a4 4 0 0 0 4-4 4 4 0 0 0-4-4z'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="云"] {
+      color: #4B5563;
+      background: #F3F4F6;
+      border-color: #9CA3AF;
+    }
+
+    .diary-weather[data-weather*="雨"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%233B82F6' d='M8 14v4m4-2v4m4-2v4M6 10a6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6z'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="雨"] {
+      color: #1D4ED8;
+      background: #DBEAFE;
+      border-color: #93C5FD;
+    }
+
+    .diary-weather[data-weather*="雪"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2360A5FA' d='M12 2v4M8 4l2 2m6-2l-2 2M6 10a6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6zm2 8l2 2 2-2-2-2-2 2zm4 4l2 2 2-2-2-2-2 2z'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="雪"] {
+      color: #1E40AF;
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+    }
+
+    .diary-weather[data-weather*="风"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2310B981' d='M4 9h16M4 15h12M8 12h12'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="风"] {
+      color: #047857;
+      background: #D1FAE5;
+      border-color: #6EE7B7;
+    }
+
+    .diary-weather[data-weather*="雷"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%238B5CF6' d='M13 2L4 14h7l-2 8 9-12h-7l2-8z'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="雷"] {
+      color: #7C3AED;
+      background: #EDE9FE;
+      border-color: #C4B5FD;
+    }
+
+    .diary-weather[data-weather*="雾"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%239CA3AF' d='M3 12h18M3 16h18M3 20h18'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="雾"] {
+      color: #6B7280;
+      background: #F9FAFB;
+      border-color: #D1D5DB;
+    }
+
+    /* 默认天气样式 */
+    .diary-weather:not([data-weather*="晴"]):not([data-weather*="云"]):not([data-weather*="雨"]):not([data-weather*="雪"]):not([data-weather*="风"]):not([data-weather*="雷"]):not([data-weather*="雾"])::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='5' fill='%23666'/%3E%3C/svg%3E");
+    }
+    .diary-weather:not([data-weather*="晴"]):not([data-weather*="云"]):not([data-weather*="雨"]):not([data-weather*="雪"]):not([data-weather*="风"]):not([data-weather*="雷"]):not([data-weather*="雾"]) {
+      color: #666;
+      background: #f5f5f5;
+      border-color: #ddd;
+    }
+
+    /* 心情样式 */
     .diary-mood {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #333;
       background: #f8f9fa;
-      padding: 6px 12px;
-      border-radius: 8px;
+      padding: 4px 10px;
+      border-radius: 6px;
       border: 1px solid #e9ecef;
       font-weight: 500;
     }
@@ -681,7 +769,7 @@
 
     /* 标签样式 */
     .diary-footer {
-      margin-top: 24px;
+      margin-top: 20px;
       padding-top: 20px;
       border-top: 1px solid rgba(0,0,0,0.08);
     }
@@ -817,6 +905,13 @@
     }
 
     /* 响应式设计 */
+    @media (max-width: 1024px) {
+      .diary-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+    }
+
     @media (max-width: 768px) {
       .diary-wrapper {
         padding: 25px 20px;
@@ -865,14 +960,10 @@
         padding: 20px;
       }
 
-      .diary-date-wrapper {
+      .diary-meta {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
-      }
-
-      .diary-meta {
-        justify-content: flex-start;
+        gap: 6px;
       }
       
       .page-title {
