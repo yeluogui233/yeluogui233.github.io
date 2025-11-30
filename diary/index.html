@@ -437,17 +437,17 @@
       height: fit-content;
     }
 
-    .diary-content::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
+.diary-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
 
     .diary-card:hover .diary-content {
       transform: translateY(-8px);
@@ -474,6 +474,7 @@
       font-size: 1.5rem;
       font-weight: 800;
       margin: 0 0 8px 0;
+
       letter-spacing: -0.5px;
     }
 
@@ -949,23 +950,23 @@
       }
     }
 
-    // 多巴胺渐变色数组
+    // 多巴胺渐变色数组 - 增强对比度
     const gradientColors = [
-      ['#FF6B6B', '#FF8E8E'], // 珊瑚红渐变
-      ['#4ECDC4', '#6EE7E7'], // 薄荷绿渐变
-      ['#45B7D1', '#67C8E3'], // 天空蓝渐变
-      ['#96CEB4', '#B8E6B8'], // 草木绿渐变
-      ['#FFEAA7', '#FFF4C7'], // 柠檬黄渐变
-      ['#DDA0DD', '#F0C8F0'], // 薰衣草紫渐变
-      ['#FF9F68', '#FFB991'], // 橙色调
-      ['#6C5CE7', '#8B7BEC'], // 紫蓝色调
-      ['#00B894', '#26C6A3'], // 翡翠绿
-      ['#FD79A8', '#FF94BC'], // 粉红色
-      ['#FDCB6E', '#FFD88A'], // 金黄色
-      ['#74B9FF', '#8FC9FF']  // 天蓝色
+      ['#FF4757', '#FF3742'], // 鲜艳红色渐变
+      ['#2ED573', '#1DD1A1'], // 鲜艳绿色渐变
+      ['#1E90FF', '#3742FA'], // 鲜艳蓝色渐变
+      ['#FFA502', '#FF9F1A'], // 鲜艳橙色渐变
+      ['#FF6B81', '#FF4757'], // 鲜艳粉红渐变
+      ['#9C88FF', '#8C7AE6'], // 鲜艳紫色渐变
+      ['#F368E0', '#FF9FF3'], // 鲜艳洋红渐变
+      ['#00D2D3', '#54A0FF'], // 青蓝渐变
+      ['#FF9FF3', '#F368E0'], // 粉紫渐变
+      ['#FECA57', '#FF9F43'], // 金黄渐变
+      ['#48DBFB', '#18DCFF'], // 天蓝渐变
+      ['#FF6B6B', '#FF8E8E']  // 珊瑚红渐变
     ];
 
-    // 为每个日期标题应用随机渐变色
+    // 为每个日期标题应用随机渐变色 - 增强效果
     function applyRandomGradients() {
       const dateElements = document.querySelectorAll('.diary-date');
       dateElements.forEach((element, index) => {
@@ -973,11 +974,32 @@
         const colorIndex = index % gradientColors.length;
         const [color1, color2] = gradientColors[colorIndex];
         
-        // 应用渐变色
+        // 应用渐变色 - 增强对比度
         element.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
         element.style.webkitBackgroundClip = 'text';
         element.style.webkitTextFillColor = 'transparent';
         element.style.backgroundClip = 'text';
+        element.style.fontWeight = '900'; // 加粗字体增强效果
+        element.style.textShadow = 'none'; // 移除可能影响渐变效果的阴影
+      });
+    }
+
+    // 为每个卡片的悬浮条应用随机渐变色
+    function applyRandomGradientBars() {
+      const diaryCards = document.querySelectorAll('.diary-card');
+      
+      diaryCards.forEach((card, index) => {
+        const colorIndex = index % gradientColors.length;
+        const [color1, color2] = gradientColors[colorIndex];
+        
+        // 创建样式并应用到当前卡片的悬浮条
+        const style = document.createElement('style');
+        style.textContent = `
+          .diary-card:nth-child(${index + 1}) .diary-content::before {
+            background: linear-gradient(135deg, ${color1}, ${color2}) !important;
+          }
+        `;
+        document.head.appendChild(style);
       });
     }
 
@@ -990,6 +1012,9 @@
 
     // 应用随机渐变色
     applyRandomGradients();
+    
+    // 应用随机渐变悬浮条
+    applyRandomGradientBars();
   });
 </script>
 
