@@ -270,10 +270,9 @@
   </header>
 
   <div class="diary-wrapper">
-    <div class="diary-grid">
+    <div class="diary-container">
       
-        
-        <article class="diary-card color-0" data-date="Wed Mar 20 2024 08:00:00 GMT+0800 (中国标准时间)">
+        <article class="diary-card" data-date="Wed Mar 20 2024 08:00:00 GMT+0800 (中国标准时间)">
           <div class="diary-content">
             <header class="diary-header">
               <div class="diary-date-wrapper">
@@ -284,9 +283,7 @@
               </div>
               <div class="diary-meta">
                 
-                  
-                  
-                  <span class="diary-weather weather-sunny">☀️ 晴朗</span>
+                  <span class="diary-weather">☀️ 晴朗</span>
                 
                 
                   <span class="diary-mood">😊 开心</span>
@@ -298,9 +295,9 @@
               
                 <div class="diary-images">
                   
-                    <img src="/images/diary/2024-03-20-1.jpg" alt="日记图片" class="diary-image" loading="lazy">
+                    <img src="/images/diary/2024-03-20-1.jpg" alt="日记图片" class="diary-image" loading="lazy" data-src="/images/diary/2024-03-20-1.jpg">
                   
-                    <img src="/images/diary/2024-03-20-2.jpg" alt="日记图片" class="diary-image" loading="lazy">
+                    <img src="/images/diary/2024-03-20-2.jpg" alt="日记图片" class="diary-image" loading="lazy" data-src="/images/diary/2024-03-20-2.jpg">
                   
                 </div>
               
@@ -333,8 +330,7 @@
           </div>
         </article>
       
-        
-        <article class="diary-card color-1" data-date="Tue Mar 19 2024 08:00:00 GMT+0800 (中国标准时间)">
+        <article class="diary-card" data-date="Tue Mar 19 2024 08:00:00 GMT+0800 (中国标准时间)">
           <div class="diary-content">
             <header class="diary-header">
               <div class="diary-date-wrapper">
@@ -345,9 +341,7 @@
               </div>
               <div class="diary-meta">
                 
-                  
-                  
-                  <span class="diary-weather weather-cloudy">⛅️ 多云</span>
+                  <span class="diary-weather">☀️ 多云</span>
                 
                 
                   <span class="diary-mood">🤔 思考</span>
@@ -384,8 +378,7 @@
           </div>
         </article>
       
-        
-        <article class="diary-card color-2" data-date="Mon Mar 18 2024 08:00:00 GMT+0800 (中国标准时间)">
+        <article class="diary-card" data-date="Mon Mar 18 2024 08:00:00 GMT+0800 (中国标准时间)">
           <div class="diary-content">
             <header class="diary-header">
               <div class="diary-date-wrapper">
@@ -396,9 +389,7 @@
               </div>
               <div class="diary-meta">
                 
-                  
-                  
-                  <span class="diary-weather weather-rainy">🌧️ 小雨</span>
+                  <span class="diary-weather">☀️ 小雨</span>
                 
                 
                   <span class="diary-mood">🎵 放松</span>
@@ -410,7 +401,7 @@
               
                 <div class="diary-images">
                   
-                    <img src="/images/diary/2024-03-18-1.jpg" alt="日记图片" class="diary-image" loading="lazy">
+                    <img src="/images/diary/2024-03-18-1.jpg" alt="日记图片" class="diary-image" loading="lazy" data-src="/images/diary/2024-03-18-1.jpg">
                   
                 </div>
               
@@ -441,8 +432,7 @@
           </div>
         </article>
       
-        
-        <article class="diary-card color-3" data-date="Sun Mar 17 2024 08:00:00 GMT+0800 (中国标准时间)">
+        <article class="diary-card" data-date="Sun Mar 17 2024 08:00:00 GMT+0800 (中国标准时间)">
           <div class="diary-content">
             <header class="diary-header">
               <div class="diary-date-wrapper">
@@ -453,9 +443,7 @@
               </div>
               <div class="diary-meta">
                 
-                  
-                  
-                  <span class="diary-weather weather-sunny">☀️ 晴朗</span>
+                  <span class="diary-weather">☀️ 晴朗</span>
                 
                 
                   <span class="diary-mood">🚴 活力</span>
@@ -467,9 +455,9 @@
               
                 <div class="diary-images">
                   
-                    <img src="/images/diary/2024-03-17-1.jpg" alt="日记图片" class="diary-image" loading="lazy">
+                    <img src="/images/diary/2024-03-17-1.jpg" alt="日记图片" class="diary-image" loading="lazy" data-src="/images/diary/2024-03-17-1.jpg">
                   
-                    <img src="/images/diary/2024-03-17-2.jpg" alt="日记图片" class="diary-image" loading="lazy">
+                    <img src="/images/diary/2024-03-17-2.jpg" alt="日记图片" class="diary-image" loading="lazy" data-src="/images/diary/2024-03-17-2.jpg">
                   
                 </div>
               
@@ -506,23 +494,34 @@
     
   </div>
 
+  <!-- 灯箱模态框 -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <span class="lightbox-prev">&#10094;</span>
+    <span class="lightbox-next">&#10095;</span>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="">
+    </div>
+  </div>
+
   <style>
     .diary-wrapper {
       background: #fff;
       border-radius: 20px;
-      padding: 40px 30px;
+      padding: 40px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.08);
       margin-bottom: 40px;
       position: relative;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    /* 两列网格布局 */
-    .diary-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+    /* 单列布局，让卡片自然排列 */
+    .diary-container {
+      display: flex;
+      flex-direction: column;
       gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
     }
 
     /* 日记卡片基础样式 */
@@ -530,7 +529,6 @@
       opacity: 0;
       transform: translateY(30px);
       animation: fadeInUp 0.6s ease forwards;
-      perspective: 1000px;
     }
 
     @keyframes fadeInUp {
@@ -540,52 +538,17 @@
       }
     }
 
-    /* 多巴胺配色系统 */
-    .color-0 {
-      --primary-color: #FF6B6B;
-      --primary-light: #FFE8E8;
-      --primary-border: #FFB8B8;
-    }
-    .color-1 {
-      --primary-color: #4ECDC4;
-      --primary-light: #E0F7F6;
-      --primary-border: #9AE3DE;
-    }
-    .color-2 {
-      --primary-color: #45B7D1;
-      --primary-light: #E3F4F8;
-      --primary-border: #96D4E7;
-    }
-    .color-3 {
-      --primary-color: #96CEB4;
-      --primary-light: #EBF7F1;
-      --primary-border: #C4E4D4;
-    }
-    .color-4 {
-      --primary-color: #FFEAA7;
-      --primary-light: #FFF9E6;
-      --primary-border: #FFEFC1;
-    }
-    .color-5 {
-      --primary-color: #DDA0DD;
-      --primary-light: #F7E8F7;
-      --primary-border: #EBC3EB;
-    }
-
-    /* 日记内容区域 */
+    /* 日记内容区域 - 纯白色 */
     .diary-content {
-      background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 100%);
-      border-radius: 20px;
-      padding: 28px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px;
       box-shadow: 
-        0 4px 25px rgba(0,0,0,0.08),
-        0 1px 6px rgba(0,0,0,0.05);
-      border: 1px solid var(--primary-border);
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        0 4px 20px rgba(0,0,0,0.06),
+        0 1px 4px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
       overflow: hidden;
     }
 
@@ -596,16 +559,16 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-border) 100%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       transform: scaleX(0);
       transition: transform 0.3s ease;
     }
 
     .diary-card:hover .diary-content {
-      transform: translateY(-12px) rotateX(5deg);
+      transform: translateY(-8px);
       box-shadow: 
-        0 20px 50px rgba(0,0,0,0.15),
-        0 8px 25px rgba(0,0,0,0.1);
+        0 12px 40px rgba(0,0,0,0.12),
+        0 4px 15px rgba(0,0,0,0.08);
     }
 
     .diary-card:hover .diary-content::before {
@@ -614,124 +577,78 @@
 
     /* 日记头部 */
     .diary-header {
-      margin-bottom: 20px;
-      border-bottom: 2px solid var(--primary-border);
-      padding-bottom: 16px;
-      opacity: 0.1;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding-bottom: 20px;
     }
 
     .diary-date-wrapper {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
+      gap: 16px;
+      margin-bottom: 12px;
       flex-wrap: wrap;
     }
 
+    /* 日期使用特殊颜色 */
     .diary-date {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 800;
-      color: #2d3748;
       margin: 0;
-      background: linear-gradient(135deg, var(--primary-color), var(--primary-border));
+      background: linear-gradient(135deg, #667eea, #764ba2);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: -0.5px;
     }
 
+    /* 其他文字保持黑色 */
     .diary-weekday {
       font-size: 0.95rem;
-      color: var(--primary-color);
-      background: rgba(102, 126, 234, 0.12);
+      color: #666;
+      background: #f5f5f5;
       padding: 6px 12px;
-      border-radius: 10px;
-      font-weight: 600;
-      border: 1px solid rgba(102, 126, 234, 0.2);
+      border-radius: 8px;
+      font-weight: 500;
     }
 
     .diary-meta {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
-    /* 天气图标样式 */
     .diary-weather {
-      font-size: 0.85rem;
-      padding: 5px 10px;
+      font-size: 0.9rem;
+      color: #333;
+      background: #f8f9fa;
+      padding: 6px 12px;
       border-radius: 8px;
+      border: 1px solid #e9ecef;
       font-weight: 500;
-      border: 1px solid;
-    }
-
-    .weather-sunny {
-      color: #F59E0B;
-      background: #FEF3C7;
-      border-color: #FBBF24;
-    }
-
-    .weather-cloudy {
-      color: #6B7280;
-      background: #F3F4F6;
-      border-color: #9CA3AF;
-    }
-
-    .weather-rainy {
-      color: #3B82F6;
-      background: #DBEAFE;
-      border-color: #93C5FD;
-    }
-
-    .weather-snowy {
-      color: #60A5FA;
-      background: #EFF6FF;
-      border-color: #BFDBFE;
-    }
-
-    .weather-windy {
-      color: #10B981;
-      background: #D1FAE5;
-      border-color: #6EE7B7;
-    }
-
-    .weather-stormy {
-      color: #8B5CF6;
-      background: #EDE9FE;
-      border-color: #C4B5FD;
-    }
-
-    .weather-foggy {
-      color: #9CA3AF;
-      background: #F9FAFB;
-      border-color: #D1D5DB;
     }
 
     .diary-mood {
-      font-size: 0.85rem;
-      color: var(--primary-color);
-      background: rgba(102, 126, 234, 0.12);
-      padding: 5px 10px;
+      font-size: 0.9rem;
+      color: #333;
+      background: #f8f9fa;
+      padding: 6px 12px;
       border-radius: 8px;
-      border: 1px solid rgba(102, 126, 234, 0.2);
+      border: 1px solid #e9ecef;
       font-weight: 500;
     }
 
     /* 日记正文 */
     .diary-body {
       line-height: 1.7;
-      color: #4a5568;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+      color: #333;
     }
 
     .diary-text {
-      font-size: 1rem;
-      flex: 1;
+      font-size: 1.05rem;
     }
 
     .diary-text p {
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       line-height: 1.8;
     }
 
@@ -742,57 +659,52 @@
     /* 图片样式 */
     .diary-images {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 10px;
-      margin-bottom: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
     }
 
     .diary-image {
       width: 100%;
-      height: 100px;
+      height: 140px;
       object-fit: cover;
       border-radius: 12px;
       transition: all 0.4s ease;
-      cursor: zoom-in;
+      cursor: pointer;
       box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-      filter: brightness(0.95);
     }
 
     .diary-image:hover {
-      transform: scale(1.08);
-      filter: brightness(1.05);
+      transform: scale(1.05);
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
 
     /* 标签样式 */
     .diary-footer {
-      margin-top: 20px;
-      padding-top: 18px;
-      border-top: 1px solid var(--primary-border);
-      opacity: 0.3;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0,0,0,0.08);
     }
 
     .diary-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
     }
 
     .diary-tag {
-      font-size: 0.78rem;
-      color: var(--primary-color);
-      background: rgba(102, 126, 234, 0.12);
-      padding: 5px 10px;
+      font-size: 0.8rem;
+      color: #667eea;
+      background: rgba(102, 126, 234, 0.1);
+      padding: 6px 12px;
       border-radius: 8px;
       transition: all 0.3s ease;
       font-weight: 500;
-      border: 1px solid rgba(102, 126, 234, 0.2);
     }
 
     .diary-tag:hover {
       background: rgba(102, 126, 234, 0.2);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      transform: translateY(-1px);
     }
 
     /* 分页样式 */
@@ -807,58 +719,125 @@
 
     .pagination-btn {
       padding: 12px 24px;
-      background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+      background: linear-gradient(135deg, #667eea, #764ba2);
       color: white;
       text-decoration: none;
-      border-radius: 14px;
+      border-radius: 12px;
       font-weight: 600;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-      border: none;
-      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
     }
 
     .pagination-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
     }
 
     .pagination-info {
-      color: #718096;
+      color: #666;
       font-size: 0.95rem;
       font-weight: 500;
     }
 
-    /* 响应式设计 */
-    @media (max-width: 1024px) {
-      .diary-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-        max-width: 600px;
-      }
-      
-      .page-title {
-        font-size: 2.2rem !important;
-      }
-      
-      .page-subtitle {
-        font-size: 1.2rem !important;
-      }
+    /* 灯箱样式 */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      animation: fadeIn 0.3s ease;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .lightbox-content {
+      position: relative;
+      margin: auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 800px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    #lightbox-img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .lightbox-close:hover {
+      color: #ccc;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 16px;
+      transition: 0.3s;
+      user-select: none;
+    }
+
+    .lightbox-prev {
+      left: 20px;
+    }
+
+    .lightbox-next {
+      right: 20px;
+    }
+
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+    }
+
+    /* 响应式设计 */
     @media (max-width: 768px) {
       .diary-wrapper {
         padding: 25px 20px;
-        border-radius: 18px;
+        border-radius: 16px;
+        margin: 20px;
       }
 
       .diary-content {
-        padding: 22px;
-        border-radius: 18px;
+        padding: 24px;
       }
 
       .diary-date {
         font-size: 1.3rem;
+      }
+
+      .diary-images {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      }
+
+      .diary-image {
+        height: 120px;
       }
 
       .page-title {
@@ -871,7 +850,7 @@
 
       .diary-pagination {
         flex-direction: column;
-        gap: 18px;
+        gap: 15px;
         text-align: center;
       }
     }
@@ -879,10 +858,11 @@
     @media (max-width: 480px) {
       .diary-wrapper {
         padding: 20px 15px;
+        margin: 10px;
       }
 
       .diary-content {
-        padding: 18px;
+        padding: 20px;
       }
 
       .diary-date-wrapper {
@@ -914,77 +894,94 @@
   </style>
 
   <script>
-    // 日期格式化函数
-    function formatChineseDate(dateString) {
-      const date = new Date(dateString);
-      const year = date.getFullYear();
-      const month = date.getMonth() + 1;
-      const day = date.getDate();
-      return `${year}年${month}月${day}日`;
-    }
-
-    // 天气类型映射
-    function getWeatherType(weather) {
-      const weatherMap = {
-        '晴朗': 'sunny',
-        '晴天': 'sunny',
-        '晴': 'sunny',
-        '多云': 'cloudy',
-        '阴天': 'cloudy',
-        '阴': 'cloudy',
-        '小雨': 'rainy',
-        '中雨': 'rainy',
-        '大雨': 'rainy',
-        '暴雨': 'rainy',
-        '雨': 'rainy',
-        '小雪': 'snowy',
-        '中雪': 'snowy',
-        '大雪': 'snowy',
-        '雪': 'snowy',
-        '大风': 'windy',
-        '台风': 'windy',
-        '雷阵雨': 'stormy',
-        '雷雨': 'stormy',
-        '雾': 'foggy',
-        '雾霾': 'foggy'
-      };
-      return weatherMap[weather] || 'sunny';
-    }
-
-    // 天气表情映射
-    function getWeatherEmoji(weather) {
-      const emojiMap = {
-        '晴朗': '☀️',
-        '晴天': '☀️',
-        '晴': '☀️',
-        '多云': '⛅️',
-        '阴天': '☁️',
-        '阴': '☁️',
-        '小雨': '🌧️',
-        '中雨': '🌧️',
-        '大雨': '🌧️',
-        '暴雨': '🌧️',
-        '雨': '🌧️',
-        '小雪': '❄️',
-        '中雪': '❄️',
-        '大雪': '❄️',
-        '雪': '❄️',
-        '大风': '💨',
-        '台风': '💨',
-        '雷阵雨': '⛈️',
-        '雷雨': '⛈️',
-        '雾': '🌫️',
-        '雾霾': '🌫️'
-      };
-      return emojiMap[weather] || '☀️';
-    }
-
-    // 初始化
+    // 图片灯箱功能
     document.addEventListener('DOMContentLoaded', function() {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.querySelector('.lightbox-close');
+      const lightboxPrev = document.querySelector('.lightbox-prev');
+      const lightboxNext = document.querySelector('.lightbox-next');
+      const diaryImages = document.querySelectorAll('.diary-image');
+      
+      let currentImageIndex = 0;
+      let currentImages = [];
+
+      // 打开灯箱
+      function openLightbox(index, images) {
+        currentImageIndex = index;
+        currentImages = images;
+        lightboxImg.src = images[index].src;
+        lightbox.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+
+      // 关闭灯箱
+      function closeLightbox() {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      // 切换图片
+      function changeImage(direction) {
+        currentImageIndex += direction;
+        if (currentImageIndex >= currentImages.length) {
+          currentImageIndex = 0;
+        } else if (currentImageIndex < 0) {
+          currentImageIndex = currentImages.length - 1;
+        }
+        lightboxImg.src = currentImages[currentImageIndex].src;
+      }
+
+      // 为所有图片添加点击事件
+      diaryImages.forEach((img, index) => {
+        img.addEventListener('click', function() {
+          const diaryCard = this.closest('.diary-card');
+          const images = Array.from(diaryCard.querySelectorAll('.diary-image'));
+          openLightbox(index, images);
+        });
+      });
+
+      // 灯箱控制事件
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightboxPrev.addEventListener('click', () => changeImage(-1));
+      lightboxNext.addEventListener('click', () => changeImage(1));
+
+      // 点击背景关闭
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      // 键盘控制
+      document.addEventListener('keydown', function(e) {
+        if (lightbox.style.display === 'block') {
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') changeImage(-1);
+          if (e.key === 'ArrowRight') changeImage(1);
+        }
+      });
+
+      // 日期格式化函数
+      function formatChineseDate(dateString) {
+        try {
+          const date = new Date(dateString);
+          if (isNaN(date.getTime())) {
+            return dateString; // 如果日期无效，返回原字符串
+          }
+          const year = date.getFullYear();
+          const month = date.getMonth() + 1;
+          const day = date.getDate();
+          return `${year}年${month}月${day}日`;
+        } catch (e) {
+          return dateString;
+        }
+      }
+
       // 格式化所有日期
       const dateElements = document.querySelectorAll('.diary-date');
       dateElements.forEach(element => {
-        const originalDate = element.textContent;
+        const originalDate = element.textContent.trim();
         element.textContent = formatChineseDate(originalDate);
       });
     });
@@ -1106,6 +1103,93 @@
 
     </div>
   </aside>
+
+  <style>
+    .site-author-widget {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .site-author-widget .site-author-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 12px;
+      display: block;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    .site-author-widget .site-author-name {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin: 8px 0 4px;
+      color: var(--text-color);
+    }
+    .site-author-widget .site-description {
+      font-size: 0.95rem;
+      color: var(--text-color-secondary);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    /* 社交3行2列 */
+    .site-author-widget .links-of-author {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: auto;
+      justify-content: center;
+      gap: 8px 12px;
+      max-width: 200px;
+      margin: 0 auto 16px;
+      text-align: center;
+    }
+
+    .site-author-widget .links-of-author-item a {
+      font-size: 0.75rem;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.25s ease;
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.03);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .site-author-widget .links-of-author-item a:hover {
+      color: var(--primary-color);
+      background: rgba(0,0,0,0.05);
+    }
+
+    /* 友情链接 */
+    .links-of-blogroll-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .links-of-blogroll-item a {
+      display: inline-block;
+      color: var(--text-color);
+      padding: 4px 10px;
+      border-radius: 10px;
+      background: #f5f5f5;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .links-of-blogroll-item a:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+  </style>
 
       </div>
     </main>
