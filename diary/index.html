@@ -50,7 +50,7 @@
 <meta property="og:description" content="”我这辈子一直想信仰某种东西，“圣地亚哥说道,”然而却一直在撒谎，我没有信仰“">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-11-30T15:53:33.156Z">
+<meta property="article:modified_time" content="2025-11-30T15:55:55.995Z">
 <meta property="article:author" content="叶落归">
 <meta name="twitter:card" content="summary">
 
@@ -272,11 +272,11 @@
   <div class="diary-wrapper">
     <div class="diary-grid">
       
-        <article class="diary-card" data-date="2025-11-30T00:00:00.000Z">
+        <article class="diary-card" data-date="Sun Nov 30 2025 08:00:00 GMT+0800 (中国标准时间)">
           <div class="diary-content">
             <header class="diary-header">
               <div class="diary-date-wrapper">
-                <h2 class="diary-date">2025-11-30T00:00:00.000Z</h2>
+                <h2 class="diary-date">Sun Nov 30 2025 08:00:00 GMT+0800 (中国标准时间)</h2>
               </div>
               <div class="diary-meta">
                 
@@ -322,21 +322,21 @@
           </div>
         </article>
       
-        <article class="diary-card" data-date="2025-11-30T00:00:00.000Z">
+        <article class="diary-card" data-date="Sat Nov 29 2025 08:00:00 GMT+0800 (中国标准时间)">
           <div class="diary-content">
             <header class="diary-header">
               <div class="diary-date-wrapper">
-                <h2 class="diary-date">2025-11-30T00:00:00.000Z</h2>
+                <h2 class="diary-date">Sat Nov 29 2025 08:00:00 GMT+0800 (中国标准时间)</h2>
               </div>
               <div class="diary-meta">
                 
-                  <span class="diary-weekday">星期日</span>
+                  <span class="diary-weekday">星期六</span>
                 
                 
-                  <span class="diary-weather" data-weather="多云">多云</span>
+                  <span class="diary-weather" data-weather="晴">晴</span>
                 
                 
-                  <span class="diary-mood">🐷 困倦</span>
+                  <span class="diary-mood">😴 疲惫</span>
                 
               </div>
             </header>
@@ -345,15 +345,13 @@
               
                 <div class="diary-images">
                   
-                    <img src="https://s3.bmp.ovh/imgs/2025/11/30/201a936866bcefac.jpg" alt="日记图片" class="diary-image" loading="lazy" data-src="https://s3.bmp.ovh/imgs/2025/11/30/201a936866bcefac.jpg">
+                    <img src="https://s3.bmp.ovh/imgs/2025/11/30/518ab2be8d0dbd34.jpg" alt="日记图片" class="diary-image" loading="lazy" data-src="https://s3.bmp.ovh/imgs/2025/11/30/518ab2be8d0dbd34.jpg">
                   
                 </div>
               
               
               <div class="diary-text">
-                楼上一直装修榻榻米，让人睡不好有点不行了
-只有装修工人一直在工作，感觉很辛苦，希望熬完这几天别搞了
-小黑鼠标垫太可爱了(●'◡'●)
+                多肉掉了几瓣
 
               </div>
             </div>
@@ -476,9 +474,6 @@
       font-size: 1.5rem;
       font-weight: 800;
       margin: 0 0 8px 0;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       letter-spacing: -0.5px;
     }
 
@@ -868,99 +863,135 @@
     .diary-card:nth-child(6) { animation-delay: 0.35s; }
   </style>
 
-  <script>
-    // 图片灯箱功能
-    document.addEventListener('DOMContentLoaded', function() {
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-      const lightboxClose = document.querySelector('.lightbox-close');
-      const lightboxPrev = document.querySelector('.lightbox-prev');
-      const lightboxNext = document.querySelector('.lightbox-next');
-      const diaryImages = document.querySelectorAll('.diary-image');
-      
-      let currentImageIndex = 0;
-      let currentImages = [];
+<script>
+  // 图片灯箱功能
+  document.addEventListener('DOMContentLoaded', function() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const lightboxPrev = document.querySelector('.lightbox-prev');
+    const lightboxNext = document.querySelector('.lightbox-next');
+    
+    let currentImageIndex = 0;
+    let currentImages = [];
 
-      // 打开灯箱
-      function openLightbox(index, images) {
-        currentImageIndex = index;
-        currentImages = images;
-        lightboxImg.src = images[index].src;
-        lightbox.style.display = 'block';
-        document.body.style.overflow = 'hidden';
+    // 打开灯箱
+    function openLightbox(index, images) {
+      currentImageIndex = index;
+      currentImages = images;
+      lightboxImg.src = images[index].src;
+      lightbox.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    // 关闭灯箱
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // 切换图片
+    function changeImage(direction) {
+      currentImageIndex += direction;
+      if (currentImageIndex >= currentImages.length) {
+        currentImageIndex = 0;
+      } else if (currentImageIndex < 0) {
+        currentImageIndex = currentImages.length - 1;
       }
+      lightboxImg.src = currentImages[currentImageIndex].src;
+    }
 
-      // 关闭灯箱
-      function closeLightbox() {
-        lightbox.style.display = 'none';
-        document.body.style.overflow = 'auto';
+    // 使用事件委托 - 监听整个文档的点击事件
+    document.addEventListener('click', function(e) {
+      // 检查点击的是否是日记图片
+      if (e.target.classList.contains('diary-image')) {
+        const diaryCard = e.target.closest('.diary-card');
+        const images = Array.from(diaryCard.querySelectorAll('.diary-image'));
+        const index = images.indexOf(e.target);
+        openLightbox(index, images);
       }
-
-      // 切换图片
-      function changeImage(direction) {
-        currentImageIndex += direction;
-        if (currentImageIndex >= currentImages.length) {
-          currentImageIndex = 0;
-        } else if (currentImageIndex < 0) {
-          currentImageIndex = currentImages.length - 1;
-        }
-        lightboxImg.src = currentImages[currentImageIndex].src;
-      }
-
-      // 为所有图片添加点击事件
-      diaryImages.forEach((img, index) => {
-        img.addEventListener('click', function() {
-          const diaryCard = this.closest('.diary-card');
-          const images = Array.from(diaryCard.querySelectorAll('.diary-image'));
-          openLightbox(index, images);
-        });
-      });
-
-      // 灯箱控制事件
-      lightboxClose.addEventListener('click', closeLightbox);
-      lightboxPrev.addEventListener('click', () => changeImage(-1));
-      lightboxNext.addEventListener('click', () => changeImage(1));
-
-      // 点击背景关闭
-      lightbox.addEventListener('click', function(e) {
-        if (e.target === lightbox) {
-          closeLightbox();
-        }
-      });
-
-      // 键盘控制
-      document.addEventListener('keydown', function(e) {
-        if (lightbox.style.display === 'block') {
-          if (e.key === 'Escape') closeLightbox();
-          if (e.key === 'ArrowLeft') changeImage(-1);
-          if (e.key === 'ArrowRight') changeImage(1);
-        }
-      });
-
-      // 日期格式化函数
-      function formatChineseDate(dateString) {
-        try {
-          const date = new Date(dateString);
-          if (isNaN(date.getTime())) {
-            return dateString; // 如果日期无效，返回原字符串
-          }
-          const year = date.getFullYear();
-          const month = date.getMonth() + 1;
-          const day = date.getDate();
-          return `${year}年${month}月${day}日`;
-        } catch (e) {
-          return dateString;
-        }
-      }
-
-      // 格式化所有日期
-      const dateElements = document.querySelectorAll('.diary-date');
-      dateElements.forEach(element => {
-        const originalDate = element.textContent.trim();
-        element.textContent = formatChineseDate(originalDate);
-      });
     });
-  </script>
+
+    // 灯箱控制事件
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', () => changeImage(-1));
+    lightboxNext.addEventListener('click', () => changeImage(1));
+
+    // 点击背景关闭
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    // 键盘控制
+    document.addEventListener('keydown', function(e) {
+      if (lightbox.style.display === 'block') {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') changeImage(-1);
+        if (e.key === 'ArrowRight') changeImage(1);
+      }
+    });
+
+    // 日期格式化函数
+    function formatChineseDate(dateString) {
+      try {
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) {
+          return dateString; // 如果日期无效，返回原字符串
+        }
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        return `${year}年${month}月${day}日`;
+      } catch (e) {
+        return dateString;
+      }
+    }
+
+    // 多巴胺渐变色数组
+    const gradientColors = [
+      ['#FF6B6B', '#FF8E8E'], // 珊瑚红渐变
+      ['#4ECDC4', '#6EE7E7'], // 薄荷绿渐变
+      ['#45B7D1', '#67C8E3'], // 天空蓝渐变
+      ['#96CEB4', '#B8E6B8'], // 草木绿渐变
+      ['#FFEAA7', '#FFF4C7'], // 柠檬黄渐变
+      ['#DDA0DD', '#F0C8F0'], // 薰衣草紫渐变
+      ['#FF9F68', '#FFB991'], // 橙色调
+      ['#6C5CE7', '#8B7BEC'], // 紫蓝色调
+      ['#00B894', '#26C6A3'], // 翡翠绿
+      ['#FD79A8', '#FF94BC'], // 粉红色
+      ['#FDCB6E', '#FFD88A'], // 金黄色
+      ['#74B9FF', '#8FC9FF']  // 天蓝色
+    ];
+
+    // 为每个日期标题应用随机渐变色
+    function applyRandomGradients() {
+      const dateElements = document.querySelectorAll('.diary-date');
+      dateElements.forEach((element, index) => {
+        // 使用索引来确保每次刷新颜色顺序一致
+        const colorIndex = index % gradientColors.length;
+        const [color1, color2] = gradientColors[colorIndex];
+        
+        // 应用渐变色
+        element.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
+        element.style.webkitBackgroundClip = 'text';
+        element.style.webkitTextFillColor = 'transparent';
+        element.style.backgroundClip = 'text';
+      });
+    }
+
+    // 格式化所有日期并应用渐变色
+    const dateElements = document.querySelectorAll('.diary-date');
+    dateElements.forEach(element => {
+      const originalDate = element.textContent.trim();
+      element.textContent = formatChineseDate(originalDate);
+    });
+
+    // 应用随机渐变色
+    applyRandomGradients();
+  });
+</script>
 
           </div>
           
