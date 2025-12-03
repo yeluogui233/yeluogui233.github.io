@@ -9228,7 +9228,7 @@ if (book.summary) {
   const paragraphs = book.summary.split('\n');
   const formattedSummary = paragraphs.map(p => {
     if (p.trim()) {
-      return `<p style="text-indent: 2em; margin-bottom: 0.8em;">${p}</p>`;
+      return `<p style="text-indent: 2em; margin-bottom: 0em;">${p}</p>`;
     }
     return '';
   }).join('');
