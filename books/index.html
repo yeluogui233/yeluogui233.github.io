@@ -9214,7 +9214,11 @@ if (book.category && book.category.trim() !== '') {
         lightboxMeta.innerHTML = metaHTML;
         
         // 简评
-        lightboxSummary.textContent = book.summary || '暂无简介';
+        if (book.summary) {
+  lightboxSummary.innerHTML = book.summary.replace(/\n/g, '<br>');
+} else {
+  lightboxSummary.textContent = '暂无简介';
+}
         
         // 下载链接
         if (book.download) {
