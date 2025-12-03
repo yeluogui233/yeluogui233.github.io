@@ -1093,61 +1093,72 @@
     }
 
     // 多巴胺渐变色数组 - 优化色差和美观度
-    const gradientColors = [
-      ['#FF6B6B', '#FFA8A8'], // 柔和的珊瑚红渐变
-      ['#4ECDC4', '#88F0E8'], // 清新的薄荷绿渐变
-      ['#45B7D1', '#7ADBFF'], // 明亮的天蓝渐变
-      ['#96CEB4', '#C5E8C5'], // 温和的草木绿渐变
-      ['#FFE66D', '#FFF4B3'], // 鲜艳的柠檬黄渐变
-      ['#DDA0DD', '#F5C2F5'], // 梦幻的薰衣草紫渐变
-      ['#FF9F68', '#FFC5A1'], // 温暖的橙色调
-      ['#6C5CE7', '#9D8EFF'], // 神秘的紫蓝色调
-      ['#00B894', '#4CDFC0'], // 活力的翡翠绿
-      ['#FD79A8', '#FFB1D0'], // 甜美的粉红色
-      ['#FDCB6E', '#FFE5A5'], // 灿烂的金黄色
-      ['#74B9FF', '#A9D4FF'], // 清澈的天蓝色
-      ['#FF7675', '#FFA8A7'], // 浪漫的粉红色
-      ['#55E6C1', '#8EF9D9'], // 活力的青绿色
-      ['#A29BFE', '#C8C4FF'], // 柔和的淡紫色
-      ['#FAB1A0', '#FFD4C8']  // 温馨的桃色调
-    ];
+    // 多巴胺渐变色数组 - 优化色差和美观度
+const gradientColors = [
+  ['#FF6B6B', '#FFA8A8'], // 柔和的珊瑚红渐变
+  ['#4ECDC4', '#88F0E8'], // 清新的薄荷绿渐变
+  ['#45B7D1', '#7ADBFF'], // 明亮的天蓝渐变
+  ['#96CEB4', '#C5E8C5'], // 温和的草木绿渐变
+  ['#FFE66D', '#FFF4B3'], // 鲜艳的柠檬黄渐变
+  ['#DDA0DD', '#F5C2F5'], // 梦幻的薰衣草紫渐变
+  ['#FF9F68', '#FFC5A1'], // 温暖的橙色调
+  ['#6C5CE7', '#9D8EFF'], // 神秘的紫蓝色调
+  ['#00B894', '#4CDFC0'], // 活力的翡翠绿
+  ['#FD79A8', '#FFB1D0'], // 甜美的粉红色
+  ['#FDCB6E', '#FFE5A5'], // 灿烂的金黄色
+  ['#74B9FF', '#A9D4FF'], // 清澈的天蓝色
+  ['#FF7675', '#FFA8A7'], // 浪漫的粉红色
+  ['#55E6C1', '#8EF9D9'], // 活力的青绿色
+  ['#A29BFE', '#C8C4FF'], // 柔和的淡紫色
+  ['#FAB1A0', '#FFD4C8']  // 温馨的桃色调
+];
 
-    // 为每个日期标题应用随机渐变色 - 增强效果
-    function applyRandomGradients() {
-      const dateElements = document.querySelectorAll('.diary-date');
-      dateElements.forEach((element, index) => {
-        // 使用索引来确保每次刷新颜色顺序一致
-        const colorIndex = index % gradientColors.length;
-        const [color1, color2] = gradientColors[colorIndex];
-        
-        // 应用渐变色 - 增强对比度
-        element.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
-        element.style.webkitBackgroundClip = 'text';
-        element.style.webkitTextFillColor = 'transparent';
-        element.style.backgroundClip = 'text';
-        element.style.fontWeight = '900'; // 加粗字体增强效果
-        element.style.textShadow = 'none'; // 移除可能影响渐变效果的阴影
-      });
-    }
+// 为每个日期标题应用随机渐变色 - 基于日期计算
+function applyRandomGradients() {
+  const dateElements = document.querySelectorAll('.diary-date');
+  
+  // 获取今天的日期作为种子
+  const today = new Date();
+  const daySeed = today.getDate(); // 使用日期作为种子
+  
+  dateElements.forEach((element, index) => {
+    // 使用日期种子和索引计算颜色，每天都会不同
+    const colorIndex = (daySeed + index) % gradientColors.length;
+    const [color1, color2] = gradientColors[colorIndex];
+    
+    // 应用渐变色 - 增强对比度
+    element.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
+    element.style.webkitBackgroundClip = 'text';
+    element.style.webkitTextFillColor = 'transparent';
+    element.style.backgroundClip = 'text';
+    element.style.fontWeight = '900';
+    element.style.textShadow = 'none';
+  });
+}
 
-    // 为每个卡片的悬浮条应用随机渐变色
-    function applyRandomGradientBars() {
-      const diaryCards = document.querySelectorAll('.diary-card');
-      
-      diaryCards.forEach((card, index) => {
-        const colorIndex = index % gradientColors.length;
-        const [color1, color2] = gradientColors[colorIndex];
-        
-        // 创建样式并应用到当前卡片的悬浮条
-        const style = document.createElement('style');
-        style.textContent = `
-          .diary-card:nth-child(${index + 1}) .diary-content::before {
-            background: linear-gradient(135deg, ${color1}, ${color2}) !important;
-          }
-        `;
-        document.head.appendChild(style);
-      });
-    }
+// 为每个卡片的悬浮条应用随机渐变色 - 基于日期计算
+function applyRandomGradientBars() {
+  const diaryCards = document.querySelectorAll('.diary-card');
+  
+  // 获取今天的日期作为种子
+  const today = new Date();
+  const daySeed = today.getDate(); // 使用日期作为种子
+  
+  diaryCards.forEach((card, index) => {
+    // 使用日期种子和索引计算颜色，每天都会不同
+    const colorIndex = (daySeed + index) % gradientColors.length;
+    const [color1, color2] = gradientColors[colorIndex];
+    
+    // 创建样式并应用到当前卡片的悬浮条
+    const style = document.createElement('style');
+    style.textContent = `
+      .diary-card:nth-child(${index + 1}) .diary-content::before {
+        background: linear-gradient(135deg, ${color1}, ${color2}) !important;
+      }
+    `;
+    document.head.appendChild(style);
+  });
+}
 
     // 格式化所有日期并应用渐变色
     const dateElements = document.querySelectorAll('.diary-date');
