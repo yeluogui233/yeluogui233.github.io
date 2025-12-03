@@ -755,14 +755,22 @@
 
     .diary-text {
       font-size: 1.05rem;
+	  text-indent: 2em;
+
     }
 
     .diary-text p {
       margin-bottom: 16px;
+	  text-indent: 2em;
       line-height: 1.8;
     }
-
+.diary-text p:first-child {
+  margin-bottom: 16px;
+  /* 首段也缩进 */
+  text-indent: 2em;
+}
     .diary-text p:last-child {
+	  text-indent: 2em;
       margin-bottom: 0;
     }
 
