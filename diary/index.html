@@ -747,32 +747,25 @@
       font-weight: 500;
     }
 
-    //* 日记正文 */
-.diary-body {
-  line-height: 1.7;
-  color: #333;
-}
+    /* 日记正文 */
+    .diary-body {
+      line-height: 1.7;
+      color: #333;
+    }
 
-.diary-text {
-  font-size: 1.05rem;
-  /* 修改这里：使用 padding-left 实现所有行缩进 */
-  padding-left: 2em;
-}
+    .diary-text {
+      font-size: 1.05rem;
+    }
 
-.diary-text p {
-  margin-bottom: 16px;
-  line-height: 1.8;
-  /* 段落也保持缩进 */
-  padding-left: 0; /* 段落继承外层缩进，不需要额外 */
-}
+    .diary-text p {
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
 
-.diary-text p:first-child {
-  margin-bottom: 16px;
-}
+    .diary-text p:last-child {
+      margin-bottom: 0;
+    }
 
-.diary-text p:last-child {
-  margin-bottom: 0;
-}
     /* 图片样式 */
     .diary-images {
       display: grid;
