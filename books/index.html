@@ -9223,8 +9223,16 @@ if (book.category && book.category.trim() !== '') {
         lightboxMeta.innerHTML = metaHTML;
         
         // 简评
-        if (book.summary) {
-  lightboxSummary.innerHTML = book.summary.replace(/\n/g, '<br>');
+if (book.summary) {
+  // 将文本按段落分割，并为每段添加缩进
+  const paragraphs = book.summary.split('\n');
+  const formattedSummary = paragraphs.map(p => {
+    if (p.trim()) {
+      return `<p style="text-indent: 2em; margin-bottom: 0.8em;">${p}</p>`;
+    }
+    return '';
+  }).join('');
+  lightboxSummary.innerHTML = formattedSummary;
 } else {
   lightboxSummary.textContent = '暂无简介';
 }
