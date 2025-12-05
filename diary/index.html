@@ -260,16 +260,13 @@
 
           <div class="content ">
             
-  <header class="page-header" style="text-align:center; margin-bottom: 40px;">
-    <h1 class="page-title" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 12px;">日记</h1>
-    
-      <p class="page-subtitle" style="color:var(--text-color-secondary); margin-top:8px; font-size: 1.3rem; line-height: 1.6;">
-        优太，你已经能够自己决定要怎样回忆起一个人了， 这其实是一件非常厉害的事。
-      </p>
-    
-  </header>
-
   <div class="diary-wrapper">
+    <!-- 将标题和副标题移到画布里 -->
+    <header class="page-header" style="margin-bottom: 40px;">
+      <h1 class="page-title">日记</h1>
+      
+    </header>
+
     <div class="diary-grid">
       
         <article class="diary-card" data-date="Fri Dec 05 2025 08:00:00 GMT+0800 (中国标准时间)">
@@ -641,6 +638,96 @@
       margin-right: auto;
     }
 
+    /* 标题和副标题样式 */
+    .page-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* 副标题容器 */
+    .page-subtitle-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* 引号样式 */
+    .quote-mark {
+      font-size: 2rem;
+      color: #667eea;
+      opacity: 0.5;
+      font-weight: 300;
+      line-height: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .page-subtitle-container:hover .quote-mark {
+      opacity: 0.8;
+    }
+
+    /* 副标题轮播 */
+    .subtitle-carousel {
+      position: relative;
+      min-height: 32px;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .page-subtitle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      color: var(--text-color-secondary);
+      margin: 0;
+      font-size: 1.3rem;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .page-subtitle.active {
+      position: relative;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 更换按钮 */
+    .subtitle-changer {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      color: #667eea;
+      opacity: 0.6;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 4px;
+    }
+
+    .subtitle-changer:hover {
+      opacity: 1;
+      background: rgba(102, 126, 234, 0.1);
+      transform: rotate(90deg);
+    }
+
     /* Masonry 双列网格布局 */
     .diary-grid {
       display: grid;
@@ -679,17 +766,17 @@
       height: fit-content;
     }
 
-.diary-content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
+    .diary-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
 
     .diary-card:hover .diary-content {
       transform: translateY(-8px);
@@ -716,7 +803,6 @@
       font-size: 1.5rem;
       font-weight: 800;
       margin: 0 0 8px 0;
-
       letter-spacing: -0.5px;
     }
 
@@ -762,79 +848,79 @@
       background-repeat: no-repeat;
     }
 
-/* 不同天气的图标和颜色 */
-.diary-weather[data-weather*="晴"]::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23F59E0B' d='M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm0-13L8.5 5.5 7 3 12 0l5 3-1.5 2.5L12 2z'/%3E%3C/svg%3E");
-}
-.diary-weather[data-weather*="晴"] {
-  color: #B45309;
-  background: #FEF3C7;
-  border-color: #FBBF24;
-}
+    /* 不同天气的图标和颜色 */
+    .diary-weather[data-weather*="晴"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23F59E0B' d='M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm0-13L8.5 5.5 7 3 12 0l5 3-1.5 2.5L12 2z'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="晴"] {
+      color: #B45309;
+      background: #FEF3C7;
+      border-color: #FBBF24;
+    }
 
-.diary-weather[data-weather*="云"]::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236B7280' d='M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z'/%3E%3C/svg%3E");
-}
-.diary-weather[data-weather*="云"] {
-  color: #4B5563;
-  background: #F3F4F6;
-  border-color: #9CA3AF;
-}
+    .diary-weather[data-weather*="云"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236B7280' d='M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="云"] {
+      color: #4B5563;
+      background: #F3F4F6;
+      border-color: #9CA3AF;
+    }
 
-.diary-weather[data-weather*="雨"]::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%233B82F6' d='M8 13h2v6H8zm4 0h2v6h-2zm4 0h2v6h-2zm-8-4h2v2H8zm4 0h2v2h-2zm4 0h2v2h-2zM6 9c0-3.31 2.69-6 6-6s6 2.69 6 6c0 1.66-1.34 3-3 3H9c-1.66 0-3-1.34-3-3z'/%3E%3C/svg%3E");
-}
-.diary-weather[data-weather*="雨"] {
-  color: #1D4ED8;
-  background: #DBEAFE;
-  border-color: #93C5FD;
-}
+    .diary-weather[data-weather*="雨"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%233B82F6' d='M8 13h2v6H8zm4 0h2v6h-2zm4 0h2v6h-2zm-8-4h2v2H8zm4 0h2v2h-2zm4 0h2v2h-2zM6 9c0-3.31 2.69-6 6-6s6 2.69 6 6c0 1.66-1.34 3-3 3H9c-1.66 0-3-1.34-3-3z'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="雨"] {
+      color: #1D4ED8;
+      background: #DBEAFE;
+      border-color: #93C5FD;
+    }
 
-.diary-weather[data-weather*="雪"]::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2360A5FA' d='M12 2c-3.31 0-6 2.69-6 6 0 1.66 1.34 3 3 3h6c1.66 0 3-1.34 3-3 0-3.31-2.69-6-6-6zm-2 15l2 2 2-2-2-2-2 2zm4 4l2 2 2-2-2-2-2 2z'/%3E%3C/svg%3E");
-}
-.diary-weather[data-weather*="雪"] {
-  color: #1E40AF;
-  background: #EFF6FF;
-  border-color: #BFDBFE;
-}
+    .diary-weather[data-weather*="雪"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2360A5FA' d='M12 2c-3.31 0-6 2.69-6 6 0 1.66 1.34 3 3 3h6c1.66 0 3-1.34 3-3 0-3.31-2.69-6-6-6zm-2 15l2 2 2-2-2-2-2 2zm4 4l2 2 2-2-2-2-2 2z'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="雪"] {
+      color: #1E40AF;
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+    }
 
-.diary-weather[data-weather*="风"]::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2310B981' d='M4 10h12c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2zm16 4H4c-1.1 0-2 .9-2 2s.9 2 2 2h16c1.1 0 2-.9 2-2s-.9-2-2-2zm-8 6H4c-1.1 0-2 .9-2 2s.9 2 2 2h8c1.1 0 2-.9 2-2s-.9-2-2-2z'/%3E%3C/svg%3E");
-}
-.diary-weather[data-weather*="风"] {
-  color: #047857;
-  background: #D1FAE5;
-  border-color: #6EE7B7;
-}
+    .diary-weather[data-weather*="风"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2310B981' d='M4 10h12c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2zm16 4H4c-1.1 0-2 .9-2 2s.9 2 2 2h16c1.1 0 2-.9 2-2s-.9-2-2-2zm-8 6H4c-1.1 0-2 .9-2 2s.9 2 2 2h8c1.1 0 2-.9 2-2s-.9-2-2-2z'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="风"] {
+      color: #047857;
+      background: #D1FAE5;
+      border-color: #6EE7B7;
+    }
 
-.diary-weather[data-weather*="雷"]::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%238B5CF6' d='M7 2v11h3v9l7-12h-4l3-8z'/%3E%3C/svg%3E");
-}
-.diary-weather[data-weather*="雷"] {
-  color: #7C3AED;
-  background: #EDE9FE;
-  border-color: #C4B5FD;
-}
+    .diary-weather[data-weather*="雷"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%238B5CF6' d='M7 2v11h3v9l7-12h-4l3-8z'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="雷"] {
+      color: #7C3AED;
+      background: #EDE9FE;
+      border-color: #C4B5FD;
+    }
 
-.diary-weather[data-weather*="雾"]::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%239CA3AF' d='M3 12h18M3 16h18M3 20h18'/%3E%3C/svg%3E");
-}
-.diary-weather[data-weather*="雾"] {
-  color: #6B7280;
-  background: #F9FAFB;
-  border-color: #D1D5DB;
-}
+    .diary-weather[data-weather*="雾"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%239CA3AF' d='M3 12h18M3 16h18M3 20h18'/%3E%3C/svg%3E");
+    }
+    .diary-weather[data-weather*="雾"] {
+      color: #6B7280;
+      background: #F9FAFB;
+      border-color: #D1D5DB;
+    }
 
-/* 默认天气样式 */
-.diary-weather:not([data-weather*="晴"]):not([data-weather*="云"]):not([data-weather*="雨"]):not([data-weather*="雪"]):not([data-weather*="风"]):not([data-weather*="雷"]):not([data-weather*="雾"])::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23666' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
-}
-.diary-weather:not([data-weather*="晴"]):not([data-weather*="云"]):not([data-weather*="雨"]):not([data-weather*="雪"]):not([data-weather*="风"]):not([data-weather*="雷"]):not([data-weather*="雾"]) {
-  color: #666;
-  background: #f5f5f5;
-  border-color: #ddd;
-}
+    /* 默认天气样式 */
+    .diary-weather:not([data-weather*="晴"]):not([data-weather*="云"]):not([data-weather*="雨"]):not([data-weather*="雪"]):not([data-weather*="风"]):not([data-weather*="雷"]):not([data-weather*="雾"])::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23666' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+    }
+    .diary-weather:not([data-weather*="晴"]):not([data-weather*="云"]):not([data-weather*="雨"]):not([data-weather*="雪"]):not([data-weather*="风"]):not([data-weather*="雷"]):not([data-weather*="雾"]) {
+      color: #666;
+      background: #f5f5f5;
+      border-color: #ddd;
+    }
 
     /* 心情样式 */
     .diary-mood {
@@ -1065,6 +1151,15 @@
         font-size: 1.1rem !important;
       }
 
+      .quote-mark {
+        font-size: 1.5rem;
+      }
+
+      .page-subtitle-container {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
       .diary-pagination {
         flex-direction: column;
         gap: 15px;
@@ -1094,6 +1189,14 @@
       
       .page-subtitle {
         font-size: 1rem !important;
+      }
+
+      .page-subtitle-container {
+        gap: 4px;
+      }
+
+      .quote-mark {
+        font-size: 1.2rem;
       }
     }
 
@@ -1192,73 +1295,114 @@
       }
     }
 
-    // 多巴胺渐变色数组 - 优化色差和美观度
-    // 多巴胺渐变色数组 - 优化色差和美观度
-const gradientColors = [
-  ['#FF6B6B', '#FFA8A8'], // 柔和的珊瑚红渐变
-  ['#4ECDC4', '#88F0E8'], // 清新的薄荷绿渐变
-  ['#45B7D1', '#7ADBFF'], // 明亮的天蓝渐变
-  ['#96CEB4', '#C5E8C5'], // 温和的草木绿渐变
-  ['#FFE66D', '#FFF4B3'], // 鲜艳的柠檬黄渐变
-  ['#DDA0DD', '#F5C2F5'], // 梦幻的薰衣草紫渐变
-  ['#FF9F68', '#FFC5A1'], // 温暖的橙色调
-  ['#6C5CE7', '#9D8EFF'], // 神秘的紫蓝色调
-  ['#00B894', '#4CDFC0'], // 活力的翡翠绿
-  ['#FD79A8', '#FFB1D0'], // 甜美的粉红色
-  ['#FDCB6E', '#FFE5A5'], // 灿烂的金黄色
-  ['#74B9FF', '#A9D4FF'], // 清澈的天蓝色
-  ['#FF7675', '#FFA8A7'], // 浪漫的粉红色
-  ['#55E6C1', '#8EF9D9'], // 活力的青绿色
-  ['#A29BFE', '#C8C4FF'], // 柔和的淡紫色
-  ['#FAB1A0', '#FFD4C8']  // 温馨的桃色调
-];
-
-// 为每个日期标题应用随机渐变色 - 基于日期计算
-function applyRandomGradients() {
-  const dateElements = document.querySelectorAll('.diary-date');
-  
-  // 获取今天的日期作为种子
-  const today = new Date();
-  const daySeed = today.getDate(); // 使用日期作为种子
-  
-  dateElements.forEach((element, index) => {
-    // 使用日期种子和索引计算颜色，每天都会不同
-    const colorIndex = (daySeed + index) % gradientColors.length;
-    const [color1, color2] = gradientColors[colorIndex];
-    
-    // 应用渐变色 - 增强对比度
-    element.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
-    element.style.webkitBackgroundClip = 'text';
-    element.style.webkitTextFillColor = 'transparent';
-    element.style.backgroundClip = 'text';
-    element.style.fontWeight = '900';
-    element.style.textShadow = 'none';
-  });
-}
-
-// 为每个卡片的悬浮条应用随机渐变色 - 基于日期计算
-function applyRandomGradientBars() {
-  const diaryCards = document.querySelectorAll('.diary-card');
-  
-  // 获取今天的日期作为种子
-  const today = new Date();
-  const daySeed = today.getDate(); // 使用日期作为种子
-  
-  diaryCards.forEach((card, index) => {
-    // 使用日期种子和索引计算颜色，每天都会不同
-    const colorIndex = (daySeed + index) % gradientColors.length;
-    const [color1, color2] = gradientColors[colorIndex];
-    
-    // 创建样式并应用到当前卡片的悬浮条
-    const style = document.createElement('style');
-    style.textContent = `
-      .diary-card:nth-child(${index + 1}) .diary-content::before {
-        background: linear-gradient(135deg, ${color1}, ${color2}) !important;
+    // 副标题轮换功能
+    function initSubtitleCarousel() {
+      const changer = document.querySelector('.subtitle-changer');
+      if (!changer) return;
+      
+      const subtitles = document.querySelectorAll('.page-subtitle');
+      let currentIndex = 0;
+      
+      function showSubtitle(index) {
+        subtitles.forEach(subtitle => {
+          subtitle.classList.remove('active');
+        });
+        
+        if (index >= subtitles.length) index = 0;
+        if (index < 0) index = subtitles.length - 1;
+        
+        subtitles[index].classList.add('active');
+        currentIndex = index;
       }
-    `;
-    document.head.appendChild(style);
-  });
-}
+      
+      changer.addEventListener('click', function(e) {
+        e.preventDefault();
+        showSubtitle(currentIndex + 1);
+      });
+      
+      // 自动轮换（可选）
+      let autoRotate = setInterval(() => {
+        showSubtitle(currentIndex + 1);
+      }, 8000);
+      
+      // 鼠标悬停时暂停自动轮换
+      changer.addEventListener('mouseenter', () => {
+        clearInterval(autoRotate);
+      });
+      
+      changer.addEventListener('mouseleave', () => {
+        autoRotate = setInterval(() => {
+          showSubtitle(currentIndex + 1);
+        }, 8000);
+      });
+    }
+
+    // 多巴胺渐变色数组
+    const gradientColors = [
+      ['#FF6B6B', '#FFA8A8'],
+      ['#4ECDC4', '#88F0E8'],
+      ['#45B7D1', '#7ADBFF'],
+      ['#96CEB4', '#C5E8C5'],
+      ['#FFE66D', '#FFF4B3'],
+      ['#DDA0DD', '#F5C2F5'],
+      ['#FF9F68', '#FFC5A1'],
+      ['#6C5CE7', '#9D8EFF'],
+      ['#00B894', '#4CDFC0'],
+      ['#FD79A8', '#FFB1D0'],
+      ['#FDCB6E', '#FFE5A5'],
+      ['#74B9FF', '#A9D4FF'],
+      ['#FF7675', '#FFA8A7'],
+      ['#55E6C1', '#8EF9D9'],
+      ['#A29BFE', '#C8C4FF'],
+      ['#FAB1A0', '#FFD4C8']
+    ];
+
+    // 为每个日期标题应用随机渐变色 - 基于日期计算
+    function applyRandomGradients() {
+      const dateElements = document.querySelectorAll('.diary-date');
+      
+      // 获取今天的日期作为种子
+      const today = new Date();
+      const daySeed = today.getDate(); // 使用日期作为种子
+      
+      dateElements.forEach((element, index) => {
+        // 使用日期种子和索引计算颜色，每天都会不同
+        const colorIndex = (daySeed + index) % gradientColors.length;
+        const [color1, color2] = gradientColors[colorIndex];
+        
+        // 应用渐变色 - 增强对比度
+        element.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
+        element.style.webkitBackgroundClip = 'text';
+        element.style.webkitTextFillColor = 'transparent';
+        element.style.backgroundClip = 'text';
+        element.style.fontWeight = '900';
+        element.style.textShadow = 'none';
+      });
+    }
+
+    // 为每个卡片的悬浮条应用随机渐变色 - 基于日期计算
+    function applyRandomGradientBars() {
+      const diaryCards = document.querySelectorAll('.diary-card');
+      
+      // 获取今天的日期作为种子
+      const today = new Date();
+      const daySeed = today.getDate(); // 使用日期作为种子
+      
+      diaryCards.forEach((card, index) => {
+        // 使用日期种子和索引计算颜色，每天都会不同
+        const colorIndex = (daySeed + index) % gradientColors.length;
+        const [color1, color2] = gradientColors[colorIndex];
+        
+        // 创建样式并应用到当前卡片的悬浮条
+        const style = document.createElement('style');
+        style.textContent = `
+          .diary-card:nth-child(${index + 1}) .diary-content::before {
+            background: linear-gradient(135deg, ${color1}, ${color2}) !important;
+          }
+        `;
+        document.head.appendChild(style);
+      });
+    }
 
     // 格式化所有日期并应用渐变色
     const dateElements = document.querySelectorAll('.diary-date');
@@ -1272,6 +1416,9 @@ function applyRandomGradientBars() {
     
     // 应用随机渐变悬浮条
     applyRandomGradientBars();
+    
+    // 初始化副标题轮换
+    initSubtitleCarousel();
   });
 </script>
 
