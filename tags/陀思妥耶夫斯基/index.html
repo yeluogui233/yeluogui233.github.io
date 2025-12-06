@@ -321,6 +321,21 @@
         <span class="tag-link-count">(2)</span>
       </a>
     
+      <a href="/tags/%E6%B3%95%E5%9B%BD%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" class="tag-cloud-link">
+        法国文学/文学
+        <span class="tag-link-count">(1)</span>
+      </a>
+    
+      <a href="/tags/%E7%BB%B4%E5%85%8B%E5%A4%9A%C2%B7%E9%9B%A8%E6%9E%9C/" class="tag-cloud-link">
+        维克多·雨果
+        <span class="tag-link-count">(1)</span>
+      </a>
+    
+      <a href="/tags/%E6%9F%A5%E6%89%BE/" class="tag-cloud-link">
+        查找
+        <span class="tag-link-count">(1)</span>
+      </a>
+    
       <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="tag-cloud-link">
         计算机组成原理
         <span class="tag-link-count">(1)</span>
@@ -331,13 +346,8 @@
         <span class="tag-link-count">(1)</span>
       </a>
     
-      <a href="/tags/%E6%B3%95%E5%9B%BD%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" class="tag-cloud-link">
-        法国文学/文学
-        <span class="tag-link-count">(1)</span>
-      </a>
-    
-      <a href="/tags/%E7%BB%B4%E5%85%8B%E5%A4%9A%C2%B7%E9%9B%A8%E6%9E%9C/" class="tag-cloud-link">
-        维克多·雨果
+      <a href="/tags/%E6%A0%91/" class="tag-cloud-link">
+        树
         <span class="tag-link-count">(1)</span>
       </a>
     
@@ -351,11 +361,6 @@
         <span class="tag-link-count">(2)</span>
       </a>
     
-      <a href="/tags/%E6%A0%91/" class="tag-cloud-link">
-        树
-        <span class="tag-link-count">(1)</span>
-      </a>
-    
       <a href="/tags/%E7%83%98%E7%84%99/" class="tag-cloud-link">
         烘焙
         <span class="tag-link-count">(2)</span>
@@ -364,11 +369,6 @@
       <a href="/tags/%E6%85%95%E6%96%AF%E8%9B%8B%E7%B3%95/" class="tag-cloud-link">
         慕斯蛋糕
         <span class="tag-link-count">(2)</span>
-      </a>
-    
-      <a href="/tags/%E6%9F%A5%E6%89%BE/" class="tag-cloud-link">
-        查找
-        <span class="tag-link-count">(1)</span>
       </a>
     
   </div>
@@ -440,46 +440,36 @@
 </style>
       
       
-      <!-- 标签柱状图组件 -->
+      <!-- ===================== 标签柱状图组件 ===================== -->
 <div class="tag-chart-container">
   <div class="tag-chart-header">
     <h3 class="tag-chart-title">标签分布统计</h3>
     <p class="tag-chart-subtitle">按文章数量排序</p>
   </div>
-  
+
   <div class="tag-chart-wrapper">
-    <div class="tag-chart-bars" id="tagChartBars">
-      <!-- 柱状图将通过JavaScript动态生成 -->
-    </div>
-    
-    <div class="tag-chart-legend" id="tagChartLegend">
-      <!-- 图例将通过JavaScript动态生成 -->
-    </div>
+    <div class="tag-chart-bars" id="tagChartBars"></div>
+    <div class="tag-chart-legend" id="tagChartLegend"></div>
   </div>
 </div>
 
 <style>
-/* 容器样式 */
+/* ---------- 容器 ---------- */
 .tag-chart-container {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255,255,255,0.85);
   backdrop-filter: blur(15px);
-  border-radius: 16px;
-  padding: 25px;
-  margin: 30px 0;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  border: 1px solid rgba(255,255,255,0.6);
+  border-radius:16px;
+  padding:25px;
+  margin:30px 0;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  border:1px solid rgba(255,255,255,0.6);
 }
-
-.tag-chart-header {
-  text-align: center;
-  margin-bottom: 25px;
-}
-.tag-chart-title { font-size: 1.4em; font-weight: 600; color: #2c3e50; margin-bottom:5px; }
+.tag-chart-header { text-align:center; margin-bottom:25px; }
+.tag-chart-title { font-size:1.4em; font-weight:600; color:#2c3e50; margin-bottom:5px; }
 .tag-chart-subtitle { font-size:0.9em; color:#7f8c8d; margin:0; }
-
 .tag-chart-wrapper { display:flex; flex-direction:column; gap:20px; }
 
-/* 柱状图 */
+/* ---------- 柱状图 ---------- */
 .tag-chart-bars {
   display:flex;
   align-items:flex-end;
@@ -488,38 +478,55 @@
   padding:20px 0;
   border-bottom:1px solid #eaeaea;
   position:relative;
+  overflow-x:auto; /* 手机端可横向滚动 */
+  scrollbar-width:none; /* Firefox */
 }
+.tag-chart-bars::-webkit-scrollbar { display:none; }
 
 .tag-bar-item {
   display:flex;
   flex-direction:column;
   align-items:center;
-  flex:1;
-  max-width:60px;
+  min-width:40px; /* 手机端柱子不会太小 */
   position:relative;
   cursor:pointer;
   transition:all 0.3s ease;
 }
 
 .tag-bar {
-  width:35px;
+  width:100%;
   min-height:5px;
   border-radius:8px 8px 0 0;
   position:relative;
-  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+  box-shadow:0 2px 10px rgba(0,0,0,0.15);
   transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
   animation: barGrowth 0.8s ease-out forwards;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
 }
 
 .tag-bar:hover {
-  transform:translateY(-3px);
-  box-shadow:0 4px 15px rgba(0,0,0,0.2);
-  filter: brightness(1.1);
+  transform:translateY(-5px);
+  box-shadow:0 6px 20px rgba(0,0,0,0.25);
+  filter: brightness(1.15);
 }
 
+/* 光晕 */
+.tag-bar-glow {
+  position:absolute;
+  top:-6px;
+  width:100%;
+  height:10px;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
+  animation: glow 1.5s infinite alternate;
+}
+
+/* 悬停显示文字 */
 .tag-bar-value {
   position:absolute;
-  top:-25px;
+  top:-28px;
   left:50%;
   transform:translateX(-50%);
   background: rgba(0,0,0,0.8);
@@ -532,10 +539,7 @@
   transition:opacity 0.3s ease;
   white-space:nowrap;
 }
-
-.tag-bar:hover .tag-bar-value {
-  opacity:1;
-}
+.tag-bar:hover .tag-bar-value { opacity:1; }
 
 .tag-bar-label {
   margin-top:8px;
@@ -550,7 +554,7 @@
   white-space:nowrap;
 }
 
-/* 图例 */
+/* ---------- 图例 ---------- */
 .tag-chart-legend {
   display:flex;
   flex-wrap:wrap;
@@ -560,7 +564,6 @@
   background: rgba(248,249,250,0.7);
   border-radius:12px;
 }
-
 .tag-legend-item {
   display:flex;
   align-items:center;
@@ -575,22 +578,35 @@
   text-decoration:none;
   color:inherit;
 }
-
 .tag-legend-item:hover {
   transform:translateY(-2px);
   box-shadow:0 4px 10px rgba(0,0,0,0.12);
 }
-
 .tag-legend-color { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
 .tag-legend-name { font-weight:500; color:#2c3e50; }
 .tag-legend-count { color:#7f8c8d; font-size:0.85em; }
 
-/* 动画 */
+/* ---------- 动画 ---------- */
 @keyframes barGrowth { from{height:0;opacity:0;} to{height:var(--bar-height); opacity:1;} }
+@keyframes glow { from {opacity:0.6;} to {opacity:1;} }
 
-/* 响应式 */
-@media(max-width:768px){.tag-chart-bars{height:160px;}.tag-bar{width:25px;}.tag-bar-label{font-size:0.7em;}.tag-chart-legend{gap:8px;}.tag-legend-item{font-size:0.75em;padding:4px 8px;}}
-@media(max-width:480px){.tag-chart-bars{height:140px;gap:5px;}.tag-bar{width:20px;}.tag-bar-label{font-size:0.65em;}.tag-chart-legend{padding:10px;}}
+/* ---------- 响应式 ---------- */
+@media(max-width:768px){
+  .tag-chart-bars { height:160px; }
+  .tag-bar-item { min-width:35px; margin-right:5px; }
+  .tag-bar-label{font-size:0.7em;}
+  .tag-chart-legend{gap:8px;}
+  .tag-legend-item{font-size:0.75em;padding:4px 8px;}
+}
+@media(max-width:480px){
+  .tag-chart-bars { height:140px; gap:5px; }
+  .tag-bar-item { min-width:30px; margin-right:3px; }
+  .tag-bar-label{font-size:0.65em;}
+  .tag-chart-legend{padding:10px;}
+}
+
+/* ---------- 隐藏文章页标签计数 ---------- */
+.post-meta .post-tag-count { display:none !important; }
 </style>
 
 <script>
@@ -602,11 +618,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!tagLinks.length) return;
 
     const tagData = Array.from(tagLinks).map((link,index)=>{
-      const tagName = link.textContent.trim();
-      const tagCount = parseInt(link.getAttribute('data-count')) || 1; // 真实文章数
-      const tagColor = randomColor(index); // 多巴胺风格颜色
+      const tagName = link.textContent.replace(/\(\d+\)/,'').trim();
+      const tagCount = parseInt(link.getAttribute('data-count')) || 1;
+      const tagColor = randomColor(index);
       const tagUrl = link.href;
-      return { name: tagName, count: tagCount, color: tagColor, url: tagUrl };
+      return {name:tagName,count:tagCount,color:tagColor,url:tagUrl};
     });
 
     tagData.sort((a,b)=>b.count-a.count);
@@ -614,32 +630,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const chartBars = document.getElementById('tagChartBars');
     const chartLegend = document.getElementById('tagChartLegend');
-    chartBars.innerHTML='';
-    chartLegend.innerHTML='';
+    chartBars.innerHTML = '';
+    chartLegend.innerHTML = '';
 
     const maxCount = Math.max(...displayTags.map(t=>t.count));
     const maxHeight = 150;
 
     displayTags.forEach((tag,index)=>{
-      const barHeight = (tag.count/maxCount)*maxHeight;
+      const barHeight = (tag.count/maxCount) * maxHeight;
       const barItem = document.createElement('div');
       barItem.className='tag-bar-item';
       barItem.style.setProperty('--bar-height',barHeight+'px');
       barItem.style.animationDelay=(index*0.1)+'s';
 
-      barItem.innerHTML=`
-        <div class="tag-bar" style="background: linear-gradient(135deg, ${tag.color}, ${lightenColor(tag.color,30)} ); height:${barHeight}px">
+      barItem.innerHTML = `
+        <div class="tag-bar" style="background: linear-gradient(135deg, ${tag.color}, ${lightenColor(tag.color,30)}); height:${barHeight}px">
+          <div class="tag-bar-glow"></div>
           <span class="tag-bar-value">${tag.name}: ${tag.count}</span>
         </div>
-        <div class="tag-bar-label">${tag.name}</div>
+        <div class="tag-bar-label">${tag.name}: ${tag.count}</div>
       `;
-      barItem.addEventListener('click',()=>{ window.location.href=tag.url; });
+      barItem.addEventListener('click',()=>{ window.location.href = tag.url; });
       chartBars.appendChild(barItem);
 
       const legendItem = document.createElement('a');
       legendItem.className='tag-legend-item';
       legendItem.href=tag.url;
-      legendItem.innerHTML=`
+      legendItem.innerHTML = `
         <div class="tag-legend-color" style="background-color:${tag.color}"></div>
         <span class="tag-legend-name">${tag.name}</span>
         <span class="tag-legend-count">(${tag.count})</span>
@@ -648,9 +665,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 多巴胺风格颜色
   function randomColor(index){
-    const colors = ['#FF6B6B','#FFD93D','#6BCB77','#4D96FF','#FF6EC7','#FFA500','#9D4EDD','#00D2FF'];
+    const colors=['#FF6B6B','#FFD93D','#6BCB77','#4D96FF','#FF6EC7','#FFA500','#9D4EDD','#00D2FF'];
     return colors[index % colors.length];
   }
 
@@ -666,10 +682,90 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- 去掉文章按钮上的 (1) -->
-<style>
-.post-meta .post-tag-count { display:none !important; }
-</style>
+<!-- ===================== Hexo 标签云示例 ===================== -->
+<ul class="tag-cloud-tags">
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+  <li>
+    <a href="" data-count=""></a>
+  </li>
+
+</ul>
 
 
       
