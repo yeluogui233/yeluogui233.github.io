@@ -281,14 +281,24 @@
         <span class="tag-link-count">(6)</span>
       </a>
     
+      <a href="/tags/%E7%AE%97%E6%B3%95/" class="tag-cloud-link">
+        算法
+        <span class="tag-link-count">(1)</span>
+      </a>
+    
       <a href="/tags/KMP%E7%AE%97%E6%B3%95/" class="tag-cloud-link">
         KMP算法
         <span class="tag-link-count">(2)</span>
       </a>
     
-      <a href="/tags/%E7%AE%97%E6%B3%95/" class="tag-cloud-link">
-        算法
-        <span class="tag-link-count">(1)</span>
+      <a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" class="tag-cloud-link">
+        高等数学
+        <span class="tag-link-count">(2)</span>
+      </a>
+    
+      <a href="/tags/%E7%A7%AF%E5%88%86/" class="tag-cloud-link">
+        积分
+        <span class="tag-link-count">(2)</span>
       </a>
     
       <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" class="tag-cloud-link">
@@ -309,16 +319,6 @@
       <a href="/tags/%E9%99%80%E6%80%9D%E5%A6%A5%E8%80%B6%E5%A4%AB%E6%96%AF%E5%9F%BA/" class="tag-cloud-link">
         陀思妥耶夫斯基
         <span class="tag-link-count">(4)</span>
-      </a>
-    
-      <a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" class="tag-cloud-link">
-        高等数学
-        <span class="tag-link-count">(2)</span>
-      </a>
-    
-      <a href="/tags/%E7%A7%AF%E5%88%86/" class="tag-cloud-link">
-        积分
-        <span class="tag-link-count">(2)</span>
       </a>
     
       <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="tag-cloud-link">
@@ -467,31 +467,35 @@
 .tag-chart-subtitle { font-size:0.9em; color:#7f8c8d; margin:0; }
 .tag-chart-wrapper { display:flex; flex-direction:column; gap:20px; }
 
+/* 修改容器布局 */
 .tag-chart-bars {
   display:flex;
   align-items:flex-end;
-  padding:20px 0;
+  justify-content: space-around; /* 关键：让柱子均匀分布 */
+  padding:20px 10px;
   border-bottom:1px solid #eaeaea;
   position:relative;
-  overflow-x:auto;
-  scrollbar-width:none;
+  min-height: 220px; /* 确保足够高度 */
+  width: 100%;
+  box-sizing: border-box;
 }
-.tag-chart-bars::-webkit-scrollbar { display:none; }
 
 .tag-bar-item {
   display:flex;
   flex-direction:column;
   align-items:center;
-  width:45px; /* 固定宽度 */
-  margin:0 5px;
+  width: 60px; /* 增加宽度 */
+  flex: 1; /* 关键：让每个项目弹性扩展 */
+  min-width: 45px;
+  max-width: 80px;
   position:relative;
   cursor:pointer;
   transition:all 0.3s ease;
 }
 
 .tag-bar {
-  width:100%;
-  min-height:5px;
+  width: 40px; /* 固定柱子宽度 */
+  min-height: 10px;
   border-radius:8px 8px 0 0;
   position:relative;
   box-shadow:0 2px 8px rgba(0,0,0,0.15);
@@ -499,7 +503,7 @@
   display:flex;
   justify-content:center;
   align-items:flex-start;
-  animation: barGrowth 0.8s ease-out forwards;
+  /* 移除原有的动画，通过JS直接设置高度 */
 }
 
 .tag-bar:hover {
@@ -522,6 +526,7 @@
   opacity:0;
   transition:opacity 0.3s ease;
   white-space:nowrap;
+  z-index: 10;
 }
 .tag-bar:hover .tag-bar-value { opacity:1; }
 
@@ -536,6 +541,7 @@
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
+  padding: 2px 0;
 }
 
 .tag-chart-legend {
@@ -569,17 +575,46 @@
 .tag-legend-name { font-weight:500; color:#2c3e50; }
 .tag-legend-count { color:#7f8c8d; font-size:0.85em; }
 
-@keyframes barGrowth { from{height:0;opacity:0;} to{height:var(--bar-height); opacity:1;} }
+/* 新的动画 - 不使用自定义属性 */
+@keyframes barGrowth { 
+  from { 
+    height: 10px; 
+    opacity: 0.3; 
+  } 
+  to { 
+    opacity: 1; 
+  } 
+}
 
 @media(max-width:768px){
-  .tag-chart-bars{height:160px;}
-  .tag-bar-item{width:35px;margin:0 3px;}
-  .tag-bar-label{font-size:0.7em;}
+  .tag-chart-bars{
+    min-height: 180px;
+    padding: 20px 5px;
+  }
+  .tag-bar-item{
+    width: 50px;
+    min-width: 40px;
+    max-width: 60px;
+  }
+  .tag-bar{
+    width: 35px;
+  }
+  .tag-bar-label{font-size:0.75em;}
 }
 @media(max-width:480px){
-  .tag-chart-bars{height:140px;}
-  .tag-bar-item{width:28px;margin:0 2px;}
-  .tag-bar-label{font-size:0.65em;}
+  .tag-chart-bars{
+    min-height: 150px;
+    padding: 20px 3px;
+  }
+  .tag-bar-item{
+    width: 40px;
+    min-width: 35px;
+    max-width: 50px;
+  }
+  .tag-bar{
+    width: 30px;
+  }
+  .tag-bar-label{font-size:0.7em;}
 }
 
 /* 隐藏 Hexo标签页文章数 (1) */
@@ -589,10 +624,15 @@
 <script>
 document.addEventListener('DOMContentLoaded', function(){
     const tagLinks = document.querySelectorAll('.tag-cloud-tags a');
-    if(!tagLinks.length) return;
+    if(!tagLinks.length) {
+        console.log('未找到标签链接');
+        return;
+    }
 
     const tagData = Array.from(tagLinks).map((link,index)=>{
         const text = link.textContent.trim();
+        
+        console.log('原始文本:', text);
         
         // 解析标签文本，处理格式如 "JavaScript (10)" 或 "JavaScript"
         const match = text.match(/^(.*?)\s*\((\d+)\)$/);
@@ -601,9 +641,11 @@ document.addEventListener('DOMContentLoaded', function(){
         if (match) {
             tagName = match[1].trim();
             tagCount = parseInt(match[2]);
+            console.log('解析成功:', tagName, tagCount);
         } else {
             tagName = text;
             tagCount = 1;
+            console.log('未找到数字，使用默认:', tagName, tagCount);
         }
         
         const tagColor = randomColor(index);
@@ -611,40 +653,66 @@ document.addEventListener('DOMContentLoaded', function(){
         return {name:tagName, count:tagCount, color:tagColor, url:tagUrl};
     });
 
+    console.log('所有标签数据:', tagData);
+    
     // 按文章数排序
     tagData.sort((a,b)=>b.count-a.count);
     const displayTags = tagData.slice(0, Math.min(tagData.length, 12)); // 最多显示12个
+    
+    console.log('显示的前12个标签:', displayTags);
 
     const chartBars = document.getElementById('tagChartBars');
     const chartLegend = document.getElementById('tagChartLegend');
     chartBars.innerHTML=''; 
     chartLegend.innerHTML='';
 
+    if(displayTags.length === 0) {
+        chartBars.innerHTML = '<div style="text-align:center;color:#666;padding:40px;">暂无标签数据</div>';
+        return;
+    }
+
     const maxCount = Math.max(...displayTags.map(t=>t.count));
-    const maxHeight = 150;
+    const maxHeight = 180; // 最大高度
+    
+    console.log('最大文章数:', maxCount);
+    console.log('最大高度:', maxHeight);
 
     displayTags.forEach((tag,index)=>{
-        const barHeight = (tag.count/maxCount)*maxHeight;
+        // 计算高度比例，确保最小高度为20px
+        const barHeight = Math.max(20, (tag.count/maxCount)*maxHeight);
+        
+        console.log(`标签"${tag.name}": 数量=${tag.count}, 计算高度=${barHeight}px`);
         
         const barItem = document.createElement('div');
         barItem.className='tag-bar-item';
         
-        barItem.innerHTML=`
-            <div class="tag-bar" style="background: linear-gradient(135deg, ${tag.color}, ${lightenColor(tag.color,30)});">
-                <span class="tag-bar-value">${tag.count}</span>
-            </div>
-            <div class="tag-bar-label">${tag.name}</div>
-        `;
-        
-        // 设置高度在div上而不是通过innerHTML
-        const barDiv = barItem.querySelector('.tag-bar');
+        // 创建柱子并直接设置高度
+        const barDiv = document.createElement('div');
+        barDiv.className = 'tag-bar';
+        barDiv.style.background = `linear-gradient(135deg, ${tag.color}, ${lightenColor(tag.color,30)})`;
         barDiv.style.height = barHeight + 'px';
+        
+        // 添加数值显示
+        const barValue = document.createElement('span');
+        barValue.className = 'tag-bar-value';
+        barValue.textContent = tag.count;
+        barDiv.appendChild(barValue);
+        
+        // 创建标签文本
+        const barLabel = document.createElement('div');
+        barLabel.className = 'tag-bar-label';
+        barLabel.textContent = tag.name;
+        
+        // 组装
+        barItem.appendChild(barDiv);
+        barItem.appendChild(barLabel);
         
         barItem.addEventListener('click',()=>{ 
             window.location.href=tag.url; 
         });
         chartBars.appendChild(barItem);
 
+        // 创建图例
         const legendItem = document.createElement('a');
         legendItem.className='tag-legend-item';
         legendItem.href=tag.url;
@@ -674,7 +742,6 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 });
 </script>
-
 
       
     <div class="collection-year">
