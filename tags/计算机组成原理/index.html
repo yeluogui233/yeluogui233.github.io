@@ -321,16 +321,6 @@
         <span class="tag-link-count">(2)</span>
       </a>
     
-      <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="tag-cloud-link">
-        计算机组成原理
-        <span class="tag-link-count">(1)</span>
-      </a>
-    
-      <a href="/tags/%E5%AD%98%E5%82%A8%E5%99%A8/" class="tag-cloud-link">
-        存储器
-        <span class="tag-link-count">(1)</span>
-      </a>
-    
       <a href="/tags/%E6%B3%95%E5%9B%BD%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" class="tag-cloud-link">
         法国文学/文学
         <span class="tag-link-count">(1)</span>
@@ -338,6 +328,16 @@
     
       <a href="/tags/%E7%BB%B4%E5%85%8B%E5%A4%9A%C2%B7%E9%9B%A8%E6%9E%9C/" class="tag-cloud-link">
         维克多·雨果
+        <span class="tag-link-count">(1)</span>
+      </a>
+    
+      <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="tag-cloud-link">
+        计算机组成原理
+        <span class="tag-link-count">(1)</span>
+      </a>
+    
+      <a href="/tags/%E5%AD%98%E5%82%A8%E5%99%A8/" class="tag-cloud-link">
+        存储器
         <span class="tag-link-count">(1)</span>
       </a>
     
@@ -491,6 +491,8 @@
   position:relative;
   cursor:pointer;
   transition:all 0.3s ease;
+  -webkit-tap-highlight-color: transparent; /* 移除点击高亮 */
+  user-select: none; /* 禁止文字选择 */
 }
 
 .tag-bar {
@@ -503,7 +505,7 @@
   display:flex;
   justify-content:center;
   align-items:flex-start;
-  /* 移除原有的动画，通过JS直接设置高度 */
+  animation: barGrowth 0.6s ease-out forwards;
 }
 
 .tag-bar:hover {
@@ -586,35 +588,190 @@
   } 
 }
 
-@media(max-width:768px){
-  .tag-chart-bars{
-    min-height: 180px;
-    padding: 20px 5px;
-  }
-  .tag-bar-item{
-    width: 50px;
-    min-width: 40px;
-    max-width: 60px;
-  }
-  .tag-bar{
-    width: 35px;
-  }
-  .tag-bar-label{font-size:0.75em;}
+/* 滑动提示动画 */
+@keyframes slideHint {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
-@media(max-width:480px){
-  .tag-chart-bars{
-    min-height: 150px;
-    padding: 20px 3px;
+
+/* 平板设备 */
+@media(max-width: 768px){
+  .tag-chart-container {
+    padding: 20px;
+    margin: 25px 0;
   }
-  .tag-bar-item{
+  
+  /* 手机端改为水平滚动布局 */
+  .tag-chart-bars {
+    display: flex;
+    align-items: flex-end;
+    overflow-x: auto; /* 允许水平滚动 */
+    overflow-y: hidden;
+    justify-content: flex-start; /* 从左开始排列 */
+    padding: 20px 15px 25px;
+    min-height: 200px;
+    width: 100%;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* iOS平滑滚动 */
+    
+    /* 隐藏滚动条但保持可滚动 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .tag-chart-bars::-webkit-scrollbar {
+    display: none; /* Chrome/Safari隐藏滚动条 */
+  }
+  
+  /* 添加右侧渐变遮罩，提示可滑动 */
+  .tag-chart-bars:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
     width: 40px;
-    min-width: 35px;
-    max-width: 50px;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.9));
+    pointer-events: none;
   }
-  .tag-bar{
-    width: 30px;
+  
+  .tag-bar-item {
+    flex: 0 0 auto; /* 禁止伸缩，保持原始宽度 */
+    width: 65px; /* 保持足够宽度便于触摸 */
+    margin-right: 12px; /* 柱子间距 */
+    min-width: 55px;
+    max-width: none; /* 移除最大宽度限制 */
   }
-  .tag-bar-label{font-size:0.7em;}
+  
+  .tag-bar {
+    width: 50px; /* 保持较宽易点击 */
+    touch-action: pan-y; /* 优化触摸滚动 */
+  }
+  
+  /* 最后一个柱子右边距 */
+  .tag-bar-item:last-child {
+    margin-right: 50px; /* 给滚动留出空间 */
+  }
+  
+  .tag-bar-label {
+    font-size: 0.75em;
+    max-width: 65px;
+  }
+  
+  /* 添加滑动提示 */
+  .tag-chart-wrapper {
+    position: relative;
+  }
+  
+  .tag-chart-wrapper:before {
+    content: '← 滑动查看 →';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75em;
+    color: #7f8c8d;
+    background: rgba(255,255,255,0.9);
+    padding: 5px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    white-space: nowrap;
+    z-index: 5;
+    animation: slideHint 2s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+/* 手机设备 */
+@media(max-width: 480px){
+  .tag-chart-container {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 12px;
+  }
+  
+  .tag-chart-header {
+    margin-bottom: 20px;
+  }
+  
+  .tag-chart-title {
+    font-size: 1.2em;
+  }
+  
+  .tag-chart-bars {
+    min-height: 180px;
+    padding: 15px 15px 30px;
+  }
+  
+  /* 移除平板端的渐变遮罩 */
+  .tag-chart-bars:after {
+    display: none;
+  }
+  
+  .tag-bar-item {
+    width: 55px;
+    margin-right: 10px;
+    min-width: 50px;
+  }
+  
+  .tag-bar {
+    width: 42px;
+  }
+  
+  .tag-bar-item:last-child {
+    margin-right: 40px;
+  }
+  
+  .tag-bar-label {
+    font-size: 0.7em;
+    max-width: 55px;
+  }
+  
+  /* 调整滑动提示位置 */
+  .tag-chart-wrapper:before {
+    bottom: 5px;
+    font-size: 0.7em;
+    padding: 4px 12px;
+  }
+  
+  /* 图例优化 */
+  .tag-chart-legend {
+    gap: 8px;
+    padding: 12px;
+  }
+  
+  .tag-legend-item {
+    font-size: 0.75em;
+    padding: 4px 8px;
+  }
+}
+
+/* 小屏手机 */
+@media(max-width: 360px){
+  .tag-chart-bars {
+    min-height: 160px;
+    padding: 12px 12px 28px;
+  }
+  
+  .tag-bar-item {
+    width: 50px;
+    margin-right: 8px;
+    min-width: 45px;
+  }
+  
+  .tag-bar {
+    width: 38px;
+  }
+  
+  .tag-bar-item:last-child {
+    margin-right: 30px;
+  }
+  
+  .tag-chart-wrapper:before {
+    font-size: 0.65em;
+    padding: 3px 10px;
+    bottom: 3px;
+  }
 }
 
 /* 隐藏 Hexo标签页文章数 (1) */
@@ -723,6 +880,53 @@ document.addEventListener('DOMContentLoaded', function(){
         `;
         chartLegend.appendChild(legendItem);
     });
+    
+    // 添加移动端触摸滚动优化
+    if (window.innerWidth <= 768) {
+        const chartBarsElement = document.getElementById('tagChartBars');
+        
+        // 添加自动滚动（只滚到中间，让用户自己决定看哪边）
+        setTimeout(() => {
+            if (chartBarsElement.scrollWidth > chartBarsElement.clientWidth) {
+                // 有滚动空间，滚动到1/4位置
+                chartBarsElement.scrollLeft = chartBarsElement.scrollWidth * 0.25;
+            }
+        }, 500);
+        
+        // 添加触摸拖动指示
+        let isDragging = false;
+        let startX, scrollLeft;
+        
+        const startDrag = (e) => {
+            isDragging = true;
+            chartBarsElement.classList.add('dragging');
+            startX = e.pageX || e.touches[0].pageX;
+            scrollLeft = chartBarsElement.scrollLeft;
+        };
+        
+        const endDrag = () => {
+            isDragging = false;
+            chartBarsElement.classList.remove('dragging');
+        };
+        
+        const drag = (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX || e.touches[0].pageX;
+            const walk = (x - startX) * 1.5; // 增加拖动灵敏度
+            chartBarsElement.scrollLeft = scrollLeft - walk;
+        };
+        
+        // 鼠标事件
+        chartBarsElement.addEventListener('mousedown', startDrag);
+        document.addEventListener('mouseup', endDrag);
+        document.addEventListener('mousemove', drag);
+        
+        // 触摸事件
+        chartBarsElement.addEventListener('touchstart', startDrag);
+        document.addEventListener('touchend', endDrag);
+        document.addEventListener('touchmove', drag);
+    }
 
     function randomColor(index){
         const colors = ['#FF6B6B','#FFD93D','#6BCB77','#4D96FF','#FF6EC7','#FFA500','#9D4EDD','#00D2FF'];
