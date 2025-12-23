@@ -335,6 +335,36 @@
   font-size: 0.95rem;
 }
 
+/* 标签样式 */
+.notes-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.tag-item {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(102, 126, 234, 0.1);
+  color: var(--primary-color);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.tag-item:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.2);
+}
+
 /* 自定义图标 */
 .meta-icon {
   width: 20px;
@@ -350,10 +380,16 @@
 
 /* 自定义SVG图标 */
 .calendar-icon,
-.folder-icon {
+.folder-icon,
+.tag-icon {
   width: 12px;
   height: 12px;
   fill: currentColor;
+}
+
+.tag-icon {
+  width: 14px;
+  height: 14px;
 }
 
 /* 内容区域 */
@@ -473,7 +509,7 @@
   margin: 40px 0;
 }
 
-/* 改进的返回按钮 */
+/* 改进的返回按钮 - 白底黑字版本 */
 .notes-actions {
   margin-top: 40px;
   padding-top: 30px;
@@ -486,22 +522,24 @@
   align-items: center;
   gap: 10px;
   padding: 12px 28px;
-  background: var(--primary-color);
-  color: white !important;
+  background: #fff !important;
+  color: #333 !important;
   text-decoration: none;
   border-radius: 12px;
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.3s ease;
-  border: none;
+  border: 2px solid rgba(0,0,0,0.1);
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .back-btn:hover {
-  background: var(--primary-hover-color);
+  background: #333 !important;
+  color: #fff !important;
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-color: #333;
 }
 
 .back-btn::before {
@@ -544,6 +582,15 @@
     width: 100%;
     justify-content: center;
   }
+  
+  .notes-tags {
+    gap: 6px;
+  }
+  
+  .tag-item {
+    padding: 3px 10px;
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -557,6 +604,10 @@
   
   .notes-content-wrapper {
     padding: 20px;
+  }
+  
+  .notes-meta {
+    gap: 15px;
   }
 }
 </style>
@@ -588,10 +639,47 @@
               <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
             </svg>
           </span>
-          <span>文学</span>
+          
+            <span>文学</span>
+          
+        </div>
+        
+        
+        
+        <div class="meta-item">
+          <span class="meta-icon">
+            <svg class="tag-icon" viewBox="0 0 24 24">
+              <path d="M20 10V8h-4V4h-2v4h-4V4H8v4H4v2h4v4H4v2h4v4h2v-4h4v4h2v-4h4v-2h-4v-4h4zm-6 4h-4v-4h4v4z"/>
+            </svg>
+          </span>
+          <span>3个标签</span>
         </div>
         
       </div>
+      
+      
+      <div class="notes-tags">
+        
+          
+          <a href="/tags#俄国文学/文学" class="tag-item">
+            俄国文学/文学
+          </a>
+          
+        
+          
+          <a href="/tags#书摘" class="tag-item">
+            书摘
+          </a>
+          
+        
+          
+          <a href="/tags#列夫托尔斯泰" class="tag-item">
+            列夫托尔斯泰
+          </a>
+          
+        
+      </div>
+      
     </header>
   </div>
 
@@ -619,7 +707,7 @@
 
     </article>
 
-    <!-- 改进的返回按钮 -->
+    <!-- 改进的返回按钮 - 白底黑字 -->
     <div class="notes-actions">
       <a href="/books" class="back-btn">
         返回书单
@@ -666,6 +754,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }
+  });
+  
+  // 为标签添加点击效果
+  const tags = document.querySelectorAll('.tag-item');
+  tags.forEach(tag => {
+    tag.addEventListener('click', function(e) {
+      // 添加点击反馈
+      this.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        this.style.transform = '';
+      }, 150);
+    });
   });
 });
 </script>
@@ -875,6 +975,12 @@ document.addEventListener('DOMContentLoaded', function() {
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(0,0,0,0.15);
       border-color: #2c3e50;
+    }
+    
+    /* 添加过渡动画 */
+    .site-author-widget .links-of-author-item a,
+    .links-of-blogroll-item a {
+      transition: all 0.3s ease;
     }
   </style>
 
