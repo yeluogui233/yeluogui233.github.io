@@ -273,191 +273,103 @@
   padding: 20px;
 }
 
-/* 顶部画布区域 */
-.notes-canvas {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 20px;
-  padding: 40px;
-  margin-bottom: 40px;
-  color: white;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+/* 简洁标题区域 */
+.notes-header-wrapper {
+  background: var(--content-bg-color, #fff);
+  border-radius: 16px;
+  padding: 30px 40px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border-left: 6px solid var(--primary-color, #667eea);
   position: relative;
   overflow: hidden;
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-/* 画布装饰元素 */
-.canvas-decoration {
+/* 标题装饰背景 */
+.header-bg {
   position: absolute;
-  border-radius: 50%;
-  opacity: 0.1;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  background: linear-gradient(45deg, transparent 70%, rgba(102, 126, 234, 0.05) 100%);
+  z-index: 1;
 }
 
-.decoration-1 {
-  width: 100px;
-  height: 100px;
-  background: #fff;
-  top: -30px;
-  left: -30px;
-}
-
-.decoration-2 {
-  width: 150px;
-  height: 150px;
-  background: #ff6b6b;
-  bottom: -50px;
-  right: -50px;
-}
-
-.decoration-3 {
-  width: 80px;
-  height: 80px;
-  background: #4ecdc4;
-  top: 50%;
-  left: 10%;
-}
-
-/* 画布内容 */
-.canvas-content {
+.notes-header {
   position: relative;
   z-index: 2;
-  max-width: 800px;
-  width: 100%;
 }
 
-.canvas-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 10px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+/* 主标题 */
+.notes-title {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 15px;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
-.canvas-subtitle {
-  font-size: 1.2rem;
-  opacity: 0.9;
-  margin-bottom: 20px;
+.notes-title::before {
+  content: "📖";
+  margin-right: 12px;
+  font-size: 1.8rem;
+  opacity: 0.8;
 }
 
-.canvas-meta {
+/* 文章信息栏 */
+.notes-meta {
   display: flex;
-  justify-content: center;
   gap: 30px;
-  margin-top: 20px;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0,0,0,0.1);
   flex-wrap: wrap;
 }
 
 .meta-item {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  color: var(--text-color-secondary);
+  font-size: 0.95rem;
 }
 
-.meta-label {
-  font-size: 0.9rem;
-  opacity: 0.8;
+/* 自定义图标 */
+.meta-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.06);
+  border-radius: 50%;
+  padding: 4px;
+  color: var(--primary-color);
 }
 
-.meta-value {
-  font-size: 1.1rem;
-  font-weight: 600;
+/* 自定义SVG图标 */
+.calendar-icon,
+.folder-icon {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
 }
 
-/* 摘要内容区域 */
+/* 内容区域 */
 .notes-content-wrapper {
   background: var(--content-bg-color, #fff);
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 40px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   margin-bottom: 40px;
 }
 
-/* 文章头部信息 */
-.notes-header {
-  border-bottom: 2px solid rgba(0,0,0,0.1);
-  padding-bottom: 20px;
-  margin-bottom: 30px;
-}
-
-.notes-title {
-  font-size: 2rem;
+/* 正文内容 */
+.notes-content {
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--text-color);
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
-.notes-info {
-  color: var(--text-color-secondary);
-  font-size: 0.95rem;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-/* 导航目录 */
-.notes-toc {
-  background: rgba(0,0,0,0.03);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 30px;
-  border-left: 4px solid var(--primary-color, #667eea);
-}
-
-.toc-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: var(--text-color);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.toc-title::before {
-  content: "📚";
-}
-
-.toc-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.toc-list li {
-  margin-bottom: 8px;
-  position: relative;
-  padding-left: 20px;
-}
-
-.toc-list li::before {
-  content: "•";
-  color: var(--primary-color);
-  position: absolute;
-  left: 0;
-}
-
-.toc-list li a {
-  color: var(--text-color);
-  text-decoration: none;
-  transition: color 0.2s ease;
-  display: block;
-  padding: 2px 0;
-}
-
-.toc-list li a:hover {
-  color: var(--primary-color);
 }
 
 /* 无序列表美化 */
@@ -465,7 +377,6 @@
   list-style: none;
   padding: 0;
   margin: 0 0 30px 0;
-  counter-reset: list-counter;
 }
 
 .notes-content ul li {
@@ -475,16 +386,23 @@
   font-size: 1.05rem;
   line-height: 1.6;
   color: var(--text-color);
+  transition: transform 0.2s ease;
+}
+
+.notes-content ul li:hover {
+  transform: translateX(5px);
 }
 
 .notes-content ul li::before {
-  counter-increment: list-counter;
-  content: "•";
-  color: var(--primary-color);
-  font-size: 1.5rem;
+  content: "";
   position: absolute;
   left: 0;
-  top: -2px;
+  top: 0.8em;
+  width: 6px;
+  height: 6px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  transform: translateY(-50%);
 }
 
 /* 多级列表支持 */
@@ -493,30 +411,45 @@
 }
 
 .notes-content ul ul li::before {
-  content: "◦";
-  color: var(--text-color-secondary);
-  font-size: 1.2rem;
+  background: var(--text-color-secondary);
+  width: 5px;
+  height: 5px;
+}
+
+.notes-content ul ul ul {
+  margin-left: 40px;
 }
 
 .notes-content ul ul ul li::before {
-  content: "▪";
-  color: var(--text-color-secondary);
-  font-size: 1rem;
+  background: rgba(0,0,0,0.3);
+  width: 4px;
+  height: 4px;
 }
 
 /* 引用块样式 */
 .notes-content blockquote {
   border-left: 4px solid var(--primary-color);
-  background: rgba(0,0,0,0.02);
-  padding: 20px;
+  background: rgba(0,0,0,0.03);
+  padding: 20px 25px;
   margin: 25px 0;
   border-radius: 0 10px 10px 0;
-  font-style: italic;
+  position: relative;
+}
+
+.notes-content blockquote::before {
+  content: "❝";
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 2rem;
+  color: var(--primary-color);
+  opacity: 0.3;
 }
 
 .notes-content blockquote p {
   margin: 0;
   color: var(--text-color-secondary);
+  font-style: italic;
 }
 
 /* 代码块样式 */
@@ -529,74 +462,77 @@
   margin: 25px 0;
   font-family: 'Consolas', 'Monaco', monospace;
   font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 /* 分割线 */
 .notes-content hr {
   border: none;
   height: 1px;
-  background: rgba(0,0,0,0.1);
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
   margin: 40px 0;
 }
 
-/* 操作按钮 */
+/* 改进的返回按钮 */
 .notes-actions {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
   margin-top: 40px;
   padding-top: 30px;
   border-top: 1px solid rgba(0,0,0,0.1);
+  text-align: center;
 }
 
-.action-btn {
-  padding: 12px 24px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
+.back-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-}
-
-.back-to-list {
+  gap: 10px;
+  padding: 12px 28px;
   background: var(--primary-color);
-  color: white;
+  color: white !important;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
-.back-to-list:hover {
+.back-btn:hover {
   background: var(--primary-hover-color);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.back-btn::before {
+  content: "←";
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
   .notes-container {
-    padding: 10px;
+    padding: 15px;
   }
   
-  .notes-canvas {
-    padding: 30px 20px;
-    border-radius: 16px;
+  .notes-header-wrapper {
+    padding: 25px;
     margin-bottom: 20px;
-  }
-  
-  .canvas-title {
-    font-size: 1.8rem;
-  }
-  
-  .canvas-subtitle {
-    font-size: 1rem;
-  }
-  
-  .notes-content-wrapper {
-    padding: 25px 20px;
   }
   
   .notes-title {
     font-size: 1.6rem;
+  }
+  
+  .notes-content-wrapper {
+    padding: 25px;
+  }
+  
+  .notes-meta {
+    gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
   }
   
   .notes-content ul li {
@@ -604,117 +540,63 @@
     padding-left: 25px;
   }
   
-  .notes-actions {
-    flex-direction: column;
-  }
-  
-  .action-btn {
+  .back-btn {
     width: 100%;
     justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
-  .notes-canvas {
-    padding: 25px 15px;
-  }
-  
-  .canvas-title {
-    font-size: 1.5rem;
-  }
-  
-  .canvas-meta {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .notes-content-wrapper {
-    padding: 20px 15px;
+  .notes-header-wrapper {
+    padding: 20px;
   }
   
   .notes-title {
     font-size: 1.4rem;
   }
+  
+  .notes-content-wrapper {
+    padding: 20px;
+  }
 }
 </style>
 
 <div class="notes-container">
-  <!-- 顶部画布区域 -->
-  <div class="notes-canvas">
-    <!-- 装饰元素 -->
-    <div class="canvas-decoration decoration-1"></div>
-    <div class="canvas-decoration decoration-2"></div>
-    <div class="canvas-decoration decoration-3"></div>
+  <!-- 简洁标题区域 -->
+  <div class="notes-header-wrapper">
+    <div class="header-bg"></div>
     
-    <!-- 画布内容 -->
-    <div class="canvas-content">
-      <h1 class="canvas-title">战争与和平书摘</h1>
-      
-      
-      <div class="canvas-meta">
-        
-        <div class="meta-item">
-          <span class="meta-label">更新日期</span>
-          <span class="meta-value">2025-12-08</span>
-        </div>
-        
-        
-        
-        <div class="meta-item">
-          <span class="meta-label">分类</span>
-          <span class="meta-value">文学</span>
-        </div>
-        
-        
-        
-        <div class="meta-item">
-          <span class="meta-label">标签</span>
-          <span class="meta-value">俄国文学/文学, 书摘, 列夫托尔斯泰</span>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <!-- 摘要内容区域 -->
-  <div class="notes-content-wrapper">
     <header class="notes-header">
       <h1 class="notes-title">战争与和平书摘</h1>
-      <div class="notes-info">
+      
+      <div class="notes-meta">
         
-        <div class="info-item">
-          <span>📅</span>
+        <div class="meta-item">
+          <span class="meta-icon">
+            <svg class="calendar-icon" viewBox="0 0 24 24">
+              <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zm0-12H5V5h14v2zm-7 4H7v5h5v-5z"/>
+            </svg>
+          </span>
           <span>2025年12月08日</span>
         </div>
         
         
         
-        <div class="info-item">
-          <span>👤</span>
-          <span>叶落归</span>
-        </div>
-        
-        
-        
-        <div class="info-item">
-          <span>📂</span>
+        <div class="meta-item">
+          <span class="meta-icon">
+            <svg class="folder-icon" viewBox="0 0 24 24">
+              <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+            </svg>
+          </span>
           <span>文学</span>
         </div>
         
       </div>
     </header>
+  </div>
 
-    <!-- 目录导航（可选） -->
-    
-    <nav class="notes-toc">
-      <h3 class="toc-title">内容导航</h3>
-      <ul class="toc-list">
-        
-      </ul>
-    </nav>
-    
-
-    <!-- 正文内容 -->
+  <!-- 摘要内容区域 -->
+  <div class="notes-content-wrapper">
     <article class="notes-content">
       <ul>
 <li><p>“你可知道,朋友,”他说,“我们不恋爱,就等于睡大觉。我们是凡夫俗子……可是我们一旦恋爱,就变成神人了,就纯洁得像创世的第一天……”</p>
@@ -737,11 +619,10 @@
 
     </article>
 
-    <!-- 操作按钮 -->
+    <!-- 改进的返回按钮 -->
     <div class="notes-actions">
-      <a href="/books" class="action-btn back-to-list">
-        <span>←</span>
-        <span>返回书单</span>
+      <a href="/books" class="back-btn">
+        返回书单
       </a>
     </div>
   </div>
@@ -749,49 +630,42 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 为所有标题添加锚点
-  const headings = document.querySelectorAll('.notes-content h1, .notes-content h2, .notes-content h3, .notes-content h4, .notes-content h5, .notes-content h6');
+  // 为无序列表项添加悬停效果
+  const listItems = document.querySelectorAll('.notes-content ul li');
   
-  headings.forEach(heading => {
-    // 创建锚点链接
-    const link = document.createElement('a');
-    link.href = '#' + heading.id;
-    link.className = 'heading-anchor';
-    link.innerHTML = '🔗';
-    link.style.marginLeft = '10px';
-    link.style.opacity = '0';
-    link.style.transition = 'opacity 0.2s ease';
-    link.style.textDecoration = 'none';
-    link.style.fontSize = '0.8em';
-    
-    heading.appendChild(link);
-    
-    // 鼠标悬停显示锚点
-    heading.addEventListener('mouseenter', function() {
-      link.style.opacity = '1';
-    });
-    
-    heading.addEventListener('mouseleave', function() {
-      link.style.opacity = '0';
-    });
-  });
-  
-  // 平滑滚动到锚点
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
+  listItems.forEach(item => {
+    // 点击列表项可以展开/折叠子列表
+    const sublist = item.querySelector('ul');
+    if (sublist) {
+      sublist.style.display = 'none';
+      item.style.cursor = 'pointer';
       
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+      // 添加展开图标
+      const expandIcon = document.createElement('span');
+      expandIcon.className = 'expand-icon';
+      expandIcon.innerHTML = '▶';
+      expandIcon.style.position = 'absolute';
+      expandIcon.style.left = '-18px';
+      expandIcon.style.top = '0.5em';
+      expandIcon.style.fontSize = '0.8em';
+      expandIcon.style.color = 'var(--primary-color)';
+      expandIcon.style.transition = 'transform 0.3s ease';
+      item.appendChild(expandIcon);
       
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 80,
-          behavior: 'smooth'
-        });
-      }
-    });
+      item.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') return;
+        
+        if (sublist.style.display === 'none') {
+          sublist.style.display = 'block';
+          expandIcon.style.transform = 'rotate(90deg)';
+          expandIcon.innerHTML = '▼';
+        } else {
+          sublist.style.display = 'none';
+          expandIcon.style.transform = 'rotate(0deg)';
+          expandIcon.innerHTML = '▶';
+        }
+      });
+    }
   });
 });
 </script>
@@ -914,7 +788,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </aside>
 
   <style>
-    /* 个人信息侧边栏样式 - 保持与书单页面一致 */
+    /* 个人信息侧边栏样式 */
     .site-author-widget {
       background: #fff;
       border-radius: 14px;

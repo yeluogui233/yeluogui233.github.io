@@ -807,9 +807,12 @@ document.addEventListener('DOMContentLoaded', function() {
   text-overflow: ellipsis;  /* 如果过长就用省略号 */
 }
 
+/* 社交链接悬浮效果 */
 .site-author-widget .links-of-author-item a:hover {
-  color: var(--primary-color);
-  background: rgba(0,0,0,0.05);
+  background: #333; /* 深色背景 */
+  color: #fff; /* 白色文字 */
+  transform: translateY(-2px); /* 轻微上浮 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 增强阴影 */
 }
 
     /* 友情链接 */
@@ -832,10 +835,17 @@ document.addEventListener('DOMContentLoaded', function() {
       text-decoration: none;
       transition: background-color 0.3s ease;
     }
-    .links-of-blogroll-item a:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
+/* 友情链接悬浮效果 */
+.links-of-blogroll-item a:hover {
+  background-color: #333; /* 改为深色 */
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.site-author-widget .links-of-author-item a,
+.links-of-blogroll-item a {
+  transition: all 0.3s ease;
+}
   </style>
 
       </div>
