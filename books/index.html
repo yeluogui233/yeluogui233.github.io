@@ -350,14 +350,19 @@
     width: 100%;
     box-sizing: border-box;
   }
-  .btn {
+    .btn {
     width: 44px !important;
     height: 22px !important;
     font-size: 0.62rem !important;
     padding: 2px 6px !important;
     border-radius: 8px !important;
     box-shadow: none !important;
+    color: #333 !important; /* 移动端也强制深色文字 */
   }
+  .btn:hover {
+    color: #333 !important; /* 移动端悬停也保持深色文字 */
+  }
+}
 
   .books-wrapper {
     padding: 14px 12px;
@@ -426,6 +431,13 @@
   margin: 2px;
   color: #333;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+  .btn {
+    width: 40px !important;
+    height: 20px !important;
+    font-size: 0.58rem !important;
+    color: #333 !important; /* 小屏幕也强制深色文字 */
+  }
 }
 
 /* 活力多巴胺配色方案 */
@@ -9018,9 +9030,9 @@
 
 /* 统一按钮样式 */
 .btn {
-  display: inline-flex; /* 改为flex布局 */
-  align-items: center;  /* 垂直居中 */
-  justify-content: center; /* 水平居中 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 4px 0;
   font-size: 0.75rem;
   border-radius: 12px;
@@ -9029,15 +9041,16 @@
   user-select: none;
   transition: all 0.2s ease;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  width: 56px; /* 固定宽度 */
-  height: 24px; /* 固定高度 */
-  box-sizing: border-box; /* 确保宽高包含padding */
+  width: 56px;
+  height: 24px;
+  box-sizing: border-box;
   background-color: var(--primary-color);
-  color: #333;
+  color: #333 !important; /* 强制深色文字 */
   border: none;
 }
 .btn:hover {
   background-color: var(--primary-color-hover);
+  color: #333 !important; /* 悬停时也保持深色文字 */
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
