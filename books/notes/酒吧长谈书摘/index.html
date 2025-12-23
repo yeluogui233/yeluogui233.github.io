@@ -439,7 +439,7 @@
 }
 
 .notes-content ul li {
-  margin-bottom: 15px;
+  margin-bottom: 8px; /* 从15px改为8px - 减小行间距 */
   padding-left: 30px;
   position: relative;
   font-size: 1.05rem;
@@ -448,9 +448,9 @@
   transition: all 0.3s ease;
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 12px 15px 12px 45px; /* 增加内边距 */
+  padding: 10px 15px 10px 45px; /* 上下内边距从12px改为10px */
   background: transparent;
-  min-height: 44px; /* 确保有足够高度 */
+  min-height: 38px; /* 从44px改为38px */
 }
 
 /* 列表项悬停时的白色卡片效果 */
@@ -470,7 +470,7 @@
   content: "•";
   position: absolute;
   left: 20px; /* 从0改为20px，适应新的内边距 */
-  top: 14px; /* 调整垂直位置 */
+  top: 12px; /* 从14px改为12px，适应新的内边距 */
   color: var(--primary-color);
   font-size: 1.2rem;
   line-height: 1.6;
@@ -485,7 +485,7 @@
 
 /* 多级列表支持 - 使用不同样式的点 */
 .notes-content ul ul {
-  margin: 10px 0 10px 20px;
+  margin: 8px 0 8px 20px; /* 从10px改为8px */
 }
 
 .notes-content ul ul li {
@@ -497,6 +497,7 @@
   color: var(--text-color-secondary);
   font-size: 1.1rem;
   left: 15px; /* 调整二级列表圆点位置 */
+  top: 10px; /* 调整垂直位置 */
 }
 
 .notes-content ul ul li:hover::before {
@@ -516,11 +517,13 @@
   color: rgba(0,0,0,0.3);
   font-size: 1rem;
   left: 10px; /* 调整三级列表圆点位置 */
+  top: 10px; /* 调整垂直位置 */
 }
 
 .notes-content ul ul ul li:hover::before {
   font-size: 1.2rem;
 }
+
 
 /* 引用块样式 */
 .notes-content blockquote {
@@ -635,7 +638,9 @@
   
   .notes-content ul li {
     padding-left: 35px; /* 移动端减少左侧内边距 */
-    padding: 10px 12px 10px 40px; /* 移动端减少内边距 */
+    padding: 8px 12px 8px 40px; /* 从10px改为8px */
+    margin-bottom: 6px; /* 移动端进一步减小间距 */
+    min-height: 36px; /* 从40px改为36px */
   }
   
   .back-btn {
@@ -654,7 +659,7 @@
   
   .notes-content ul li::before {
     left: 15px; /* 移动端调整圆点位置 */
-    top: 12px; /* 移动端调整垂直位置 */
+    top: 10px; /* 移动端调整垂直位置 */
   }
   
   .notes-content ul li:hover {
@@ -667,12 +672,17 @@
     font-size: 1.3rem;
   }
   
+    .notes-content ul ul {
+    margin: 6px 0 6px 20px; /* 移动端进一步减小间距 */
+  }
   .notes-content ul ul li {
     padding-left: 30px;
   }
   
   .notes-content ul ul li::before {
     left: 10px;
+	top: 8px; /* 调整垂直位置 */
+
   }
   
   .notes-content ul ul li:hover::before {
@@ -684,6 +694,7 @@
   }
   
   .notes-content ul ul ul li::before {
+    top: 8px; /* 调整垂直位置 */
     left: 5px;
   }
   
