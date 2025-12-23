@@ -446,22 +446,42 @@
   font-size: 1.05rem;
   line-height: 1.6;
   color: var(--text-color);
-  transition: transform 0.2s ease;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 12px 15px 12px 45px; /* 增加内边距 */
+  background: transparent;
+  min-height: 44px; /* 确保有足够高度 */
 }
 
+/* 列表项悬停时的白色卡片效果 */
 .notes-content ul li:hover {
-  transform: translateX(5px);
+  background: #fff;
+  border-color: rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-left: -5px; /* 轻微左移，避免完全覆盖其他项 */
+  margin-right: -5px; /* 轻微右移，保持对称 */
+  padding-left: 45px; /* 保持相同的左侧内边距 */
+  z-index: 1; /* 确保悬浮卡片在上层 */
 }
 
-/* 修改为圆点标识 */
+/* 调整圆点位置以匹配新的内边距 */
 .notes-content ul li::before {
   content: "•";
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 20px; /* 从0改为20px，适应新的内边距 */
+  top: 14px; /* 调整垂直位置 */
   color: var(--primary-color);
   font-size: 1.2rem;
   line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+/* 悬停时圆点稍微变大 */
+.notes-content ul li:hover::before {
+  font-size: 1.4rem;
+  color: var(--primary-color);
 }
 
 /* 多级列表支持 - 使用不同样式的点 */
@@ -469,20 +489,38 @@
   margin: 10px 0 10px 20px;
 }
 
+.notes-content ul ul li {
+  padding-left: 40px; /* 二级列表减少左侧内边距 */
+}
+
 .notes-content ul ul li::before {
   content: "◦";
   color: var(--text-color-secondary);
   font-size: 1.1rem;
+  left: 15px; /* 调整二级列表圆点位置 */
+}
+
+.notes-content ul ul li:hover::before {
+  font-size: 1.3rem;
 }
 
 .notes-content ul ul ul {
   margin-left: 40px;
 }
 
+.notes-content ul ul ul li {
+  padding-left: 35px; /* 三级列表再减少左侧内边距 */
+}
+
 .notes-content ul ul ul li::before {
   content: "▪";
   color: rgba(0,0,0,0.3);
   font-size: 1rem;
+  left: 10px; /* 调整三级列表圆点位置 */
+}
+
+.notes-content ul ul ul li:hover::before {
+  font-size: 1.2rem;
 }
 
 /* 引用块样式 */
@@ -597,8 +635,8 @@
   }
   
   .notes-content ul li {
-    font-size: 1rem;
-    padding-left: 25px;
+    padding-left: 35px; /* 移动端减少左侧内边距 */
+    padding: 10px 12px 10px 40px; /* 移动端减少内边距 */
   }
   
   .back-btn {
@@ -616,15 +654,42 @@
   }
   
   .notes-content ul li::before {
-    font-size: 1.1rem;
+    left: 15px; /* 移动端调整圆点位置 */
+    top: 12px; /* 移动端调整垂直位置 */
+  }
+  
+  .notes-content ul li:hover {
+    margin-left: -3px;
+    margin-right: -3px;
+    padding-left: 40px;
+  }
+  
+  .notes-content ul li:hover::before {
+    font-size: 1.3rem;
+  }
+  
+  .notes-content ul ul li {
+    padding-left: 30px;
   }
   
   .notes-content ul ul li::before {
-    font-size: 1rem;
+    left: 10px;
+  }
+  
+  .notes-content ul ul li:hover::before {
+    font-size: 1.2rem;
+  }
+  
+  .notes-content ul ul ul li {
+    padding-left: 25px;
   }
   
   .notes-content ul ul ul li::before {
-    font-size: 0.9rem;
+    left: 5px;
+  }
+  
+  .notes-content ul ul ul li:hover::before {
+    font-size: 1.1rem;
   }
 }
 
