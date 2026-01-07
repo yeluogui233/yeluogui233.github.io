@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yeluogui.cloud/gallery/museum/index.html</loc>
+    
+    <lastmod>2026-01-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/gallery/street/index.html</loc>
+    
+    <lastmod>2026-01-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yeluogui.cloud/gallery/scenery/index.html</loc>
     
     <lastmod>2026-01-07</lastmod>
@@ -353,24 +371,6 @@
   </url>
   
   <url>
-    <loc>http://yeluogui.cloud/gallery/museum/index.html</loc>
-    
-    <lastmod>2025-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/gallery/street/index.html</loc>
-    
-    <lastmod>2025-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yeluogui.cloud/2025/11/09/%E5%B7%B4%E9%BB%8E%E5%9C%A3%E6%AF%8D%E9%99%A2%E2%80%94%E2%80%94%E6%95%B2%E9%92%9F%E4%BA%BA%E5%92%8C%E4%BB%96%E7%9A%84%E5%9C%A3%E6%AF%8D/</loc>
     
     <lastmod>2025-11-08</lastmod>
@@ -610,7 +610,7 @@
   </url>
   
   <url>
-    <loc>http://yeluogui.cloud/tags/KMP%E7%AE%97%E6%B3%95/</loc>
+    <loc>http://yeluogui.cloud/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2026-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -624,7 +624,7 @@
   </url>
   
   <url>
-    <loc>http://yeluogui.cloud/tags/%E7%AE%97%E6%B3%95/</loc>
+    <loc>http://yeluogui.cloud/tags/KMP%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2026-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
