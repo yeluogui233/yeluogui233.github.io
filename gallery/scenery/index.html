@@ -304,376 +304,31 @@
 
     <!-- 标题在画布顶部居中 -->
     <header class="page-header" style="text-align:center; margin-bottom: 30px;">
-      <h1 class="page-title">不要去回避一个春天</h1>
+      <h1 class="page-title" id="album-title">不要去回避一个春天</h1>
       
     </header>
 
-    <!-- 两列大卡片 -->
-    <div class="photo-wall">
+    <!-- 相册容器 -->
+    <div class="album-container">
+      <!-- 两列大卡片 -->
+      <div id="photo-wall" class="photo-wall"></div>
       
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/06/dda1c6d677cf4b03.jpg" data-index="0" data-desc="大哞哞" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/06/dda1c6d677cf4b03.jpg" alt="大哞哞" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">大哞哞</p>
-          
+      <!-- 加载更多按钮 -->
+      <div class="load-more-container" id="load-more-container">
+        <button id="load-more-btn" class="load-more-btn">
+          <i class="fas fa-spinner fa-spin" id="loading-spinner" style="display:none;"></i>
+          <span id="load-more-text">加载更多照片</span>
+        </button>
+        <div class="pagination-info" id="pagination-info">
+          第 <span id="current-page">1</span> 页 / 共 <span id="total-pages">0</span> 页
         </div>
+      </div>
       
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/06/64e4d9202e859f80.jpg" data-index="1" data-desc="整屋出租 处处都给你" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/06/64e4d9202e859f80.jpg" alt="整屋出租 处处都给你" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">整屋出租 处处都给你</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/f43de4c989e4cdcf.jpg" data-index="2" data-desc="23年的一个周末" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/f43de4c989e4cdcf.jpg" alt="23年的一个周末" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">23年的一个周末</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/06/985b2b5903be4de7.jpg" data-index="3" data-desc="毛主席诞辰的橘子洲" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/06/985b2b5903be4de7.jpg" alt="毛主席诞辰的橘子洲" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">毛主席诞辰的橘子洲</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/06/b8b6c2cf9718e7a1.jpg" data-index="4" data-desc="黄鹤楼" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/06/b8b6c2cf9718e7a1.jpg" alt="黄鹤楼" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">黄鹤楼</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/06/8a0bd9f46dff186a.jpg" data-index="5" data-desc="苍山" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/06/8a0bd9f46dff186a.jpg" alt="苍山" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">苍山</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/06/7756892bfcd15f26.jpg" data-index="6" data-desc="洱海" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/06/7756892bfcd15f26.jpg" alt="洱海" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">洱海</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/06/6747055d74032ffa.jpg" data-index="7" data-desc="蓝月谷" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/06/6747055d74032ffa.jpg" alt="蓝月谷" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">蓝月谷</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/06/2921460ae2add39b.jpg" data-index="8" data-desc="樱花与雪山" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/06/2921460ae2add39b.jpg" alt="樱花与雪山" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">樱花与雪山</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/82151fa1df45604d.jpg" data-index="9" data-desc="平江船杨帆" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/82151fa1df45604d.jpg" alt="平江船杨帆" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">平江船杨帆</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/bae4c92e2a53e8d2.jpg" data-index="10" data-desc="钓鱼“老”" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/bae4c92e2a53e8d2.jpg" alt="钓鱼“老”" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">钓鱼“老”</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/ad9febcb0c04193d.jpg" data-index="11" data-desc="不要停止我的音乐" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/ad9febcb0c04193d.jpg" alt="不要停止我的音乐" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">不要停止我的音乐</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/38fa2d7c0f931674.jpg" data-index="12" data-desc="蓝调前夕" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/38fa2d7c0f931674.jpg" alt="蓝调前夕" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">蓝调前夕</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/06/c0065dd564cc3477.jpg" data-index="13" data-desc="冰川公园" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/06/c0065dd564cc3477.jpg" alt="冰川公园" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">冰川公园</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/d6588213c27b6518.jpg" data-index="14" data-desc="NO投喂" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/d6588213c27b6518.jpg" alt="NO投喂" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">NO投喂</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/745c8990508221a1.jpg" data-index="15" data-desc="和大华点点点国殇小付在海上" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/745c8990508221a1.jpg" alt="和大华点点点国殇小付在海上" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">和大华点点点国殇小付在海上</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s21.ax1x.com/2025/07/29/pVYfMnI.jpg" data-index="16" data-desc="鹄突泉拍到的" data-location="" data-date="">
-            <img src="https://s21.ax1x.com/2025/07/29/pVYfMnI.jpg" alt="鹄突泉拍到的" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">鹄突泉拍到的</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/1a49643fbf257ec3.jpg" data-index="17" data-desc="大卫带" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/1a49643fbf257ec3.jpg" alt="大卫带" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">大卫带</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/94e2191064448803.jpg" data-index="18" data-desc="巧妙的木构" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/94e2191064448803.jpg" alt="巧妙的木构" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">巧妙的木构</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/8923ebea82e0cbdf.jpg" data-index="19" data-desc="虔诚拜三拜" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/8923ebea82e0cbdf.jpg" alt="虔诚拜三拜" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">虔诚拜三拜</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/2a44831b59881274.jpg" data-index="20" data-desc="天津之眼" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/2a44831b59881274.jpg" alt="天津之眼" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">天津之眼</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/1ec2139b2753c377.jpg" data-index="21" data-desc="山上的清晨" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/1ec2139b2753c377.jpg" alt="山上的清晨" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">山上的清晨</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/8a3fade26eb2caf4.jpg" data-index="22" data-desc="和我在寒山寺" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/8a3fade26eb2caf4.jpg" alt="和我在寒山寺" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">和我在寒山寺</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/08/03/2e805d381863a143.jpg" data-index="23" data-desc="莲花池新莲" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/08/03/2e805d381863a143.jpg" alt="莲花池新莲" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">莲花池新莲</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/5a7cdcf221beebc2.jpg" data-index="24" data-desc="漂亮小灯" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/5a7cdcf221beebc2.jpg" alt="漂亮小灯" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">漂亮小灯</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/74218b96dfc05f0c.jpg" data-index="25" data-desc="拙政园" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/74218b96dfc05f0c.jpg" alt="拙政园" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">拙政园</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/508c6a49fd15e227.jpg" data-index="26" data-desc="寒山胖锦鲤" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/508c6a49fd15e227.jpg" alt="寒山胖锦鲤" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">寒山胖锦鲤</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/2048cdf2c46eac10.jpg" data-index="27" data-desc="海的这边" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/2048cdf2c46eac10.jpg" alt="海的这边" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">海的这边</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/208fb7a39712591e.jpg" data-index="28" data-desc="鸡鸣寺樱花开" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/208fb7a39712591e.jpg" alt="鸡鸣寺樱花开" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">鸡鸣寺樱花开</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/dbf4381aa8b6565c.jpg" data-index="29" data-desc="鹄突泉" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/dbf4381aa8b6565c.jpg" alt="鹄突泉" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">鹄突泉</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/1e9354040570a57e.jpg" data-index="30" data-desc="世界大同" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/1e9354040570a57e.jpg" alt="世界大同" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">世界大同</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/b0e5bdcbff4dc04c.jpg" data-index="31" data-desc="天安门" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/b0e5bdcbff4dc04c.jpg" alt="天安门" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">天安门</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2025/11/13/ea3ca78fcd29f93f.jpg" data-index="32" data-desc="世纪钟" data-location="" data-date="">
-            <img src="https://s3.bmp.ovh/imgs/2025/11/13/ea3ca78fcd29f93f.jpg" alt="世纪钟" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-            
-          </div>
-          
-            <p class="photo-caption">世纪钟</p>
-          
-        </div>
-      
+      <!-- 无照片提示 -->
+      <div id="no-photos-message" class="no-photos-message" style="display:none;">
+        <i class="fas fa-camera"></i>
+        <p>暂无照片</p>
+      </div>
     </div>
 
   </div>
@@ -693,25 +348,28 @@
   margin-right: auto;
 }
 
-/* 页面标题样式 - 使用多巴胺颜色 */
+/* 页面标题样式 */
 .page-header {
   text-align: center;
   margin-bottom: 30px;
 }
 
 .page-title {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2.8rem;
+  font-weight: 800;
   margin-bottom: 8px;
   /* 初始颜色，会被JS动态设置 */
-  color: #ff6b6b;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  padding: 0 10px;
 }
 
 .page-subtitle {
   color: var(--text-color-secondary);
   margin-top: 5px;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 /* 两列更大卡片 */
@@ -719,6 +377,18 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.photo-item {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
 }
 
 .photo-frame {
@@ -762,56 +432,88 @@
 }
 .photo-frame:hover .photo-zoom-icon { opacity: 1; }
 
-/* 照片信息区域 */
-.photo-info-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-  padding: 15px 12px 10px;
-  color: white;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  transform: translateY(5px);
-}
-
-.photo-frame:hover .photo-info-overlay {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.photo-location {
-  font-size: 0.8rem;
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.photo-location i {
-  color: #4CAF50;
-  font-size: 0.7rem;
-}
-
-.photo-date {
-  font-size: 0.75rem;
-  opacity: 0.9;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.photo-date i {
-  color: #FF9800;
-  font-size: 0.7rem;
-}
-
 .photo-caption {
   margin-top: 10px;
   font-size: 0.95rem;
   color: var(--text-color);
   text-align: center;
+}
+
+/* 加载更多按钮 */
+.load-more-container {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.load-more-btn {
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  color: white;
+  border: none;
+  padding: 14px 35px;
+  border-radius: 35px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.load-more-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+}
+
+.load-more-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.load-more-btn:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.load-more-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.pagination-info {
+  margin-top: 15px;
+  color: var(--text-color-secondary);
+  font-size: 0.9rem;
+}
+
+/* 无照片提示 */
+.no-photos-message {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-color-secondary);
+}
+
+.no-photos-message i {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.no-photos-message p {
+  font-size: 1.1rem;
+  margin: 0;
 }
 
 /* 灯箱样式覆盖全屏并固定定位 */
@@ -835,50 +537,6 @@
   cursor: zoom-out;
 }
 
-/* 灯箱信息 */
-.lightbox-info {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.7);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-align: center;
-  min-width: 200px;
-  max-width: 500px;
-  z-index: 100000;
-  backdrop-filter: blur(5px);
-}
-
-.lightbox-info .lightbox-desc {
-  font-size: 0.9rem;
-  margin-bottom: 5px;
-}
-
-.lightbox-meta {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  font-size: 0.8rem;
-  opacity: 0.9;
-}
-
-.lightbox-index {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.7);
-  color: white;
-  padding: 5px 15px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  z-index: 100000;
-  backdrop-filter: blur(5px);
-}
-
 /* 左右切换箭头 */
 .lightbox-arrow {
   position: fixed;
@@ -897,38 +555,14 @@
 .lightbox-prev { left: 10px; }
 .lightbox-next { right: 10px; }
 
-/* 关闭按钮 */
-.lightbox-close {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  font-size: 1.2rem;
-  color: white;
-  cursor: pointer;
-  width: 35px;
-  height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.5);
-  border-radius: 50%;
-  z-index: 100000;
-  transition: all 0.3s;
-}
-
-.lightbox-close:hover {
-  background: rgba(0,0,0,0.7);
-  transform: rotate(90deg);
-}
-
 /* 响应式 */
 @media (max-width: 992px) {
   .photo-wall { grid-template-columns: 1fr; }
   .photo-image { height: 240px; }
-  .page-title { font-size: 2rem; }
+  .page-title { font-size: 2.2rem; }
 }
 
-/* 拟态日夜切换按钮样式，移到右上角 - 保持原样 */
+/* 拟态日夜切换按钮样式，移到右上角 */
 #g-btn {
   position: fixed;
   top: 20px;
@@ -1034,7 +668,7 @@
     190px -20px 0 10px transparent;
 }
 
-/* Dark Mode 样式 - 保持原样 */
+/* Dark Mode 样式 */
 body.dark-mode {
   background-color: #121212;
   color: #ddd;
@@ -1057,67 +691,495 @@ body.dark-mode .photo-caption {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 多巴胺颜色数组 - 鲜艳明亮的颜色
-  const dopamineColors = [
-    '#FF6B6B', // 珊瑚红
-    '#4ECDC4', // 薄荷绿
-    '#FFD166', // 阳光黄
-    '#06D6A0', // 翠绿
-    '#118AB2', // 海洋蓝
-    '#EF476F', // 粉红
-    '#7209B7', // 紫罗兰
-    '#3A86FF', // 亮蓝
-    '#FB5607', // 橘红
-    '#8338EC', // 紫晶
-    '#FF006E', // 玫红
-    '#FF9E00', // 橙黄
-    '#3A86FF', // 天蓝
-    '#00BBF9', // 青蓝
-    '#00F5D4', // 青色
+  // 24种渐变色多巴胺数组（每个都是两种颜色的渐变组合）
+  const dopamineGradients = [
+    // 红色系渐变
+    ['#FF6B6B', '#FF8E53'], // 珊瑚红 -> 橙红
+    ['#FF4757', '#FF3838'], // 亮红 -> 深红
+    ['#FF9A9E', '#FAD0C4'], // 粉红 -> 浅粉
+    
+    // 橙色系渐变
+    ['#FFD166', '#FFB347'], // 阳光黄 -> 橙黄
+    ['#FF9A00', '#FF6A00'], // 橙 -> 深橙
+    ['#FF7E5F', '#FEB47B'], // 珊瑚 -> 桃色
+    
+    // 黄色系渐变
+    ['#FFEE00', '#FFD700'], // 柠檬黄 -> 金色
+    ['#FFF176', '#FFEE58'], // 浅黄 -> 亮黄
+    ['#F9F871', '#FFE57F'], // 荧光黄 -> 淡黄
+    
+    // 绿色系渐变
+    ['#4ECDC4', '#06D6A0'], // 薄荷绿 -> 翠绿
+    ['#00C9B7', '#00A896'], // 青绿 -> 深青绿
+    ['#9EF01A', '#70E000'], // 荧光绿 -> 亮绿
+    
+    // 蓝色系渐变
+    ['#118AB2', '#06BCC1'], // 海洋蓝 -> 青色
+    ['#3A86FF', '#00BBF9'], // 天蓝 -> 青蓝
+    ['#7209B7', '#560BAD'], // 紫罗兰 -> 深紫
+    
+    // 紫色系渐变
+    ['#8338EC', '#B5179E'], // 紫晶 -> 玫红
+    ['#8A2BE2', '#9932CC'], // 蓝紫 -> 深紫
+    ['#C77DFF', '#9D4EDD'], // 浅紫 -> 紫色
+    
+    // 粉色系渐变
+    ['#FF006E', '#FB5607'], // 玫红 -> 橘红
+    ['#FF5E9C', '#FF1493'], // 粉红 -> 深粉
+    ['#F72585', '#B5179E'], // 亮粉 -> 玫红
+    
+    // 青色系渐变
+    ['#00F5D4', '#00C9B7'], // 青色 -> 青绿
+    ['#80FFDB', '#64DFDF'], // 浅青 -> 青色
+    ['#38B000', '#9EF01A'], // 草绿 -> 荧光绿
   ];
 
-  // 设置随机标题颜色
-  function setRandomTitleColor() {
-    const title = document.querySelector('.page-title');
+  // 从多巴胺数组中选择颜色组合
+  function getRandomDopamineGradient() {
+    const randomIndex = Math.floor(Math.random() * dopamineGradients.length);
+    return dopamineGradients[randomIndex];
+  }
+
+  // 设置标题颜色
+  function setTitleColor() {
+    const title = document.getElementById('album-title');
     if (title) {
-      // 从多巴胺颜色数组中随机选择一个
-      const randomIndex = Math.floor(Math.random() * dopamineColors.length);
-      title.style.color = dopamineColors[randomIndex];
+      const [color1, color2] = getRandomDopamineGradient();
+      title.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
+      title.style.webkitBackgroundClip = 'text';
+      title.style.webkitTextFillColor = 'transparent';
     }
   }
 
-  // 灯箱代码
-  const frames = Array.from(document.querySelectorAll('.photo-frame'));
-  let currentIndex = 0;
+  // 设置加载按钮颜色
+  function setLoadButtonColor() {
+    const button = document.getElementById('load-more-btn');
+    if (button) {
+      const [color1, color2] = getRandomDopamineGradient();
+      button.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
+      
+      // 确保文字清晰可见（根据背景颜色计算文字颜色）
+      const hex1 = color1.replace('#', '');
+      const hex2 = color2.replace('#', '');
+      
+      // 简单计算平均亮度
+      const r1 = parseInt(hex1.substr(0,2), 16);
+      const g1 = parseInt(hex1.substr(2,2), 16);
+      const b1 = parseInt(hex1.substr(4,2), 16);
+      
+      const r2 = parseInt(hex2.substr(0,2), 16);
+      const g2 = parseInt(hex2.substr(2,2), 16);
+      const b2 = parseInt(hex2.substr(4,2), 16);
+      
+      const avgR = (r1 + r2) / 2;
+      const avgG = (g1 + g2) / 2;
+      const avgB = (b1 + b2) / 2;
+      
+      // 计算相对亮度（使用WCAG公式）
+      const brightness = (avgR * 299 + avgG * 587 + avgB * 114) / 1000;
+      
+      // 如果背景较亮，使用深色文字；如果背景较暗，使用浅色文字
+      button.style.color = brightness > 128 ? '#000000' : '#FFFFFF';
+    }
+  }
+
+  // 相册数据 - 从页面模板传递
+  const allPhotos = [
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/06/dda1c6d677cf4b03.jpg",
+        desc: "大哞哞",
+        location: "",
+        date: "",
+        index: 0
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/06/64e4d9202e859f80.jpg",
+        desc: "整屋出租 处处都给你",
+        location: "",
+        date: "",
+        index: 1
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/f43de4c989e4cdcf.jpg",
+        desc: "23年的一个周末",
+        location: "",
+        date: "",
+        index: 2
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/06/985b2b5903be4de7.jpg",
+        desc: "毛主席诞辰的橘子洲",
+        location: "",
+        date: "",
+        index: 3
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/06/b8b6c2cf9718e7a1.jpg",
+        desc: "黄鹤楼",
+        location: "",
+        date: "",
+        index: 4
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/06/8a0bd9f46dff186a.jpg",
+        desc: "苍山",
+        location: "",
+        date: "",
+        index: 5
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/06/7756892bfcd15f26.jpg",
+        desc: "洱海",
+        location: "",
+        date: "",
+        index: 6
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/06/6747055d74032ffa.jpg",
+        desc: "蓝月谷",
+        location: "",
+        date: "",
+        index: 7
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/06/2921460ae2add39b.jpg",
+        desc: "樱花与雪山",
+        location: "",
+        date: "",
+        index: 8
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/82151fa1df45604d.jpg",
+        desc: "平江船杨帆",
+        location: "",
+        date: "",
+        index: 9
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/bae4c92e2a53e8d2.jpg",
+        desc: "钓鱼“老”",
+        location: "",
+        date: "",
+        index: 10
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/ad9febcb0c04193d.jpg",
+        desc: "不要停止我的音乐",
+        location: "",
+        date: "",
+        index: 11
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/38fa2d7c0f931674.jpg",
+        desc: "蓝调前夕",
+        location: "",
+        date: "",
+        index: 12
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/06/c0065dd564cc3477.jpg",
+        desc: "冰川公园",
+        location: "",
+        date: "",
+        index: 13
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/d6588213c27b6518.jpg",
+        desc: "NO投喂",
+        location: "",
+        date: "",
+        index: 14
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/745c8990508221a1.jpg",
+        desc: "和大华点点点国殇小付在海上",
+        location: "",
+        date: "",
+        index: 15
+      },
+    
+      {
+        url: "https://s21.ax1x.com/2025/07/29/pVYfMnI.jpg",
+        desc: "鹄突泉拍到的",
+        location: "",
+        date: "",
+        index: 16
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/1a49643fbf257ec3.jpg",
+        desc: "大卫带",
+        location: "",
+        date: "",
+        index: 17
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/94e2191064448803.jpg",
+        desc: "巧妙的木构",
+        location: "",
+        date: "",
+        index: 18
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/8923ebea82e0cbdf.jpg",
+        desc: "虔诚拜三拜",
+        location: "",
+        date: "",
+        index: 19
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/2a44831b59881274.jpg",
+        desc: "天津之眼",
+        location: "",
+        date: "",
+        index: 20
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/1ec2139b2753c377.jpg",
+        desc: "山上的清晨",
+        location: "",
+        date: "",
+        index: 21
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/8a3fade26eb2caf4.jpg",
+        desc: "和我在寒山寺",
+        location: "",
+        date: "",
+        index: 22
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/08/03/2e805d381863a143.jpg",
+        desc: "莲花池新莲",
+        location: "",
+        date: "",
+        index: 23
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/5a7cdcf221beebc2.jpg",
+        desc: "漂亮小灯",
+        location: "",
+        date: "",
+        index: 24
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/74218b96dfc05f0c.jpg",
+        desc: "拙政园",
+        location: "",
+        date: "",
+        index: 25
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/508c6a49fd15e227.jpg",
+        desc: "寒山胖锦鲤",
+        location: "",
+        date: "",
+        index: 26
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/2048cdf2c46eac10.jpg",
+        desc: "海的这边",
+        location: "",
+        date: "",
+        index: 27
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/208fb7a39712591e.jpg",
+        desc: "鸡鸣寺樱花开",
+        location: "",
+        date: "",
+        index: 28
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/dbf4381aa8b6565c.jpg",
+        desc: "鹄突泉",
+        location: "",
+        date: "",
+        index: 29
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/1e9354040570a57e.jpg",
+        desc: "世界大同",
+        location: "",
+        date: "",
+        index: 30
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/b0e5bdcbff4dc04c.jpg",
+        desc: "天安门",
+        location: "",
+        date: "",
+        index: 31
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2025/11/13/ea3ca78fcd29f93f.jpg",
+        desc: "世纪钟",
+        location: "",
+        date: "",
+        index: 32
+      }
+    
+  ];
+
+  // 分页配置
+  const photosPerPage = 12;
+  let currentPage = 1;
+  let totalPages = Math.ceil(allPhotos.length / photosPerPage);
+  let isLoading = false;
   let lightboxInstance = null;
 
-  function showLightbox(index) {
-    currentIndex = index;
-    const frame = frames[index];
-    const src = frame.dataset.src;
-    const desc = frame.dataset.desc || '';
-    const location = frame.dataset.location || '';
-    const date = frame.dataset.date || '';
+  // DOM 元素
+  const photoWall = document.getElementById('photo-wall');
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  const loadMoreText = document.getElementById('load-more-text');
+  const loadingSpinner = document.getElementById('loading-spinner');
+  const currentPageEl = document.getElementById('current-page');
+  const totalPagesEl = document.getElementById('total-pages');
+  const noPhotosMessage = document.getElementById('no-photos-message');
+  const paginationInfo = document.getElementById('pagination-info');
 
-    const html = `
-      <div class="lightbox-close">
-        <i class="fas fa-times"></i>
+  // 初始化
+  function init() {
+    // 设置颜色
+    setTitleColor();
+    setLoadButtonColor();
+    
+    // 更新分页信息
+    currentPageEl.textContent = currentPage;
+    totalPagesEl.textContent = totalPages;
+    
+    // 如果没有照片
+    if (allPhotos.length === 0) {
+      noPhotosMessage.style.display = 'block';
+      loadMoreBtn.style.display = 'none';
+      paginationInfo.style.display = 'none';
+      return;
+    }
+    
+    // 加载第一页
+    loadPhotos();
+    
+    // 如果只有一页，隐藏加载更多按钮
+    if (currentPage >= totalPages) {
+      loadMoreBtn.style.display = 'none';
+    }
+    
+    // 加载更多按钮点击事件
+    loadMoreBtn.addEventListener('click', loadMore);
+  }
+
+  // 加载照片
+  function loadPhotos() {
+    const startIndex = (currentPage - 1) * photosPerPage;
+    const endIndex = Math.min(startIndex + photosPerPage, allPhotos.length);
+    const pagePhotos = allPhotos.slice(startIndex, endIndex);
+    
+    const fragment = document.createDocumentFragment();
+    
+    pagePhotos.forEach(photo => {
+      const photoItem = createPhotoElement(photo);
+      fragment.appendChild(photoItem);
+    });
+    
+    photoWall.appendChild(fragment);
+  }
+
+  // 创建照片元素
+  function createPhotoElement(photo) {
+    const photoItem = document.createElement('div');
+    photoItem.className = 'photo-item';
+    photoItem.innerHTML = `
+      <div class="photo-frame" 
+           data-src="${photo.url}" 
+           data-index="${photo.index}" 
+           data-desc="${photo.desc || ''}"
+           data-location="${photo.location || ''}"
+           data-date="${photo.date || ''}">
+        <img src="${photo.url}" alt="${photo.desc || '照片'}" loading="lazy" class="photo-image">
+        <div class="photo-zoom-icon">⤡</div>
       </div>
-      <img src="${src}" alt="${desc}" id="lightbox-img">
+      ${photo.desc ? `<p class="photo-caption">${photo.desc}</p>` : ''}
+    `;
+    
+    // 添加点击事件
+    const photoFrame = photoItem.querySelector('.photo-frame');
+    photoFrame.addEventListener('click', () => showLightbox(photo.index));
+    
+    return photoItem;
+  }
+
+  // 加载更多照片
+  function loadMore() {
+    if (isLoading || currentPage >= totalPages) return;
+    
+    isLoading = true;
+    loadMoreBtn.disabled = true;
+    loadingSpinner.style.display = 'inline-block';
+    loadMoreText.textContent = '加载中...';
+    
+    // 模拟加载延迟
+    setTimeout(() => {
+      currentPage++;
+      loadPhotos();
+      
+      // 更新分页信息
+      currentPageEl.textContent = currentPage;
+      
+      // 如果已加载所有照片，隐藏按钮
+      if (currentPage >= totalPages) {
+        loadMoreBtn.style.display = 'none';
+      }
+      
+      // 重置按钮状态
+      isLoading = false;
+      loadMoreBtn.disabled = false;
+      loadingSpinner.style.display = 'none';
+      loadMoreText.textContent = '加载更多照片';
+      
+      // 重新设置按钮颜色（每次点击都换颜色）
+      setLoadButtonColor();
+    }, 600);
+  }
+
+  // 灯箱功能
+  function showLightbox(index) {
+    const photo = allPhotos[index];
+    
+    const html = `
+      <img src="${photo.url}" alt="${photo.desc || '照片'}" id="lightbox-img">
       <div class="lightbox-arrow lightbox-prev">&#10094;</div>
       <div class="lightbox-arrow lightbox-next">&#10095;</div>
-      ${(desc || location || date) ? `
-      <div class="lightbox-info">
-        ${desc ? `<div class="lightbox-desc">${desc}</div>` : ''}
-        ${(location || date) ? `
-        <div class="lightbox-meta">
-          ${location ? `<span><i class="fas fa-map-marker-alt"></i> ${location}</span>` : ''}
-          ${date ? `<span><i class="far fa-clock"></i> ${date}</span>` : ''}
-        </div>
-        ` : ''}
-      </div>
-      ` : ''}
-      <div class="lightbox-index">${index + 1} / ${frames.length}</div>
     `;
 
     lightboxInstance = basicLightbox.create(html, { 
@@ -1133,7 +1195,6 @@ document.addEventListener('DOMContentLoaded', function() {
     lightboxInstance.show();
     
     // 添加事件监听器
-    document.querySelector('.lightbox-close').onclick = () => lightboxInstance.close();
     document.querySelector('.lightbox-prev').onclick = () => navigate(-1);
     document.querySelector('.lightbox-next').onclick = () => navigate(1);
 
@@ -1149,47 +1210,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function navigate(step) {
+    const currentFrame = document.querySelector('.photo-frame[data-index="' + currentIndex + '"]');
     currentIndex = (currentIndex + step + frames.length) % frames.length;
     const frame = frames[currentIndex];
     const src = frame.dataset.src;
-    const desc = frame.dataset.desc || '';
-    const location = frame.dataset.location || '';
-    const date = frame.dataset.date || '';
-    
-    // 更新灯箱内容
+    const alt = frame.dataset.alt || '';
     const img = document.getElementById('lightbox-img');
     img.src = src;
-    img.alt = desc;
+    img.alt = alt;
     img.classList.remove('zoomed');
-    
-    // 更新信息
-    const indexEl = document.querySelector('.lightbox-index');
-    const infoEl = document.querySelector('.lightbox-info');
-    
-    if (indexEl) {
-      indexEl.textContent = `${currentIndex + 1} / ${frames.length}`;
-    }
-    
-    if (infoEl) {
-      if (desc || location || date) {
-        infoEl.innerHTML = `
-          ${desc ? `<div class="lightbox-desc">${desc}</div>` : ''}
-          ${(location || date) ? `
-          <div class="lightbox-meta">
-            ${location ? `<span><i class="fas fa-map-marker-alt"></i> ${location}</span>` : ''}
-            ${date ? `<span><i class="far fa-clock"></i> ${date}</span>` : ''}
-          </div>
-          ` : ''}
-        `;
-      }
-    }
   }
 
-  frames.forEach((frame, idx) => {
-    frame.addEventListener('click', () => showLightbox(idx));
-  });
-
-  // 拟态按钮日夜模式切换 - 保持原样
+  // 拟态按钮日夜模式切换
   const btn = document.getElementById('g-btn');
   btn.addEventListener('click', () => {
     btn.classList.toggle('active');
@@ -1203,8 +1235,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // 设置随机标题颜色
-  setRandomTitleColor();
+  // 初始化相册
+  init();
 });
 </script>
 
