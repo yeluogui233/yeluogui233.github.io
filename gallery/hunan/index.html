@@ -277,84 +277,40 @@
   <div class="album-wrapper">
 
     <!-- 标题在画布顶部居中 -->
-    <header class="page-header" style="text-align:center; margin-bottom: 30px;">
+    <header class="page-header">
       <h1 class="page-title">湖南游记</h1>
       
+      <div class="album-meta">
+        
+        
+          <span class="meta-item">
+            <i class="far fa-calendar"></i> 1767971568458
+          </span>
+        
+      </div>
     </header>
 
-    <!-- 两列大卡片 -->
-    <div class="photo-wall">
+    <!-- 相册容器 -->
+    <div class="album-container">
+      <!-- 两列大卡片 -->
+      <div id="photo-wall" class="photo-wall"></div>
       
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/09/c4424b35d9bd3100.jpg" data-index="0" data-alt="毛爷爷生日快乐">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/09/c4424b35d9bd3100.jpg" alt="毛爷爷生日快乐" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-          </div>
-          
-            <p class="photo-caption">毛爷爷生日快乐</p>
-          
+      <!-- 加载更多按钮 -->
+      <div class="load-more-container" id="load-more-container">
+        <button id="load-more-btn" class="load-more-btn">
+          <i class="fas fa-spinner fa-spin" id="loading-spinner" style="display:none;"></i>
+          <span id="load-more-text">加载更多照片</span>
+        </button>
+        <div class="pagination-info" id="pagination-info">
+          第 <span id="current-page">1</span> 页 / 共 <span id="total-pages">0</span> 页
         </div>
+      </div>
       
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/09/13bbe9e4e7e8e48d.jpg" data-index="1" data-alt="好吃小炒肉">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/09/13bbe9e4e7e8e48d.jpg" alt="好吃小炒肉" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-          </div>
-          
-            <p class="photo-caption">好吃小炒肉</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/09/00fcf4881c9ebfee.jpg" data-index="2" data-alt="X ω X">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/09/00fcf4881c9ebfee.jpg" alt="X ω X" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-          </div>
-          
-            <p class="photo-caption">X ω X</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/09/b2d66114bb8d515d.jpg" data-index="3" data-alt="橘子洲！">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/09/b2d66114bb8d515d.jpg" alt="橘子洲！" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-          </div>
-          
-            <p class="photo-caption">橘子洲！</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/09/507ba45ea7925d8c.jpg" data-index="4" data-alt="爱吃皮蛋擂椒！">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/09/507ba45ea7925d8c.jpg" alt="爱吃皮蛋擂椒！" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-          </div>
-          
-            <p class="photo-caption">爱吃皮蛋擂椒！</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/09/c8e5dcfa19da4f81.jpg" data-index="5" data-alt="兔小姐">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/09/c8e5dcfa19da4f81.jpg" alt="兔小姐" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-          </div>
-          
-            <p class="photo-caption">兔小姐</p>
-          
-        </div>
-      
-        <div class="photo-item">
-          <div class="photo-frame" data-src="https://s3.bmp.ovh/imgs/2026/01/09/897975cb85a815a5.jpg" data-index="6" data-alt="大头">
-            <img src="https://s3.bmp.ovh/imgs/2026/01/09/897975cb85a815a5.jpg" alt="大头" loading="lazy" class="photo-image">
-            <div class="photo-zoom-icon">⤡</div>
-          </div>
-          
-            <p class="photo-caption">大头</p>
-          
-        </div>
-      
+      <!-- 无照片提示 -->
+      <div id="no-photos-message" class="no-photos-message" style="display:none;">
+        <i class="fas fa-camera"></i>
+        <p>暂无照片</p>
+      </div>
     </div>
 
   </div>
@@ -365,73 +321,262 @@
 /* 画布宽度贴近 Next 内容宽度 */
 .album-wrapper {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 40px 30px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
   margin-bottom: 40px;
   max-width: 960px;
   margin-left: auto;
   margin-right: auto;
 }
 
+/* 页面标题样式 */
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-subtitle {
+  color: var(--text-color-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 相册元信息 */
+.album-meta {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-color-secondary);
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.03);
+  border-radius: 20px;
+}
+
+.meta-item i {
+  color: #667eea;
+}
+
+/* 相册容器 */
+.album-container {
+  position: relative;
+  min-height: 400px;
+}
+
 /* 两列更大卡片 */
 .photo-wall {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 28px;
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.photo-item {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
 }
 
 .photo-frame {
   position: relative;
   cursor: zoom-in;
   overflow: hidden;
-  border-radius: 12px;
-  background: var(--content-bg-color);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #f8f9fa, #ffffff);
+  box-shadow: 
+    0 6px 20px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  aspect-ratio: 4/3;
 }
+
 .photo-frame:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.15),
+    0 4px 8px rgba(0,0,0,0.06);
 }
 
 .photo-image {
   width: 100%;
-  height: 280px;
+  height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.6s ease;
+  will-change: transform;
 }
-.photo-frame:hover .photo-image { transform: scale(1.05); }
 
+.photo-frame:hover .photo-image {
+  transform: scale(1.08);
+}
+
+/* 缩放图标 */
 .photo-zoom-icon {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(0,0,0,0.6);
+  top: 15px;
+  right: 15px;
+  background: rgba(0,0,0,0.75);
   color: white;
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s;
-  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  transform: scale(0.8);
+  z-index: 2;
 }
-.photo-frame:hover .photo-zoom-icon { opacity: 1; }
+.photo-frame:hover .photo-zoom-icon { 
+  opacity: 1;
+  transform: scale(1);
+}
 
+/* 照片信息区域 */
+.photo-info-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  padding: 20px 15px 15px;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: translateY(10px);
+}
+
+.photo-frame:hover .photo-info-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.photo-location {
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.photo-location i {
+  color: #4CAF50;
+}
+
+.photo-date {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.photo-date i {
+  color: #FF9800;
+}
+
+/* 照片描述 */
 .photo-caption {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 0.95rem;
   color: var(--text-color);
-  text-align: center;
+  line-height: 1.5;
+  padding: 0 8px;
 }
 
-/* 灯箱样式覆盖全屏并固定定位 */
+/* 加载更多按钮 */
+.load-more-container {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.load-more-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.load-more-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.load-more-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.pagination-info {
+  margin-top: 15px;
+  color: var(--text-color-secondary);
+  font-size: 0.9rem;
+}
+
+/* 无照片提示 */
+.no-photos-message {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-color-secondary);
+}
+
+.no-photos-message i {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.no-photos-message p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* 灯箱样式 */
 .ultimate-lightbox {
-  background: rgba(0,0,0,0.92) !important;
+  background: rgba(0,0,0,0.95) !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -439,15 +584,63 @@
   top: 0; left: 0; width: 100vw; height: 100vh;
   z-index: 99999;
 }
+
 .ultimate-lightbox img {
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 85vw;
+  max-height: 85vh;
   transition: transform 0.3s;
   cursor: zoom-in;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
 }
+
 .ultimate-lightbox img.zoomed {
   transform: scale(1.5);
   cursor: zoom-out;
+}
+
+/* 灯箱信息 */
+.lightbox-info {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 300px;
+  max-width: 600px;
+  z-index: 100000;
+  backdrop-filter: blur(10px);
+}
+
+.lightbox-info .lightbox-desc {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.lightbox-meta {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.lightbox-index {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  z-index: 100000;
+  backdrop-filter: blur(10px);
 }
 
 /* 左右切换箭头 */
@@ -455,26 +648,67 @@
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: white;
   cursor: pointer;
-  padding: 0 20px;
+  padding: 0 25px;
   user-select: none;
-  opacity: 0.5;
-  transition: opacity 0.3s;
+  opacity: 0.7;
+  transition: all 0.3s;
   z-index: 100000;
+  background: rgba(0,0,0,0.3);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
 }
-.lightbox-arrow:hover { opacity: 1; }
-.lightbox-prev { left: 10px; }
-.lightbox-next { right: 10px; }
+
+.lightbox-arrow:hover { 
+  opacity: 1;
+  background: rgba(0,0,0,0.5);
+}
+
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+
+/* 关闭按钮 */
+.lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  z-index: 100000;
+  transition: all 0.3s;
+}
+
+.lightbox-close:hover {
+  background: rgba(0,0,0,0.7);
+  transform: rotate(90deg);
+}
 
 /* 响应式 */
 @media (max-width: 992px) {
   .photo-wall { grid-template-columns: 1fr; }
-  .photo-image { height: 240px; }
+  .album-wrapper { padding: 30px 20px; }
+  .page-title { font-size: 1.8rem; }
 }
 
-/* 拟态日夜切换按钮样式，移到右上角 */
+@media (max-width: 640px) {
+  .album-meta { flex-direction: column; align-items: center; gap: 10px; }
+  .lightbox-arrow { padding: 0 15px; height: 60px; font-size: 2rem; }
+  .lightbox-info { min-width: 250px; padding: 12px 20px; }
+}
+
+/* 拟态日夜切换按钮样式 */
 #g-btn {
   position: fixed;
   top: 20px;
@@ -483,15 +717,6 @@
   height: 90px;
   border-radius: 90px;
   background:
-    radial-gradient(circle at 18% 20px, #fff, #fff 6px, transparent 7px, transparent),
-    radial-gradient(circle at 35% 45px, #fff, #fff 1px, transparent 2px, transparent),
-    radial-gradient(circle at 10% 70px, #fff, #fff 2.5px, transparent 3.5px, transparent),
-    radial-gradient(circle at 25% 15px, #fff, #fff 3px, transparent 4px, transparent),
-    radial-gradient(circle at 15% 50px, #fff, #fff 1.5px, transparent 2.5px, transparent),
-    radial-gradient(circle at 30% 75px, #fff, #fff 5px, transparent 6px, transparent),
-    radial-gradient(circle at 5% 30px, #fff, #fff 0.5px, transparent 1.5px, transparent),
-    radial-gradient(circle at 25% 60px, #fff, #fff 0.5px, transparent 1.5px, transparent),
-    radial-gradient(circle at 7% 35px, #fff, #fff 0.5px, transparent 1.5px, transparent),
     linear-gradient(90deg, #2b303e, #2b303e 50%, #5a81b4 50%, #5a81b4);
   background-repeat: no-repeat;
   background-size: 200% 100%;
@@ -504,11 +729,11 @@
   cursor: pointer;
   overflow: hidden;
   transition: .5s all;
-  outline: none; /* 去掉蓝色边框 */
+  outline: none;
+  z-index: 1000;
 }
 #g-btn:focus { outline: none; box-shadow: none; }
 
-/* 保留按钮的伪元素和激活效果 */
 #g-btn::before,
 #g-btn::after {
   content: "";
@@ -527,57 +752,12 @@
     inset -2px -2px 3px #665613;
   z-index: 1;
 }
-#g-btn::after {
-  width: 70px;
-  height: 70px;
-  inset: 10px;
-  border-radius: 50%;
-  box-shadow:
-    10px 60px 0 10px #fff,
-    65px 60px 0 5px #fff,
-    95px 70px 0 10px #fff,
-    135px 45px 0 5px #fff,
-    170px 35px 0 10px #fff,
-    195px -5px 0 10px #fff,
-    -10px 0 0 50px rgba(255, 255, 255, .2),
-    15px 0 0 50px rgba(255, 255, 255, .15),
-    40px 0 0 50px rgba(255, 255, 255, .21),
-    10px 40px 0 10px #abc1d9,
-    70px 35px 0 10px #abc1d9,
-    95px 40px 0 10px #abc1d9,
-    135px 20px 0 10px #abc1d9,
-    155px 15px 0 10px #abc1d9,
-    190px -20px 0 10px #abc1d9;
-}
 #g-btn.active {
   background-position: 0 0;
 }
 #g-btn.active::before {
   translate: 130px;
-  background:
-    radial-gradient(circle at 50% 20px, #939aa5, #939aa5 6.5px, transparent 7px, transparent),
-    radial-gradient(circle at 35% 45px, #939aa5, #939aa5 11.5px, transparent 12px, transparent),
-    radial-gradient(circle at 72% 50px, #939aa5, #939aa5 8.5px, transparent 9px, transparent),
-    radial-gradient(#cbcdda, #cbcdda);
-}
-#g-btn.active::after {
-  transform: translate(130px);
-  box-shadow:
-    10px 60px 0 10px transparent,
-    65px 60px 0 5px transparent,
-    95px 70px 0 10px transparent,
-    135px 45px 0 5px transparent,
-    170px 35px 0 10px transparent,
-    195px -5px 0 10px transparent,
-    10px 0 0 50px rgba(255, 255, 255, .2),
-    -15px 0 0 50px rgba(255, 255, 255, .15),
-    -40px 0 0 50px rgba(255, 255, 255, .21),
-    10px 40px 0 10px transparent,
-    70px 35px 0 10px transparent,
-    95px 40px 0 10px transparent,
-    135px 20px 0 10px transparent,
-    155px 15px 0 10px transparent,
-    190px -20px 0 10px transparent;
+  background: #cbcdda;
 }
 
 /* Dark Mode 样式 */
@@ -586,70 +766,299 @@ body.dark-mode {
   color: #ddd;
 }
 body.dark-mode .album-wrapper {
-  background: #222;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+  background: #1e1e1e;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
 }
 body.dark-mode .photo-frame {
-  background: #333;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 body.dark-mode .photo-frame:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 body.dark-mode .photo-caption {
   color: #ccc;
+}
+body.dark-mode .meta-item {
+  background: rgba(255,255,255,0.05);
+}
+body.dark-mode .load-more-container {
+  border-top-color: rgba(255,255,255,0.1);
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 灯箱代码
-  const frames = Array.from(document.querySelectorAll('.photo-frame'));
-  let currentIndex = 0;
+  // 相册数据 - 从页面模板传递
+  const allPhotos = [
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/09/c4424b35d9bd3100.jpg",
+        desc: "毛爷爷生日快乐",
+        location: "",
+        date: "",
+        index: 0
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/09/13bbe9e4e7e8e48d.jpg",
+        desc: "好吃小炒肉",
+        location: "",
+        date: "",
+        index: 1
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/09/00fcf4881c9ebfee.jpg",
+        desc: "X ω X",
+        location: "",
+        date: "",
+        index: 2
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/09/b2d66114bb8d515d.jpg",
+        desc: "橘子洲！",
+        location: "",
+        date: "",
+        index: 3
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/09/507ba45ea7925d8c.jpg",
+        desc: "爱吃皮蛋擂椒！",
+        location: "",
+        date: "",
+        index: 4
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/09/c8e5dcfa19da4f81.jpg",
+        desc: "兔小姐",
+        location: "",
+        date: "",
+        index: 5
+      },
+    
+      {
+        url: "https://s3.bmp.ovh/imgs/2026/01/09/897975cb85a815a5.jpg",
+        desc: "大头",
+        location: "",
+        date: "",
+        index: 6
+      }
+    
+  ];
+
+  // 分页配置
+  const photosPerPage = 12;
+  let currentPage = 1;
+  let totalPages = Math.ceil(allPhotos.length / photosPerPage);
+  let isLoading = false;
   let lightboxInstance = null;
 
-  function showLightbox(index) {
-    currentIndex = index;
-    const frame = frames[index];
-    const src = frame.dataset.src;
-    const alt = frame.dataset.alt || '';
+  // DOM 元素
+  const photoWall = document.getElementById('photo-wall');
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  const loadMoreText = document.getElementById('load-more-text');
+  const loadingSpinner = document.getElementById('loading-spinner');
+  const currentPageEl = document.getElementById('current-page');
+  const totalPagesEl = document.getElementById('total-pages');
+  const noPhotosMessage = document.getElementById('no-photos-message');
+  const paginationInfo = document.getElementById('pagination-info');
 
+  // 初始化
+  function init() {
+    // 更新分页信息
+    currentPageEl.textContent = currentPage;
+    totalPagesEl.textContent = totalPages;
+    
+    // 如果没有照片
+    if (allPhotos.length === 0) {
+      noPhotosMessage.style.display = 'block';
+      loadMoreBtn.style.display = 'none';
+      paginationInfo.style.display = 'none';
+      return;
+    }
+    
+    // 加载第一页
+    loadPhotos();
+    
+    // 如果只有一页，隐藏加载更多按钮
+    if (currentPage >= totalPages) {
+      loadMoreBtn.style.display = 'none';
+    }
+    
+    // 加载更多按钮点击事件
+    loadMoreBtn.addEventListener('click', loadMore);
+  }
+
+  // 加载照片
+  function loadPhotos() {
+    const startIndex = (currentPage - 1) * photosPerPage;
+    const endIndex = Math.min(startIndex + photosPerPage, allPhotos.length);
+    const pagePhotos = allPhotos.slice(startIndex, endIndex);
+    
+    const fragment = document.createDocumentFragment();
+    
+    pagePhotos.forEach(photo => {
+      const photoItem = createPhotoElement(photo);
+      fragment.appendChild(photoItem);
+    });
+    
+    photoWall.appendChild(fragment);
+  }
+
+  // 创建照片元素
+  function createPhotoElement(photo) {
+    const photoItem = document.createElement('div');
+    photoItem.className = 'photo-item';
+    photoItem.innerHTML = `
+      <div class="photo-frame" 
+           data-src="${photo.url}" 
+           data-index="${photo.index}" 
+           data-desc="${photo.desc || ''}"
+           data-location="${photo.location || ''}"
+           data-date="${photo.date || ''}">
+        <img src="${photo.url}" alt="${photo.desc || '照片'}" loading="lazy" class="photo-image">
+        <div class="photo-zoom-icon">
+          <i class="fas fa-search-plus"></i>
+        </div>
+        ${(photo.location || photo.date) ? `
+        <div class="photo-info-overlay">
+          ${photo.location ? `
+          <div class="photo-location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>${photo.location}</span>
+          </div>
+          ` : ''}
+          ${photo.date ? `
+          <div class="photo-date">
+            <i class="far fa-clock"></i>
+            <span>${photo.date}</span>
+          </div>
+          ` : ''}
+        </div>
+        ` : ''}
+      </div>
+      ${photo.desc ? `<p class="photo-caption">${photo.desc}</p>` : ''}
+    `;
+    
+    // 添加点击事件
+    const photoFrame = photoItem.querySelector('.photo-frame');
+    photoFrame.addEventListener('click', () => showLightbox(photo.index));
+    
+    return photoItem;
+  }
+
+  // 加载更多照片
+  function loadMore() {
+    if (isLoading || currentPage >= totalPages) return;
+    
+    isLoading = true;
+    loadMoreBtn.disabled = true;
+    loadingSpinner.style.display = 'inline-block';
+    loadMoreText.textContent = '加载中...';
+    
+    // 模拟加载延迟
+    setTimeout(() => {
+      currentPage++;
+      loadPhotos();
+      
+      // 更新分页信息
+      currentPageEl.textContent = currentPage;
+      
+      // 如果已加载所有照片，隐藏按钮
+      if (currentPage >= totalPages) {
+        loadMoreBtn.style.display = 'none';
+      }
+      
+      // 重置按钮状态
+      isLoading = false;
+      loadMoreBtn.disabled = false;
+      loadingSpinner.style.display = 'none';
+      loadMoreText.textContent = '加载更多照片';
+    }, 600);
+  }
+
+  // 灯箱功能
+  function showLightbox(index) {
+    const photo = allPhotos[index];
+    
     const html = `
-      <img src="${src}" alt="${alt}" id="lightbox-img">
-      <div class="lightbox-arrow lightbox-prev">&#10094;</div>
-      <div class="lightbox-arrow lightbox-next">&#10095;</div>
+      <div class="lightbox-close">
+        <i class="fas fa-times"></i>
+      </div>
+      <img src="${photo.url}" alt="${photo.desc || '照片'}" id="lightbox-img">
+      <div class="lightbox-arrow lightbox-prev">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div class="lightbox-arrow lightbox-next">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      ${(photo.desc || photo.location || photo.date) ? `
+      <div class="lightbox-info">
+        ${photo.desc ? `<div class="lightbox-desc">${photo.desc}</div>` : ''}
+        <div class="lightbox-meta">
+          ${photo.location ? `<span><i class="fas fa-map-marker-alt"></i> ${photo.location}</span>` : ''}
+          ${photo.date ? `<span><i class="far fa-clock"></i> ${photo.date}</span>` : ''}
+        </div>
+      </div>
+      ` : ''}
+      <div class="lightbox-index">${index + 1} / ${allPhotos.length}</div>
     `;
 
-    lightboxInstance = basicLightbox.create(html, { className: 'ultimate-lightbox' });
+    lightboxInstance = basicLightbox.create(html, { 
+      className: 'ultimate-lightbox',
+      onShow: () => {
+        document.body.style.overflow = 'hidden';
+      },
+      onClose: () => {
+        document.body.style.overflow = '';
+      }
+    });
+    
     lightboxInstance.show();
+    
+    // 添加事件监听器
+    setupLightboxEvents(index);
+  }
 
-    document.querySelector('.lightbox-prev').onclick = () => navigate(-1);
-    document.querySelector('.lightbox-next').onclick = () => navigate(1);
-
+  // 设置灯箱事件
+  function setupLightboxEvents(currentIndex) {
+    // 关闭按钮
+    document.querySelector('.lightbox-close').onclick = () => lightboxInstance.close();
+    
+    // 左右箭头
+    document.querySelector('.lightbox-prev').onclick = () => navigateLightbox(-1, currentIndex);
+    document.querySelector('.lightbox-next').onclick = () => navigateLightbox(1, currentIndex);
+    
+    // 键盘控制
     document.onkeydown = (e) => {
       if (e.key === 'Escape') lightboxInstance.close();
-      if (e.key === 'ArrowLeft') navigate(-1);
-      if (e.key === 'ArrowRight') navigate(1);
+      if (e.key === 'ArrowLeft') navigateLightbox(-1, currentIndex);
+      if (e.key === 'ArrowRight') navigateLightbox(1, currentIndex);
     };
-
-    document.getElementById('lightbox-img').onclick = function() {
-      this.classList.toggle('zoomed');
-    }
-  }
-
-  function navigate(step) {
-    currentIndex = (currentIndex + step + frames.length) % frames.length;
-    const newSrc = frames[currentIndex].dataset.src;
-    const newAlt = frames[currentIndex].dataset.alt || '';
+    
+    // 图片双击缩放
     const img = document.getElementById('lightbox-img');
-    img.src = newSrc;
-    img.alt = newAlt;
-    img.classList.remove('zoomed');
+    img.onclick = function() {
+      this.classList.toggle('zoomed');
+    };
   }
 
-  frames.forEach((frame, idx) => {
-    frame.addEventListener('click', () => showLightbox(idx));
-  });
+  // 灯箱导航
+  function navigateLightbox(step, currentIndex) {
+    let newIndex = (currentIndex + step + allPhotos.length) % allPhotos.length;
+    
+    // 关闭当前灯箱
+    lightboxInstance.close();
+    
+    // 短暂延迟后打开新的
+    setTimeout(() => {
+      showLightbox(newIndex);
+    }, 100);
+  }
 
   // 拟态按钮日夜模式切换
   const btn = document.getElementById('g-btn');
@@ -664,6 +1073,9 @@ document.addEventListener('DOMContentLoaded', function() {
       btn.click();
     }
   });
+
+  // 初始化相册
+  init();
 });
 </script>
 
@@ -787,68 +1199,77 @@ document.addEventListener('DOMContentLoaded', function() {
   <style>
     .site-author-widget {
       background: #fff;
-      border-radius: 14px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
       margin-bottom: 40px;
       text-align: center;
     }
+    
+    body.dark-mode .site-author-widget {
+      background: #1e1e1e;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    
+    /* 其余sidebar样式保持不变 */
     .site-author-widget .site-author-image {
       width: 100px;
       height: 100px;
       border-radius: 50%;
       object-fit: cover;
-      margin: 0 auto 12px;
+      margin: 0 auto 15px;
       display: block;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
+    
     .site-author-widget .site-author-name {
       font-weight: 700;
       font-size: 1.3rem;
       margin: 8px 0 4px;
       color: var(--text-color);
     }
+    
     .site-author-widget .site-description {
       font-size: 0.95rem;
       color: var(--text-color-secondary);
-      margin-bottom: 16px;
-      line-height: 1.4;
+      margin-bottom: 20px;
+      line-height: 1.5;
     }
-    /* 社交3行2列 */
-.site-author-widget .links-of-author {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 两列平均分 */
-  grid-auto-rows: auto;
-  justify-content: center;
-  gap: 8px 12px;
-  max-width: 200px; /* 增加容器宽度 */
-  margin: 0 auto 16px;
-  text-align: center;
-}
-
-.site-author-widget .links-of-author-item a {
-  font-size: 0.75rem;       /* 字体缩小一点 */
-  color: var(--text-color);
-  text-decoration: none;
-  transition: color 0.25s ease;
-  display: inline-block;
-  padding: 2px 6px;
-  border-radius: 6px;
-  background: rgba(0,0,0,0.03);
-  white-space: nowrap;      /* 单行显示，不换行 */
-  overflow: hidden;
-  text-overflow: ellipsis;  /* 如果过长就用省略号 */
-}
-
-/* 社交链接悬浮效果 */
-.site-author-widget .links-of-author-item a:hover {
-  background: #333; /* 深色背景 */
-  color: #fff; /* 白色文字 */
-  transform: translateY(-2px); /* 轻微上浮 */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 增强阴影 */
-}
-
-    /* 友情链接 */
+    
+    .site-author-widget .links-of-author {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 15px;
+      max-width: 220px;
+      margin: 0 auto 20px;
+      text-align: center;
+    }
+    
+    .site-author-widget .links-of-author-item a {
+      font-size: 0.8rem;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.03);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    body.dark-mode .site-author-widget .links-of-author-item a {
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .site-author-widget .links-of-author-item a:hover {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+    
     .links-of-blogroll-list {
       padding: 0;
       margin: 0;
@@ -858,27 +1279,28 @@ document.addEventListener('DOMContentLoaded', function() {
       justify-content: center;
       gap: 10px;
     }
+    
     .links-of-blogroll-item a {
       display: inline-block;
       color: var(--text-color);
-      padding: 4px 10px;
+      padding: 6px 12px;
       border-radius: 10px;
-      background: #f5f5f5;
+      background: rgba(0,0,0,0.03);
       font-size: 0.9rem;
       text-decoration: none;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
     }
-/* 友情链接悬浮效果 */
-.links-of-blogroll-item a:hover {
-  background-color: #333; /* 改为深色 */
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-.site-author-widget .links-of-author-item a,
-.links-of-blogroll-item a {
-  transition: all 0.3s ease;
-}
+    
+    body.dark-mode .links-of-blogroll-item a {
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .links-of-blogroll-item a:hover {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
   </style>
 
       </div>
