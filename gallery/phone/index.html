@@ -328,11 +328,12 @@
   font-weight: 800;
   margin-bottom: 8px;
   /* 初始颜色，会被JS动态设置 */
-  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  background: linear-gradient(135deg, #FF006E, #FFBE0B);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
   padding: 0 10px;
+  letter-spacing: 1px;
 }
 
 .page-subtitle {
@@ -401,11 +402,58 @@
 }
 .photo-frame:hover .photo-zoom-icon { opacity: 1; }
 
+/* 照片信息区域 */
+.photo-info-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  padding: 15px 12px 10px;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: translateY(5px);
+  backdrop-filter: blur(2px);
+}
+
+.photo-frame:hover .photo-info-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.photo-location {
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.photo-location i {
+  color: #4ECDC4;
+  font-size: 0.7rem;
+}
+
+.photo-date {
+  font-size: 0.75rem;
+  opacity: 0.95;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.photo-date i {
+  color: #FFD166;
+  font-size: 0.7rem;
+}
+
 .photo-caption {
   margin-top: 10px;
   font-size: 0.95rem;
   color: var(--text-color);
   text-align: center;
+  line-height: 1.4;
 }
 
 /* 加载更多按钮 */
@@ -417,7 +465,7 @@
 }
 
 .load-more-btn {
-  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  background: linear-gradient(135deg, #FF006E, #FFBE0B);
   color: white;
   border: none;
   padding: 14px 35px;
@@ -441,7 +489,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
   transition: 0.5s;
 }
 
@@ -487,7 +535,7 @@
 
 /* 灯箱样式覆盖全屏并固定定位 */
 .ultimate-lightbox {
-  background: rgba(0,0,0,0.92) !important;
+  background: rgba(0,0,0,0.95) !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -495,15 +543,72 @@
   top: 0; left: 0; width: 100vw; height: 100vh;
   z-index: 99999;
 }
+
 .ultimate-lightbox img {
   max-width: 90vw;
   max-height: 90vh;
   transition: transform 0.3s;
   cursor: zoom-in;
+  border-radius: 8px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.5);
 }
+
 .ultimate-lightbox img.zoomed {
   transform: scale(1.5);
   cursor: zoom-out;
+}
+
+/* 灯箱信息 */
+.lightbox-info {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.85);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-align: center;
+  min-width: 250px;
+  max-width: 500px;
+  z-index: 100000;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.lightbox-info .lightbox-desc {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.lightbox-meta {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.lightbox-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.lightbox-index {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.85);
+  color: white;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  z-index: 100000;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 /* 左右切换箭头 */
@@ -523,6 +628,30 @@
 .lightbox-arrow:hover { opacity: 1; }
 .lightbox-prev { left: 10px; }
 .lightbox-next { right: 10px; }
+
+/* 关闭按钮 */
+.lightbox-close {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  z-index: 100000;
+  transition: all 0.3s;
+}
+
+.lightbox-close:hover {
+  background: rgba(0,0,0,0.7);
+  transform: rotate(90deg);
+}
 
 /* 响应式 */
 @media (max-width: 992px) {
@@ -660,53 +789,49 @@ body.dark-mode .photo-caption {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 24种渐变色多巴胺数组（每个都是两种颜色的渐变组合）
-  const dopamineGradients = [
-    // 红色系渐变
-    ['#FF6B6B', '#FF8E53'], // 珊瑚红 -> 橙红
-    ['#FF4757', '#FF3838'], // 亮红 -> 深红
-    ['#FF9A9E', '#FAD0C4'], // 粉红 -> 浅粉
+  // 24种亮色渐变色多巴胺数组（每个都是两种鲜艳颜色的渐变组合）
+  const brightDopamineGradients = [
+    // 超亮系列
+    ['#FF006E', '#FFBE0B'], // 玫红 -> 亮黄
+    ['#FB5607', '#8338EC'], // 橘红 -> 紫晶
+    ['#3A86FF', '#FF006E'], // 天蓝 -> 玫红
+    ['#FFBE0B', '#FB5607'], // 亮黄 -> 橘红
     
-    // 橙色系渐变
-    ['#FFD166', '#FFB347'], // 阳光黄 -> 橙黄
-    ['#FF9A00', '#FF6A00'], // 橙 -> 深橙
-    ['#FF7E5F', '#FEB47B'], // 珊瑚 -> 桃色
+    // 霓虹系列
+    ['#00F5D4', '#9B5DE5'], // 青色 -> 紫色
+    ['#F15BB5', '#00BBF9'], // 粉红 -> 青蓝
+    ['#FF9E00', '#9B5DE5'], // 橙黄 -> 紫色
+    ['#00F5D4', '#FF006E'], // 青色 -> 玫红
     
-    // 黄色系渐变
-    ['#FFEE00', '#FFD700'], // 柠檬黄 -> 金色
-    ['#FFF176', '#FFEE58'], // 浅黄 -> 亮黄
-    ['#F9F871', '#FFE57F'], // 荧光黄 -> 淡黄
+    // 荧光系列
+    ['#70E000', '#FF9E00'], // 荧光绿 -> 橙黄
+    ['#FF9E00', '#9B5DE5'], // 橙黄 -> 紫色
+    ['#FF6D6A', '#FFBE0B'], // 珊瑚红 -> 亮黄
+    ['#9B5DE5', '#00F5D4'], // 紫色 -> 青色
     
-    // 绿色系渐变
-    ['#4ECDC4', '#06D6A0'], // 薄荷绿 -> 翠绿
-    ['#00C9B7', '#00A896'], // 青绿 -> 深青绿
-    ['#9EF01A', '#70E000'], // 荧光绿 -> 亮绿
+    // 糖果色系列
+    ['#FF5DA2', '#00D2FF'], // 糖果粉 -> 糖果蓝
+    ['#FF87AB', '#A0E7E5'], // 浅粉 -> 薄荷
+    ['#FFD166', '#EF476F'], // 阳光黄 -> 鲜红
+    ['#06D6A0', '#FFD166'], // 翠绿 -> 阳光黄
     
-    // 蓝色系渐变
-    ['#118AB2', '#06BCC1'], // 海洋蓝 -> 青色
-    ['#3A86FF', '#00BBF9'], // 天蓝 -> 青蓝
-    ['#7209B7', '#560BAD'], // 紫罗兰 -> 深紫
+    // 彩虹系列
+    ['#EF476F', '#FFD166'], // 鲜红 -> 阳光黄
+    ['#FFD166', '#06D6A0'], // 阳光黄 -> 翠绿
+    ['#06D6A0', '#118AB2'], // 翠绿 -> 海洋蓝
+    ['#118AB2', '#7209B7'], // 海洋蓝 -> 紫罗兰
     
-    // 紫色系渐变
-    ['#8338EC', '#B5179E'], // 紫晶 -> 玫红
-    ['#8A2BE2', '#9932CC'], // 蓝紫 -> 深紫
-    ['#C77DFF', '#9D4EDD'], // 浅紫 -> 紫色
-    
-    // 粉色系渐变
-    ['#FF006E', '#FB5607'], // 玫红 -> 橘红
-    ['#FF5E9C', '#FF1493'], // 粉红 -> 深粉
-    ['#F72585', '#B5179E'], // 亮粉 -> 玫红
-    
-    // 青色系渐变
-    ['#00F5D4', '#00C9B7'], // 青色 -> 青绿
-    ['#80FFDB', '#64DFDF'], // 浅青 -> 青色
-    ['#38B000', '#9EF01A'], // 草绿 -> 荧光绿
+    // 流行色系列
+    ['#FF595E', '#FFCA3A'], // 亮红 -> 柠檬黄
+    ['#8AC926', '#1982C4'], // 鲜绿 -> 钴蓝
+    ['#6A4C93', '#FF595E'], // 深紫 -> 亮红
+    ['#FFCA3A', '#8AC926']  // 柠檬黄 -> 鲜绿
   ];
 
   // 从多巴胺数组中选择颜色组合
   function getRandomDopamineGradient() {
-    const randomIndex = Math.floor(Math.random() * dopamineGradients.length);
-    return dopamineGradients[randomIndex];
+    const randomIndex = Math.floor(Math.random() * brightDopamineGradients.length);
+    return brightDopamineGradients[randomIndex];
   }
 
   // 设置标题颜色
@@ -717,6 +842,8 @@ document.addEventListener('DOMContentLoaded', function() {
       title.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
       title.style.webkitBackgroundClip = 'text';
       title.style.webkitTextFillColor = 'transparent';
+      // 添加更明显的阴影让文字更突出
+      title.style.textShadow = `3px 3px 8px rgba(0,0,0,0.3)`;
     }
   }
 
@@ -727,28 +854,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const [color1, color2] = getRandomDopamineGradient();
       button.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
       
-      // 确保文字清晰可见（根据背景颜色计算文字颜色）
-      const hex1 = color1.replace('#', '');
-      const hex2 = color2.replace('#', '');
-      
-      // 简单计算平均亮度
-      const r1 = parseInt(hex1.substr(0,2), 16);
-      const g1 = parseInt(hex1.substr(2,2), 16);
-      const b1 = parseInt(hex1.substr(4,2), 16);
-      
-      const r2 = parseInt(hex2.substr(0,2), 16);
-      const g2 = parseInt(hex2.substr(2,2), 16);
-      const b2 = parseInt(hex2.substr(4,2), 16);
-      
-      const avgR = (r1 + r2) / 2;
-      const avgG = (g1 + g2) / 2;
-      const avgB = (b1 + b2) / 2;
-      
-      // 计算相对亮度（使用WCAG公式）
-      const brightness = (avgR * 299 + avgG * 587 + avgB * 114) / 1000;
-      
-      // 如果背景较亮，使用深色文字；如果背景较暗，使用浅色文字
-      button.style.color = brightness > 128 ? '#000000' : '#FFFFFF';
+      // 对于亮色背景，总是使用白色文字，确保清晰可见
+      // 因为这些颜色都很鲜艳，白色文字在任何亮色背景上都很清晰
+      button.style.color = '#FFFFFF';
+      button.style.fontWeight = '700';
+      button.style.textShadow = '0 1px 3px rgba(0,0,0,0.3)';
     }
   }
 
@@ -779,6 +889,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let totalPages = Math.ceil(allPhotos.length / photosPerPage);
   let isLoading = false;
   let lightboxInstance = null;
+  let currentLightboxIndex = 0;
 
   // DOM 元素
   const photoWall = document.getElementById('photo-wall');
@@ -836,7 +947,7 @@ document.addEventListener('DOMContentLoaded', function() {
     photoWall.appendChild(fragment);
   }
 
-  // 创建照片元素
+  // 创建照片元素（添加位置和时间信息）
   function createPhotoElement(photo) {
     const photoItem = document.createElement('div');
     photoItem.className = 'photo-item';
@@ -849,6 +960,22 @@ document.addEventListener('DOMContentLoaded', function() {
            data-date="${photo.date || ''}">
         <img src="${photo.url}" alt="${photo.desc || '照片'}" loading="lazy" class="photo-image">
         <div class="photo-zoom-icon">⤡</div>
+        ${(photo.location || photo.date) ? `
+        <div class="photo-info-overlay">
+          ${photo.location ? `
+          <div class="photo-location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>${photo.location}</span>
+          </div>
+          ` : ''}
+          ${photo.date ? `
+          <div class="photo-date">
+            <i class="far fa-clock"></i>
+            <span>${photo.date}</span>
+          </div>
+          ` : ''}
+        </div>
+        ` : ''}
       </div>
       ${photo.desc ? `<p class="photo-caption">${photo.desc}</p>` : ''}
     `;
@@ -893,14 +1020,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 600);
   }
 
-  // 灯箱功能
+  // 灯箱功能（带位置和时间信息）
   function showLightbox(index) {
     const photo = allPhotos[index];
+    currentLightboxIndex = index;
     
     const html = `
+      <div class="lightbox-close">
+        <i class="fas fa-times"></i>
+      </div>
       <img src="${photo.url}" alt="${photo.desc || '照片'}" id="lightbox-img">
       <div class="lightbox-arrow lightbox-prev">&#10094;</div>
       <div class="lightbox-arrow lightbox-next">&#10095;</div>
+      ${(photo.desc || photo.location || photo.date) ? `
+      <div class="lightbox-info">
+        ${photo.desc ? `<div class="lightbox-desc">${photo.desc}</div>` : ''}
+        ${(photo.location || photo.date) ? `
+        <div class="lightbox-meta">
+          ${photo.location ? `<span><i class="fas fa-map-marker-alt"></i> ${photo.location}</span>` : ''}
+          ${photo.date ? `<span><i class="far fa-clock"></i> ${photo.date}</span>` : ''}
+        </div>
+        ` : ''}
+      </div>
+      ` : ''}
+      <div class="lightbox-index">${index + 1} / ${allPhotos.length}</div>
     `;
 
     lightboxInstance = basicLightbox.create(html, { 
@@ -916,30 +1059,43 @@ document.addEventListener('DOMContentLoaded', function() {
     lightboxInstance.show();
     
     // 添加事件监听器
-    document.querySelector('.lightbox-prev').onclick = () => navigate(-1);
-    document.querySelector('.lightbox-next').onclick = () => navigate(1);
-
-    document.onkeydown = (e) => {
-      if (e.key === 'Escape') lightboxInstance.close();
-      if (e.key === 'ArrowLeft') navigate(-1);
-      if (e.key === 'ArrowRight') navigate(1);
-    };
-
-    document.getElementById('lightbox-img').onclick = function() {
-      this.classList.toggle('zoomed');
-    }
+    setupLightboxEvents();
   }
 
-  function navigate(step) {
-    const currentFrame = document.querySelector('.photo-frame[data-index="' + currentIndex + '"]');
-    currentIndex = (currentIndex + step + frames.length) % frames.length;
-    const frame = frames[currentIndex];
-    const src = frame.dataset.src;
-    const alt = frame.dataset.alt || '';
+  // 设置灯箱事件
+  function setupLightboxEvents() {
+    // 关闭按钮
+    document.querySelector('.lightbox-close').onclick = () => lightboxInstance.close();
+    
+    // 左右箭头
+    document.querySelector('.lightbox-prev').onclick = () => navigateLightbox(-1);
+    document.querySelector('.lightbox-next').onclick = () => navigateLightbox(1);
+    
+    // 键盘控制
+    document.onkeydown = (e) => {
+      if (e.key === 'Escape') lightboxInstance.close();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    };
+    
+    // 图片双击缩放
     const img = document.getElementById('lightbox-img');
-    img.src = src;
-    img.alt = alt;
-    img.classList.remove('zoomed');
+    img.onclick = function() {
+      this.classList.toggle('zoomed');
+    };
+  }
+
+  // 灯箱导航
+  function navigateLightbox(step) {
+    let newIndex = (currentLightboxIndex + step + allPhotos.length) % allPhotos.length;
+    
+    // 关闭当前灯箱
+    lightboxInstance.close();
+    
+    // 短暂延迟后打开新的
+    setTimeout(() => {
+      showLightbox(newIndex);
+    }, 100);
   }
 
   // 拟态按钮日夜模式切换
