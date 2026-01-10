@@ -328,7 +328,7 @@
   font-weight: 800;
   margin-bottom: 8px;
   /* 初始颜色，会被JS动态设置 */
-  background: linear-gradient(135deg, #FF006E, #FFBE0B);
+  background: linear-gradient(135deg, #A3D9FF, #7AB8FF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
@@ -465,7 +465,7 @@
 }
 
 .load-more-btn {
-  background: linear-gradient(135deg, #FF006E, #FFBE0B);
+  background: linear-gradient(135deg, #A3D9FF, #7AB8FF);
   color: white;
   border: none;
   padding: 14px 35px;
@@ -789,49 +789,53 @@ body.dark-mode .photo-caption {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 24种亮色渐变色多巴胺数组（每个都是两种鲜艳颜色的渐变组合）
-  const brightDopamineGradients = [
-    // 超亮系列
-    ['#FF006E', '#FFBE0B'], // 玫红 -> 亮黄
-    ['#FB5607', '#8338EC'], // 橘红 -> 紫晶
-    ['#3A86FF', '#FF006E'], // 天蓝 -> 玫红
-    ['#FFBE0B', '#FB5607'], // 亮黄 -> 橘红
+  // 真正的多巴胺配色 - 同色系、明亮和谐的渐变
+  const dopamineGradients = [
+    // 蓝色系 - 天空和海洋的渐变
+    ['#E3F2FD', '#90CAF9'], // 淡蓝 -> 中蓝
+    ['#BBDEFB', '#64B5F6'], // 更淡蓝 -> 亮蓝
+    ['#A3D9FF', '#7AB8FF'], // 天蓝 -> 宝蓝
     
-    // 霓虹系列
-    ['#00F5D4', '#9B5DE5'], // 青色 -> 紫色
-    ['#F15BB5', '#00BBF9'], // 粉红 -> 青蓝
-    ['#FF9E00', '#9B5DE5'], // 橙黄 -> 紫色
-    ['#00F5D4', '#FF006E'], // 青色 -> 玫红
+    // 绿色系 - 大自然渐变
+    ['#E8F5E9', '#A5D6A7'], // 淡绿 -> 薄荷绿
+    ['#C8E6C9', '#81C784'], // 浅绿 -> 草绿
+    ['#DCEDC8', '#AED581'], // 嫩绿 -> 苹果绿
     
-    // 荧光系列
-    ['#70E000', '#FF9E00'], // 荧光绿 -> 橙黄
-    ['#FF9E00', '#9B5DE5'], // 橙黄 -> 紫色
-    ['#FF6D6A', '#FFBE0B'], // 珊瑚红 -> 亮黄
-    ['#9B5DE5', '#00F5D4'], // 紫色 -> 青色
+    // 紫色系 - 薰衣草渐变
+    ['#F3E5F5', '#CE93D8'], // 淡紫 -> 紫丁香
+    ['#E1BEE7', '#BA68C8'], // 浅紫 -> 中紫
+    ['#EDE7F6', '#B39DDB'], // 薰衣草 -> 淡紫
     
-    // 糖果色系列
-    ['#FF5DA2', '#00D2FF'], // 糖果粉 -> 糖果蓝
-    ['#FF87AB', '#A0E7E5'], // 浅粉 -> 薄荷
-    ['#FFD166', '#EF476F'], // 阳光黄 -> 鲜红
-    ['#06D6A0', '#FFD166'], // 翠绿 -> 阳光黄
+    // 粉色系 - 柔和甜美渐变
+    ['#FCE4EC', '#F48FB1'], // 淡粉 -> 粉红
+    ['#F8BBD0', '#F06292'], // 浅粉 -> 玫瑰粉
+    ['#FFEBEE', '#E91E63'], // 粉白 -> 玫红
     
-    // 彩虹系列
-    ['#EF476F', '#FFD166'], // 鲜红 -> 阳光黄
-    ['#FFD166', '#06D6A0'], // 阳光黄 -> 翠绿
-    ['#06D6A0', '#118AB2'], // 翠绿 -> 海洋蓝
-    ['#118AB2', '#7209B7'], // 海洋蓝 -> 紫罗兰
+    // 橙色系 - 温暖渐变
+    ['#FFF3E0', '#FFCC80'], // 淡橙 -> 浅橙
+    ['#FFE0B2', '#FFB74D'], // 米白 -> 橙色
+    ['#FFECB3', '#FFD54F'], // 淡黄 -> 金黄
     
-    // 流行色系列
-    ['#FF595E', '#FFCA3A'], // 亮红 -> 柠檬黄
-    ['#8AC926', '#1982C4'], // 鲜绿 -> 钴蓝
-    ['#6A4C93', '#FF595E'], // 深紫 -> 亮红
-    ['#FFCA3A', '#8AC926']  // 柠檬黄 -> 鲜绿
+    // 青色系 - 清新渐变
+    ['#E0F7FA', '#80DEEA'], // 淡青 -> 天青
+    ['#B2EBF2', '#4DD0E1'], // 浅青 -> 青蓝
+    ['#E0F2F1', '#80CBC4'], // 薄荷 -> 青绿
+    
+    // 黄色系 - 阳光渐变
+    ['#FFFDE7', '#FFF176'], // 淡黄 -> 亮黄
+    ['#FFF9C4', '#FFEE58'], // 米黄 -> 柠檬黄
+    ['#FFF8E1', '#FFE082'], // 象牙白 -> 淡金黄
+    
+    // 红色系 - 温暖渐变
+    ['#FFEBEE', '#EF9A9A'], // 淡红 -> 粉红
+    ['#FFCDD2', '#E57373'], // 浅红 -> 珊瑚红
+    ['#FCE4EC', '#F48FB1']  // 粉白 -> 桃红
   ];
 
   // 从多巴胺数组中选择颜色组合
   function getRandomDopamineGradient() {
-    const randomIndex = Math.floor(Math.random() * brightDopamineGradients.length);
-    return brightDopamineGradients[randomIndex];
+    const randomIndex = Math.floor(Math.random() * dopamineGradients.length);
+    return dopamineGradients[randomIndex];
   }
 
   // 设置标题颜色
@@ -854,8 +858,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const [color1, color2] = getRandomDopamineGradient();
       button.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
       
-      // 对于亮色背景，总是使用白色文字，确保清晰可见
-      // 因为这些颜色都很鲜艳，白色文字在任何亮色背景上都很清晰
+      // 对于这些柔和的颜色，总是使用深色文字确保清晰可见
       button.style.color = '#FFFFFF';
       button.style.fontWeight = '700';
       button.style.textShadow = '0 1px 3px rgba(0,0,0,0.3)';
