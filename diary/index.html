@@ -984,22 +984,22 @@
       opacity: 0.8;
     }
 
-    /* 副标题轮播 */
+    /* 副标题轮播 - 修改为更流畅的切换 */
     .subtitle-carousel {
       position: relative;
       min-height: 32px;
       overflow: hidden;
       flex: 0 1 auto;
       text-align: center;
+      width: 100%;
+      max-width: 800px;
     }
 
     .page-subtitle {
       position: absolute;
       top: 0;
-      left: 50%;
-      transform: translateX(-50%) translateY(10px);
-      width: auto;
-      max-width: 100%;
+      left: 0;
+      width: 100%;
       color: #666;
       margin: 0;
       font-size: 1.3rem;
@@ -1007,14 +1007,17 @@
       line-height: 1.6;
       letter-spacing: 0.5px;
       opacity: 0;
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
       text-align: center;
+      pointer-events: none;
     }
 
     .page-subtitle.active {
-      position: relative;
       opacity: 1;
-      transform: translateX(-50%) translateY(0);
+      transform: translateY(0);
+      pointer-events: auto;
+      position: relative;
     }
 
     /* 更换按钮 */
@@ -1031,12 +1034,15 @@
       align-items: center;
       justify-content: center;
       margin-left: 4px;
+      position: absolute;
+      right: -40px;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     .subtitle-changer:hover {
       opacity: 1;
       background: rgba(153, 153, 153, 0.1);
-      transform: rotate(90deg);
     }
 
     /* Masonry 双列网格布局 */
@@ -1927,7 +1933,7 @@
       document.getElementById('page-selector').value = diaryPagination.currentPage;
     }
 
-    // ==================== 原有功能 ====================
+    // ==================== 灯箱功能 ====================
     function openLightbox(index, images) {
       currentImageIndex = index;
       currentImages = images;
@@ -1966,13 +1972,16 @@
       }
     }
 
+    // ==================== 名言轮播功能 ====================
     function initSubtitleCarousel() {
       const changer = document.querySelector('.subtitle-changer');
       if (!changer) return;
       
       const subtitles = document.querySelectorAll('.page-subtitle');
       let currentIndex = 0;
+      let autoRotateInterval;
       
+      // 显示指定索引的名言
       function showSubtitle(index) {
         subtitles.forEach(subtitle => {
           subtitle.classList.remove('active');
@@ -1985,24 +1994,77 @@
         currentIndex = index;
       }
       
+      // 切换到下一句名言
+      function nextSubtitle() {
+        let nextIndex = currentIndex + 1;
+        if (nextIndex >= subtitles.length) nextIndex = 0;
+        showSubtitle(nextIndex);
+      }
+      
+      // 切换到上一句名言
+      function prevSubtitle() {
+        let prevIndex = currentIndex - 1;
+        if (prevIndex < 0) prevIndex = subtitles.length - 1;
+        showSubtitle(prevIndex);
+      }
+      
+      // 点击按钮切换名言
       changer.addEventListener('click', function(e) {
         e.preventDefault();
-        showSubtitle(currentIndex + 1);
+        nextSubtitle();
+        resetAutoRotate();
       });
       
-      let autoRotate = setInterval(() => {
-        showSubtitle(currentIndex + 1);
-      }, 8000);
-      
+      // 鼠标悬停暂停自动轮播
       changer.addEventListener('mouseenter', () => {
-        clearInterval(autoRotate);
+        clearInterval(autoRotateInterval);
       });
       
       changer.addEventListener('mouseleave', () => {
-        autoRotate = setInterval(() => {
-          showSubtitle(currentIndex + 1);
-        }, 8000);
+        startAutoRotate();
       });
+      
+      // 点击名言容器也可以切换
+      const subtitleCarousel = document.querySelector('.subtitle-carousel');
+      subtitleCarousel.addEventListener('click', function(e) {
+        if (e.target.classList.contains('page-subtitle') || e.target.closest('.page-subtitle')) {
+          nextSubtitle();
+          resetAutoRotate();
+        }
+      });
+      
+      // 支持键盘导航
+      document.addEventListener('keydown', function(e) {
+        if (document.activeElement !== changer && 
+            !document.activeElement.classList.contains('subtitle-carousel')) {
+          return;
+        }
+        
+        if (e.key === 'ArrowLeft') {
+          prevSubtitle();
+          resetAutoRotate();
+        } else if (e.key === 'ArrowRight') {
+          nextSubtitle();
+          resetAutoRotate();
+        }
+      });
+      
+      // 启动自动轮播
+      function startAutoRotate() {
+        clearInterval(autoRotateInterval);
+        autoRotateInterval = setInterval(() => {
+          nextSubtitle();
+        }, 8000); // 8秒切换一次
+      }
+      
+      // 重置自动轮播
+      function resetAutoRotate() {
+        clearInterval(autoRotateInterval);
+        startAutoRotate();
+      }
+      
+      // 初始化自动轮播
+      startAutoRotate();
     }
 
     function applyRandomGradients() {
