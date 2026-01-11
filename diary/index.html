@@ -1726,6 +1726,9 @@
       
       diaryPagination.totalPages = Math.ceil(diaryPagination.totalItems / diaryPagination.pageSize);
       
+      // 初始化所有功能
+      initOriginalFeatures();
+      
       if (diaryPagination.totalItems <= diaryPagination.pageSize) {
         renderAllDiaries();
         return;
@@ -1804,6 +1807,11 @@
         const card = createDiaryCard(diary, i);
         container.appendChild(card);
       }
+      
+      // 加载完成后应用颜色渐变
+      setTimeout(() => {
+        applyRandomGradients();
+      }, 100);
       
       updatePaginationInfo();
       hideLoading();
@@ -1893,14 +1901,20 @@
       dateElement.style.fontWeight = '900';
       dateElement.style.textShadow = 'none';
       
-      const style = document.createElement('style');
-      style.textContent = `
-        .diary-card[data-date="${diary.date}"] .diary-content::before {
-          background: linear-gradient(135deg, ${color1}, ${color2}) !important;
-        }
-      `;
-      document.head.appendChild(style);
+      // 移除之前的内联样式创建方式，改用动态添加样式
+      const styleId = `diary-style-${diary.date.replace(/\s/g, '-')}`;
+      if (!document.getElementById(styleId)) {
+        const style = document.createElement('style');
+        style.id = styleId;
+        style.textContent = `
+          .diary-card[data-date="${diary.date}"] .diary-content::before {
+            background: linear-gradient(135deg, ${color1}, ${color2}) !important;
+          }
+        `;
+        document.head.appendChild(style);
+      }
       
+      // 图片点击事件
       const images = card.querySelectorAll('.diary-image');
       images.forEach(img => {
         img.addEventListener('click', function(e) {
@@ -1914,7 +1928,7 @@
       return card;
     }
 
-    // 显示所有日记
+    // 显示所有日记（当日记数量不超过一页时使用）
     function renderAllDiaries() {
       const container = document.getElementById('current-page-diary');
       
@@ -1923,7 +1937,7 @@
         container.appendChild(card);
       });
       
-      initOriginalFeatures();
+      applyRandomGradients();
     }
 
     // 更新分页信息
@@ -2026,17 +2040,19 @@
       
       // 点击名言容器也可以切换
       const subtitleCarousel = document.querySelector('.subtitle-carousel');
-      subtitleCarousel.addEventListener('click', function(e) {
-        if (e.target.classList.contains('page-subtitle') || e.target.closest('.page-subtitle')) {
-          nextSubtitle();
-          resetAutoRotate();
-        }
-      });
+      if (subtitleCarousel) {
+        subtitleCarousel.addEventListener('click', function(e) {
+          if (e.target.classList.contains('page-subtitle') || e.target.closest('.page-subtitle')) {
+            nextSubtitle();
+            resetAutoRotate();
+          }
+        });
+      }
       
       // 支持键盘导航
       document.addEventListener('keydown', function(e) {
-        if (document.activeElement !== changer && 
-            !document.activeElement.classList.contains('subtitle-carousel')) {
+        if (changer && document.activeElement !== changer && 
+            subtitleCarousel && !subtitleCarousel.contains(document.activeElement)) {
           return;
         }
         
@@ -2086,10 +2102,12 @@
       });
     }
 
+    // 初始化所有原始功能
     function initOriginalFeatures() {
-      applyRandomGradients();
+      // 初始化名言轮播
       initSubtitleCarousel();
       
+      // 初始化图片点击事件（全局监听）
       document.addEventListener('click', function(e) {
         if (e.target.classList.contains('diary-image')) {
           const diaryCard = e.target.closest('.diary-card');
@@ -2100,6 +2118,7 @@
       });
     }
 
+    // 灯箱事件绑定
     lightboxClose.addEventListener('click', closeLightbox);
     lightboxPrev.addEventListener('click', () => changeImage(-1));
     lightboxNext.addEventListener('click', () => changeImage(1));
