@@ -1257,16 +1257,16 @@
     }
 
     .diary-content::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--card-color1, #FF6B6B), var(--card-color2, #FF8E8E));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
 
     .diary-card:hover .diary-content {
       transform: translateY(-8px);
@@ -2028,88 +2028,90 @@
     }
 
     // 创建日记卡片
-    function createDiaryCard(diary, globalIndex) {
-      const card = document.createElement('article');
-      card.className = 'diary-card';
-      card.dataset.date = diary.date;
-      
-      const cardIndex = globalIndex % 20;
-      card.style.animationDelay = `${0.1 + cardIndex * 0.05}s`;
-      
-      const dateFormatted = formatChineseDate(diary.date);
-      
-      const colorIndex = globalIndex % gradientColors.length;
-      const [color1, color2] = gradientColors[colorIndex];
-      
-      card.innerHTML = `
-        <div class="diary-content">
-          <header class="diary-header">
-            <div class="diary-date-wrapper">
-              <h2 class="diary-date">${dateFormatted}</h2>
-            </div>
-            <div class="diary-meta">
-              ${diary.weekday ? `<span class="diary-weekday">${diary.weekday}</span>` : ''}
-              ${diary.weather ? `<span class="diary-weather" data-weather="${diary.weather}">${diary.weather}</span>` : ''}
-              ${diary.mood ? `<span class="diary-mood">${diary.mood}</span>` : ''}
-            </div>
-          </header>
-          
-          <div class="diary-body">
-            ${diary.images.length > 0 ? `
-              <div class="diary-images">
-                ${diary.images.map(img => `<img src="${img}" alt="日记图片" class="diary-image" loading="lazy" data-src="${img}">`).join('')}
-              </div>
-            ` : ''}
-            
-            <div class="diary-text">
-              ${diary.content}
-            </div>
-          </div>
-          
-          ${diary.tags.length > 0 ? `
-            <footer class="diary-footer">
-              <div class="diary-tags">
-                ${diary.tags.map(tag => `<span class="diary-tag">#${tag}</span>`).join('')}
-              </div>
-            </footer>
-          ` : ''}
+function createDiaryCard(diary, globalIndex) {
+  const card = document.createElement('article');
+  card.className = 'diary-card';
+  card.dataset.date = diary.date;
+  
+  const cardIndex = globalIndex % 20;
+  card.style.animationDelay = `${0.1 + cardIndex * 0.05}s`;
+  
+  const dateFormatted = formatChineseDate(diary.date);
+  
+  // 使用全局索引计算颜色，确保一致性
+  const colorIndex = globalIndex % gradientColors.length;
+  const [color1, color2] = gradientColors[colorIndex];
+  
+  card.innerHTML = `
+    <div class="diary-content">
+      <header class="diary-header">
+        <div class="diary-date-wrapper">
+          <h2 class="diary-date">${dateFormatted}</h2>
         </div>
-      `;
+        <div class="diary-meta">
+          ${diary.weekday ? `<span class="diary-weekday">${diary.weekday}</span>` : ''}
+          ${diary.weather ? `<span class="diary-weather" data-weather="${diary.weather}">${diary.weather}</span>` : ''}
+          ${diary.mood ? `<span class="diary-mood">${diary.mood}</span>` : ''}
+        </div>
+      </header>
       
-      const dateElement = card.querySelector('.diary-date');
-      dateElement.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
-      dateElement.style.webkitBackgroundClip = 'text';
-      dateElement.style.webkitTextFillColor = 'transparent';
-      dateElement.style.backgroundClip = 'text';
-      dateElement.style.fontWeight = '900';
-      dateElement.style.textShadow = 'none';
+      <div class="diary-body">
+        ${diary.images.length > 0 ? `
+          <div class="diary-images">
+            ${diary.images.map(img => `<img src="${img}" alt="日记图片" class="diary-image" loading="lazy" data-src="${img}">`).join('')}
+          </div>
+        ` : ''}
+        
+        <div class="diary-text">
+          ${diary.content}
+        </div>
+      </div>
       
-      // 移除之前的内联样式创建方式，改用动态添加样式
-      const styleId = `diary-style-${diary.date.replace(/\s/g, '-')}`;
-      if (!document.getElementById(styleId)) {
-        const style = document.createElement('style');
-        style.id = styleId;
-        style.textContent = `
-          .diary-card[data-date="${diary.date}"] .diary-content::before {
-            background: linear-gradient(135deg, ${color1}, ${color2}) !important;
-          }
-        `;
-        document.head.appendChild(style);
-      }
-      
-      // 图片点击事件
-      const images = card.querySelectorAll('.diary-image');
-      images.forEach(img => {
-        img.addEventListener('click', function(e) {
-          const diaryCard = e.target.closest('.diary-card');
-          const cardImages = Array.from(diaryCard.querySelectorAll('.diary-image'));
-          const index = cardImages.indexOf(e.target);
-          openLightbox(index, cardImages);
-        });
-      });
-      
-      return card;
+      ${diary.tags.length > 0 ? `
+        <footer class="diary-footer">
+          <div class="diary-tags">
+            ${diary.tags.map(tag => `<span class="diary-tag">#${tag}</span>`).join('')}
+          </div>
+        </footer>
+      ` : ''}
+    </div>
+  `;
+  
+  const dateElement = card.querySelector('.diary-date');
+  dateElement.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
+  dateElement.style.webkitBackgroundClip = 'text';
+  dateElement.style.webkitTextFillColor = 'transparent';
+  dateElement.style.backgroundClip = 'text';
+  dateElement.style.fontWeight = '900';
+  dateElement.style.textShadow = 'none';
+  
+  // 修改这里：直接设置悬浮条颜色，使用相同的渐变颜色
+  const diaryContent = card.querySelector('.diary-content');
+  diaryContent.style.setProperty('--card-color1', color1);
+  diaryContent.style.setProperty('--card-color2', color2);
+  
+  // 添加内联样式到卡片本身，而不是创建全局样式
+  const style = document.createElement('style');
+  style.textContent = `
+    .diary-card[data-date="${diary.date}"] .diary-content::before {
+      background: linear-gradient(135deg, ${color1}, ${color2}) !important;
     }
+  `;
+  card.appendChild(style);
+  
+  // 图片点击事件
+  const images = card.querySelectorAll('.diary-image');
+  images.forEach(img => {
+    img.addEventListener('click', function(e) {
+      const diaryCard = e.target.closest('.diary-card');
+      const cardImages = Array.from(diaryCard.querySelectorAll('.diary-image'));
+      const index = cardImages.indexOf(e.target);
+      openLightbox(index, cardImages);
+    });
+  });
+  
+  return card;
+}
 
     // 显示所有日记（当日记数量不超过一页时使用）
     function renderAllDiaries() {
