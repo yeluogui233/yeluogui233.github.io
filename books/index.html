@@ -8957,7 +8957,7 @@ background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学
   font-weight: 600;
 }
 
-/* 个人评分样式 */
+/* 个人评分样式 - 有分割线 */
 .personal-rating {
   font-weight: 600;
   margin-top: 10px;
@@ -8969,26 +8969,28 @@ background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学
   color: inherit !important; /* 继承评分颜色 */
 }
 
-/* 推荐人样式 */
+/* 推荐人样式 - 没有分割线 */
 .book-referee {
   color: #8338d3; /* 紫色 */
   font-weight: 600;
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  /* 移除分割线 */
+  border: none;
 }
 
 .book-referee strong {
   color: inherit !important;
 }
 
-/* 阅读时间样式 */
+/* 阅读时间样式 - 没有分割线 */
 .reading-time {
   color: #2e7d32; /* 绿色 */
   font-weight: 600;
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  /* 移除分割线 */
+  border: none;
 }
 
 .reading-time strong {
@@ -9384,14 +9386,7 @@ function filterBooks(category, gridElement) {
           metaHTML += `<div><strong>译者:</strong> ${book.translator}</div>`;
         }
         
-        // 添加阅读时间（如果有）
-        if (book.reading_time && book.reading_time.trim() !== '') {
-          metaHTML += `<div class="reading-time">
-            <strong>阅读时间:</strong> ${book.reading_time}
-          </div>`;
-        }
-        
-        // 添加分类信息（如果有）
+        // 添加分类信息（如果有）- 没有分割线
         if (book.category && book.category.trim() !== '') {
           // 分割分类字符串并创建彩色标签
           const categories = book.category.split(' ').filter(cat => cat.trim() !== '');
@@ -9402,18 +9397,25 @@ function filterBooks(category, gridElement) {
           metaHTML += `<div><strong>分类:</strong> ${categoryTags}</div>`;
         }
         
-        // 添加推荐人信息（如果有）
+        // 添加推荐人信息（如果有）- 没有分割线
         if (book.referee && book.referee.trim() !== '') {
           metaHTML += `<div class="book-referee">
             <strong>推荐人:</strong> ${book.referee}
           </div>`;
         }
         
-        // 添加个人评分（只有当stars存在且不是'reading'时显示）
+        // 添加个人评分（只有当stars存在且不是'reading'时显示）- 有分割线
         if (book.stars && book.stars !== 'reading') {
           const ratingColor = getRatingColor(book.stars);
           metaHTML += `<div class="personal-rating" style="color: ${ratingColor}">
             <strong>个人评分🍂:</strong> ${book.stars}/10.0
+          </div>`;
+        }
+        
+        // 添加阅读时间（如果有）- 没有分割线，放在个人评分下面
+        if (book.reading_time && book.reading_time.trim() !== '') {
+          metaHTML += `<div class="reading-time">
+            <strong>阅读时间:</strong> ${book.reading_time}
           </div>`;
         }
         
