@@ -8985,21 +8985,6 @@ background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学
   color: inherit !important;
 }
 
-/* 阅读时间样式 - 紧凑版 */
-.reading-time {
-  color: #2e7d32; /* 绿色 */
-  font-weight: 600;
-  margin-top: 2px;    /* 进一步减少上边距 */
-  margin-bottom: 2px; /* 进一步减少下边距 */
-  padding-top: 2px;   /* 进一步减少内边距 */
-  /* 移除分割线 */
-  border: none;
-}
-
-.reading-time strong {
-  color: inherit !important;
-}
-
 /* 简介样式 - 紧凑版 */
 .book-summary {
   color: var(--text-color);
@@ -9417,12 +9402,13 @@ function filterBooks(category, gridElement) {
           </div>`;
         }
         
-        // 添加阅读时间（如果有）- 没有分割线，放在个人评分下面
-        if (book.reading_time && book.reading_time.trim() !== '') {
-          metaHTML += `<div class="reading-time">
-            <strong>阅读时间:</strong> ${book.reading_time}
-          </div>`;
-        }
+        // 注意：这里删除了阅读时间的显示代码，但数据字段仍然保留
+        // 如果你以后需要重新显示阅读时间，可以取消注释下面的代码：
+        // if (book.reading_time && book.reading_time.trim() !== '') {
+        //   metaHTML += `<div class="reading-time">
+        //     <strong>阅读时间:</strong> ${book.reading_time}
+        //   </div>`;
+        // }
         
         lightboxMeta.innerHTML = metaHTML;
         
