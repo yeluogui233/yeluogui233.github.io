@@ -8957,10 +8957,11 @@ background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学
   font-weight: 600;
 }
 
-/* 个人评分样式 - 有分割线 */
+/* 个人评分样式 - 有分割线，减少底部间距 */
 .personal-rating {
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 6px;      /* 减少上边距 */
+  margin-bottom: 2px;   /* 减少下边距 */
   padding-top: 10px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -8969,11 +8970,12 @@ background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学
   color: inherit !important; /* 继承评分颜色 */
 }
 
-/* 推荐人样式 - 没有分割线 */
+/* 推荐人样式 - 没有分割线，减少间距 */
 .book-referee {
   color: #8338d3; /* 紫色 */
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 6px;      /* 减少间距 */
+  margin-bottom: 2px;   /* 减少间距 */
   padding-top: 10px;
   /* 移除分割线 */
   border: none;
@@ -8983,11 +8985,12 @@ background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学
   color: inherit !important;
 }
 
-/* 阅读时间样式 - 没有分割线 */
+/* 阅读时间样式 - 没有分割线，减少间距 */
 .reading-time {
   color: #2e7d32; /* 绿色 */
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 6px;      /* 减少上边距 */
+  margin-bottom: 2px;   /* 减少下边距 */
   padding-top: 10px;
   /* 移除分割线 */
   border: none;
@@ -9000,11 +9003,12 @@ background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学
 .book-summary {
   color: var(--text-color);
   line-height: 1.7;
-  margin-bottom: 30px;
+  margin-bottom: 20px;  /* 减少底部间距 */
+  margin-top: 8px;      /* 添加上边距 */
   font-size: 0.95rem;
   text-indent: 2em;
   background: rgba(0, 0, 0, 0.02);
-  padding: 20px;
+  padding: 16px;        /* 减少内边距 */
   border-radius: 12px;
   border-left: 4px solid var(--primary-color);
 }
