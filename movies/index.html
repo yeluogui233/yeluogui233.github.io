@@ -452,6 +452,7 @@
 .category-动作 { background-color: #EF4444; }
 .category-科幻 { background-color: #06B6D4; }
 .category-悬疑 { background-color: #8B5CF6; }
+.category-推理 { background-color: #7C3AED; }
 .category-恐怖 { background-color: #7C3AED; }
 .category-惊悚 { background-color: #DC2626; }
 .category-犯罪 { background-color: #111827; }
@@ -1087,6 +1088,73 @@
           </div>
           
         
+          
+          <div class="movie-card card" data-movie-index="5" 
+               data-category="电视剧 英国 悬疑 推理">
+            <!-- 评分 -->
+            
+            <div class="movie-rating">
+              
+                <div class="stars">
+                  
+                    
+                    
+                    
+                    
+                      <!-- 完整星 -->
+                      <span class="star full">★</span>
+                    
+                  
+                    
+                    
+                    
+                    
+                      <!-- 完整星 -->
+                      <span class="star full">★</span>
+                    
+                  
+                    
+                    
+                    
+                    
+                      <!-- 完整星 -->
+                      <span class="star full">★</span>
+                    
+                  
+                    
+                    
+                    
+                    
+                      <!-- 空星 -->
+                      <span class="star empty">☆</span>
+                    
+                  
+                  <span class="rating-number">3</span>
+                </div>
+              
+            </div>
+            
+            
+            <div class="movie-poster">
+              <img src="https://s3.bmp.ovh/2026/02/08/pkZlbU5D.jpg" alt="Sherlock Season 1" loading="lazy" class="movie-poster-img">
+              <div class="movie-title-overlay">
+                <h3>Sherlock Season 1</h3>
+                
+                <small>2010</small>
+                
+              </div>
+            </div>
+            
+            <div class="movie-buttons">
+              
+              
+                <a href="https://movie.douban.com/subject/26149750/" class="btn" target="_blank" rel="noopener">详情</a>
+              
+            </div>
+            
+          </div>
+          
+        
       </div>
     </div>
 
@@ -1114,6 +1182,8 @@
       </header>
 
       <div class="movies-grid" id="friendsMoviesGrid">
+        
+          
         
           
         
@@ -1607,7 +1677,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const currentCategoryFriends = document.getElementById('currentCategoryFriends');
 
   // 影视数据
-  const movies = [{"title":"罗小黑战记2","poster":"https://s3.bmp.ovh/2026/02/08/wQTqfuKM.jpg","director":"木头","actors":"山新,刘明月","year":"2025","duration":"119分钟","country":"中国","category":" 站长推荐 动画 电影 剧情 奇幻","rating":5,"summary":"节奏很好，小黑的幕后故事，浅浅点了一下民族主义的题","details":"https://movie.douban.com/subject/36448279/","watching_time":"2025.7.24"},{"title":"链锯人:蕾赛篇","poster":"https://s3.bmp.ovh/2026/02/08/WaVtxCRn.jpg","director":"吉原达矢,藤本树","actors":"户谷菊之介,景泽诗织","year":"2025","duration":"100分钟","country":"日本","category":"站长推荐 电影 剧情 动漫 动作","rating":5,"summary":"非常还原原作了，打斗流畅动作过瘾，漫画党的名场面都还原的相当到位了","details":"https://movie.douban.com/subject/37291780/","watching_time":"2025.12.17"},{"title":"蓦然回首","poster":"https://s3.bmp.ovh/2026/02/08/1l8Wtlc6.jpg","director":"押山清高,藤本树","actors":"河合优实,吉田美月喜","year":"2024","duration":"75分钟","country":"日本","category":"站长推荐 电影 剧情 动漫","rating":5,"summary":"藤本树的温柔一集，用电影居然也表现出了藤本树那种电影分镜的漫画的感觉，看完了不哭的是这个","details":"https://movie.douban.com/subject/36765646/","watching_time":"2024.10.27"},{"title":"鬼灭之刃:猗窝座再袭","poster":"https://s3.bmp.ovh/2026/02/08/TgvnOwml.jpg","director":"近藤光,吾峠呼世晴","actors":"花江夏树,鬼头明里","year":"2025","duration":"155分钟","country":"日本","category":"电影 剧情 动漫 动作","rating":4.7,"summary":"完全超越原作的动漫大作，经费狂烧，只是节奏把握不是很好有些扣分，是超越原作忠于原作很优秀的改编作品","details":"https://movie.douban.com/subject/36524559/","watching_time":"2025.12.02"},{"title":"A Minecraft Movie","poster":"https://s3.bmp.ovh/2026/02/08/UvDF1Opv.jpg","director":"杰瑞德·赫斯","actors":"杰瑞德·赫斯,杰克·布莱克","year":"2025","duration":"101分钟","country":"瑞典","category":"电影 家庭 奇幻 冒险 动作 喜剧","rating":3,"summary":"大鼻子村民和女巫猪人背刺好笑。\n其他的一般般也没体现出mc的创造力，也少有游戏的梗，粉丝可以看一看\n","details":"https://movie.douban.com/subject/26149750/","watching_time":"2025.04.05"}];
+  const movies = [{"title":"罗小黑战记2","poster":"https://s3.bmp.ovh/2026/02/08/wQTqfuKM.jpg","director":"木头","actors":"山新,刘明月","year":"2025","duration":"119分钟","country":"中国","category":" 站长推荐 动画 电影 剧情 奇幻","rating":5,"summary":"节奏很好，小黑的幕后故事，浅浅点了一下民族主义的题","details":"https://movie.douban.com/subject/36448279/","watching_time":"2025.7.24"},{"title":"链锯人:蕾赛篇","poster":"https://s3.bmp.ovh/2026/02/08/WaVtxCRn.jpg","director":"吉原达矢,藤本树","actors":"户谷菊之介,景泽诗织","year":"2025","duration":"100分钟","country":"日本","category":"站长推荐 电影 剧情 动漫 动作","rating":5,"summary":"非常还原原作了，打斗流畅动作过瘾，漫画党的名场面都还原的相当到位了","details":"https://movie.douban.com/subject/37291780/","watching_time":"2025.12.17"},{"title":"蓦然回首","poster":"https://s3.bmp.ovh/2026/02/08/1l8Wtlc6.jpg","director":"押山清高,藤本树","actors":"河合优实,吉田美月喜","year":"2024","duration":"75分钟","country":"日本","category":"站长推荐 电影 剧情 动漫","rating":5,"summary":"藤本树的温柔一集，用电影居然也表现出了藤本树那种电影分镜的漫画的感觉，看完了不哭的是这个","details":"https://movie.douban.com/subject/36765646/","watching_time":"2024.10.27"},{"title":"鬼灭之刃:猗窝座再袭","poster":"https://s3.bmp.ovh/2026/02/08/TgvnOwml.jpg","director":"近藤光,吾峠呼世晴","actors":"花江夏树,鬼头明里","year":"2025","duration":"155分钟","country":"日本","category":"电影 剧情 动漫 动作","rating":4.7,"summary":"完全超越原作的动漫大作，经费狂烧，只是节奏把握不是很好有些扣分，是超越原作忠于原作很优秀的改编作品","details":"https://movie.douban.com/subject/36524559/","watching_time":"2025.12.02"},{"title":"A Minecraft Movie","poster":"https://s3.bmp.ovh/2026/02/08/UvDF1Opv.jpg","director":"杰瑞德·赫斯","actors":"杰瑞德·赫斯,杰克·布莱克","year":"2025","duration":"101分钟","country":"瑞典","category":"电影 家庭 奇幻 冒险 动作 喜剧","rating":3,"summary":"大鼻子村民和女巫猪人背刺好笑。\n其他的一般般也没体现出mc的创造力，也少有游戏的梗，粉丝可以看一看\n","details":"https://movie.douban.com/subject/26149750/","watching_time":"2025.04.05"},{"title":"Sherlock Season 1","poster":"https://s3.bmp.ovh/2026/02/08/pkZlbU5D.jpg","director":"保罗·麦圭根","actors":"本尼迪克特·康伯巴奇,本尼迪克特·康伯巴奇","year":"2010","duration":"单集片长88分钟","country":"英国","category":"电视剧 英国 悬疑 推理","rating":3,"summary":"谁懂，最喜欢的一版福尔摩斯，卷福和华生的选角都绝了\n太爱看华生和卷福season1的互动了\n","details":"https://movie.douban.com/subject/26149750/","watching_time":"2025.02.19"}];
 
   // 获取评分颜色 - 优化后的配色方案
   function getRatingColor(rating) {
@@ -1654,7 +1724,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 分类映射
     const mainCategories = ['电影', '电视剧', '动画', '动漫', '纪录片'];
-    const typeCategories = ['剧情', '喜剧', '爱情', '动作', '科幻', '悬疑', '恐怖', '惊悚', '犯罪', '奇幻', '冒险', '战争', '历史', '传记', '歌舞', '家庭', '儿童', '动画电影', '短剧', '体育', '音乐'];
+    const typeCategories = ['剧情', '喜剧', '爱情', '动作', '科幻', '悬疑','推理', '恐怖', '惊悚', '犯罪', '奇幻', '冒险', '战争', '历史', '传记', '歌舞', '家庭', '儿童', '动画电影', '短剧', '体育', '音乐'];
     const countryCategories = ['中国大陆', '中国香港', '中国台湾', '日本', '韩国', '美国', '英国', '法国', '德国', '意大利', '西班牙', '印度', '泰国', '俄罗斯', '加拿大', '澳大利亚', '墨西哥', '巴西', '瑞典', '挪威', '丹麦'];
     const themeCategories = ['都市', '校园', '职场', '古装', '武侠', '仙侠', '玄幻', '谍战', '警匪', '医疗', '律政', '美食', '旅行', '电竞'];
     const specialCategories = ['站长推荐', '导演作品', '明星主演'];
