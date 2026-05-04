@@ -478,8 +478,28 @@
 .category-韩国文学 { background-color: #FF47B4; } /* 亮热粉色 */
 .category-西班牙文学 { 
 background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学保持一致 */
-.category-推理小说 { background-color: #A3A3FF; } /* 亮紫色 */
-.category-恐怖小说 { background-color: #FF47FF; } /* 亮紫红色 */
+/* 推理小说 - 现代侦探风格 */
+.category-推理小说 {
+  background: linear-gradient(135deg, #2C2C2C, #1A1A1A) !important;
+  color: #E8E8E8 !important;
+  border-left: 3px solid #C5A059;
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.category-推理小说::before {
+  content: "🔍";
+  margin-right: 4px;
+  font-size: 0.9em;
+  display: inline-block;
+  animation: subtlePulse 2s infinite;
+}
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}.category-恐怖小说 { background-color: #FF47FF; } /* 亮紫红色 */
 .category-反乌托邦 { background-color: #FF4747; color: white; } /* 亮红色 */
 .category-中国史 { background-color: #FFD47A; } /* 亮实木色 */
 .category-宋史 { background-color: #FFE6A3; } /* 亮棕褐色 */
