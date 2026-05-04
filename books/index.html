@@ -495,47 +495,36 @@
 }
 
 /* 竖线 */
-.category-俄国文学::before {
-  background: linear-gradient(90deg, #E8E8E8 3px, transparent 3px),
-              linear-gradient(0deg, #E8E8E8 14px, transparent 14px);
-  background-repeat: no-repeat;
-  background-position: 4.5px 0;
+/* 俄国文学 - 斧头与十字架（中心对称版） */
+.category-俄国文学 {
+  background: #2C3E50 !important;
+  color: #E8E8E8 !important;
+  position: relative;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  border-left: 3px solid #B0BEC5;
+  padding: 4px 10px 4px 28px !important;
+  overflow: visible;
 }
 
-/* 更准确的东正教十字架 */
 .category-俄国文学::before {
   content: "";
   position: absolute;
   left: 5px;
   top: 50%;
   transform: translateY(-50%);
-  width: 14px;
-  height: 14px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E8E8E8' stroke-width='2' stroke-linecap='round'%3E%3Cline x1='12' y1='3' x2='12' y2='21'/%3E%3Cline x1='5' y1='9' x2='19' y2='9'/%3E%3Cline x1='9' y1='21' x2='15' y2='21'/%3E%3C/svg%3E");
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg stroke='%23E8E8E8' stroke-width='1.8' fill='none'%3E%3C!-- 十字架竖线 --%3E%3Cline x1='12' y1='2' x2='12' y2='22' /%3E%3C!-- 十字架上横线 --%3E%3Cline x1='5' y1='8' x2='19' y2='8' /%3E%3C!-- 十字架下横线（东正教特色） --%3E%3Cline x1='8' y1='20' x2='16' y2='20' /%3E%3C!-- 斧头刃 --%3E%3Cpath d='M16 10 L22 6 L20 4 L14 8 Z' fill='%23E8E8E8' stroke='none' /%3E%3C!-- 斧头柄 --%3E%3Cline x1='15' y1='10' x2='18' y2='16' stroke='%23E8E8E8' /%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
-}
-
-/* 雪花 - CSS绘制 */
-.category-俄国文学::after {
-  content: "";
-  position: absolute;
-  right: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  background: radial-gradient(circle, #E8E8E8 1px, transparent 1px);
-  background-size: 4px 4px;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 .category-德国文学 { background-color: #33B5E5; } /* 深天蓝 - 与小说区分 */
 .category-日本文学 {
   background-color: #C7255A !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cg fill='%23FFD0DD' fill-opacity='0.3'%3E%3Cpath d='M30 10C30 10 27 20 22 23C17 26 12 23 12 23C12 23 15 30 18 33C21 36 24 39 24 39C24 39 18 42 15 48C12 54 15 58 15 58C15 58 22 54 28 54C34 54 40 54 40 54C40 54 43 58 43 54C43 50 40 46 37 42C34 38 30 35 30 35C30 35 36 32 42 28C48 24 52 20 52 20C52 20 48 24 42 22C36 20 30 12 30 10Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23FFD0DD" fill-opacity="0.35" d="M50 15C50 15 48 25 42 28C36 31 30 28 30 28C30 28 34 35 36 40C38 45 40 50 40 50C40 50 32 52 28 58C24 64 26 68 26 68C26 68 34 64 40 62C46 60 50 58 50 58C50 58 54 60 60 62C66 64 74 68 74 68C74 68 76 64 72 58C68 52 60 50 60 50C60 50 62 45 64 40C66 35 70 28 70 28C70 28 64 31 58 28C52 25 50 15 50 15Z"/></svg>');
   background-repeat: repeat;
-  background-size: 45px 45px;
+  background-size: 48px 48px;
   background-position: 0 0;
   background-blend-mode: overlay;
   color: #FFF0F5;
@@ -544,50 +533,25 @@
   border: none;
   padding: 4px 12px;
 }
-/* 拉美文学 - 玛雅图腾风格 */
 .category-拉美文学 {
-  background: repeating-linear-gradient(
-    90deg,
-    #1B5E20,
-    #1B5E20 4px,
-    #0D3B0F 4px,
-    #0D3B0F 8px
-  ) !important;
+  background: #1B5E20 !important;
   color: #FFE082 !important;
-  position: relative;
   font-weight: 600;
   text-shadow: 0 1px 2px rgba(0,0,0,0.4);
   border-left: 3px solid #FFB300;
-  padding: 4px 10px 4px 28px !important;
+  padding: 4px 10px !important;
+  position: relative;
+  overflow: visible;
 }
 
-/* 玛雅金字塔/阶梯符号 */
 .category-拉美文学::before {
-  content: "";
+  content: "🦋";
   position: absolute;
-  left: 6px;
+  left: -20px;
   top: 50%;
   transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  background: linear-gradient(135deg, #FFB300 0%, #FF8F00 100%);
-  clip-path: polygon(50% 0%, 80% 30%, 100% 30%, 100% 100%, 0% 100%, 0% 30%, 20% 30%);
-}
-
-/* 蝴蝶 - CSS绘制 */
-.category-拉美文学::after {
-  content: "";
-  position: absolute;
-  right: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 14px;
-  height: 11px;
-  background: #FFB300;
-  border-radius: 50% 0 50% 0;
-  box-shadow: 
-    -3px 0 0 #FFD54F,
-    -6px -1px 0 #FF8F00;
+  font-size: 12px;
+  opacity: 0.7;
 }
 .category-韩国文学 { background-color: #FF47B4; } /* 亮热粉色 */
 .category-西班牙文学 { 
