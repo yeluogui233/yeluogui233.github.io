@@ -422,20 +422,16 @@
   .btn { width: 40px !important; height: 20px !important; font-size: 0.58rem !important; }
   .book-title-overlay { font-size: 0.68rem; padding: 5px 6px; }
 }
+/* 分类标签样式 - 活力多巴胺配色 */
 .book-category-tag {
-  display: inline-flex !important;
-  align-items: center;
-  height: 24px !important;      /* 统一高度 */
-  padding: 0 12px !important;    /* 统一左右内边距 */
-  font-size: 12px !important;
-  font-weight: 600;
+  display: inline-block;
+  padding: 4px 10px;
   border-radius: 12px;
-  position: relative;
-  overflow: visible;             /* 允许图标稍微溢出边缘增加灵动感 */
-  border: none !important;
-  box-sizing: border-box !important;
-  line-height: 1 !important;
-  white-space: nowrap;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 2px;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* 活力多巴胺配色方案 */
@@ -475,92 +471,13 @@
 .category-英国文学 { background-color: #7AE6FF; } /* 亮粉蓝色 */
 .category-美国文学 { background-color: #A3FFA3; } /* 亮淡绿色 */
 .category-法国文学 { background-color: #FF7AFF; } /* 亮梅红色 */
-/* === 基础通用样式：确保所有分类标签大小完全一致 === */
-.book-category-tag {
-  display: inline-flex !important;
-  align-items: center;
-  height: 24px !important;      /* 统一高度 */
-  padding: 0 12px !important;    /* 统一左右内边距 */
-  font-size: 12px !important;
-  font-weight: 600;
-  border-radius: 12px;
-  position: relative;
-  overflow: visible;             /* 允许图标稍微溢出边缘增加灵动感 */
-  border: none !important;
-  box-sizing: border-box !important;
-  line-height: 1 !important;
-  white-space: nowrap;
-}
-
-/* === 俄国文学：深色渐变 + 大号鲜亮白色十字架 === */
-.category-俄国文学 {
-  background: linear-gradient(135deg, #0d0f10 0%, #1c2a38 100%) !important;
-  color: #ffffff !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-  padding-right: 20px !important; /* 给右上角图标留出空间 */
-}
-
-.category-俄国文学::after {
-  content: "";
-  position: absolute;
-  top: -2px;      /* 移至右上角 */
-  right: -2px;    /* 稍微偏移更显鲜亮 */
-  width: 14px;    /* 放大十字架 */
-  height: 14px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10 2h4v7h7v4h-7v9h-4v-9h-7v-4h7z' fill='%23ffffff'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  pointer-events: none;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); /* 增加立体感 */
-}
-
-/* === 日本文学：灰樱渐变 + 樱花 === */
-.category-日本文学 {
-  background: linear-gradient(135deg, #fdf2f4 0%, #f7ced7 100%) !important;
-  color: #a65d71 !important;
-  padding-right: 18px !important;
-  box-shadow: inset 0 0 10px rgba(255,255,255,0.5);
-}
-
-.category-日本文学::after {
-  content: "🌸";
-  position: absolute;
-  top: -2px;   /* 移至右上角 */
-  right: -2px;
-  font-size: 11px;
-  opacity: 0.8; /* 增加一点透明度但比之前更亮 */
-}
-
-/* === 拉美文学：雨林渐变暗纹 + 黄金蝶 === */
-.category-拉美文学 {
-  background: 
-    repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 2px, transparent 2px, transparent 4px),
-    linear-gradient(135deg, #053b2a 0%, #0d5c3f 100%) !important;
-  color: #fbbf24 !important;
-  padding-right: 22px !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
-  box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
-}
-
-.category-拉美文学::after {
-  content: "🦋";
-  position: absolute;
-  top: -3px;   /* 移至右上角 */
-  right: -2px;
-  font-size: 12px;
-  transform: rotate(15deg);
-  filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.8));
-}
-
-/* === 德国文学：保持尺寸一致 === */
-.category-德国文学 {
-  background-color: #33B5E5 !important;
-  color: white !important;
-}
+.category-俄国文学 { background-color: #FFF07A; } /* 亮卡其色 */
+.category-德国文学 { background-color: #33B5E5; } /* 深天蓝 - 与小说区分 */
+.category-日本文学 { background-color: #FFB47A; } /* 亮浅橙色 */
+.category-拉美文学 {color: #007073;background-color: #a9ebe7;} /* 亮海绿色 */
 .category-韩国文学 { background-color: #FF47B4; } /* 亮热粉色 */
 .category-西班牙文学 { 
 background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学保持一致 */
-/* 推理小说 - 图标完全不占位 */
 .category-推理小说 {
   background: repeating-linear-gradient(
     45deg,
@@ -574,8 +491,37 @@ background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学
   font-weight: 600;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
   border: 1px solid #6B4E12;
-  padding: 4px 10px !important;
-  overflow: visible;  /* 允许图标溢出 */
+  padding: 4px 10px 4px 28px !important;
+}
+
+/* 贝雷帽（用SVG绘制） */
+.category-推理小说::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F5E6D3'%3E%3Cpath d='M12 4C7.5 4 3.5 6.5 3.5 9.5C3.5 12 6 13.5 9 14C8.5 15 7 16 7 16L12 15.5L17 16C17 16 15.5 15 15 14C18 13.5 20.5 12 20.5 9.5C20.5 6.5 16.5 4 12 4Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* 烟斗（用SVG绘制） */
+.category-推理小说::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F5E6D3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 12c0-3-2-5-5-5s-5 2-5 5 2 5 5 5c2 0 3.5-1 4.5-2.5'/%3E%3Cpath d='M20 8l-3 3'/%3E%3Ccircle cx='20' cy='8' r='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 @keyframes subtlePulse {
