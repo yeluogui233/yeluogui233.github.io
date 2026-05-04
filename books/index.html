@@ -473,12 +473,24 @@
 .category-法国文学 { background-color: #FF7AFF; } /* 亮梅红色 */
 .category-俄国文学 { background-color: #FFF07A; } /* 亮卡其色 */
 .category-德国文学 { background-color: #33B5E5; } /* 深天蓝 - 与小说区分 */
-.category-日本文学 { background-color: #FFB47A; } /* 亮浅橙色 */
+.category-日本文学 {
+  background-color: #C7255A !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cg fill='%23FFD0DD' fill-opacity='0.3'%3E%3Cpath d='M30 10C30 10 27 20 22 23C17 26 12 23 12 23C12 23 15 30 18 33C21 36 24 39 24 39C24 39 18 42 15 48C12 54 15 58 15 58C15 58 22 54 28 54C34 54 40 54 40 54C40 54 43 58 43 54C43 50 40 46 37 42C34 38 30 35 30 35C30 35 36 32 42 28C48 24 52 20 52 20C52 20 48 24 42 22C36 20 30 12 30 10Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 45px 45px;
+  background-position: 0 0;
+  background-blend-mode: overlay;
+  color: #FFF0F5;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  border: none;
+  padding: 4px 12px;
+}
 .category-拉美文学 {color: #007073;background-color: #a9ebe7;} /* 亮海绿色 */
 .category-韩国文学 { background-color: #FF47B4; } /* 亮热粉色 */
 .category-西班牙文学 { 
 background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学保持一致 */
-/* 推理小说 - 现代侦探风格 */
+/* 推理小说 - 图标完全不占位 */
 .category-推理小说 {
   background: repeating-linear-gradient(
     45deg,
@@ -492,11 +504,40 @@ background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学
   font-weight: 600;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
   border: 1px solid #6B4E12;
-  padding: 4px 10px 4px 28px !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F5E6D3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+  padding: 4px 10px !important;
+  overflow: visible;  /* 允许图标溢出 */
+}
+
+/* 贝雷帽 - 完全在标签外部左侧 */
+.category-推理小说::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F5E6D3'%3E%3Cpath d='M12 4C7.5 4 3.5 6.5 3.5 9.5C3.5 12 6 13.5 9 14C8.5 15 7 16 7 16L12 15.5L17 16C17 16 15.5 15 15 14C18 13.5 20.5 12 20.5 9.5C20.5 6.5 16.5 4 12 4Z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: 6px center;
-  background-size: 14px 14px;
+  background-position: center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+/* 烟斗 - 完全在标签外部右侧 */
+.category-推理小说::after {
+  content: "";
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F5E6D3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 12c0-3-2-5-5-5s-5 2-5 5 2 5 5 5c2 0 3.5-1 4.5-2.5'/%3E%3Cpath d='M20 8l-3 3'/%3E%3Ccircle cx='20' cy='8' r='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  pointer-events: none;
 }
 
 @keyframes subtlePulse {
