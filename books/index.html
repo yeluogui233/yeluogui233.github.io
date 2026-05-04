@@ -471,7 +471,65 @@
 .category-英国文学 { background-color: #7AE6FF; } /* 亮粉蓝色 */
 .category-美国文学 { background-color: #A3FFA3; } /* 亮淡绿色 */
 .category-法国文学 { background-color: #FF7AFF; } /* 亮梅红色 */
-.category-俄国文学 { background-color: #FFF07A; } /* 亮卡其色 */
+/* 俄国文学 - 纯CSS十字架 + 雪花 */
+.category-俄国文学 {
+  background: linear-gradient(135deg, #2C3E50, #1A252F) !important;
+  color: #E8E8E8 !important;
+  position: relative;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  border: none;
+  padding: 4px 10px 4px 28px !important;
+  overflow: visible;
+}
+
+/* 东正教十字架（三横杠） */
+.category-俄国文学::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 14px;
+}
+
+/* 竖线 */
+.category-俄国文学::before {
+  background: linear-gradient(90deg, #E8E8E8 3px, transparent 3px),
+              linear-gradient(0deg, #E8E8E8 14px, transparent 14px);
+  background-repeat: no-repeat;
+  background-position: 4.5px 0;
+}
+
+/* 更准确的东正教十字架 */
+.category-俄国文学::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E8E8E8' stroke-width='2' stroke-linecap='round'%3E%3Cline x1='12' y1='3' x2='12' y2='21'/%3E%3Cline x1='5' y1='9' x2='19' y2='9'/%3E%3Cline x1='9' y1='21' x2='15' y2='21'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* 雪花 - CSS绘制 */
+.category-俄国文学::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #E8E8E8 1px, transparent 1px);
+  background-size: 4px 4px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .category-德国文学 { background-color: #33B5E5; } /* 深天蓝 - 与小说区分 */
 .category-日本文学 {
   background-color: #C7255A !important;
@@ -486,7 +544,51 @@
   border: none;
   padding: 4px 12px;
 }
-.category-拉美文学 {color: #007073;background-color: #a9ebe7;} /* 亮海绿色 */
+/* 拉美文学 - 玛雅图腾风格 */
+.category-拉美文学 {
+  background: repeating-linear-gradient(
+    90deg,
+    #1B5E20,
+    #1B5E20 4px,
+    #0D3B0F 4px,
+    #0D3B0F 8px
+  ) !important;
+  color: #FFE082 !important;
+  position: relative;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  border-left: 3px solid #FFB300;
+  padding: 4px 10px 4px 28px !important;
+}
+
+/* 玛雅金字塔/阶梯符号 */
+.category-拉美文学::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #FFB300 0%, #FF8F00 100%);
+  clip-path: polygon(50% 0%, 80% 30%, 100% 30%, 100% 100%, 0% 100%, 0% 30%, 20% 30%);
+}
+
+/* 蝴蝶 - CSS绘制 */
+.category-拉美文学::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 11px;
+  background: #FFB300;
+  border-radius: 50% 0 50% 0;
+  box-shadow: 
+    -3px 0 0 #FFD54F,
+    -6px -1px 0 #FF8F00;
+}
 .category-韩国文学 { background-color: #FF47B4; } /* 亮热粉色 */
 .category-西班牙文学 { 
 background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学保持一致 */
@@ -506,38 +608,6 @@ background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学
   border: 1px solid #6B4E12;
   padding: 4px 10px !important;
   overflow: visible;  /* 允许图标溢出 */
-}
-
-/* 贝雷帽 - 完全在标签外部左侧 */
-.category-推理小说::before {
-  content: "";
-  position: absolute;
-  left: -18px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 14px;
-  height: 14px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F5E6D3'%3E%3Cpath d='M12 4C7.5 4 3.5 6.5 3.5 9.5C3.5 12 6 13.5 9 14C8.5 15 7 16 7 16L12 15.5L17 16C17 16 15.5 15 15 14C18 13.5 20.5 12 20.5 9.5C20.5 6.5 16.5 4 12 4Z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  pointer-events: none;
-}
-
-/* 烟斗 - 完全在标签外部右侧 */
-.category-推理小说::after {
-  content: "";
-  position: absolute;
-  right: -18px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 12px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F5E6D3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 12c0-3-2-5-5-5s-5 2-5 5 2 5 5 5c2 0 3.5-1 4.5-2.5'/%3E%3Cpath d='M20 8l-3 3'/%3E%3Ccircle cx='20' cy='8' r='1.5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  pointer-events: none;
 }
 
 @keyframes subtlePulse {
