@@ -475,13 +475,13 @@
   /* 基础布局：强制对齐与高度 */
   display: inline-flex !important;
   align-items: center;
-  height: 24px; /* 请确保这与你其他标签高度一致 */
-  padding: 0 24px 0 10px !important; /* 右侧留出24px给十字架 */
+  height: 24px; 
+  padding: 0 24px 0 10px !important; /* 右侧留空间给十字架 */
   box-sizing: border-box;
-  position: relative; /* 锁定定位基准，防止图标飞走 */
+  position: relative; 
   overflow: hidden;
   
-  /* 风格设计 */
+  /* 风格设计：深色渐变背景 */
   background: linear-gradient(135deg, #0d0f10 0%, #1c2a38 100%) !important;
   color: #ffffff !important;
   font-weight: 600;
@@ -490,22 +490,22 @@
   text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
-/* 鲜亮的白色十字架 */
+/* 鲜亮的普通白色十字架 */
 .category-俄国文学::after {
   content: "";
   position: absolute;
   /* 精准定位在右侧区域中心 */
-  right: 6px; 
+  right: 8px; 
   top: 50%;
   transform: translateY(-50%);
   
-  width: 14px;
-  height: 14px;
-  /* 纯白色高精细 SVG */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='2' x2='12' y2='22'/%3E%3Cline x1='7' y1='8' x2='17' y2='8'/%3E%3Cline x1='8' y1='13' x2='16' y2='13'/%3E%3Cline x1='9' y1='19' x2='15' y2='17'/%3E%3C/g%3E%3C/svg%3E");
+  width: 12px;
+  height: 12px;
+  /* 纯白色、普通的十字架 SVG（一横一竖） */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 2h2v7h7v2h-7v11h-2v-11h-7v-2h7z' fill='%23ffffff'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
-  opacity: 1; /* 确保完全鲜亮 */
+  opacity: 1; 
   pointer-events: none;
 }
 .category-德国文学 { background-color: #33B5E5; } /* 深天蓝 - 与小说区分 */
