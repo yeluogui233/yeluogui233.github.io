@@ -471,7 +471,6 @@
 .category-英国文学 { background-color: #7AE6FF; } /* 亮粉蓝色 */
 .category-美国文学 { background-color: #A3FFA3; } /* 亮淡绿色 */
 .category-法国文学 { background-color: #FF7AFF; } /* 亮梅红色 */
-/* 1. 俄国文学：深邃雪夜与金色圣光 */
 .category-俄国文学 {
   background: linear-gradient(135deg, #0f1112 0%, #2c3e50 100%) !important;
   color: #f0f4f8 !important;
@@ -513,25 +512,53 @@
   pointer-events: none;
 }
 
+/* 拉美文学：深邃雨林与魔幻图腾 */
 .category-拉美文学 {
-  background: #06402b !important; /* 浓郁的丛林绿 */
-  color: #ffca28 !important; /* 玛雅金 */
-  font-weight: 600;
+  /* 基础背景：使用深墨绿到丛林绿的渐变 */
+  background: linear-gradient(135deg, #053b2a 0%, #0d5c3f 100%) !important;
+  color: #fbbf24 !important; /* 黄金色文字 */
+  
+  /* 核心修正：添加细腻的花纹 */
+  background-image: 
+    /* 第一层：金色蝶影水印 */
+    radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.05) 0%, transparent 50%),
+    /* 第二层：模拟雨林叶片或图腾的线性纹理 */
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.1) 0px,
+      rgba(0, 0, 0, 0.1) 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    linear-gradient(135deg, #053b2a 0%, #0d5c3f 100%) !important;
+    
   position: relative;
-  padding: 4px 10px !important;
-  border: none !important;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  overflow: hidden;
+  padding: 4px 10px 4px 10px !important;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.3); /* 增加内部深邃感 */
 }
 
+/* 装饰：右侧保留一只“鲜亮”的黄金蝶，作为视觉锚点 */
 .category-拉美文学::after {
   content: "🦋";
   position: absolute;
-  right: 1px;
-  top: -2px;
-  font-size: 10px;
-  opacity: 0.7;
-  transform: rotate(10deg);
-  pointer-events: none;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%) rotate(15deg);
+  font-size: 11px;
+  filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.8));
+  opacity: 0.9;
+}
+
+/* 统一高度与内边距补偿 */
+.category-拉美文学 {
+  display: inline-flex !important;
+  align-items: center;
+  height: 24px;
+  padding-right: 24px !important; 
+  line-height: 1 !important;
 }
 .category-韩国文学 { background-color: #FF47B4; } /* 亮热粉色 */
 .category-西班牙文学 { 
