@@ -471,92 +471,71 @@
 .category-英国文学 { background-color: #7AE6FF; } /* 亮粉蓝色 */
 .category-美国文学 { background-color: #A3FFA3; } /* 亮淡绿色 */
 .category-法国文学 { background-color: #FF7AFF; } /* 亮梅红色 */
-/* 俄国文学 - 纯CSS十字架 + 雪花 */
 .category-俄国文学 {
-  background: #1c252e !important; /* 铅灰色 */
-  color: #cfd8dc !important;
-  position: relative;
-  padding: 4px 12px 4px 32px !important; /* 留出左侧图标位 */
-  border: 1px solid #37474f;
+  background: #141618 !important; /* 更深邃的底色 */
+  color: #c0c9d0 !important;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  padding: 4px 10px !important;
+  border: none !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
 }
 
-.category-俄_icon {
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cfd8dc' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v18M8 8h8M9 19l6-2M15 5l4 3-4 3z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: 0.8;
-}
-
-/* 修正后的“斧头+十字架”复合图标 - 东正教斜杠版 */
-.category-俄国文学::before {
+/* 俄国图标：绝对定位至右下角，完全不干扰文字位置 */
+.category-俄国文学::after {
   content: "";
   position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 2px;
+  bottom: -2px;
   width: 20px;
   height: 20px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23cfd8dc' stroke-width='1.5'%3E%3Cpath d='M10 2v16M6 7h8M7 16l6-2'/%3E%3Cpath d='M14 4l5 3-5 3z' fill='%23cfd8dc'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.25;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg stroke='%23ffffff' stroke-width='1.5' fill='none'%3E%3Cpath d='M12 2v18M8 7h8M9 18l6-2'/%3E%3Cpath d='M13 5l5 3-5 3z' fill='%23ffffff' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
+  pointer-events: none;
 }
 .category-德国文学 { background-color: #33B5E5; } /* 深天蓝 - 与小说区分 */
 .category-日本文学 {
-  background: linear-gradient(135deg, #fff0f5 0%, #ffb7c5 100%) !important;
-  color: #d14d72 !important; /* 樱桃红文字 */
-  border: 1px solid #ffc0cb;
-  position: relative;
-  overflow: hidden;
-  padding: 4px 12px 4px 24px !important;
+  background: linear-gradient(135deg, #fdf2f4 0%, #f7ced7 100%) !important;
+  color: #a65d71 !important;
   font-weight: 600;
-  box-shadow: 0 2px 6px rgba(209, 77, 114, 0.15);
+  position: relative;
+  padding: 4px 10px !important;
+  border: none !important;
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.5); /* 内部微光，不增加外部高度 */
 }
 
-/* 使用伪元素制作一个小樱花图标 */
-.category-日本文学::before {
+.category-日本文学::after {
   content: "🌸";
   position: absolute;
-  left: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 12px;
-  filter: drop-shadow(0 0 2px rgba(255,255,255,0.8));
+  right: 1px;
+  top: 1px;
+  font-size: 9px;
+  opacity: 0.4;
+  pointer-events: none;
 }
 
-/* 增加背景纹理感 */
-.category-日本文学::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, #fff 10%, transparent 10%);
-  background-size: 8px 8px;
-  opacity: 0.3;
-}
 .category-拉美文学 {
-  background: linear-gradient(135deg, #1a472a, #2d5a27) !important; /* 深林绿 */
-  color: #ffd700 !important; /* 黄金色文字 */
-  display: inline-flex;
-  align-items: center;
-  gap: 6px; /* 文字和 Emoji 的间距 */
-  padding: 4px 12px !important;
-  border-left: 3px solid #ff8c00;
+  background: #06402b !important; /* 浓郁的丛林绿 */
+  color: #ffca28 !important; /* 玛雅金 */
   font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  position: relative;
+  padding: 4px 10px !important;
+  border: none !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 
-/* 放弃绝对定位，改用伪元素直接插入流 */
-.category-拉美文学::before {
+.category-拉美文学::after {
   content: "🦋";
-  font-size: 14px;
-  line-height: 1;
+  position: absolute;
+  right: 1px;
+  top: -2px;
+  font-size: 10px;
+  opacity: 0.7;
+  transform: rotate(10deg);
+  pointer-events: none;
 }
 .category-韩国文学 { background-color: #FF47B4; } /* 亮热粉色 */
 .category-西班牙文学 { 
