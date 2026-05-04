@@ -473,85 +473,90 @@
 .category-法国文学 { background-color: #FF7AFF; } /* 亮梅红色 */
 /* 俄国文学 - 纯CSS十字架 + 雪花 */
 .category-俄国文学 {
-  background: linear-gradient(135deg, #2C3E50, #1A252F) !important;
-  color: #E8E8E8 !important;
+  background: #1c252e !important; /* 铅灰色 */
+  color: #cfd8dc !important;
   position: relative;
+  padding: 4px 12px 4px 32px !important; /* 留出左侧图标位 */
+  border: 1px solid #37474f;
   font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-  border: none;
-  padding: 4px 10px 4px 28px !important;
-  overflow: visible;
+  letter-spacing: 0.5px;
 }
 
-/* 东正教十字架（三横杠） */
+.category-俄_icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cfd8dc' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v18M8 8h8M9 19l6-2M15 5l4 3-4 3z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.8;
+}
+
+/* 修正后的“斧头+十字架”复合图标 - 东正教斜杠版 */
 .category-俄国文学::before {
   content: "";
   position: absolute;
-  left: 6px;
+  left: 8px;
   top: 50%;
   transform: translateY(-50%);
-  width: 12px;
-  height: 14px;
-}
-
-/* 竖线 */
-/* 俄国文学 - 斧头与十字架（中心对称版） */
-.category-俄国文学 {
-  background: #2C3E50 !important;
-  color: #E8E8E8 !important;
-  position: relative;
-  font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-  border-left: 3px solid #B0BEC5;
-  padding: 4px 10px 4px 28px !important;
-  overflow: visible;
-}
-
-.category-俄国文学::before {
-  content: "";
-  position: absolute;
-  left: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg stroke='%23E8E8E8' stroke-width='1.8' fill='none'%3E%3C!-- 十字架竖线 --%3E%3Cline x1='12' y1='2' x2='12' y2='22' /%3E%3C!-- 十字架上横线 --%3E%3Cline x1='5' y1='8' x2='19' y2='8' /%3E%3C!-- 十字架下横线（东正教特色） --%3E%3Cline x1='8' y1='20' x2='16' y2='20' /%3E%3C!-- 斧头刃 --%3E%3Cpath d='M16 10 L22 6 L20 4 L14 8 Z' fill='%23E8E8E8' stroke='none' /%3E%3C!-- 斧头柄 --%3E%3Cline x1='15' y1='10' x2='18' y2='16' stroke='%23E8E8E8' /%3E%3C/g%3E%3C/svg%3E");
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23cfd8dc' stroke-width='1.5'%3E%3Cpath d='M10 2v16M6 7h8M7 16l6-2'/%3E%3Cpath d='M14 4l5 3-5 3z' fill='%23cfd8dc'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
 }
 .category-德国文学 { background-color: #33B5E5; } /* 深天蓝 - 与小说区分 */
 .category-日本文学 {
-  background-color: #C7255A !important;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23FFD0DD" fill-opacity="0.35" d="M50 15C50 15 48 25 42 28C36 31 30 28 30 28C30 28 34 35 36 40C38 45 40 50 40 50C40 50 32 52 28 58C24 64 26 68 26 68C26 68 34 64 40 62C46 60 50 58 50 58C50 58 54 60 60 62C66 64 74 68 74 68C74 68 76 64 72 58C68 52 60 50 60 50C60 50 62 45 64 40C66 35 70 28 70 28C70 28 64 31 58 28C52 25 50 15 50 15Z"/></svg>');
-  background-repeat: repeat;
-  background-size: 48px 48px;
-  background-position: 0 0;
-  background-blend-mode: overlay;
-  color: #FFF0F5;
-  font-weight: 600;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-  border: none;
-  padding: 4px 12px;
-}
-.category-拉美文学 {
-  background: #1B5E20 !important;
-  color: #FFE082 !important;
-  font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
-  border-left: 3px solid #FFB300;
-  padding: 4px 10px !important;
+  background: linear-gradient(135deg, #fff0f5 0%, #ffb7c5 100%) !important;
+  color: #d14d72 !important; /* 樱桃红文字 */
+  border: 1px solid #ffc0cb;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
+  padding: 4px 12px 4px 24px !important;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(209, 77, 114, 0.15);
 }
 
-.category-拉美文学::before {
-  content: "🦋";
+/* 使用伪元素制作一个小樱花图标 */
+.category-日本文学::before {
+  content: "🌸";
   position: absolute;
-  left: -20px;
+  left: 6px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 12px;
-  opacity: 0.7;
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.8));
+}
+
+/* 增加背景纹理感 */
+.category-日本文学::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10%);
+  background-size: 8px 8px;
+  opacity: 0.3;
+}
+.category-拉美文学 {
+  background: linear-gradient(135deg, #1a472a, #2d5a27) !important; /* 深林绿 */
+  color: #ffd700 !important; /* 黄金色文字 */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* 文字和 Emoji 的间距 */
+  padding: 4px 12px !important;
+  border-left: 3px solid #ff8c00;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* 放弃绝对定位，改用伪元素直接插入流 */
+.category-拉美文学::before {
+  content: "🦋";
+  font-size: 14px;
+  line-height: 1;
 }
 .category-韩国文学 { background-color: #FF47B4; } /* 亮热粉色 */
 .category-西班牙文学 { 
