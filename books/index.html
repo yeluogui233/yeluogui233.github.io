@@ -472,24 +472,41 @@
 .category-美国文学 { background-color: #A3FFA3; } /* 亮淡绿色 */
 .category-法国文学 { background-color: #FF7AFF; } /* 亮梅红色 */
 .category-俄国文学 {
-  background: linear-gradient(135deg, #0f1112 0%, #2c3e50 100%) !important;
-  color: #f0f4f8 !important;
-  padding-right: 24px !important; /* 为右侧图标留出固定空间 */
-  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  /* 基础布局：强制对齐与高度 */
+  display: inline-flex !important;
+  align-items: center;
+  height: 24px; /* 请确保这与你其他标签高度一致 */
+  padding: 0 24px 0 10px !important; /* 右侧留出24px给十字架 */
+  box-sizing: border-box;
+  position: relative; /* 锁定定位基准，防止图标飞走 */
+  overflow: hidden;
+  
+  /* 风格设计 */
+  background: linear-gradient(135deg, #0d0f10 0%, #1c2a38 100%) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  border: none !important;
+  border-radius: 12px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
+/* 鲜亮的白色十字架 */
 .category-俄国文学::after {
   content: "";
   position: absolute;
-  right: 4px;
+  /* 精准定位在右侧区域中心 */
+  right: 6px; 
   top: 50%;
   transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23FFD700' stroke-width='2' stroke-linecap='round'%3E%3Cline x1='12' y1='2' x2='12' y2='22'/%3E%3Cline x1='7' y1='8' x2='17' y2='8'/%3E%3Cline x1='8' y1='13' x2='16' y2='13'/%3E%3Cline x1='9' y1='19' x2='15' y2='17'/%3E%3C/g%3E%3C/svg%3E");
+  
+  width: 14px;
+  height: 14px;
+  /* 纯白色高精细 SVG */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='2' x2='12' y2='22'/%3E%3Cline x1='7' y1='8' x2='17' y2='8'/%3E%3Cline x1='8' y1='13' x2='16' y2='13'/%3E%3Cline x1='9' y1='19' x2='15' y2='17'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
-  filter: drop-shadow(0 0 3px #ffd700); /* 鲜亮的金色发光效果 */
+  opacity: 1; /* 确保完全鲜亮 */
+  pointer-events: none;
 }
 .category-德国文学 { background-color: #33B5E5; } /* 深天蓝 - 与小说区分 */
 .category-日本文学 {
