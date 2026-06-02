@@ -491,30 +491,25 @@
   position: relative;
   overflow: hidden;
 }
-
-/* 模拟魔幻现实主义的神秘微光（淡淡的金色蝴蝶闪烁感） */
-/* === 拉美文学专属特色样式：丛林暗纹与黄金边框 === */
 .category-拉美文学 {
-  /* 翡翠雨林渐变底色 + 叠加半透明的蝴蝶与热带树叶 SVG 图案 */
-  background: 
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255,215,0,0.15)'><path d='M12 2s1.5 3 3.5 4.5S20 7.5 20 10s-2 4.5-4.5 4.5-2-1.5-3.5-4.5c-1.5 3-1.5 4.5-3.5 4.5S4 12.5 4 10s2.5-3.5 4.5-3.5S12 2 12 2z'/></svg>") no-repeat 82% 45%/12px, /* 黄色蝴蝶暗纹 */
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255,255,255,0.1)'><path d='M17 21s4-6 4-10V3s-6 4-10 4-4-2-4-2 1 6 5 9-4 2-4 2 6-1 9-5'/></svg>") no-repeat 95% 20%/10px, /* 热带芭蕉叶暗纹 */
-    linear-gradient(135deg, #005f53, #00a887, #22c55e) !important;
+  background-color: #a9ebe7 !important; /* 回归你喜欢的干净亮海绿色 */
+  color: #007073 !important;            /* 深海绿文字，高对比度，清爽干净 */
+  font-weight: 600;
   
-  color: #fff9e6 !important; /* 复古羊皮纸字色 */
-  font-weight: 700;
+  /* 移除之前的所有渐变、动画和强行留白 */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23007073'><path d='M12 2s1.5 3 3.5 4.5S20 7.5 20 10s-2 4.5-4.5 4.5-2-1.5-3.5-4.5c-1.5 3-1.5 4.5-3.5 4.5S4 12.5 4 10s2.5-3.5 4.5-3.5S12 2 12 2z'/></svg>") !important;
+  background-repeat: no-repeat !important;
   
-  /* 左侧象征“马孔多黄金”的边框 */
-  border-left: 3px solid #fbbf24 !important; 
+  /* 精确控制图案：固定在右上角，大小为 10px，无悬浮、不占文字空间 */
+  background-position: calc(100% - 4px) 4px !important;
+  background-size: 10px !important;
   
-  /* 文字阴影与标签阴影 */
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
-  box-shadow: 0 2px 8px rgba(0, 168, 135, 0.3) !important;
-  
-  /* 调整右侧内边距，给暗纹留出空间，防止遮挡文字 */
-  padding: 4px 26px 4px 10px !important;
+  /* 恢复和其他标签完全一致的正常内边距，彻底解决多余留白问题 */
+  padding: 4px 10px !important; 
+  position: relative;
+  border: none !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
 }
-
 .category-韩国文学 { background-color: #FF47B4; } /* 亮热粉色 */
 .category-西班牙文学 { 
 background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学保持一致 */
