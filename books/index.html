@@ -493,28 +493,28 @@
 }
 
 /* 模拟魔幻现实主义的神秘微光（淡淡的金色蝴蝶闪烁感） */
-.category-拉美文学::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 45%,
-    rgba(251, 191, 36, 0.4) 50%,
-    transparent 55%
-  );
-  transform: rotate(45deg);
-  animation: macondoShine 4s ease-in-out infinite;
+/* === 拉美文学专属特色样式：丛林暗纹与黄金边框 === */
+.category-拉美文学 {
+  /* 翡翠雨林渐变底色 + 叠加半透明的蝴蝶与热带树叶 SVG 图案 */
+  background: 
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255,215,0,0.15)'><path d='M12 2s1.5 3 3.5 4.5S20 7.5 20 10s-2 4.5-4.5 4.5-2-1.5-3.5-4.5c-1.5 3-1.5 4.5-3.5 4.5S4 12.5 4 10s2.5-3.5 4.5-3.5S12 2 12 2z'/></svg>") no-repeat 82% 45%/12px, /* 黄色蝴蝶暗纹 */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255,255,255,0.1)'><path d='M17 21s4-6 4-10V3s-6 4-10 4-4-2-4-2 1 6 5 9-4 2-4 2 6-1 9-5'/></svg>") no-repeat 95% 20%/10px, /* 热带芭蕉叶暗纹 */
+    linear-gradient(135deg, #005f53, #00a887, #22c55e) !important;
+  
+  color: #fff9e6 !important; /* 复古羊皮纸字色 */
+  font-weight: 700;
+  
+  /* 左侧象征“马孔多黄金”的边框 */
+  border-left: 3px solid #fbbf24 !important; 
+  
+  /* 文字阴影与标签阴影 */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 2px 8px rgba(0, 168, 135, 0.3) !important;
+  
+  /* 调整右侧内边距，给暗纹留出空间，防止遮挡文字 */
+  padding: 4px 26px 4px 10px !important;
 }
 
-@keyframes macondoShine {
-  0% { transform: translate(-30%, -30%) rotate(45deg); opacity: 0; }
-  10% { opacity: 0.8; }
-  20%, 100% { transform: translate(30%, 30%) rotate(45deg); opacity: 0; }
-}
 .category-韩国文学 { background-color: #FF47B4; } /* 亮热粉色 */
 .category-西班牙文学 { 
 background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学保持一致 */
