@@ -1,0 +1,65 @@
+---
+title: 你当像鸟飞往你的山
+sidebar: true
+widgets:
+  - profile
+  - tags
+  - recent_posts
+  - archive
+window_title: 你当像鸟飞往你的山
+layout: gallery
+comment: false
+albums:
+  - name: 风光
+    cover: https://s21.ax1x.com/2025/08/01/pVt5ROJ.jpg
+    desc: "把心里看得见的画面执行起来"
+    path: /gallery/scenery/
+  - name: 美食
+    cover: https://s21.ax1x.com/2025/07/30/pVtQIw8.jpg
+    desc: "呀米呀米"
+    path: /gallery/food/
+  - name: 动物
+    cover: https://s21.ax1x.com/2025/07/29/pVYfVhD.jpg
+    desc: "动物的爱如同你我"
+    path: /gallery/animals/
+  - name: 街拍
+    cover: https://s21.ax1x.com/2025/07/30/pVtQ7Fg.jpg
+    desc: "扬西街帮！"
+    path: /gallery/street/
+  - name: 博物馆
+    cover: https://s21.ax1x.com/2025/08/01/pVt5glF.jpg
+    desc: "千年遗泪！"
+    path: /gallery/museum/
+  - name: 手机拍摄
+    cover: https://s3.bmp.ovh/imgs/2025/08/03/5b125e12895ed3ac.jpg
+    desc: "记录生活"
+    path: /gallery/phone/
+  - name: 山东
+    cover: https://s21.ax1x.com/2025/07/29/pVYfMnI.jpg
+    desc: "山东旅客游记"
+    path: /gallery/shandong/
+  - name: 山西
+    cover: https://s3.bmp.ovh/imgs/2025/11/13/1e9354040570a57e.jpg
+    desc: "山西旅客游记"
+    path: /gallery/shanxi/
+  - name: 江苏
+    cover: https://s21.ax1x.com/2025/08/02/pVNUIyD.jpg
+    desc: "江苏旅客游记"
+    path: /gallery/jiangsu/
+  - name: 湖北
+    cover: https://s3.bmp.ovh/imgs/2026/01/06/b8b6c2cf9718e7a1.jpg
+    desc: "湖北旅客游记"
+    path: /gallery/hubei/
+  - name: 湖南
+    cover: https://s3.bmp.ovh/imgs/2026/01/06/985b2b5903be4de7.jpg
+    desc: "湖南旅客游记"
+    path: /gallery/hunan/
+  - name: 云南
+    cover: https://s3.bmp.ovh/imgs/2026/01/06/dda1c6d677cf4b03.jpg
+    desc: "云南旅客游记"
+    path: /gallery/yunnan/
+---
+
+
+
+ 

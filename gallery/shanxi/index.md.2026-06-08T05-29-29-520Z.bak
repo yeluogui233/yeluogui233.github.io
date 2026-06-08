@@ -1,0 +1,74 @@
+---
+title: 山西游记
+window_title: 山西游记
+layout: album
+photos:
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/e10f2bcbb0ced207.jpg
+    desc: "跟着悟空游山西"
+    location: "山西省大同市 云冈石窟"
+    date: 2024-09-26 17:50
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/e8b101b62bbaf70c.jpg
+    desc: "佛宫寺释迦塔"
+    location: "山西省朔州市应县 应县木塔"
+    date: 2024-09-27 13:18
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/7f77c7760fcb54c6.jpg
+    desc: "木菩萨"
+    location: "山西省大同市 云冈石窟"
+    date: 2024-09-26 16:28
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/2eb6cbf1bb371e74.jpg
+    desc: "云冈石窟木构"
+    location: "山西省大同市 云冈石窟"
+    date: 2024-09-26 17:40
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/eb3a7535ff91f794.jpg
+    desc: "悬空寺"
+    location: "山西省大同市 北岳恒山悬空寺"
+    date: 2024-09-27 10:59
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/42f79c13ce0f4508.jpg
+    desc: "华严寺壁画"
+    location: "山西省大同市 华严寺"
+    date: 2024-09-26 16:15
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/934e46522964a2d3.jpg
+    desc: "狠狠修掉所有人和遮挡物的黑神话壁画"
+    location: "山西省大同市 北岳恒山悬空寺"
+    date: 2024-09-27 10:06
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/829d58b8e7439005.jpg
+    desc: "云冈石窟里的楼"
+    location: "山西省大同市 云冈石窟"
+    date: 2024-09-26 17:29
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/65e4632562d66e82.jpg
+    desc: "大佛指人"
+    location: "山西省大同市 云冈石窟"
+    date: 2024-09-26 17:35
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/442a9dddbf381971.jpg
+    desc: "九龙壁"
+    location: "山西省大同市 九龙壁"
+    date: 2024-09-26 15:08
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/f42b302136e8c37e.jpg
+    desc: "一位观音"
+    location: "山西省大同市 善化寺"
+    date: 2024-09-26 15:38
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/2ee129b42d5bb98c.jpg
+    desc: "善化寺的壁画"
+    location: "山西省大同市 善化寺"
+    date: 2024-09-26 15:39
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/ec937f6a2d8a2977.jpg
+    desc: "佛和童子"
+    location: "山西省大同市 善化寺"
+    date: 2024-09-26 15:40
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/e19fa4cc496ed65c.jpg
+    desc: "三位战士"
+    location: "山西省大同市 善化寺"
+    date: 2024-09-26 15:41
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/a2f08d5bf18ab9ae.jpg
+    desc: "俯视大佛"
+    location: "山西省大同市 云冈石窟"
+    date: 2024-09-26 17:37
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/a2f28fe25df79893.jpg
+    desc: "八戒紫蛛再相会"
+    location: "山西省大同市浑源县 永安禅寺"
+    date: 2024-09-27 09:19
+  - url: https://s3.bmp.ovh/imgs/2026/01/11/8aafbded969611c3.jpg
+    desc: "一头龙"
+    location: "山西省大同市浑源县 永安禅寺"
+    date: 2024-09-27 09:40
+---

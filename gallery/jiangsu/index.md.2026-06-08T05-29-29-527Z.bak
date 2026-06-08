@@ -1,0 +1,138 @@
+---
+title: 江苏游记
+window_title: 江苏游记
+layout: album
+photos:
+  - url: https://s3.bmp.ovh/imgs/2025/11/13/d6588213c27b6518.jpg
+    desc: "NO投喂"
+    location: "江苏省南京市 红山野生动物园"
+    date: 2024-04-06 10:18
+  - url: https://s3.bmp.ovh/imgs/2025/11/13/208fb7a39712591e.jpg
+    desc: "鸡鸣寺樱花开"
+    location: "江苏省南京市 鸡鸣寺"
+    date: 2024-04-06 12:59
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/b2e1b6696b3d713c.jpg
+    desc: "梧桐满南京"
+    location: "江苏省南京市 梧桐大道"
+    date: 2024-04-06 14:33
+  - url: https://s3.bmp.ovh/imgs/2025/11/13/82151fa1df45604d.jpg
+    desc: "平江船杨帆"
+    location: "江苏省苏州市 平江路"
+    date: 2024-04-07 18:02
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/02c04dacfbca7ad5.jpg
+    desc: "大地的异乡者"
+    location: "江苏省南京市 先锋书店"
+    date: 2024-04-06 16:54
+  - url: https://s3.bmp.ovh/imgs/2025/11/13/ad9febcb0c04193d.jpg
+    desc: "不要停止我的音乐"
+    location: "江苏省南京市 夫子庙"
+    date: 2024-04-06 20:11
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/36e4359301942a68.jpg
+    desc: "音乐台"
+    location: "江苏省南京市 钟山风景区——音乐台"
+    date: 2024-04-06 20:11
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/aa4743781fa2b98e.jpg
+    desc: "鸡鸣寺"
+    location: "江苏省南京市 鸡鸣寺"
+    date: 2024-04-06 13:22
+  - url: https://s41.ax1x.com/2026/01/14/pZDO0Lq.jpg
+    desc: "秦淮河"
+    location: "江苏省南京市 秦淮河"
+    date: "2024-04-06 20:20"
+  - url: https://s3.bmp.ovh/imgs/2025/11/13/6a994f68bdd0cf55.jpg
+    desc: "米米嘟糖水"
+    location: "江苏省苏州市"
+    date: "2024-04-07 14:31"
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/7b0ff85ffef24d25.jpg
+    desc: "留园小船"
+    location: "江苏省苏州市 留园"
+    date: "2024-04-08 08:27"
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/592db89842fb022f.jpg
+    desc: "七里山塘"
+    location: "江苏省苏州市 七里山塘"
+    date: "2024-04-07 13:56"
+  - url: https://s41.ax1x.com/2026/01/14/pZDOsoT.jpg
+    desc: "东方之门"
+    location: "江苏省苏州市 苏州工业园区"
+    date: "2024-04-08 16:27"
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/240051c6dda10d49.jpg
+    desc: "七里山塘①"
+    location: "江苏省苏州市 七里山塘"
+    date: "2024-04-07 14:06"
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/67259ea813864708.jpg
+    desc: "七里山塘②"
+    location: "江苏省苏州市 七里山塘"
+    date: "2024-04-07 15:11"
+  - url: https://s3.bmp.ovh/imgs/2025/11/13/dfc20438a7ca4344.jpg
+    desc: "偶遇大排档"
+    location: "江苏省南京市"
+    date: "2024-04-06 18:38"
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/e7c6bbd46684aa07.jpg
+    desc: "夫子庙花灯~"
+    location: "江苏省南京市 夫子庙"
+    date: "2024-04-06 18:48"
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/10e2db41eb5aadaf.jpg
+    desc: "好吃的南京烤鸭~"
+    location: "江苏省南京市 豆菜桥"
+    date: 2024-04-06 13:22
+  - url: https://s3.bmp.ovh/imgs/2025/11/13/1a49643fbf257ec3.jpg
+    desc: "大卫带"
+    location: "江苏省南京市 先锋书店"
+    date: 2024-04-16 16:49
+  - url: https://s3.bmp.ovh/imgs/2025/11/13/8a3fade26eb2caf4.jpg
+    desc: "和我在寒山寺"
+    location: "江苏省苏州市 寒山寺"
+    date: 2024-04-08 10:30
+  - url: https://s3.bmp.ovh/imgs/2025/11/13/5a7cdcf221beebc2.jpg
+    desc: "漂亮小灯"
+    location: "江苏省苏州市 拙政园"
+    date: 2024-04-07 16:47
+  - url: https://s3.bmp.ovh/imgs/2025/11/13/74218b96dfc05f0c.jpg
+    desc: "拙政园"
+    location: "江苏省苏州市 拙政园"
+    date: 2024-04-07 17:05
+  - url: https://s3.bmp.ovh/imgs/2025/11/13/508c6a49fd15e227.jpg
+    desc: "寒山胖锦鲤"
+    location: "江苏省苏州市 寒山寺"
+    date: 2024-04-08 10:36
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/de182f06d7861530.jpg
+    desc: "天降甘露咯"
+    location: "江苏省南京市 红山野生动物园"
+    date: 2024-04-06 09:30
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/43aa67a39d8c3e70.jpg
+    desc: "小猫苏绣"
+    location: "江苏省苏州市 木渎古镇中国苏绣艺术博物馆"
+    date: "2024-04-08 14:40"
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/98f505d07b1ea601.jpg
+    desc: "油画《父亲》苏绣"
+    location: "江苏省苏州市 木渎古镇中国苏绣艺术博物馆"
+    date: "2024-04-08 14:42"
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/66d3f7293a05b6c1.jpg
+    desc: "慈祥的老奶奶苏绣"
+    location: "江苏省苏州市 木渎古镇中国苏绣艺术博物馆"
+    date: "2024-04-08 14:42"
+  - url: https://s3.bmp.ovh/imgs/2026/01/14/4333a3555e6e07a9.jpg
+    desc: "水墨山河苏绣"
+    location: "江苏省苏州市 木渎古镇中国苏绣艺术博物馆"
+    date: "2024-04-08 14:46"
+  - url: https://s21.ax1x.com/2025/07/29/pVYfVhD.jpg
+    desc: "睡胖人"
+    location: "江苏省南京市 红山动物园"
+    date: "2024-04-06 10:30"
+  - url: https://s21.ax1x.com/2025/07/29/pVYfi0x.jpg
+    desc: "干脆面"
+    location: "江苏省南京市 红山动物园"
+    date: "2024-04-06 10:14"
+  - url: https://s3.bmp.ovh/imgs/2025/08/03/54884f0b042e1ab9.jpg
+    desc: "小猫打盹"
+    location: "江苏省南京市 红山动物园"
+    date: "2024-04-06 09:30"
+  - url: https://s3.bmp.ovh/imgs/2025/08/03/0fd00a1cd7e35e5b.jpg
+    desc: "麋鹿？麋鹿行动！"
+    location: "江苏省南京市 红山动物园"
+    date: "2024-04-06 08:53"
+  - url: https://s3.bmp.ovh/imgs/2025/08/03/1ea9ada7a62e9604.jpg
+    desc: "🐻出没"
+    location: "江苏省南京市 红山动物园"
+    date: "2024-04-06 09:46"
+---
