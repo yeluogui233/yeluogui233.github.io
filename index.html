@@ -101,7 +101,119 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --></head>
+<!-- hexo injector head_end end --><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -263,6 +375,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yeluogui.cloud/2026/06/16/%E5%AE%9A%E7%A7%AF%E5%88%86%E5%AE%9A%E4%B9%89%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="叶落归">
+      <meta itemprop="description" content="”我这辈子一直想信仰某种东西，“圣地亚哥说道,”然而却一直在撒谎，我没有信仰“">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="穿过长长的隧道，便是雪国">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/06/16/%E5%AE%9A%E7%A7%AF%E5%88%86%E5%AE%9A%E4%B9%89%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">定积分定义总结</a>
+        </h2>
+
+        <div class="post-meta">
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2026-06-16 18:17:00 / 修改时间：19:41:31" itemprop="dateCreated datePublished" datetime="2026-06-16T18:17:00+08:00">2026-06-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%83%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">考研</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>769</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          这是一篇加密文章
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2026/06/16/%E5%AE%9A%E7%A7%AF%E5%88%86%E5%AE%9A%E4%B9%89%E6%80%BB%E7%BB%93/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yeluogui.cloud/2026/05/25/2666/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -295,7 +497,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-06-12 13:09:35" itemprop="dateModified" datetime="2026-06-12T13:09:35+08:00">2026-06-12</time>
+                <time title="修改时间：2026-06-16 19:41:31" itemprop="dateModified" datetime="2026-06-16T19:41:31+08:00">2026-06-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -461,7 +663,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-06-12 13:09:35" itemprop="dateModified" datetime="2026-06-12T13:09:35+08:00">2026-06-12</time>
+                <time title="修改时间：2026-06-16 19:41:31" itemprop="dateModified" datetime="2026-06-16T19:41:31+08:00">2026-06-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -590,7 +792,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-06-12 13:09:35" itemprop="dateModified" datetime="2026-06-12T13:09:35+08:00">2026-06-12</time>
+                <time title="修改时间：2026-06-16 19:41:31" itemprop="dateModified" datetime="2026-06-16T19:41:31+08:00">2026-06-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -686,7 +888,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-06-12 13:09:35" itemprop="dateModified" datetime="2026-06-12T13:09:35+08:00">2026-06-12</time>
+                <time title="修改时间：2026-06-16 19:41:31" itemprop="dateModified" datetime="2026-06-16T19:41:31+08:00">2026-06-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -807,7 +1009,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-06-12 13:09:35" itemprop="dateModified" datetime="2026-06-12T13:09:35+08:00">2026-06-12</time>
+                <time title="修改时间：2026-06-16 19:41:31" itemprop="dateModified" datetime="2026-06-16T19:41:31+08:00">2026-06-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -904,7 +1106,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-06-12 13:09:35" itemprop="dateModified" datetime="2026-06-12T13:09:35+08:00">2026-06-12</time>
+                <time title="修改时间：2026-06-16 19:41:31" itemprop="dateModified" datetime="2026-06-16T19:41:31+08:00">2026-06-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -922,7 +1124,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>952</span>
+              <span>957</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -943,11 +1145,11 @@
       
           <p>先说结论吧，这本书前期很好，但是结局我认为是没有突破时代的局限性也就是烂掉了。</p>
 <p>卡拉马佐夫兄弟中阿辽沙选择用基督般的爱去行动，这不是加缪口中盲目信仰而产生哲学自杀，而是以爱和宽怀去对抗世界的荒诞。</p>
-<p>而<strong>聂赫留朵夫</strong>的复活让我很难认同，前期<strong>聂赫留朵夫</strong>是一个纨绔子弟，为了青春期萌生的兽欲诱奸了喀秋莎，又以100卢布作为封口费。</p>
+<p>而<strong>聂赫留朵夫</strong>的复活让我很难认同，前期<strong>聂赫留朵夫</strong>是一个纨绔子弟，为了青春期萌��的兽欲诱奸了喀���莎，又以100卢布作为封口费。</p>
 <p>在法庭上遇到喀秋莎的那一瞬间，曾经怀抱虚伪理想的他已经一只脚踏进了上层社会上流人士的圈子里，他喝酒赌博玩女人，甚至和有夫之妇纠缠在一起。但是他的心尚未完全死去，遇到喀秋莎的那一刻，虽然是伪善，但他大男子主义的想救下喀秋莎，并且和她结婚来帮助他。</p>
 <p>喀秋莎一眼就看出他不是因为愧疚，也不是为了喀秋莎，而是想用和喀秋莎的结婚为自己赎罪，这样的伪善是喀秋莎不能接受的。喀秋莎的自甘堕落虽然是<strong>聂赫留朵夫</strong>的诱奸而层层导致的，但是更深层次也是由于社会的腐败，喀秋莎身为独身女人的弱势。</p>
 <p>随后<strong>聂赫留朵夫</strong>在引导下，了解了囚犯们的真实情况，他们被剥夺了土地，他们的行为被轻易定义为偷盗，甚至有的人真的在这样的条件下变成了恶人囚徒，最后他们被送入监狱，失去了人权，被草菅人命。</p>
-<p>当<strong>聂赫留朵夫</strong>为这些囚犯奔走时，<strong>聂赫留朵夫</strong>第一次决心踏上西伯利亚的土地时，他看到了什么，没错，他看到了在酷暑下被强行带上火车最后丧命的囚犯，他五官立体身形提拔但是就这样草草的死在了无人在意的角落，看到了仅仅是因为身份信息就被囚禁在监狱的劳工们。他们失去了人权，道德在他们身上已经毫不起作用，上层社会在意的仅仅是自己的官职和是否麻烦，在他们眼里这些人命变得如草芥一般轻。</p>
+<p>当<strong>聂赫留朵夫</strong>为这些囚犯奔走时，<strong>聂赫留朵夫</strong>第一次决心踏上西伯利亚的土地时，他看到了什么，没错，他看到了在酷暑下被强行带上火车最后丧命的囚犯，他五官立体身形提拔但是就这样草草的死在了无人在意的角落，看到了仅仅是因为身份信息就被囚禁在监狱的劳工们。他们失去了人权，道德���他们身上已经毫不起作用，上层社会在意的仅仅是自己的官职和是否麻烦，在他们眼里这些人命变得如草芥一般轻。</p>
 <p>可是<strong>聂赫留朵夫</strong>的觉醒居然仅仅是通过那个老疯子和福音书，认为现行的东正教是反基督的，是没有博爱的，仅此而已。所以对社会制度的讨论，对“谁能决定别人是否受罚”，和对革命者的讨论，最后居然变成了对真正的基督的认同，也就是“如果有人打了你一边脸，那你就要伸出另一面让他打”。难道俄国社会仅仅是这样就会变得更好，需要的仅仅是基督的道德吗？阿辽沙选择的不是伸脸让人打的基督，是主动行善实现人生价值的基督。正如《宗教大法官》所说，难道<strong>聂赫留朵夫</strong>的基督就只是这样浅薄的新教的观念，仅仅是这样伸脸让人打的理想吗？</p>
 <p>我觉得这样的复活，这样的觉醒过于浅薄，在故事的结局急转直下，让人有些接受不了。</p>
 
@@ -1001,7 +1203,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-06-12 13:09:35" itemprop="dateModified" datetime="2026-06-12T13:09:35+08:00">2026-06-12</time>
+                <time title="修改时间：2026-06-16 19:41:31" itemprop="dateModified" datetime="2026-06-16T19:41:31+08:00">2026-06-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1105,7 +1307,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-06-12 13:09:35" itemprop="dateModified" datetime="2026-06-12T13:09:35+08:00">2026-06-12</time>
+                <time title="修改时间：2026-06-16 19:41:31" itemprop="dateModified" datetime="2026-06-16T19:41:31+08:00">2026-06-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1203,7 +1405,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-06-12 13:09:35" itemprop="dateModified" datetime="2026-06-12T13:09:35+08:00">2026-06-12</time>
+                <time title="修改时间：2026-06-16 19:41:31" itemprop="dateModified" datetime="2026-06-16T19:41:31+08:00">2026-06-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1293,118 +1495,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yeluogui.cloud/2026/01/22/%E6%88%98%E4%BA%89%E4%B8%8E%E5%92%8C%E5%B9%B3%E2%80%94%E2%80%94%E8%87%AA%E7%94%B1%E6%84%8F%E5%BF%97%E4%B8%8E%E5%BF%85%E7%84%B6%E6%80%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="叶落归">
-      <meta itemprop="description" content="”我这辈子一直想信仰某种东西，“圣地亚哥说道,”然而却一直在撒谎，我没有信仰“">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="穿过长长的隧道，便是雪国">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2026/01/22/%E6%88%98%E4%BA%89%E4%B8%8E%E5%92%8C%E5%B9%B3%E2%80%94%E2%80%94%E8%87%AA%E7%94%B1%E6%84%8F%E5%BF%97%E4%B8%8E%E5%BF%85%E7%84%B6%E6%80%A7/" class="post-title-link" itemprop="url">战争与和平——自由意志与必然性</a>
-        </h2>
-
-        <div class="post-meta">
-		  
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2026-01-22 00:13:23" itemprop="dateCreated datePublished" datetime="2026-01-22T00:13:23+08:00">2026-01-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-06-12 13:09:35" itemprop="dateModified" datetime="2026-06-12T13:09:35+08:00">2026-06-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">文学</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://s3.bmp.ovh/imgs/2026/01/21/17b3eb8723a1dc7a.png">历经两个月终于啃完了战争与和平这本书，震撼之余为了保留封存这份感受，赶紧记录一下写篇博客，从何写起呢？我更想从他的哲学思辨开始，再讨论我比较喜欢的故事吧</p>
-<h2 id="自由和必然性"><a href="#自由和必然性" class="headerlink" title="自由和必然性"></a>自由和必然性</h2><p>书中几乎每一册或者说每一册的每一部都在提及，苹果落地可以说是期望他落地孩子的功劳，战争可以说是君主发动。但是实际上真的是这样吗？苹果落地可能是根基已经不稳，或者说万有引力强烈地撕扯，亦或者是枝干撑不起硕果，或者说平日里温柔的微风变成了狂风。那么战争的必然就不是由于君主的自由意志，他象征着的是已经受到了束缚的历史和人民群众乃至其生活的影响</p>
-<blockquote>
-<p>苹果成熟了就掉下来，它为什么掉下来?是因为地心引力吗?是因为茎干枯了吗?是因为太阳把它晒干了吗?是因为它太重了吗?是因为风吹了它吗?是因为树下有一个小孩想吃它吗?</p>
-<p>这都不是原因。这一切只是每个重大的、有机的、自发的事件得以实现的各种条件的偶合。植物学家认为苹果之所以落下来,是由于细胞组织腐败等等原因，站在树下的小孩却认为，因为他想吃苹果，并且为此做了祈祷,所以它才掉下来，植物学家和小孩都同样正确。说拿破仑去莫斯科是因为他愿意去，说他毁灭是因为亚历山大希望他毁灭,这样说的人，也对也不对，同样，一座被刨倒的一百万普特的山之所以倒下来，是由于最后一个工人用十字镐刨了最后一下,说这话的人也对也不对。在各种历史事件中，那些所谓伟大的人物，不过是给事件命名的标签罢了，他们也正如标签一样，与事件本身关系极少</p>
-</blockquote>
-<p>托尔斯泰用不计其数这样的例子，推证了其说法。历史是无数微小的人民群众的力量和决定所组成的，在一定的历史条件下，就会发挥结果，汇聚力量，影响方向。当拿破仑希望影响历史，让近卫军停止抢劫，让法国军停止他们的搜刮，结果也是于事无补。事实也证明了即使是拿破仑，理性的决定理性地想要决定历史，也不会比一个二等兵有多大的影响。也就说明了，人对自由意志的感知甚至是一种主观上极度受到时空影响的产物，只有正确了解历史条件认识这种必然，才能够正确参与才能够实现个体的自由</p>
-<p>正如微积分一样，从0到1，正是有无穷的1&#x2F;n组成的图像才构成整体的面积，在科学领域这种必然性这种关于无穷小的应用颇广。而在托尔斯泰的笔下，托老认为历史学家总是割裂开去审视离散的点，审视亚历山大，审视老库图佐夫，审视拿破仑，分析他们的错误，而事实上的他们每天面临无数的建议和情况战局，正确的建议被埋没则会被当作历史学家的话柄，但是这样就没有考虑到历史其连贯性</p>
-<blockquote>
-<p>历史科学在其运动中经常采取越来越小的单位来考察,用这种方法力求接近真理。不过,不管历史科学采取多么小的单位,我们觉得，假设彼此孤立的单位存在,假设某一现象存在着开头,假设个别历史人物的活动可以代表所有人们的肆意行为,这些假设本身就是错误的。<br>任何一个历史结论,批评家不费吹灰之力,就可以使其土崩瓦解，丝毫影响都不会留下,这只消批评家选择一个大的或者小的孤立的单位作为观察的对象,就可以办到了;批评家永远有权利这样做,因为任何历史单位都是可以任意分割的。<br>只有采取无限小的观察单位历史的微分,也就是人的共同倾向,并且运用积分的方法(就是得出这些无限小的总和),我们才有希望了解历史的规律。<br>十九世纪最初的十五年，欧洲出现了数百万人的不寻常的运动。<br>人们抛下他们的日常职业，从欧洲一边跑到另一边,抢劫和互相屠杀，胜利和陷人绝望，几年之间，整个生活的运行改变了,出现一种先高涨后衰退的激烈运动。这运动的起因是什么,它的规律是什么?人的智慧不禁要问。<br>史学家在回答这个问题时,向我们讲述巴黎城内一座建筑物里的几十个人的言行,称这些言行为革命;然后写出拿破仑和某些同情他或故视他的人的详细传记;讲述这些人之中某些人对另一些人的影响,并且说:这就是运动的起因,这就是运动的规律。</p>
-</blockquote>
-<p>因此始终难以得出答案，却常常陷入对个体的批判中。因此托老并不是一开始直接告诉我们要将连续不断的人民考虑进历史，而是给我们讲了不同阶级的人他们在战争中的故事，他们在战争中的作用。告诉我们<strong>历史不是由英雄创造的，而是由无数平凡生命在无形法则中共同编织的；个人唯有在接纳必然性的同时，投身于具体的生活与爱，才能获得真正的自由</strong>，这观点又何尝不像在题材上截然相反的陀翁呢“爱具体的生活而不是抽象的概念”</p>
-<h2 id="童山的安德烈一家"><a href="#童山的安德烈一家" class="headerlink" title="童山的安德烈一家"></a>童山的安德烈一家</h2><p>安德烈一家有安德烈公爵，小公爵夫人，其妹妹玛丽亚公爵小姐，其父亲老安德烈公爵。</p>
-<p>安德烈公爵在故事的一开始和其朋友皮埃尔分手后，为了荣誉和虚荣加入了俄法战争，这时的安德烈公爵浮躁，基于建立功勋，在和其家人告别后踏上战争。再几乎接触到死亡后回归家庭，可碰到妻子分娩难产去世，郁郁寡欢数年在童山和父亲妹妹一起生活。</p>
-<p>直到遇到娜塔莎，两个人相爱了。可在娜塔莎天真纯洁的被渣男库拉金诱惑后，远在外地的安德烈公爵又转身投入进战争，但是已经改观后的安德烈公爵此时却是由于保护家人和重视的人的生命，为了纯粹的爱国心。</p>
-<p>在法军逼近童山时，安德烈公爵给其妹妹写信要求带父亲离开童山前往莫斯科避难。可老安德烈公爵固执的守护自己的土��，守护自己怀念的俄国，死在了故土。在父权体制下，女儿长期遭到父亲的责骂和压迫，在老安德烈公爵的刻薄下，玛丽自卑爱自己的父亲却又恨自己的父亲，老安德烈公爵的爱好像刺刀让玛丽感觉痛又烦躁。在病床前期待着父亲离世的玛丽悉心照料着父亲，因为自己内心的想法又感到别扭的愧疚，直到最后老公爵几乎失去了语言能力才向玛丽道歉，两人才完成真正的理解和彼此和解。但若不是死亡将两人分开，又恐难见到这一面</p>
-<p>安德烈公爵在战场上成重伤，又进了娜塔莎家的伤员车内，可最终还是在娜塔莎，儿子和玛丽的注视下离世。他的死亡不是瞬间的，是在逐渐领悟了死亡和上帝的本质后默许了自己的离世，原谅了娜塔莎的背叛，接受了娜塔莎的爱。安德烈公爵终于通过爱和亲情剥离了死亡的恐惧，消解了其自身个人主义的孤岛，实现了俄国民族性格里东正教的上帝的救赎，桥段像加拉哈德历经冒险取得圣杯后看到自己的灵魂的形状，于是上帝带走了加拉哈德。</p>
-<p>最后一开始追求名誉的安德烈公爵选择了放手，选择了精神的解脱和救赎。</p>
-<h2 id="彼得堡的皮埃尔"><a href="#彼得堡的皮埃尔" class="headerlink" title="彼得堡的皮埃尔"></a>彼得堡的皮埃尔</h2><p>皮埃尔和安德烈公爵恰恰相反，也正如好闺蜜玛丽和娜塔莎所说，这俩人一定是因为个性迥异才成为那么亲密的朋友的。</p>
-<p>开始的皮埃尔沉迷酒乐，纵情娱乐。有钱后又加入共济会，思考人生的价值，生命的意义，解放农奴，思考怎么才能做好事但是做的一塌糊涂。但是当皮埃尔自己亲身体会了战场，看到了俄法战士的惨状，才真正消解了其享乐主义的虚无，才真正将抽象的重心转移到了具体。真正的改变是皮埃尔留在了被法国占领的莫斯科，抢救火中的小孩，为了救被法国士兵抢劫的妇女挺身而出甚至被囚禁数月。皮埃尔真正蜕变成为一个实干者。</p>
-<p>与娜塔莎最后的婚姻，皮埃尔与其和谐亲密的生活让人欣慰，两个人的互动让人对这两个人改观大变。社交圈认为最傻的皮埃尔和那个天真幼稚的小娜塔莎，把婚姻经营的友好幸福。</p>
-<p>再提一嘴娜塔莎，娜塔莎正是这本书中“生命本能”与”具体生活“的体现，正是因为有了娜塔莎前期的被拐，才有中间对自己的赎罪，再到对重伤安德烈公爵的照顾，才最后会有和皮埃尔的幸福成熟的婚姻生活，正是从虚假的资产阶级浪漫中跌落现实，又从从现实和具体找到幸福的关键人物</p>
-<p>至此作品落下帷幕，皮埃尔由一个抽象的人类幸福思考者变成了一个真正的幸福实践者。历史从这些抽象的个人英雄和自由主义回归到了群众史观和普世的善恶里。真正的历史由每一个参与其中进程的群众构成，升华了其主题，战争和和平都是人民在不同历史条件下选择的变形，追求和平是要用有爱的体制和所有人而不是单独某个历史人物决定的。</p>
-<p>最后，合上书，抽回书签。仿佛依然能看到老安德烈公爵在病床上哽咽着对女儿抱歉，安德烈公爵去世前的超脱，战争中被轻易吞没的生命<strong>彼佳</strong>。战争与和平宏大震撼，但是照见的不是拿破仑和亚历山大气吞山河的个人英雄主义画像，而是历史洪流中形形色色的寻找生活和生命意义的安德烈公爵们和皮埃尔们。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1475,7 +1565,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1704,6 +1794,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
