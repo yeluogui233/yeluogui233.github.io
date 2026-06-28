@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Popup Window
   let isfetched = false;
+  let isFetching = false;
   let datas;
   let isXml = true;
   // Search DB path
@@ -234,8 +235,19 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const fetchData = () => {
+    if (isfetched || isFetching) return;
+    isFetching = true;
+    const noResult = document.getElementById('no-result');
+    if (noResult) {
+      noResult.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><p class="search-status">正在加载搜索索引...</p>';
+    }
     fetch(CONFIG.root + searchPath)
-      .then(response => response.text())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Search index request failed: ${response.status}`);
+        }
+        return response.text();
+      })
       .then(res => {
         // Get the contents from search data
         isfetched = true;
@@ -257,8 +269,19 @@ document.addEventListener('DOMContentLoaded', () => {
           return data;
         });
         // Remove loading animation
-        document.getElementById('no-result').innerHTML = '<i class="fa fa-search fa-5x"></i>';
+        isFetching = false;
+        const noResult = document.getElementById('no-result');
+        if (noResult) {
+          noResult.innerHTML = '<i class="fa fa-search fa-5x"></i>';
+        }
         inputEventFunction();
+      })
+      .catch(() => {
+        isFetching = false;
+        const noResult = document.getElementById('no-result');
+        if (noResult) {
+          noResult.innerHTML = '<i class="far fa-frown fa-3x"></i><p class="search-status">搜索索引加载失败，请确认 search.xml 已生成。</p>';
+        }
       });
   };
 
@@ -283,8 +306,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!overlay || !input) return;
     document.body.style.overflow = 'hidden';
     overlay.classList.add('search-active');
-    input.focus();
+    window.setTimeout(() => input.focus(), 80);
     if (!isfetched) fetchData();
+    if (isfetched) inputEventFunction();
   };
 
   document.querySelectorAll('.popup-trigger').forEach(element => {
@@ -304,15 +328,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // Monitor main search box
   const onPopupClose = () => {
     document.body.style.overflow = '';
-    document.querySelector('.search-pop-overlay').classList.remove('search-active');
+    const overlay = document.querySelector('.search-pop-overlay');
+    if (overlay) overlay.classList.remove('search-active');
   };
 
-  document.querySelector('.search-pop-overlay').addEventListener('click', event => {
-    if (event.target === document.querySelector('.search-pop-overlay')) {
-      onPopupClose();
-    }
-  });
-  document.querySelector('.popup-btn-close').addEventListener('click', onPopupClose);
+  const overlay = document.querySelector('.search-pop-overlay');
+  if (overlay) {
+    overlay.addEventListener('click', event => {
+      if (event.target === overlay) {
+        onPopupClose();
+      }
+    });
+  }
+  const closeButton = document.querySelector('.popup-btn-close');
+  if (closeButton) {
+    closeButton.addEventListener('click', onPopupClose);
+  }
   window.addEventListener('pjax:success', onPopupClose);
   window.addEventListener('keyup', event => {
     if (event.key === 'Escape') {
