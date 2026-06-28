@@ -927,28 +927,3 @@ html body .hbe.hbe-error {
 html body .hbe.hbe-container #hbeForm {
   width: 100% !important;
 }
-
-/* Home post preview covers: fixed aspect ratio, crop instead of stretch */
-html body .post-card-preview {
-  overflow: hidden !important;
-}
-
-html body .post-card-preview .post-card-cover {
-  display: block !important;
-  flex: 0 0 clamp(240px, 34%, 360px) !important;
-  aspect-ratio: 16 / 10 !important;
-  overflow: hidden !important;
-  position: relative !important;
-}
-
-html body .post-card-preview .post-card-cover img {
-  display: block !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center center !important;
-  width: 100% !important;
-}
-
-html body .post-card-preview .post-card-info {
-  min-width: 0 !important;
-}

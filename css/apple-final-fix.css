@@ -1447,6 +1447,24 @@ body #netease-player iframe {
   overflow: hidden !important;
 }
 
+/* Home post previews: keep one fixed aspect ratio everywhere. */
+body .post-card-preview {
+  overflow: hidden !important;
+}
+
+body .post-card-preview .post-card-cover {
+  aspect-ratio: 16 / 10 !important;
+  flex: 0 0 clamp(240px, 34%, 360px) !important;
+  overflow: hidden !important;
+}
+
+body .post-card-preview .post-card-cover img {
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  width: 100% !important;
+}
+
 /* Absolute final screenshot fixes at real EOF. */
 body .header-inner {
   align-items: center !important;
