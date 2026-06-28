@@ -836,10 +836,13 @@ html body .hbe.hbe-container {
   box-shadow: 0 16px 40px rgba(30, 42, 68, .12) !important;
   box-sizing: border-box !important;
   color: #202938 !important;
-  margin: 24px auto !important;
-  max-width: min(560px, 100%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  margin: 20px auto !important;
+  max-width: min(520px, calc(100% - 24px)) !important;
   overflow: hidden !important;
-  padding: 18px !important;
+  padding: 16px 18px 14px !important;
 }
 
 html body .hbe.hbe-content {
@@ -848,12 +851,16 @@ html body .hbe.hbe-content {
   box-shadow: none !important;
   margin: 0 !important;
   padding: 0 !important;
+  width: 100% !important;
 }
 
 html body .hbe.hbe-form {
-  display: grid !important;
-  gap: 12px !important;
+  align-items: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
   margin: 0 !important;
+  width: 100% !important;
 }
 
 html body .hbe.hbe-input,
@@ -863,20 +870,25 @@ html body .hbe.hbe-input-default {
   box-shadow: none !important;
   margin: 0 !important;
   padding: 0 !important;
+  width: 100% !important;
 }
 
 html body .hbe.hbe-input-field,
 html body .hbe.hbe-input-field-default {
   background: #f8fafc !important;
   border: 1px solid rgba(217, 224, 235, .96) !important;
-  border-radius: 18px !important;
+  border-radius: 20px !important;
   box-shadow: inset 0 1px 2px rgba(15, 23, 42, .03) !important;
   box-sizing: border-box !important;
   color: #202938 !important;
   font-size: .95rem !important;
   height: 48px !important;
   line-height: 48px !important;
+  opacity: 1 !important;
   padding: 0 16px !important;
+  width: 100% !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
   width: 100% !important;
 }
 
@@ -893,6 +905,14 @@ html body .hbe.hbe-input-label-default {
   color: #7b8596 !important;
   font-size: .82rem !important;
   margin: 0 !important;
+  width: 100% !important;
+}
+
+html body .hbe.hbe-input-label-default::before,
+html body .hbe.hbe-input-label-default::after {
+  background: transparent !important;
+  content: none !important;
+  display: none !important;
 }
 
 html body .hbe.hbe-button {
@@ -907,6 +927,7 @@ html body .hbe.hbe-button {
   height: 40px !important;
   justify-content: center !important;
   min-height: 40px !important;
+  margin: 2px auto 0 !important;
   padding: 0 18px !important;
   transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease !important;
 }
@@ -921,9 +942,59 @@ html body .hbe.hbe-button:focus-visible {
 html body .hbe.hbe-error {
   color: #b42318 !important;
   font-size: .88rem !important;
-  margin-top: 4px !important;
+  margin-top: 2px !important;
+  min-height: 1.2em !important;
+  width: 100% !important;
 }
 
 html body .hbe.hbe-container #hbeForm {
+  width: 100% !important;
+}
+
+html body .hbe.hbe-input-field-default {
+  background: #fff !important;
+  color: #202938 !important;
+}
+
+html body .hbe.hbe-input-default .hbe-input-field-default {
+  box-shadow: none !important;
+}
+
+html body .hbe.hbe-input-default .hbe-input-label-default {
+  display: block !important;
+  float: none !important;
+  padding: 0 0 2px !important;
+  position: static !important;
+  text-align: left !important;
+  width: 100% !important;
+}
+
+html body .hbe.hbe-input-label-content-default {
+  color: #7b8596 !important;
+}
+
+/* Index post previews: one fixed cover size, no alternating height. */
+html body .content.index .post-card-preview {
+  align-items: stretch !important;
+  display: grid !important;
+  gap: 0 !important;
+  grid-template-columns: minmax(320px, 34%) minmax(0, 1fr) !important;
+  min-height: 220px !important;
+}
+
+html body .content.index .post-card-preview .post-card-cover {
+  aspect-ratio: 16 / 10 !important;
+  display: block !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+html body .content.index .post-card-preview .post-card-cover img {
+  display: block !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
   width: 100% !important;
 }
