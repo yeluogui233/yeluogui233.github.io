@@ -410,18 +410,22 @@
 
   /* 按钮组在卡片底部横向排列并居中 */
   .book-buttons {
-    display: flex;
+    display: grid;
+    grid-auto-columns: 50px;
+    grid-auto-flow: column;
     gap: 6px;
     justify-content: center;
     padding: 8px 6px 12px;
     width: 100%;
     box-sizing: border-box;
   }
-      .btn {
-    width: 44px !important;
+      .book-buttons .btn {
+    width: 50px !important;
+    min-width: 50px !important;
+    max-width: 50px !important;
     height: 22px !important;
     font-size: 0.62rem !important;
-    padding: 2px 6px !important;
+    padding: 0 !important;
     border-radius: 8px !important;
     box-shadow: none !important;
   }
@@ -481,7 +485,8 @@
 /* 超小屏幕再减小一些间距（<=480px） */
 @media (max-width: 480px) {
   .books-grid { gap: 8px 6px; }
-  .btn { width: 40px !important; height: 20px !important; font-size: 0.58rem !important; }
+  .book-buttons { grid-auto-columns: 46px !important; }
+  .book-buttons .btn { width: 46px !important; min-width: 46px !important; max-width: 46px !important; height: 20px !important; font-size: 0.58rem !important; padding: 0 !important; }
   .book-title-overlay { font-size: 0.68rem; padding: 5px 6px; }
 }
 /* 分类标签样式 - 活力多巴胺配色 */
@@ -11031,11 +11036,14 @@ background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学
 /* 按钮组 */
 .book-buttons {
   margin: 8px 0;
-  display: flex;
+  display: grid;
   gap: 8px;
+  grid-auto-columns: 62px;
+  grid-auto-flow: column;
   width: 100%;
   justify-content: center;
   padding: 0 10px;
+  box-sizing: border-box;
 }
 
 /* 统一按钮样式 */
