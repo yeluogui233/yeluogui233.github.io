@@ -822,3 +822,102 @@ html body .tag-cloud-link {
     padding: 14px !important;
   }
 }
+/* HBE unlock card */
+html body .hbe.hbe-container {
+  background: #fff !important;
+  border: 1px solid rgba(217, 224, 235, .96) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 16px 40px rgba(30, 42, 68, .12) !important;
+  box-sizing: border-box !important;
+  color: #202938 !important;
+  margin: 24px auto !important;
+  max-width: min(560px, 100%) !important;
+  overflow: hidden !important;
+  padding: 18px !important;
+}
+
+html body .hbe.hbe-content {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html body .hbe.hbe-form {
+  display: grid !important;
+  gap: 12px !important;
+  margin: 0 !important;
+}
+
+html body .hbe.hbe-input,
+html body .hbe.hbe-input-default {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html body .hbe.hbe-input-field,
+html body .hbe.hbe-input-field-default {
+  background: #f8fafc !important;
+  border: 1px solid rgba(217, 224, 235, .96) !important;
+  border-radius: 18px !important;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, .03) !important;
+  box-sizing: border-box !important;
+  color: #202938 !important;
+  font-size: .95rem !important;
+  height: 48px !important;
+  line-height: 48px !important;
+  padding: 0 16px !important;
+  width: 100% !important;
+}
+
+html body .hbe.hbe-input-field:focus,
+html body .hbe.hbe-input-field-default:focus {
+  background: #fff !important;
+  border-color: #111 !important;
+  box-shadow: 0 0 0 4px rgba(17, 17, 17, .08) !important;
+  outline: none !important;
+}
+
+html body .hbe.hbe-input-label,
+html body .hbe.hbe-input-label-default {
+  color: #7b8596 !important;
+  font-size: .82rem !important;
+  margin: 0 !important;
+}
+
+html body .hbe.hbe-button {
+  align-items: center !important;
+  background: #111 !important;
+  border: 1px solid #111 !important;
+  border-radius: 999px !important;
+  box-shadow: 0 10px 22px rgba(17, 17, 17, .16) !important;
+  color: #fff !important;
+  display: inline-flex !important;
+  font-weight: 700 !important;
+  height: 40px !important;
+  justify-content: center !important;
+  min-height: 40px !important;
+  padding: 0 18px !important;
+  transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease !important;
+}
+
+html body .hbe.hbe-button:hover,
+html body .hbe.hbe-button:focus-visible {
+  background: #000 !important;
+  box-shadow: 0 14px 26px rgba(17, 17, 17, .22) !important;
+  transform: translateY(-1px) !important;
+}
+
+html body .hbe.hbe-error {
+  color: #b42318 !important;
+  font-size: .88rem !important;
+  margin-top: 4px !important;
+}
+
+html body .hbe.hbe-container #hbeForm {
+  width: 100% !important;
+}
