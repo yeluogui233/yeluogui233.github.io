@@ -1009,6 +1009,11 @@ html body #hbePass {
   text-transform: none !important;
 }
 
+html body .hbe.hbe-input-field,
+html body .hbe.hbe-input-field-default {
+  letter-spacing: 0 !important;
+}
+
 /* iPad/tablet books layout: keep every card inside the grid. */
 @media (min-width: 768px) and (max-width: 1180px) {
   html body .books-container .books-wrapper,

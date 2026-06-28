@@ -1175,7 +1175,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #3391e3;
+  background: #ffff6a;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -3682,28 +3682,28 @@ body.index .post-card-preview {
   border-radius: 18px !important;
   box-shadow: 0 12px 34px rgba(39,50,72,0.12) !important;
   display: grid !important;
-  grid-template-columns: 42% 58% !important;
-  min-height: 230px !important;
+  grid-template-columns: minmax(320px, 38%) minmax(0, 1fr) !important;
+  min-height: 220px !important;
   overflow: hidden !important;
   padding: 0 !important;
   position: relative !important;
 }
 body.index .post-card-preview:nth-of-type(even) {
-  grid-template-columns: 58% 42% !important;
+  grid-template-columns: minmax(320px, 38%) minmax(0, 1fr) !important;
 }
 body.index .post-card-preview:nth-of-type(even) .post-card-cover {
-  grid-column: 2 !important;
-  grid-row: 1 !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
 }
 body.index .post-card-preview:nth-of-type(even) .post-card-info {
-  grid-column: 1 !important;
-  grid-row: 1 !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
 }
 body.index .post-card-cover {
   border: 0 !important;
   border-radius: 0 !important;
   height: 100% !important;
-  min-height: 230px !important;
+  min-height: 220px !important;
   width: 100% !important;
 }
 body.index .post-card-info {
@@ -3711,7 +3711,7 @@ body.index .post-card-info {
   flex-direction: column !important;
   justify-content: center !important;
   min-width: 0 !important;
-  padding: 22px 26px !important;
+  padding: 20px 24px !important;
 }
 body.index .posts-expand .post-header {
   padding: 0 !important;
@@ -3897,7 +3897,7 @@ body .btn:hover {
   transform: translateY(-2px);
 }
 body.index .post-card-preview {
-  min-height: 200px !important;
+  min-height: 220px !important;
   border-radius: 20px !important;
   box-shadow: 0 12px 30px rgba(40,52,78,0.11) !important;
 }
@@ -3905,7 +3905,7 @@ body.index .post-card-preview + .post-card-preview {
   margin-top: 18px !important;
 }
 body.index .post-card-cover {
-  min-height: 200px !important;
+  min-height: 220px !important;
 }
 body.index .post-card-info {
   padding: 20px 24px !important;

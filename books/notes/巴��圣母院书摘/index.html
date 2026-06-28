@@ -21,6 +21,22 @@
 <link rel="stylesheet" href="/_data/styles.">
   <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
   <script src="/lib/pace/pace.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var input = document.getElementById('hbePass');
+  if (!input) return;
+  var sanitize = function () {
+    var value = (input.value || '')
+      .replace(/^\s+|\s+$/g, '')
+      .replace(/[０-９]/g, function (ch) {
+        return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
+      });
+    if (input.value !== value) input.value = value;
+  };
+  input.addEventListener('input', sanitize);
+  input.addEventListener('change', sanitize);
+});
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
 <script id="hexo-configurations">
