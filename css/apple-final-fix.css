@@ -740,7 +740,13 @@ body .search-result {
   color: #202938 !important;
 }
 
-body #netease-player,
+body #netease-player {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
 body #netease-player iframe {
   border-radius: 22px !important;
   overflow: hidden !important;
@@ -1429,7 +1435,13 @@ body .sidebar-popular-item a:focus-visible > :first-child {
   color: #111 !important;
 }
 
-body #netease-player,
+body #netease-player {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
 body #netease-player iframe {
   border-radius: 22px !important;
   overflow: hidden !important;
