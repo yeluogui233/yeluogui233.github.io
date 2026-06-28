@@ -253,13 +253,16 @@ html body .sidebar-inner .sidebar-nav li {
   background: #fff !important;
   border: 1px solid rgba(217, 224, 235, .9) !important;
   border-radius: 999px !important;
+  box-sizing: border-box !important;
   color: #202938 !important;
   cursor: pointer !important;
-  display: inline-flex !important;
+  display: flex !important;
   font-size: .88rem !important;
   font-weight: 760 !important;
   justify-content: center !important;
   line-height: 1 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
   min-height: 36px !important;
   padding: 0 12px !important;
   width: 100% !important;
@@ -316,12 +319,15 @@ html body .sidebar-inner .post-toc-wrap .nav-link {
   background: #f8fafc !important;
   border: 1px solid rgba(217, 224, 235, .84) !important;
   border-radius: 14px !important;
+  box-sizing: border-box !important;
   color: #202938 !important;
   display: flex !important;
   gap: 6px !important;
   line-height: 1.45 !important;
+  max-width: 100% !important;
   padding: 9px 11px !important;
   text-decoration: none !important;
+  width: 100% !important;
 }
 
 html body .sidebar-inner .post-toc-wrap .nav-link:hover,
@@ -356,5 +362,116 @@ html body .sidebar-inner .post-toc-wrap + .site-overview-wrap {
   html body .header-inner .main-menu {
     justify-content: flex-start !important;
     overflow-x: auto !important;
+  }
+}
+
+/* Books, movies and diary pages already sit inside the shared content card.
+   Keep the page shell as the only large rounded background. */
+html body .content:has(.books-container),
+html body .content:has(.movies-container),
+html body .content:has(.diary-wrapper) {
+  background: #fff !important;
+  border: 1px solid rgba(217, 224, 235, .96) !important;
+  border-radius: 30px !important;
+  box-shadow: 0 18px 46px rgba(30, 42, 68, .11) !important;
+  box-sizing: border-box !important;
+  padding: clamp(18px, 2.2vw, 28px) !important;
+  overflow: visible !important;
+}
+
+html body .content:has(.books-container) > style,
+html body .content:has(.movies-container) > style,
+html body .content:has(.diary-wrapper) > style {
+  display: none !important;
+}
+
+html body .books-container,
+html body .movies-container,
+html body .diary-wrapper {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  max-width: none !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+html body .books-wrapper,
+html body .movies-wrapper {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  margin: 0 auto !important;
+  max-width: none !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+html body .books-front,
+html body .books-friends,
+html body .movies-front,
+html body .movies-friends {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+html body .books-grid,
+html body .movies-grid,
+html body .diary-grid {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+html body .books-container .page-header,
+html body .movies-container .page-header,
+html body .diary-wrapper .page-header {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 0 0 clamp(20px, 2.5vw, 34px) !important;
+  padding: 0 !important;
+}
+
+html body .books-container .book-card,
+html body .movies-container .movie-card {
+  background: #fff !important;
+  border: 1px solid rgba(217, 224, 235, .92) !important;
+  box-shadow: 0 10px 26px rgba(30, 42, 68, .08) !important;
+}
+
+html body .books-container .book-card:hover,
+html body .movies-container .movie-card:hover {
+  box-shadow: 0 18px 38px rgba(30, 42, 68, .14) !important;
+}
+
+html body .diary-wrapper .diary-content {
+  background: #fff !important;
+  border: 1px solid rgba(217, 224, 235, .92) !important;
+  box-shadow: 0 10px 26px rgba(30, 42, 68, .08) !important;
+}
+
+html body .diary-wrapper .diary-card:hover .diary-content {
+  box-shadow: 0 18px 38px rgba(30, 42, 68, .14) !important;
+}
+
+@media (max-width: 767px) {
+  html body .content:has(.books-container),
+  html body .content:has(.movies-container),
+  html body .content:has(.diary-wrapper) {
+    border-radius: 24px !important;
+    padding: 14px !important;
+  }
+
+  html body .books-wrapper,
+  html body .movies-wrapper,
+  html body .diary-wrapper {
+    margin-bottom: 0 !important;
   }
 }
