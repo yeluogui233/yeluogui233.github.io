@@ -596,6 +596,50 @@ html body .content.tag {
   padding: clamp(18px, 2.2vw, 28px) !important;
 }
 
+html body .content.categories-page {
+  background: #fff !important;
+}
+
+html body .content.categories-page .categories-container {
+  background: transparent !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+html body .content.categories-page .categories-header-wrapper {
+  margin: 0 0 24px !important;
+  max-width: none !important;
+}
+
+html body .content.categories-page .categories-header-glass {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+html body .content.categories-page .stats-cards {
+  gap: 14px !important;
+  justify-content: flex-start !important;
+  margin-top: 18px !important;
+}
+
+html body .content.categories-page .stat-card {
+  background: #f8fafc !important;
+  border: 1px solid rgba(217, 224, 235, .9) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+}
+
+html body .content.categories-page .categories-grid {
+  margin: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
 html body .content.categories-page .categories-container,
 html body .content.categories-page .categories-header-wrapper,
 html body .content.categories-page .categories-header-glass,
@@ -621,6 +665,48 @@ html body .content.tag .tag-cloud-tags {
   width: 100% !important;
 }
 
+html body .content.page.posts-expand .post-content,
+html body .content.page.posts-expand .post-body,
+html body .content.page.posts-expand .tag-cloud,
+html body .content.page.posts-expand .tag-cloud-section,
+html body .content.page.posts-expand .category-all-page,
+html body .content.page.posts-expand .category-all,
+html body .content.page.posts-expand .event-list,
+html body .content.page.posts-expand .album-wrapper,
+html body .content.page.posts-expand .categories-container,
+html body .content.page.posts-expand .categories-header-glass {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+}
+
+html body .content.page.posts-expand .post-content,
+html body .content.page.posts-expand .post-body {
+  padding: 0 !important;
+}
+
+html body .content.page.posts-expand .tag-cloud,
+html body .content.page.posts-expand .category-all-page,
+html body .content.page.posts-expand .event-list {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+html body .content.page.posts-expand .tag-cloud-tags {
+  padding: 0 !important;
+}
+
+html body .content.page.posts-expand .tag-cloud-section {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html body .content.page.posts-expand .category-all-title,
+html body .content.page.posts-expand .tag-cloud-title {
+  margin: 0 0 12px !important;
+}
+
 html body .content.categories-page .categories-header-glass {
   padding-top: 0 !important;
 }
@@ -644,6 +730,12 @@ html body .content.categories-page .category-card-glass {
   box-shadow: 0 10px 26px rgba(30, 42, 68, .08) !important;
 }
 
+html body .content.categories-page .category-card-wrapper,
+html body .content.categories-page .category-card-content,
+html body .content.categories-page .category-card-image-section {
+  background: transparent !important;
+}
+
 html body .content.archive .collection-title,
 html body .content.archive .collection-year,
 html body .content.category .collection-title,
@@ -655,11 +747,69 @@ html body .content.tag .collection-year {
   box-shadow: none !important;
 }
 
+html body .content.archive .posts-collapse,
+html body .content.archive .collection-title,
+html body .content.category .posts-collapse,
+html body .content.category .collection-title,
+html body .content.tag .posts-collapse,
+html body .content.tag .collection-title,
+html body .content.tag .tag-cloud-section {
+  background: transparent !important;
+  box-sizing: border-box !important;
+}
+
+html body .content.archive .posts-collapse,
+html body .content.category .posts-collapse,
+html body .content.tag .posts-collapse {
+  padding: 0 !important;
+}
+
+html body .content.archive .collection-title,
+html body .content.category .collection-title,
+html body .content.tag .collection-title {
+  margin: 0 0 18px !important;
+}
+
 html body .content.page.posts-expand .post-block > *,
 html body .content.archive .post-block > *,
 html body .content.category .post-block > *,
 html body .content.tag .post-block > * {
   max-width: 100% !important;
+}
+
+html body .content.archive .post-block,
+html body .content.category .post-block,
+html body .content.tag .post-block,
+html body .content.page.posts-expand .post-block {
+  padding: 0 !important;
+}
+
+html body .album-wrapper {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  max-width: none !important;
+  padding: 0 !important;
+}
+
+html body .photo-frame {
+  background: #fff !important;
+  border: 1px solid rgba(217, 224, 235, .92) !important;
+  box-shadow: 0 10px 26px rgba(30, 42, 68, .08) !important;
+}
+
+html body .tag-cloud-section {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html body .tag-cloud-link {
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 @media (max-width: 767px) {
