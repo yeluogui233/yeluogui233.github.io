@@ -22,20 +22,45 @@
   <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
   <script src="/lib/pace/pace.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  var input = document.getElementById('hbePass');
-  if (!input) return;
-  var sanitize = function () {
-    var value = (input.value || '')
-      .replace(/^\s+|\s+$/g, '')
-      .replace(/[０-９]/g, function (ch) {
-        return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
-      });
-    if (input.value !== value) input.value = value;
-  };
-  input.addEventListener('input', sanitize);
-  input.addEventListener('change', sanitize);
-});
+  (function () {
+    var attachHbeSanitizer = function () {
+      var input = document.getElementById('hbePass');
+      var form = document.getElementById('hbeForm');
+      if (!input || input.dataset.hbeSanitized === '1') return !!input;
+      var sanitize = function () {
+        var value = (input.value || '')
+          .replace(/^\s+|\s+$/g, '')
+          .replace(/[\u00A0\u2000-\u200D\uFEFF]/g, '')
+          .replace(/[０-９]/g, function (ch) {
+            return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
+          });
+        input.value = value;
+        return value;
+      };
+      input.addEventListener('input', sanitize);
+      input.addEventListener('change', sanitize);
+      input.addEventListener('blur', sanitize);
+      if (form) {
+        form.addEventListener('submit', function () {
+          sanitize();
+        }, true);
+      }
+      input.dataset.hbeSanitized = '1';
+      sanitize();
+      return true;
+    };
+    var boot = function () {
+      attachHbeSanitizer();
+    };
+    document.addEventListener('DOMContentLoaded', boot);
+    document.addEventListener('pjax:complete', boot);
+    document.addEventListener('pjax:success', boot);
+    document.addEventListener('pjax:scriptComplete', boot);
+    if (document.readyState !== 'loading') {
+      boot();
+    }
+    window.addEventListener('hexo-blog-decrypt', boot);
+  })();
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
@@ -68,9 +93,9 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 </script>
 
-  <link rel="stylesheet" href="/css/apple-final-fix.css">
+  <link rel="stylesheet" href="/css/apple-final-fix.css?v=20260628-apple-4">
   <link rel="stylesheet" href="/css/makima-pet.css">
-  <link rel="stylesheet" href="/css/visual-hotfix.css?v=20260628-visual-3">
+  <link rel="stylesheet" href="/css/visual-hotfix.css?v=20260628-visual-4">
   
   <title>标签: type-moon | 穿过长长的隧道，便是雪国</title>
   
@@ -335,6 +360,21 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="tag-cloud-section">
   <div class="tag-cloud-tags">
     
+      <a href="/tags/408/" class="tag-cloud-link">
+        408
+        <span class="tag-link-count">(7)</span>
+      </a>
+    
+      <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="tag-cloud-link">
+        数据结构
+        <span class="tag-link-count">(6)</span>
+      </a>
+    
+      <a href="/tags/KMP%E7%AE%97%E6%B3%95/" class="tag-cloud-link">
+        KMP算法
+        <span class="tag-link-count">(2)</span>
+      </a>
+    
       <a href="/tags/%E6%8B%89%E7%BE%8E%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" class="tag-cloud-link">
         拉美文学/文学
         <span class="tag-link-count">(5)</span>
@@ -350,28 +390,8 @@ document.addEventListener('DOMContentLoaded', function () {
         <span class="tag-link-count">(1)</span>
       </a>
     
-      <a href="/tags/408/" class="tag-cloud-link">
-        408
-        <span class="tag-link-count">(7)</span>
-      </a>
-    
-      <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="tag-cloud-link">
-        数据结构
-        <span class="tag-link-count">(6)</span>
-      </a>
-    
       <a href="/tags/%E7%AE%97%E6%B3%95/" class="tag-cloud-link">
         算法
-        <span class="tag-link-count">(1)</span>
-      </a>
-    
-      <a href="/tags/KMP%E7%AE%97%E6%B3%95/" class="tag-cloud-link">
-        KMP算法
-        <span class="tag-link-count">(2)</span>
-      </a>
-    
-      <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" class="tag-cloud-link">
-        拓扑排序
         <span class="tag-link-count">(1)</span>
       </a>
     
@@ -390,6 +410,11 @@ document.addEventListener('DOMContentLoaded', function () {
         <span class="tag-link-count">(3)</span>
       </a>
     
+      <a href="/tags/%E9%A9%AC%E9%87%8C%E5%A5%A5%C2%B7%E5%B7%B4%E5%B0%94%E5%8A%A0%E6%96%AF%C2%B7%E7%95%A5%E8%90%A8/" class="tag-cloud-link">
+        马里奥·巴尔加斯·略萨
+        <span class="tag-link-count">(3)</span>
+      </a>
+    
       <a href="/tags/%E4%BF%84%E5%9B%BD%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" class="tag-cloud-link">
         俄国文学/文学
         <span class="tag-link-count">(7)</span>
@@ -400,9 +425,9 @@ document.addEventListener('DOMContentLoaded', function () {
         <span class="tag-link-count">(5)</span>
       </a>
     
-      <a href="/tags/%E9%A9%AC%E9%87%8C%E5%A5%A5%C2%B7%E5%B7%B4%E5%B0%94%E5%8A%A0%E6%96%AF%C2%B7%E7%95%A5%E8%90%A8/" class="tag-cloud-link">
-        马里奥·巴尔加斯·略萨
-        <span class="tag-link-count">(3)</span>
+      <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" class="tag-cloud-link">
+        拓扑排序
+        <span class="tag-link-count">(1)</span>
       </a>
     
       <a href="/tags/%E8%A5%BF%E7%8F%AD%E7%89%99%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" class="tag-cloud-link">
@@ -420,11 +445,6 @@ document.addEventListener('DOMContentLoaded', function () {
         <span class="tag-link-count">(2)</span>
       </a>
     
-      <a href="/tags/%E6%9F%A5%E6%89%BE/" class="tag-cloud-link">
-        查找
-        <span class="tag-link-count">(1)</span>
-      </a>
-    
       <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="tag-cloud-link">
         计算机组成原理
         <span class="tag-link-count">(1)</span>
@@ -440,28 +460,18 @@ document.addEventListener('DOMContentLoaded', function () {
         <span class="tag-link-count">(2)</span>
       </a>
     
-      <a href="/tags/%E9%98%BF%E8%B4%9D%E5%B0%94%E2%80%A2%E5%8A%A0%E7%BC%AA/" class="tag-cloud-link">
-        阿贝尔•加缪
-        <span class="tag-link-count">(1)</span>
-      </a>
-    
       <a href="/tags/%E7%BB%B4%E5%85%8B%E5%A4%9A%C2%B7%E9%9B%A8%E6%9E%9C/" class="tag-cloud-link">
         维克多·雨果
         <span class="tag-link-count">(1)</span>
       </a>
     
-      <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%AD%A6/" class="tag-cloud-link">
-        社会学
+      <a href="/tags/%E6%9F%A5%E6%89%BE/" class="tag-cloud-link">
+        查找
         <span class="tag-link-count">(1)</span>
       </a>
     
-      <a href="/tags/%E5%A5%B3%E6%80%A7%E4%B8%BB%E4%B9%89/" class="tag-cloud-link">
-        女性主义
-        <span class="tag-link-count">(1)</span>
-      </a>
-    
-      <a href="/tags/%E7%8E%9B%E4%B8%BD%E4%BA%9A%C2%B7%E7%B1%B3%E6%96%AF/" class="tag-cloud-link">
-        玛丽亚·米斯
+      <a href="/tags/%E9%98%BF%E8%B4%9D%E5%B0%94%E2%80%A2%E5%8A%A0%E7%BC%AA/" class="tag-cloud-link">
+        阿贝尔•加缪
         <span class="tag-link-count">(1)</span>
       </a>
     
@@ -482,6 +492,21 @@ document.addEventListener('DOMContentLoaded', function () {
     
       <a href="/tags/%E6%A0%91/" class="tag-cloud-link">
         树
+        <span class="tag-link-count">(1)</span>
+      </a>
+    
+      <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%AD%A6/" class="tag-cloud-link">
+        社会学
+        <span class="tag-link-count">(1)</span>
+      </a>
+    
+      <a href="/tags/%E5%A5%B3%E6%80%A7%E4%B8%BB%E4%B9%89/" class="tag-cloud-link">
+        女性主义
+        <span class="tag-link-count">(1)</span>
+      </a>
+    
+      <a href="/tags/%E7%8E%9B%E4%B8%BD%E4%BA%9A%C2%B7%E7%B1%B3%E6%96%AF/" class="tag-cloud-link">
+        玛丽亚·米斯
         <span class="tag-link-count">(1)</span>
       </a>
     

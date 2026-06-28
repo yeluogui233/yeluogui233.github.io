@@ -22,20 +22,45 @@
   <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
   <script src="/lib/pace/pace.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  var input = document.getElementById('hbePass');
-  if (!input) return;
-  var sanitize = function () {
-    var value = (input.value || '')
-      .replace(/^\s+|\s+$/g, '')
-      .replace(/[０-９]/g, function (ch) {
-        return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
-      });
-    if (input.value !== value) input.value = value;
-  };
-  input.addEventListener('input', sanitize);
-  input.addEventListener('change', sanitize);
-});
+  (function () {
+    var attachHbeSanitizer = function () {
+      var input = document.getElementById('hbePass');
+      var form = document.getElementById('hbeForm');
+      if (!input || input.dataset.hbeSanitized === '1') return !!input;
+      var sanitize = function () {
+        var value = (input.value || '')
+          .replace(/^\s+|\s+$/g, '')
+          .replace(/[\u00A0\u2000-\u200D\uFEFF]/g, '')
+          .replace(/[０-９]/g, function (ch) {
+            return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
+          });
+        input.value = value;
+        return value;
+      };
+      input.addEventListener('input', sanitize);
+      input.addEventListener('change', sanitize);
+      input.addEventListener('blur', sanitize);
+      if (form) {
+        form.addEventListener('submit', function () {
+          sanitize();
+        }, true);
+      }
+      input.dataset.hbeSanitized = '1';
+      sanitize();
+      return true;
+    };
+    var boot = function () {
+      attachHbeSanitizer();
+    };
+    document.addEventListener('DOMContentLoaded', boot);
+    document.addEventListener('pjax:complete', boot);
+    document.addEventListener('pjax:success', boot);
+    document.addEventListener('pjax:scriptComplete', boot);
+    if (document.readyState !== 'loading') {
+      boot();
+    }
+    window.addEventListener('hexo-blog-decrypt', boot);
+  })();
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
@@ -68,9 +93,9 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 </script>
 
-  <link rel="stylesheet" href="/css/apple-final-fix.css">
+  <link rel="stylesheet" href="/css/apple-final-fix.css?v=20260628-apple-4">
   <link rel="stylesheet" href="/css/makima-pet.css">
-  <link rel="stylesheet" href="/css/visual-hotfix.css?v=20260628-visual-3">
+  <link rel="stylesheet" href="/css/visual-hotfix.css?v=20260628-visual-4">
   
   <title>分类: 考研 | 穿过长长的隧道，便是雪国</title>
   

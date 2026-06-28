@@ -1066,3 +1066,38 @@ html body .hbe.hbe-input-field-default {
     font-size: .72rem !important;
   }
 }
+
+/* Final index card override: lock every preview card to one shape. */
+html body .content.index .post-block.post-card-preview,
+html body .content.index .post-block.post-card-preview:nth-of-type(even) {
+  align-items: stretch !important;
+  display: grid !important;
+  gap: 0 !important;
+  grid-auto-flow: row !important;
+  grid-template-columns: minmax(340px, 36%) minmax(0, 1fr) !important;
+  min-height: 228px !important;
+  overflow: hidden !important;
+}
+
+html body .content.index .post-block.post-card-preview .post-card-cover {
+  aspect-ratio: 16 / 10 !important;
+  align-self: stretch !important;
+  display: block !important;
+  height: 100% !important;
+  min-height: 228px !important;
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+html body .content.index .post-block.post-card-preview .post-card-cover img {
+  display: block !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  width: 100% !important;
+}
+
+html body .content.index .post-block.post-card-preview .post-card-info {
+  min-width: 0 !important;
+  padding: 22px 24px !important;
+}
