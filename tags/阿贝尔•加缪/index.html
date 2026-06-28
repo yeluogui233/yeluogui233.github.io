@@ -21,46 +21,133 @@
 <link rel="stylesheet" href="/_data/styles.">
   <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
   <script src="/lib/pace/pace.min.js"></script>
+<style>
+html.hbe-locking #hexo-blog-encrypt {
+  visibility: hidden !important;
+}
+</style>
 <script>
-  (function () {
-    var attachHbeSanitizer = function () {
-      var input = document.getElementById('hbePass');
-      var form = document.getElementById('hbeForm');
-      if (!input || input.dataset.hbeSanitized === '1') return !!input;
-      var sanitize = function () {
-        var value = (input.value || '')
-          .replace(/^\s+|\s+$/g, '')
-          .replace(/[\u00A0\u2000-\u200D\uFEFF]/g, '')
-          .replace(/[０-９]/g, function (ch) {
-            return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
-          });
-        input.value = value;
-        return value;
-      };
-      input.addEventListener('input', sanitize);
-      input.addEventListener('change', sanitize);
-      input.addEventListener('blur', sanitize);
-      if (form) {
-        form.addEventListener('submit', function () {
-          sanitize();
-        }, true);
-      }
-      input.dataset.hbeSanitized = '1';
-      sanitize();
-      return true;
-    };
-    var boot = function () {
-      attachHbeSanitizer();
-    };
-    document.addEventListener('DOMContentLoaded', boot);
-    document.addEventListener('pjax:complete', boot);
-    document.addEventListener('pjax:success', boot);
-    document.addEventListener('pjax:scriptComplete', boot);
-    if (document.readyState !== 'loading') {
-      boot();
+(function () {
+  if (document.documentElement) {
+    document.documentElement.classList.add('hbe-locking');
+  }
+
+  function cleanPassword(value) {
+    return (value || '')
+      .replace(/^\s+|\s+$/g, '')
+      .replace(/[\u00A0\u2000-\u200D\uFEFF]/g, '')
+      .replace(/[０-９]/g, function (ch) {
+        return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
+      });
+  }
+
+  function hexToBytes(hex) {
+    if (!hex) return new Uint8Array();
+    var out = new Uint8Array(hex.length / 2);
+    for (var i = 0; i < out.length; i += 1) {
+      out[i] = parseInt(hex.substr(i * 2, 2), 16);
     }
-    window.addEventListener('hexo-blog-decrypt', boot);
-  })();
+    return out;
+  }
+
+  function bytesToHtml(bytes) {
+    return new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+  }
+
+  function makeExecutable(node) {
+    var script = document.createElement('script');
+    var attrs = node.attributes;
+    for (var i = 0; i < attrs.length; i += 1) {
+      script.setAttribute(attrs[i].name, attrs[i].value);
+    }
+    script.text = node.text;
+    return script;
+  }
+
+  function htmlToNode(html) {
+    var box = document.createElement('div');
+    box.innerHTML = html;
+    var scripts = box.querySelectorAll('script');
+    for (var i = 0; i < scripts.length; i += 1) {
+      scripts[i].parentNode.replaceChild(makeExecutable(scripts[i]), scripts[i]);
+    }
+    return box;
+  }
+
+  async function decryptPage(wrapper, password) {
+    var data = wrapper.dataset;
+    var dataNode = wrapper.querySelector('script#hbeData');
+    var cipherHex = dataNode ? dataNode.textContent.trim() : '';
+    var salt = hexToBytes(data.salt || '');
+    var nonce = hexToBytes(data.nonce || '');
+    var cipherBytes = hexToBytes(cipherHex);
+    var iterations = parseInt(data.kdfIterations, 10) || 250000;
+    if (!cipherBytes.length) throw new Error('missing ciphertext');
+
+    var encoder = new TextEncoder();
+    var baseKey = await crypto.subtle.importKey(
+      'raw',
+      encoder.encode(password),
+      { name: 'PBKDF2' },
+      false,
+      ['deriveKey']
+    );
+    var derived = await crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt: salt, iterations: iterations, hash: 'SHA-256' },
+      baseKey,
+      { name: 'AES-GCM', length: 256 },
+      true,
+      ['decrypt']
+    );
+    var plain = await crypto.subtle.decrypt(
+      { name: 'AES-GCM', iv: nonce, tagLength: 128 },
+      derived,
+      cipherBytes
+    );
+    return bytesToHtml(new Uint8Array(plain));
+  }
+
+  async function unlock(wrapper) {
+    if (!wrapper) return;
+    var message = wrapper.dataset.wpm || '密码不对，再试试';
+    while (true) {
+      var entered = window.prompt('请输入密码', '');
+      if (entered === null) return;
+      entered = cleanPassword(entered);
+      if (!entered) continue;
+      try {
+        var html = await decryptPage(wrapper, entered);
+        var node = htmlToNode(html);
+        node.id = 'hexo-blog-encrypt';
+        node.classList.add('hbe', 'hbe-decrypted-content');
+        wrapper.parentNode.replaceChild(node, wrapper);
+        try {
+          window.dispatchEvent(new Event('hexo-blog-decrypt'));
+        } catch (e) {}
+        return;
+      } catch (e) {
+        message = wrapper.dataset.wpm || message;
+      }
+      window.prompt(message, '');
+    }
+  }
+
+  function boot() {
+    var wrapper = document.getElementById('hexo-blog-encrypt');
+    if (!wrapper) {
+      if (document.documentElement) {
+        document.documentElement.classList.remove('hbe-locking');
+      }
+      return;
+    }
+    unlock(wrapper);
+  }
+
+  document.addEventListener('DOMContentLoaded', boot);
+  if (document.readyState !== 'loading') {
+    boot();
+  }
+})();
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
@@ -360,21 +447,6 @@
 <div class="tag-cloud-section">
   <div class="tag-cloud-tags">
     
-      <a href="/tags/408/" class="tag-cloud-link">
-        408
-        <span class="tag-link-count">(7)</span>
-      </a>
-    
-      <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="tag-cloud-link">
-        数据结构
-        <span class="tag-link-count">(6)</span>
-      </a>
-    
-      <a href="/tags/KMP%E7%AE%97%E6%B3%95/" class="tag-cloud-link">
-        KMP算法
-        <span class="tag-link-count">(2)</span>
-      </a>
-    
       <a href="/tags/%E6%8B%89%E7%BE%8E%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" class="tag-cloud-link">
         拉美文学/文学
         <span class="tag-link-count">(5)</span>
@@ -390,9 +462,29 @@
         <span class="tag-link-count">(1)</span>
       </a>
     
+      <a href="/tags/408/" class="tag-cloud-link">
+        408
+        <span class="tag-link-count">(7)</span>
+      </a>
+    
+      <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="tag-cloud-link">
+        数据结构
+        <span class="tag-link-count">(6)</span>
+      </a>
+    
       <a href="/tags/%E7%AE%97%E6%B3%95/" class="tag-cloud-link">
         算法
         <span class="tag-link-count">(1)</span>
+      </a>
+    
+      <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" class="tag-cloud-link">
+        拓扑排序
+        <span class="tag-link-count">(1)</span>
+      </a>
+    
+      <a href="/tags/KMP%E7%AE%97%E6%B3%95/" class="tag-cloud-link">
+        KMP算法
+        <span class="tag-link-count">(2)</span>
       </a>
     
       <a href="/tags/%E8%83%A1%E9%87%8C%E5%A5%A5%C2%B7%E7%A7%91%E5%A1%94%E5%B0%94%E8%90%A8/" class="tag-cloud-link">
@@ -410,11 +502,6 @@
         <span class="tag-link-count">(3)</span>
       </a>
     
-      <a href="/tags/%E9%A9%AC%E9%87%8C%E5%A5%A5%C2%B7%E5%B7%B4%E5%B0%94%E5%8A%A0%E6%96%AF%C2%B7%E7%95%A5%E8%90%A8/" class="tag-cloud-link">
-        马里奥·巴尔加斯·略萨
-        <span class="tag-link-count">(3)</span>
-      </a>
-    
       <a href="/tags/%E4%BF%84%E5%9B%BD%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" class="tag-cloud-link">
         俄国文学/文学
         <span class="tag-link-count">(7)</span>
@@ -425,9 +512,9 @@
         <span class="tag-link-count">(5)</span>
       </a>
     
-      <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" class="tag-cloud-link">
-        拓扑排序
-        <span class="tag-link-count">(1)</span>
+      <a href="/tags/%E9%A9%AC%E9%87%8C%E5%A5%A5%C2%B7%E5%B7%B4%E5%B0%94%E5%8A%A0%E6%96%AF%C2%B7%E7%95%A5%E8%90%A8/" class="tag-cloud-link">
+        马里奥·巴尔加斯·略萨
+        <span class="tag-link-count">(3)</span>
       </a>
     
       <a href="/tags/%E8%A5%BF%E7%8F%AD%E7%89%99%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" class="tag-cloud-link">
@@ -440,11 +527,6 @@
         <span class="tag-link-count">(1)</span>
       </a>
     
-      <a href="/tags/%E5%88%97%E5%A4%AB%E6%89%98%E5%B0%94%E6%96%AF%E6%B3%B0/" class="tag-cloud-link">
-        列夫托尔斯泰
-        <span class="tag-link-count">(2)</span>
-      </a>
-    
       <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="tag-cloud-link">
         计算机组成原理
         <span class="tag-link-count">(1)</span>
@@ -453,6 +535,11 @@
       <a href="/tags/%E5%AD%98%E5%82%A8%E5%99%A8/" class="tag-cloud-link">
         存储器
         <span class="tag-link-count">(1)</span>
+      </a>
+    
+      <a href="/tags/%E5%88%97%E5%A4%AB%E6%89%98%E5%B0%94%E6%96%AF%E6%B3%B0/" class="tag-cloud-link">
+        列夫托尔斯泰
+        <span class="tag-link-count">(2)</span>
       </a>
     
       <a href="/tags/%E6%B3%95%E5%9B%BD%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" class="tag-cloud-link">
@@ -465,13 +552,13 @@
         <span class="tag-link-count">(1)</span>
       </a>
     
-      <a href="/tags/%E6%9F%A5%E6%89%BE/" class="tag-cloud-link">
-        查找
+      <a href="/tags/%E9%98%BF%E8%B4%9D%E5%B0%94%E2%80%A2%E5%8A%A0%E7%BC%AA/" class="tag-cloud-link">
+        阿贝尔•加缪
         <span class="tag-link-count">(1)</span>
       </a>
     
-      <a href="/tags/%E9%98%BF%E8%B4%9D%E5%B0%94%E2%80%A2%E5%8A%A0%E7%BC%AA/" class="tag-cloud-link">
-        阿贝尔•加缪
+      <a href="/tags/%E6%9F%A5%E6%89%BE/" class="tag-cloud-link">
+        查找
         <span class="tag-link-count">(1)</span>
       </a>
     
@@ -490,11 +577,6 @@
         <span class="tag-link-count">(1)</span>
       </a>
     
-      <a href="/tags/%E6%A0%91/" class="tag-cloud-link">
-        树
-        <span class="tag-link-count">(1)</span>
-      </a>
-    
       <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%AD%A6/" class="tag-cloud-link">
         社会学
         <span class="tag-link-count">(1)</span>
@@ -507,6 +589,11 @@
     
       <a href="/tags/%E7%8E%9B%E4%B8%BD%E4%BA%9A%C2%B7%E7%B1%B3%E6%96%AF/" class="tag-cloud-link">
         玛丽亚·米斯
+        <span class="tag-link-count">(1)</span>
+      </a>
+    
+      <a href="/tags/%E6%A0%91/" class="tag-cloud-link">
+        树
         <span class="tag-link-count">(1)</span>
       </a>
     
