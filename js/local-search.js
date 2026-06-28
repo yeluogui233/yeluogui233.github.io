@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   const input = document.querySelector('.search-input');
   const resultContent = document.getElementById('search-result');
+  if (!input || !resultContent) return;
   const pageAliases = {
     '/about/index.html': '\u5173\u4e8e \u5173\u4e8e\u6211 \u535a\u5ba2 \u4e2a\u4eba\u4ecb\u7ecd \u9605\u8bfb \u6444\u5f71 \u70d8\u7119 \u6e38\u620f',
     '/books/index.html': '\u4e66\u5355 \u4e2a\u4eba\u4e66\u5355 \u4e66\u8bc4 \u6458\u8981 \u9605\u8bfb \u8bfb\u4e66 \u85cf\u4e66 books',

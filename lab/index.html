@@ -761,9 +761,32 @@
   </div>
         </div>
           
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
   <aside class="sidebar">
-    <div class="widget site-author-widget">
-      <div class="sidebar-profile-card motion-element">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="sidebar-profile-card motion-element">
   <div class="site-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
       <img class="site-author-image" itemprop="image" alt="叶落归"
         src="/images/avatar.png">
@@ -875,113 +898,12 @@
     </ul>
   </div>
 
+      </div>
+
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
-  <style>
-    .site-author-widget {
-      background: #fff;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      margin-bottom: 40px;
-      text-align: center;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .site-author-widget:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-
-    .site-author-widget .site-author-image {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 12px;
-      display: block;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
-    }
-
-    .site-author-widget:hover .site-author-image {
-      transform: scale(1.05);
-    }
-
-    .site-author-widget .site-author-name {
-      font-weight: 700;
-      font-size: 1.3rem;
-      margin: 8px 0 4px;
-      color: var(--text-color);
-    }
-
-    .site-author-widget .site-description {
-      font-size: 0.95rem;
-      color: var(--text-color-secondary);
-      margin-bottom: 16px;
-      line-height: 1.4;
-    }
-
-    /* 社交链接网格布局 */
-    .site-author-widget .links-of-author {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: auto;
-      justify-content: center;
-      gap: 8px 12px;
-      max-width: 200px;
-      margin: 0 auto 16px;
-      text-align: center;
-    }
-
-    .site-author-widget .links-of-author-item a {
-      font-size: 0.75rem;
-      color: var(--text-color);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: inline-block;
-      padding: 4px 8px;
-      border-radius: 8px;
-      background: rgba(0,0,0,0.03);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .site-author-widget .links-of-author-item a:hover {
-      color: var(--primary-color);
-      background: rgba(0,0,0,0.05);
-      transform: translateY(-1px);
-    }
-
-    /* 友情链接 */
-    .links-of-blogroll-list {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .links-of-blogroll-item a {
-      display: inline-block;
-      color: var(--text-color);
-      padding: 4px 12px;
-      border-radius: 12px;
-      background: #f8f9fa;
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .links-of-blogroll-item a:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-  </style>
 
       </div>
     </main>
