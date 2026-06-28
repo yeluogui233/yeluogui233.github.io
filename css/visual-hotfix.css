@@ -985,8 +985,8 @@ html body .content.index .post-card-preview {
 html body .content.index .post-card-preview .post-card-cover {
   aspect-ratio: 16 / 10 !important;
   display: block !important;
-  height: auto !important;
-  min-height: 0 !important;
+  height: 100% !important;
+  min-height: 220px !important;
   overflow: hidden !important;
   width: 100% !important;
 }
@@ -997,6 +997,16 @@ html body .content.index .post-card-preview .post-card-cover img {
   object-fit: cover !important;
   object-position: center center !important;
   width: 100% !important;
+}
+
+html body .content.index .post-card-preview:nth-of-type(even),
+html body .content.index .post-card-preview {
+  grid-template-columns: minmax(320px, 34%) minmax(0, 1fr) !important;
+}
+
+html body #hbePass {
+  ime-mode: disabled !important;
+  text-transform: none !important;
 }
 
 /* iPad/tablet books layout: keep every card inside the grid. */
