@@ -14,6 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   const input = document.querySelector('.search-input');
   const resultContent = document.getElementById('search-result');
+  const pageAliases = {
+    '/about/index.html': '\u5173\u4e8e \u5173\u4e8e\u6211 \u535a\u5ba2 \u4e2a\u4eba\u4ecb\u7ecd \u9605\u8bfb \u6444\u5f71 \u70d8\u7119 \u6e38\u620f',
+    '/books/index.html': '\u4e66\u5355 \u4e2a\u4eba\u4e66\u5355 \u4e66\u8bc4 \u6458\u8981 \u9605\u8bfb \u8bfb\u4e66 \u85cf\u4e66 books',
+    '/gallery/index.html': '\u753b\u5eca \u76f8\u518c \u6444\u5f71 \u7167\u7247 \u98ce\u5149 \u7f8e\u98df \u52a8\u7269 \u8857\u62cd \u535a\u7269\u9986 \u624b\u673a\u6444\u5f71 \u5c71\u4e1c \u5c71\u897f \u6c5f\u82cf \u6e56\u5317 \u6e56\u5357 \u4e91\u5357 gallery',
+    '/diary/index.html': '\u65e5\u8bb0 \u65e5\u5e38 \u751f\u6d3b \u8bb0\u5f55 \u968f\u7b14 diary',
+    '/movies/index.html': '\u5f71\u89c6 \u5f71\u5355 \u7535\u5f71 \u5267\u96c6 \u52a8\u753b \u89c2\u5f71 movies',
+    '/bake/index.html': '\u70d8\u7119 \u70d8\u57f9 \u86cb\u7cd5 \u751c\u70b9 baking bake',
+    '/steamgames/index.html': '\u6e38\u620f Steam steam \u6e38\u620f\u5e93 steamgames',
+    '/lab/index.html': '\u5b9e\u9a8c\u5ba4 \u5b9e\u9a8c \u9879\u76ee \u5de5\u5177 lab',
+    '/schedule/index.html': '\u65e5\u7a0b\u8868 \u65e5\u7a0b \u8ba1\u5212 \u5b89\u6392 schedule',
+    '/404/index.html': '\u516c\u76ca404 \u516c\u76ca 404'
+  };
 
   const getIndexByWord = (word, text, caseSensitive) => {
     if (CONFIG.localsearch.unescape) {
@@ -125,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
           let slicesOfTitle = [];
           if (indexOfTitle.length !== 0) {
             let tmp = mergeIntoSlice(0, title.length, indexOfTitle, searchText);
-            searchTextCount += tmp.searchTextCountInSlice;
+            searchTextCount += tmp.searchTextCount;
             slicesOfTitle.push(tmp);
           }
 
@@ -146,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
               end = content.length;
             }
             let tmp = mergeIntoSlice(start, end, indexOfContent, searchText);
-            searchTextCount += tmp.searchTextCountInSlice;
+            searchTextCount += tmp.searchTextCount;
             slicesOfContent.push(tmp);
           }
 
@@ -224,6 +236,9 @@ document.addEventListener('DOMContentLoaded', () => {
           data.title = data.title.trim();
           data.content = data.content ? data.content.trim().replace(/<[^>]+>/g, '') : '';
           data.url = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+          if (pageAliases[data.url]) {
+            data.content = `${data.content} ${pageAliases[data.url]}`.trim();
+          }
           return data;
         });
         // Remove loading animation

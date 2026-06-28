@@ -534,6 +534,7 @@
   background: var(--content-bg-color);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
+  aspect-ratio: 16 / 10;
 }
 .photo-frame:hover {
   transform: translateY(-3px);
@@ -542,8 +543,9 @@
 
 .photo-image {
   width: 100%;
-  height: 280px;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;
+  background: #f6f8fc;
   display: block;
   transition: transform 0.4s ease;
 }
@@ -821,7 +823,6 @@
 /* 响应式 */
 @media (max-width: 992px) {
   .photo-wall { grid-template-columns: 1fr; }
-  .photo-image { height: 240px; }
   .page-title { font-size: 2.2rem; }
 }
 
@@ -1924,6 +1925,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="/js/next-boot.js"></script>
 
 
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
 
 
   
