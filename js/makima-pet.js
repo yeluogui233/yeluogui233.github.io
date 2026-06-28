@@ -76,7 +76,7 @@
 
   function scheduleAutoAction(element) {
     window.clearTimeout(autoTimer);
-    autoTimer = window.setTimeout(() => runAutoAction(element), 2400 + Math.random() * 4200);
+    autoTimer = window.setTimeout(() => runAutoAction(element), 900 + Math.random() * 1900);
   }
 
   function walk(element) {
@@ -84,9 +84,9 @@
 
     const start = getPosition(element);
     const direction = Math.random() > 0.5 ? 1 : -1;
-    const distance = 52 + Math.random() * 118;
+    const distance = 70 + Math.random() * 150;
     const target = clampPosition(start.x + direction * distance, start.y, element);
-    const duration = 900 + Math.random() * 600;
+    const duration = 760 + Math.random() * 520;
     const startedAt = performance.now();
     setState(element, direction > 0 ? 'runRight' : 'runLeft');
 
@@ -114,13 +114,53 @@
     autoMoveFrame = window.requestAnimationFrame(step);
   }
 
+  function pace(element) {
+    if (isDragging) return scheduleAutoAction(element);
+
+    const start = getPosition(element);
+    const direction = Math.random() > 0.5 ? 1 : -1;
+    const firstTarget = clampPosition(start.x + direction * 34, start.y, element);
+    const secondTarget = clampPosition(start.x - direction * 22, start.y, element);
+    const startedAt = performance.now();
+    const duration = 820;
+
+    function step(now) {
+      if (isDragging) {
+        autoMoveFrame = 0;
+        return;
+      }
+
+      const progress = Math.min((now - startedAt) / duration, 1);
+      const returning = progress > 0.55;
+      const localProgress = returning ? (progress - 0.55) / 0.45 : progress / 0.55;
+      const from = returning ? firstTarget : start;
+      const to = returning ? secondTarget : firstTarget;
+      const eased = 1 - Math.pow(1 - localProgress, 2);
+      setState(element, to.x >= from.x ? 'runRight' : 'runLeft');
+      setPosition(element, from.x + (to.x - from.x) * eased, start.y);
+
+      if (progress < 1) {
+        autoMoveFrame = window.requestAnimationFrame(step);
+      } else {
+        autoMoveFrame = 0;
+        setState(element, 'wave');
+        savePosition(element);
+        scheduleAutoAction(element);
+      }
+    }
+
+    autoMoveFrame = window.requestAnimationFrame(step);
+  }
+
   function runAutoAction(element) {
     if (isDragging) return scheduleAutoAction(element);
 
     const action = Math.random();
-    if (action < 0.58) {
+    if (action < 0.62) {
       walk(element);
-    } else if (action < 0.82) {
+    } else if (action < 0.78) {
+      pace(element);
+    } else if (action < 0.9) {
       setState(element, 'wave');
       scheduleAutoAction(element);
     } else {
