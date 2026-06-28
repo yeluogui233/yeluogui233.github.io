@@ -998,3 +998,56 @@ html body .content.index .post-card-preview .post-card-cover img {
   object-position: center center !important;
   width: 100% !important;
 }
+
+/* iPad/tablet books layout: keep every card inside the grid. */
+@media (min-width: 768px) and (max-width: 1180px) {
+  html body .books-container .books-wrapper,
+  html body .books-wrapper {
+    box-sizing: border-box !important;
+    padding: 22px 18px 18px !important;
+  }
+
+  html body .books-container .page-header,
+  html body .books-container .books-front .page-header,
+  html body .books-container .books-friends .page-header {
+    padding: 0 12px !important;
+  }
+
+  html body .books-container .books-grid,
+  html body .books-wrapper .books-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 16px 12px !important;
+  }
+
+  html body .books-container .book-card,
+  html body .books-wrapper .book-card {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  html body .books-container .book-cover,
+  html body .books-wrapper .book-cover {
+    aspect-ratio: 3 / 4 !important;
+  }
+
+  html body .books-container .book-title-overlay,
+  html body .books-wrapper .book-title-overlay {
+    font-size: .72rem !important;
+    padding: 5px 7px !important;
+  }
+
+  html body .books-container .book-buttons,
+  html body .books-wrapper .book-buttons {
+    gap: 6px !important;
+    grid-auto-columns: 54px !important;
+    padding: 8px 6px 12px !important;
+  }
+
+  html body .books-container .book-buttons .btn,
+  html body .books-wrapper .book-buttons .btn {
+    width: 54px !important;
+    min-width: 54px !important;
+    max-width: 54px !important;
+    font-size: .72rem !important;
+  }
+}
