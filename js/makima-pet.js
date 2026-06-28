@@ -5,8 +5,12 @@
     idle: { row: 0, frames: 6, interval: 180 },
     runRight: { row: 1, frames: 8, interval: 90 },
     runLeft: { row: 2, frames: 8, interval: 90 },
-    wave: { row: 3, frames: 4, interval: 150 },
-    jump: { row: 4, frames: 5, interval: 95 }
+    point: { row: 3, frames: 4, interval: 150, hold: 520 },
+    wave: { row: 4, frames: 5, interval: 135, hold: 620 },
+    sad: { row: 5, frames: 8, interval: 170, hold: 1200 },
+    calm: { row: 6, frames: 5, interval: 190, hold: 1250 },
+    shy: { row: 7, frames: 8, interval: 160, hold: 1100 },
+    smug: { row: 8, frames: 8, interval: 150, hold: 900 }
   };
 
   const savedPositionKey = 'makima-pet-position';
@@ -16,7 +20,10 @@
   let isDragging = false;
   let lastX = 0;
   let autoTimer = null;
+  let actionTimer = null;
   let autoMoveFrame = 0;
+  let lastPointerDown = 0;
+  let clickSuppressUntil = 0;
 
   function setFrame(element, state, frameIndex) {
     const x = spriteColumns === 1 ? 0 : (frameIndex / (spriteColumns - 1)) * 100;
@@ -29,6 +36,16 @@
     stateName = nextState;
     frame = 0;
     setFrame(element, states[stateName], frame);
+  }
+
+  function playState(element, nextState, duration) {
+    window.clearTimeout(actionTimer);
+    setState(element, nextState);
+    const state = states[nextState] || states.idle;
+    actionTimer = window.setTimeout(() => {
+      if (!isDragging && stateName === nextState) setState(element, 'idle');
+      scheduleAutoAction(element);
+    }, duration || state.hold || 900);
   }
 
   function clampPosition(x, y, element) {
@@ -71,12 +88,19 @@
     element.classList.remove('is-jumping');
     void element.offsetWidth;
     element.classList.add('is-jumping');
-    setState(element, 'jump');
+    playState(element, 'smug', 760);
   }
 
   function scheduleAutoAction(element) {
     window.clearTimeout(autoTimer);
-    autoTimer = window.setTimeout(() => runAutoAction(element), 900 + Math.random() * 1900);
+    autoTimer = window.setTimeout(() => runAutoAction(element), 850 + Math.random() * 1700);
+  }
+
+  function clearMotion() {
+    window.clearTimeout(autoTimer);
+    window.clearTimeout(actionTimer);
+    if (autoMoveFrame) window.cancelAnimationFrame(autoMoveFrame);
+    autoMoveFrame = 0;
   }
 
   function walk(element) {
@@ -143,9 +167,8 @@
         autoMoveFrame = window.requestAnimationFrame(step);
       } else {
         autoMoveFrame = 0;
-        setState(element, 'wave');
+        playState(element, 'wave', 620);
         savePosition(element);
-        scheduleAutoAction(element);
       }
     }
 
@@ -156,16 +179,20 @@
     if (isDragging) return scheduleAutoAction(element);
 
     const action = Math.random();
-    if (action < 0.62) {
+    if (action < 0.38) {
       walk(element);
-    } else if (action < 0.78) {
+    } else if (action < 0.52) {
       pace(element);
-    } else if (action < 0.9) {
-      setState(element, 'wave');
-      scheduleAutoAction(element);
+    } else if (action < 0.64) {
+      playState(element, 'wave');
+    } else if (action < 0.76) {
+      playState(element, 'sad');
+    } else if (action < 0.86) {
+      playState(element, 'calm');
+    } else if (action < 0.94) {
+      playState(element, 'shy');
     } else {
-      hop(element);
-      scheduleAutoAction(element);
+      playState(element, 'point');
     }
   }
 
@@ -186,17 +213,13 @@
       const state = states[stateName] || states.idle;
       frame = (frame + 1) % state.frames;
       setFrame(pet, state, frame);
-      if (!isDragging && stateName !== 'idle' && stateName !== 'runLeft' && stateName !== 'runRight' && frame === state.frames - 1) {
-        setState(pet, 'idle');
-      }
     }, 95);
 
     pet.addEventListener('pointerdown', event => {
       isDragging = true;
-      window.clearTimeout(autoTimer);
-      if (autoMoveFrame) window.cancelAnimationFrame(autoMoveFrame);
-      autoMoveFrame = 0;
+      clearMotion();
       lastX = event.clientX;
+      lastPointerDown = Date.now();
       pet.classList.add('is-dragging');
       const rect = pet.getBoundingClientRect();
       pointerOffset = {
@@ -219,9 +242,16 @@
       if (!isDragging) return;
       isDragging = false;
       pet.classList.remove('is-dragging');
-      setState(pet, 'idle');
       savePosition(pet);
-      scheduleAutoAction(pet);
+
+      const wasClick = Date.now() - lastPointerDown < 220;
+      if (wasClick && Date.now() > clickSuppressUntil) {
+        playState(pet, Math.random() > 0.45 ? 'point' : 'shy');
+      } else {
+        setState(pet, 'idle');
+        scheduleAutoAction(pet);
+      }
+
       try {
         pet.releasePointerCapture(event.pointerId);
       } catch {}
@@ -236,12 +266,18 @@
     });
 
     pet.addEventListener('dblclick', () => {
+      clickSuppressUntil = Date.now() + 350;
       hop(pet);
       savePosition(pet);
     });
 
     pet.addEventListener('mouseenter', () => {
-      if (!isDragging) setState(pet, 'wave');
+      if (!isDragging) playState(pet, Math.random() > 0.3 ? 'wave' : 'calm', 760);
+    });
+
+    pet.addEventListener('contextmenu', event => {
+      event.preventDefault();
+      playState(pet, 'sad', 1500);
     });
 
     window.addEventListener('resize', () => {
