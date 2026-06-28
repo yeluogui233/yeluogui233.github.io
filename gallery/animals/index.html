@@ -165,51 +165,104 @@
     <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
-        <li class="menu-item menu-item-books">
+        
+        
+  <li class="menu-item menu-item-pages menu-item-has-children">
 
-    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书单</a>
+    <a href="/gallery/" rel="section"><i class="fa fa-layer-group fa-fw"></i>页面</a>
 
-  </li>
-        <li class="menu-item menu-item-movies">
-
-    <a href="/movies/" rel="section"><i class="fa fa-film fa-fw"></i>影视</a>
-
-  </li>
-        <li class="menu-item menu-item-diary">
-
-    <a href="/diary/" rel="section"><i class="fa fa-book-open fa-fw"></i>日记</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-gallery">
+    <ul class="menu-child">
+          
+  <li class="menu-item menu-item-gallery">
 
     <a href="/gallery/" rel="section"><i class="fa fa-camera fa-fw"></i>画廊</a>
 
   </li>
-        <li class="menu-item menu-item-bake">
+
+
+          
+  <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书单</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-film fa-fw"></i>影视</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-diary">
+
+    <a href="/diary/" rel="section"><i class="fa fa-book-open fa-fw"></i>日记</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-bake">
 
     <a href="/bake/" rel="section"><i class="fa fa-birthday-cake fa-fw"></i>烘焙</a>
 
   </li>
-        <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
-  </li>
-        <li class="menu-item menu-item-steam">
+          
+  <li class="menu-item menu-item-steam">
 
     <a href="/steamgames/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a>
 
   </li>
+
+
+    </ul>
+
+  </li>
+
+
+      
+        
+        
+  <li class="menu-item menu-item-archives menu-item-has-children">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+    <ul class="menu-child">
+          
+  <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+
+
+    </ul>
+
+  </li>
+
+
+      
         <li class="menu-item menu-item-lab">
 
     <a href="/lab/" rel="section"><i class="fa fa-flask fa-fw"></i>实验室</a>
@@ -273,6 +326,83 @@
         <div class="content-wrap">
           
   
+
+      
+
+        
+        <ul id="sub-menu" class="sub-menu menu">
+          
+            
+          
+          
+              
+  <li class="menu-item menu-item-gallery">
+
+    <a href="/gallery/gallery/" rel="section"><i class="fa fa-camera fa-fw"></i>画廊</a>
+
+  </li>
+
+
+          
+          
+              
+  <li class="menu-item menu-item-books">
+
+    <a href="/gallery/books/" rel="section"><i class="fa fa-book fa-fw"></i>书单</a>
+
+  </li>
+
+
+          
+          
+              
+  <li class="menu-item menu-item-movies">
+
+    <a href="/gallery/movies/" rel="section"><i class="fa fa-film fa-fw"></i>影视</a>
+
+  </li>
+
+
+          
+          
+              
+  <li class="menu-item menu-item-diary">
+
+    <a href="/gallery/diary/" rel="section"><i class="fa fa-book-open fa-fw"></i>日记</a>
+
+  </li>
+
+
+          
+          
+              
+  <li class="menu-item menu-item-bake">
+
+    <a href="/gallery/bake/" rel="section"><i class="fa fa-birthday-cake fa-fw"></i>烘焙</a>
+
+  </li>
+
+
+          
+          
+              
+  <li class="menu-item menu-item-steam">
+
+    <a href="/gallery/steamgames/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a>
+
+  </li>
+
+
+          
+        </ul>
+        
+
+        
+        
+      
+
+      
+      
   
 
           <div class="content ">
@@ -1260,21 +1390,18 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
+        <a href="/archives">
           <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
+          <a href="/categories/">
         <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
+          <a href="/tags/">
         <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -1299,6 +1426,51 @@ document.addEventListener('DOMContentLoaded', function() {
       <span class="links-of-author-item">
         <a href="https://www.youtube.com/@%E5%8F%B6%E8%90%BD%E5%BD%92" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@%E5%8F%B6%E8%90%BD%E5%BD%92" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
       </span>
+  </div>
+  <div class="sidebar-card sidebar-popular motion-element">
+    <div class="sidebar-card-title">
+      <i class="fa fa-fire fa-fw"></i>热门文章
+    </div>
+    <ol class="sidebar-popular-list">
+        <li class="sidebar-popular-item">
+          <a href="/2026/06/16/%E5%AE%9A%E7%A7%AF%E5%88%86%E5%AE%9A%E4%B9%89%E6%80%BB%E7%BB%93/" title="定积分定义总结">
+            <span>定积分定义总结</span>
+            <time datetime="2026-06-16T18:17:00+08:00">06-16</time>
+          </a>
+        </li>
+        <li class="sidebar-popular-item">
+          <a href="/2026/05/25/2666/" title="2666——圣特莱沙谋杀案">
+            <span>2666——圣特莱沙谋杀案</span>
+            <time datetime="2026-05-25T16:39:12+08:00">05-25</time>
+          </a>
+        </li>
+        <li class="sidebar-popular-item">
+          <a href="/2026/05/09/%E5%8D%97%E6%96%B9%E9%AB%98%E9%80%9F/" title="南方高速读后感">
+            <span>南方高速读后感</span>
+            <time datetime="2026-05-09T00:54:01+08:00">05-09</time>
+          </a>
+        </li>
+        <li class="sidebar-popular-item">
+          <a href="/2026/05/05/%E5%A0%82%E5%90%89%E8%AF%83%E5%BE%B7%E2%80%94%E2%80%94%E7%90%86%E6%83%B3%E4%B8%BB%E4%B9%89%E5%A4%A7%E8%8E%B7%E5%85%A8%E8%B4%A5/" title="堂吉诃德——理想主义大获全败">
+            <span>堂吉诃德——理想主义大获全败</span>
+            <time datetime="2026-05-05T00:23:01+08:00">05-05</time>
+          </a>
+        </li>
+        <li class="sidebar-popular-item">
+          <a href="/2026/04/16/%E9%AC%BC%E2%80%94%E2%80%94%E7%BE%A4%E9%AD%94%E4%B9%B1%E8%88%9E%E7%9A%84%E7%97%85%E4%BA%BA%E4%BB%AC/" title="鬼——群魔乱舞的病人们">
+            <span>鬼——群魔乱舞的病人们</span>
+            <time datetime="2026-04-16T20:37:01+08:00">04-16</time>
+          </a>
+        </li>
+    </ol>
+  </div>
+  <div class="sidebar-card sidebar-tag-cloud motion-element">
+    <div class="sidebar-card-title">
+      <i class="fa fa-tags fa-fw"></i>标签云
+    </div>
+    <div class="sidebar-tag-cloud-list">
+      <a href="/tags/408/" style="font-size: 17px;">408</a> <a href="/tags/KMP%E7%AE%97%E6%B3%95/" style="font-size: 13px;">KMP算法</a> <a href="/tags/SWITCH/" style="font-size: 12px;">SWITCH</a> <a href="/tags/type-moon/" style="font-size: 12px;">type-moon</a> <a href="/tags/%E4%B9%A6%E8%AF%84/" style="font-size: 18px;">书评</a> <a href="/tags/%E4%BF%84%E5%9B%BD%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" style="font-size: 17px;">俄国文学/文学</a> <a href="/tags/%E5%88%97%E5%A4%AB%E6%89%98%E5%B0%94%E6%96%AF%E6%B3%B0/" style="font-size: 13px;">列夫托尔斯泰</a> <a href="/tags/%E5%A0%82%E5%90%89%E8%AF%83%E5%BE%B7/" style="font-size: 12px;">堂吉诃德</a> <a href="/tags/%E5%A5%B3%E6%80%A7%E4%B8%BB%E4%B9%89/" style="font-size: 12px;">女性主义</a> <a href="/tags/%E5%AD%98%E5%82%A8%E5%99%A8/" style="font-size: 12px;">存储器</a> <a href="/tags/%E6%85%95%E6%96%AF%E8%9B%8B%E7%B3%95/" style="font-size: 13px;">慕斯蛋糕</a> <a href="/tags/%E6%8B%89%E7%BE%8E%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" style="font-size: 15px;">拉美文学/文学</a> <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" style="font-size: 12px;">拓扑排序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 16px;">数据结构</a> <a href="/tags/%E6%9C%88%E5%A7%AC/" style="font-size: 12px;">月姬</a> <a href="/tags/%E6%9F%A5%E6%89%BE/" style="font-size: 12px;">查找</a> <a href="/tags/%E6%A0%91/" style="font-size: 12px;">树</a> <a href="/tags/%E6%B3%95%E5%9B%BD%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" style="font-size: 13px;">法国文学/文学</a> <a href="/tags/%E7%83%98%E7%84%99/" style="font-size: 13px;">烘焙</a> <a href="/tags/%E7%8E%9B%E4%B8%BD%E4%BA%9A%C2%B7%E7%B1%B3%E6%96%AF/" style="font-size: 12px;">玛丽亚·米斯</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%AD%A6/" style="font-size: 12px;">社会学</a> <a href="/tags/%E7%A7%AF%E5%88%86/" style="font-size: 14px;">积分</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12px;">算法</a> <a href="/tags/%E7%BB%B4%E5%85%8B%E5%A4%9A%C2%B7%E9%9B%A8%E6%9E%9C/" style="font-size: 12px;">维克多·雨果</a> <a href="/tags/%E7%BD%97%E8%B4%9D%E6%89%98%C2%B7%E6%B3%A2%E6%8B%89%E5%B0%BC%E5%A5%A5/" style="font-size: 12px;">罗贝托·波拉尼奥</a> <a href="/tags/%E8%83%A1%E9%87%8C%E5%A5%A5%C2%B7%E7%A7%91%E5%A1%94%E5%B0%94%E8%90%A8/" style="font-size: 12px;">胡里奥·科塔尔萨</a> <a href="/tags/%E8%A5%BF%E7%8F%AD%E7%89%99%E6%96%87%E5%AD%A6-%E6%96%87%E5%AD%A6/" style="font-size: 12px;">西班牙文学/文学</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 12px;">计算机组成原理</a>
+    </div>
   </div>
 
 
