@@ -15,6 +15,8 @@
   let pointerOffset = { x: 0, y: 0 };
   let isDragging = false;
   let lastX = 0;
+  let autoTimer = null;
+  let autoMoveFrame = 0;
 
   function setFrame(element, state, frameIndex) {
     const x = spriteColumns === 1 ? 0 : (frameIndex / (spriteColumns - 1)) * 100;
@@ -40,21 +42,91 @@
     };
   }
 
-  function savePosition(element) {
+  function getPosition(element) {
     const rect = element.getBoundingClientRect();
-    localStorage.setItem(savedPositionKey, JSON.stringify({ x: rect.left, y: rect.top }));
+    return { x: rect.left, y: rect.top };
+  }
+
+  function setPosition(element, x, y) {
+    const position = clampPosition(x, y, element);
+    element.style.left = `${position.x}px`;
+    element.style.top = `${position.y}px`;
+    element.style.right = 'auto';
+    element.style.bottom = 'auto';
+    return position;
+  }
+
+  function savePosition(element) {
+    localStorage.setItem(savedPositionKey, JSON.stringify(getPosition(element)));
   }
 
   function restorePosition(element) {
     try {
       const saved = JSON.parse(localStorage.getItem(savedPositionKey) || 'null');
-      if (!saved) return;
-      const position = clampPosition(saved.x, saved.y, element);
-      element.style.left = `${position.x}px`;
-      element.style.top = `${position.y}px`;
-      element.style.right = 'auto';
-      element.style.bottom = 'auto';
+      if (saved) setPosition(element, saved.x, saved.y);
     } catch {}
+  }
+
+  function hop(element) {
+    element.classList.remove('is-jumping');
+    void element.offsetWidth;
+    element.classList.add('is-jumping');
+    setState(element, 'jump');
+  }
+
+  function scheduleAutoAction(element) {
+    window.clearTimeout(autoTimer);
+    autoTimer = window.setTimeout(() => runAutoAction(element), 2400 + Math.random() * 4200);
+  }
+
+  function walk(element) {
+    if (isDragging) return scheduleAutoAction(element);
+
+    const start = getPosition(element);
+    const direction = Math.random() > 0.5 ? 1 : -1;
+    const distance = 52 + Math.random() * 118;
+    const target = clampPosition(start.x + direction * distance, start.y, element);
+    const duration = 900 + Math.random() * 600;
+    const startedAt = performance.now();
+    setState(element, direction > 0 ? 'runRight' : 'runLeft');
+
+    function step(now) {
+      if (isDragging) {
+        autoMoveFrame = 0;
+        return;
+      }
+
+      const progress = Math.min((now - startedAt) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const x = start.x + (target.x - start.x) * eased;
+      setPosition(element, x, target.y);
+
+      if (progress < 1) {
+        autoMoveFrame = window.requestAnimationFrame(step);
+      } else {
+        autoMoveFrame = 0;
+        setState(element, 'idle');
+        savePosition(element);
+        scheduleAutoAction(element);
+      }
+    }
+
+    autoMoveFrame = window.requestAnimationFrame(step);
+  }
+
+  function runAutoAction(element) {
+    if (isDragging) return scheduleAutoAction(element);
+
+    const action = Math.random();
+    if (action < 0.58) {
+      walk(element);
+    } else if (action < 0.82) {
+      setState(element, 'wave');
+      scheduleAutoAction(element);
+    } else {
+      hop(element);
+      scheduleAutoAction(element);
+    }
   }
 
   function mount() {
@@ -64,7 +136,7 @@
     pet.id = 'makima-pet';
     pet.setAttribute('role', 'img');
     pet.setAttribute('aria-label', 'Makima pixel pet, draggable');
-    pet.title = 'Makima - 可以拖着玩';
+    pet.title = 'Makima';
     document.body.appendChild(pet);
 
     restorePosition(pet);
@@ -74,13 +146,16 @@
       const state = states[stateName] || states.idle;
       frame = (frame + 1) % state.frames;
       setFrame(pet, state, frame);
-      if (!isDragging && stateName !== 'idle' && frame === state.frames - 1) {
+      if (!isDragging && stateName !== 'idle' && stateName !== 'runLeft' && stateName !== 'runRight' && frame === state.frames - 1) {
         setState(pet, 'idle');
       }
     }, 95);
 
     pet.addEventListener('pointerdown', event => {
       isDragging = true;
+      window.clearTimeout(autoTimer);
+      if (autoMoveFrame) window.cancelAnimationFrame(autoMoveFrame);
+      autoMoveFrame = 0;
       lastX = event.clientX;
       pet.classList.add('is-dragging');
       const rect = pet.getBoundingClientRect();
@@ -94,11 +169,7 @@
 
     pet.addEventListener('pointermove', event => {
       if (!isDragging) return;
-      const position = clampPosition(event.clientX - pointerOffset.x, event.clientY - pointerOffset.y, pet);
-      pet.style.left = `${position.x}px`;
-      pet.style.top = `${position.y}px`;
-      pet.style.right = 'auto';
-      pet.style.bottom = 'auto';
+      setPosition(pet, event.clientX - pointerOffset.x, event.clientY - pointerOffset.y);
       setState(pet, event.clientX >= lastX ? 'runRight' : 'runLeft');
       lastX = event.clientX;
       event.preventDefault();
@@ -110,6 +181,7 @@
       pet.classList.remove('is-dragging');
       setState(pet, 'idle');
       savePosition(pet);
+      scheduleAutoAction(pet);
       try {
         pet.releasePointerCapture(event.pointerId);
       } catch {}
@@ -120,13 +192,12 @@
       pet.classList.remove('is-dragging');
       setState(pet, 'idle');
       savePosition(pet);
+      scheduleAutoAction(pet);
     });
 
     pet.addEventListener('dblclick', () => {
-      pet.classList.remove('is-jumping');
-      void pet.offsetWidth;
-      pet.classList.add('is-jumping');
-      setState(pet, 'jump');
+      hop(pet);
+      savePosition(pet);
     });
 
     pet.addEventListener('mouseenter', () => {
@@ -134,14 +205,12 @@
     });
 
     window.addEventListener('resize', () => {
-      const rect = pet.getBoundingClientRect();
-      const position = clampPosition(rect.left, rect.top, pet);
-      pet.style.left = `${position.x}px`;
-      pet.style.top = `${position.y}px`;
-      pet.style.right = 'auto';
-      pet.style.bottom = 'auto';
+      const position = getPosition(pet);
+      setPosition(pet, position.x, position.y);
       savePosition(pet);
     });
+
+    scheduleAutoAction(pet);
   }
 
   if (document.readyState === 'loading') {
