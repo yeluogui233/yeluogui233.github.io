@@ -504,7 +504,7 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://s3.bmp.ovh/imgs/2025/08/06/4207db52450d0d5d.png"></p>
+          <p><img src="https://s3.bmp.ovh/imgs/2025/08/06/4207db52450d0d5d.png"></p>
 <h1 id="next数组的用法"><a href="#next数组的用法" class="headerlink" title="next数组的用法"></a>next数组的用法</h1><p>首先，当我们进行KMP匹配的时候，我们会用主串和模式串进行对比。当失配的时候我们需要把 指向模式串的指针指向next[j]。</p>
 <p>原因是因为在主串指针前的所有内容是可以用共同的前后缀来进行匹配的，next数组也是用共同的前后缀来得出的<img src="https://s3.bmp.ovh/imgs/2025/08/06/54d11ee81a85518a.gif"></p>
 <h1 id="next数组的求法"><a href="#next数组的求法" class="headerlink" title="next数组的求法"></a>next数组的求法</h1><p>将指向模式串的指针Pj，前面的部分比如目前指向了j=5的位置。我们可以看到1234中最大的前后缀匹配就是{ab}也就是说，我们直接指向前缀ab之后的元素即可，也就是令模式串的指针的j=3<img src="https://s3.bmp.ovh/imgs/2025/08/06/19c8ad6ab9d10af5.gif"></p>
@@ -562,6 +562,7 @@ mjx-container[display="true"] + br {
   
   
   
+
 
 
 
@@ -881,6 +882,8 @@ mjx-container[display="true"] + br {
 
 
 <script src="/js/next-boot.js"></script>
+
+<script src="/js/password-gate.js"></script>
 
 
   <script defer src="/lib/three/three.min.js"></script>
