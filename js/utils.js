@@ -351,6 +351,10 @@ NexT.utils = {
   updateSidebarPosition: function() {
     var sidebarNav = document.querySelector('.sidebar-nav');
     var hasTOC = document.querySelector('.post-toc');
+    if (!sidebarNav) {
+      NexT.utils.initSidebarDimension();
+      return;
+    }
     if (hasTOC) {
       sidebarNav.style.display = '';
       sidebarNav.classList.add('motion-element');
@@ -358,7 +362,6 @@ NexT.utils = {
     } else {
       sidebarNav.style.display = 'none';
       sidebarNav.classList.remove('motion-element');
-      document.querySelector('.sidebar-nav-overview').click();
     }
     NexT.utils.initSidebarDimension();
     if (!this.isDesktop() || CONFIG.scheme === 'Pisces' || CONFIG.scheme === 'Gemini') return;

@@ -35,6 +35,11 @@ NexT.boot.registerEvents = function() {
 
       var targets = document.querySelectorAll('.sidebar-panel');
       var target = targets[index];
+      if (!target || targets.length < 2) {
+        item.classList.add(activeTabClassName);
+        target && target.classList.add(activePanelClassName);
+        return;
+      }
       var currentTarget = targets[1 - index];
       window.anime({
         targets : currentTarget,
