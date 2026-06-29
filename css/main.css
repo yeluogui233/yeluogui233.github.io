@@ -1175,7 +1175,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #0d6cff;
+  background: #8c85ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1325,7 +1325,7 @@ pre .javascript .function {
   white-space: nowrap;
 }
 .post-toc .nav .nav-child {
-  display: none;
+  display: block;
 }
 .post-toc .nav .active > .nav-child {
   display: block;
@@ -6234,6 +6234,108 @@ body .movies-wrapper .movie-buttons .btn:hover {
   body .header-inner,
   body .main-inner {
     width: calc(100vw - 16px) !important;
+  }
+}
+@media (max-width: 767px) {
+  body .content.index .post-card-preview,
+  body .content.index .post-card-preview:nth-of-type(even),
+  body.index .post-card-preview,
+  body.index .post-card-preview:nth-of-type(even) {
+    align-items: stretch !important;
+    background: #fff !important;
+    border: 1px solid rgba(217,224,235,0.96) !important;
+    border-radius: 22px !important;
+    box-shadow: 0 12px 28px rgba(30,42,68,0.08) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0 !important;
+    min-height: 156px !important;
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+  body .content.index .post-card-preview .post-card-cover,
+  body.index .post-card-preview .post-card-cover {
+    flex: 0 0 40% !important;
+    min-height: 156px !important;
+    width: 40% !important;
+  }
+  body .content.index .post-card-preview .post-card-cover img,
+  body.index .post-card-preview .post-card-cover img {
+    display: block !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    width: 100% !important;
+  }
+  body .content.index .post-card-preview .post-card-info {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    padding: 12px 12px 10px !important;
+  }
+  body .content.index .post-card-preview .post-title {
+    display: block !important;
+    font-size: 0.96rem !important;
+    line-height: 1.28 !important;
+    margin: 0 0 6px !important;
+    overflow: hidden !important;
+  }
+  body .content.index .post-card-preview .post-meta {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 2px 8px !important;
+    line-height: 1.35 !important;
+    margin: 0 0 6px !important;
+  }
+  body .content.index .post-card-preview .post-body {
+    color: #4e5b70 !important;
+    display: block !important;
+    flex: 1 1 auto !important;
+    font-size: 0.84rem !important;
+    line-height: 1.52 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    max-height: none !important;
+  }
+  body .content.index .post-card-preview .post-body p,
+  body .content.index .post-card-preview .encrypted-post-excerpt {
+    display: -webkit-box !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+  }
+  body .content.index .post-card-preview .post-button {
+    margin-top: 8px !important;
+  }
+  body .content.index .post-card-preview .post-button .btn {
+    min-height: 30px !important;
+    min-width: 82px !important;
+    padding: 0 12px !important;
+  }
+  body #makima-pet,
+  body #netease-player,
+  body #sakana-widget-container,
+  body .fireworks {
+    display: none !important;
+  }
+  body .content.categories-page .stats-cards {
+    gap: 10px !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    margin: 14px auto 0 !important;
+    max-width: 640px !important;
+  }
+  body .content.categories-page .stat-card {
+    border-radius: 16px !important;
+    padding: 12px 10px !important;
+  }
+  body .content.categories-page .categories-grid {
+    gap: 12px !important;
+  }
+  body .content.categories-page .category-card-content {
+    padding: 14px 12px !important;
   }
 }
 /* ================== Absolute real EOF: must stay last ================== */
