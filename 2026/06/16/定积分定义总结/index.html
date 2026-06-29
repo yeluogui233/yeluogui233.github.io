@@ -508,16 +508,16 @@ mjx-container[display="true"] + br {
       
           <div class="hbe hbe-container password-gate" id="hexo-blog-password-gate"
             data-password="1004"
-            data-wrong-message="Password is incorrect. Try again.">
+            data-wrong-message="密码不正确，请再试一次。">
             <div class="hbe hbe-content">
               <form id="hbeForm" class="hbe hbe-form" onsubmit="return window.unlockPasswordGate ? window.unlockPasswordGate(this) : false">
                 <div class="hbe hbe-input hbe-input-default">
                   <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass" autocomplete="current-password" inputmode="numeric">
                   <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-                    <span class="hbe hbe-input-label-content hbe-input-label-content-default">Please enter password to continue.</span>
+                    <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入密码继续阅读。</span>
                   </label>
                 </div>
-                <button class="hbe hbe-button" type="submit">Unlock</button>
+                <button class="hbe hbe-button" type="submit">解锁文章</button>
                 <div class="hbe hbe-error" role="alert" aria-live="polite"></div>
               </form>
             </div>
@@ -554,7 +554,7 @@ mjx-container[display="true"] + br {
                 wrapper.parentNode.replaceChild(container, wrapper);
                 try { window.dispatchEvent(new Event('hexo-blog-decrypt')); } catch (e) {}
               } else {
-                if (error) error.textContent = wrapper.getAttribute('data-wrong-message') || 'Password is incorrect. Try again.';
+                if (error) error.textContent = wrapper.getAttribute('data-wrong-message') || '密码不正确，请再试一次。';
                 if (input) {
                   input.value = '';
                   input.focus();

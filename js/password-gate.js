@@ -12,7 +12,7 @@
 
   function showError(wrapper, message) {
     var error = wrapper.querySelector('[role="alert"]');
-    if (error) error.textContent = message || 'Password is incorrect. Try again.';
+    if (error) error.textContent = message || '密码不正确，请再试一次。';
   }
 
   function clearError(wrapper) {
