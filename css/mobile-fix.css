@@ -430,16 +430,16 @@
     display: flex !important;
     flex-direction: row !important;
     gap: 0 !important;
-    min-height: 156px !important;
+    min-height: 168px !important;
     overflow: hidden !important;
     width: 100% !important;
   }
 
   html body .content.index .post-block.post-card-preview .post-card-cover,
   html body.index .post-card-preview .post-card-cover {
-    flex: 0 0 40% !important;
-    min-height: 156px !important;
-    width: 40% !important;
+    flex: 0 0 44% !important;
+    min-height: 168px !important;
+    width: 44% !important;
   }
 
   html body .content.index .post-block.post-card-preview .post-card-cover img,
