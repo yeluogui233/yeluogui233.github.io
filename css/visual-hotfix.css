@@ -1220,3 +1220,172 @@ html body .main-inner:not(:has(.sidebar)) .content-wrap {
     max-width: none !important;
   }
 }
+
+/* 20260629 final interaction lock: restore category card hover. */
+html body .content.categories-page .category-card-wrapper {
+  overflow: visible !important;
+  position: relative !important;
+}
+
+html body .content.categories-page .category-card-glass {
+  cursor: default !important;
+  transform: translateY(0) scale(1) !important;
+  transform-origin: center center !important;
+  transition:
+    transform .34s cubic-bezier(.22, 1, .36, 1),
+    box-shadow .34s ease,
+    border-color .34s ease,
+    background-color .34s ease !important;
+  will-change: transform, box-shadow !important;
+}
+
+html body .content.categories-page .category-card-wrapper:hover > .category-card-glass,
+html body .content.categories-page .category-card-wrapper:focus-within > .category-card-glass,
+html body .content.categories-page .category-card-wrapper.hover-active > .category-card-glass {
+  background: #fff !important;
+  border-color: rgba(52, 152, 219, .32) !important;
+  box-shadow: 0 22px 46px rgba(30, 42, 68, .16) !important;
+  transform: translateY(-10px) scale(1.015) !important;
+}
+
+html body .content.categories-page .category-card-image {
+  transition: transform .7s cubic-bezier(.22, 1, .36, 1) !important;
+  will-change: transform !important;
+}
+
+html body .content.categories-page .category-card-wrapper:hover .category-card-image,
+html body .content.categories-page .category-card-wrapper:focus-within .category-card-image,
+html body .content.categories-page .category-card-wrapper.hover-active .category-card-image {
+  transform: scale(1.08) !important;
+}
+
+html body .content.categories-page .category-card-wrapper:hover .hover-overlay,
+html body .content.categories-page .category-card-wrapper:focus-within .hover-overlay,
+html body .content.categories-page .category-card-wrapper.hover-active .hover-overlay {
+  opacity: 1 !important;
+}
+
+html body .content.categories-page .category-card-wrapper:hover .post-count,
+html body .content.categories-page .category-card-wrapper:focus-within .post-count,
+html body .content.categories-page .category-card-wrapper.hover-active .post-count {
+  background: rgba(52, 152, 219, .96) !important;
+  border-color: rgba(52, 152, 219, .35) !important;
+  color: #fff !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 20260629 final TOC lock: sticky sidebar, no overflowing nested pills. */
+html body .sidebar.sidebar-toc-only {
+  align-self: start !important;
+  grid-column: 1 !important;
+  max-height: calc(100vh - 96px) !important;
+  overflow: visible !important;
+  position: sticky !important;
+  top: 96px !important;
+}
+
+html body .sidebar.sidebar-toc-only .sidebar-inner,
+html body .sidebar.sidebar-toc-only .sidebar-inner.affix,
+html body .sidebar.sidebar-toc-only .sidebar-inner.affix-top,
+html body .sidebar.sidebar-toc-only .sidebar-inner.affix-bottom {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: block !important;
+  max-height: none !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  position: static !important;
+  transform: none !important;
+  width: 100% !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc-wrap {
+  box-sizing: border-box !important;
+  max-height: calc(100vh - 156px) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: 16px !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc,
+html body .sidebar.sidebar-toc-only .post-toc .nav,
+html body .sidebar.sidebar-toc-only .post-toc .nav-child {
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc .nav-item {
+  box-sizing: border-box !important;
+  list-style: none !important;
+  margin: 0 0 8px !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc .nav-link {
+  align-items: flex-start !important;
+  background: #f8fafc !important;
+  border: 1px solid rgba(217, 224, 235, .96) !important;
+  border-radius: 15px !important;
+  box-sizing: border-box !important;
+  color: #202938 !important;
+  display: flex !important;
+  gap: 6px !important;
+  line-height: 1.35 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+  min-height: 40px !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  padding: 10px 12px !important;
+  text-decoration: none !important;
+  transition: background-color .22s ease, color .22s ease, border-color .22s ease, transform .22s ease !important;
+  width: 100% !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc .nav-link:hover,
+html body .sidebar.sidebar-toc-only .post-toc .nav-link:focus-visible {
+  background: #111 !important;
+  border-color: #111 !important;
+  color: #fff !important;
+  transform: translateY(-1px) !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc .nav-number {
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc .nav-text {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc .nav-level-2 > .nav-link {
+  margin-left: 12px !important;
+  width: calc(100% - 12px) !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc .nav-level-3 > .nav-link {
+  font-size: .9em !important;
+  margin-left: 24px !important;
+  width: calc(100% - 24px) !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc .nav-level-4 > .nav-link,
+html body .sidebar.sidebar-toc-only .post-toc .nav-level-5 > .nav-link,
+html body .sidebar.sidebar-toc-only .post-toc .nav-level-6 > .nav-link {
+  font-size: .84em !important;
+  margin-left: 36px !important;
+  width: calc(100% - 36px) !important;
+}
