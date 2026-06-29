@@ -380,44 +380,222 @@
     padding: 0 10px !important;
   }
 
-  body .sidebar-popular-item time {
-    min-width: 44px !important;
-    width: 44px !important;
+    body .sidebar-popular-item time {
+      min-width: 44px !important;
+      width: 44px !important;
+    }
   }
-}
-
-
-
 
 @media (max-width: 767px) {
-  html, body { overflow-x: hidden !important; }
-  body .sidebar, body .sidebar-inner, body .site-overview-wrap, body .site-author-widget, body .sidebar-panel, body .sidebar-toggle, body #sidebar-dimmer, body .post-toc-wrap, body .back-to-top { display: none !important; }
-  body .header { margin: 8px auto 12px !important; padding: 0 10px !important; position: relative !important; top: auto !important; }
-  body .header-inner { align-items: center !important; border-radius: 22px !important; flex-direction: row !important; gap: 0 !important; min-height: 0 !important; padding: 10px 12px !important; width: calc(100vw - 20px) !important; }
-  body .site-brand-container, body .site-subtitle, body .site-nav-toggle, body .site-nav-right { display: none !important; }
-  body .site-nav, body .main-menu { width: 100% !important; }
-  body .main-menu { align-items: center !important; display: flex !important; flex-wrap: nowrap !important; gap: 6px !important; justify-content: flex-start !important; overflow-x: auto !important; overflow-y: visible !important; padding: 2px 2px 4px !important; scrollbar-width: none !important; }
-  body .main-menu::-webkit-scrollbar { display: none !important; }
-  body .main-menu > .menu-item { flex: 0 0 auto !important; }
-  body .main-menu > .menu-item > a, body .main-menu > .menu-item > .popup-trigger { min-height: 34px !important; padding: 0 11px !important; white-space: nowrap !important; }
-  body .main, body .main-inner, body .content-wrap { width: 100% !important; }
-  body .main-inner { display: block !important; }
-  body .content-wrap { margin: 0 !important; padding: 0 !important; }
-  body .content.index .post-block.post-card-preview, body .content.index .post-block.post-card-preview:nth-of-type(even), body.index .post-card-preview, body.index .post-card-preview:nth-of-type(even) { align-items: stretch !important; display: flex !important; flex-direction: row !important; gap: 0 !important; min-height: 150px !important; overflow: hidden !important; width: 100% !important; }
-  body .content.index .post-block.post-card-preview .post-card-cover, body.index .post-card-preview .post-card-cover { flex: 0 0 38% !important; height: auto !important; min-height: 150px !important; width: 38% !important; }
-  body .content.index .post-block.post-card-preview .post-card-cover img, body.index .post-card-preview .post-card-cover img { height: 100% !important; object-fit: cover !important; width: 100% !important; }
-  body .content.index .post-block.post-card-preview .post-card-info { display: flex !important; flex: 1 1 auto !important; flex-direction: column !important; min-width: 0 !important; padding: 12px 12px 10px !important; }
-  body .content.index .post-card-preview .post-header { padding: 0 !important; }
-  body .content.index .post-card-preview .post-title { font-size: .98rem !important; line-height: 1.28 !important; margin: 0 0 6px !important; }
-  body .content.index .post-card-preview .post-meta { display: flex !important; flex-wrap: wrap !important; gap: 2px 8px !important; line-height: 1.35 !important; margin: 0 0 6px !important; }
-  body .content.index .post-card-preview .post-body { color: #4e5b70 !important; flex: 1 1 auto !important; font-size: .84rem !important; line-height: 1.5 !important; margin: 0 !important; max-height: none !important; overflow: hidden !important; padding: 0 !important; }
-  body .content.index .post-card-preview .post-body p { display: -webkit-box !important; margin: 0 !important; overflow: hidden !important; -webkit-box-orient: vertical !important; -webkit-line-clamp: 3 !important; }
-  body .content.index .post-card-preview .post-body::after { display: none !important; }
-  body .content.index .post-card-preview .post-button { margin-top: 8px !important; }
-  body .content.index .post-card-preview .post-button .btn { min-height: 30px !important; min-width: 82px !important; padding: 0 12px !important; }
-}
+  html body,
+  html body * {
+    box-sizing: border-box;
+  }
 
-@media (max-width: 767px) {
+  html body {
+    overflow-x: hidden !important;
+  }
+
+  html body .header {
+    margin: 8px auto 12px !important;
+    padding: 0 10px !important;
+    position: relative !important;
+    top: auto !important;
+  }
+
+  html body .header-inner {
+    align-items: flex-start !important;
+    background: rgba(255, 255, 255, .98) !important;
+    border: 1px solid rgba(216, 224, 236, .95) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 12px 28px rgba(30, 42, 68, .08) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    padding: 12px !important;
+    width: calc(100vw - 20px) !important;
+  }
+
+  html body .site-brand-container,
+  html body .site-subtitle,
+  html body .site-nav-toggle,
+  html body .site-nav-right {
+    display: none !important;
+  }
+
+  html body .site-nav {
+    display: block !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  html body .main-menu {
+    align-items: flex-start !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px 8px !important;
+    justify-content: flex-start !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
+  }
+
+  html body .main-menu::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  html body .main-menu > .menu-item {
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+  }
+
+  html body .main-menu > .menu-item > a,
+  html body .main-menu > .menu-item > .popup-trigger {
+    align-items: center !important;
+    background: #fff !important;
+    border: 1px solid rgba(216, 224, 236, .96) !important;
+    border-radius: 999px !important;
+    color: #1f2937 !important;
+    display: inline-flex !important;
+    font-size: .82rem !important;
+    gap: 6px !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    min-height: 36px !important;
+    padding: 0 14px !important;
+    position: relative !important;
+    text-decoration: none !important;
+    transition: background .18s ease, border-color .18s ease, box-shadow .18s ease, color .18s ease, transform .18s ease !important;
+    white-space: nowrap !important;
+  }
+
+  html body .main-menu > .menu-item > a i,
+  html body .main-menu > .menu-item > .popup-trigger i,
+  html body .main-menu > .menu-item > a .fa,
+  html body .main-menu > .menu-item > .popup-trigger .fa,
+  html body .main-menu > .menu-item > a .fas,
+  html body .main-menu > .menu-item > .popup-trigger .fas {
+    color: inherit !important;
+    display: inline-block !important;
+    font-size: .95em !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+  }
+
+  html body .main-menu > .menu-item > a:hover,
+  html body .main-menu > .menu-item > a:focus-visible,
+  html body .main-menu > .menu-item > .popup-trigger:hover,
+  html body .main-menu > .menu-item > .popup-trigger:focus-visible,
+  html body .main-menu > .menu-item > a:active,
+  html body .main-menu > .menu-item > .popup-trigger:active,
+  html body .main-menu > .menu-item-has-children.is-touch-open > a,
+  html body .main-menu > .menu-item-has-children.is-touch-open > .popup-trigger {
+    background: #111 !important;
+    border-color: #111 !important;
+    box-shadow: 0 12px 22px rgba(17, 17, 17, .20) !important;
+    color: #fff !important;
+    transform: translateY(-1px) !important;
+  }
+
+  html body .main-menu > .menu-item-has-children {
+    align-items: flex-start !important;
+    display: flex !important;
+    flex: 0 0 auto !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    position: relative !important;
+  }
+
+  html body .main-menu > .menu-item-has-children.is-touch-open {
+    flex-basis: 100% !important;
+    width: 100% !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child {
+    background: rgba(255, 255, 255, .98) !important;
+    border: 1px solid rgba(216, 224, 236, .95) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 14px 30px rgba(29, 41, 62, .14) !important;
+    display: none !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding: 8px !important;
+    position: relative !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
+    z-index: 20 !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  html body .main-menu > .menu-item-has-children.is-touch-open > .menu-child {
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a {
+    align-items: center !important;
+    background: #fff !important;
+    border: 1px solid rgba(216, 224, 236, .96) !important;
+    border-radius: 999px !important;
+    color: #253042 !important;
+    display: inline-flex !important;
+    min-height: 32px !important;
+    padding: 0 12px !important;
+    white-space: nowrap !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a:hover,
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a:focus-visible,
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a:active {
+    background: #111 !important;
+    border-color: #111 !important;
+    color: #fff !important;
+  }
+
+  html body .main,
+  html body .main-inner,
+  html body .content-wrap {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  html body .main-inner {
+    display: block !important;
+  }
+
+  html body .content-wrap {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body .content.index,
+  html body .content-wrap > .content:not(.index),
+  html body:not(.index) .post-block,
+  html body .page .post-block {
+    max-width: 100% !important;
+  }
+
   html body .content.index .post-block.post-card-preview,
   html body .content.index .post-block.post-card-preview:nth-of-type(even),
   html body.index .post-card-preview,
@@ -430,16 +608,18 @@
     display: flex !important;
     flex-direction: row !important;
     gap: 0 !important;
-    min-height: 168px !important;
+    margin: 0 0 14px !important;
+    max-width: 100% !important;
+    min-height: 150px !important;
     overflow: hidden !important;
     width: 100% !important;
   }
 
   html body .content.index .post-block.post-card-preview .post-card-cover,
   html body.index .post-card-preview .post-card-cover {
-    flex: 0 0 44% !important;
-    min-height: 168px !important;
-    width: 44% !important;
+    flex: 0 0 40% !important;
+    min-height: 150px !important;
+    width: 40% !important;
   }
 
   html body .content.index .post-block.post-card-preview .post-card-cover img,
@@ -456,7 +636,352 @@
     flex: 1 1 auto !important;
     flex-direction: column !important;
     min-width: 0 !important;
-    padding: 12px 12px 10px !important;
+    padding: 12px !important;
+  }
+
+  html body .content.index .post-card-preview .post-header {
+    padding: 0 !important;
+  }
+
+  html body .content.index .post-card-preview .post-title {
+    font-size: .95rem !important;
+    line-height: 1.28 !important;
+    margin: 0 0 6px !important;
+  }
+
+  html body .content.index .post-card-preview .post-meta {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 2px 8px !important;
+    line-height: 1.35 !important;
+    margin: 0 0 6px !important;
+  }
+
+  html body .content.index .post-card-preview .post-meta-item {
+    margin: 0 !important;
+  }
+
+  html body .content.index .post-card-preview .post-body {
+    color: #4e5b70 !important;
+    display: block !important;
+    flex: 1 1 auto !important;
+    font-size: .84rem !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  html body .content.index .post-card-preview .post-body p,
+  html body .content.index .post-card-preview .encrypted-post-excerpt {
+    display: -webkit-box !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+  }
+
+  html body .content.index .post-card-preview .post-button {
+    margin-top: 8px !important;
+  }
+
+  html body .content.index .post-card-preview .post-button .btn {
+    min-height: 30px !important;
+    min-width: 82px !important;
+    padding: 0 12px !important;
+  }
+}
+
+
+
+
+@media (max-width: 767px) {
+  html body,
+  html body * {
+    box-sizing: border-box;
+  }
+
+  html body {
+    overflow-x: hidden !important;
+  }
+
+  html body .sidebar,
+  html body .sidebar-inner,
+  html body .site-overview-wrap,
+  html body .site-author-widget,
+  html body .sidebar-panel,
+  html body .sidebar-toggle,
+  html body #sidebar-dimmer,
+  html body .post-toc-wrap,
+  html body .back-to-top,
+  html body #makima-pet,
+  html body #netease-player,
+  html body #sakana-widget-container,
+  html body .fireworks {
+    display: none !important;
+  }
+
+  html body .header {
+    margin: 8px auto 12px !important;
+    padding: 0 10px !important;
+    position: relative !important;
+    top: auto !important;
+  }
+
+  html body .header-inner {
+    align-items: flex-start !important;
+    background: rgba(255, 255, 255, .98) !important;
+    border: 1px solid rgba(216, 224, 236, .95) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 12px 28px rgba(30, 42, 68, .08) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    padding: 12px !important;
+    width: calc(100vw - 20px) !important;
+  }
+
+  html body .site-brand-container {
+    display: block !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  html body .site-brand-container .brand {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  html body .site-title {
+    display: block !important;
+    font-size: .98rem !important;
+    font-weight: 700 !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+    white-space: normal !important;
+  }
+
+  html body .site-subtitle,
+  html body .site-nav-toggle,
+  html body .site-nav-right {
+    display: none !important;
+  }
+
+  html body .site-nav {
+    display: block !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  html body .main-menu {
+    align-items: flex-start !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: flex-start !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  html body .main-menu > .menu-item {
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+  }
+
+  html body .main-menu > .menu-item > a,
+  html body .main-menu > .menu-item > .popup-trigger {
+    align-items: center !important;
+    background: #fff !important;
+    border: 1px solid rgba(216, 224, 236, .96) !important;
+    border-radius: 999px !important;
+    box-shadow: 0 4px 12px rgba(18, 28, 45, .05) !important;
+    color: #1f2937 !important;
+    display: inline-flex !important;
+    font-size: .82rem !important;
+    gap: 6px !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    min-height: 36px !important;
+    padding: 0 14px !important;
+    text-decoration: none !important;
+    transition: background .18s ease, border-color .18s ease, box-shadow .18s ease, color .18s ease, transform .18s ease !important;
+    white-space: nowrap !important;
+  }
+
+  html body .main-menu > .menu-item > a i,
+  html body .main-menu > .menu-item > .popup-trigger i {
+    color: inherit !important;
+    display: inline-block !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+  }
+
+  html body .main-menu > .menu-item > a:hover,
+  html body .main-menu > .menu-item > a:focus-visible,
+  html body .main-menu > .menu-item > a:active,
+  html body .main-menu > .menu-item > .popup-trigger:hover,
+  html body .main-menu > .menu-item > .popup-trigger:focus-visible,
+  html body .main-menu > .menu-item > .popup-trigger:active,
+  html body .main-menu > .menu-item-has-children.is-touch-open > a {
+    background: #111 !important;
+    border-color: #111 !important;
+    box-shadow: 0 12px 24px rgba(17, 17, 17, .18) !important;
+    color: #fff !important;
+    transform: translateY(-1px) !important;
+  }
+
+  html body .main-menu > .menu-item-has-children {
+    align-items: flex-start !important;
+    display: flex !important;
+    flex: 0 0 auto !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    position: relative !important;
+  }
+
+  html body .main-menu > .menu-item-has-children.is-touch-open {
+    flex-basis: 100% !important;
+    width: 100% !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child {
+    background: rgba(255, 255, 255, .98) !important;
+    border: 1px solid rgba(216, 224, 236, .95) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 14px 30px rgba(29, 41, 62, .14) !important;
+    display: none !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding: 8px !important;
+    position: relative !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
+    z-index: 20 !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  html body .main-menu > .menu-item-has-children.is-touch-open > .menu-child {
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item {
+    flex: 0 0 auto !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a {
+    align-items: center !important;
+    background: #fff !important;
+    border: 1px solid rgba(216, 224, 236, .96) !important;
+    border-radius: 999px !important;
+    color: #253042 !important;
+    display: inline-flex !important;
+    min-height: 32px !important;
+    padding: 0 12px !important;
+    white-space: nowrap !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a:hover,
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a:focus-visible,
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a:active {
+    background: #111 !important;
+    border-color: #111 !important;
+    color: #fff !important;
+  }
+
+  html body .main,
+  html body .main-inner,
+  html body .content-wrap {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  html body .main {
+    padding: 0 10px 24px !important;
+  }
+
+  html body .main-inner {
+    display: block !important;
+  }
+
+  html body .content-wrap {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body .content.index,
+  html body .content-wrap > .content:not(.index),
+  html body:not(.index) .post-block,
+  html body .page .post-block,
+  html body .gallery-container,
+  html body .books-container,
+  html body .movies-container,
+  html body .diary-container,
+  html body .lab-container,
+  html body .category-all-page,
+  html body .tag-cloud,
+  html body .archive,
+  html body .album-wrapper {
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  html body .content.index .post-block.post-card-preview,
+  html body .content.index .post-block.post-card-preview:nth-of-type(even),
+  html body.index .post-card-preview,
+  html body.index .post-card-preview:nth-of-type(even) {
+    align-items: stretch !important;
+    background: #fff !important;
+    border: 1px solid rgba(217, 224, 235, .96) !important;
+    border-radius: 22px !important;
+    box-shadow: 0 12px 28px rgba(30, 42, 68, .08) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0 !important;
+    margin: 0 0 14px !important;
+    max-width: 100% !important;
+    min-height: 152px !important;
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+
+  html body .content.index .post-block.post-card-preview .post-card-cover,
+  html body.index .post-card-preview .post-card-cover {
+    flex: 0 0 41% !important;
+    min-height: 152px !important;
+    width: 41% !important;
+  }
+
+  html body .content.index .post-block.post-card-preview .post-card-cover img,
+  html body.index .post-card-preview .post-card-cover img {
+    display: block !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    width: 100% !important;
+  }
+
+  html body .content.index .post-block.post-card-preview .post-card-info {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    padding: 12px !important;
   }
 
   html body .content.index .post-card-preview .post-header {
@@ -465,7 +990,7 @@
 
   html body .content.index .post-card-preview .post-title {
     display: block !important;
-    font-size: .96rem !important;
+    font-size: .95rem !important;
     line-height: 1.28 !important;
     margin: 0 0 6px !important;
     overflow: hidden !important;
@@ -488,7 +1013,7 @@
     display: block !important;
     flex: 1 1 auto !important;
     font-size: .84rem !important;
-    line-height: 1.52 !important;
+    line-height: 1.5 !important;
     margin: 0 !important;
     overflow: hidden !important;
     padding: 0 !important;
@@ -513,37 +1038,10 @@
     padding: 0 12px !important;
   }
 
-  html body #makima-pet,
-  html body #netease-player,
-  html body #sakana-widget-container,
-  html body .fireworks {
-    display: none !important;
-  }
-
-  html body .content.categories-page .stats-cards {
-    gap: 10px !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    margin: 14px auto 0 !important;
-    max-width: 640px !important;
-  }
-
-  html body .content.categories-page .stat-card {
-    border-radius: 16px !important;
-    padding: 12px 10px !important;
-  }
-
-  html body .content.categories-page .categories-grid {
-    gap: 12px !important;
-  }
-
-  html body .content.categories-page .category-card-content {
-    padding: 14px 12px !important;
-  }
-
   html body .content.categories-page .stats-cards {
     align-items: stretch !important;
     display: grid !important;
-    gap: 12px !important;
+    gap: 14px !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     justify-content: stretch !important;
     margin: 16px auto 22px !important;
@@ -553,94 +1051,21 @@
 
   html body .content.categories-page .stats-cards .stat-card,
   html body .content.categories-page .stat-card {
+    border-radius: 16px !important;
     box-sizing: border-box !important;
-    flex: none !important;
     margin: 0 !important;
     max-width: none !important;
     min-width: 0 !important;
+    padding: 12px 10px !important;
     width: auto !important;
   }
 
-  html body .header-inner {
-    overflow: visible !important;
+  html body .content.categories-page .categories-grid {
+    gap: 12px !important;
   }
 
-  html body .site-nav,
-  html body .main-menu {
-    overflow-y: visible !important;
-  }
-
-  html body .main-menu > .menu-item-has-children {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-    position: static !important;
-  }
-
-  html body .main-menu > .menu-item-has-children > .menu-child {
-    align-items: center !important;
-    background: rgba(255, 255, 255, .98) !important;
-    border: 1px solid rgba(216, 224, 236, .95) !important;
-    border-radius: 18px !important;
-    box-shadow: 0 16px 34px rgba(29, 41, 62, .16) !important;
-    box-sizing: border-box !important;
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    gap: 7px !important;
-    clear: both !important;
-    float: none !important;
-    list-style: none !important;
-    margin: 10px 0 0 !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    opacity: 0 !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    padding: 8px !important;
-    pointer-events: none !important;
-    position: relative !important;
-    transform: translateY(-4px) !important;
-    transition: opacity .2s ease, transform .2s ease, visibility .2s ease !important;
-    visibility: hidden !important;
-    width: auto !important;
-    z-index: 99999 !important;
-    scrollbar-width: none !important;
-  }
-
-  html body .main-menu > .menu-item-has-children > .menu-child::-webkit-scrollbar {
-    display: none !important;
-  }
-
-  html body .main-menu > .menu-item-has-children > .menu-child::before {
-    content: none !important;
-    display: none !important;
-  }
-
-  html body .main-menu > .menu-item-has-children:hover > .menu-child,
-  html body .main-menu > .menu-item-has-children:focus-within > .menu-child,
-  html body .main-menu > .menu-item-has-children > .menu-child:hover {
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transform: translateY(-4px) !important;
-    visibility: hidden !important;
-  }
-
-  html body .main-menu > .menu-item-has-children.is-touch-open > .menu-child {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    transform: translateY(0) !important;
-    visibility: visible !important;
-  }
-
-  html body .main-menu > .menu-item-has-children > .menu-child .menu-item,
-  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a {
-    flex: 0 0 auto !important;
-    width: auto !important;
-  }
-
-  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a {
-    min-height: 32px !important;
-    padding: 0 12px !important;
-    white-space: nowrap !important;
+  html body .content.categories-page .category-card-content {
+    padding: 14px 12px !important;
   }
 }
 
