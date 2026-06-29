@@ -1389,3 +1389,53 @@ html body .sidebar.sidebar-toc-only .post-toc .nav-level-6 > .nav-link {
   margin-left: 36px !important;
   width: calc(100% - 36px) !important;
 }
+
+/* 20260629 TOC header cleanup: separate title bar from the white list card. */
+html body .sidebar.sidebar-toc-only .sidebar-nav {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  list-style: none !important;
+  margin: 0 0 14px !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+html body .sidebar.sidebar-toc-only .sidebar-nav::before,
+html body .sidebar.sidebar-toc-only .sidebar-nav::after,
+html body .sidebar.sidebar-toc-only .sidebar-nav-toc::before,
+html body .sidebar.sidebar-toc-only .sidebar-nav-toc::after {
+  content: none !important;
+  display: none !important;
+}
+
+html body .sidebar.sidebar-toc-only .sidebar-nav .sidebar-nav-toc,
+html body .sidebar.sidebar-toc-only .sidebar-nav li.sidebar-nav-toc {
+  align-items: center !important;
+  background: #111 !important;
+  border: 0 !important;
+  border-radius: 22px !important;
+  box-shadow: 0 14px 30px rgba(17, 17, 17, .16) !important;
+  box-sizing: border-box !important;
+  color: #fff !important;
+  display: flex !important;
+  font-weight: 800 !important;
+  height: 46px !important;
+  justify-content: center !important;
+  line-height: 46px !important;
+  list-style: none !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  padding: 0 18px !important;
+  position: relative !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc-wrap {
+  margin-top: 0 !important;
+}
