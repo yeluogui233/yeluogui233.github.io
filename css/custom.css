@@ -4105,3 +4105,211 @@ body .site-author-widget .sidebar-profile-card .links-of-author-item a:hover {
     margin-right: 0 !important;
   }
 }
+
+@media (max-width: 767px) {
+  body .site-brand-container,
+  body .site-subtitle,
+  body .site-nav-toggle,
+  body .site-nav-right,
+  body .sidebar,
+  body .sidebar-inner,
+  body .site-overview-wrap,
+  body .site-author-widget,
+  body .sidebar-panel,
+  body .post-toc-wrap,
+  body .sidebar-toggle,
+  body #sidebar-dimmer,
+  body .back-to-top {
+    display: none !important;
+  }
+
+  body .header-inner {
+    justify-content: center !important;
+  }
+
+  body .main-menu {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  body .main-inner,
+  body .content-wrap {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  body.index .post-card-preview,
+  body.index .post-card-preview:nth-of-type(even) {
+    align-items: stretch !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0 !important;
+    min-height: 136px !important;
+    overflow: hidden !important;
+  }
+
+  body.index .post-card-cover,
+  body.index .post-card-preview:nth-of-type(even) .post-card-cover {
+    align-self: stretch !important;
+    flex: 0 0 40% !important;
+    min-height: 136px !important;
+    width: 40% !important;
+  }
+
+  body.index .post-card-cover img {
+    height: 100% !important;
+    object-fit: cover !important;
+    width: 100% !important;
+  }
+
+  body.index .post-card-info,
+  body.index .post-card-preview:nth-of-type(even) .post-card-info {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    min-width: 0 !important;
+    padding: 12px 12px 10px !important;
+  }
+
+  body.index .post-card-info .post-title {
+    font-size: 1rem !important;
+    line-height: 1.25 !important;
+    margin: 0 0 6px !important;
+  }
+
+  body.index .post-card-info .post-meta {
+    font-size: .74rem !important;
+    line-height: 1.35 !important;
+    row-gap: 4px !important;
+    column-gap: 8px !important;
+  }
+
+  body.index .post-card-info .post-body {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+    font-size: .8rem !important;
+    line-height: 1.45 !important;
+    margin-top: 4px !important;
+    overflow: hidden !important;
+  }
+
+  body.index .post-card-info .post-button {
+    margin-top: 8px !important;
+  }
+}
+
+/* Final mobile override: home cards and sidebar */
+@media (max-width: 767px) {
+  body.index .sidebar,
+  body.index .sidebar-inner,
+  body.index .site-overview-wrap,
+  body.index .site-author-widget,
+  body.index .sidebar-panel,
+  body.index .sidebar-toggle,
+  body.index #sidebar-dimmer,
+  body.index .post-toc-wrap,
+  body .sidebar,
+  body .sidebar-inner,
+  body .site-overview-wrap,
+  body .site-author-widget,
+  body .sidebar-panel,
+  body .sidebar-toggle,
+  body #sidebar-dimmer,
+  body .post-toc-wrap,
+  body .back-to-top {
+    display: none !important;
+  }
+
+  body.index .main-inner,
+  body.index .content-wrap,
+  body.index .content.index {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  body.index .content-wrap,
+  body.index .content.index {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.index .post-card-preview,
+  body.index .content.index .post-card-preview,
+  body.index .post-card-preview:nth-of-type(even),
+  body.index .content.index .post-card-preview:nth-of-type(even) {
+    align-items: stretch !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0 !important;
+    min-height: 138px !important;
+    overflow: hidden !important;
+  }
+
+  body.index .post-card-cover,
+  body.index .content.index .post-card-cover,
+  body.index .post-card-preview:nth-of-type(even) .post-card-cover,
+  body.index .content.index .post-card-preview:nth-of-type(even) .post-card-cover {
+    align-self: stretch !important;
+    flex: 0 0 38% !important;
+    min-height: 138px !important;
+    width: 38% !important;
+  }
+
+  body.index .post-card-cover img,
+  body.index .content.index .post-card-cover img {
+    height: 100% !important;
+    object-fit: cover !important;
+    width: 100% !important;
+  }
+
+  body.index .post-card-info,
+  body.index .content.index .post-card-info,
+  body.index .post-card-preview:nth-of-type(even) .post-card-info,
+  body.index .content.index .post-card-preview:nth-of-type(even) .post-card-info {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    min-width: 0 !important;
+    padding: 12px 12px 10px !important;
+  }
+
+  body.index .post-card-info .post-title,
+  body.index .content.index .post-card-info .post-title {
+    font-size: 1rem !important;
+    line-height: 1.25 !important;
+    margin: 0 0 6px !important;
+  }
+
+  body.index .post-card-info .post-meta,
+  body.index .content.index .post-card-info .post-meta {
+    column-gap: 8px !important;
+    row-gap: 4px !important;
+    font-size: .74rem !important;
+    line-height: 1.35 !important;
+  }
+
+  body.index .post-card-info .post-body,
+  body.index .content.index .post-card-info .post-body {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+    font-size: .82rem !important;
+    line-height: 1.45 !important;
+    margin-top: 4px !important;
+    overflow: hidden !important;
+  }
+
+  body.index .post-card-info .post-button,
+  body.index .content.index .post-card-info .post-button {
+    margin-top: 8px !important;
+  }
+
+  body.index .post-card-info .post-button .btn,
+  body.index .content.index .post-card-info .post-button .btn {
+    min-height: 32px !important;
+    padding: 0 12px !important;
+  }
+}
