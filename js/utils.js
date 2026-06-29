@@ -232,9 +232,8 @@ NexT.utils = {
   },
 
   registerSidebarTOC: function() {
-    const tocElement = document.querySelector('.post-toc-wrap');
     const tocList = document.querySelector('.post-toc');
-    if (!tocElement || !tocList) return;
+    if (!tocList) return;
 
     if (tocList.dataset.clickBound !== 'true') {
       tocList.dataset.clickBound = 'true';
@@ -281,13 +280,6 @@ NexT.utils = {
         if (parent.matches('li')) parent.classList.add('active');
         parent = parent.parentNode;
       }
-      // Scrolling to center active TOC element if TOC content is taller then viewport.
-      window.anime({
-        targets  : tocElement,
-        duration : 200,
-        easing   : 'linear',
-        scrollTop: tocElement.scrollTop - (tocElement.offsetHeight / 2) + target.getBoundingClientRect().top - tocElement.getBoundingClientRect().top
-      });
     }
 
     function findIndex(entries) {

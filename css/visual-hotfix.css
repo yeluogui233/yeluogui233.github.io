@@ -1442,13 +1442,13 @@ html body .sidebar.sidebar-toc-only .post-toc-wrap {
 
 /* 20260629 TOC sticky offset: sit closer to the top while scrolling. */
 html body .sidebar.sidebar-toc-only {
-  max-height: calc(100vh - 20px) !important;
-  top: 20px !important;
+  max-height: calc(100vh - 8px) !important;
+  top: 8px !important;
 }
 
 html body .sidebar.sidebar-toc-only .post-toc-wrap {
-  max-height: calc(100vh - 74px) !important;
-  margin-top: -2px !important;
+  max-height: calc(100vh - 56px) !important;
+  margin-top: -4px !important;
 }
 
 /* 20260629 category hover badge lock: keep the count pill white. */

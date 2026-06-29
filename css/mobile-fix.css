@@ -586,6 +586,8 @@
     display: flex !important;
     flex-wrap: nowrap !important;
     gap: 7px !important;
+    clear: both !important;
+    float: none !important;
     list-style: none !important;
     margin: 10px 0 0 !important;
     max-width: 100% !important;
@@ -595,7 +597,7 @@
     overflow-y: hidden !important;
     padding: 8px !important;
     pointer-events: none !important;
-    position: static !important;
+    position: relative !important;
     transform: translateY(-4px) !important;
     transition: opacity .2s ease, transform .2s ease, visibility .2s ease !important;
     visibility: hidden !important;
