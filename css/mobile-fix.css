@@ -408,6 +408,12 @@
     min-height: 32px !important;
     padding: 0 11px !important;
   }
+
+  html body .main-menu > .menu-item-has-children:last-child > .menu-child,
+  html body .main-menu > .menu-item-has-children:nth-last-child(2) > .menu-child {
+    left: auto !important;
+    right: 0 !important;
+  }
 }
 
 @media (max-width: 767px) {
@@ -801,7 +807,7 @@
   }
 
   html body .main-menu {
-    align-items: flex-start !important;
+    align-items: center !important;
     display: flex !important;
     flex-wrap: wrap !important;
     gap: 6px !important;
@@ -814,8 +820,10 @@
 
   html body .main-menu > .menu-item {
     flex: 0 0 auto !important;
+    display: block !important;
     margin: 0 !important;
     min-width: 0 !important;
+    position: relative !important;
   }
 
   html body .main-menu > .menu-item > a,
@@ -861,17 +869,18 @@
   }
 
   html body .main-menu > .menu-item-has-children {
-    align-items: flex-start !important;
-    display: flex !important;
+    align-items: stretch !important;
+    display: block !important;
     flex: 0 0 auto !important;
-    flex-direction: column !important;
-    gap: 6px !important;
+    gap: 0 !important;
+    min-height: 34px !important;
     position: relative !important;
+    vertical-align: top !important;
   }
 
   html body .main-menu > .menu-item-has-children.is-touch-open {
-    flex-basis: 100% !important;
-    width: 100% !important;
+    flex-basis: auto !important;
+    width: auto !important;
   }
 
   html body .main-menu > .menu-item-has-children > .menu-child {
@@ -884,12 +893,14 @@
     flex-wrap: nowrap !important;
     gap: 6px !important;
     margin: 0 !important;
-    max-width: 100% !important;
+    max-width: min(220px, calc(100vw - 28px)) !important;
     overflow: hidden !important;
     padding: 8px !important;
-    position: relative !important;
-    width: 100% !important;
-    z-index: 20 !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: calc(100% + 8px) !important;
+    width: 156px !important;
+    z-index: 200 !important;
   }
 
   html body .main-menu > .menu-item-has-children.is-touch-open > .menu-child {
@@ -920,6 +931,11 @@
     padding: 0 12px !important;
     white-space: nowrap !important;
     width: 100% !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > a,
+  html body .main-menu > .menu-item-has-children > .popup-trigger {
+    min-height: 34px !important;
   }
 
   html body .main-menu > .menu-item-has-children > .menu-child .menu-item a:hover,
