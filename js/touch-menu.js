@@ -7,12 +7,16 @@
 
   function closeAll(except) {
     document.querySelectorAll('.main-menu .menu-item-has-children.is-touch-open').forEach(function (item) {
-      if (item !== except) item.classList.remove('is-touch-open');
+      if (item !== except) {
+        item.classList.remove('is-touch-open');
+        var toggle = item.querySelector('.menu-parent-toggle, > a');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
   function bind() {
-    document.querySelectorAll('.main-menu .menu-item-has-children > a').forEach(function (link) {
+    document.querySelectorAll('.main-menu .menu-item-has-children > .menu-parent-toggle, .main-menu .menu-item-has-children > a').forEach(function (link) {
       if (link.dataset.touchMenuBound === 'true') return;
       link.dataset.touchMenuBound = 'true';
       var lastPointerToggleAt = 0;
@@ -28,9 +32,11 @@
 
         if (item.classList.contains('is-touch-open')) {
           item.classList.remove('is-touch-open');
+          link.setAttribute('aria-expanded', 'false');
         } else {
           closeAll(item);
           item.classList.add('is-touch-open');
+          link.setAttribute('aria-expanded', 'true');
         }
       }
 
@@ -41,7 +47,11 @@
       });
 
       link.addEventListener('click', function (event) {
-        if (Date.now() - lastPointerToggleAt < 500) return;
+        if (Date.now() - lastPointerToggleAt < 500) {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
+        }
         toggleMenu(event);
       });
     });
