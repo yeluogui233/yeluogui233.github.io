@@ -502,7 +502,7 @@ mjx-container[display="true"] + br {
             data-password="yeluogui"
             data-wrong-message="Password is incorrect. Try again.">
             <div class="hbe hbe-content">
-              <form id="hbeForm" class="hbe hbe-form" onsubmit="return false">
+              <form id="hbeForm" class="hbe hbe-form" onsubmit="return window.unlockPasswordGate ? window.unlockPasswordGate(this) : false">
                 <div class="hbe hbe-input hbe-input-default">
                   <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass" autocomplete="current-password" inputmode="numeric">
                   <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
@@ -539,6 +539,37 @@ mjx-container[display="true"] + br {
 </ul>
 
             </template>
+            <script>
+            window.unlockPasswordGate = window.unlockPasswordGate || function(form) {
+              function normalize(value) {
+                return (value || '').trim().replace(/[\u00A0\u2000-\u200D\uFEFF]/g, '').replace(/[０-９]/g, function(ch) {
+                  return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
+                });
+              }
+              var wrapper = form && form.closest ? form.closest('.password-gate') : document.getElementById('hexo-blog-password-gate');
+              if (!wrapper) return false;
+              var input = wrapper.querySelector('#hbePass');
+              var error = wrapper.querySelector('[role="alert"]');
+              var template = wrapper.querySelector('template.password-gate-content');
+              var password = normalize(wrapper.getAttribute('data-password') || '');
+              var value = normalize(input ? input.value : '');
+              if (error) error.textContent = '';
+              if (password && value === password && template && wrapper.parentNode) {
+                var container = document.createElement('div');
+                container.id = 'password-gate-unlocked';
+                container.appendChild(template.content.cloneNode(true));
+                wrapper.parentNode.replaceChild(container, wrapper);
+                try { window.dispatchEvent(new Event('hexo-blog-decrypt')); } catch (e) {}
+              } else {
+                if (error) error.textContent = wrapper.getAttribute('data-wrong-message') || 'Password is incorrect. Try again.';
+                if (input) {
+                  input.value = '';
+                  input.focus();
+                }
+              }
+              return false;
+            };
+            </script>
           </div>
     </div>
 
