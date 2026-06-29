@@ -155,19 +155,21 @@
   body .content.index .post-block.post-card-preview:nth-of-type(even),
   body.index .post-card-preview,
   body.index .post-card-preview:nth-of-type(even) {
-    display: flex !important;
-    flex-direction: column !important;
-    grid-template-columns: none !important;
-    min-height: 0 !important;
+    align-items: stretch !important;
+    display: grid !important;
+    flex-direction: initial !important;
+    grid-template-columns: minmax(118px, 38%) minmax(0, 1fr) !important;
+    min-height: 164px !important;
     width: 100% !important;
   }
 
   body .content.index .post-block.post-card-preview .post-card-cover,
   body.index .post-card-preview .post-card-cover {
-    aspect-ratio: 16 / 9 !important;
-    flex: none !important;
-    height: auto !important;
-    min-height: 0 !important;
+    align-self: stretch !important;
+    aspect-ratio: auto !important;
+    flex: initial !important;
+    height: 100% !important;
+    min-height: 164px !important;
     width: 100% !important;
   }
 
@@ -183,7 +185,65 @@
   }
 
   body .content.index .post-block.post-card-preview .post-card-info {
-    padding: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    padding: 14px 14px 12px !important;
+  }
+
+  body .content.index .post-card-preview .post-header {
+    padding: 0 !important;
+  }
+
+  body .content.index .post-card-preview .post-title {
+    font-size: 1rem !important;
+    line-height: 1.32 !important;
+    margin: 0 0 6px !important;
+  }
+
+  body .content.index .post-card-preview .post-meta {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 2px 8px !important;
+    line-height: 1.4 !important;
+    margin: 0 0 6px !important;
+  }
+
+  body .content.index .post-card-preview .post-meta-item {
+    margin: 0 !important;
+  }
+
+  body .content.index .post-card-preview .post-body {
+    color: #4e5b70 !important;
+    flex: 1 1 auto !important;
+    font-size: .84rem !important;
+    line-height: 1.55 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  body .content.index .post-card-preview .post-body p {
+    display: -webkit-box !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+  }
+
+  body .content.index .post-card-preview .post-body::after {
+    display: none !important;
+  }
+
+  body .content.index .post-card-preview .post-button {
+    margin-top: 8px !important;
+  }
+
+  body .content.index .post-card-preview .post-button .btn {
+    font-size: .78rem !important;
+    min-height: 30px !important;
+    min-width: 82px !important;
+    padding: 0 12px !important;
   }
 
   body .posts-expand .post-header,
@@ -272,9 +332,45 @@
   body .fireworks {
     display: none !important;
   }
+
+  body .main-menu > .menu-item-has-children.is-touch-open > .menu-child {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
+  }
 }
 
 @media (max-width: 420px) {
+  body .content.index .post-block.post-card-preview,
+  body .content.index .post-block.post-card-preview:nth-of-type(even),
+  body.index .post-card-preview,
+  body.index .post-card-preview:nth-of-type(even) {
+    grid-template-columns: 42% minmax(0, 1fr) !important;
+    min-height: 150px !important;
+  }
+
+  body .content.index .post-block.post-card-preview .post-card-cover,
+  body.index .post-card-preview .post-card-cover {
+    min-height: 150px !important;
+  }
+
+  body .content.index .post-card-preview .post-card-info {
+    padding: 12px !important;
+  }
+
+  body .content.index .post-card-preview .post-title {
+    font-size: .94rem !important;
+  }
+
+  body .content.index .post-card-preview .post-meta {
+    font-size: .72rem !important;
+  }
+
+  body .content.index .post-card-preview .post-body p {
+    -webkit-line-clamp: 2 !important;
+  }
+
   body .sidebar-profile-card .links-of-author {
     grid-template-columns: 1fr !important;
   }
