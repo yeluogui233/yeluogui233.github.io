@@ -1109,3 +1109,114 @@ html body .content.index .post-block.post-card-preview .post-card-info {
   min-width: 0 !important;
   padding: 22px 24px !important;
 }
+
+/* 20260629 final lock: categories stats must be separated, not touching. */
+html body .content.categories-page .stats-cards {
+  align-items: stretch !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 34px !important;
+  justify-content: center !important;
+  margin: 25px auto 28px !important;
+  max-width: 920px !important;
+  width: 100% !important;
+}
+
+html body .content.categories-page .stats-cards .stat-card,
+html body .content.categories-page .stat-card {
+  box-sizing: border-box !important;
+  flex: 0 0 230px !important;
+  margin: 0 !important;
+  max-width: 230px !important;
+  min-width: 0 !important;
+  width: auto !important;
+}
+
+/* 20260629 final lock: post pages show only a sticky TOC sidebar. */
+html body .sidebar.sidebar-toc-only {
+  align-self: start !important;
+  grid-column: 1 !important;
+  overflow: visible !important;
+  position: relative !important;
+}
+
+html body .sidebar.sidebar-toc-only .sidebar-inner,
+html body .sidebar.sidebar-toc-only .sidebar-inner.affix,
+html body .sidebar.sidebar-toc-only .sidebar-inner.affix-top,
+html body .sidebar.sidebar-toc-only .sidebar-inner.affix-bottom {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  max-height: none !important;
+  overflow: visible !important;
+  position: sticky !important;
+  top: 96px !important;
+  transform: none !important;
+}
+
+html body .sidebar.sidebar-toc-only .site-overview-wrap {
+  display: none !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc-wrap {
+  background: #fff !important;
+  border: 1px solid rgba(217, 224, 235, .96) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 18px 46px rgba(30, 42, 68, .11) !important;
+  display: block !important;
+  max-height: calc(100vh - 130px) !important;
+  overflow: auto !important;
+  padding: 18px 18px 20px !important;
+  scrollbar-width: none !important;
+  width: 100% !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc-wrap::-webkit-scrollbar {
+  display: none !important;
+}
+
+html body .sidebar.sidebar-toc-only .sidebar-nav {
+  display: block !important;
+  margin: 0 0 12px !important;
+  padding: 0 !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc .nav,
+html body .sidebar.sidebar-toc-only .post-toc .nav-child {
+  display: block !important;
+  height: auto !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc .nav-level-2 .nav-link {
+  padding-left: 12px !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc .nav-level-3 .nav-link {
+  font-size: .9em !important;
+  padding-left: 26px !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc .nav-level-4 .nav-link,
+html body .sidebar.sidebar-toc-only .post-toc .nav-level-5 .nav-link,
+html body .sidebar.sidebar-toc-only .post-toc .nav-level-6 .nav-link {
+  font-size: .84em !important;
+  padding-left: 40px !important;
+}
+
+html body .main-inner:not(:has(.sidebar)) .content-wrap {
+  grid-column: 1 / -1 !important;
+}
+
+@media (max-width: 900px) {
+  html body .content.categories-page .stats-cards {
+    gap: 18px !important;
+  }
+
+  html body .content.categories-page .stats-cards .stat-card,
+  html body .content.categories-page .stat-card {
+    flex: 1 1 0 !important;
+    max-width: none !important;
+  }
+}

@@ -539,5 +539,26 @@
   html body .content.categories-page .category-card-content {
     padding: 14px 12px !important;
   }
+
+  html body .content.categories-page .stats-cards {
+    align-items: stretch !important;
+    display: grid !important;
+    gap: 12px !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    justify-content: stretch !important;
+    margin: 16px auto 22px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  html body .content.categories-page .stats-cards .stat-card,
+  html body .content.categories-page .stat-card {
+    box-sizing: border-box !important;
+    flex: none !important;
+    margin: 0 !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    width: auto !important;
+  }
 }
 

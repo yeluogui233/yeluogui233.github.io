@@ -1175,7 +1175,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #f6e3da;
+  background: #ff21db;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -6234,6 +6234,118 @@ body .movies-wrapper .movie-buttons .btn:hover {
   body .header-inner,
   body .main-inner {
     width: calc(100vw - 16px) !important;
+  }
+}
+/* ================== 20260629 article toc + category spacing lock ================== */
+body .content.categories-page .stats-cards,
+html body .content.categories-page .stats-cards {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 34px !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  margin: 25px auto 0 !important;
+  max-width: 920px !important;
+  width: 100% !important;
+}
+body .content.categories-page .stats-cards .stat-card,
+html body .content.categories-page .stats-cards .stat-card {
+  flex: 0 0 230px !important;
+  max-width: 230px !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+body .sidebar.sidebar-toc-only {
+  grid-column: 1 !important;
+  align-self: start !important;
+  overflow: visible !important;
+  position: relative !important;
+}
+body .sidebar.sidebar-toc-only .sidebar-inner,
+body .sidebar.sidebar-toc-only .sidebar-inner.affix,
+body .sidebar.sidebar-toc-only .sidebar-inner.affix-top,
+body .sidebar.sidebar-toc-only .sidebar-inner.affix-bottom {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  max-height: none !important;
+  overflow: visible !important;
+  position: sticky !important;
+  top: 96px !important;
+  transform: none !important;
+}
+body .sidebar.sidebar-toc-only .sidebar-nav {
+  display: block !important;
+  margin: 0 0 12px !important;
+  padding: 0 !important;
+}
+body .sidebar.sidebar-toc-only .post-toc-wrap {
+  background: #fff !important;
+  border: 1px solid var(--apple-card-border) !important;
+  border-radius: 28px !important;
+  box-shadow: var(--apple-card-shadow) !important;
+  display: block !important;
+  max-height: calc(100vh - 130px) !important;
+  overflow: auto !important;
+  padding: 18px 18px 20px !important;
+  position: relative !important;
+  scrollbar-width: none !important;
+  width: 100% !important;
+}
+body .sidebar.sidebar-toc-only .post-toc-wrap::-webkit-scrollbar {
+  display: none !important;
+}
+body .sidebar.sidebar-toc-only .site-overview-wrap {
+  display: none !important;
+}
+body .sidebar.sidebar-toc-only .post-toc .nav {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body .sidebar.sidebar-toc-only .post-toc .nav-child {
+  display: block !important;
+  height: auto !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+}
+body .sidebar.sidebar-toc-only .post-toc .nav-level-2 .nav-link {
+  padding-left: 12px !important;
+}
+body .sidebar.sidebar-toc-only .post-toc .nav-level-3 .nav-link {
+  font-size: 0.9em !important;
+  padding-left: 26px !important;
+}
+body .sidebar.sidebar-toc-only .post-toc .nav-level-4 .nav-link,
+body .sidebar.sidebar-toc-only .post-toc .nav-level-5 .nav-link,
+body .sidebar.sidebar-toc-only .post-toc .nav-level-6 .nav-link {
+  font-size: 0.84em !important;
+  padding-left: 40px !important;
+}
+@media (max-width: 900px) {
+  body .content.categories-page .stats-cards,
+  html body .content.categories-page .stats-cards {
+    gap: 18px !important;
+  }
+  body .content.categories-page .stats-cards .stat-card,
+  html body .content.categories-page .stats-cards .stat-card {
+    flex: 1 1 0 !important;
+    max-width: none !important;
+  }
+}
+@media (max-width: 767px) {
+  body .content.categories-page .stats-cards,
+  html body .content.categories-page .stats-cards {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    max-width: 100% !important;
+  }
+  body .content.categories-page .stats-cards .stat-card,
+  html body .content.categories-page .stats-cards .stat-card {
+    flex: none !important;
+    max-width: none !important;
+    width: auto !important;
   }
 }
 /* ================== 20260629 final visual locks ================== */
