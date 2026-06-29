@@ -560,5 +560,88 @@
     min-width: 0 !important;
     width: auto !important;
   }
+
+  html body .header-inner {
+    overflow: visible !important;
+  }
+
+  html body .site-nav,
+  html body .main-menu {
+    overflow-y: visible !important;
+  }
+
+  html body .main-menu > .menu-item-has-children {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    position: static !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child {
+    align-items: center !important;
+    background: rgba(255, 255, 255, .98) !important;
+    border: 1px solid rgba(216, 224, 236, .95) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 16px 34px rgba(29, 41, 62, .16) !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 7px !important;
+    left: 10px !important;
+    list-style: none !important;
+    margin: 0 !important;
+    max-width: calc(100vw - 20px) !important;
+    min-width: 0 !important;
+    opacity: 0 !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding: 8px !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    right: 10px !important;
+    top: calc(100% + 8px) !important;
+    transform: translateY(-4px) !important;
+    transition: opacity .2s ease, transform .2s ease, visibility .2s ease !important;
+    visibility: hidden !important;
+    width: auto !important;
+    z-index: 99999 !important;
+    scrollbar-width: none !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  html body .main-menu > .menu-item-has-children:hover > .menu-child,
+  html body .main-menu > .menu-item-has-children:focus-within > .menu-child,
+  html body .main-menu > .menu-item-has-children > .menu-child:hover {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(-4px) !important;
+    visibility: hidden !important;
+  }
+
+  html body .main-menu > .menu-item-has-children.is-touch-open > .menu-child {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item,
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a {
+    flex: 0 0 auto !important;
+    width: auto !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a {
+    min-height: 32px !important;
+    padding: 0 12px !important;
+    white-space: nowrap !important;
+  }
 }
 

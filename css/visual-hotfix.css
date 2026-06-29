@@ -1439,3 +1439,23 @@ html body .sidebar.sidebar-toc-only .sidebar-nav li.sidebar-nav-toc {
 html body .sidebar.sidebar-toc-only .post-toc-wrap {
   margin-top: 0 !important;
 }
+
+/* 20260629 TOC sticky offset: sit closer to the top while scrolling. */
+html body .sidebar.sidebar-toc-only {
+  max-height: calc(100vh - 56px) !important;
+  top: 56px !important;
+}
+
+html body .sidebar.sidebar-toc-only .post-toc-wrap {
+  max-height: calc(100vh - 116px) !important;
+}
+
+/* 20260629 category hover badge lock: keep the count pill white. */
+html body .content.categories-page .category-card-wrapper:hover .post-count,
+html body .content.categories-page .category-card-wrapper:focus-within .post-count,
+html body .content.categories-page .category-card-wrapper.hover-active .post-count {
+  background: rgba(255, 255, 255, .95) !important;
+  border-color: rgba(255, 255, 255, .8) !important;
+  color: #2c3e50 !important;
+  transform: translateY(-2px) !important;
+}

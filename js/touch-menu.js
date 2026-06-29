@@ -22,8 +22,12 @@
         var item = link.closest('.menu-item-has-children');
         if (!item) return;
 
-        if (!item.classList.contains('is-touch-open')) {
-          event.preventDefault();
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (item.classList.contains('is-touch-open')) {
+          item.classList.remove('is-touch-open');
+        } else {
           closeAll(item);
           item.classList.add('is-touch-open');
         }
