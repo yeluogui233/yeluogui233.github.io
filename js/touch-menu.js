@@ -15,6 +15,7 @@
     document.querySelectorAll('.main-menu .menu-item-has-children > a').forEach(function (link) {
       if (link.dataset.touchMenuBound === 'true') return;
       link.dataset.touchMenuBound = 'true';
+      var lastPointerToggleAt = 0;
 
       function toggleMenu(event) {
         if (!isTouchMenuMode()) return;
@@ -35,10 +36,14 @@
 
       link.addEventListener('pointerup', function (event) {
         if (event.pointerType === 'mouse' && !isTouchMenuMode()) return;
+        lastPointerToggleAt = Date.now();
         toggleMenu(event);
       });
 
-      link.addEventListener('click', toggleMenu);
+      link.addEventListener('click', function (event) {
+        if (Date.now() - lastPointerToggleAt < 500) return;
+        toggleMenu(event);
+      });
     });
 
     document.addEventListener('click', function (event) {

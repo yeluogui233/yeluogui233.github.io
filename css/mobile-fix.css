@@ -1179,7 +1179,7 @@
   html body .main-menu > .menu-item-has-children.is-touch-open > a {
     background: #111 !important;
     border-color: #111 !important;
-    box-shadow: 0 8px 18px rgba(17, 17, 17, .16) !important;
+    box-shadow: 0 4px 12px rgba(17, 17, 17, .14) !important;
     color: #fff !important;
     transform: none !important;
   }
