@@ -16,7 +16,7 @@
       if (link.dataset.touchMenuBound === 'true') return;
       link.dataset.touchMenuBound = 'true';
 
-      link.addEventListener('click', function (event) {
+      function toggleMenu(event) {
         if (!isTouchMenuMode()) return;
 
         var item = link.closest('.menu-item-has-children');
@@ -31,7 +31,14 @@
           closeAll(item);
           item.classList.add('is-touch-open');
         }
+      }
+
+      link.addEventListener('pointerup', function (event) {
+        if (event.pointerType === 'mouse' && !isTouchMenuMode()) return;
+        toggleMenu(event);
       });
+
+      link.addEventListener('click', toggleMenu);
     });
 
     document.addEventListener('click', function (event) {
