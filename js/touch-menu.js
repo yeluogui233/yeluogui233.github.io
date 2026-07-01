@@ -15,6 +15,59 @@
     });
   }
 
+  function normalizePath(path) {
+    if (!path) return '/';
+    path = path.replace(/\/index\.html$/, '/').replace(/\/{2,}/g, '/');
+    if (path.charAt(0) !== '/') path = '/' + path;
+    if (path !== '/' && path.charAt(path.length - 1) !== '/') path += '/';
+    return path;
+  }
+
+  function getDirectLink(item) {
+    for (var i = 0; i < item.children.length; i++) {
+      var child = item.children[i];
+      if (child.matches && child.matches('a[href], .menu-parent-toggle[href]')) {
+        return child;
+      }
+    }
+    return null;
+  }
+
+  function isCurrentLink(link, currentPath) {
+    try {
+      var target = new URL(link.getAttribute('href'), window.location.origin);
+      if (target.hostname !== window.location.hostname) return false;
+      var targetPath = normalizePath(target.pathname);
+      if (targetPath === '/') return currentPath === '/';
+      return currentPath === targetPath || currentPath.indexOf(targetPath) === 0;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function markActiveMenuState() {
+    var menu = document.querySelector('.main-menu');
+    if (!menu) return;
+
+    var currentPath = normalizePath(window.location.pathname);
+    menu.querySelectorAll('.menu-item-active').forEach(function (item) {
+      item.classList.remove('menu-item-active');
+    });
+
+    menu.querySelectorAll('.menu-item').forEach(function (item) {
+      var link = getDirectLink(item);
+      if (link && isCurrentLink(link, currentPath)) {
+        item.classList.add('menu-item-active');
+      }
+    });
+
+    menu.querySelectorAll('.menu-item-has-children').forEach(function (parent) {
+      if (parent.querySelector('.menu-child .menu-item-active')) {
+        parent.classList.add('menu-item-active');
+      }
+    });
+  }
+
   function bind() {
     document.querySelectorAll('.main-menu .menu-item-has-children > .menu-parent-toggle, .main-menu .menu-item-has-children > a').forEach(function (link) {
       if (link.dataset.touchMenuBound === 'true') return;
@@ -64,11 +117,16 @@
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bind);
-  } else {
+  function init() {
     bind();
+    markActiveMenuState();
   }
 
-  window.addEventListener('pjax:success', bind);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  window.addEventListener('pjax:success', init);
 })();

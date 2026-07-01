@@ -2014,3 +2014,183 @@
   }
 }
 
+/* 20260701 mobile header strip: title row + one horizontally scrollable menu row. */
+@media (max-width: 767px) {
+  html body .header {
+    margin: 8px auto 12px !important;
+    overflow: visible !important;
+    padding: 0 10px !important;
+  }
+
+  html body .header-inner {
+    align-items: stretch !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    padding: 10px 12px 10px !important;
+    width: calc(100vw - 20px) !important;
+  }
+
+  html body .site-brand-container {
+    align-items: center !important;
+    display: flex !important;
+    flex: 0 0 auto !important;
+    min-height: 22px !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+
+  html body .site-nav-toggle,
+  html body .site-nav-right,
+  html body .site-subtitle,
+  html body .logo-line-before,
+  html body .logo-line-after {
+    display: none !important;
+  }
+
+  html body .site-meta,
+  html body .brand {
+    align-items: center !important;
+    display: flex !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+
+  html body .site-title {
+    display: block !important;
+    flex: 1 1 auto !important;
+    font-size: .92rem !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  html body .site-nav {
+    display: block !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  html body .header-inner #menu.main-menu,
+  html body #menu.main-menu,
+  html body .main-menu {
+    align-items: center !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    justify-content: flex-start !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding: 2px 2px 8px !important;
+    scrollbar-width: none !important;
+    white-space: nowrap !important;
+    width: 100% !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  html body .header-inner #menu.main-menu::-webkit-scrollbar,
+  html body #menu.main-menu::-webkit-scrollbar,
+  html body .main-menu::-webkit-scrollbar {
+    display: none !important;
+    height: 0 !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item,
+  html body #menu.main-menu > li.menu-item,
+  html body .main-menu > li.menu-item {
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children {
+    display: contents !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > a,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > a,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > a,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > a {
+    display: none !important;
+    pointer-events: none !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    display: contents !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    pointer-events: auto !important;
+    position: static !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item {
+    display: block !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+  }
+}
+
+/* 20260701 mobile active menu: current page keeps the same black pill as desktop. */
+@media (max-width: 767px) {
+  html body .header-inner #menu.main-menu > li.menu-item-active > a,
+  html body #menu.main-menu > li.menu-item-active > a,
+  html body .header-inner #menu.main-menu > li.menu-item > .popup-trigger.menu-item-active,
+  html body #menu.main-menu > li.menu-item > .popup-trigger.menu-item-active,
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item-active > a,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item-active > a,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item-active > a,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item-active > a {
+    background: #111 !important;
+    border-color: #111 !important;
+    box-shadow: 0 4px 12px rgba(17, 17, 17, .14) !important;
+    color: #fff !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item-active > a i,
+  html body #menu.main-menu > li.menu-item-active > a i,
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item-active > a i,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item-active > a i,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item-active > a i,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item-active > a i {
+    color: #fff !important;
+  }
+}
+

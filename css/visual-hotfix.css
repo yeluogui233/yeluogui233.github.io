@@ -1685,6 +1685,189 @@ html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n) {
   color: #2f62c9 !important;
 }
 
+/* 20260701 final sidebar tags: colorful at rest, black on hover/touch. */
+html body .sidebar-tag-cloud-list a:nth-child(8n+1) {
+  background: #e8f7ff !important;
+  border-color: #bdeaff !important;
+  color: #0877a8 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+2) {
+  background: #fff1e7 !important;
+  border-color: #ffd4bf !important;
+  color: #c44e2f !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+3) {
+  background: #eafbf2 !important;
+  border-color: #bcefd2 !important;
+  color: #198655 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+4) {
+  background: #f3edff !important;
+  border-color: #d8c7ff !important;
+  color: #7250c8 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+5) {
+  background: #fff7c8 !important;
+  border-color: #ffe58a !important;
+  color: #91700b !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+6) {
+  background: #e9fbf8 !important;
+  border-color: #b6eee5 !important;
+  color: #087c73 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+7) {
+  background: #ffeaf5 !important;
+  border-color: #ffc4df !important;
+  color: #b83272 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n) {
+  background: #edf4ff !important;
+  border-color: #cadcff !important;
+  color: #2f62c9 !important;
+}
+
+html body .sidebar-tag-cloud-list a:hover,
+html body .sidebar-tag-cloud-list a:focus-visible,
+html body .sidebar-tag-cloud-list a:active,
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+1),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+1),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+1),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+2),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+2),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+2),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+3),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+3),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+3),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+4),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+4),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+4),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+5),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+5),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+5),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+6),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+6),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+6),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+7),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+7),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+7),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n) {
+  background: #111 !important;
+  border-color: #111 !important;
+  box-shadow: 0 14px 26px rgba(17, 17, 17, .18) !important;
+  color: #fff !important;
+  filter: none !important;
+  transform: translateY(-1px) !important;
+}
+
+/* 20260701 desktop menu active: child pages highlight their parent pill too. */
+@media (min-width: 768px) {
+  html body .header-inner .main-menu > .menu-item-has-children.menu-item-active > a {
+    background: #111 !important;
+    border-color: #111 !important;
+    box-shadow: 0 4px 12px rgba(17, 17, 17, .14) !important;
+    color: #fff !important;
+    transform: translateY(-1px) !important;
+  }
+
+  html body .header-inner .main-menu > .menu-item-has-children.menu-item-active > a i {
+    color: #fff !important;
+  }
+}
+
+/* 20260701 sidebar tag chips: colorful by default, black on hover/touch. */
+html body .sidebar-tag-cloud-list a:nth-child(8n+1) {
+  background: #e8f7ff !important;
+  border-color: #bdeaff !important;
+  color: #0877a8 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+2) {
+  background: #fff1e7 !important;
+  border-color: #ffd4bf !important;
+  color: #c44e2f !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+3) {
+  background: #eafbf2 !important;
+  border-color: #bcefd2 !important;
+  color: #198655 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+4) {
+  background: #f3edff !important;
+  border-color: #d8c7ff !important;
+  color: #7250c8 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+5) {
+  background: #fff7c8 !important;
+  border-color: #ffe58a !important;
+  color: #91700b !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+6) {
+  background: #e9fbf8 !important;
+  border-color: #b6eee5 !important;
+  color: #087c73 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+7) {
+  background: #ffeaf5 !important;
+  border-color: #ffc4df !important;
+  color: #b83272 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n) {
+  background: #edf4ff !important;
+  border-color: #cadcff !important;
+  color: #2f62c9 !important;
+}
+
+html body .sidebar-tag-cloud-list a:hover,
+html body .sidebar-tag-cloud-list a:focus-visible,
+html body .sidebar-tag-cloud-list a:active,
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+1),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+1),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+1),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+2),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+2),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+2),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+3),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+3),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+3),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+4),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+4),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+4),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+5),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+5),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+5),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+6),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+6),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+6),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+7),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+7),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+7),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n) {
+  background: #111 !important;
+  border-color: #111 !important;
+  color: #fff !important;
+  filter: none !important;
+  box-shadow: 0 14px 26px rgba(17, 17, 17, .18) !important;
+  transform: translateY(-1px) !important;
+}
+
 html body .content.page.posts-expand .post-block,
 html body .content.page.posts-expand .post-body,
 html body .content.page.posts-expand .tag-cloud {
@@ -1880,4 +2063,88 @@ html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n) {
   background: #edf4ff !important;
   border-color: #cadcff !important;
   color: #2f62c9 !important;
+}
+
+/* 20260701 final-final sidebar tags: colorful at rest, black on hover/touch. */
+html body .sidebar-tag-cloud-list a:nth-child(8n+1) {
+  background: #e8f7ff !important;
+  border-color: #bdeaff !important;
+  color: #0877a8 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+2) {
+  background: #fff1e7 !important;
+  border-color: #ffd4bf !important;
+  color: #c44e2f !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+3) {
+  background: #eafbf2 !important;
+  border-color: #bcefd2 !important;
+  color: #198655 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+4) {
+  background: #f3edff !important;
+  border-color: #d8c7ff !important;
+  color: #7250c8 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+5) {
+  background: #fff7c8 !important;
+  border-color: #ffe58a !important;
+  color: #91700b !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+6) {
+  background: #e9fbf8 !important;
+  border-color: #b6eee5 !important;
+  color: #087c73 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+7) {
+  background: #ffeaf5 !important;
+  border-color: #ffc4df !important;
+  color: #b83272 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n) {
+  background: #edf4ff !important;
+  border-color: #cadcff !important;
+  color: #2f62c9 !important;
+}
+
+html body .sidebar-tag-cloud-list a:hover,
+html body .sidebar-tag-cloud-list a:focus-visible,
+html body .sidebar-tag-cloud-list a:active,
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+1),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+1),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+1),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+2),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+2),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+2),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+3),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+3),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+3),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+4),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+4),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+4),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+5),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+5),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+5),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+6),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+6),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+6),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n+7),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n+7),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n+7),
+html body .sidebar-tag-cloud-list a:hover:nth-child(8n),
+html body .sidebar-tag-cloud-list a:focus-visible:nth-child(8n),
+html body .sidebar-tag-cloud-list a:active:nth-child(8n) {
+  background: #111 !important;
+  border-color: #111 !important;
+  box-shadow: 0 14px 26px rgba(17, 17, 17, .18) !important;
+  color: #fff !important;
+  filter: none !important;
+  transform: translateY(-1px) !important;
 }
