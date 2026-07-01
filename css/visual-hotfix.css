@@ -1992,6 +1992,21 @@ html body .content.bake-page .bake-card-meta {
   font-size: .88rem !important;
 }
 
+/* 20260701 pagination: current page uses the same black pill as active menu items. */
+html body .pagination .page-number.current {
+  background: #111 !important;
+  border-color: #111 !important;
+  box-shadow: 0 10px 22px rgba(17, 17, 17, .16) !important;
+  color: #fff !important;
+}
+
+html body .pagination .page-number.current:hover,
+html body .pagination .page-number.current:focus-visible {
+  background: #111 !important;
+  border-color: #111 !important;
+  color: #fff !important;
+}
+
 html body .content.page.posts-expand .post-block,
 html body .content.page.posts-expand .post-body,
 html body .content.page.posts-expand .tag-cloud {
