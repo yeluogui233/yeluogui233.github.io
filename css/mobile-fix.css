@@ -341,6 +341,175 @@
   }
 }
 
+/* 20260701 mobile menu final: flatten Pages/Archives children into normal pills. */
+@media (max-width: 767px), (hover: none), (pointer: coarse) {
+  html body .header-inner #menu.main-menu,
+  html body #menu.main-menu,
+  html body .header-inner .main-menu {
+    align-items: center !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: flex-start !important;
+    overflow: visible !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children {
+    display: contents !important;
+    height: 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    width: 0 !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > a,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > a,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > a,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > a {
+    border: 0 !important;
+    clip-path: inset(50%) !important;
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    max-height: 0 !important;
+    min-height: 0 !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    visibility: hidden !important;
+    width: 0 !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: contents !important;
+    height: auto !important;
+    inset: auto !important;
+    list-style: none !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    pointer-events: auto !important;
+    position: static !important;
+    transform: none !important;
+    visibility: visible !important;
+    width: auto !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item {
+    display: block !important;
+    flex: 0 0 auto !important;
+    height: auto !important;
+    list-style: none !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    position: static !important;
+    width: auto !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item > a,
+  html body #menu.main-menu > li.menu-item > a,
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a {
+    align-items: center !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background: #fff !important;
+    border: 1px solid rgba(216, 224, 236, .96) !important;
+    border-radius: 999px !important;
+    box-shadow: 0 4px 12px rgba(18, 28, 45, .05) !important;
+    box-sizing: border-box !important;
+    color: #1f2937 !important;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    font-size: .82rem !important;
+    font-weight: 760 !important;
+    gap: 6px !important;
+    height: 34px !important;
+    justify-content: center !important;
+    line-height: 34px !important;
+    margin: 0 !important;
+    max-height: 34px !important;
+    min-height: 34px !important;
+    min-width: 0 !important;
+    padding: 0 13px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    transform: none !important;
+    white-space: nowrap !important;
+    width: auto !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item > a i,
+  html body #menu.main-menu > li.menu-item > a i,
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a i,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a i,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a i,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a i {
+    color: inherit !important;
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+    font-size: .95em !important;
+    height: 1em !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    opacity: 1 !important;
+    text-align: center !important;
+    vertical-align: -0.08em !important;
+    visibility: visible !important;
+    width: 1.15em !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item > a:hover,
+  html body .header-inner #menu.main-menu > li.menu-item > a:focus-visible,
+  html body .header-inner #menu.main-menu > li.menu-item > a:active,
+  html body #menu.main-menu > li.menu-item > a:hover,
+  html body #menu.main-menu > li.menu-item > a:focus-visible,
+  html body #menu.main-menu > li.menu-item > a:active,
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a:hover,
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a:focus-visible,
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a:active,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a:hover,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a:focus-visible,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a:active,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a:hover,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a:focus-visible,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a:active,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a:hover,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a:focus-visible,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a:active {
+    background: #111 !important;
+    border-color: #111 !important;
+    box-shadow: 0 4px 12px rgba(17, 17, 17, .14) !important;
+    color: #fff !important;
+    transform: none !important;
+  }
+}
+
 @media (max-width: 420px) {
   body .content.index .post-block.post-card-preview,
   body .content.index .post-block.post-card-preview:nth-of-type(even),
@@ -1397,6 +1566,451 @@
   html body .content.page.posts-expand .tag-cloud-tags,
   html body .content.tag .tag-cloud-tags {
     padding-bottom: 22px !important;
+  }
+}
+
+@media (max-width: 767px), (hover: none), (pointer: coarse) {
+  html body .site-nav,
+  html body .header-inner .site-nav {
+    overflow: visible !important;
+  }
+
+  html body .main-menu,
+  html body .header-inner .main-menu {
+    align-items: center !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    justify-content: flex-start !important;
+    overflow: visible !important;
+  }
+
+  html body .main-menu > .menu-item-has-children,
+  html body .header-inner .main-menu > .menu-item-has-children {
+    display: contents !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > a,
+  html body .main-menu > .menu-item-has-children > .menu-parent-toggle,
+  html body .header-inner .main-menu > .menu-item-has-children > a,
+  html body .header-inner .main-menu > .menu-item-has-children > .menu-parent-toggle {
+    display: none !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child,
+  html body .header-inner .main-menu > .menu-item-has-children > .menu-child {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    display: contents !important;
+    inset: auto !important;
+    list-style: none !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    pointer-events: auto !important;
+    position: static !important;
+    transform: none !important;
+    visibility: visible !important;
+    width: auto !important;
+  }
+
+  html body .main-menu > .menu-item,
+  html body .main-menu > .menu-item-has-children > .menu-child > .menu-item,
+  html body .header-inner .main-menu > .menu-item,
+  html body .header-inner .main-menu > .menu-item-has-children > .menu-child > .menu-item {
+    display: block !important;
+    flex: 0 0 auto !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+  }
+
+  html body .main-menu > .menu-item > a,
+  html body .main-menu > .menu-item > .popup-trigger,
+  html body .main-menu > .menu-item-has-children > .menu-child > .menu-item > a,
+  html body .header-inner .main-menu > .menu-item > a,
+  html body .header-inner .main-menu > .menu-item > .popup-trigger,
+  html body .header-inner .main-menu > .menu-item-has-children > .menu-child > .menu-item > a {
+    align-items: center !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background: #fff !important;
+    border: 1px solid rgba(216, 224, 236, .96) !important;
+    border-radius: 999px !important;
+    box-shadow: 0 4px 12px rgba(18, 28, 45, .05) !important;
+    box-sizing: border-box !important;
+    color: #1f2937 !important;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    font-size: .82rem !important;
+    font-weight: 760 !important;
+    gap: 6px !important;
+    height: 34px !important;
+    justify-content: center !important;
+    line-height: 34px !important;
+    margin: 0 !important;
+    max-height: 34px !important;
+    min-height: 34px !important;
+    min-width: 0 !important;
+    padding: 0 13px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    transform: none !important;
+    white-space: nowrap !important;
+    width: auto !important;
+  }
+
+  html body .main-menu > .menu-item > a:hover,
+  html body .main-menu > .menu-item > a:focus-visible,
+  html body .main-menu > .menu-item > a:active,
+  html body .main-menu > .menu-item > .popup-trigger:hover,
+  html body .main-menu > .menu-item > .popup-trigger:focus-visible,
+  html body .main-menu > .menu-item > .popup-trigger:active,
+  html body .main-menu > .menu-item-has-children > .menu-child > .menu-item > a:hover,
+  html body .main-menu > .menu-item-has-children > .menu-child > .menu-item > a:focus-visible,
+  html body .main-menu > .menu-item-has-children > .menu-child > .menu-item > a:active,
+  html body .header-inner .main-menu > .menu-item > a:hover,
+  html body .header-inner .main-menu > .menu-item > a:focus-visible,
+  html body .header-inner .main-menu > .menu-item > a:active,
+  html body .header-inner .main-menu > .menu-item > .popup-trigger:hover,
+  html body .header-inner .main-menu > .menu-item > .popup-trigger:focus-visible,
+  html body .header-inner .main-menu > .menu-item > .popup-trigger:active,
+  html body .header-inner .main-menu > .menu-item-has-children > .menu-child > .menu-item > a:hover,
+  html body .header-inner .main-menu > .menu-item-has-children > .menu-child > .menu-item > a:focus-visible,
+  html body .header-inner .main-menu > .menu-item-has-children > .menu-child > .menu-item > a:active {
+    background: #111 !important;
+    border-color: #111 !important;
+    box-shadow: 0 4px 12px rgba(17, 17, 17, .14) !important;
+    color: #fff !important;
+    transform: none !important;
+  }
+
+  html body .content.page.posts-expand .post-block,
+  html body .content.page.posts-expand .post-body,
+  html body .content.page.posts-expand .tag-cloud,
+  html body .content.page.posts-expand .tag-cloud-title,
+  html body .content.page.posts-expand .tag-cloud-tags {
+    overflow: visible !important;
+  }
+
+  html body .content.page.posts-expand .tag-cloud {
+    padding: 10px 8px 26px !important;
+  }
+
+  html body .content.page.posts-expand .tag-cloud-title {
+    margin: 0 8px 18px !important;
+    width: calc(100% - 16px) !important;
+  }
+
+  html body .content.page.posts-expand .tag-cloud-tags {
+    padding: 18px 8px 28px !important;
+  }
+}
+
+@media (max-width: 767px), (hover: none), (pointer: coarse) {
+  html body .header-inner .main-menu > .menu-item-pages.menu-item-has-children,
+  html body .header-inner .main-menu > .menu-item-archives.menu-item-has-children,
+  html body .main-menu > .menu-item-pages.menu-item-has-children,
+  html body .main-menu > .menu-item-archives.menu-item-has-children {
+    display: contents !important;
+  }
+
+  html body .header-inner .main-menu > .menu-item-pages.menu-item-has-children > a,
+  html body .header-inner .main-menu > .menu-item-archives.menu-item-has-children > a,
+  html body .main-menu > .menu-item-pages.menu-item-has-children > a,
+  html body .main-menu > .menu-item-archives.menu-item-has-children > a {
+    display: none !important;
+  }
+
+  html body .header-inner .main-menu > .menu-item-pages.menu-item-has-children > .menu-child,
+  html body .header-inner .main-menu > .menu-item-archives.menu-item-has-children > .menu-child,
+  html body .main-menu > .menu-item-pages.menu-item-has-children > .menu-child,
+  html body .main-menu > .menu-item-archives.menu-item-has-children > .menu-child {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: contents !important;
+    left: auto !important;
+    list-style: none !important;
+    margin: 0 !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    pointer-events: auto !important;
+    position: static !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    visibility: visible !important;
+    width: auto !important;
+  }
+
+  html body .header-inner .main-menu > .menu-item-pages.menu-item-has-children > .menu-child > .menu-item,
+  html body .header-inner .main-menu > .menu-item-archives.menu-item-has-children > .menu-child > .menu-item,
+  html body .main-menu > .menu-item-pages.menu-item-has-children > .menu-child > .menu-item,
+  html body .main-menu > .menu-item-archives.menu-item-has-children > .menu-child > .menu-item {
+    display: block !important;
+    flex: 0 0 auto !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+  }
+
+  html body .header-inner .main-menu > .menu-item > a,
+  html body .header-inner .main-menu > .menu-item > .popup-trigger,
+  html body .header-inner .main-menu > .menu-item-pages.menu-item-has-children > .menu-child > .menu-item > a,
+  html body .header-inner .main-menu > .menu-item-archives.menu-item-has-children > .menu-child > .menu-item > a,
+  html body .main-menu > .menu-item > a,
+  html body .main-menu > .menu-item > .popup-trigger,
+  html body .main-menu > .menu-item-pages.menu-item-has-children > .menu-child > .menu-item > a,
+  html body .main-menu > .menu-item-archives.menu-item-has-children > .menu-child > .menu-item > a {
+    align-items: center !important;
+    background: #fff !important;
+    border: 1px solid rgba(216, 224, 236, .96) !important;
+    border-radius: 999px !important;
+    box-shadow: 0 4px 12px rgba(18, 28, 45, .05) !important;
+    box-sizing: border-box !important;
+    color: #1f2937 !important;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    font-size: .82rem !important;
+    font-weight: 760 !important;
+    gap: 6px !important;
+    height: 34px !important;
+    justify-content: center !important;
+    line-height: 34px !important;
+    margin: 0 !important;
+    max-height: 34px !important;
+    min-height: 34px !important;
+    padding: 0 13px !important;
+    text-decoration: none !important;
+    transform: none !important;
+    white-space: nowrap !important;
+    width: auto !important;
+  }
+
+  html body .header-inner .main-menu > .menu-item > a i,
+  html body .header-inner .main-menu > .menu-item > .popup-trigger i,
+  html body .header-inner .main-menu > .menu-item-pages.menu-item-has-children > .menu-child > .menu-item > a i,
+  html body .header-inner .main-menu > .menu-item-archives.menu-item-has-children > .menu-child > .menu-item > a i,
+  html body .main-menu > .menu-item > a i,
+  html body .main-menu > .menu-item > .popup-trigger i,
+  html body .main-menu > .menu-item-pages.menu-item-has-children > .menu-child > .menu-item > a i,
+  html body .main-menu > .menu-item-archives.menu-item-has-children > .menu-child > .menu-item > a i {
+    color: inherit !important;
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+    font-size: .95em !important;
+    height: 1em !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    text-align: center !important;
+    vertical-align: -0.08em !important;
+    width: 1.15em !important;
+  }
+
+  html body .header-inner .main-menu > .menu-item > a:hover,
+  html body .header-inner .main-menu > .menu-item > a:focus-visible,
+  html body .header-inner .main-menu > .menu-item > a:active,
+  html body .header-inner .main-menu > .menu-item > .popup-trigger:hover,
+  html body .header-inner .main-menu > .menu-item > .popup-trigger:focus-visible,
+  html body .header-inner .main-menu > .menu-item > .popup-trigger:active,
+  html body .header-inner .main-menu > .menu-item-pages.menu-item-has-children > .menu-child > .menu-item > a:hover,
+  html body .header-inner .main-menu > .menu-item-pages.menu-item-has-children > .menu-child > .menu-item > a:focus-visible,
+  html body .header-inner .main-menu > .menu-item-pages.menu-item-has-children > .menu-child > .menu-item > a:active,
+  html body .header-inner .main-menu > .menu-item-archives.menu-item-has-children > .menu-child > .menu-item > a:hover,
+  html body .header-inner .main-menu > .menu-item-archives.menu-item-has-children > .menu-child > .menu-item > a:focus-visible,
+  html body .header-inner .main-menu > .menu-item-archives.menu-item-has-children > .menu-child > .menu-item > a:active,
+  html body .main-menu > .menu-item > a:hover,
+  html body .main-menu > .menu-item > a:focus-visible,
+  html body .main-menu > .menu-item > a:active,
+  html body .main-menu > .menu-item > .popup-trigger:hover,
+  html body .main-menu > .menu-item > .popup-trigger:focus-visible,
+  html body .main-menu > .menu-item > .popup-trigger:active,
+  html body .main-menu > .menu-item-pages.menu-item-has-children > .menu-child > .menu-item > a:hover,
+  html body .main-menu > .menu-item-pages.menu-item-has-children > .menu-child > .menu-item > a:focus-visible,
+  html body .main-menu > .menu-item-pages.menu-item-has-children > .menu-child > .menu-item > a:active,
+  html body .main-menu > .menu-item-archives.menu-item-has-children > .menu-child > .menu-item > a:hover,
+  html body .main-menu > .menu-item-archives.menu-item-has-children > .menu-child > .menu-item > a:focus-visible,
+  html body .main-menu > .menu-item-archives.menu-item-has-children > .menu-child > .menu-item > a:active {
+    background: #111 !important;
+    border-color: #111 !important;
+    box-shadow: 0 4px 12px rgba(17, 17, 17, .14) !important;
+    color: #fff !important;
+    transform: none !important;
+  }
+}
+
+/* 20260701 mobile menu final override: parent items disappear, children become normal menu pills. */
+@media (max-width: 767px) {
+  html body .header-inner #menu.main-menu,
+  html body #menu.main-menu {
+    align-items: center !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: flex-start !important;
+    overflow: visible !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children {
+    display: contents !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > a,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > a,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > a,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > a {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: contents !important;
+    inset: auto !important;
+    list-style: none !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    pointer-events: auto !important;
+    position: static !important;
+    transform: none !important;
+    visibility: visible !important;
+    width: auto !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item {
+    display: block !important;
+    flex: 0 0 auto !important;
+    list-style: none !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    position: static !important;
+    width: auto !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item > a,
+  html body #menu.main-menu > li.menu-item > a,
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a {
+    align-items: center !important;
+    background: #fff !important;
+    border: 1px solid rgba(216, 224, 236, .96) !important;
+    border-radius: 999px !important;
+    box-shadow: 0 4px 12px rgba(18, 28, 45, .05) !important;
+    box-sizing: border-box !important;
+    color: #1f2937 !important;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    font-size: .82rem !important;
+    font-weight: 760 !important;
+    gap: 6px !important;
+    height: 34px !important;
+    justify-content: center !important;
+    line-height: 34px !important;
+    margin: 0 !important;
+    max-height: 34px !important;
+    min-height: 34px !important;
+    min-width: 0 !important;
+    padding: 0 13px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    transform: none !important;
+    white-space: nowrap !important;
+    width: auto !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item > a i,
+  html body #menu.main-menu > li.menu-item > a i,
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a i,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a i,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a i,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a i {
+    color: inherit !important;
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+    font-size: .95em !important;
+    height: 1em !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    opacity: 1 !important;
+    text-align: center !important;
+    vertical-align: -0.08em !important;
+    visibility: visible !important;
+    width: 1.15em !important;
+  }
+
+  html body .header-inner #menu.main-menu > li.menu-item > a:hover,
+  html body .header-inner #menu.main-menu > li.menu-item > a:focus-visible,
+  html body .header-inner #menu.main-menu > li.menu-item > a:active,
+  html body #menu.main-menu > li.menu-item > a:hover,
+  html body #menu.main-menu > li.menu-item > a:focus-visible,
+  html body #menu.main-menu > li.menu-item > a:active,
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a:hover,
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a:focus-visible,
+  html body .header-inner #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a:active,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a:hover,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a:focus-visible,
+  html body .header-inner #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a:active,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a:hover,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a:focus-visible,
+  html body #menu.main-menu > li.menu-item-pages.menu-item-has-children > ul.menu-child > li.menu-item > a:active,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a:hover,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a:focus-visible,
+  html body #menu.main-menu > li.menu-item-archives.menu-item-has-children > ul.menu-child > li.menu-item > a:active {
+    background: #111 !important;
+    border-color: #111 !important;
+    box-shadow: 0 4px 12px rgba(17, 17, 17, .14) !important;
+    color: #fff !important;
+    transform: none !important;
+  }
+
+  html body .sidebar-profile-card,
+  html body .sidebar-profile-card .site-author,
+  html body .sidebar-profile-card .site-overview,
+  html body .sidebar-profile-card .site-author-image {
+    overflow: visible !important;
   }
 }
 
