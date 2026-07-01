@@ -1819,17 +1819,17 @@
       border-top: 1px solid #e2e8f0;
     }
 
-    /* 浅蓝色分页按钮 */
+    /* 黑白分页按钮 */
     .pagination-btn {
       padding: 14px 32px;
-      background: linear-gradient(135deg, #4cc9ff, #2a9eff);
-      color: white;
+      background: #fff;
+      color: #111;
       text-decoration: none;
       border-radius: 16px;
       font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 20px rgba(76, 201, 255, 0.25);
-      border: none;
+      transition: all 0.25s ease;
+      box-shadow: none;
+      border: 1px solid #111;
       cursor: pointer;
       font-size: 16px;
       letter-spacing: 0.5px;
@@ -1840,37 +1840,41 @@
     }
 
     .pagination-btn:disabled {
-      background: linear-gradient(135deg, #b3e7ff, #91d2ff);
+      background: #f5f5f5;
+      color: #aaa;
+      border-color: #d0d0d0;
       cursor: not-allowed;
-      opacity: 0.8;
-      box-shadow: 0 4px 12px rgba(76, 201, 255, 0.15);
+      opacity: 0.75;
+      box-shadow: none;
     }
 
     .pagination-btn:disabled:hover {
       transform: none;
-      box-shadow: 0 4px 12px rgba(76, 201, 255, 0.15);
+      box-shadow: none;
     }
 
     .pagination-btn:not(:disabled):hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(76, 201, 255, 0.4);
-      background: linear-gradient(135deg, #3ab9ff, #188eff);
+      background: #111;
+      color: #fff;
+      border-color: #111;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.14);
     }
 
     .pagination-btn:not(:disabled):active {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(76, 201, 255, 0.25);
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     }
 
     /* 页面信息 */
     .pagination-info {
-      color: #2a9eff;
+      color: #111;
       font-size: 1.1rem;
       font-weight: 700;
       padding: 12px 24px;
-      background: rgba(76, 201, 255, 0.1);
+      background: #fff;
       border-radius: 14px;
-      border: 2px solid rgba(76, 201, 255, 0.2);
+      border: 1px solid #111;
       text-align: center;
       min-width: 180px;
     }
@@ -1880,9 +1884,9 @@
       text-align: center;
       margin-top: 25px;
       padding: 20px;
-      background: linear-gradient(135deg, rgba(76, 201, 255, 0.05), rgba(42, 158, 255, 0.08));
+      background: #fff;
       border-radius: 16px;
-      border: 2px solid rgba(76, 201, 255, 0.15);
+      border: 1px solid #111;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1890,7 +1894,7 @@
     }
 
     .page-jump-label {
-      color: #2a9eff;
+      color: #111;
       font-weight: 600;
       font-size: 15px;
       display: flex;
@@ -1909,28 +1913,29 @@
       width: 100%;
       padding: 14px 20px;
       border-radius: 12px;
-      border: 2px solid #a3dfff;
+      border: 1px solid #111;
       background: white;
-      color: #2a9eff;
+      color: #111;
       font-weight: 600;
       font-size: 15px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
       appearance: none;
       text-align: center;
     }
 
     .page-selector:hover {
-      border-color: #4cc9ff;
-      box-shadow: 0 0 0 4px rgba(76, 201, 255, 0.15);
-      background-color: #f8fdff;
+      border-color: #111;
+      box-shadow: none;
+      background-color: #111;
+      color: #fff;
     }
 
     .page-selector:focus {
       outline: none;
-      border-color: #2a9eff;
-      box-shadow: 0 0 0 4px rgba(76, 201, 255, 0.25);
-      background-color: #f8fdff;
+      border-color: #111;
+      box-shadow: none;
+      background-color: #fff;
     }
 
     .page-selector option {
@@ -1946,7 +1951,7 @@
       right: 18px;
       top: 50%;
       transform: translateY(-50%);
-      color: #2a9eff;
+      color: #111;
       pointer-events: none;
     }
 
