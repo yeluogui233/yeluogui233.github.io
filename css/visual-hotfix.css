@@ -1868,6 +1868,130 @@ html body .sidebar-tag-cloud-list a:active:nth-child(8n) {
   transform: translateY(-1px) !important;
 }
 
+/* 20260701 bake page: horizontal dessert cards with the same feel on desktop and mobile. */
+html body .content.bake-page {
+  background: #fff !important;
+  border: 1px solid rgba(217, 224, 235, .96) !important;
+  border-radius: 30px !important;
+  box-shadow: 0 18px 46px rgba(30, 42, 68, .11) !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  padding: clamp(18px, 2.2vw, 28px) !important;
+}
+
+html body .content.bake-page .bake-container {
+  background: transparent !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+html body .content.bake-page .bake-header {
+  margin: 0 auto clamp(22px, 3vw, 42px) !important;
+}
+
+html body .content.bake-page .bake-title {
+  color: #2c3544 !important;
+  font-size: clamp(1.8rem, 3vw, 2.7rem) !important;
+  font-weight: 760 !important;
+}
+
+html body .content.bake-page .bake-subtitle {
+  color: #778195 !important;
+  font-size: clamp(1rem, 1.4vw, 1.28rem) !important;
+}
+
+html body .content.bake-page .bake-canvas {
+  display: grid !important;
+  gap: clamp(18px, 2.6vw, 34px) !important;
+  margin: 0 auto !important;
+  max-width: 1160px !important;
+  width: 100% !important;
+}
+
+html body .content.bake-page .bake-column {
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+html body .content.bake-page .bake-card {
+  background: #fff !important;
+  border: 1px solid rgba(217, 224, 235, .92) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 12px 30px rgba(30, 42, 68, .10) !important;
+  box-sizing: border-box !important;
+  height: clamp(260px, 24vw, 360px) !important;
+  overflow: hidden !important;
+  transform: translateY(0) !important;
+  transition: transform .32s cubic-bezier(.22, 1, .36, 1), box-shadow .32s ease, border-color .32s ease !important;
+}
+
+html body .content.bake-page .bake-card:hover,
+html body .content.bake-page .bake-card:focus-within {
+  border-color: rgba(52, 152, 219, .28) !important;
+  box-shadow: 0 22px 48px rgba(30, 42, 68, .16) !important;
+  transform: translateY(-8px) !important;
+}
+
+html body .content.bake-page .bake-card-link {
+  align-items: stretch !important;
+  display: grid !important;
+  grid-template-columns: minmax(220px, 45%) minmax(0, 1fr) !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+html body .content.bake-page .bake-card-image-wrapper {
+  height: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+html body .content.bake-page .bake-card-image {
+  height: 100% !important;
+  object-fit: cover !important;
+  transform: scale(1) !important;
+  transition: transform .58s cubic-bezier(.22, 1, .36, 1) !important;
+  width: 100% !important;
+}
+
+html body .content.bake-page .bake-card:hover .bake-card-image,
+html body .content.bake-page .bake-card:focus-within .bake-card-image {
+  transform: scale(1.06) !important;
+}
+
+html body .content.bake-page .bake-card-content {
+  box-sizing: border-box !important;
+  justify-content: center !important;
+  min-width: 0 !important;
+  padding: clamp(24px, 4vw, 48px) !important;
+  width: 100% !important;
+}
+
+html body .content.bake-page .bake-card-title {
+  color: #263244 !important;
+  font-size: clamp(1.35rem, 2.1vw, 2.1rem) !important;
+  font-weight: 760 !important;
+  line-height: 1.25 !important;
+  margin: 0 0 16px !important;
+}
+
+html body .content.bake-page .bake-card-excerpt {
+  color: #5d6b7d !important;
+  font-size: clamp(.95rem, 1.1vw, 1.08rem) !important;
+  line-height: 1.75 !important;
+  margin: 0 0 22px !important;
+}
+
+html body .content.bake-page .bake-card-meta {
+  color: #8b95a6 !important;
+  font-size: .88rem !important;
+}
+
 html body .content.page.posts-expand .post-block,
 html body .content.page.posts-expand .post-body,
 html body .content.page.posts-expand .tag-cloud {
