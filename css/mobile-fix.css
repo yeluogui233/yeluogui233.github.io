@@ -1295,3 +1295,108 @@
   }
 }
 
+@media (max-width: 767px) {
+  html body .main-menu {
+    align-items: center !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    justify-content: flex-start !important;
+    overflow: visible !important;
+  }
+
+  html body .main-menu > .menu-item-has-children {
+    display: contents !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > a,
+  html body .main-menu > .menu-item-has-children > .menu-parent-toggle {
+    display: none !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: contents !important;
+    left: auto !important;
+    margin: 0 !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    position: static !important;
+    top: auto !important;
+    transform: none !important;
+    visibility: visible !important;
+    width: auto !important;
+    z-index: auto !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item {
+    display: block !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+    width: auto !important;
+  }
+
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item + .menu-item {
+    margin-top: 0 !important;
+  }
+
+  html body .main-menu > .menu-item > a,
+  html body .main-menu > .menu-item > .popup-trigger,
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a {
+    align-items: center !important;
+    background: #fff !important;
+    border: 1px solid rgba(216, 224, 236, .96) !important;
+    border-radius: 999px !important;
+    box-shadow: 0 4px 12px rgba(18, 28, 45, .05) !important;
+    color: #1f2937 !important;
+    display: inline-flex !important;
+    font-size: .82rem !important;
+    gap: 6px !important;
+    height: 34px !important;
+    justify-content: center !important;
+    line-height: 34px !important;
+    margin: 0 !important;
+    min-height: 34px !important;
+    padding: 0 13px !important;
+    text-decoration: none !important;
+    transform: none !important;
+    white-space: nowrap !important;
+    width: auto !important;
+  }
+
+  html body .main-menu > .menu-item > a:hover,
+  html body .main-menu > .menu-item > a:focus-visible,
+  html body .main-menu > .menu-item > a:active,
+  html body .main-menu > .menu-item > .popup-trigger:hover,
+  html body .main-menu > .menu-item > .popup-trigger:focus-visible,
+  html body .main-menu > .menu-item > .popup-trigger:active,
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a:hover,
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a:focus-visible,
+  html body .main-menu > .menu-item-has-children > .menu-child .menu-item a:active {
+    background: #111 !important;
+    border-color: #111 !important;
+    box-shadow: 0 4px 12px rgba(17, 17, 17, .14) !important;
+    color: #fff !important;
+    transform: none !important;
+  }
+
+  html body .content.page.posts-expand .tag-cloud,
+  html body .content.page.posts-expand .tag-cloud-tags,
+  html body .content.tag .tag-cloud-section,
+  html body .content.tag .tag-cloud-tags {
+    overflow: visible !important;
+  }
+
+  html body .content.page.posts-expand .tag-cloud-tags,
+  html body .content.tag .tag-cloud-tags {
+    padding-bottom: 22px !important;
+  }
+}
+

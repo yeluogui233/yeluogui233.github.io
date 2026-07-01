@@ -1460,3 +1460,125 @@ html body .content.categories-page .category-card-wrapper.hover-active .post-cou
   color: #2c3e50 !important;
   transform: translateY(-2px) !important;
 }
+
+/* 20260701 tag page edge cleanup and fresher sidebar chips. */
+html body .content.page.posts-expand .tag-cloud,
+html body .content.page.posts-expand .tag-cloud-title,
+html body .content.page.posts-expand .tag-cloud-tags,
+html body .content.tag .tag-cloud-section,
+html body .content.tag .tag-cloud-tags {
+  overflow: visible !important;
+}
+
+html body .content.page.posts-expand .tag-cloud {
+  margin: 0 !important;
+  padding: 0 0 18px !important;
+}
+
+html body .content.page.posts-expand .tag-cloud-tags,
+html body .content.tag .tag-cloud-tags {
+  align-items: center !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 12px 10px !important;
+  justify-content: flex-start !important;
+  margin: 0 !important;
+  padding: 16px 10px 24px !important;
+  position: relative !important;
+}
+
+html body .content.page.posts-expand .tag-cloud-tags a,
+html body .content.tag .tag-cloud-tags a,
+html body .sidebar-tag-cloud-list a {
+  border-radius: 999px !important;
+  box-shadow: 0 10px 22px rgba(43, 67, 109, .10) !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  min-height: 34px !important;
+  overflow: visible !important;
+  padding: 0 14px !important;
+  position: relative !important;
+  text-shadow: none !important;
+}
+
+html body .content.page.posts-expand .tag-cloud-tags a::after,
+html body .content.tag .tag-cloud-tags a::after,
+html body .sidebar-tag-cloud-list a::after {
+  content: none !important;
+  display: none !important;
+}
+
+html body .content.page.posts-expand .tag-cloud-tags a:hover,
+html body .content.page.posts-expand .tag-cloud-tags a:focus-visible,
+html body .content.tag .tag-cloud-tags a:hover,
+html body .content.tag .tag-cloud-tags a:focus-visible,
+html body .sidebar-tag-cloud-list a:hover,
+html body .sidebar-tag-cloud-list a:focus-visible {
+  box-shadow: 0 14px 28px rgba(43, 67, 109, .14) !important;
+  filter: saturate(1.08) brightness(1.01) !important;
+}
+
+html body .sidebar-profile-card,
+html body .sidebar-card,
+html body .links-of-blogroll {
+  background: linear-gradient(145deg, rgba(255, 255, 255, .97), rgba(245, 253, 255, .93) 54%, rgba(255, 247, 252, .90)) !important;
+  border-color: rgba(188, 219, 239, .78) !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+1),
+html body .tag-cloud-tags a:nth-child(8n+1) {
+  background: #e8f7ff !important;
+  border-color: #bdeaff !important;
+  color: #0877a8 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+2),
+html body .tag-cloud-tags a:nth-child(8n+2) {
+  background: #fff1e7 !important;
+  border-color: #ffd4bf !important;
+  color: #c44e2f !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+3),
+html body .tag-cloud-tags a:nth-child(8n+3) {
+  background: #eafbf2 !important;
+  border-color: #bcefd2 !important;
+  color: #198655 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+4),
+html body .tag-cloud-tags a:nth-child(8n+4) {
+  background: #f3edff !important;
+  border-color: #d8c7ff !important;
+  color: #7250c8 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+5),
+html body .tag-cloud-tags a:nth-child(8n+5) {
+  background: #fff7c8 !important;
+  border-color: #ffe58a !important;
+  color: #91700b !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+6),
+html body .tag-cloud-tags a:nth-child(8n+6) {
+  background: #e9fbf8 !important;
+  border-color: #b6eee5 !important;
+  color: #087c73 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+7),
+html body .tag-cloud-tags a:nth-child(8n+7) {
+  background: #ffeaf5 !important;
+  border-color: #ffc4df !important;
+  color: #b83272 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n),
+html body .tag-cloud-tags a:nth-child(8n) {
+  background: #edf4ff !important;
+  border-color: #cadcff !important;
+  color: #2f62c9 !important;
+}
