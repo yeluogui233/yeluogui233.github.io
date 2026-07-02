@@ -1116,3 +1116,119 @@ html body .content-wrap > #sub-menu-2,
 html body .content-wrap > .sub-menu {
   display: none !important;
 }
+
+/* Final tag palette: tags stay colorful, then turn black on hover. */
+html body .sidebar-tag-cloud-list,
+html body .tag-cloud-tags {
+  align-items: flex-start !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  line-height: 1 !important;
+  overflow: visible !important;
+}
+
+html body .sidebar-tag-cloud-list a,
+html body .tag-cloud-tags a,
+html body .tag-cloud-link {
+  align-items: center !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  display: inline-flex !important;
+  font-size: .82rem !important;
+  font-weight: 700 !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  min-height: 32px !important;
+  padding: 0 12px !important;
+  text-decoration: none !important;
+  text-shadow: none !important;
+  transition: background-color .24s ease, border-color .24s ease, box-shadow .24s ease, color .24s ease, transform .24s ease !important;
+}
+
+html body .sidebar-tag-cloud-list a::after,
+html body .tag-cloud-tags a::after,
+html body .tag-cloud-link::after {
+  display: none !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+1),
+html body .tag-cloud-tags a:nth-child(8n+1),
+html body .tag-cloud-link:nth-child(8n+1) {
+  background: #edf5ff !important;
+  color: #2767c7 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+2),
+html body .tag-cloud-tags a:nth-child(8n+2),
+html body .tag-cloud-link:nth-child(8n+2) {
+  background: #fff0ea !important;
+  color: #b95537 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+3),
+html body .tag-cloud-tags a:nth-child(8n+3),
+html body .tag-cloud-link:nth-child(8n+3) {
+  background: #edf9f1 !important;
+  color: #2a8052 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+4),
+html body .tag-cloud-tags a:nth-child(8n+4),
+html body .tag-cloud-link:nth-child(8n+4) {
+  background: #f4efff !important;
+  color: #7250ba !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+5),
+html body .tag-cloud-tags a:nth-child(8n+5),
+html body .tag-cloud-link:nth-child(8n+5) {
+  background: #fff7db !important;
+  color: #927017 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+6),
+html body .tag-cloud-tags a:nth-child(8n+6),
+html body .tag-cloud-link:nth-child(8n+6) {
+  background: #eaf8f8 !important;
+  color: #1f7884 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+7),
+html body .tag-cloud-tags a:nth-child(8n+7),
+html body .tag-cloud-link:nth-child(8n+7) {
+  background: #ffeef7 !important;
+  color: #b4477d !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n),
+html body .tag-cloud-tags a:nth-child(8n),
+html body .tag-cloud-link:nth-child(8n) {
+  background: #eef2ff !important;
+  color: #5263c5 !important;
+}
+
+html body .sidebar-tag-cloud-list a:hover,
+html body .sidebar-tag-cloud-list a:focus-visible,
+html body .tag-cloud-tags a:hover,
+html body .tag-cloud-tags a:focus-visible,
+html body .tag-cloud-link:hover,
+html body .tag-cloud-link:focus-visible {
+  background: #111 !important;
+  border-color: #111 !important;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .16) !important;
+  color: #fff !important;
+  filter: none !important;
+  transform: translateY(-2px) !important;
+}
+
+html body .sidebar-tag-cloud-list a:hover *,
+html body .sidebar-tag-cloud-list a:focus-visible *,
+html body .tag-cloud-tags a:hover *,
+html body .tag-cloud-tags a:focus-visible *,
+html body .tag-cloud-link:hover *,
+html body .tag-cloud-link:focus-visible * {
+  color: #fff !important;
+}
