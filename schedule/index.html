@@ -401,12 +401,26 @@
           </div>
           <script>
 (function() {
-  const rawTodos = [{"date":"2026-07-02T16:27:06.000Z","title":"看动漫","done":false,"done_at":"","tags":["呆着"],"link":"","content":"看呀看动漫"},{"date":"2026-07-02T00:00:00.000Z","title":"玩电脑","done":true,"done_at":"2026-07-02T16:27:03.000Z","tags":["玩电脑"],"link":"","content":"疯狂玩电脑"}];
+  const rawTodos = [{"date":"2026-07-02T16:27:06.000Z","title":"看动漫","done":false,"done_at":"","color":"blue","tags":["呆着"],"link":"","content":"看呀看动漫"},{"date":"2026-07-02T00:00:00.000Z","title":"玩电脑","done":true,"done_at":"2026-07-02T16:27:03.000Z","color":"green","tags":["玩电脑"],"link":"","content":"疯狂玩电脑"}];
+  const rawSchedule = {"password":"1004","colors":[{"id":"blue","label":"蓝","value":"#5b7cfa","soft":"#eef3ff"},{"id":"purple","label":"紫","value":"#8b5cf6","soft":"#f3edff"},{"id":"green","label":"绿","value":"#18a875","soft":"#ecfbf5"},{"id":"amber","label":"橙","value":"#f59e0b","soft":"#fff7e8"},{"id":"rose","label":"粉","value":"#f43f5e","soft":"#fff0f4"}],"special_dates":[]};
+
   const todoItems = Array.isArray(rawTodos) ? rawTodos : [];
+  const scheduleData = rawSchedule && typeof rawSchedule === 'object' ? rawSchedule : {};
+  const defaultColors = [
+    { id: 'blue', label: '蓝', value: '#5b7cfa', soft: '#eef3ff' },
+    { id: 'purple', label: '紫', value: '#8b5cf6', soft: '#f3edff' },
+    { id: 'green', label: '绿', value: '#18a875', soft: '#ecfbf5' },
+    { id: 'amber', label: '橙', value: '#f59e0b', soft: '#fff7e8' },
+    { id: 'rose', label: '粉', value: '#f43f5e', soft: '#fff0f4' }
+  ];
+  const palette = normalizePalette(scheduleData.colors);
+  const colorMap = new Map(palette.map(color => [color.id, color]));
+  const schedulePassword = String(scheduleData.password || '').trim();
   const weekdays = ['一', '二', '三', '四', '五', '六', '日'];
   const weekdayNames = ['日', '一', '二', '三', '四', '五', '六'];
   const lunarMonthMap = { '正月': 1, '一月': 1, '二月': 2, '三月': 3, '四月': 4, '五月': 5, '六月': 6, '七月': 7, '八月': 8, '九月': 9, '十月': 10, '冬月': 11, '十一月': 11, '腊月': 12, '十二月': 12 };
   const lunarDays = ['', '初一', '初二', '初三', '初四', '初五', '初六', '初七', '初八', '初九', '初十', '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八', '十九', '二十', '廿一', '廿二', '廿三', '廿四', '廿五', '廿六', '廿七', '廿八', '廿九', '三十'];
+  const lunarDayMap = new Map(lunarDays.map((name, index) => [name, index]));
   const lunarFestivals = {
     '1-1': '春节',
     '1-15': '元宵',
@@ -416,12 +430,16 @@
     '8-15': '中秋',
     '9-9': '重阳',
     '12-8': '腊八',
-    '12-23': '小年'
+    '12-23': '小年',
+    '12-30': '除夕'
   };
   const solarFestivals = {
     '01-01': '元旦',
+    '02-14': '情人节',
     '05-01': '劳动节',
-    '10-01': '国庆'
+    '06-01': '儿童节',
+    '10-01': '国庆',
+    '12-25': '圣诞'
   };
   let lunarFormatter = null;
   try {
@@ -439,6 +457,11 @@
 
   const els = {
     page: document.querySelector('.todo-page'),
+    lock: document.querySelector('[data-todo-lock]'),
+    lockForm: document.querySelector('[data-todo-lock-form]'),
+    lockInput: document.querySelector('[data-todo-lock-input]'),
+    lockError: document.querySelector('[data-todo-lock-error]'),
+    app: document.querySelector('[data-todo-app]'),
     year: document.querySelector('.todo-year'),
     yearMenu: document.querySelector('.todo-year-menu'),
     month: document.querySelector('.todo-month'),
@@ -455,8 +478,7 @@
     pendingCount: document.querySelector('[data-todo-count="pending"]'),
     doneCount: document.querySelector('[data-todo-count="done"]'),
     statsPending: document.querySelector('[data-todo-stat="pending"]'),
-    statsDone: document.querySelector('[data-todo-stat="done"]'),
-    statsDays: document.querySelector('[data-todo-stat="days"]')
+    statsDone: document.querySelector('[data-todo-stat="done"]')
   };
 
   if (!els.page) return;
@@ -464,12 +486,35 @@
   const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
   const pad = value => String(value).padStart(2, '0');
 
+  function normalizePalette(colors) {
+    const source = Array.isArray(colors) && colors.length ? colors : defaultColors;
+    return source.map((color, index) => {
+      const fallback = defaultColors[index % defaultColors.length];
+      return {
+        id: String(color.id || fallback.id).trim() || fallback.id,
+        label: String(color.label || fallback.label).trim() || fallback.label,
+        value: String(color.value || fallback.value).trim() || fallback.value,
+        soft: String(color.soft || fallback.soft).trim() || fallback.soft
+      };
+    }).slice(0, 5);
+  }
+
+  function colorFor(id) {
+    return colorMap.get(String(id || '').trim()) || palette[0] || defaultColors[0];
+  }
+
+  function parseBoolean(value, fallback = false) {
+    if (typeof value === 'boolean') return value;
+    const text = String(value ?? '').trim().toLowerCase();
+    if (!text) return fallback;
+    return ['1', 'true', 'yes', 'on', '完成', '已完成', '每年', '重复'].includes(text);
+  }
+
   function dateKeyFrom(value) {
     if (value instanceof Date && !Number.isNaN(value.getTime())) {
       return `${value.getFullYear()}-${pad(value.getMonth() + 1)}-${pad(value.getDate())}`;
     }
     const text = String(value || '').trim();
-    if (!text) return '';
     const match = text.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})/);
     if (!match) return '';
     const year = Number(match[1]);
@@ -484,11 +529,9 @@
     const empty = { key: '', label: '', sort: 0 };
     if (value instanceof Date && !Number.isNaN(value.getTime())) {
       const key = dateKeyFrom(value);
-      const label = `${key} ${pad(value.getHours())}:${pad(value.getMinutes())}:${pad(value.getSeconds())}`;
-      return { key, label, sort: value.getTime() };
+      return { key, label: `${key} ${pad(value.getHours())}:${pad(value.getMinutes())}:${pad(value.getSeconds())}`, sort: value.getTime() };
     }
     const text = String(value || '').trim();
-    if (!text) return empty;
     const match = text.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})(?:[ T](\d{1,2}):(\d{1,2})(?::(\d{1,2}))?)?/);
     if (!match) return empty;
     const year = Number(match[1]);
@@ -500,11 +543,7 @@
     const date = new Date(year, month - 1, day, hour, minute, second);
     if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return empty;
     const key = `${year}-${pad(month)}-${pad(day)}`;
-    return {
-      key,
-      label: `${key} ${pad(hour)}:${pad(minute)}:${pad(second)}`,
-      sort: date.getTime()
-    };
+    return { key, label: `${key} ${pad(hour)}:${pad(minute)}:${pad(second)}`, sort: date.getTime() };
   }
 
   function parseTags(tags) {
@@ -513,10 +552,10 @@
   }
 
   function normalizeTodo(item, index) {
-    const planned = dateTimeFrom(item.date || item.done_at || '');
-    const completed = dateTimeFrom(item.done_at || '');
-    const doneText = String(item.done ?? '').trim().toLowerCase();
-    const done = typeof item.done === 'boolean' ? item.done : ['1', 'true', 'yes', 'on', '完成', '已完成'].includes(doneText);
+    const planned = dateTimeFrom(item.date || item.planned_at || '');
+    const completed = dateTimeFrom(item.done_at || item.completed_at || '');
+    const done = parseBoolean(item.done, false);
+    const color = colorFor(item.color || (done ? 'green' : 'blue'));
     return {
       index,
       date: planned.key,
@@ -527,9 +566,38 @@
       doneSort: completed.sort,
       title: String(item.title || '').trim(),
       done,
+      color: color.id,
+      colorValue: color.value,
+      colorSoft: color.soft,
       tags: parseTags(item.tags),
       link: String(item.link || '').trim(),
       content: String(item.content || '').replace(/\r\n/g, '\n').trim()
+    };
+  }
+
+  function parseSpecialDate(value) {
+    const text = String(value || '').trim();
+    const exact = text.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})$/);
+    if (exact) return { year: Number(exact[1]), month: Number(exact[2]), day: Number(exact[3]), key: `${exact[1]}-${pad(exact[2])}-${pad(exact[3])}` };
+    const monthDay = text.match(/^(\d{1,2})[-/](\d{1,2})$/);
+    if (monthDay) return { year: 0, month: Number(monthDay[1]), day: Number(monthDay[2]), key: `${pad(monthDay[1])}-${pad(monthDay[2])}` };
+    return { year: 0, month: 0, day: 0, key: '' };
+  }
+
+  function normalizeSpecialDate(item, index) {
+    const calendarText = String(item.calendar || item.type || 'solar').trim().toLowerCase();
+    const parsed = parseSpecialDate(item.date);
+    const color = colorFor(item.color || 'rose');
+    return {
+      index,
+      title: String(item.title || item.name || '').trim(),
+      date: String(item.date || '').trim(),
+      parsed,
+      calendar: ['lunar', '农历'].includes(calendarText) ? 'lunar' : 'solar',
+      recurring: parseBoolean(item.recurring ?? item.annual, true),
+      color: color.id,
+      colorValue: color.value,
+      colorSoft: color.soft
     };
   }
 
@@ -558,6 +626,7 @@
   const doneTodos = todos.filter(item => item.done);
   const pendingByDate = groupTodos(pendingTodos, item => item.date);
   const doneByDate = groupTodos(doneTodos, item => item.done_at || item.date);
+  const specialDates = Array.isArray(scheduleData.special_dates) ? scheduleData.special_dates.map(normalizeSpecialDate).filter(item => item.title && item.parsed.month && item.parsed.day) : [];
   const allDates = [...new Set([...pendingByDate.keys(), ...doneByDate.keys()])].sort();
 
   state.dates = new Map(allDates.map(date => [date, {
@@ -587,21 +656,49 @@
     return `星期${weekdayNames[date.getDay()]}`;
   }
 
-  function lunarLabel(date) {
+  function parseLunarDay(value) {
+    const number = Number(value);
+    if (Number.isFinite(number) && number > 0) return number;
+    return lunarDayMap.get(String(value || '').trim()) || 0;
+  }
+
+  function lunarInfo(date) {
     const solarKey = `${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-    if (solarFestivals[solarKey]) return { text: solarFestivals[solarKey], festival: true };
-    if (!lunarFormatter) return { text: '', festival: false };
+    const solarFestival = solarFestivals[solarKey] || '';
+    const fallback = { month: 0, day: 0, text: solarFestival, festival: Boolean(solarFestival), solarFestival };
+    if (!lunarFormatter) return fallback;
     try {
       const parts = lunarFormatter.formatToParts(date);
       const rawMonth = String(parts.find(part => part.type === 'month')?.value || '').replace(/^闰/, '');
-      const rawDay = Number(parts.find(part => part.type === 'day')?.value || 0);
-      const lunarMonth = lunarMonthMap[rawMonth];
-      const festival = lunarFestivals[`${lunarMonth}-${rawDay}`];
-      if (festival) return { text: festival, festival: true };
-      return { text: rawDay === 1 ? rawMonth : (lunarDays[rawDay] || ''), festival: false };
+      const rawDay = parseLunarDay(parts.find(part => part.type === 'day')?.value || '');
+      const lunarMonth = lunarMonthMap[rawMonth] || 0;
+      const lunarFestival = lunarFestivals[`${lunarMonth}-${rawDay}`] || '';
+      const text = solarFestival || lunarFestival || (rawDay === 1 ? rawMonth : (lunarDays[rawDay] || ''));
+      return { month: lunarMonth, day: rawDay, text, festival: Boolean(solarFestival || lunarFestival), solarFestival, lunarFestival };
     } catch (error) {
-      return { text: '', festival: false };
+      return fallback;
     }
+  }
+
+  function specialDatesFor(date, lunar) {
+    const key = dateKeyFrom(date);
+    const monthDay = `${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+    return specialDates.filter(item => {
+      if (item.calendar === 'solar') {
+        if (item.recurring) return item.parsed.key === monthDay || item.parsed.key.slice(5) === monthDay;
+        return item.parsed.key === key;
+      }
+      if (!lunar.month || !lunar.day) return false;
+      if (item.parsed.month !== lunar.month || item.parsed.day !== lunar.day) return false;
+      return item.recurring || !item.parsed.year || item.parsed.year === date.getFullYear();
+    });
+  }
+
+  function dateMeta(date) {
+    const lunar = lunarInfo(date);
+    const specials = specialDatesFor(date, lunar);
+    const display = specials[0]?.title || lunar.text || '';
+    return { lunar, specials, display, festival: lunar.festival || specials.length > 0 };
   }
 
   function formatDateLabel(key) {
@@ -627,10 +724,11 @@
 
   function collectYears() {
     const dataYears = allDates.map(date => Number(date.slice(0, 4))).filter(Number.isFinite);
+    const specialYears = specialDates.map(item => item.parsed.year).filter(Boolean);
     const currentYear = new Date().getFullYear();
     const viewYear = state.viewMonth?.getFullYear();
-    const minYear = Math.min(currentYear - 10, viewYear || currentYear, ...dataYears);
-    const maxYear = Math.max(currentYear + 10, viewYear || currentYear, ...dataYears);
+    const minYear = Math.min(currentYear - 10, viewYear || currentYear, ...dataYears, ...specialYears);
+    const maxYear = Math.max(currentYear + 10, viewYear || currentYear, ...dataYears, ...specialYears);
     const years = [];
     for (let year = minYear; year <= maxYear; year++) years.push(year);
     return years;
@@ -659,9 +757,9 @@
   state.activeDate = activeDateFromHash() || dateKeyFrom(new Date()) || allDates[0] || '';
   state.viewMonth = chooseInitialMonth();
 
-  function setActiveDate(date, updateHash = false, openDetail = false) {
+  function setActiveDate(date, updateHash = false) {
     state.activeDate = date || state.activeDate;
-    if (openDetail) state.detailOpen = true;
+    state.detailOpen = true;
     renderCalendar();
     renderLists();
     if (updateHash && state.activeDate) history.replaceState(null, '', `#todo-${state.activeDate}`);
@@ -675,7 +773,6 @@
   function updateStats() {
     if (els.statsPending) els.statsPending.textContent = pendingTodos.length;
     if (els.statsDone) els.statsDone.textContent = doneTodos.length;
-    if (els.statsDays) els.statsDays.textContent = allDates.length;
   }
 
   function renderWeekdays() {
@@ -697,23 +794,22 @@
     for (let i = offset - 1; i >= 0; i--) {
       const day = prevMonthDays - i;
       const date = new Date(year, month - 1, day);
-      const key = monthKey(date) + `-${pad(day)}`;
-      cells.push(renderDayCell(date, key, true));
+      cells.push(renderDayCell(date, dateKeyFrom(date), true));
     }
 
     for (let day = 1; day <= daysInMonth; day++) {
       const date = new Date(year, month, day);
-      const key = monthKey(date) + `-${pad(day)}`;
+      const key = dateKeyFrom(date);
       const record = state.dates.get(key) || { pending: [], done: [] };
-      const hasItems = record.pending.length || record.done.length;
-      cells.push(renderDayCell(date, key, false, hasItems, key === todayKey, key === state.activeDate, record));
+      const meta = dateMeta(date);
+      const hasItems = record.pending.length || record.done.length || meta.specials.length;
+      cells.push(renderDayCell(date, key, false, hasItems, key === todayKey, key === state.activeDate, record, meta));
     }
 
     const nextCells = (7 - (cells.length % 7)) % 7;
     for (let i = 1; i <= nextCells; i++) {
       const date = new Date(year, month + 1, i);
-      const key = monthKey(date) + `-${pad(i)}`;
-      cells.push(renderDayCell(date, key, true));
+      cells.push(renderDayCell(date, dateKeyFrom(date), true));
     }
 
     els.month.textContent = monthLabel(state.viewMonth);
@@ -722,74 +818,82 @@
       els.year.dataset.year = String(year);
     }
     els.calendar.innerHTML = cells.join('');
-
-    els.calendar.querySelectorAll('[data-date]').forEach(button => {
-      button.addEventListener('click', () => setActiveDate(button.dataset.date, true, true));
+    els.calendar.querySelectorAll('[data-date]:not(:disabled)').forEach(button => {
+      button.addEventListener('click', () => setActiveDate(button.dataset.date, true));
     });
   }
 
-  function summaryText(item) {
-    return String(item.content || item.title || '').replace(/\s+/g, ' ').trim();
+  function firstColor(record, meta) {
+    return record?.pending[0] || record?.done[0] || meta?.specials[0] || { colorValue: palette[0].value, colorSoft: palette[0].soft };
   }
 
-  function renderDaySummaries(record) {
-    if (!record) return '';
-    const done = record.done.map(summaryText).filter(Boolean);
-    const pending = record.pending.map(summaryText).filter(Boolean);
-    const source = done.length ? done : pending;
-    if (!source.length) return '';
-    const kind = done.length ? 'done' : 'pending';
-    return `<span class="todo-day-badges todo-day-summaries">
-      ${source.slice(0, 2).map(text => `<i class="todo-day-summary ${kind}" title="${escapeHtml(text)}">${escapeHtml(text)}</i>`).join('')}
-    </span>`;
+  function renderMarkers(record, meta) {
+    const markers = [
+      ...(record?.pending || []).map(item => ({ title: item.title || '待办', color: item.colorValue, kind: 'pending' })),
+      ...(record?.done || []).map(item => ({ title: item.title || '完成', color: item.colorValue, kind: 'done' })),
+      ...(meta?.specials || []).map(item => ({ title: item.title, color: item.colorValue, kind: 'special' }))
+    ];
+    if (!markers.length) return '';
+    return `<span class="todo-day-dots">${markers.slice(0, 5).map(item => `<i class="${item.kind}" style="--dot:${escapeHtml(item.color)}" title="${escapeHtml(item.title)}"></i>`).join('')}</span>`;
   }
 
-  function renderDayCell(date, key, outside, hasItems = false, isToday = false, isActive = false, record = null) {
+  function renderDayCell(date, key, outside, hasItems = false, isToday = false, isActive = false, record = null, meta = null) {
     const classes = ['todo-day'];
-    const lunar = lunarLabel(date);
+    const dayMeta = meta || dateMeta(date);
+    const baseColor = firstColor(record, dayMeta);
     if (outside) classes.push('outside');
     if (hasItems) classes.push('has-items');
     if (isToday) classes.push('today');
     if (isActive) classes.push('active');
-    return `<button type="button" class="${classes.join(' ')}" data-date="${key}" ${outside ? 'disabled' : ''} aria-label="${formatDateLabel(key)} ${dayLabel(date)}">
+    return `<button type="button" class="${classes.join(' ')}" data-date="${key}" style="--cell-color:${escapeHtml(baseColor.colorValue || palette[0].value)};--cell-soft:${escapeHtml(baseColor.colorSoft || palette[0].soft)}" ${outside ? 'disabled' : ''} aria-label="${formatDateLabel(key)} ${dayLabel(date)}">
       <span class="todo-day-top">
         <strong class="todo-day-num">${date.getDate()}</strong>
-        <span class="todo-day-week todo-day-lunar${lunar.festival ? ' festival' : ''}">${escapeHtml(lunar.text)}</span>
+        <span class="todo-day-lunar${dayMeta.festival ? ' festival' : ''}">${escapeHtml(dayMeta.display)}</span>
       </span>
-      ${renderDaySummaries(record)}
+      ${renderMarkers(record, dayMeta)}
     </button>`;
   }
 
   function renderList(container, items, kind) {
     if (!container) return;
     if (!items.length) {
-      container.innerHTML = `<div class="todo-empty">这个日期还没有${kind === 'pending' ? '待办' : '完成'}内容。</div>`;
+      container.innerHTML = `<div class="todo-empty">这一天没有${kind === 'pending' ? '未完成待办' : '已完成内容'}</div>`;
       return;
     }
     container.innerHTML = `<div class="todo-cards">${items.map(item => renderCard(item)).join('')}</div>`;
   }
 
   function renderCard(item) {
-    const status = item.done ? '已完成' : '待办';
     const cardClass = item.done ? 'todo-card done' : 'todo-card';
-    const tagHtml = item.tags.length ? `<div class="todo-card-meta">${item.tags.map(tag => `<span class="todo-chip">${escapeHtml(tag)}</span>`).join('')}</div>` : '';
-    const doneLine = item.done && item.doneAtLabel ? `<span class="todo-chip done">完成于 ${escapeHtml(item.doneAtLabel)}</span>` : '';
-    const linkHtml = item.link ? `<a class="todo-link" href="${escapeHtml(item.link)}" target="_blank" rel="noopener">跳转</a>` : '';
-    const dateChip = item.dateLabel ? `<span class="todo-chip">计划 ${escapeHtml(item.dateLabel)}</span>` : '';
+    const tags = item.tags.length ? `<div class="todo-card-tags">${item.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div>` : '';
+    const linkHtml = item.link ? `<a class="todo-link" href="${escapeHtml(item.link)}" target="_blank" rel="noopener">打开链接</a>` : '';
+    const planned = item.dateLabel ? `<span>计划 ${escapeHtml(item.dateLabel)}</span>` : '';
+    const doneLine = item.done && item.doneAtLabel ? `<span>完成 ${escapeHtml(item.doneAtLabel)}</span>` : '';
     return `
-      <article class="${cardClass}">
+      <article class="${cardClass}" style="--item-color:${escapeHtml(item.colorValue)};--item-soft:${escapeHtml(item.colorSoft)}">
         <div class="todo-card-title">
           <h4>${escapeHtml(item.title || '未命名事项')}</h4>
-          <span class="todo-state">${status}</span>
+          <span class="todo-state">${item.done ? '已完成' : '待办'}</span>
         </div>
         <div class="todo-card-meta">
-          ${dateChip}
+          ${planned}
           ${doneLine}
           ${linkHtml}
         </div>
-        ${tagHtml}
+        ${tags}
         ${item.content ? `<div class="todo-card-body">${escapeHtml(item.content).replace(/\n/g, '<br>')}</div>` : ''}
       </article>`;
+  }
+
+  function renderSpecialList(date, meta) {
+    if (!els.selectedLunar) return;
+    const names = [];
+    if (meta.lunar.solarFestival) names.push(meta.lunar.solarFestival);
+    if (meta.lunar.lunarFestival) names.push(meta.lunar.lunarFestival);
+    meta.specials.forEach(item => names.push(item.title));
+    const lunarText = meta.lunar.text && !names.includes(meta.lunar.text) ? meta.lunar.text : '';
+    els.selectedLunar.textContent = [lunarText, ...names].filter(Boolean).join(' / ') || '暂无农历信息';
+    els.selectedLunar.classList.toggle('festival', Boolean(names.length));
   }
 
   function renderLists() {
@@ -797,23 +901,18 @@
     const pending = sortItems(record.pending, 'pending');
     const done = sortItems(record.done, 'done');
     const date = dateFromKey(state.activeDate);
-    if (els.currentDate) {
-      els.currentDate.textContent = date ? formatDateLabel(state.activeDate) : '请选择日期';
-    }
-    if (els.selectedDay) {
-      els.selectedDay.textContent = date ? date.getDate() : '--';
-    }
-    if (els.selectedWeek) {
-      els.selectedWeek.textContent = date ? dayLabel(date) : '';
-    }
-    if (els.selectedLunar) {
-      const lunar = date ? lunarLabel(date) : { text: '--', festival: false };
-      els.selectedLunar.textContent = lunar.text || '农历暂不可用';
-      els.selectedLunar.classList.toggle('festival', Boolean(lunar.festival));
-    }
+    const meta = date ? dateMeta(date) : { lunar: {}, specials: [] };
+    const activeColor = firstColor(record, meta);
+
     if (els.detailCard) {
       els.detailCard.hidden = !state.detailOpen;
+      els.detailCard.style.setProperty('--detail-color', activeColor.colorValue || palette[0].value);
+      els.detailCard.style.setProperty('--detail-soft', activeColor.colorSoft || palette[0].soft);
     }
+    if (els.currentDate) els.currentDate.textContent = date ? formatDateLabel(state.activeDate) : '请选择日期';
+    if (els.selectedDay) els.selectedDay.textContent = date ? date.getDate() : '--';
+    if (els.selectedWeek) els.selectedWeek.textContent = date ? dayLabel(date) : '';
+    if (date) renderSpecialList(date, meta);
     if (els.pendingCount) els.pendingCount.textContent = pending.length;
     if (els.doneCount) els.doneCount.textContent = done.length;
     renderList(els.pendingList, pending, 'pending');
@@ -870,6 +969,55 @@
     else closeYearMenu();
   }
 
+  function isUnlocked() {
+    if (!schedulePassword) return true;
+    try {
+      return sessionStorage.getItem('todo-schedule-unlocked') === schedulePassword;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function showApp() {
+    if (els.lock) els.lock.hidden = true;
+    if (els.app) els.app.hidden = false;
+    render();
+  }
+
+  function showLock() {
+    if (els.app) els.app.hidden = true;
+    if (els.lock) els.lock.hidden = false;
+    requestAnimationFrame(() => els.lockInput?.focus());
+  }
+
+  function wireLock() {
+    if (!schedulePassword || !els.lockForm) {
+      showApp();
+      return;
+    }
+    if (isUnlocked()) {
+      showApp();
+      return;
+    }
+    showLock();
+    els.lockForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const value = String(els.lockInput?.value || '').trim();
+      if (value !== schedulePassword) {
+        if (els.lockError) els.lockError.textContent = '密码不正确';
+        els.lockForm.classList.remove('shake');
+        void els.lockForm.offsetWidth;
+        els.lockForm.classList.add('shake');
+        return;
+      }
+      try {
+        sessionStorage.setItem('todo-schedule-unlocked', schedulePassword);
+      } catch (error) {}
+      if (els.lockError) els.lockError.textContent = '';
+      showApp();
+    });
+  }
+
   function wire() {
     if (els.year) {
       els.year.addEventListener('click', event => {
@@ -889,12 +1037,6 @@
     document.querySelectorAll('.todo-nav').forEach(button => {
       button.addEventListener('click', () => handleNav(button.dataset.action));
     });
-    document.querySelectorAll('.todo-view-switch button').forEach(button => {
-      button.addEventListener('click', () => {
-        button.parentElement.querySelectorAll('button').forEach(item => item.classList.remove('active'));
-        button.classList.add('active');
-      });
-    });
     window.addEventListener('hashchange', () => {
       focusFromHash();
       renderYearOptions();
@@ -913,7 +1055,7 @@
   }
 
   wire();
-  render();
+  wireLock();
 })();
 </script>
 
