@@ -323,13 +323,21 @@
       
       <div class="post-body">
           <div class="todo-page todo-calendar-page">
-            <section class="todo-planner" aria-label="日程月历">
-              <header class="todo-planner-head">
-                <div class="todo-view-switch" aria-label="视图">
-                  <button type="button" class="active">月历</button>
-                  <button type="button">待办</button>
+            <section class="todo-lock" data-todo-lock hidden aria-label="日程表密码">
+              <form class="todo-lock-card" data-todo-lock-form>
+                <span class="todo-lock-kicker">PRIVATE CALENDAR</span>
+                <h2>输入密码查看日程</h2>
+                <p>这里记录待办、完成事项和特殊日期。</p>
+                <div class="todo-lock-row">
+                  <input type="password" data-todo-lock-input placeholder="日程表密码" autocomplete="current-password">
+                  <button type="submit">进入</button>
                 </div>
+                <div class="todo-lock-error" data-todo-lock-error aria-live="polite"></div>
+              </form>
+            </section>
 
+            <section class="todo-planner" data-todo-app hidden aria-label="日程月历">
+              <header class="todo-planner-head">
                 <div class="todo-calendar-head">
                   <button type="button" class="todo-nav" data-action="prev" aria-label="上一月">‹</button>
                   <div class="todo-calendar-controls">
