@@ -423,6 +423,12 @@ NexT.utils = {
 
 window.addEventListener('hexo-blog-decrypt', () => {
   if (window.NexT && NexT.utils) {
+    if (CONFIG.fancybox) {
+      NexT.utils.wrapImageWithFancyBox();
+    }
+    if (CONFIG.mediumzoom && window.mediumZoom) {
+      window.mediumZoom('.post-body :not(a) > img, .post-body > img');
+    }
     NexT.utils.registerSidebarTOC();
     NexT.utils.updateSidebarPosition();
   }
