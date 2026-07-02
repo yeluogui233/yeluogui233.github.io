@@ -1175,7 +1175,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff87c3;
+  background: #8b1c01;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2064,6 +2064,14 @@ pre .javascript .function {
   color: #fff;
   background: linear-gradient(180deg, #111827, #0f172a);
   box-shadow: 0 14px 24px rgba(15,23,42,0.16);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+.todo-stat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 32px rgba(15,23,42,0.2);
+}
+.todo-stat:active {
+  transform: translateY(-1px) scale(0.98);
 }
 .todo-stat b {
   font-size: 30px;
@@ -2089,10 +2097,27 @@ pre .javascript .function {
   gap: 12px;
   margin-bottom: 14px;
 }
+.todo-calendar-controls {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  gap: 10px;
+}
 .todo-month {
   color: #111827;
   font-size: 18px;
   font-weight: 800;
+}
+.todo-year {
+  width: auto;
+  min-width: 108px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid rgba(15,23,42,0.1);
+  border-radius: 999px;
+  color: #111827;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(15,23,42,0.06);
 }
 .todo-nav {
   width: 40px;
@@ -2104,10 +2129,21 @@ pre .javascript .function {
   color: #fff;
   background: #111827;
   box-shadow: 0 10px 18px rgba(15,23,42,0.18);
+  transition: transform 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
 }
 .todo-nav:hover {
+  transform: translateY(-2px);
   color: #fff;
   background: #000;
+  box-shadow: 0 14px 24px rgba(15,23,42,0.24);
+}
+.todo-nav:active {
+  transform: translateY(0) scale(0.92);
+  box-shadow: 0 7px 14px rgba(15,23,42,0.2);
+}
+.todo-nav:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(17,24,39,0.12), 0 10px 18px rgba(15,23,42,0.18);
 }
 .todo-weekdays {
   display: grid;
@@ -2140,6 +2176,9 @@ pre .javascript .function {
   color: #111827;
   background: #f8fafc;
   box-shadow: none;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
 .todo-day:hover {
   transform: translateY(-2px);
@@ -2156,7 +2195,11 @@ pre .javascript .function {
   background: #111827;
 }
 .todo-day.active {
-  outline: 3px solid rgba(17,24,39,0.1);
+  box-shadow: inset 0 0 0 3px rgba(17,24,39,0.1);
+}
+.todo-day:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 3px rgba(17,24,39,0.14);
 }
 .todo-day.outside {
   opacity: 0.3;
@@ -2197,8 +2240,52 @@ pre .javascript .function {
   color: #fff;
   background: #111827;
 }
+.todo-day-summaries {
+  display: grid;
+  flex-wrap: initial;
+  min-width: 0;
+  width: 100%;
+  gap: 5px;
+}
+.todo-day-summary {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  padding: 4px 7px;
+  border-radius: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #111827;
+  background: rgba(15,23,42,0.06);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 750;
+  line-height: 1.25;
+}
+.todo-day-summary.done {
+  color: #fff;
+  background: #111827;
+}
+.todo-day.today .todo-day-summary,
+.todo-day.active.today .todo-day-summary {
+  color: #111827;
+  background: rgba(255,255,255,0.86);
+}
+.todo-current-date {
+  justify-self: start;
+  padding: 8px 14px;
+  border: 1px solid rgba(15,23,42,0.08);
+  border-radius: 999px;
+  color: #111827;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(15,23,42,0.08);
+  font-size: 13px;
+  font-weight: 800;
+}
 .todo-board {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 .todo-panel {
@@ -2221,12 +2308,16 @@ pre .javascript .function {
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 14px;
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 .todo-panel-head h3 {
   margin: 0;
   color: inherit;
   font-size: 20px;
   line-height: 1.2;
+  border: 0;
+  text-decoration: none;
 }
 .todo-panel-head span {
   color: #64748b;
@@ -2282,11 +2373,21 @@ pre .javascript .function {
   border: 1px solid rgba(148,163,184,0.16);
   border-radius: 20px;
   background: #fff;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+.todo-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(17,24,39,0.14);
+  box-shadow: 0 16px 32px rgba(15,23,42,0.1);
 }
 .todo-card.done {
   color: #fff;
   border-color: rgba(255,255,255,0.12);
   background: #111827;
+}
+.todo-card.done:hover {
+  background: #000;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.18);
 }
 .todo-card-title {
   display: flex;
@@ -2346,9 +2447,14 @@ pre .javascript .function {
 .todo-empty {
   padding: 18px;
   color: #64748b;
-  border: 1px dashed rgba(148,163,184,0.26);
+  border: 1px solid rgba(148,163,184,0.2);
   border-radius: 18px;
   background: rgba(248,250,252,0.85);
+}
+.todo-panel-done .todo-empty {
+  color: rgba(255,255,255,0.72);
+  border-color: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.08);
 }
 @media (max-width: 980px) {
   .todo-page {
@@ -2360,6 +2466,9 @@ pre .javascript .function {
   .todo-stats {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+  .todo-board {
+    grid-template-columns: 1fr;
+  }
   .todo-day {
     min-height: 92px;
   }
@@ -2370,13 +2479,25 @@ pre .javascript .function {
   .todo-hero {
     border-radius: 22px;
   }
+  .todo-calendar-head {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .todo-calendar,
   .todo-weekdays {
     gap: 6px;
     min-width: 560px;
   }
+  .todo-calendar-controls {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
   .todo-weekdays {
     display: grid;
+  }
+  .todo-year {
+    width: 100%;
+    min-width: 92px;
   }
   .todo-day {
     min-height: 84px;

@@ -317,20 +317,7 @@
 
     
     
-    
     <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">日程表
-</h1>
-
-<div class="post-meta">
-  
-
-</div>
-
-</header>
-
       
       
       
@@ -340,7 +327,7 @@
               <div class="todo-hero-copy">
                 <div class="todo-kicker">日程 / Todo</div>
                 <h2 class="todo-title">日程表</h2>
-                <p class="todo-lead">上方日历可以跳转到对应日期，下方展示待办和完成内容。</p>
+                <p class="todo-lead">上方日历可以切换年月并选择具体日期，下方只展示当前选中日期的待办和完成内容。</p>
               </div>
               <div class="todo-stats">
                 <div class="todo-stat"><b data-todo-stat="pending">0</b><span>待办</span></div>
@@ -352,12 +339,17 @@
             <section class="todo-calendar-shell">
               <div class="todo-calendar-head">
                 <button type="button" class="todo-nav" data-action="prev" aria-label="上一月">‹</button>
-                <div class="todo-month"></div>
+                <div class="todo-calendar-controls">
+                  <select class="todo-year" aria-label="选择年份"></select>
+                  <div class="todo-month"></div>
+                </div>
                 <button type="button" class="todo-nav" data-action="next" aria-label="下一月">›</button>
               </div>
               <div class="todo-weekdays"></div>
               <div class="todo-calendar"></div>
             </section>
+
+            <div class="todo-current-date" data-todo-current-date></div>
 
             <section class="todo-board">
               <div class="todo-panel">
@@ -379,21 +371,21 @@
           </div>
           <script>
 (function() {
-  const rawTodos = [{"date":"2026-07-02T00:00:00.000Z","title":"玩电脑","done":true,"done_at":"2026-07-02T00:00:00.000Z","tags":["玩电脑"],"link":"","content":"疯狂玩电脑"}];
+  const rawTodos = [{"date":"2026-07-02T16:27:06.000Z","title":"看动漫","done":false,"done_at":"","tags":["呆着"],"link":"","content":"看呀看动漫"},{"date":"2026-07-02T00:00:00.000Z","title":"玩电脑","done":true,"done_at":"2026-07-02T16:27:03.000Z","tags":["玩电脑"],"link":"","content":"疯狂玩电脑"}];
   const todoItems = Array.isArray(rawTodos) ? rawTodos : [];
   const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
 
   const state = {
     activeDate: '',
     viewMonth: null,
-    dates: new Map(),
-    pendingGroups: new Map(),
-    doneGroups: new Map()
+    dates: new Map()
   };
 
   const els = {
     page: document.querySelector('.todo-page'),
+    year: document.querySelector('.todo-year'),
     month: document.querySelector('.todo-month'),
+    currentDate: document.querySelector('[data-todo-current-date]'),
     weekdays: document.querySelector('.todo-weekdays'),
     calendar: document.querySelector('.todo-calendar'),
     pendingList: document.querySelector('.todo-list-pending'),
@@ -408,8 +400,12 @@
   if (!els.page) return;
 
   const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+  const pad = value => String(value).padStart(2, '0');
 
   function dateKeyFrom(value) {
+    if (value instanceof Date && !Number.isNaN(value.getTime())) {
+      return `${value.getFullYear()}-${pad(value.getMonth() + 1)}-${pad(value.getDate())}`;
+    }
     const text = String(value || '').trim();
     if (!text) return '';
     const match = text.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})/);
@@ -419,7 +415,34 @@
     const day = Number(match[3]);
     const date = new Date(year, month - 1, day);
     if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return '';
-    return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    return `${year}-${pad(month)}-${pad(day)}`;
+  }
+
+  function dateTimeFrom(value) {
+    const empty = { key: '', label: '', sort: 0 };
+    if (value instanceof Date && !Number.isNaN(value.getTime())) {
+      const key = dateKeyFrom(value);
+      const label = `${key} ${pad(value.getHours())}:${pad(value.getMinutes())}:${pad(value.getSeconds())}`;
+      return { key, label, sort: value.getTime() };
+    }
+    const text = String(value || '').trim();
+    if (!text) return empty;
+    const match = text.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})(?:[ T](\d{1,2}):(\d{1,2})(?::(\d{1,2}))?)?/);
+    if (!match) return empty;
+    const year = Number(match[1]);
+    const month = Number(match[2]);
+    const day = Number(match[3]);
+    const hour = Number(match[4] ?? 0);
+    const minute = Number(match[5] ?? 0);
+    const second = Number(match[6] ?? 0);
+    const date = new Date(year, month - 1, day, hour, minute, second);
+    if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return empty;
+    const key = `${year}-${pad(month)}-${pad(day)}`;
+    return {
+      key,
+      label: `${key} ${pad(hour)}:${pad(minute)}:${pad(second)}`,
+      sort: date.getTime()
+    };
   }
 
   function parseTags(tags) {
@@ -428,14 +451,18 @@
   }
 
   function normalizeTodo(item, index) {
-    const planned = dateKeyFrom(item.date || item.done_at || '');
-    const completed = dateKeyFrom(item.done_at || item.date || '');
+    const planned = dateTimeFrom(item.date || item.done_at || '');
+    const completed = dateTimeFrom(item.done_at || item.date || '');
     const doneText = String(item.done ?? '').trim().toLowerCase();
     const done = typeof item.done === 'boolean' ? item.done : ['1', 'true', 'yes', 'on', '完成', '已完成'].includes(doneText);
     return {
       index,
-      date: planned,
-      done_at: completed,
+      date: planned.key,
+      dateLabel: planned.label,
+      dateSort: planned.sort,
+      done_at: completed.key,
+      doneAtLabel: completed.label,
+      doneSort: completed.sort,
       title: String(item.title || '').trim(),
       done,
       tags: parseTags(item.tags),
@@ -444,7 +471,13 @@
     };
   }
 
-  const todos = todoItems.map(normalizeTodo).filter(item => item.title || item.date || item.done_at || item.content);
+  function sortItems(items, kind) {
+    return [...items].sort((a, b) => {
+      const left = kind === 'done' ? a.doneSort || a.dateSort : a.dateSort || a.doneSort;
+      const right = kind === 'done' ? b.doneSort || b.dateSort : b.dateSort || b.doneSort;
+      return left - right || a.title.localeCompare(b.title, 'zh-Hans-CN');
+    });
+  }
 
   function groupTodos(list, keyGetter) {
     const groups = new Map();
@@ -454,24 +487,24 @@
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key).push(item);
     });
+    groups.forEach((items, key) => groups.set(key, sortItems(items, items[0]?.done ? 'done' : 'pending')));
     return groups;
   }
 
+  const todos = todoItems.map(normalizeTodo).filter(item => item.title || item.date || item.done_at || item.content);
   const pendingTodos = todos.filter(item => !item.done);
   const doneTodos = todos.filter(item => item.done);
   const pendingByDate = groupTodos(pendingTodos, item => item.date);
   const doneByDate = groupTodos(doneTodos, item => item.done_at || item.date);
   const allDates = [...new Set([...pendingByDate.keys(), ...doneByDate.keys()])].sort();
 
-  state.pendingGroups = pendingByDate;
-  state.doneGroups = doneByDate;
   state.dates = new Map(allDates.map(date => [date, {
     pending: pendingByDate.get(date) || [],
     done: doneByDate.get(date) || []
   }]));
 
   function monthKey(date) {
-    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}`;
   }
 
   function startOfMonth(date) {
@@ -482,41 +515,67 @@
     return `${date.getFullYear()} 年 ${date.getMonth() + 1} 月`;
   }
 
+  function dateFromKey(key) {
+    const [year, month, day] = String(key || '').split('-').map(Number);
+    if (!year || !month || !day) return null;
+    return new Date(year, month - 1, day);
+  }
+
   function dayLabel(date) {
     return `星期${weekdays[date.getDay()]}`;
   }
 
   function formatDateLabel(key) {
-    if (!key) return '';
-    const [year, month, day] = key.split('-').map(Number);
-    return `${year}年${month}月${day}日`;
+    const date = dateFromKey(key);
+    if (!date) return '';
+    return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+  }
+
+  function activeDateFromHash() {
+    const hashMatch = location.hash.match(/todo-(?:pending-|done-)?(\d{4}-\d{2}-\d{2})/);
+    return hashMatch ? hashMatch[1] : '';
   }
 
   function chooseInitialMonth() {
-    const hashMatch = location.hash.match(/todo-(?:pending|done)-(\d{4}-\d{2}-\d{2})/);
-    if (hashMatch) {
-      const [year, month] = hashMatch[1].split('-').map(Number);
-      return new Date(year, month - 1, 1);
-    }
+    const active = dateFromKey(state.activeDate);
+    if (active) return startOfMonth(active);
     if (allDates.length) {
-      const first = allDates[0];
-      const [year, month] = first.split('-').map(Number);
+      const [year, month] = allDates[0].split('-').map(Number);
       return new Date(year, month - 1, 1);
     }
     return startOfMonth(new Date());
   }
 
-  state.activeDate = allDates[0] || '';
+  function collectYears() {
+    const dataYears = allDates.map(date => Number(date.slice(0, 4))).filter(Number.isFinite);
+    const currentYear = new Date().getFullYear();
+    const viewYear = state.viewMonth?.getFullYear();
+    const minYear = Math.min(currentYear - 10, viewYear || currentYear, ...dataYears);
+    const maxYear = Math.max(currentYear + 10, viewYear || currentYear, ...dataYears);
+    const years = [];
+    for (let year = minYear; year <= maxYear; year++) years.push(year);
+    return years;
+  }
+
+  function renderYearOptions() {
+    if (!els.year) return;
+    const years = collectYears();
+    const currentYear = state.viewMonth.getFullYear();
+    els.year.innerHTML = years.map(year => `<option value="${year}">${year} 年</option>`).join('');
+    els.year.value = String(currentYear);
+  }
+
+  state.activeDate = activeDateFromHash() || dateKeyFrom(new Date()) || allDates[0] || '';
   state.viewMonth = chooseInitialMonth();
 
-  function setActiveDate(date) {
-    state.activeDate = date || '';
+  function setActiveDate(date, updateHash = false) {
+    state.activeDate = date || state.activeDate;
     renderCalendar();
+    renderLists();
+    if (updateHash && state.activeDate) history.replaceState(null, '', `#todo-${state.activeDate}`);
   }
 
   function updateStats() {
-    if (els.pendingCount) els.pendingCount.textContent = pendingTodos.length;
-    if (els.doneCount) els.doneCount.textContent = doneTodos.length;
     if (els.statsPending) els.statsPending.textContent = pendingTodos.length;
     if (els.statsDone) els.statsDone.textContent = doneTodos.length;
     if (els.statsDays) els.statsDays.textContent = allDates.length;
@@ -541,109 +600,83 @@
     for (let i = offset - 1; i >= 0; i--) {
       const day = prevMonthDays - i;
       const date = new Date(year, month - 1, day);
-      const key = monthKey(date) + `-${String(day).padStart(2, '0')}`;
+      const key = monthKey(date) + `-${pad(day)}`;
       cells.push(renderDayCell(date, key, true));
     }
 
     for (let day = 1; day <= daysInMonth; day++) {
       const date = new Date(year, month, day);
-      const key = monthKey(date) + `-${String(day).padStart(2, '0')}`;
+      const key = monthKey(date) + `-${pad(day)}`;
       const record = state.dates.get(key) || { pending: [], done: [] };
       const hasItems = record.pending.length || record.done.length;
-      const isToday = key === todayKey;
-      const isActive = key === state.activeDate;
-      cells.push(renderDayCell(date, key, false, hasItems, isToday, isActive, record));
+      cells.push(renderDayCell(date, key, false, hasItems, key === todayKey, key === state.activeDate, record));
     }
 
-    const total = cells.length;
-    const nextCells = (7 - (total % 7)) % 7;
+    const nextCells = (7 - (cells.length % 7)) % 7;
     for (let i = 1; i <= nextCells; i++) {
       const date = new Date(year, month + 1, i);
-      const key = monthKey(date) + `-${String(i).padStart(2, '0')}`;
+      const key = monthKey(date) + `-${pad(i)}`;
       cells.push(renderDayCell(date, key, true));
     }
 
     els.month.textContent = monthLabel(state.viewMonth);
+    if (els.year && els.year.value !== String(year)) els.year.value = String(year);
     els.calendar.innerHTML = cells.join('');
 
     els.calendar.querySelectorAll('[data-date]').forEach(button => {
-      button.addEventListener('click', () => {
-        const key = button.dataset.date;
-        const target = state.dates.get(key);
-        if (!target) return;
-        const anchor = target.pending.length ? `todo-pending-${key}` : `todo-done-${key}`;
-        const node = document.getElementById(anchor);
-        if (node) {
-          setActiveDate(key);
-          history.replaceState(null, '', `#${anchor}`);
-          node.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
+      button.addEventListener('click', () => setActiveDate(button.dataset.date, true));
     });
   }
 
+  function summaryText(item) {
+    return String(item.content || item.title || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function renderDaySummaries(record) {
+    if (!record) return '';
+    const done = record.done.map(summaryText).filter(Boolean);
+    const pending = record.pending.map(summaryText).filter(Boolean);
+    const source = done.length ? done : pending;
+    if (!source.length) return '';
+    const kind = done.length ? 'done' : 'pending';
+    return `<span class="todo-day-badges todo-day-summaries">
+      ${source.slice(0, 2).map(text => `<i class="todo-day-summary ${kind}" title="${escapeHtml(text)}">${escapeHtml(text)}</i>`).join('')}
+    </span>`;
+  }
+
   function renderDayCell(date, key, outside, hasItems = false, isToday = false, isActive = false, record = null) {
-    const day = date.getDate();
-    const pendingCount = record?.pending?.length || 0;
-    const doneCount = record?.done?.length || 0;
     const classes = ['todo-day'];
     if (outside) classes.push('outside');
     if (hasItems) classes.push('has-items');
     if (isToday) classes.push('today');
     if (isActive) classes.push('active');
-    const badges = hasItems ? `
-      <span class="todo-day-badges">
-        ${pendingCount ? `<i class="todo-badge pending">待 ${pendingCount}</i>` : ''}
-        ${doneCount ? `<i class="todo-badge done">完 ${doneCount}</i>` : ''}
-      </span>` : '';
     return `<button type="button" class="${classes.join(' ')}" data-date="${key}" ${outside ? 'disabled' : ''} aria-label="${formatDateLabel(key)} ${dayLabel(date)}">
-      <strong class="todo-day-num">${day}</strong>
+      <strong class="todo-day-num">${date.getDate()}</strong>
       <span class="todo-day-week">${dayLabel(date)}</span>
-      ${badges}
+      ${renderDaySummaries(record)}
     </button>`;
   }
 
-  function renderList(container, groups, kind) {
+  function renderList(container, items, kind) {
     if (!container) return;
-    const keys = [...groups.keys()].sort();
-    if (!keys.length) {
-      container.innerHTML = `<div class="todo-empty">还没有${kind === 'pending' ? '待办' : '完成'}内容。</div>`;
+    if (!items.length) {
+      container.innerHTML = `<div class="todo-empty">这个日期还没有${kind === 'pending' ? '待办' : '完成'}内容。</div>`;
       return;
     }
-
-    const anchorPrefix = kind === 'pending' ? 'todo-pending' : 'todo-done';
-    let html = '';
-    keys.forEach(key => {
-      const items = groups.get(key) || [];
-      html += `
-        <section class="todo-group" id="${anchorPrefix}-${key}">
-          <div class="todo-group-head">
-            <div>
-              <div class="todo-group-date">${formatDateLabel(key)}</div>
-              <div class="todo-group-note">${kind === 'pending' ? '待办列表' : '完成记录'}</div>
-            </div>
-            <div class="todo-group-count">${items.length} 项</div>
-          </div>
-          <div class="todo-cards">
-            ${items.map(item => renderCard(item, kind)).join('')}
-          </div>
-        </section>`;
-      if (!state.activeDate) state.activeDate = key;
-    });
-    container.innerHTML = html;
+    container.innerHTML = `<div class="todo-cards">${items.map(item => renderCard(item)).join('')}</div>`;
   }
 
-  function renderCard(item, kind) {
+  function renderCard(item) {
     const status = item.done ? '已完成' : '待办';
     const cardClass = item.done ? 'todo-card done' : 'todo-card';
     const tagHtml = item.tags.length ? `<div class="todo-card-meta">${item.tags.map(tag => `<span class="todo-chip">${escapeHtml(tag)}</span>`).join('')}</div>` : '';
-    const doneLine = item.done_at ? `<span class="todo-chip done">完成于 ${escapeHtml(item.done_at)}</span>` : '';
+    const doneLine = item.doneAtLabel ? `<span class="todo-chip done">完成于 ${escapeHtml(item.doneAtLabel)}</span>` : '';
     const linkHtml = item.link ? `<a class="todo-link" href="${escapeHtml(item.link)}" target="_blank" rel="noopener">跳转</a>` : '';
-    const dateChip = item.date ? `<span class="todo-chip">计划 ${escapeHtml(item.date)}</span>` : '';
+    const dateChip = item.dateLabel ? `<span class="todo-chip">计划 ${escapeHtml(item.dateLabel)}</span>` : '';
     return `
       <article class="${cardClass}">
         <div class="todo-card-title">
-          <h4>${escapeHtml(item.title)}</h4>
+          <h4>${escapeHtml(item.title || '未命名事项')}</h4>
           <span class="todo-state">${status}</span>
         </div>
         <div class="todo-card-meta">
@@ -657,43 +690,74 @@
   }
 
   function renderLists() {
-    renderList(els.pendingList, pendingByDate, 'pending');
-    renderList(els.doneList, doneByDate, 'done');
+    const record = state.dates.get(state.activeDate) || { pending: [], done: [] };
+    const pending = sortItems(record.pending, 'pending');
+    const done = sortItems(record.done, 'done');
+    if (els.currentDate) {
+      const date = dateFromKey(state.activeDate);
+      els.currentDate.textContent = date ? `${formatDateLabel(state.activeDate)} · ${dayLabel(date)}` : '请选择日期';
+    }
+    if (els.pendingCount) els.pendingCount.textContent = pending.length;
+    if (els.doneCount) els.doneCount.textContent = done.length;
+    renderList(els.pendingList, pending, 'pending');
+    renderList(els.doneList, done, 'done');
   }
 
   function focusFromHash() {
-    const hashMatch = location.hash.match(/#(todo-(?:pending|done)-(\d{4}-\d{2}-\d{2}))/);
-    if (!hashMatch) return;
-    const key = hashMatch[2];
+    const key = activeDateFromHash();
+    if (!key) return;
     state.activeDate = key;
-    const [year, month] = key.split('-').map(Number);
-    state.viewMonth = new Date(year, month - 1, 1);
+    const date = dateFromKey(key);
+    if (date) state.viewMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+  }
+
+  function clampActiveToViewMonth() {
+    const active = dateFromKey(state.activeDate) || new Date();
+    const year = state.viewMonth.getFullYear();
+    const month = state.viewMonth.getMonth();
+    const maxDay = new Date(year, month + 1, 0).getDate();
+    const day = Math.min(active.getDate(), maxDay);
+    state.activeDate = `${year}-${pad(month + 1)}-${pad(day)}`;
   }
 
   function handleNav(action) {
     const next = new Date(state.viewMonth);
     next.setMonth(next.getMonth() + (action === 'next' ? 1 : -1), 1);
     state.viewMonth = next;
+    clampActiveToViewMonth();
+    renderYearOptions();
     renderCalendar();
+    renderLists();
   }
 
   function wire() {
+    if (els.year) {
+      els.year.addEventListener('change', () => {
+        const nextYear = Number(els.year.value) || state.viewMonth.getFullYear();
+        state.viewMonth = new Date(nextYear, state.viewMonth.getMonth(), 1);
+        clampActiveToViewMonth();
+        renderCalendar();
+        renderLists();
+      });
+    }
     document.querySelectorAll('.todo-nav').forEach(button => {
       button.addEventListener('click', () => handleNav(button.dataset.action));
     });
     window.addEventListener('hashchange', () => {
       focusFromHash();
+      renderYearOptions();
       renderCalendar();
+      renderLists();
     });
   }
 
   function render() {
     focusFromHash();
     updateStats();
+    renderYearOptions();
     renderWeekdays();
     renderCalendar();
     renderLists();
-    updateStats();
   }
 
   wire();
@@ -701,7 +765,6 @@
 })();
 </script>
 
-        
       </div>
       
       
