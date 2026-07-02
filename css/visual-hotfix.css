@@ -1153,46 +1153,60 @@ html body .tag-cloud-link::after {
   display: none !important;
 }
 
-html body .sidebar-tag-cloud-list a:nth-child(6n+1),
-html body .tag-cloud-tags a:nth-child(6n+1),
-html body .tag-cloud-link:nth-child(6n+1) {
-  background: #fff3cf !important;
-  color: #7a5d12 !important;
+html body .sidebar-tag-cloud-list a:nth-child(8n+1),
+html body .tag-cloud-tags a:nth-child(8n+1),
+html body .tag-cloud-link:nth-child(8n+1) {
+  background: #edf5ff !important;
+  color: #2767c7 !important;
 }
 
-html body .sidebar-tag-cloud-list a:nth-child(6n+2),
-html body .tag-cloud-tags a:nth-child(6n+2),
-html body .tag-cloud-link:nth-child(6n+2) {
-  background: #e8f3ff !important;
-  color: #286ab7 !important;
+html body .sidebar-tag-cloud-list a:nth-child(8n+2),
+html body .tag-cloud-tags a:nth-child(8n+2),
+html body .tag-cloud-link:nth-child(8n+2) {
+  background: #fff0ea !important;
+  color: #b95537 !important;
 }
 
-html body .sidebar-tag-cloud-list a:nth-child(6n+3),
-html body .tag-cloud-tags a:nth-child(6n+3),
-html body .tag-cloud-link:nth-child(6n+3) {
-  background: #eaf8ed !important;
-  color: #2f8050 !important;
+html body .sidebar-tag-cloud-list a:nth-child(8n+3),
+html body .tag-cloud-tags a:nth-child(8n+3),
+html body .tag-cloud-link:nth-child(8n+3) {
+  background: #edf9f1 !important;
+  color: #2a8052 !important;
 }
 
-html body .sidebar-tag-cloud-list a:nth-child(6n+4),
-html body .tag-cloud-tags a:nth-child(6n+4),
-html body .tag-cloud-link:nth-child(6n+4) {
-  background: #ffecee !important;
-  color: #b74a45 !important;
+html body .sidebar-tag-cloud-list a:nth-child(8n+4),
+html body .tag-cloud-tags a:nth-child(8n+4),
+html body .tag-cloud-link:nth-child(8n+4) {
+  background: #f4efff !important;
+  color: #7250ba !important;
 }
 
-html body .sidebar-tag-cloud-list a:nth-child(6n+5),
-html body .tag-cloud-tags a:nth-child(6n+5),
-html body .tag-cloud-link:nth-child(6n+5) {
-  background: #f1edff !important;
-  color: #7354be !important;
+html body .sidebar-tag-cloud-list a:nth-child(8n+5),
+html body .tag-cloud-tags a:nth-child(8n+5),
+html body .tag-cloud-link:nth-child(8n+5) {
+  background: #fff7db !important;
+  color: #927017 !important;
 }
 
-html body .sidebar-tag-cloud-list a:nth-child(6n),
-html body .tag-cloud-tags a:nth-child(6n),
-html body .tag-cloud-link:nth-child(6n) {
-  background: #eaf7f8 !important;
-  color: #237b86 !important;
+html body .sidebar-tag-cloud-list a:nth-child(8n+6),
+html body .tag-cloud-tags a:nth-child(8n+6),
+html body .tag-cloud-link:nth-child(8n+6) {
+  background: #eaf8f8 !important;
+  color: #1f7884 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n+7),
+html body .tag-cloud-tags a:nth-child(8n+7),
+html body .tag-cloud-link:nth-child(8n+7) {
+  background: #fceeff !important;
+  color: #9a4aa8 !important;
+}
+
+html body .sidebar-tag-cloud-list a:nth-child(8n),
+html body .tag-cloud-tags a:nth-child(8n),
+html body .tag-cloud-link:nth-child(8n) {
+  background: #eef2ff !important;
+  color: #4e5fc4 !important;
 }
 
 html body .sidebar-tag-cloud-list a:hover,
