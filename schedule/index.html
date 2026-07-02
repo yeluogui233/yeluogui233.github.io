@@ -317,55 +317,77 @@
 
     
     
-    <div class="post-block" lang="zh-CN">
+    <div class="post-block schedule-post-block" lang="zh-CN">
       
       
       
       <div class="post-body">
-          <div class="todo-page">
-            <section class="todo-hero">
-              <div class="todo-hero-copy">
-                <div class="todo-kicker">日程 / Todo</div>
-                <h2 class="todo-title">日程表</h2>
-                <p class="todo-lead">上方日历可以切换年月并选择具体日期，下方只展示当前选中日期的待办和完成内容。</p>
-              </div>
-              <div class="todo-stats">
-                <div class="todo-stat"><b data-todo-stat="pending">0</b><span>待办</span></div>
-                <div class="todo-stat"><b data-todo-stat="done">0</b><span>已完成</span></div>
-                <div class="todo-stat"><b data-todo-stat="days">0</b><span>有记录日期</span></div>
-              </div>
-            </section>
-
-            <section class="todo-calendar-shell">
-              <div class="todo-calendar-head">
-                <button type="button" class="todo-nav" data-action="prev" aria-label="上一月">‹</button>
-                <div class="todo-calendar-controls">
-                  <select class="todo-year" aria-label="选择年份"></select>
-                  <div class="todo-month"></div>
+          <div class="todo-page todo-calendar-page">
+            <section class="todo-planner" aria-label="日程月历">
+              <header class="todo-planner-head">
+                <div class="todo-view-switch" aria-label="视图">
+                  <button type="button" class="active">月历</button>
+                  <button type="button">待办</button>
                 </div>
-                <button type="button" class="todo-nav" data-action="next" aria-label="下一月">›</button>
-              </div>
-              <div class="todo-weekdays"></div>
-              <div class="todo-calendar"></div>
-            </section>
 
-            <div class="todo-current-date" data-todo-current-date></div>
-
-            <section class="todo-board">
-              <div class="todo-panel">
-                <div class="todo-panel-head">
-                  <h3>待办</h3>
-                  <span data-todo-count="pending">0</span>
+                <div class="todo-calendar-head">
+                  <button type="button" class="todo-nav" data-action="prev" aria-label="上一月">‹</button>
+                  <div class="todo-calendar-controls">
+                    <div class="todo-month"></div>
+                    <div class="todo-year-picker">
+                      <button type="button" class="todo-year" aria-label="选择年份" aria-expanded="false"></button>
+                      <div class="todo-year-menu" hidden></div>
+                    </div>
+                  </div>
+                  <button type="button" class="todo-nav" data-action="next" aria-label="下一月">›</button>
                 </div>
-                <div class="todo-list todo-list-pending"></div>
-              </div>
 
-              <div class="todo-panel todo-panel-done">
-                <div class="todo-panel-head">
-                  <h3>完成内容</h3>
-                  <span data-todo-count="done">0</span>
+                <div class="todo-quick-stats">
+                  <span><b data-todo-stat="pending">0</b> 待办</span>
+                  <span><b data-todo-stat="done">0</b> 完成</span>
                 </div>
-                <div class="todo-list todo-list-done"></div>
+              </header>
+
+              <div class="todo-planner-body">
+                <section class="todo-calendar-shell">
+                  <div class="todo-weekdays"></div>
+                  <div class="todo-calendar"></div>
+                </section>
+
+                <aside class="todo-detail-card" data-todo-detail hidden>
+                  <button type="button" class="todo-detail-close" data-todo-detail-close aria-label="关闭详情">×</button>
+                  <div class="todo-detail-date">
+                    <div class="todo-detail-day" data-todo-selected-day>--</div>
+                    <div>
+                      <div class="todo-current-date" data-todo-current-date>请选择日期</div>
+                      <div class="todo-detail-week" data-todo-selected-week></div>
+                    </div>
+                  </div>
+
+                  <div class="todo-lunar-box">
+                    <span>农历 / 节日</span>
+                    <strong data-todo-lunar>--</strong>
+                  </div>
+
+                  <div class="todo-detail-counts">
+                    <span><b data-todo-count="pending">0</b> 待办</span>
+                    <span><b data-todo-count="done">0</b> 已完成</span>
+                  </div>
+
+                  <section class="todo-panel">
+                    <div class="todo-panel-head">
+                      <h3>未完成待办</h3>
+                    </div>
+                    <div class="todo-list todo-list-pending"></div>
+                  </section>
+
+                  <section class="todo-panel todo-panel-done">
+                    <div class="todo-panel-head">
+                      <h3>已完成待办</h3>
+                    </div>
+                    <div class="todo-list todo-list-done"></div>
+                  </section>
+                </aside>
               </div>
             </section>
           </div>
@@ -373,7 +395,8 @@
 (function() {
   const rawTodos = [{"date":"2026-07-02T16:27:06.000Z","title":"看动漫","done":false,"done_at":"","tags":["呆着"],"link":"","content":"看呀看动漫"},{"date":"2026-07-02T00:00:00.000Z","title":"玩电脑","done":true,"done_at":"2026-07-02T16:27:03.000Z","tags":["玩电脑"],"link":"","content":"疯狂玩电脑"}];
   const todoItems = Array.isArray(rawTodos) ? rawTodos : [];
-  const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+  const weekdays = ['一', '二', '三', '四', '五', '六', '日'];
+  const weekdayNames = ['日', '一', '二', '三', '四', '五', '六'];
   const lunarMonthMap = { '正月': 1, '一月': 1, '二月': 2, '三月': 3, '四月': 4, '五月': 5, '六月': 6, '七月': 7, '八月': 8, '九月': 9, '十月': 10, '冬月': 11, '十一月': 11, '腊月': 12, '十二月': 12 };
   const lunarDays = ['', '初一', '初二', '初三', '初四', '初五', '初六', '初七', '初八', '初九', '初十', '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八', '十九', '二十', '廿一', '廿二', '廿三', '廿四', '廿五', '廿六', '廿七', '廿八', '廿九', '三十'];
   const lunarFestivals = {
@@ -402,14 +425,21 @@
   const state = {
     activeDate: '',
     viewMonth: null,
-    dates: new Map()
+    dates: new Map(),
+    detailOpen: false
   };
 
   const els = {
     page: document.querySelector('.todo-page'),
     year: document.querySelector('.todo-year'),
+    yearMenu: document.querySelector('.todo-year-menu'),
     month: document.querySelector('.todo-month'),
     currentDate: document.querySelector('[data-todo-current-date]'),
+    selectedDay: document.querySelector('[data-todo-selected-day]'),
+    selectedWeek: document.querySelector('[data-todo-selected-week]'),
+    selectedLunar: document.querySelector('[data-todo-lunar]'),
+    detailCard: document.querySelector('[data-todo-detail]'),
+    detailClose: document.querySelector('[data-todo-detail-close]'),
     weekdays: document.querySelector('.todo-weekdays'),
     calendar: document.querySelector('.todo-calendar'),
     pendingList: document.querySelector('.todo-list-pending'),
@@ -536,7 +566,7 @@
   }
 
   function monthLabel(date) {
-    return `${date.getFullYear()} 年 ${date.getMonth() + 1} 月`;
+    return `${date.getMonth() + 1} 月`;
   }
 
   function dateFromKey(key) {
@@ -546,7 +576,7 @@
   }
 
   function dayLabel(date) {
-    return `星期${weekdays[date.getDay()]}`;
+    return `星期${weekdayNames[date.getDay()]}`;
   }
 
   function lunarLabel(date) {
@@ -599,21 +629,39 @@
   }
 
   function renderYearOptions() {
-    if (!els.year) return;
+    if (!els.year || !els.yearMenu) return;
     const years = collectYears();
     const currentYear = state.viewMonth.getFullYear();
-    els.year.innerHTML = years.map(year => `<option value="${year}">${year} 年</option>`).join('');
-    els.year.value = String(currentYear);
+    els.year.textContent = `${currentYear} 年`;
+    els.year.dataset.year = String(currentYear);
+    els.yearMenu.innerHTML = years.map(year => `<button type="button" class="todo-year-option${year === currentYear ? ' active' : ''}" data-year="${year}">${year} 年</button>`).join('');
+    els.yearMenu.querySelectorAll('[data-year]').forEach(button => {
+      button.addEventListener('click', () => {
+        const nextYear = Number(button.dataset.year) || state.viewMonth.getFullYear();
+        state.viewMonth = new Date(nextYear, state.viewMonth.getMonth(), 1);
+        clampActiveToViewMonth();
+        closeYearMenu();
+        renderYearOptions();
+        renderCalendar();
+        renderLists();
+      });
+    });
   }
 
   state.activeDate = activeDateFromHash() || dateKeyFrom(new Date()) || allDates[0] || '';
   state.viewMonth = chooseInitialMonth();
 
-  function setActiveDate(date, updateHash = false) {
+  function setActiveDate(date, updateHash = false, openDetail = false) {
     state.activeDate = date || state.activeDate;
+    if (openDetail) state.detailOpen = true;
     renderCalendar();
     renderLists();
     if (updateHash && state.activeDate) history.replaceState(null, '', `#todo-${state.activeDate}`);
+  }
+
+  function closeDetail() {
+    state.detailOpen = false;
+    if (els.detailCard) els.detailCard.hidden = true;
   }
 
   function updateStats() {
@@ -632,7 +680,7 @@
     const year = state.viewMonth.getFullYear();
     const month = state.viewMonth.getMonth();
     const firstDay = new Date(year, month, 1);
-    const offset = firstDay.getDay();
+    const offset = (firstDay.getDay() + 6) % 7;
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const prevMonthDays = new Date(year, month, 0).getDate();
     const todayKey = dateKeyFrom(new Date());
@@ -661,11 +709,14 @@
     }
 
     els.month.textContent = monthLabel(state.viewMonth);
-    if (els.year && els.year.value !== String(year)) els.year.value = String(year);
+    if (els.year) {
+      els.year.textContent = `${year} 年`;
+      els.year.dataset.year = String(year);
+    }
     els.calendar.innerHTML = cells.join('');
 
     els.calendar.querySelectorAll('[data-date]').forEach(button => {
-      button.addEventListener('click', () => setActiveDate(button.dataset.date, true));
+      button.addEventListener('click', () => setActiveDate(button.dataset.date, true, true));
     });
   }
 
@@ -695,7 +746,7 @@
     return `<button type="button" class="${classes.join(' ')}" data-date="${key}" ${outside ? 'disabled' : ''} aria-label="${formatDateLabel(key)} ${dayLabel(date)}">
       <span class="todo-day-top">
         <strong class="todo-day-num">${date.getDate()}</strong>
-        <span class="todo-day-week${lunar.festival ? ' festival' : ''}">${escapeHtml(lunar.text)}</span>
+        <span class="todo-day-week todo-day-lunar${lunar.festival ? ' festival' : ''}">${escapeHtml(lunar.text)}</span>
       </span>
       ${renderDaySummaries(record)}
     </button>`;
@@ -737,9 +788,23 @@
     const record = state.dates.get(state.activeDate) || { pending: [], done: [] };
     const pending = sortItems(record.pending, 'pending');
     const done = sortItems(record.done, 'done');
+    const date = dateFromKey(state.activeDate);
     if (els.currentDate) {
-      const date = dateFromKey(state.activeDate);
-      els.currentDate.textContent = date ? `${formatDateLabel(state.activeDate)} · ${dayLabel(date)}` : '请选择日期';
+      els.currentDate.textContent = date ? formatDateLabel(state.activeDate) : '请选择日期';
+    }
+    if (els.selectedDay) {
+      els.selectedDay.textContent = date ? date.getDate() : '--';
+    }
+    if (els.selectedWeek) {
+      els.selectedWeek.textContent = date ? dayLabel(date) : '';
+    }
+    if (els.selectedLunar) {
+      const lunar = date ? lunarLabel(date) : { text: '--', festival: false };
+      els.selectedLunar.textContent = lunar.text || '农历暂不可用';
+      els.selectedLunar.classList.toggle('festival', Boolean(lunar.festival));
+    }
+    if (els.detailCard) {
+      els.detailCard.hidden = !state.detailOpen;
     }
     if (els.pendingCount) els.pendingCount.textContent = pending.length;
     if (els.doneCount) els.doneCount.textContent = done.length;
@@ -768,24 +833,59 @@
     const next = new Date(state.viewMonth);
     next.setMonth(next.getMonth() + (action === 'next' ? 1 : -1), 1);
     state.viewMonth = next;
+    closeDetail();
     clampActiveToViewMonth();
     renderYearOptions();
     renderCalendar();
     renderLists();
   }
 
+  function openYearMenu() {
+    if (!els.year || !els.yearMenu) return;
+    renderYearOptions();
+    els.yearMenu.hidden = false;
+    els.year.setAttribute('aria-expanded', 'true');
+    requestAnimationFrame(() => {
+      const active = els.yearMenu.querySelector('.active');
+      if (active) active.scrollIntoView({ block: 'center' });
+    });
+  }
+
+  function closeYearMenu() {
+    if (!els.year || !els.yearMenu) return;
+    els.yearMenu.hidden = true;
+    els.year.setAttribute('aria-expanded', 'false');
+  }
+
+  function toggleYearMenu() {
+    if (!els.yearMenu || els.yearMenu.hidden) openYearMenu();
+    else closeYearMenu();
+  }
+
   function wire() {
     if (els.year) {
-      els.year.addEventListener('change', () => {
-        const nextYear = Number(els.year.value) || state.viewMonth.getFullYear();
-        state.viewMonth = new Date(nextYear, state.viewMonth.getMonth(), 1);
-        clampActiveToViewMonth();
-        renderCalendar();
-        renderLists();
+      els.year.addEventListener('click', event => {
+        event.stopPropagation();
+        toggleYearMenu();
       });
     }
+    if (els.yearMenu) els.yearMenu.addEventListener('click', event => event.stopPropagation());
+    document.addEventListener('click', closeYearMenu);
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        closeYearMenu();
+        closeDetail();
+      }
+    });
+    if (els.detailClose) els.detailClose.addEventListener('click', closeDetail);
     document.querySelectorAll('.todo-nav').forEach(button => {
       button.addEventListener('click', () => handleNav(button.dataset.action));
+    });
+    document.querySelectorAll('.todo-view-switch button').forEach(button => {
+      button.addEventListener('click', () => {
+        button.parentElement.querySelectorAll('button').forEach(item => item.classList.remove('active'));
+        button.classList.add('active');
+      });
     });
     window.addEventListener('hashchange', () => {
       focusFromHash();
