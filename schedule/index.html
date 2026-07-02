@@ -335,7 +335,373 @@
       
       
       <div class="post-body">
-          
+          <div class="todo-page">
+            <section class="todo-hero">
+              <div class="todo-hero-copy">
+                <div class="todo-kicker">日程 / Todo</div>
+                <h2 class="todo-title">日程表</h2>
+                <p class="todo-lead">上方日历可以跳转到对应日期，下方展示待办和完成内容。</p>
+              </div>
+              <div class="todo-stats">
+                <div class="todo-stat"><b data-todo-stat="pending">0</b><span>待办</span></div>
+                <div class="todo-stat"><b data-todo-stat="done">0</b><span>已完成</span></div>
+                <div class="todo-stat"><b data-todo-stat="days">0</b><span>有记录日期</span></div>
+              </div>
+            </section>
+
+            <section class="todo-calendar-shell">
+              <div class="todo-calendar-head">
+                <button type="button" class="todo-nav" data-action="prev" aria-label="上一月">‹</button>
+                <div class="todo-month"></div>
+                <button type="button" class="todo-nav" data-action="next" aria-label="下一月">›</button>
+              </div>
+              <div class="todo-weekdays"></div>
+              <div class="todo-calendar"></div>
+            </section>
+
+            <section class="todo-board">
+              <div class="todo-panel">
+                <div class="todo-panel-head">
+                  <h3>待办</h3>
+                  <span data-todo-count="pending">0</span>
+                </div>
+                <div class="todo-list todo-list-pending"></div>
+              </div>
+
+              <div class="todo-panel todo-panel-done">
+                <div class="todo-panel-head">
+                  <h3>完成内容</h3>
+                  <span data-todo-count="done">0</span>
+                </div>
+                <div class="todo-list todo-list-done"></div>
+              </div>
+            </section>
+          </div>
+          <script>
+(function() {
+  const rawTodos = [];
+  const todoItems = Array.isArray(rawTodos) ? rawTodos : [];
+  const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+
+  const state = {
+    activeDate: '',
+    viewMonth: null,
+    dates: new Map(),
+    pendingGroups: new Map(),
+    doneGroups: new Map()
+  };
+
+  const els = {
+    page: document.querySelector('.todo-page'),
+    month: document.querySelector('.todo-month'),
+    weekdays: document.querySelector('.todo-weekdays'),
+    calendar: document.querySelector('.todo-calendar'),
+    pendingList: document.querySelector('.todo-list-pending'),
+    doneList: document.querySelector('.todo-list-done'),
+    pendingCount: document.querySelector('[data-todo-count="pending"]'),
+    doneCount: document.querySelector('[data-todo-count="done"]'),
+    statsPending: document.querySelector('[data-todo-stat="pending"]'),
+    statsDone: document.querySelector('[data-todo-stat="done"]'),
+    statsDays: document.querySelector('[data-todo-stat="days"]')
+  };
+
+  if (!els.page) return;
+
+  const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+
+  function dateKeyFrom(value) {
+    const text = String(value || '').trim();
+    if (!text) return '';
+    const match = text.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})/);
+    if (!match) return '';
+    const year = Number(match[1]);
+    const month = Number(match[2]);
+    const day = Number(match[3]);
+    const date = new Date(year, month - 1, day);
+    if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return '';
+    return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+  }
+
+  function parseTags(tags) {
+    if (Array.isArray(tags)) return tags.map(tag => String(tag || '').trim()).filter(Boolean);
+    return String(tags || '').split(/[,\n，]/).map(tag => tag.trim()).filter(Boolean);
+  }
+
+  function normalizeTodo(item, index) {
+    const planned = dateKeyFrom(item.date || item.done_at || '');
+    const completed = dateKeyFrom(item.done_at || item.date || '');
+    const doneText = String(item.done ?? '').trim().toLowerCase();
+    const done = typeof item.done === 'boolean' ? item.done : ['1', 'true', 'yes', 'on', '完成', '已完成'].includes(doneText);
+    return {
+      index,
+      date: planned,
+      done_at: completed,
+      title: String(item.title || '').trim(),
+      done,
+      tags: parseTags(item.tags),
+      link: String(item.link || '').trim(),
+      content: String(item.content || '').replace(/\r\n/g, '\n').trim()
+    };
+  }
+
+  const todos = todoItems.map(normalizeTodo).filter(item => item.title || item.date || item.done_at || item.content);
+
+  function groupTodos(list, keyGetter) {
+    const groups = new Map();
+    list.forEach(item => {
+      const key = keyGetter(item);
+      if (!key) return;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(item);
+    });
+    return groups;
+  }
+
+  const pendingTodos = todos.filter(item => !item.done);
+  const doneTodos = todos.filter(item => item.done);
+  const pendingByDate = groupTodos(pendingTodos, item => item.date);
+  const doneByDate = groupTodos(doneTodos, item => item.done_at || item.date);
+  const allDates = [...new Set([...pendingByDate.keys(), ...doneByDate.keys()])].sort();
+
+  state.pendingGroups = pendingByDate;
+  state.doneGroups = doneByDate;
+  state.dates = new Map(allDates.map(date => [date, {
+    pending: pendingByDate.get(date) || [],
+    done: doneByDate.get(date) || []
+  }]));
+
+  function monthKey(date) {
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+  }
+
+  function startOfMonth(date) {
+    return new Date(date.getFullYear(), date.getMonth(), 1);
+  }
+
+  function monthLabel(date) {
+    return `${date.getFullYear()} 年 ${date.getMonth() + 1} 月`;
+  }
+
+  function dayLabel(date) {
+    return `星期${weekdays[date.getDay()]}`;
+  }
+
+  function formatDateLabel(key) {
+    if (!key) return '';
+    const [year, month, day] = key.split('-').map(Number);
+    return `${year}年${month}月${day}日`;
+  }
+
+  function chooseInitialMonth() {
+    const hashMatch = location.hash.match(/todo-(?:pending|done)-(\d{4}-\d{2}-\d{2})/);
+    if (hashMatch) {
+      const [year, month] = hashMatch[1].split('-').map(Number);
+      return new Date(year, month - 1, 1);
+    }
+    if (allDates.length) {
+      const first = allDates[0];
+      const [year, month] = first.split('-').map(Number);
+      return new Date(year, month - 1, 1);
+    }
+    return startOfMonth(new Date());
+  }
+
+  state.activeDate = allDates[0] || '';
+  state.viewMonth = chooseInitialMonth();
+
+  function setActiveDate(date) {
+    state.activeDate = date || '';
+    renderCalendar();
+  }
+
+  function updateStats() {
+    if (els.pendingCount) els.pendingCount.textContent = pendingTodos.length;
+    if (els.doneCount) els.doneCount.textContent = doneTodos.length;
+    if (els.statsPending) els.statsPending.textContent = pendingTodos.length;
+    if (els.statsDone) els.statsDone.textContent = doneTodos.length;
+    if (els.statsDays) els.statsDays.textContent = allDates.length;
+  }
+
+  function renderWeekdays() {
+    if (!els.weekdays) return;
+    els.weekdays.innerHTML = weekdays.map(day => `<span>${day}</span>`).join('');
+  }
+
+  function renderCalendar() {
+    if (!els.calendar || !els.month) return;
+    const year = state.viewMonth.getFullYear();
+    const month = state.viewMonth.getMonth();
+    const firstDay = new Date(year, month, 1);
+    const offset = firstDay.getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const prevMonthDays = new Date(year, month, 0).getDate();
+    const todayKey = dateKeyFrom(new Date());
+    const cells = [];
+
+    for (let i = offset - 1; i >= 0; i--) {
+      const day = prevMonthDays - i;
+      const date = new Date(year, month - 1, day);
+      const key = monthKey(date) + `-${String(day).padStart(2, '0')}`;
+      cells.push(renderDayCell(date, key, true));
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const date = new Date(year, month, day);
+      const key = monthKey(date) + `-${String(day).padStart(2, '0')}`;
+      const record = state.dates.get(key) || { pending: [], done: [] };
+      const hasItems = record.pending.length || record.done.length;
+      const isToday = key === todayKey;
+      const isActive = key === state.activeDate;
+      cells.push(renderDayCell(date, key, false, hasItems, isToday, isActive, record));
+    }
+
+    const total = cells.length;
+    const nextCells = (7 - (total % 7)) % 7;
+    for (let i = 1; i <= nextCells; i++) {
+      const date = new Date(year, month + 1, i);
+      const key = monthKey(date) + `-${String(i).padStart(2, '0')}`;
+      cells.push(renderDayCell(date, key, true));
+    }
+
+    els.month.textContent = monthLabel(state.viewMonth);
+    els.calendar.innerHTML = cells.join('');
+
+    els.calendar.querySelectorAll('[data-date]').forEach(button => {
+      button.addEventListener('click', () => {
+        const key = button.dataset.date;
+        const target = state.dates.get(key);
+        if (!target) return;
+        const anchor = target.pending.length ? `todo-pending-${key}` : `todo-done-${key}`;
+        const node = document.getElementById(anchor);
+        if (node) {
+          setActiveDate(key);
+          history.replaceState(null, '', `#${anchor}`);
+          node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+
+  function renderDayCell(date, key, outside, hasItems = false, isToday = false, isActive = false, record = null) {
+    const day = date.getDate();
+    const pendingCount = record?.pending?.length || 0;
+    const doneCount = record?.done?.length || 0;
+    const classes = ['todo-day'];
+    if (outside) classes.push('outside');
+    if (hasItems) classes.push('has-items');
+    if (isToday) classes.push('today');
+    if (isActive) classes.push('active');
+    const badges = hasItems ? `
+      <span class="todo-day-badges">
+        ${pendingCount ? `<i class="todo-badge pending">待 ${pendingCount}</i>` : ''}
+        ${doneCount ? `<i class="todo-badge done">完 ${doneCount}</i>` : ''}
+      </span>` : '';
+    return `<button type="button" class="${classes.join(' ')}" data-date="${key}" ${outside ? 'disabled' : ''} aria-label="${formatDateLabel(key)} ${dayLabel(date)}">
+      <strong class="todo-day-num">${day}</strong>
+      <span class="todo-day-week">${dayLabel(date)}</span>
+      ${badges}
+    </button>`;
+  }
+
+  function renderList(container, groups, kind) {
+    if (!container) return;
+    const keys = [...groups.keys()].sort();
+    if (!keys.length) {
+      container.innerHTML = `<div class="todo-empty">还没有${kind === 'pending' ? '待办' : '完成'}内容。</div>`;
+      return;
+    }
+
+    const anchorPrefix = kind === 'pending' ? 'todo-pending' : 'todo-done';
+    let html = '';
+    keys.forEach(key => {
+      const items = groups.get(key) || [];
+      html += `
+        <section class="todo-group" id="${anchorPrefix}-${key}">
+          <div class="todo-group-head">
+            <div>
+              <div class="todo-group-date">${formatDateLabel(key)}</div>
+              <div class="todo-group-note">${kind === 'pending' ? '待办列表' : '完成记录'}</div>
+            </div>
+            <div class="todo-group-count">${items.length} 项</div>
+          </div>
+          <div class="todo-cards">
+            ${items.map(item => renderCard(item, kind)).join('')}
+          </div>
+        </section>`;
+      if (!state.activeDate) state.activeDate = key;
+    });
+    container.innerHTML = html;
+  }
+
+  function renderCard(item, kind) {
+    const status = item.done ? '已完成' : '待办';
+    const cardClass = item.done ? 'todo-card done' : 'todo-card';
+    const tagHtml = item.tags.length ? `<div class="todo-card-meta">${item.tags.map(tag => `<span class="todo-chip">${escapeHtml(tag)}</span>`).join('')}</div>` : '';
+    const doneLine = item.done_at ? `<span class="todo-chip done">完成于 ${escapeHtml(item.done_at)}</span>` : '';
+    const linkHtml = item.link ? `<a class="todo-link" href="${escapeHtml(item.link)}" target="_blank" rel="noopener">跳转</a>` : '';
+    const dateChip = item.date ? `<span class="todo-chip">计划 ${escapeHtml(item.date)}</span>` : '';
+    return `
+      <article class="${cardClass}">
+        <div class="todo-card-title">
+          <h4>${escapeHtml(item.title)}</h4>
+          <span class="todo-state">${status}</span>
+        </div>
+        <div class="todo-card-meta">
+          ${dateChip}
+          ${doneLine}
+          ${linkHtml}
+        </div>
+        ${tagHtml}
+        ${item.content ? `<div class="todo-card-body">${escapeHtml(item.content).replace(/\n/g, '<br>')}</div>` : ''}
+      </article>`;
+  }
+
+  function renderLists() {
+    renderList(els.pendingList, pendingByDate, 'pending');
+    renderList(els.doneList, doneByDate, 'done');
+  }
+
+  function focusFromHash() {
+    const hashMatch = location.hash.match(/#(todo-(?:pending|done)-(\d{4}-\d{2}-\d{2}))/);
+    if (!hashMatch) return;
+    const key = hashMatch[2];
+    state.activeDate = key;
+    const [year, month] = key.split('-').map(Number);
+    state.viewMonth = new Date(year, month - 1, 1);
+  }
+
+  function handleNav(action) {
+    const next = new Date(state.viewMonth);
+    next.setMonth(next.getMonth() + (action === 'next' ? 1 : -1), 1);
+    state.viewMonth = next;
+    renderCalendar();
+  }
+
+  function wire() {
+    document.querySelectorAll('.todo-nav').forEach(button => {
+      button.addEventListener('click', () => handleNav(button.dataset.action));
+    });
+    window.addEventListener('hashchange', () => {
+      focusFromHash();
+      renderCalendar();
+    });
+  }
+
+  function render() {
+    focusFromHash();
+    updateStats();
+    renderWeekdays();
+    renderCalendar();
+    renderLists();
+    updateStats();
+  }
+
+  wire();
+  render();
+})();
+</script>
+
+        
       </div>
       
       
