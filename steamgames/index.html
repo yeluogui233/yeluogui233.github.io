@@ -2125,6 +2125,8 @@
                 
               
               
+                
+              
               
               
                 
@@ -4533,6 +4535,8 @@
                 
               
               
+                
+              
               
               
                 
@@ -5033,6 +5037,8 @@
               
                 
               
+              
+                
               
               
               
@@ -31753,6 +31759,7 @@
     }
 
     .game-name {
+      border-bottom: 0 !important;
       color: #111;
       font-size: clamp(1.08rem, 2vw, 1.45rem);
       line-height: 1.25;
@@ -31760,9 +31767,21 @@
       min-width: 0;
     }
 
-    .game-name a {
+    .game-name::after,
+    .game-name::before {
+      display: none !important;
+    }
+
+    .game-name a,
+    .game-name a:hover,
+    .game-name a:focus {
+      background-image: none !important;
+      border-bottom: 0 !important;
+      box-shadow: none !important;
       color: inherit !important;
+      outline-offset: 3px;
       text-decoration: none !important;
+      text-underline-offset: 0 !important;
     }
 
     .game-platform-pill {
