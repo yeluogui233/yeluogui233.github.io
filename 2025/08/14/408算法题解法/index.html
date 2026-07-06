@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/cardlink"></script>
+  <link rel="stylesheet" href="/css/_common/codeblock.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yeluogui.cloud","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+  <meta name="description" content="说明本文整合自王道和里昂学长的PPT（无盈利侵权必删），是完整的408代码大题解题方案，整合好的pdf文档可以联系我获取 快速排序代码实现 快速排序算法以huafen()函数为核心 如何划分？第一趟 首先将左指针L对应的数组元素设为mid值，我们之后要将mid值和其他值对比然后找到mid值该在的位置 先从R向前寻找第一个小于mid的值（如果没有R- -一直找），如果有，就把他和目前存着mid值的A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="408算法题解法">
+<meta property="og:url" content="http://yeluogui.cloud/2025/08/14/408%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3%E6%B3%95/index.html">
+<meta property="og:site_name" content="穿过长长的隧道，便是雪国">
+<meta property="og:description" content="说明本文整合自王道和里昂学长的PPT（无盈利侵权必删），是完整的408代码大题解题方案，整合好的pdf文档可以联系我获取 快速排序代码实现 快速排序算法以huafen()函数为核心 如何划分？第一趟 首先将左指针L对应的数组元素设为mid值，我们之后要将mid值和其他值对比然后找到mid值该在的位置 先从R向前寻找第一个小于mid的值（如果没有R- -一直找），如果有，就把他和目前存着mid值的A">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/14/b31df34148c3f86a.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/14/717cb264da519ef4.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/24/6d87169ec4d005c4.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/24/9851b742dd4fa632.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/24/c58403e27d9f530a.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/24/3b83e7357826fd11.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/24/701497efb2b58b5e.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/8766c585666172ae.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/230bc34dea6966e2.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/68f6fe2304759243.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/840b545681b07964.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/1825ad153c697882.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/f598941d10a33749.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/25b14ee34e04a792.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/069c0a1411d4d154.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/16392d4c271b9418.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/8dfd61076cd026ce.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/da3f1d32966513b0.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/ab8f9856d35c6f5a.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/32c46cbe2105b671.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/25/cd466d9d1b1a6548.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/26/3eea91a06fa325b7.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/26/e7d293c50f73edd8.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/26/c5d95beba5f7504e.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/26/6616dd51d5490c85.png">
+<meta property="article:published_time" content="2025-08-14T15:05:25.000Z">
+<meta property="article:modified_time" content="2026-07-06T12:27:30.816Z">
+<meta property="article:author" content="叶落归">
+<meta property="article:tag" content="408">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.bmp.ovh/imgs/2025/08/14/b31df34148c3f86a.png">
+
+<link rel="canonical" href="http://yeluogui.cloud/2025/08/14/408%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <link rel="stylesheet" href="/css/apple-final-fix.css?v=20260704-apple-5">
+  <link rel="stylesheet" href="/css/makima-pet.css?v=20260703-game-dock-1">
+  <link rel="stylesheet" href="/css/visual-hotfix.css?v=20260706-visual-6">
+  <link rel="stylesheet" href="/css/mobile-fix.css?v=20260629-mobile-1">
+  <link rel="stylesheet" href="/css/mobile-restore.css?v=20260706-mobile-restore-7">
+  
+  <title>408算法题解法 | 穿过长长的隧道，便是雪国</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">穿过长长的隧道，便是雪国</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        
+        
+  <li class="menu-item menu-item-pages menu-item-has-children">
+
+    <a href="/gallery/" rel="section"><i class="fa fa-layer-group fa-fw"></i>页面</a>
+
+    <ul class="menu-child">
+          
+  <li class="menu-item menu-item-gallery">
+
+    <a href="/gallery/" rel="section"><i class="fa fa-camera fa-fw"></i>画廊</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书单</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-film fa-fw"></i>影视</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-diary">
+
+    <a href="/diary/" rel="section"><i class="fa fa-book-open fa-fw"></i>日记</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-bake">
+
+    <a href="/bake/" rel="section"><i class="fa fa-birthday-cake fa-fw"></i>烘焙</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-steam">
+
+    <a href="/steamgames/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a>
+
+  </li>
+
+
+    </ul>
+
+  </li>
+
+
+      
+        
+        
+  <li class="menu-item menu-item-archives menu-item-has-children">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+    <ul class="menu-child">
+          
+  <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+
+
+    </ul>
+
+  </li>
+
+
+      
+        <li class="menu-item menu-item-lab">
+
+    <a href="/lab/" rel="section"><i class="fa fa-flask fa-fw"></i>实验室</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yeluogui.cloud/2025/08/14/408%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="叶落归">
+      <meta itemprop="description" content="”我这辈子一直想信仰某种东西，“圣地亚哥说道,”然而却一直在撒谎，我没有信仰“">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="穿过长长的隧道，便是雪国">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          408算法题解法
+        </h1>
+
+        <div class="post-meta">
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-08-14 23:05:25" itemprop="dateCreated datePublished" datetime="2025-08-14T23:05:25+08:00">2025-08-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-07-06 20:27:30" itemprop="dateModified" datetime="2026-07-06T20:27:30+08:00">2026-07-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%83%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">考研</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>10 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <div class="hbe hbe-container password-gate" id="hexo-blog-password-gate"
+            data-password="408nb"
+            data-wrong-message="密码不正确，请再试一次。">
+            <div class="hbe hbe-content">
+              <form id="hbeForm" class="hbe hbe-form" onsubmit="return window.unlockPasswordGate ? window.unlockPasswordGate(this) : false">
+                <div class="hbe hbe-input hbe-input-default">
+                  <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass" autocomplete="current-password" inputmode="numeric">
+                  <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+                    <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入密码继续阅读。</span>
+                  </label>
+                </div>
+                <button class="hbe hbe-button" type="submit">解锁文章</button>
+                <div class="hbe hbe-error" role="alert" aria-live="polite"></div>
+              </form>
+            </div>
+            <template class="password-gate-content">
+              <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本文整合自王道和里昂学长的PPT（无盈利侵权必删），是完整的408代码大题解题方案，整合好的pdf文档可以联系我获取</p>
+<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/14/b31df34148c3f86a.png" alt="王道强化课快速排序代码"></p>
+<p>快速排序算法以huafen()函数为核心</p>
+<h3 id="如何划分？"><a href="#如何划分？" class="headerlink" title="如何划分？"></a>如何划分？</h3><p><em><strong>第一趟</strong></em></p>
+<p>首先将左指针L对应的数组元素设为mid值，我们之后要将mid值和其他值对比然后找到mid值该在的位置</p>
+<p>先从R向前寻找第一个小于mid的值（如果没有R- -一直找），如果有，就把他和目前存着mid值的A[L]互换位置</p>
+<p>再从L向后寻找第一个大于mid的值（如果没有L++一直找），如果有，就把上一步的A[R]换过来</p>
+<p><em><strong>第二趟</strong></em></p>
+<p>上一趟完成了第一次交换，把小于mid的换到了右边，而把大于mid的换到了左边</p>
+<p>第二趟又在新的R找到了小于mid的元素，放在之前发现的左边覆盖，以此类推</p>
+<p><em><strong>最后一趟</strong></em></p>
+<p><strong>当最后一趟开始时，若是L++导致L==R则</strong></p>
+<p>A[L]换上了右边更小一点的元素。</p>
+<p>而下一步L++，已不满足L&lt;R的条件。而这一步的L就是上一步的R(<strong>L==R</strong>)，A[R]的值已经迁移到了其左边。</p>
+<p>因此设A[L]=mid，就把两者很好的拆开了</p>
+<p><strong>当最后一趟开始时，若是R- -导致L==R则</strong></p>
+<p>也就是上一趟将**大于mid的A[L]**的值放到右边时，将较大的值换到了A[R]中。</p>
+<p>此时R- -到<strong>R==L</strong>，因此此时A[L]中的存储的是已经是到了还没有**R–**时的右边。</p>
+<p>因此A[L]=mid，即可拆开</p>
+<h3 id="快速排序算法"><a href="#快速排序算法" class="headerlink" title="快速排序算法"></a>快速排序算法</h3><p>因此在快排中调用这段代码</p>
+<p><strong>先将A中的LR成以mid为中间的两段，左边小于mid，右边大于mid</strong></p>
+<p>我们的划分传来的是mid的位置，因此要想把整个数组排序好，只需要排好左右一直调用。</p>
+<p>将数组的最左边L和mid的前一个位置进行划分，穷举下去即可解决</p>
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Qsort</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> L, <span class="type">int</span> R)</span> {</span><br><span class="line">    <span class="keyword">if</span>(L &gt; R) <span class="keyword">return</span>; <span class="comment">//递归终止</span></span><br><span class="line">    <span class="type">int</span> M = huafen(A, L, R);</span><br><span class="line">    Qsort(A, L, M<span class="number">-1</span>); <span class="comment">//左半部分快排</span></span><br><span class="line">    Qsort(A, M+<span class="number">1</span>, R); <span class="comment">//右半部分快排</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">huafen</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> L, <span class="type">int</span> R)</span> {</span><br><span class="line">    <span class="type">int</span> mid = A[L];</span><br><span class="line">    <span class="keyword">while</span>(L &lt; R) {</span><br><span class="line">        <span class="keyword">while</span>(A[R] &gt;= mid &amp;&amp; L &lt; R) R--;<span class="comment">//等于号能保证其相对位置不变，稳定性这一块</span></span><br><span class="line">        A[L] = A[R];</span><br><span class="line">        <span class="keyword">while</span>(A[L] &lt;= mid &amp;&amp; L &lt; R) L++;</span><br><span class="line">        A[R] = A[L];</span><br><span class="line">    }</span><br><span class="line">    A[L] = mid;</span><br><span class="line">    <span class="keyword">return</span> L;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="划分函数的妙用"><a href="#划分函数的妙用" class="headerlink" title="划分函数的妙用"></a>划分函数的妙用</h2><p>求数组中第k小元素的方法</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/14/717cb264da519ef4.png" alt="王道强化课huafen函数"></p>
+<p>按理说我们只需要快速排序好，再直接利用数组的随机查找特性找到A[k-1]就可以</p>
+<p>但是huafen函数可以直接找到某个元素的具体位置，我们可以直接用M接收huafen函数传来的此时的位置</p>
+<p>若这个位置比已知位置小，则k-1在M前面，则设L=M+1继续试</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">func</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> n, <span class="type">int</span> k)</span> {</span><br><span class="line">    <span class="type">int</span> L = <span class="number">0</span>, R = n - <span class="number">1</span>, M = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>) {</span><br><span class="line">        M = huafen(A, L, R);</span><br><span class="line">        <span class="keyword">if</span>(M == k - <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(M &gt; k - <span class="number">1</span>) R = M - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(M &lt; k - <span class="number">1</span>) L = M + <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> A[k<span class="number">-1</span>];</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>归并排序用于两个数组排到一个数组里的排序中</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/24/6d87169ec4d005c4.png" alt="归并排序王道强化课"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">Merge</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> N, <span class="type">int</span> B[], <span class="type">int</span> M, <span class="type">int</span> C[])</span> {</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; N &amp;&amp; j &lt; M) {</span><br><span class="line">        <span class="keyword">if</span> (A[i] &lt;= B[j])</span><br><span class="line">            C[k++] = A[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            C[k++] = B[j++];</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">while</span> (i &lt; N)</span><br><span class="line">        C[k++] = A[i++];</span><br><span class="line">    <span class="keyword">while</span> (j &lt; M)</span><br><span class="line">        C[k++] = B[j++];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><h2 id="查找-删除"><a href="#查找-删除" class="headerlink" title="查找+删除"></a>查找+删除</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/24/9851b742dd4fa632.png"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除值为 x 的结点</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">deletX</span><span class="params">(LinkList L, <span class="type">int</span> x)</span> {</span><br><span class="line">    LNode *pre = L; <span class="comment">//pre指向p的前驱结点</span></span><br><span class="line">    LNode *p = pre-&gt;next; <span class="comment">//p指向下一个要处理的结点</span></span><br><span class="line">    <span class="keyword">while</span> (p != <span class="literal">NULL</span>) {</span><br><span class="line">        <span class="comment">//对当前结点p进行处理</span></span><br><span class="line">        <span class="keyword">if</span> (p-&gt;data == x) {</span><br><span class="line">            LNode *q = p; <span class="comment">//删除并释放值为x的结点</span></span><br><span class="line">            p = p-&gt;next; <span class="comment">//p指向后一个结点</span></span><br><span class="line">            pre-&gt;next = p; <span class="comment">//修改前驱结点的next指针</span></span><br><span class="line">            <span class="built_in">free</span>(q);</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            pre = p; <span class="comment">// pre、p 后移</span></span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="查找-插入"><a href="#查找-插入" class="headerlink" title="查找+插入"></a>查找+插入</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/24/c58403e27d9f530a.png"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在递增有序链表中插入值为 x 的信息</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">InsertX</span><span class="params">(LinkList L, <span class="type">int</span> x)</span> {</span><br><span class="line">    LNode *pre = L; <span class="comment">//pre指向p的前驱结点</span></span><br><span class="line">    LNode *p = pre-&gt;next; <span class="comment">//p指向下一个要处理的结点</span></span><br><span class="line">    <span class="keyword">while</span> (p != <span class="literal">NULL</span>) {</span><br><span class="line">        <span class="comment">//对当前结点p进行处理</span></span><br><span class="line">        <span class="keyword">if</span> (p-&gt;data &gt; x) {</span><br><span class="line">            <span class="keyword">break</span>; <span class="comment">//应插入到p的前面</span></span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            pre = p; <span class="comment">// pre, p 后移</span></span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    LNode *q = (LNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">    q-&gt;data = x;</span><br><span class="line">    q-&gt;next = p;</span><br><span class="line">    pre-&gt;next = q;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="头插法（原地逆转链表）"><a href="#头插法（原地逆转链表）" class="headerlink" title="头插法（原地逆转链表）"></a>头插法（原地逆转链表）</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/24/3b83e7357826fd11.png"></p>
+<p>在勾画的绿色部分正是逆置的核心出装，将新插入的结点（在原链表中更靠后）不断放前，而实现逆置</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">ListReserve</span><span class="params">(LinkList L)</span>{</span><br><span class="line">    <span class="comment">//分配一个辅助头结点</span></span><br><span class="line">    LinkList head = (LNode *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">    head-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (L-&gt;next != <span class="literal">NULL</span>){</span><br><span class="line">        LNode *p = L-&gt;next;</span><br><span class="line">        L-&gt;next = L-&gt;next-&gt;next;</span><br><span class="line">        p-&gt;next = head-&gt;next;</span><br><span class="line">        head-&gt;next = p;</span><br><span class="line">    }</span><br><span class="line">    L-&gt;next = head-&gt;next;</span><br><span class="line">    <span class="built_in">free</span>(head); <span class="comment">//释放辅助头结点</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="尾插法保持原序"><a href="#尾插法保持原序" class="headerlink" title="尾插法保持原序"></a>尾插法保持原序</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/24/701497efb2b58b5e.png"></p>
+<p>以下是我自己写的代码:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">ListPart</span><span class="params">(LinkList C)</span> {</span><br><span class="line">    LinkList A = (LNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">    LinkList B = (LNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LNode));</span><br><span class="line">    A-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    B-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> count = <span class="number">1</span>;</span><br><span class="line">    LNode *q = A;  <span class="comment">// A的尾指针</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (C-&gt;next != <span class="literal">NULL</span>) {</span><br><span class="line">        LNode *p = C-&gt;next;          <span class="comment">// 取出当前要处理的结点</span></span><br><span class="line">        C-&gt;next = C-&gt;next-&gt;next;     <span class="comment">// 从C中断开</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (count % <span class="number">2</span> == <span class="number">1</span>) {        <span class="comment">// 奇数：尾插到A</span></span><br><span class="line">            p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">            q-&gt;next = p;</span><br><span class="line">            q = p;</span><br><span class="line">        } <span class="keyword">else</span> {                     <span class="comment">// 偶数：头插到B（逆序）</span></span><br><span class="line">            p-&gt;next = B-&gt;next;</span><br><span class="line">            B-&gt;next = p;</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        count++;  <span class="comment">// ✅ 每处理完一个结点，计数器+1，只加一次</span></span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">free</span>(C);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><h2 id="前-中-后序遍历"><a href="#前-中-后序遍历" class="headerlink" title="前/中/后序遍历"></a>前/中/后序遍历</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/25/8766c585666172ae.png"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//二叉树的结点定义（链式存储）</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>{</span></span><br><span class="line">    <span class="type">int</span> data;    <span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span>    <span class="comment">//左、右孩子指针</span></span><br><span class="line">}BiTNode,*BiTree;</span><br><span class="line"></span><br><span class="line"><span class="comment">//先序遍历二叉树</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">PreOrder</span> <span class="params">(BiTree root)</span>{</span><br><span class="line">    <span class="keyword">if</span> (root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    visit(root);  <span class="comment">//访问根节点</span></span><br><span class="line">    PreOrder(root-&gt;lchild);</span><br><span class="line">    PreOrder(root-&gt;rchild);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//中序遍历二叉树</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">InOrder</span> <span class="params">(BiTree root)</span>{</span><br><span class="line">    <span class="keyword">if</span> (root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    InOrder(root-&gt;lchild);</span><br><span class="line">    visit(root);  <span class="comment">//访问根节点</span></span><br><span class="line">    InOrder(root-&gt;rchild);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//后序遍历二叉树</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">PostOrder</span> <span class="params">(BiTree root)</span>{</span><br><span class="line">    <span class="keyword">if</span> (root==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    PostOrder(root-&gt;lchild);</span><br><span class="line">    PostOrder(root-&gt;rchild);</span><br><span class="line">    visit(root);  <span class="comment">//访问根节点</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h2><p>在层序遍历中需要使用到队列，也就需要队列的操作</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化队列</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">InitQueue</span><span class="params">(Queue &amp;Q)</span> </span><br><span class="line"><span class="comment">//判断队列是否为空</span></span><br><span class="line"><span class="type">bool</span> <span class="title function_">IsEmpty</span><span class="params">(Queue Q)</span> </span><br><span class="line"><span class="comment">//新元素x入队</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">EnQueue</span><span class="params">(Queue &amp;Q, BiTNode * x)</span> </span><br><span class="line"><span class="comment">//队头元素出队，并使用x 返回队头元素 </span></span><br><span class="line"><span class="type">void</span> <span class="title function_">DeQueue</span><span class="params">(Queue &amp;Q, BiTNode * &amp;x)</span><span class="comment">//&amp;x 表示引用参数，函数内部对x的修改会影响外部的x</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//层序遍历</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LevelOrder</span><span class="params">(BiTree T)</span>{</span><br><span class="line">    Queue Q;</span><br><span class="line">    InitQueue(Q);    <span class="comment">//初始化辅助队列</span></span><br><span class="line">    BiTree p;</span><br><span class="line">    EnQueue(Q, T);    <span class="comment">//将根结点入队</span></span><br><span class="line">	<span class="keyword">while</span>(!IsEmpty(Q)){</span><br><span class="line">    	DeQueue(Q, p);</span><br><span class="line">    	visit(p);</span><br><span class="line">    	<span class="keyword">if</span>(p-&gt;lchild != <span class="literal">NULL</span>)</span><br><span class="line">        	EnQueue(Q, p-&gt;lchild); <span class="comment">//左孩子入队</span></span><br><span class="line">    	<span class="keyword">if</span>(p-&gt;rchild != <span class="literal">NULL</span>)</span><br><span class="line">        	EnQueue(Q, p-&gt;rchild); <span class="comment">//右孩子入队</span></span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="求树高"><a href="#求树高" class="headerlink" title="求树高"></a>求树高</h2><h3 id="（方法一）先序遍历"><a href="#（方法一）先序遍历" class="headerlink" title="（方法一）先序遍历"></a>（方法一）先序遍历</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*求树的高度（方法一）*/</span></span><br><span class="line"><span class="type">int</span> height = <span class="number">0</span>;    <span class="comment">//用全局变量记录树的高度</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">PreOrder</span><span class="params">(BiTree T, <span class="type">int</span> n)</span> {</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (n &gt; height)</span><br><span class="line">        height = n;    <span class="comment">//更新树的高度</span></span><br><span class="line">    PreOrder(T-&gt;lchild, n + <span class="number">1</span>);    <span class="comment">//遍历左子树</span></span><br><span class="line">    PreOrder(T-&gt;rchild, n + <span class="number">1</span>);    <span class="comment">//遍历右子树</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>调用时用**<code>PreOrder(T, 1</code>**)</p>
+<p>原理是每过一层则+1并和目前高度比较</p>
+<h3 id="（方法二）后序遍历"><a href="#（方法二）后序遍历" class="headerlink" title="（方法二）后序遍历"></a>（方法二）后序遍历</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">PostOrder</span><span class="params">(BiTree T)</span>{</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> left = PostOrder(T-&gt;lchild);</span><br><span class="line">    <span class="type">int</span> right = PostOrder(T-&gt;rchild);</span><br><span class="line">    <span class="keyword">if</span> (left &gt; right) </span><br><span class="line">        <span class="keyword">return</span> left + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> right + <span class="number">1</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/25/230bc34dea6966e2.png"></p>
+<p>以该图为例，g和h没有左右结点了，故直接返回0+1给e作为e的left和right，e再进行比较以大的深度+1作为自己的深度交给b，b也这么做并和c一起交给a</p>
+<p>后序遍历以孩子出发从孩子开始数并返给根节点最长的版本</p>
+<h2 id="求树宽"><a href="#求树宽" class="headerlink" title="求树宽"></a>求树宽</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/25/68f6fe2304759243.png"></p>
+<p>此处先用先序遍历统计每一层的结点数，也就是使用先序遍历先根后孩子的特点来统计</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> width[MAX];  <span class="comment">//用于统计各层的结点总数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//先序遍历，同时统计各层结点总数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">PreOrder</span><span class="params">(BiTree T, <span class="type">int</span> level)</span> {</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    width[level]++;  <span class="comment">//累加该层结点总数</span></span><br><span class="line">    PreOrder(T-&gt;lchild, level + <span class="number">1</span>);  <span class="comment">//遍历左子树</span></span><br><span class="line">    PreOrder(T-&gt;rchild, level + <span class="number">1</span>);  <span class="comment">//遍历右子树</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>再找到宽度数组中最大的一项，将其作为树宽</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">treeWidth</span><span class="params">(BiTree T)</span> {</span><br><span class="line">    <span class="comment">// 初始化宽度数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; MAX; i++)</span><br><span class="line">        width[i] = <span class="number">0</span>;</span><br><span class="line">    PreOrder(T, <span class="number">0</span>);  <span class="comment">// 从第0层开始遍历</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 找出最大宽度（某一层最多的节点数）</span></span><br><span class="line">    <span class="type">int</span> maxWidth = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; MAX; i++) {</span><br><span class="line">        <span class="keyword">if</span> (width[i] &gt; maxWidth)</span><br><span class="line">            maxWidth = width[i];</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"树的宽度是%d"</span>, maxWidth);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="求树WPL"><a href="#求树WPL" class="headerlink" title="求树WPL"></a>求树WPL</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/25/840b545681b07964.png"></p>
+<p>求树的WPL还是要使用树的先序遍历</p>
+<p>使用了求树高和树宽的思想</p>
+<p>先找到叶子节点（也就是左右孩子为空）并且将此处的带权路径长度加入WPL</p>
+<p>如果不是叶子结点则向下找到其他叶子节点高度</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">PreOrder</span> <span class="params">(BiTree T, <span class="type">int</span> level)</span>{</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(T-&gt;lchild==<span class="literal">NULL</span> &amp;&amp; T-&gt;rchild==<span class="literal">NULL</span>)</span><br><span class="line">    WPL += level*T-&gt;weight; <span class="comment">//累加叶结点带权路径长度</span></span><br><span class="line">    PreOrder(T-&gt;lchild, level + <span class="number">1</span>); <span class="comment">//遍历左子树</span></span><br><span class="line">    PreOrder(T-&gt;rchild, level + <span class="number">1</span>); </span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="特殊树型判断"><a href="#特殊树型判断" class="headerlink" title="特殊树型判断"></a>特殊树型判断</h1><h2 id="二叉排序树判定"><a href="#二叉排序树判定" class="headerlink" title="二叉排序树判定"></a>二叉排序树判定</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/25/1825ad153c697882.png"></p>
+<p>中序遍历出来的序列是升序序列，所以二叉排序树序列中下一个结点必然大于前面所有的结点（也就是MAX{前面结点}）这里用temp表示</p>
+<p>所以只要后面遍历到的小于temp，则直接判定失败</p>
+<p>若不小于则继续向右子树遍历，直到为NULL退回</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> temp=MIN_INT; <span class="comment">//记录当前遍历到的最小值</span></span><br><span class="line"><span class="type">bool</span> isBST=<span class="literal">true</span>;    <span class="comment">//是否为二叉排序树？</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">InOrder</span><span class="params">(BiTree T)</span>{</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    InOrder(T-&gt;lchild);</span><br><span class="line">    <span class="keyword">if</span> (T-&gt;data &gt;= temp)    temp=T-&gt;data;</span><br><span class="line">    <span class="keyword">else</span>    isBST=<span class="literal">false</span>;</span><br><span class="line">    InOrder(T-&gt;rchild);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="平衡二叉树判定"><a href="#平衡二叉树判定" class="headerlink" title="平衡二叉树判定"></a>平衡二叉树判定</h2><p><img src="https://s3.bmp.ovh/imgs/2025/08/25/f598941d10a33749.png"></p>
+<p>此树判定和方法二找树深一样</p>
+<p>通过后序遍历的特点：先访问孩子再进行操作，由最后的孩子也就是结点A的左右子树都退回来自己的高度之后，再进行左右子树高度判断</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> isBalance=<span class="literal">true</span>;    <span class="comment">//二叉树是否平衡</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">PostOrder</span><span class="params">(BiTree T)</span>{</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> left = PostOder(T-&gt;lchild);</span><br><span class="line">    <span class="type">int</span> right = PostOder(T-&gt;rchild);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (left-right&gt;<span class="number">1</span>)    isBalance=<span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (left-right&lt;<span class="number">-1</span>)    isBalance=<span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//树的深度=Max(左子树深度，右子树深度)+1</span></span><br><span class="line">    <span class="keyword">if</span> (left&gt;right)   <span class="keyword">return</span> left+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span>    <span class="keyword">return</span> right+<span class="number">1</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="完全二叉树判定"><a href="#完全二叉树判定" class="headerlink" title="完全二叉树判定"></a>完全二叉树判定</h2><p>这里先借用一下层序遍历的图</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/25/25b14ee34e04a792.png"></p>
+<p>层序遍历，因为完全二叉树是按顺序排放，所以要看每一层的结点的逐个讨论、</p>
+<p>四种情况分别在访问这个结点时讨论一次</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/25/069c0a1411d4d154.png"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 特殊树形判定：完��二叉树？</span></span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> isComplete = <span class="literal">true</span>;    <span class="comment">// 是否为完全二叉树</span></span><br><span class="line"><span class="type">bool</span> flag = <span class="literal">false</span>;         <span class="comment">// flag=true，表示层序遍历时出现过叶子或只有左孩子的分支节点</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">visit</span><span class="params">(BiTNode * p)</span> {</span><br><span class="line">    <span class="keyword">if</span> (p-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; p-&gt;rchild == <span class="literal">NULL</span>) {</span><br><span class="line">        <span class="comment">// 当前节点为叶子��点</span></span><br><span class="line">        <span class="keyword">if</span> (flag) {</span><br><span class="line">            isComplete = <span class="literal">false</span>;  <span class="comment">// 不是完全二叉树</span></span><br><span class="line">        }</span><br><span class="line">        flag = <span class="literal">true</span>;</span><br><span class="line">    } <span class="keyword">else</span> <span class="keyword">if</span> (p-&gt;lchild != <span class="literal">NULL</span> &amp;&amp; p-&gt;rchild == <span class="literal">NULL</span>) {</span><br><span class="line">        <span class="comment">// 只有左孩子，没有右孩子</span></span><br><span class="line">        <span class="keyword">if</span> (flag) {</span><br><span class="line">            isComplete = <span class="literal">false</span>;  <span class="comment">// 不是完全二叉树</span></span><br><span class="line">        }</span><br><span class="line">        flag = <span class="literal">true</span>;</span><br><span class="line">    } <span class="keyword">else</span> <span class="keyword">if</span> (p-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; p-&gt;rchild != <span class="literal">NULL</span>) {</span><br><span class="line">        <span class="comment">// 只有右孩子，没有左孩子 - 肯定不是完全二叉树</span></span><br><span class="line">        isComplete = <span class="literal">false</span>;</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        <span class="comment">// 有两个孩子</span></span><br><span class="line">        <span class="keyword">if</span> (flag) {</span><br><span class="line">            isComplete = <span class="literal">false</span>;  <span class="comment">// 不是完全二叉树</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><p><img src="https://s3.bmp.ovh/imgs/2025/08/25/16392d4c271b9418.png"></p>
+<h2 id="图的数据结构定义"><a href="#图的数据结构定义" class="headerlink" title="图的数据结构定义"></a>图的数据结构定义</h2><h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><p>这是邻接矩阵的数据结构</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/25/8dfd61076cd026ce.png"></p>
+<p>这是邻接矩阵的初始化操作</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/25/da3f1d32966513b0.png"></p>
+<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><p>这是邻接表的数据结构，在图ALGraph中存储一个顶点表数组和顶点数和边数</p>
+<p>在顶点表中存储这个结点的数据和第一个依附该点的边</p>
+<p>边表则是指出这条边指向的点和<strong>下一条边的指针</strong>以及该边权值</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/25/ab8f9856d35c6f5a.png"></p>
+<p>这个表依旧要执行初始化操作</p>
+<p>先将顶点表数组中的第一条边全部置为NULL</p>
+<p>再将其顶点数和边数先更新</p>
+<p>用封装好的AddEdge(图,出点，入点，权值)函数添加边</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/25/32c46cbe2105b671.png"></p>
+<p>AddEdge函数是这���写的</p>
+<p>首先先创建一个边结点，将其的权值和指向的结点j配置好</p>
+<p>再将他连接到i结点第一条边之前，让这条新边指向老的第一条边（类似头插法将靠后的插在头边）</p>
+<p>最后让i的点表连接到这条边作为first</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/25/cd466d9d1b1a6548.png"></p>
+<p>最后可以看到他的逻辑结构长这样</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/26/3eea91a06fa325b7.png"></p>
+<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><h3 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h3><p><img src="https://s3.bmp.ovh/imgs/2025/08/26/e7d293c50f73edd8.png" alt="里昂学长的pdf"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//邻接矩阵实现深度优先搜索</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">DFS</span><span class="params">(MGraph G,<span class="type">int</span> i)</span>{</span><br><span class="line">    visit(i);</span><br><span class="line">    <span class="comment">//访问初始顶点</span></span><br><span class="line">    visited[i]=<span class="literal">true</span>;<span class="comment">//对做已访问标记</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;G.G.numVertices;j++)</span><br><span class="line">    <span class="keyword">if</span>(visited[j]==<span class="literal">false</span>&amp;&amp;G.edge[i][j]==<span class="number">1</span>){</span><br><span class="line">    DFS(G,j);<span class="comment">//为的尚未���问的邻接点，递归访问</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>首先先把第一个访问的结点打上true，对第一结点比如A，找他向别人发射过的边，直到j&lt;G.vexnum（穷尽了所有点）</p>
+<p>当��到没有遍历到过的且存在的邻接点时，将其投��DPS</p>
+<p>然后一直DPS递归下去，直到再没有邻接的点，逐层返回没有访问完邻接点的结点中继续访问他们���接点</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//邻接表实现深度优先搜索</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">DFS</span><span class="params">(ALGraph G,<span class="type">int</span> i)</span>{</span><br><span class="line">    visit(i);</span><br><span class="line">    <span class="comment">//访问初始顶点</span></span><br><span class="line">    visited[i]=<span class="literal">true</span>;<span class="comment">//对做已访问标记</span></span><br><span class="line">    <span class="keyword">for</span>(EdgeNode* p=G.VertexList[i].first ; p!=<span class="literal">NULL</span>; p=p-&gt;next){</span><br><span class="line">    <span class="comment">//检测的所有邻接点</span></span><br><span class="line">    <span class="type">int</span> j=p-&gt;index;</span><br><span class="line">    <span class="keyword">if</span>(visited[j]==<span class="literal">false</span>){</span><br><span class="line">    DFS(G,j);<span class="comment">//为的尚未访问的邻接点，递归访问</span></span><br><span class="line">    }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>前面步骤一样，依旧从i点开始遍历。先找到i点的第一个边，将其位置存放到p中</p>
+<p>j就是此时p指向的点，若此点没��被访问过则开始深度遍历</p>
+<p>直到遍历到最后一个���遍历到的点，就往上返回，继续访问之前没有访问完其他边的结���。</p>
+<h3 id="广度优先遍历"><a href="#广度优先遍历" class="headerlink" title="广度优先遍历"></a>广度优先遍历</h3><p><img src="https://s3.bmp.ovh/imgs/2025/08/26/c5d95beba5f7504e.png" alt="里昂学长的pdf"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//邻接矩阵实现广度优先搜索</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">BFS</span><span class="params">(MGraph G, <span class="type">int</span> v)</span>{</span><br><span class="line">    visit(v); <span class="comment">//访问初始顶点</span></span><br><span class="line">    visited[v]=<span class="literal">true</span>; <span class="comment">//对v做已访问标记</span></span><br><span class="line">    EnQueue(Q, v); <span class="comment">//顶点v入队</span></span><br><span class="line">    <span class="keyword">while</span>(!isEmpty(Q)){</span><br><span class="line">        DeQueue(Q, v); <span class="comment">//从队首取出顶点v</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> w=<span class="number">0</span>; w&lt;G.numVertices; w++){</span><br><span class="line">            <span class="comment">//检测v的所有邻接顶点</span></span><br><span class="line">            <span class="keyword">if</span>(visited[w]==<span class="literal">false</span> &amp;&amp; G.edge[v][w]==<span class="number">1</span>){</span><br><span class="line">                visit(w); <span class="comment">//w为v的尚未访问的邻接点，访问w</span></span><br><span class="line">                visited[w]=<span class="literal">true</span>; <span class="comment">//标记w为已访问</span></span><br><span class="line">                EnQueue(Q, w); <span class="comment">//顶点w入队</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>广度优先遍历类似于图的层序遍历</p>
+<p>从v出发，先将v存入队列中</p>
+<p>当队列不为空时就出队一个结点，并���从第0个结点开始遍历，寻找v指向的且没有被访问过的结点，找到一个入队一个直到找不到为止</p>
+<p>然后从i结点找到的第一个结点开始继续重复这个步骤，直到所有结点都找完使队列为空</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//邻接表实现广度优先搜索</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">BFS</span><span class="params">(ALGraph G, <span class="type">int</span> v)</span>{</span><br><span class="line">    visit(v); <span class="comment">//访问初始顶点</span></span><br><span class="line">    visited[v]=<span class="literal">true</span>; <span class="comment">//对v做已访问标记</span></span><br><span class="line">    EnQueue(Q, v); <span class="comment">//顶点v入队</span></span><br><span class="line">    <span class="keyword">while</span>(!isEmpty(Q)){</span><br><span class="line">        DeQueue(Q, v); <span class="comment">//从队首取出顶点v</span></span><br><span class="line">        <span class="keyword">for</span>(EdgeNode *p=G.VertexList[v].first; p!=<span class="literal">NULL</span>; p=p-&gt;next){</span><br><span class="line">            <span class="comment">//检测v的所有邻接顶点</span></span><br><span class="line">            <span class="type">int</span> w = p-&gt;index;</span><br><span class="line">            <span class="keyword">if</span>(visited[w]==<span class="literal">false</span>){</span><br><span class="line">                visit(w); <span class="comment">//w为v的尚未访问的邻接点，访问w</span></span><br><span class="line">                visited[w]=<span class="literal">true</span>; <span class="comment">//标记w为已访问</span></span><br><span class="line">                EnQueue(Q, w); <span class="comment">//顶点w入队</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>套路和上面一样，入队之后先找到第一个边指向的结点看是否被访问过，若没有则全部入队直到v结点没有邻接的点为止。</p>
+<p>然后又从v第一条边邻接点继续广度优先遍历</p>
+<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><p>先按一下思路分析</p>
+<p>拓扑排序的步骤:</p>
+<ol>
+<li>选择入度为0的顶点并输出</li>
+<li>从图中删除该顶点与所有以它为弧的边</li>
+<li>重复步骤1、2，直到不存在入度为0的顶点</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>拓扑序列</th>
+<th>条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>存在且唯一</td>
+<td>每次选择结点都只有一个结点可选</td>
+</tr>
+<tr>
+<td>存在不唯一</td>
+<td>选择结点时不止一个结点可选</td>
+</tr>
+<tr>
+<td>不存在</td>
+<td>图中有环，环中顶点未被访问</td>
+</tr>
+</tbody></table>
+<p>先拿王道的流程图说一下思想</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/26/6616dd51d5490c85.png"></p>
+<p>首先我们需要循环找到入度为0的点并且全部入队。</p>
+<p>此处如果队列里元素个数超过1，</p>
+<ul>
+<li>入度为0的点肯定超过2个也就是拓扑排序不唯一。</li>
+<li>若是有多个连通分量，一个连通分量多个入度为0，另一个连通分量是有环图，则很明显不存在拓扑排序</li>
+</ul>
+<p>然后当我们出队时，我们将计数器+1，来记录已经出队的数</p>
+<p>出队之后将所有出队的点指向的点，把他们的入度-1，然后继续寻找入度为0的点循环这个过程</p>
+<p>当队空之后我们根据count数进行判断</p>
+<ul>
+<li><strong>如果count等于顶点数，那么说明从顶点到最后一个点只有一条路径。没错，拓扑排序唯一</strong></li>
+<li><strong>若count数不等于也就是小于顶点数，说明存在环路，始终有点入度不为0互相堵着</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//邻接表实现</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">uniquely1</span><span class="params">(MGraph G)</span>{</span><br><span class="line">    <span class="type">int</span> inDegree[MAXV] = {<span class="number">0</span>}; <span class="comment">// 存储每个顶点的入度</span></span><br><span class="line">	<span class="type">int</span> <span class="built_in">queue</span>[MAXV];    <span class="comment">// 用于存储入度为0的顶点</span></span><br><span class="line">	<span class="type">int</span> front = <span class="number">0</span>, rear = <span class="number">0</span>;    <span class="comment">// 队列的前后指针</span></span><br><span class="line">	<span class="type">int</span> count = <span class="number">0</span>;    <span class="comment">// 拓扑序列中的顶点计数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算每个顶点的入度</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)</span><br><span class="line">	{</span><br><span class="line">    	ArcNode *p = G.AdjList[i].firstarc;<span class="comment">//从i的第一条边开始找</span></span><br><span class="line">    	<span class="keyword">while</span> (p != <span class="literal">NULL</span>)</span><br><span class="line">    	{</span><br><span class="line">        	inDegree[p-&gt;adjvex]++;</span><br><span class="line">        	p = p-&gt;nextarc;</span><br><span class="line">    	}</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将所有入度为0的顶点入队</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)</span><br><span class="line">	{</span><br><span class="line">    	<span class="keyword">if</span> (inDegree[i] == <span class="number">0</span>)</span><br><span class="line">        	<span class="built_in">queue</span>[rear++] = i;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 进行拓扑排序</span></span><br><span class="line">	<span class="keyword">while</span> (front &lt; rear)<span class="comment">//非空队列</span></span><br><span class="line">	{</span><br><span class="line">    	<span class="comment">// 如果队列中有多个顶点，说明图的拓扑序列不唯一</span></span><br><span class="line">    	<span class="keyword">if</span> (rear - front &gt; <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    	<span class="type">int</span> v = <span class="built_in">queue</span>[front++]; <span class="comment">// 取出队首顶点</span></span><br><span class="line">    	count++;</span><br><span class="line">    	<span class="comment">// 更新该顶点的所有邻接顶点的入度</span></span><br><span class="line">    	ArcNode *p = G.AdjList[v].firstarc;</span><br><span class="line">    	<span class="keyword">while</span> (p != <span class="literal">NULL</span>)</span><br><span class="line">    	{</span><br><span class="line">        	inDegree[p-&gt;adjvex]--;</span><br><span class="line">        	<span class="comment">// 如果入度变为0，则加入队列</span></span><br><span class="line">        	<span class="keyword">if</span> (inDegree[p-&gt;adjvex] == <span class="number">0</span>)</span><br><span class="line">            	<span class="built_in">queue</span>[rear++] = p-&gt;adjvex;</span><br><span class="line">        	p = p-&gt;nextarc;</span><br><span class="line">    	}</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (count == G.vexnum)</span><br><span class="line">    	<span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// 当前拓扑序列包含所有顶点，则图的拓扑序列唯一</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">    	<span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 当前拓扑序列不包含所有顶点，则图的拓扑序列不存在</span></span><br><span class="line">}</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//邻接矩阵实现</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">uniquely1</span><span class="params">(MGraph G)</span></span><br><span class="line">{</span><br><span class="line">    <span class="type">int</span> inDegree[MAXV] = {<span class="number">0</span>}; <span class="comment">// 存储每个顶点的入度</span></span><br><span class="line">    <span class="type">int</span> <span class="built_in">queue</span>[MAXV]; <span class="comment">// 用于存储入度为0的顶点</span></span><br><span class="line">    <span class="type">int</span> front = <span class="number">0</span>, rear = <span class="number">0</span>; <span class="comment">// 队列的先后指针</span></span><br><span class="line">    <span class="type">int</span> count = <span class="number">0</span>; <span class="comment">// 拓扑序列中的顶点计数</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 计算每个顶点的入度</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; G.numVertices; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; G.numVertices; j++)</span><br><span class="line">            <span class="keyword">if</span> (G.Edge[i][j] != <span class="number">0</span>)</span><br><span class="line">                inDegree[j]++;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将所有入度为0的顶点入队</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; G.numVertices; i++)</span><br><span class="line">        <span class="keyword">if</span> (inDegree[i] == <span class="number">0</span>)</span><br><span class="line">            <span class="built_in">queue</span>[rear++] = i;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 进行拓扑排序</span></span><br><span class="line">    <span class="keyword">while</span> (front &lt; rear)</span><br><span class="line">    {</span><br><span class="line">        <span class="comment">// 如果队列中有多个顶点，说明图的拓扑序列不唯一</span></span><br><span class="line">        <span class="keyword">if</span> (rear - front &gt; <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> v = <span class="built_in">queue</span>[front++]; <span class="comment">// 取出队首顶点</span></span><br><span class="line">        count++;</span><br><span class="line">        <span class="comment">// 更新该顶点的所有邻接顶点的入度</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; G.numVertices; i++)</span><br><span class="line">            <span class="keyword">if</span> (G.Edge[v][i] != <span class="number">0</span>)</span><br><span class="line">            {</span><br><span class="line">                inDegree[i]--; <span class="comment">// 如果入度变为0，则加入队列</span></span><br><span class="line">                <span class="keyword">if</span> (inDegree[i] == <span class="number">0</span>)</span><br><span class="line">                    <span class="built_in">queue</span>[rear++] = i;</span><br><span class="line">            }</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (count == G.numVertices)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// 当前拓扑序列包含所有顶点，则图的拓扑序列唯一</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 当前拓扑序列不包含所有顶点，则图的拓扑序列不存在</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+            </template>
+            <script>
+            window.unlockPasswordGate = window.unlockPasswordGate || function(form) {
+              function normalize(value) {
+                return (value || '').trim().replace(/[\u00A0\u2000-\u200D\uFEFF]/g, '').replace(/[０-９]/g, function(ch) {
+                  return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
+                });
+              }
+              var wrapper = form && form.closest ? form.closest('.password-gate') : document.getElementById('hexo-blog-password-gate');
+              if (!wrapper) return false;
+              var input = wrapper.querySelector('#hbePass');
+              var error = wrapper.querySelector('[role="alert"]');
+              var template = wrapper.querySelector('template.password-gate-content');
+              var password = normalize(wrapper.getAttribute('data-password') || '');
+              var value = normalize(input ? input.value : '');
+              if (error) error.textContent = '';
+              if (password && value === password && template && wrapper.parentNode) {
+                var container = document.createElement('div');
+                container.id = 'password-gate-unlocked';
+                container.appendChild(template.content.cloneNode(true));
+                wrapper.parentNode.replaceChild(container, wrapper);
+                try { window.dispatchEvent(new Event('hexo-blog-decrypt')); } catch (e) {}
+              } else {
+                if (error) error.textContent = wrapper.getAttribute('data-wrong-message') || '密码不正确，请再试一次。';
+                if (input) {
+                  input.value = '';
+                  input.focus();
+                }
+              }
+              return false;
+            };
+            </script>
+          </div>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>叶落归
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yeluogui.cloud/2025/08/14/408%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3%E6%B3%95/" title="408算法题解法">http://yeluogui.cloud/2025/08/14/408算法题解法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/408/" rel="tag"># 408</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/08/14/dps%E5%AE%9E%E7%8E%B0%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" rel="prev" title="如何用DPS实现拓扑排序">
+      <i class="fa fa-chevron-left"></i> 如何用DPS实现拓扑排序
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/08/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%8F%92%E5%85%A5%E4%B8%8E%E5%88%A0%E9%99%A4/" rel="next" title="平衡二叉树的插入与删除">
+      平衡二叉树的插入与删除 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+  
+  <div class="comments giscus-comments">
+    <script src="https://giscus.app/client.js"
+      data-repo="yeluogui233/yeluogui233.github.io"
+      data-repo-id="R_kgDOPT5T4w"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOPT5T484CtiNz"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="light"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+    </script>
+    <script>
+      (function() {
+        var DARK_THEME = new URL('/css/giscus-kylo-dark.css?v=20260706-2', window.location.origin).href;
+        var LIGHT_THEME = 'light';
+        var systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+        function isDark() {
+          if (document.body.classList.contains('theme-force-dark')) return true;
+          if (document.body.classList.contains('theme-force-light')) return false;
+          return !!(systemDark && systemDark.matches);
+        }
+
+        function syncGiscusTheme() {
+          var theme = isDark() ? DARK_THEME : LIGHT_THEME;
+          var script = document.querySelector('.giscus-comments script[src^="https://giscus.app/client.js"]');
+          if (script) script.setAttribute('data-theme', theme);
+
+          var frame = document.querySelector('iframe.giscus-frame');
+          if (!frame || !frame.contentWindow) return;
+          frame.contentWindow.postMessage({
+            giscus: {
+              setConfig: { theme: theme }
+            }
+          }, 'https://giscus.app');
+        }
+
+        window.KyloSyncGiscusTheme = syncGiscusTheme;
+        window.addEventListener('kylo:theme-change', syncGiscusTheme);
+        window.addEventListener('message', function(event) {
+          if (event.origin === 'https://giscus.app') {
+            window.setTimeout(syncGiscusTheme, 80);
+          }
+        });
+
+        if (systemDark) {
+          if (typeof systemDark.addEventListener === 'function') {
+            systemDark.addEventListener('change', syncGiscusTheme);
+          } else if (typeof systemDark.addListener === 'function') {
+            systemDark.addListener(syncGiscusTheme);
+          }
+        }
+
+        if (document.body && window.MutationObserver) {
+          new MutationObserver(syncGiscusTheme).observe(document.body, {
+            attributes: true,
+            attributeFilter: ['class']
+          });
+        }
+
+        syncGiscusTheme();
+        window.setTimeout(syncGiscusTheme, 400);
+        window.setTimeout(syncGiscusTheme, 1200);
+      })();
+    </script>
+  </div>
+
+        </div>
+          
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc">
+            文章目录
+          </li>
+        </ul>
+
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel sidebar-panel-active">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text">快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.1.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%92%E5%88%86%EF%BC%9F"><span class="nav-number">2.1.1.</span> <span class="nav-text">如何划分？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="nav-number">2.1.2.</span> <span class="nav-text">快速排序算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">2.1.3.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%92%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%A6%99%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">划分函数的妙用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">4.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE-%E5%88%A0%E9%99%A4"><span class="nav-number">4.1.</span> <span class="nav-text">查找+删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE-%E6%8F%92%E5%85%A5"><span class="nav-number">4.2.</span> <span class="nav-text">查找+插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%B4%E6%8F%92%E6%B3%95%EF%BC%88%E5%8E%9F%E5%9C%B0%E9%80%86%E8%BD%AC%E9%93%BE%E8%A1%A8%EF%BC%89"><span class="nav-number">4.3.</span> <span class="nav-text">头插法（原地逆转链表）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%BE%E6%8F%92%E6%B3%95%E4%BF%9D%E6%8C%81%E5%8E%9F%E5%BA%8F"><span class="nav-number">4.4.</span> <span class="nav-text">尾插法保持原序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">5.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D-%E4%B8%AD-%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">5.1.</span> <span class="nav-text">前&#x2F;中&#x2F;后序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">5.2.</span> <span class="nav-text">层序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E6%A0%91%E9%AB%98"><span class="nav-number">5.3.</span> <span class="nav-text">求树高</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%89%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">5.3.1.</span> <span class="nav-text">（方法一）先序遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%89%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">5.3.2.</span> <span class="nav-text">（方法二）后序遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E6%A0%91%E5%AE%BD"><span class="nav-number">5.4.</span> <span class="nav-text">求树宽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E6%A0%91WPL"><span class="nav-number">5.5.</span> <span class="nav-text">求树WPL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E6%A0%91%E5%9E%8B%E5%88%A4%E6%96%AD"><span class="nav-number">6.</span> <span class="nav-text">特殊树型判断</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E5%88%A4%E5%AE%9A"><span class="nav-number">6.1.</span> <span class="nav-text">二叉排序树判定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E5%88%A4%E5%AE%9A"><span class="nav-number">6.2.</span> <span class="nav-text">平衡二叉树判定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E5%88%A4%E5%AE%9A"><span class="nav-number">6.3.</span> <span class="nav-text">完全二叉树判定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE"><span class="nav-number">7.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="nav-number">7.1.</span> <span class="nav-text">图的数据结构定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="nav-number">7.1.1.</span> <span class="nav-text">邻接矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="nav-number">7.1.2.</span> <span class="nav-text">邻接表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-number">7.2.</span> <span class="nav-text">图的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="nav-number">7.2.1.</span> <span class="nav-text">深度优先遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="nav-number">7.2.2.</span> <span class="nav-text">广度优先遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="nav-number">7.3.</span> <span class="nav-text">拓扑排序</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <!-- Footer -->
+<div class="footer-wrapper" style="text-align:center; font-size:14px; color:#222; max-width:900px; margin:auto; padding:20px 0;">
+
+  <!-- 第一行：版权 + 总字数 + 阅读时间 -->
+  <div class="footer-line footer-line-1" style="display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap;">
+    <span>© 2026 <span style="color:#e25555;">&#10084;</span> 叶落归</span>
+
+    <i class="fa-solid fa-file-lines" style="color:#000;"></i>
+    <span>总字数: <span id="local_word_count">0</span></span>
+
+    <i class="fa-regular fa-clock" style="color:#000;"></i>
+    <span>预计阅读时间: <span id="local_read_time">0</span> 分钟</span>
+  </div>
+
+  <!-- 第二行：驱动信息 -->
+  <div class="footer-line footer-line-2" style="margin-top:10px; color:#555; font-size:13px;">
+    由 
+    <a href="https://hexo.io" target="_blank" rel="noopener" style="color:#555; text-decoration:none; font-weight:600;">Hexo</a>
+    &amp;
+    <a href="https://theme-next.org/" target="_blank" rel="noopener" style="color:#555; text-decoration:none; font-weight:600;">NexT.Gemini</a>
+    强力驱动
+  </div>
+
+  <!-- 第三行：访客数 | 浏览量 -->
+  <div class="footer-line footer-line-3" style="margin-top:15px; display:flex; justify-content:center; gap:30px; font-size:14px; color:#222;">
+    <div style="display:flex; align-items:center; gap:6px;">
+      <i class="fa-regular fa-eye" style="color:#000; font-size:18px;"></i>
+      <span>访客数 <span id="local_uv_count">0</span></span>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <i class="fa-solid fa-user" style="color:#000; font-size:18px;"></i>
+      <span>浏览量 <span id="local_pv_count">0</span></span>
+    </div>
+  </div>
+
+</div>
+
+<!-- 本地统计脚本 -->
+<script>
+(function() {
+  const pvKey = 'local_pv_count';
+  const uvKey = 'local_uv_count';
+  const uvFlagKey = 'local_uv_flag';
+
+  let pvCount = parseInt(localStorage.getItem(pvKey)) || 0;
+  let uvCount = parseInt(localStorage.getItem(uvKey)) || 0;
+
+  // PV 每次访问+1
+  pvCount++;
+  localStorage.setItem(pvKey, pvCount);
+
+  // UV 仅第一次访问+1
+  if (!localStorage.getItem(uvFlagKey)) {
+    uvCount++;
+    localStorage.setItem(uvKey, uvCount);
+    localStorage.setItem(uvFlagKey, 'true');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('local_pv_count').textContent = pvCount.toLocaleString();
+    document.getElementById('local_uv_count').textContent = uvCount.toLocaleString();
+
+    const content = document.querySelector('.main-inner');
+    const text = content ? (content.innerText || content.textContent) : '';
+    const length = text.trim().length;
+
+    document.getElementById('local_word_count').textContent = length.toLocaleString();
+    document.getElementById('local_read_time').textContent = Math.ceil(length / 200);
+  });
+})();
+</script>
+
+<!-- 确保在 head 里引入 Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/password-gate.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<!-- 网易云播放器 -->
+<div id="netease-player">
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0"
+    width="330" height="86"
+    src="//music.163.com/outchain/player?type=2&id=1886731595&auto=0&height=66">
+  </iframe>
+</div>
+
+<style>
+  #netease-player {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 99998;
+  }
+</style>
+
+<style>
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/firework.js"></script>
+<script src="/libs/codeBlock/codeBlockFuction.js"></script>
+<script src="/libs/codeBlock/codeLang.js"></script>
+<script src="/libs/codeBlock/codeCopy.js"></script>
+<script src="/libs/codeBlock/clipboard.min.js"></script>
+<script src="/libs/codeBlock/codeShrink.js"></script>
+<link rel="stylesheet" href="/css/mobile-restore.css?v=20260706-mobile-restore-late-7">
+<link rel="stylesheet" href="/css/dark-mode.css?v=20260706-dark-9">
+<script src="/js/touch-menu.js?v=20260629-touch-1"></script>
+<script src="/js/menu-active-restore.js?v=20260706-menu-active-4"></script>
+<script src="/js/makima-pet.js?v=20260703-game-dock-1"></script>
+<script>
+// 为文章内容中的所有外部链接生成卡�?
+document.addEventListener('DOMContentLoaded', function() {
+  var postContent = document.querySelector('.post-body') || 
+                    document.querySelector('.post-block') ||
+                    document.querySelector('.entry-content');
+  if (postContent) {
+    var externalLinks = postContent.querySelectorAll('a[target="_blank"]');
+    if (externalLinks.length > 0) {
+      cardLink(externalLinks);
+    }
+  }
+});
+</script>
+</body>
+</html>
+
+

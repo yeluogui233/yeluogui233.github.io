@@ -1,0 +1,47 @@
+<div id="sitemap-tree" style="font-family: Arial; padding: 20px;">
+  <p>加载中...</p>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('sitemap-tree');
+  
+  fetch('/sitemap.xml')
+    .then(response => {
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      return response.text();
+    })
+    .then(xmlString => {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+      
+      // 检查解析错误
+      if (xmlDoc.querySelector('parsererror')) {
+        throw new Error("Invalid XML format");
+      }
+
+      const urls = xmlDoc.querySelectorAll('url');
+      if (urls.length === 0) {
+        container.innerHTML = '<p>⚠️ 站点地图中没有找到任何URL</p>';
+        return;
+      }
+
+      let html = '<h2>网站结构</h2><ul>';
+      urls.forEach(url => {
+        const loc = url.querySelector('loc').textContent;
+        const name = loc.split('/').filter(Boolean).pop() || '首页';
+        html += `<li><a href="${loc}">${name}</a></li>`;
+      });
+      html += '</ul>';
+      
+      container.innerHTML = html;
+    })
+    .catch(error => {
+      container.innerHTML = `
+        <p style="color: red">加载失败: ${error.message}</p>
+        <button onclick="location.reload()">重试</button>
+      `;
+      console.error('站点地图加载错误:', error);
+    });
+});
+</script>

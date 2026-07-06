@@ -1,0 +1,3866 @@
+/* Dark mode only. Day mode styles are intentionally untouched. */
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) {
+    --text-color: #f3f3f1;
+    --text-color-secondary: #c9c8c3;
+    --content-bg-color: #181818;
+    --card-bg-color: #202020;
+    --apple-card-bg: rgba(31, 31, 31, .96);
+    --apple-card-border: rgba(255, 255, 255, .14);
+    --apple-card-shadow: 0 18px 44px rgba(0, 0, 0, .34);
+    --apple-ink: #f4f4f2;
+    --apple-muted: #c8c7c2;
+    --apple-chip-bg: rgba(255, 255, 255, .08);
+    --apple-chip-border: rgba(255, 255, 255, .16);
+    --apple-hover: #f4f4f2;
+    background:
+      radial-gradient(circle at 18% 0%, rgba(255, 255, 255, .055), transparent 30%),
+      linear-gradient(180deg, #101010 0%, #151515 50%, #111 100%) !important;
+    color: #f3f3f1 !important;
+  }
+
+  html body:not(.theme-force-light) .header-inner,
+  html body:not(.theme-force-light) .main-inner,
+  html body:not(.theme-force-light) .content.index,
+  html body:not(.theme-force-light) .content-wrap > .content:not(.index),
+  html body:not(.theme-force-light) .post-block,
+  html body:not(.theme-force-light) .post-card-preview,
+  html body:not(.theme-force-light) .post-card-info,
+  html body:not(.theme-force-light) .album-wrapper,
+  html body:not(.theme-force-light) .gallery-wrapper,
+  html body:not(.theme-force-light) .movies-wrapper,
+  html body:not(.theme-force-light) .books-wrapper,
+  html body:not(.theme-force-light) .bake-wrapper,
+  html body:not(.theme-force-light) .diary-card,
+  html body:not(.theme-force-light) .category-card,
+  html body:not(.theme-force-light) .tag-card,
+  html body:not(.theme-force-light) .game-card,
+  html body:not(.theme-force-light) .sidebar-profile-card,
+  html body:not(.theme-force-light) .sidebar-card,
+  html body:not(.theme-force-light) .links-of-blogroll,
+  html body:not(.theme-force-light) .site-author-widget .sidebar-profile-card,
+  html body:not(.theme-force-light) .site-author-widget .sidebar-card {
+    background: rgba(31, 31, 31, .96) !important;
+    border-color: rgba(255, 255, 255, .14) !important;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, .34) !important;
+    color: #f3f3f1 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar,
+  html body:not(.theme-force-light) .sidebar-inner,
+  html body:not(.theme-force-light) .sidebar-inner.affix,
+  html body:not(.theme-force-light) .site-overview-wrap,
+  html body:not(.theme-force-light) .site-author-widget,
+  html body:not(.theme-force-light) .sidebar-panel,
+  html body:not(.theme-force-light) .post-toc-wrap,
+  html body:not(.theme-force-light) .site-author,
+  html body:not(.theme-force-light) .site-state-wrap,
+  html body:not(.theme-force-light) .links-of-author {
+    background: transparent !important;
+    color: #f3f3f1 !important;
+  }
+
+  html body:not(.theme-force-light) .header-inner::before,
+  html body:not(.theme-force-light) .post-card-info::before,
+  html body:not(.theme-force-light) .post-card-info::after {
+    background: rgba(31, 31, 31, .96) !important;
+  }
+
+  html body:not(.theme-force-light) .site-title,
+  html body:not(.theme-force-light) .site-author-name,
+  html body:not(.theme-force-light) .sidebar-card-title,
+  html body:not(.theme-force-light) .post-title,
+  html body:not(.theme-force-light) .post-title a,
+  html body:not(.theme-force-light) .page-title,
+  html body:not(.theme-force-light) .album-title,
+  html body:not(.theme-force-light) .movie-title,
+  html body:not(.theme-force-light) .book-title,
+  html body:not(.theme-force-light) h1,
+  html body:not(.theme-force-light) h2,
+  html body:not(.theme-force-light) h3,
+  html body:not(.theme-force-light) h4 {
+    color: #f6f6f4 !important;
+    -webkit-text-fill-color: #f6f6f4 !important;
+  }
+
+  html body:not(.theme-force-light) .post-body,
+  html body:not(.theme-force-light) .post-body p,
+  html body:not(.theme-force-light) .post-meta,
+  html body:not(.theme-force-light) .page-subtitle,
+  html body:not(.theme-force-light) .site-description,
+  html body:not(.theme-force-light) .photo-caption,
+  html body:not(.theme-force-light) .album-desc,
+  html body:not(.theme-force-light) .movie-desc,
+  html body:not(.theme-force-light) .book-desc,
+  html body:not(.theme-force-light) .diary-text,
+  html body:not(.theme-force-light) .pagination-info,
+  html body:not(.theme-force-light) .site-state-item-name,
+  html body:not(.theme-force-light) .site-state-item-count,
+  html body:not(.theme-force-light) .links-of-author-item a,
+  html body:not(.theme-force-light) .links-of-blogroll-item a,
+  html body:not(.theme-force-light) .sidebar-popular-item a,
+  html body:not(.theme-force-light) .sidebar-tag-cloud-list a,
+  html body:not(.theme-force-light) .tag-cloud-tags a {
+    color: #d7d6d2 !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  html body:not(.theme-force-light) a {
+    color: #f0f0ee;
+  }
+
+  html body:not(.theme-force-light) .main-menu .menu-item a,
+  html body:not(.theme-force-light) .main-menu .menu-item span.exturl,
+  html body:not(.theme-force-light) .links-of-author-item a,
+  html body:not(.theme-force-light) .sidebar-profile-card .links-of-author-item a,
+  html body:not(.theme-force-light) .links-of-blogroll-item a,
+  html body:not(.theme-force-light) .sidebar-popular-item a,
+  html body:not(.theme-force-light) .sidebar-tag-cloud-list a,
+  html body:not(.theme-force-light) .tag-cloud-tags a,
+  html body:not(.theme-force-light) .pagination a,
+  html body:not(.theme-force-light) .pagination span,
+  html body:not(.theme-force-light) .post-tags a {
+    background: rgba(255, 255, 255, .08) !important;
+    border-color: rgba(255, 255, 255, .16) !important;
+    color: #eeeeeb !important;
+  }
+
+  html body:not(.theme-force-light) .main-menu .menu-item a:hover,
+  html body:not(.theme-force-light) .main-menu .menu-item-active > a,
+  html body:not(.theme-force-light) .main-menu .menu-item-active > span.exturl,
+  html body:not(.theme-force-light) .links-of-author-item a:hover,
+  html body:not(.theme-force-light) .sidebar-profile-card .links-of-author-item a:hover,
+  html body:not(.theme-force-light) .links-of-blogroll-item a:hover,
+  html body:not(.theme-force-light) .sidebar-popular-item a:hover,
+  html body:not(.theme-force-light) .sidebar-tag-cloud-list a:hover,
+  html body:not(.theme-force-light) .tag-cloud-tags a:hover,
+  html body:not(.theme-force-light) .pagination .current,
+  html body:not(.theme-force-light) .pagination a:hover,
+  html body:not(.theme-force-light) .post-tags a:hover {
+    background: #f4f4f2 !important;
+    border-color: #f4f4f2 !important;
+    color: #151515 !important;
+    -webkit-text-fill-color: #151515 !important;
+  }
+
+  html body:not(.theme-force-light) .menu-child,
+  html body:not(.theme-force-light) .main-menu > .menu-item-has-children > .menu-child {
+    background: rgba(31, 31, 31, .98) !important;
+    border-color: rgba(255, 255, 255, .14) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .42) !important;
+  }
+
+  html body:not(.theme-force-light) .photo-frame,
+  html body:not(.theme-force-light) .album-card,
+  html body:not(.theme-force-light) .book-card,
+  html body:not(.theme-force-light) .movie-card,
+  html body:not(.theme-force-light) .bake-card,
+  html body:not(.theme-force-light) .game-platform-card {
+    background: #202020 !important;
+    border-color: rgba(255, 255, 255, .14) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, .34) !important;
+  }
+
+  html body:not(.theme-force-light) .book-actions,
+  html body:not(.theme-force-light) .movie-actions,
+  html body:not(.theme-force-light) .game-actions {
+    background: #f5f5f3 !important;
+    color: #181818 !important;
+  }
+
+  html body:not(.theme-force-light) .photo-image,
+  html body:not(.theme-force-light) input,
+  html body:not(.theme-force-light) textarea,
+  html body:not(.theme-force-light) select,
+  html body:not(.theme-force-light) pre,
+  html body:not(.theme-force-light) code {
+    background: #171717 !important;
+    border-color: rgba(255, 255, 255, .16) !important;
+    color: #f3f3f1 !important;
+  }
+
+  html body:not(.theme-force-light) .load-more-container,
+  html body:not(.theme-force-light) .diary-footer,
+  html body:not(.theme-force-light) .post-footer {
+    border-color: rgba(255, 255, 255, .14) !important;
+  }
+
+  html body:not(.theme-force-light) .load-more-btn,
+  html body:not(.theme-force-light) .btn,
+  html body:not(.theme-force-light) .post-button .btn,
+  html body:not(.theme-force-light) .pagination .page-number,
+  html body:not(.theme-force-light) .pagination .extend {
+    background: transparent !important;
+    border-color: rgba(244, 244, 242, .86) !important;
+    color: #f4f4f2 !important;
+  }
+
+  html body:not(.theme-force-light) .load-more-btn:hover:not(:disabled),
+  html body:not(.theme-force-light) .btn:hover,
+  html body:not(.theme-force-light) .post-button .btn:hover,
+  html body:not(.theme-force-light) .pagination .page-number.current,
+  html body:not(.theme-force-light) .pagination .page-number:hover,
+  html body:not(.theme-force-light) .pagination .extend:hover {
+    background: #f4f4f2 !important;
+    border-color: #f4f4f2 !important;
+    color: #151515 !important;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, .26) !important;
+  }
+}
+
+/* Dark TOC: same structure as the light style, only recolored. */
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-nav {
+  background: rgba(31, 29, 26, .94) !important;
+  border: 1px solid rgba(255, 248, 234, .14) !important;
+  border-radius: 26px 26px 0 0 !important;
+  border-bottom-color: rgba(255, 248, 234, .1) !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .28) !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  padding: 14px 14px 10px !important;
+  width: 100% !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-nav li,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-nav li.sidebar-nav-toc {
+  align-items: center !important;
+  background: #fff8ea !important;
+  border: 1px solid #fff8ea !important;
+  border-radius: 999px !important;
+  box-sizing: border-box !important;
+  color: #111 !important;
+  cursor: default !important;
+  display: flex !important;
+  font-size: .88rem !important;
+  font-weight: 800 !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  min-height: 40px !important;
+  padding: 0 12px !important;
+  text-align: center !important;
+  width: 100% !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  background: rgba(31, 29, 26, .94) !important;
+  border: 1px solid rgba(255, 248, 234, .14) !important;
+  border-radius: 0 0 26px 26px !important;
+  border-top: 0 !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .28) !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  margin: -1px 0 0 !important;
+  max-height: calc(100vh - 80px) !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 14px 16px 18px !important;
+  width: 100% !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: grid !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  max-height: calc(100vh - 116px) !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: 0 !important;
+  scrollbar-width: none !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-item {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-link {
+  align-items: flex-start !important;
+  background: rgba(255, 248, 234, .065) !important;
+  border: 1px solid rgba(255, 248, 234, .16) !important;
+  border-radius: 14px !important;
+  box-sizing: border-box !important;
+  color: #f4efe7 !important;
+  display: flex !important;
+  gap: 6px !important;
+  line-height: 1.45 !important;
+  max-width: 100% !important;
+  padding: 9px 11px !important;
+  text-decoration: none !important;
+  transition: background-color .22s ease, border-color .22s ease, color .22s ease !important;
+  width: 100% !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-link *,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-link span {
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-link:is(:hover, :focus-visible),
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav .active > .nav-link {
+  background: #fff8ea !important;
+  border-color: #fff8ea !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-link:is(:hover, :focus-visible) *,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav .active > .nav-link * {
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-nav {
+    background: rgba(31, 29, 26, .94) !important;
+    border: 1px solid rgba(255, 248, 234, .14) !important;
+    border-radius: 26px 26px 0 0 !important;
+    border-bottom-color: rgba(255, 248, 234, .1) !important;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .28) !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    padding: 14px 14px 10px !important;
+    width: 100% !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-nav li,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-nav li.sidebar-nav-toc {
+    align-items: center !important;
+    background: #fff8ea !important;
+    border: 1px solid #fff8ea !important;
+    border-radius: 999px !important;
+    box-sizing: border-box !important;
+    color: #111 !important;
+    display: flex !important;
+    font-size: .88rem !important;
+    font-weight: 800 !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    min-height: 40px !important;
+    padding: 0 12px !important;
+    text-align: center !important;
+    width: 100% !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+    background: rgba(31, 29, 26, .94) !important;
+    border: 1px solid rgba(255, 248, 234, .14) !important;
+    border-radius: 0 0 26px 26px !important;
+    border-top: 0 !important;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .28) !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    margin: -1px 0 0 !important;
+    max-height: calc(100vh - 80px) !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    padding: 14px 16px 18px !important;
+    width: 100% !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    display: grid !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    max-height: calc(100vh - 116px) !important;
+    min-height: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding: 0 !important;
+    scrollbar-width: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-item {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-link {
+    align-items: flex-start !important;
+    background: rgba(255, 248, 234, .065) !important;
+    border: 1px solid rgba(255, 248, 234, .16) !important;
+    border-radius: 14px !important;
+    box-sizing: border-box !important;
+    color: #f4efe7 !important;
+    display: flex !important;
+    gap: 6px !important;
+    line-height: 1.45 !important;
+    max-width: 100% !important;
+    padding: 9px 11px !important;
+    text-decoration: none !important;
+    transition: background-color .22s ease, border-color .22s ease, color .22s ease !important;
+    width: 100% !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-link *,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-link span {
+    color: inherit !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-link:is(:hover, :focus-visible),
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav .active > .nav-link {
+    background: #fff8ea !important;
+    border-color: #fff8ea !important;
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-link:is(:hover, :focus-visible) *,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav .active > .nav-link * {
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+}
+
+/* Keep article TOC behavior intact in dark mode. */
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+  align-self: start !important;
+  background: transparent !important;
+  background-image: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  max-height: calc(100vh - 24px) !important;
+  overflow: hidden !important;
+  position: sticky !important;
+  top: 18px !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) :is(
+  .site-overview-wrap,
+  .sidebar-profile-card,
+  .sidebar-card,
+  .links-of-blogroll,
+  .sidebar-button,
+  .cc-license,
+  .back-to-top
+) {
+  display: none !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-nav {
+  background: rgba(31, 29, 26, .92) !important;
+  border: 1px solid rgba(255, 248, 234, .14) !important;
+  border-radius: 24px 24px 0 0 !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .32) !important;
+  flex: 0 0 auto !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  background: rgba(31, 29, 26, .92) !important;
+  border: 1px solid rgba(255, 248, 234, .14) !important;
+  border-radius: 0 0 24px 24px !important;
+  border-top: 0 !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .32) !important;
+  display: block !important;
+  flex: 1 1 auto !important;
+  margin: -1px 0 0 !important;
+  max-height: calc(100vh - 80px) !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 12px 14px 14px !important;
+  position: relative !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  max-height: calc(100vh - 112px) !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  scrollbar-width: none !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc::-webkit-scrollbar,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav::-webkit-scrollbar {
+  display: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+    align-self: start !important;
+    background: transparent !important;
+    background-image: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    max-height: calc(100vh - 24px) !important;
+    overflow: hidden !important;
+    position: sticky !important;
+    top: 18px !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) :is(
+    .site-overview-wrap,
+    .sidebar-profile-card,
+    .sidebar-card,
+    .links-of-blogroll,
+    .sidebar-button,
+    .cc-license,
+    .back-to-top
+  ) {
+    display: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-nav {
+    background: rgba(31, 29, 26, .92) !important;
+    border: 1px solid rgba(255, 248, 234, .14) !important;
+    border-radius: 24px 24px 0 0 !important;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .32) !important;
+    flex: 0 0 auto !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+    background: rgba(31, 29, 26, .92) !important;
+    border: 1px solid rgba(255, 248, 234, .14) !important;
+    border-radius: 0 0 24px 24px !important;
+    border-top: 0 !important;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .32) !important;
+    display: block !important;
+    flex: 1 1 auto !important;
+    margin: -1px 0 0 !important;
+    max-height: calc(100vh - 80px) !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    padding: 12px 14px 14px !important;
+    position: relative !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    max-height: calc(100vh - 112px) !important;
+    min-height: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    scrollbar-width: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc::-webkit-scrollbar,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav::-webkit-scrollbar {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
+  }
+}
+
+/* Kylo dark cleanup: remove late-page blocks without touching light mode. */
+html body.theme-force-dark :is(
+  .container,
+  .headband,
+  .main,
+  .main-inner,
+  .content-wrap,
+  .content,
+  .content.page.posts-expand,
+  .content-wrap > .content:not(.index),
+  .album-page-shell,
+  .album-container,
+  .album-wrapper,
+  .gallery-container,
+  .gallery-wrapper,
+  .books-container,
+  .books-wrapper,
+  .movies-container,
+  .movies-wrapper,
+  .diary-wrapper,
+  .diary-container,
+  .bake-container,
+  .games-container
+),
+html body.theme-force-dark :is(
+  .container,
+  .headband,
+  .main,
+  .main-inner,
+  .content-wrap,
+  .content,
+  .album-page-shell,
+  .album-wrapper,
+  .books-wrapper,
+  .movies-wrapper,
+  .diary-wrapper
+)::before,
+html body.theme-force-dark :is(
+  .container,
+  .headband,
+  .main,
+  .main-inner,
+  .content-wrap,
+  .content,
+  .album-page-shell,
+  .album-wrapper,
+  .books-wrapper,
+  .movies-wrapper,
+  .diary-wrapper
+)::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark canvas.fireworks,
+html body.theme-force-dark #canvas-nest,
+html body.theme-force-dark .canvas-nest {
+  opacity: .82 !important;
+  pointer-events: none !important;
+}
+
+html body.theme-force-dark .sidebar-profile-card .site-state-wrap,
+html body.theme-force-dark .sidebar-profile-card .site-state,
+html body.theme-force-dark .sidebar-profile-card .site-state-item,
+html body.theme-force-dark .sidebar-profile-card .site-state-item a,
+html body.theme-force-dark .sidebar-profile-card .site-state-wrap::before,
+html body.theme-force-dark .sidebar-profile-card .site-state-wrap::after,
+html body.theme-force-dark .sidebar-profile-card .site-state::before,
+html body.theme-force-dark .sidebar-profile-card .site-state::after,
+html body.theme-force-dark .sidebar-profile-card .site-state-item::before,
+html body.theme-force-dark .sidebar-profile-card .site-state-item::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-top: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body.theme-force-dark .sidebar-profile-card .site-state-wrap {
+  padding-top: 0 !important;
+}
+
+html body.theme-force-dark :is(.photo-wall, .photo-item, .photo-frame, .photo-caption),
+html body.theme-force-dark :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::before,
+html body.theme-force-dark :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body.theme-force-dark .photo-frame {
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+html body.theme-force-dark .photo-image,
+html body.theme-force-dark .photo-frame img {
+  border: 0 !important;
+  box-shadow: none !important;
+  display: block !important;
+}
+
+html body.theme-force-dark .photo-caption {
+  color: #f4efe7 !important;
+  margin-top: 8px !important;
+  padding: 0 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark :is(#bookLightbox, #movieLightbox) .lightbox-content {
+  background: rgba(31, 29, 26, .96) !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 248, 234, .13) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .48) !important;
+  color: #f4efe7 !important;
+  overflow: hidden !important;
+}
+
+html body.theme-force-dark :is(#bookLightbox, #movieLightbox) :is(
+  .lightbox-content,
+  .book-detail,
+  .movie-detail,
+  .book-detail-header,
+  .movie-detail-header,
+  .book-info-container,
+  .movie-info-container,
+  .book-meta,
+  .movie-meta,
+  .book-detail-footer,
+  .movie-detail-footer,
+  .book-actions,
+  .movie-actions,
+  .movie-buttons
+),
+html body.theme-force-dark :is(#bookLightbox, #movieLightbox) :is(
+  .lightbox-content,
+  .book-detail,
+  .movie-detail,
+  .book-detail-header,
+  .movie-detail-header,
+  .book-summary,
+  .movie-summary,
+  .book-detail-footer,
+  .movie-detail-footer
+)::before,
+html body.theme-force-dark :is(#bookLightbox, #movieLightbox) :is(
+  .lightbox-content,
+  .book-detail,
+  .movie-detail,
+  .book-detail-header,
+  .movie-detail-header,
+  .book-summary,
+  .movie-summary,
+  .book-detail-footer,
+  .movie-detail-footer
+)::after {
+  background-image: none !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body.theme-force-dark :is(#bookLightbox, #movieLightbox) :is(.book-detail-footer, .movie-detail-footer) {
+  background: transparent !important;
+  border-top: 0 !important;
+}
+
+html body.theme-force-dark :is(#bookLightbox, #movieLightbox) :is(.book-summary, .movie-summary) {
+  background: rgba(255, 248, 234, .055) !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  color: #f0e9dc !important;
+}
+
+html body.theme-force-dark .movies-wrapper :is(.movie-card, .movie-buttons),
+html body.theme-force-dark .movies-wrapper :is(.movie-card, .movie-buttons)::before,
+html body.theme-force-dark .movies-wrapper :is(.movie-card, .movie-buttons)::after {
+  background-image: none !important;
+  border-color: rgba(255, 248, 234, .08) !important;
+}
+
+html body.theme-force-dark .movies-wrapper .movie-buttons,
+html body.theme-force-dark .books-wrapper .book-buttons {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark .diary-card,
+html body.theme-force-dark .diary-card::before,
+html body.theme-force-dark .diary-card::after {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body.theme-force-dark .diary-content {
+  background: rgba(31, 29, 26, .9) !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .28) !important;
+  transition: transform .34s cubic-bezier(.2, .9, .2, 1), box-shadow .34s ease, background-color .34s ease !important;
+  will-change: transform !important;
+}
+
+html body.theme-force-dark .diary-card:hover .diary-content {
+  box-shadow: 0 18px 46px rgba(0, 0, 0, .36) !important;
+  transform: translateY(-8px) !important;
+}
+
+html body.theme-force-dark .diary-content::before {
+  background: linear-gradient(135deg, var(--card-color1, #ff9a9e), var(--card-color2, #fad0c4)) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  content: "" !important;
+  height: 4px !important;
+  left: 0 !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  transform: scaleX(0) !important;
+  transform-origin: left center !important;
+  transition: transform .3s ease !important;
+}
+
+html body.theme-force-dark .diary-card:hover .diary-content::before {
+  transform: scaleX(1) !important;
+}
+
+html body.theme-force-dark .header-inner .main-menu > .menu-item-has-children > .menu-child .menu-item-active > a,
+html body.theme-force-dark .main-menu > .mobile-menu-clone.menu-item-active > a {
+  background: #fff8ea !important;
+  border-color: #fff8ea !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body.theme-force-dark .header-inner .main-menu > .menu-item-has-children > .menu-child .menu-item-active > a *,
+html body.theme-force-dark .main-menu > .mobile-menu-clone.menu-item-active > a * {
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) :is(
+    .container,
+    .headband,
+    .main,
+    .main-inner,
+    .content-wrap,
+    .content,
+    .content.page.posts-expand,
+    .content-wrap > .content:not(.index),
+    .album-page-shell,
+    .album-container,
+    .album-wrapper,
+    .gallery-container,
+    .gallery-wrapper,
+    .books-container,
+    .books-wrapper,
+    .movies-container,
+    .movies-wrapper,
+    .diary-wrapper,
+    .diary-container,
+    .bake-container,
+    .games-container
+  ),
+  html body:not(.theme-force-light) :is(
+    .container,
+    .headband,
+    .main,
+    .main-inner,
+    .content-wrap,
+    .content,
+    .album-page-shell,
+    .album-wrapper,
+    .books-wrapper,
+    .movies-wrapper,
+    .diary-wrapper
+  )::before,
+  html body:not(.theme-force-light) :is(
+    .container,
+    .headband,
+    .main,
+    .main-inner,
+    .content-wrap,
+    .content,
+    .album-page-shell,
+    .album-wrapper,
+    .books-wrapper,
+    .movies-wrapper,
+    .diary-wrapper
+  )::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) canvas.fireworks,
+  html body:not(.theme-force-light) #canvas-nest,
+  html body:not(.theme-force-light) .canvas-nest {
+    opacity: .82 !important;
+    pointer-events: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-wrap,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-item,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-item a,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-wrap::before,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-wrap::after,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state::before,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state::after,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-item::before,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-item::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-top: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-wrap {
+    padding-top: 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption),
+  html body:not(.theme-force-light) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::before,
+  html body:not(.theme-force-light) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .photo-frame {
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .photo-image,
+  html body:not(.theme-force-light) .photo-frame img {
+    border: 0 !important;
+    box-shadow: none !important;
+    display: block !important;
+  }
+
+  html body:not(.theme-force-light) .photo-caption {
+    color: #f4efe7 !important;
+    margin-top: 8px !important;
+    padding: 0 !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) :is(#bookLightbox, #movieLightbox) .lightbox-content {
+    background: rgba(31, 29, 26, .96) !important;
+    background-image: none !important;
+    border: 1px solid rgba(255, 248, 234, .13) !important;
+    border-radius: 22px !important;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .48) !important;
+    color: #f4efe7 !important;
+    overflow: hidden !important;
+  }
+
+  html body:not(.theme-force-light) :is(#bookLightbox, #movieLightbox) :is(
+    .lightbox-content,
+    .book-detail,
+    .movie-detail,
+    .book-detail-header,
+    .movie-detail-header,
+    .book-info-container,
+    .movie-info-container,
+    .book-meta,
+    .movie-meta,
+    .book-detail-footer,
+    .movie-detail-footer,
+    .book-actions,
+    .movie-actions,
+    .movie-buttons
+  ),
+  html body:not(.theme-force-light) :is(#bookLightbox, #movieLightbox) :is(
+    .lightbox-content,
+    .book-detail,
+    .movie-detail,
+    .book-detail-header,
+    .movie-detail-header,
+    .book-summary,
+    .movie-summary,
+    .book-detail-footer,
+    .movie-detail-footer
+  )::before,
+  html body:not(.theme-force-light) :is(#bookLightbox, #movieLightbox) :is(
+    .lightbox-content,
+    .book-detail,
+    .movie-detail,
+    .book-detail-header,
+    .movie-detail-header,
+    .book-summary,
+    .movie-summary,
+    .book-detail-footer,
+    .movie-detail-footer
+  )::after {
+    background-image: none !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(#bookLightbox, #movieLightbox) :is(.book-detail-footer, .movie-detail-footer) {
+    background: transparent !important;
+    border-top: 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(#bookLightbox, #movieLightbox) :is(.book-summary, .movie-summary) {
+    background: rgba(255, 248, 234, .055) !important;
+    border: 0 !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+    color: #f0e9dc !important;
+  }
+
+  html body:not(.theme-force-light) .movies-wrapper :is(.movie-card, .movie-buttons),
+  html body:not(.theme-force-light) .movies-wrapper :is(.movie-card, .movie-buttons)::before,
+  html body:not(.theme-force-light) .movies-wrapper :is(.movie-card, .movie-buttons)::after {
+    background-image: none !important;
+    border-color: rgba(255, 248, 234, .08) !important;
+  }
+
+  html body:not(.theme-force-light) .movies-wrapper .movie-buttons,
+  html body:not(.theme-force-light) .books-wrapper .book-buttons {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .diary-card,
+  html body:not(.theme-force-light) .diary-card::before,
+  html body:not(.theme-force-light) .diary-card::after {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .diary-content {
+    background: rgba(31, 29, 26, .9) !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 18px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .28) !important;
+    transition: transform .34s cubic-bezier(.2, .9, .2, 1), box-shadow .34s ease, background-color .34s ease !important;
+    will-change: transform !important;
+  }
+
+  html body:not(.theme-force-light) .diary-card:hover .diary-content {
+    box-shadow: 0 18px 46px rgba(0, 0, 0, .36) !important;
+    transform: translateY(-8px) !important;
+  }
+
+  html body:not(.theme-force-light) .diary-content::before {
+    background: linear-gradient(135deg, var(--card-color1, #ff9a9e), var(--card-color2, #fad0c4)) !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    content: "" !important;
+    height: 4px !important;
+    left: 0 !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    transform: scaleX(0) !important;
+    transform-origin: left center !important;
+    transition: transform .3s ease !important;
+  }
+
+  html body:not(.theme-force-light) .diary-card:hover .diary-content::before {
+    transform: scaleX(1) !important;
+  }
+
+  html body:not(.theme-force-light) .header-inner .main-menu > .menu-item-has-children > .menu-child .menu-item-active > a,
+  html body:not(.theme-force-light) .main-menu > .mobile-menu-clone.menu-item-active > a {
+    background: #fff8ea !important;
+    border-color: #fff8ea !important;
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+
+  html body:not(.theme-force-light) .header-inner .main-menu > .menu-item-has-children > .menu-child .menu-item-active > a *,
+  html body:not(.theme-force-light) .main-menu > .mobile-menu-clone.menu-item-active > a * {
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+}
+
+/* Category cards: make the action button match the soft glass card style. */
+html body .categories-container .category-card-meta .view-button,
+html body .content.categories-page .category-card-meta .view-button {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, .92), rgba(235, 248, 255, .88)) !important;
+  border: 1px solid rgba(114, 190, 238, .42) !important;
+  border-radius: 14px !important;
+  box-shadow:
+    0 10px 24px rgba(79, 151, 207, .12),
+    inset 0 1px 0 rgba(255, 255, 255, .86) !important;
+  color: #2479b8 !important;
+  -webkit-text-fill-color: #2479b8 !important;
+  min-height: 48px !important;
+  padding: 0 23px !important;
+}
+
+html body .categories-container .category-card-meta .view-button svg,
+html body .content.categories-page .category-card-meta .view-button svg {
+  fill: currentColor !important;
+  transition: transform .24s ease !important;
+}
+
+html body .categories-container .category-card-meta .view-button:is(:hover, :focus-visible, :active),
+html body .content.categories-page .category-card-meta .view-button:is(:hover, :focus-visible, :active) {
+  background:
+    linear-gradient(135deg, rgba(246, 252, 255, .98), rgba(211, 238, 255, .94)) !important;
+  border-color: rgba(76, 169, 228, .58) !important;
+  box-shadow:
+    0 14px 30px rgba(79, 151, 207, .18),
+    inset 0 1px 0 rgba(255, 255, 255, .9) !important;
+  color: #0f6fae !important;
+  -webkit-text-fill-color: #0f6fae !important;
+  transform: translateY(-2px) !important;
+}
+
+html body .categories-container .category-card-meta .view-button:is(:hover, :focus-visible, :active) svg,
+html body .content.categories-page .category-card-meta .view-button:is(:hover, :focus-visible, :active) svg {
+  transform: translateX(2px) !important;
+}
+
+html body.theme-force-dark .categories-container .category-card-meta .view-button,
+html body.theme-force-dark .content.categories-page .category-card-meta .view-button {
+  background: rgba(255, 248, 234, .08) !important;
+  border-color: rgba(255, 248, 234, .16) !important;
+  box-shadow: none !important;
+  color: #f4efe7 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark .categories-container .category-card-meta .view-button:is(:hover, :focus-visible, :active),
+html body.theme-force-dark .content.categories-page .category-card-meta .view-button:is(:hover, :focus-visible, :active) {
+  background: #fff8ea !important;
+  border-color: #fff8ea !important;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .28) !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .categories-container .category-card-meta .view-button,
+  html body:not(.theme-force-light) .content.categories-page .category-card-meta .view-button {
+    background: rgba(255, 248, 234, .08) !important;
+    border-color: rgba(255, 248, 234, .16) !important;
+    box-shadow: none !important;
+    color: #f4efe7 !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) .categories-container .category-card-meta .view-button:is(:hover, :focus-visible, :active),
+  html body:not(.theme-force-light) .content.categories-page .category-card-meta .view-button:is(:hover, :focus-visible, :active) {
+    background: #fff8ea !important;
+    border-color: #fff8ea !important;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, .28) !important;
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+}
+
+html body.theme-force-dark {
+  --text-color: #f3f3f1;
+  --text-color-secondary: #c9c8c3;
+  --content-bg-color: #181818;
+  --card-bg-color: #202020;
+  --apple-card-bg: rgba(31, 31, 31, .96);
+  --apple-card-border: rgba(255, 255, 255, .14);
+  --apple-card-shadow: 0 18px 44px rgba(0, 0, 0, .34);
+  --apple-ink: #f4f4f2;
+  --apple-muted: #c8c7c2;
+  --apple-chip-bg: rgba(255, 255, 255, .08);
+  --apple-chip-border: rgba(255, 255, 255, .16);
+  --apple-hover: #f4f4f2;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, .055), transparent 30%),
+    linear-gradient(180deg, #101010 0%, #151515 50%, #111 100%) !important;
+  color: #f3f3f1 !important;
+}
+
+html body.theme-force-dark .header-inner,
+html body.theme-force-dark .main-inner,
+html body.theme-force-dark .content.index,
+html body.theme-force-dark .content-wrap > .content:not(.index),
+html body.theme-force-dark .post-block,
+html body.theme-force-dark .post-card-preview,
+html body.theme-force-dark .post-card-info,
+html body.theme-force-dark .album-wrapper,
+html body.theme-force-dark .gallery-wrapper,
+html body.theme-force-dark .movies-wrapper,
+html body.theme-force-dark .books-wrapper,
+html body.theme-force-dark .bake-wrapper,
+html body.theme-force-dark .diary-card,
+html body.theme-force-dark .category-card,
+html body.theme-force-dark .tag-card,
+html body.theme-force-dark .game-card,
+html body.theme-force-dark .sidebar-profile-card,
+html body.theme-force-dark .sidebar-card,
+html body.theme-force-dark .links-of-blogroll,
+html body.theme-force-dark .site-author-widget .sidebar-profile-card,
+html body.theme-force-dark .site-author-widget .sidebar-card {
+  background: rgba(31, 31, 31, .96) !important;
+  border-color: rgba(255, 255, 255, .14) !important;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .34) !important;
+  color: #f3f3f1 !important;
+}
+
+html body.theme-force-dark .sidebar,
+html body.theme-force-dark .sidebar-inner,
+html body.theme-force-dark .sidebar-inner.affix,
+html body.theme-force-dark .site-overview-wrap,
+html body.theme-force-dark .site-author-widget,
+html body.theme-force-dark .sidebar-panel,
+html body.theme-force-dark .post-toc-wrap,
+html body.theme-force-dark .site-author,
+html body.theme-force-dark .site-state-wrap,
+html body.theme-force-dark .links-of-author {
+  background: transparent !important;
+  color: #f3f3f1 !important;
+}
+
+html body.theme-force-dark .header-inner::before,
+html body.theme-force-dark .post-card-info::before,
+html body.theme-force-dark .post-card-info::after {
+  background: rgba(31, 31, 31, .96) !important;
+}
+
+html body.theme-force-dark .site-title,
+html body.theme-force-dark .site-author-name,
+html body.theme-force-dark .sidebar-card-title,
+html body.theme-force-dark .post-title,
+html body.theme-force-dark .post-title a,
+html body.theme-force-dark .page-title,
+html body.theme-force-dark .album-title,
+html body.theme-force-dark .movie-title,
+html body.theme-force-dark .book-title,
+html body.theme-force-dark h1,
+html body.theme-force-dark h2,
+html body.theme-force-dark h3,
+html body.theme-force-dark h4 {
+  color: #f6f6f4 !important;
+  -webkit-text-fill-color: #f6f6f4 !important;
+}
+
+html body.theme-force-dark .post-body,
+html body.theme-force-dark .post-body p,
+html body.theme-force-dark .post-meta,
+html body.theme-force-dark .page-subtitle,
+html body.theme-force-dark .site-description,
+html body.theme-force-dark .photo-caption,
+html body.theme-force-dark .album-desc,
+html body.theme-force-dark .movie-desc,
+html body.theme-force-dark .book-desc,
+html body.theme-force-dark .diary-text,
+html body.theme-force-dark .pagination-info,
+html body.theme-force-dark .site-state-item-name,
+html body.theme-force-dark .site-state-item-count,
+html body.theme-force-dark .links-of-author-item a,
+html body.theme-force-dark .links-of-blogroll-item a,
+html body.theme-force-dark .sidebar-popular-item a,
+html body.theme-force-dark .sidebar-tag-cloud-list a,
+html body.theme-force-dark .tag-cloud-tags a {
+  color: #d7d6d2 !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+html body.theme-force-dark a {
+  color: #f0f0ee;
+}
+
+html body.theme-force-dark .main-menu .menu-item a,
+html body.theme-force-dark .main-menu .menu-item span.exturl,
+html body.theme-force-dark .links-of-author-item a,
+html body.theme-force-dark .sidebar-profile-card .links-of-author-item a,
+html body.theme-force-dark .links-of-blogroll-item a,
+html body.theme-force-dark .sidebar-popular-item a,
+html body.theme-force-dark .sidebar-tag-cloud-list a,
+html body.theme-force-dark .tag-cloud-tags a,
+html body.theme-force-dark .pagination a,
+html body.theme-force-dark .pagination span,
+html body.theme-force-dark .post-tags a {
+  background: rgba(255, 255, 255, .08) !important;
+  border-color: rgba(255, 255, 255, .16) !important;
+  color: #eeeeeb !important;
+}
+
+html body.theme-force-dark .main-menu .menu-item a:hover,
+html body.theme-force-dark .main-menu .menu-item-active > a,
+html body.theme-force-dark .main-menu .menu-item-active > span.exturl,
+html body.theme-force-dark .links-of-author-item a:hover,
+html body.theme-force-dark .sidebar-profile-card .links-of-author-item a:hover,
+html body.theme-force-dark .links-of-blogroll-item a:hover,
+html body.theme-force-dark .sidebar-popular-item a:hover,
+html body.theme-force-dark .sidebar-tag-cloud-list a:hover,
+html body.theme-force-dark .tag-cloud-tags a:hover,
+html body.theme-force-dark .pagination .current,
+html body.theme-force-dark .pagination a:hover,
+html body.theme-force-dark .post-tags a:hover {
+  background: #f4f4f2 !important;
+  border-color: #f4f4f2 !important;
+  color: #151515 !important;
+  -webkit-text-fill-color: #151515 !important;
+}
+
+html body.theme-force-dark .menu-child,
+html body.theme-force-dark .main-menu > .menu-item-has-children > .menu-child {
+  background: rgba(31, 31, 31, .98) !important;
+  border-color: rgba(255, 255, 255, .14) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .42) !important;
+}
+
+html body.theme-force-dark .photo-frame,
+html body.theme-force-dark .album-card,
+html body.theme-force-dark .book-card,
+html body.theme-force-dark .movie-card,
+html body.theme-force-dark .bake-card,
+html body.theme-force-dark .game-platform-card {
+  background: #202020 !important;
+  border-color: rgba(255, 255, 255, .14) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .34) !important;
+}
+
+html body.theme-force-dark .book-actions,
+html body.theme-force-dark .movie-actions,
+html body.theme-force-dark .game-actions {
+  background: #f5f5f3 !important;
+  color: #181818 !important;
+}
+
+html body.theme-force-dark .photo-image,
+html body.theme-force-dark input,
+html body.theme-force-dark textarea,
+html body.theme-force-dark select,
+html body.theme-force-dark pre,
+html body.theme-force-dark code {
+  background: #171717 !important;
+  border-color: rgba(255, 255, 255, .16) !important;
+  color: #f3f3f1 !important;
+}
+
+html body.theme-force-dark .load-more-container,
+html body.theme-force-dark .diary-footer,
+html body.theme-force-dark .post-footer {
+  border-color: rgba(255, 255, 255, .14) !important;
+}
+
+html body.theme-force-dark .load-more-btn,
+html body.theme-force-dark .btn,
+html body.theme-force-dark .post-button .btn,
+html body.theme-force-dark .pagination .page-number,
+html body.theme-force-dark .pagination .extend {
+  background: transparent !important;
+  border-color: rgba(244, 244, 242, .86) !important;
+  color: #f4f4f2 !important;
+}
+
+html body.theme-force-dark .load-more-btn:hover:not(:disabled),
+html body.theme-force-dark .btn:hover,
+html body.theme-force-dark .post-button .btn:hover,
+html body.theme-force-dark .pagination .page-number.current,
+html body.theme-force-dark .pagination .page-number:hover,
+html body.theme-force-dark .pagination .extend:hover {
+  background: #f4f4f2 !important;
+  border-color: #f4f4f2 !important;
+  color: #151515 !important;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .26) !important;
+}
+
+/* Final neutral dark sweep: keep it late and specific enough to beat page hotfixes. */
+@media (prefers-color-scheme: dark) {
+  html,
+  html body:not(.theme-force-light),
+  html body:not(.theme-force-light) .container,
+  html body:not(.theme-force-light) .main {
+    background:
+      radial-gradient(circle at 12% -10%, rgba(255, 250, 240, .045), transparent 28%),
+      linear-gradient(180deg, #11100f 0%, #171615 52%, #11100f 100%) !important;
+    background-color: #11100f !important;
+    background-image:
+      radial-gradient(circle at 12% -10%, rgba(255, 250, 240, .045), transparent 28%),
+      linear-gradient(180deg, #11100f 0%, #171615 52%, #11100f 100%) !important;
+    color: #f3efe8 !important;
+  }
+
+  html body:not(.theme-force-light) .container .header .header-inner,
+  html body:not(.theme-force-light) .container .header .header-inner::before,
+  html body:not(.theme-force-light) .main-inner,
+  html body:not(.theme-force-light) .content-wrap,
+  html body:not(.theme-force-light) .content,
+  html body:not(.theme-force-light) .content.index,
+  html body:not(.theme-force-light) .content-wrap > .content:not(.index),
+  html body:not(.theme-force-light) .content.page.posts-expand,
+  html body:not(.theme-force-light) .content.post.posts-expand,
+  html body:not(.theme-force-light) .content.post.posts-expand .post-block,
+  html body:not(.theme-force-light) .post-block,
+  html body:not(.theme-force-light) .gallery-container,
+  html body:not(.theme-force-light) .gallery-wrapper,
+  html body:not(.theme-force-light) .album-wrapper,
+  html body:not(.theme-force-light) .books-container,
+  html body:not(.theme-force-light) .books-wrapper,
+  html body:not(.theme-force-light) .movies-container,
+  html body:not(.theme-force-light) .movies-wrapper,
+  html body:not(.theme-force-light) .bake-container,
+  html body:not(.theme-force-light) .bake-wrapper,
+  html body:not(.theme-force-light) .diary-container,
+  html body:not(.theme-force-light) .diary-wrapper,
+  html body:not(.theme-force-light) .lab-container,
+  html body:not(.theme-force-light) .category-all-page,
+  html body:not(.theme-force-light) .tag-cloud,
+  html body:not(.theme-force-light) .archive,
+  html body:not(.theme-force-light) .comments,
+  html body:not(.theme-force-light) .games-container,
+  html body:not(.theme-force-light) .games-header,
+  html body:not(.theme-force-light) .game-empty {
+    background: #1f1e1c !important;
+    background-color: #1f1e1c !important;
+    background-image: none !important;
+    border-color: rgba(255, 250, 240, .14) !important;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, .36) !important;
+    color: #f3efe8 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-profile-card,
+  html body:not(.theme-force-light) .sidebar-card,
+  html body:not(.theme-force-light) .links-of-blogroll,
+  html body:not(.theme-force-light) .site-author-widget .sidebar-profile-card,
+  html body:not(.theme-force-light) .site-author-widget .sidebar-card,
+  html body:not(.theme-force-light) .post-card-preview,
+  html body:not(.theme-force-light) .post-card-info,
+  html body:not(.theme-force-light) .gallery-card,
+  html body:not(.theme-force-light) .album-card,
+  html body:not(.theme-force-light) .book-card,
+  html body:not(.theme-force-light) .movie-card,
+  html body:not(.theme-force-light) .bake-card,
+  html body:not(.theme-force-light) .diary-entry,
+  html body:not(.theme-force-light) .diary-card,
+  html body:not(.theme-force-light) .category-card,
+  html body:not(.theme-force-light) .tag-card,
+  html body:not(.theme-force-light) .games-list .game-card,
+  html body:not(.theme-force-light) .game-card,
+  html body:not(.theme-force-light) .category-stat-card,
+  html body:not(.theme-force-light) .category-count-card {
+    background: #272522 !important;
+    background-color: #272522 !important;
+    background-image: none !important;
+    border-color: rgba(255, 250, 240, .13) !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .32) !important;
+    color: #f3efe8 !important;
+  }
+
+  html body:not(.theme-force-light) .book-actions,
+  html body:not(.theme-force-light) .movie-buttons,
+  html body:not(.theme-force-light) .game-actions,
+  html body:not(.theme-force-light) .game-cover-placeholder,
+  html body:not(.theme-force-light) .page-selector,
+  html body:not(.theme-force-light) .category-selector,
+  html body:not(.theme-force-light) .category-dropdown,
+  html body:not(.theme-force-light) .category-option,
+  html body:not(.theme-force-light) .photo-caption,
+  html body:not(.theme-force-light) .movie-detail,
+  html body:not(.theme-force-light) .lightbox-content {
+    background: #24221f !important;
+    background-color: #24221f !important;
+    border-color: rgba(255, 250, 240, .14) !important;
+    color: #f3efe8 !important;
+  }
+
+  html body:not(.theme-force-light) .site-title,
+  html body:not(.theme-force-light) .site-author-name,
+  html body:not(.theme-force-light) .sidebar-card-title,
+  html body:not(.theme-force-light) .post-title,
+  html body:not(.theme-force-light) .post-title a,
+  html body:not(.theme-force-light) .page-title,
+  html body:not(.theme-force-light) .games-title,
+  html body:not(.theme-force-light) .game-name,
+  html body:not(.theme-force-light) .game-name a,
+  html body:not(.theme-force-light) .movie-title-overlay h3,
+  html body:not(.theme-force-light) .book-title,
+  html body:not(.theme-force-light) .album-title,
+  html body:not(.theme-force-light) .diary-date,
+  html body:not(.theme-force-light) .category-title,
+  html body:not(.theme-force-light) h1,
+  html body:not(.theme-force-light) h2,
+  html body:not(.theme-force-light) h3,
+  html body:not(.theme-force-light) h4 {
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+    text-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .post-body,
+  html body:not(.theme-force-light) .post-body p,
+  html body:not(.theme-force-light) .post-meta,
+  html body:not(.theme-force-light) .site-description,
+  html body:not(.theme-force-light) .page-subtitle,
+  html body:not(.theme-force-light) .games-subtitle,
+  html body:not(.theme-force-light) .games-kicker,
+  html body:not(.theme-force-light) .game-stats,
+  html body:not(.theme-force-light) .game-note,
+  html body:not(.theme-force-light) .album-desc,
+  html body:not(.theme-force-light) .book-desc,
+  html body:not(.theme-force-light) .movie-desc,
+  html body:not(.theme-force-light) .diary-text,
+  html body:not(.theme-force-light) .diary-content,
+  html body:not(.theme-force-light) .work-info,
+  html body:not(.theme-force-light) .pagination-info,
+  html body:not(.theme-force-light) .site-state-item-name,
+  html body:not(.theme-force-light) .site-state-item-count {
+    color: #d8d1c6 !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  html body:not(.theme-force-light) .main-menu .menu-item a,
+  html body:not(.theme-force-light) .main-menu .menu-item span.exturl,
+  html body:not(.theme-force-light) .game-platform-tab,
+  html body:not(.theme-force-light) .game-action,
+  html body:not(.theme-force-light) .pagination-btn,
+  html body:not(.theme-force-light) .page-selector,
+  html body:not(.theme-force-light) .load-more-btn,
+  html body:not(.theme-force-light) .btn,
+  html body:not(.theme-force-light) .post-button .btn,
+  html body:not(.theme-force-light) .book-buttons .btn,
+  html body:not(.theme-force-light) .movie-buttons .btn,
+  html body:not(.theme-force-light) .links-of-author-item a,
+  html body:not(.theme-force-light) .links-of-blogroll-item a,
+  html body:not(.theme-force-light) .sidebar-popular-item a,
+  html body:not(.theme-force-light) .sidebar-tag-cloud-list a,
+  html body:not(.theme-force-light) .tag-cloud-tags a,
+  html body:not(.theme-force-light) .post-tags a,
+  html body:not(.theme-force-light) .pagination a,
+  html body:not(.theme-force-light) .pagination span {
+    background: rgba(255, 250, 240, .08) !important;
+    border-color: rgba(255, 250, 240, .18) !important;
+    color: #f3efe8 !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  html body:not(.theme-force-light) .main-menu .menu-item a:hover,
+  html body:not(.theme-force-light) .main-menu .menu-item-active > a,
+  html body:not(.theme-force-light) .main-menu .menu-item-active > span.exturl,
+  html body:not(.theme-force-light) .game-platform-tab:hover,
+  html body:not(.theme-force-light) .game-platform-tab.active,
+  html body:not(.theme-force-light) .game-action:hover,
+  html body:not(.theme-force-light) .pagination-btn:hover:not(:disabled),
+  html body:not(.theme-force-light) .load-more-btn:hover:not(:disabled),
+  html body:not(.theme-force-light) .btn:hover,
+  html body:not(.theme-force-light) .book-buttons .btn:hover,
+  html body:not(.theme-force-light) .movie-buttons .btn:hover,
+  html body:not(.theme-force-light) .links-of-author-item a:hover,
+  html body:not(.theme-force-light) .links-of-blogroll-item a:hover,
+  html body:not(.theme-force-light) .sidebar-popular-item a:hover,
+  html body:not(.theme-force-light) .sidebar-tag-cloud-list a:hover,
+  html body:not(.theme-force-light) .tag-cloud-tags a:hover,
+  html body:not(.theme-force-light) .post-tags a:hover,
+  html body:not(.theme-force-light) .pagination .current,
+  html body:not(.theme-force-light) .pagination a:hover {
+    background: #fffaf1 !important;
+    border-color: #fffaf1 !important;
+    color: #151413 !important;
+    -webkit-text-fill-color: #151413 !important;
+  }
+}
+
+html body.theme-force-dark,
+html body.theme-force-dark .container,
+html body.theme-force-dark .main {
+  background:
+    radial-gradient(circle at 12% -10%, rgba(255, 250, 240, .045), transparent 28%),
+    linear-gradient(180deg, #11100f 0%, #171615 52%, #11100f 100%) !important;
+  background-color: #11100f !important;
+  background-image:
+    radial-gradient(circle at 12% -10%, rgba(255, 250, 240, .045), transparent 28%),
+    linear-gradient(180deg, #11100f 0%, #171615 52%, #11100f 100%) !important;
+  color: #f3efe8 !important;
+}
+
+html body.theme-force-dark .container .header .header-inner,
+html body.theme-force-dark .container .header .header-inner::before,
+html body.theme-force-dark .main-inner,
+html body.theme-force-dark .content-wrap,
+html body.theme-force-dark .content,
+html body.theme-force-dark .content.index,
+html body.theme-force-dark .content-wrap > .content:not(.index),
+html body.theme-force-dark .content.page.posts-expand,
+html body.theme-force-dark .content.post.posts-expand,
+html body.theme-force-dark .content.post.posts-expand .post-block,
+html body.theme-force-dark .post-block,
+html body.theme-force-dark .gallery-container,
+html body.theme-force-dark .gallery-wrapper,
+html body.theme-force-dark .album-wrapper,
+html body.theme-force-dark .books-container,
+html body.theme-force-dark .books-wrapper,
+html body.theme-force-dark .movies-container,
+html body.theme-force-dark .movies-wrapper,
+html body.theme-force-dark .bake-container,
+html body.theme-force-dark .bake-wrapper,
+html body.theme-force-dark .diary-container,
+html body.theme-force-dark .diary-wrapper,
+html body.theme-force-dark .lab-container,
+html body.theme-force-dark .category-all-page,
+html body.theme-force-dark .tag-cloud,
+html body.theme-force-dark .archive,
+html body.theme-force-dark .comments,
+html body.theme-force-dark .games-container,
+html body.theme-force-dark .games-header,
+html body.theme-force-dark .game-empty {
+  background: #1f1e1c !important;
+  background-color: #1f1e1c !important;
+  background-image: none !important;
+  border-color: rgba(255, 250, 240, .14) !important;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .36) !important;
+  color: #f3efe8 !important;
+}
+
+html body.theme-force-dark .sidebar-profile-card,
+html body.theme-force-dark .sidebar-card,
+html body.theme-force-dark .links-of-blogroll,
+html body.theme-force-dark .site-author-widget .sidebar-profile-card,
+html body.theme-force-dark .site-author-widget .sidebar-card,
+html body.theme-force-dark .post-card-preview,
+html body.theme-force-dark .post-card-info,
+html body.theme-force-dark .gallery-card,
+html body.theme-force-dark .album-card,
+html body.theme-force-dark .book-card,
+html body.theme-force-dark .movie-card,
+html body.theme-force-dark .bake-card,
+html body.theme-force-dark .diary-entry,
+html body.theme-force-dark .diary-card,
+html body.theme-force-dark .category-card,
+html body.theme-force-dark .tag-card,
+html body.theme-force-dark .games-list .game-card,
+html body.theme-force-dark .game-card,
+html body.theme-force-dark .category-stat-card,
+html body.theme-force-dark .category-count-card {
+  background: #272522 !important;
+  background-color: #272522 !important;
+  background-image: none !important;
+  border-color: rgba(255, 250, 240, .13) !important;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .32) !important;
+  color: #f3efe8 !important;
+}
+
+html body.theme-force-dark .book-actions,
+html body.theme-force-dark .movie-buttons,
+html body.theme-force-dark .game-actions,
+html body.theme-force-dark .game-cover-placeholder,
+html body.theme-force-dark .page-selector,
+html body.theme-force-dark .category-selector,
+html body.theme-force-dark .category-dropdown,
+html body.theme-force-dark .category-option,
+html body.theme-force-dark .photo-caption,
+html body.theme-force-dark .movie-detail,
+html body.theme-force-dark .lightbox-content {
+  background: #24221f !important;
+  background-color: #24221f !important;
+  border-color: rgba(255, 250, 240, .14) !important;
+  color: #f3efe8 !important;
+}
+
+html body.theme-force-dark .site-title,
+html body.theme-force-dark .site-author-name,
+html body.theme-force-dark .sidebar-card-title,
+html body.theme-force-dark .post-title,
+html body.theme-force-dark .post-title a,
+html body.theme-force-dark .page-title,
+html body.theme-force-dark .games-title,
+html body.theme-force-dark .game-name,
+html body.theme-force-dark .game-name a,
+html body.theme-force-dark .movie-title-overlay h3,
+html body.theme-force-dark .book-title,
+html body.theme-force-dark .album-title,
+html body.theme-force-dark .diary-date,
+html body.theme-force-dark .category-title,
+html body.theme-force-dark h1,
+html body.theme-force-dark h2,
+html body.theme-force-dark h3,
+html body.theme-force-dark h4 {
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+  text-shadow: none !important;
+}
+
+html body.theme-force-dark .post-body,
+html body.theme-force-dark .post-body p,
+html body.theme-force-dark .post-meta,
+html body.theme-force-dark .site-description,
+html body.theme-force-dark .page-subtitle,
+html body.theme-force-dark .games-subtitle,
+html body.theme-force-dark .games-kicker,
+html body.theme-force-dark .game-stats,
+html body.theme-force-dark .game-note,
+html body.theme-force-dark .album-desc,
+html body.theme-force-dark .book-desc,
+html body.theme-force-dark .movie-desc,
+html body.theme-force-dark .diary-text,
+html body.theme-force-dark .diary-content,
+html body.theme-force-dark .work-info,
+html body.theme-force-dark .pagination-info,
+html body.theme-force-dark .site-state-item-name,
+html body.theme-force-dark .site-state-item-count {
+  color: #d8d1c6 !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+html body.theme-force-dark .main-menu .menu-item a,
+html body.theme-force-dark .main-menu .menu-item span.exturl,
+html body.theme-force-dark .game-platform-tab,
+html body.theme-force-dark .game-action,
+html body.theme-force-dark .pagination-btn,
+html body.theme-force-dark .page-selector,
+html body.theme-force-dark .load-more-btn,
+html body.theme-force-dark .btn,
+html body.theme-force-dark .post-button .btn,
+html body.theme-force-dark .book-buttons .btn,
+html body.theme-force-dark .movie-buttons .btn,
+html body.theme-force-dark .links-of-author-item a,
+html body.theme-force-dark .links-of-blogroll-item a,
+html body.theme-force-dark .sidebar-popular-item a,
+html body.theme-force-dark .sidebar-tag-cloud-list a,
+html body.theme-force-dark .tag-cloud-tags a,
+html body.theme-force-dark .post-tags a,
+html body.theme-force-dark .pagination a,
+html body.theme-force-dark .pagination span {
+  background: rgba(255, 250, 240, .08) !important;
+  border-color: rgba(255, 250, 240, .18) !important;
+  color: #f3efe8 !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+html body.theme-force-dark .main-menu .menu-item a:hover,
+html body.theme-force-dark .main-menu .menu-item-active > a,
+html body.theme-force-dark .main-menu .menu-item-active > span.exturl,
+html body.theme-force-dark .game-platform-tab:hover,
+html body.theme-force-dark .game-platform-tab.active,
+html body.theme-force-dark .game-action:hover,
+html body.theme-force-dark .pagination-btn:hover:not(:disabled),
+html body.theme-force-dark .load-more-btn:hover:not(:disabled),
+html body.theme-force-dark .btn:hover,
+html body.theme-force-dark .book-buttons .btn:hover,
+html body.theme-force-dark .movie-buttons .btn:hover,
+html body.theme-force-dark .links-of-author-item a:hover,
+html body.theme-force-dark .links-of-blogroll-item a:hover,
+html body.theme-force-dark .sidebar-popular-item a:hover,
+html body.theme-force-dark .sidebar-tag-cloud-list a:hover,
+html body.theme-force-dark .tag-cloud-tags a:hover,
+html body.theme-force-dark .post-tags a:hover,
+html body.theme-force-dark .pagination .current,
+html body.theme-force-dark .pagination a:hover {
+  background: #fffaf1 !important;
+  border-color: #fffaf1 !important;
+  color: #151413 !important;
+  -webkit-text-fill-color: #151413 !important;
+}
+
+/* Targeted day-mode fixes requested with the dark-mode pass. */
+html body .movies-container #rabbitToggle,
+html body .movies-container #rabbitToggleBack {
+  display: none !important;
+}
+
+html body .categories-container .view-button,
+html body .content.categories-page .view-button {
+  background: #fff !important;
+  background-image: none !important;
+  border: 1px solid #111 !important;
+  box-shadow: none !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body .categories-container .view-button:hover,
+html body .categories-container .view-button:active,
+html body .content.categories-page .view-button:hover,
+html body .content.categories-page .view-button:active {
+  background: #111 !important;
+  background-image: none !important;
+  border-color: #111 !important;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, .16) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+html body .bake-card {
+  transition: transform .26s ease, box-shadow .26s ease, border-color .26s ease !important;
+}
+
+html body .bake-card:hover {
+  border-color: rgba(0, 0, 0, .16) !important;
+  box-shadow: 0 18px 42px rgba(20, 24, 32, .14) !important;
+  transform: translateY(-6px) !important;
+}
+
+html body .bake-card:hover .bake-card-image {
+  transform: scale(1.035) !important;
+}
+
+/* Dark mode correction layer: neutral, warm black, no blue/purple cast. */
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) {
+    --kylo-dark-bg: #12110f;
+    --kylo-dark-panel: #1f1d1a;
+    --kylo-dark-card: #292621;
+    --kylo-dark-soft: #343028;
+    --kylo-dark-border: rgba(255, 246, 232, .14);
+    --kylo-dark-border-strong: rgba(255, 246, 232, .24);
+    --kylo-dark-text: #f4efe6;
+    --kylo-dark-muted: #d7cfc2;
+    --kylo-dark-faint: #aaa094;
+    --kylo-dark-invert: #151311;
+    --kylo-dark-hot: #fff8ea;
+    color-scheme: dark;
+  }
+
+  html body:not(.theme-force-light) :is(.main-inner, .content-wrap, .content, .sidebar, .sidebar-inner, .sidebar-inner.affix, .site-overview-wrap, .site-author-widget, .sidebar-panel, .site-author, .site-state-wrap, .links-of-author, .load-more-container, .diary-footer, .post-footer, .games-container, .gallery-wrapper, .album-wrapper, .books-wrapper, .movies-wrapper, .bake-wrapper, .diary-wrapper, .categories-container, .album-page-shell, .gallery-container, .books-container, .movies-container, .bake-container, .diary-container) {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.main-inner, .content-wrap, .content, .sidebar, .sidebar-inner, .site-overview-wrap, .site-author-widget, .sidebar-panel, .gallery-wrapper, .album-wrapper, .books-wrapper, .movies-wrapper, .bake-wrapper, .diary-wrapper, .categories-container, .gallery-container, .books-container, .movies-container, .bake-container, .diary-container)::before,
+  html body:not(.theme-force-light) :is(.main-inner, .content-wrap, .content, .sidebar, .sidebar-inner, .site-overview-wrap, .site-author-widget, .sidebar-panel, .gallery-wrapper, .album-wrapper, .books-wrapper, .movies-wrapper, .bake-wrapper, .diary-wrapper, .categories-container, .gallery-container, .books-container, .movies-container, .bake-container, .diary-container)::after {
+    background: transparent !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.post-block, .post-card-preview, .sidebar-profile-card, .sidebar-card, .links-of-blogroll, .post-toc-wrap, .post-toc, .album-card, .gallery-card, .photo-frame, .photo-item, .book-card, .movie-card, .bake-card, .diary-card, .diary-entry, .categories-header-glass, .category-card-glass, .category-stat-card, .category-count-card, .stat-card, .tag-cloud-section, .category-all-page, .lab-wrapper, .project-card, .games-header, .game-card, .game-empty, .comments, .giscus, .lightbox-content, .book-detail, .movie-detail, .popup.search-popup) {
+    background: var(--kylo-dark-panel) !important;
+    background-color: var(--kylo-dark-panel) !important;
+    background-image: none !important;
+    border: 1px solid var(--kylo-dark-border) !important;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .34) !important;
+    color: var(--kylo-dark-text) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.post-card-info, .site-state, .book-actions, .movie-actions, .movie-buttons, .game-actions, .book-summary, .movie-summary, .book-detail-footer, .movie-detail-footer, .book-rating, .movie-rating, .category-selector, .main-category-selector, .sub-category-dropdown, .category-dropdown, .category-option, .main-category-option, .sub-category-option, .game-cover-placeholder, .photo-caption, .search-header, .search-input-container, #search-result, .search-result-list, .search-result-title, .search-result) {
+    background: var(--kylo-dark-card) !important;
+    background-color: var(--kylo-dark-card) !important;
+    background-image: none !important;
+    border-color: var(--kylo-dark-border) !important;
+    color: var(--kylo-dark-text) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.post-card-info, .book-detail-footer, .movie-detail-footer, .lightbox-content, .book-summary, .movie-summary, .diary-content)::before,
+  html body:not(.theme-force-light) :is(.post-card-info, .book-detail-footer, .movie-detail-footer, .lightbox-content, .book-summary, .movie-summary, .diary-content)::after {
+    background: transparent !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.site-title, .site-author-name, .sidebar-card-title, .links-of-blogroll-title, .post-title, .post-title a, .page-title, .album-title, .movie-title, .movie-title-overlay h3, .book-title, .diary-date, .category-title, .category-all-title, .tag-cloud-title, .games-title, .game-name, .game-name a, .lab-wrapper h1, .lab-wrapper h2, .lab-wrapper h3, h1, h2, h3, h4) {
+    color: var(--kylo-dark-text) !important;
+    -webkit-text-fill-color: var(--kylo-dark-text) !important;
+    text-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.post-body, .post-body p, .post-meta, .post-description, .post-card-info, .post-card-info p, .site-description, .page-subtitle, .sidebar-popular-item a, .sidebar-popular-item a span, .sidebar-popular-item time, .site-state-item-name, .site-state-item-count, .album-desc, .book-desc, .book-meta, .book-meta strong, .movie-desc, .movie-meta, .movie-meta strong, .diary-text, .diary-content, .work-info, .games-subtitle, .games-kicker, .game-stats, .game-note, .pagination-info, .footer-wrapper, .footer-wrapper *, .footer-inner, .footer-inner *) {
+    color: var(--kylo-dark-muted) !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  html body:not(.theme-force-light) .content.index .post-card-info :is(.post-meta, .post-meta *, .post-description, .post-body, .post-body *, .post-meta-item, .post-meta-item *, time, i) {
+    color: var(--kylo-dark-muted) !important;
+    -webkit-text-fill-color: var(--kylo-dark-muted) !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a,
+  html body:not(.theme-force-light) .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a > span,
+  html body:not(.theme-force-light) .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a > time {
+    color: var(--kylo-dark-muted) !important;
+    -webkit-text-fill-color: var(--kylo-dark-muted) !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a:hover,
+  html body:not(.theme-force-light) .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a:focus-visible {
+    background: var(--kylo-dark-hot) !important;
+    border-color: var(--kylo-dark-hot) !important;
+    color: var(--kylo-dark-invert) !important;
+    -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a:hover > span,
+  html body:not(.theme-force-light) .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a:hover > time,
+  html body:not(.theme-force-light) .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a:focus-visible > span,
+  html body:not(.theme-force-light) .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a:focus-visible > time {
+    color: var(--kylo-dark-invert) !important;
+    -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+  }
+
+  html body:not(.theme-force-light) :is(a, a span, .post-button .btn, .btn, .load-more-btn, .download-btn, .game-action, .game-page-button, .pagination a, .pagination span, .page-number, .extend, .main-menu .menu-item a, .main-menu .menu-item span.exturl, .links-of-author-item a, .links-of-blogroll-item a, .sidebar-popular-item a, .sidebar-tag-cloud-list a, .tag-cloud-tags a, .tag-cloud-link, .post-tags a, .category-selector, .main-category-selector, .category-option, .main-category-option, .sub-category-option, .game-platform-tab, .game-achievement-more) {
+    text-decoration: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.post-button .btn, .btn, .load-more-btn, .download-btn, .game-action, .game-page-button, .pagination a, .pagination span.page-number, .pagination .extend, .page-number, .extend, .main-menu .menu-item a, .main-menu .menu-item span.exturl, .links-of-author-item a, .links-of-blogroll-item a, .sidebar-popular-item a, .sidebar-tag-cloud-list a, .tag-cloud-tags a, .tag-cloud-link, .post-tags a, .category-selector, .main-category-selector, .category-option, .main-category-option, .sub-category-option, .game-platform-tab, .game-achievement-more) {
+    background: rgba(255, 248, 234, .08) !important;
+    background-image: none !important;
+    border: 1px solid var(--kylo-dark-border) !important;
+    box-shadow: none !important;
+    color: var(--kylo-dark-text) !important;
+    -webkit-text-fill-color: var(--kylo-dark-text) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.post-button .btn, .btn, .load-more-btn, .download-btn, .game-action, .game-page-button, .pagination a, .pagination span.page-number, .pagination .extend, .main-menu .menu-item a, .main-menu .menu-item span.exturl, .links-of-author-item a, .links-of-blogroll-item a, .sidebar-popular-item a, .sidebar-tag-cloud-list a, .tag-cloud-tags a, .tag-cloud-link, .post-tags a, .category-selector, .main-category-selector, .category-option, .main-category-option, .sub-category-option, .game-platform-tab, .game-achievement-more):hover,
+  html body:not(.theme-force-light) :is(.post-button .btn, .btn, .load-more-btn, .download-btn, .game-action, .game-page-button, .pagination a, .pagination span.page-number, .pagination .extend, .main-menu .menu-item a, .main-menu .menu-item span.exturl, .links-of-author-item a, .links-of-blogroll-item a, .sidebar-popular-item a, .sidebar-tag-cloud-list a, .tag-cloud-tags a, .tag-cloud-link, .post-tags a, .category-selector, .main-category-selector, .category-option, .main-category-option, .sub-category-option, .game-platform-tab, .game-achievement-more):focus-visible,
+  html body:not(.theme-force-light) :is(.main-menu .menu-item-active > a, .main-menu .menu-item-active > span.exturl, .menu-item-active > a, .menu-item-active > span.exturl, .game-platform-tab.active, .game-page-button.active, .pagination .current, .pagination .page-number.current, .pagination span.current, .category-option.active, .main-category-option.active, .sub-category-option.active) {
+    background: var(--kylo-dark-hot) !important;
+    background-image: none !important;
+    border-color: var(--kylo-dark-hot) !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .28) !important;
+    color: var(--kylo-dark-invert) !important;
+    -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.post-button .btn, .btn, .load-more-btn, .download-btn, .game-action, .game-page-button, .pagination a, .pagination span.page-number, .pagination .extend, .main-menu .menu-item a, .main-menu .menu-item span.exturl, .links-of-author-item a, .links-of-blogroll-item a, .sidebar-popular-item a, .sidebar-tag-cloud-list a, .tag-cloud-tags a, .tag-cloud-link, .post-tags a, .category-selector, .main-category-selector, .category-option, .main-category-option, .sub-category-option, .game-platform-tab, .game-achievement-more):hover *,
+  html body:not(.theme-force-light) :is(.main-menu .menu-item-active > a, .main-menu .menu-item-active > span.exturl, .menu-item-active > a, .menu-item-active > span.exturl, .game-platform-tab.active, .game-page-button.active, .pagination .current, .pagination .page-number.current, .pagination span.current, .category-option.active, .main-category-option.active, .sub-category-option.active) * {
+    color: var(--kylo-dark-invert) !important;
+    -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.pagination a, .pagination span.page-number, .pagination .extend, .game-page-button) {
+    border-radius: 10px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    min-width: 38px !important;
+    padding: 0 10px !important;
+  }
+
+  html body:not(.theme-force-light) :is(.post-toc-wrap, .post-toc, .post-toc .nav) {
+    background: var(--kylo-dark-panel) !important;
+    border-color: var(--kylo-dark-border) !important;
+    color: var(--kylo-dark-text) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.post-toc .nav-link, .post-toc .nav-link span, .post-toc ol, .post-toc li) {
+    background: transparent !important;
+    border-color: transparent !important;
+    color: var(--kylo-dark-muted) !important;
+    -webkit-text-fill-color: var(--kylo-dark-muted) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.post-toc .nav-link:hover, .post-toc .nav .active > .nav-link) {
+    background: rgba(255, 248, 234, .1) !important;
+    border-radius: 8px !important;
+    color: var(--kylo-dark-text) !important;
+    -webkit-text-fill-color: var(--kylo-dark-text) !important;
+  }
+
+  html body:not(.theme-force-light) :is(input, textarea, select, .search-input) {
+    background: var(--kylo-dark-soft) !important;
+    border: 1px solid var(--kylo-dark-border) !important;
+    color: var(--kylo-dark-text) !important;
+    -webkit-text-fill-color: var(--kylo-dark-text) !important;
+  }
+
+  html body:not(.theme-force-light) input::placeholder,
+  html body:not(.theme-force-light) textarea::placeholder,
+  html body:not(.theme-force-light) .search-input::placeholder {
+    color: var(--kylo-dark-faint) !important;
+    -webkit-text-fill-color: var(--kylo-dark-faint) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.search-pop-overlay, .search-pop-overlay.search-active) {
+    background: rgba(18, 17, 15, .72) !important;
+    backdrop-filter: blur(7px) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.local-search-pop-overlay, .popup.search-popup, .search-popup) {
+    background: var(--kylo-dark-panel) !important;
+    border: 1px solid var(--kylo-dark-border-strong) !important;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .5) !important;
+    color: var(--kylo-dark-text) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.search-result-list a, .search-result-title a, .search-result, #search-result a) {
+    color: var(--kylo-dark-text) !important;
+    -webkit-text-fill-color: var(--kylo-dark-text) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.comments, .giscus, .giscus-frame, iframe.giscus-frame) {
+    background: var(--kylo-dark-panel) !important;
+    border-color: var(--kylo-dark-border) !important;
+    color-scheme: dark;
+  }
+
+  html body:not(.theme-force-light) :is(.book-detail, .movie-detail, .lightbox-content) {
+    scrollbar-color: rgba(255, 248, 234, .24) transparent;
+  }
+
+  html body:not(.theme-force-light) :is(.book-summary, .movie-summary) {
+    border-left-color: var(--kylo-dark-border-strong) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.book-category-tag, .movie-category-tag, .diary-tag, .post-count, .tag-item) {
+    background: rgba(255, 248, 234, .08) !important;
+    background-image: none !important;
+    border-color: var(--kylo-dark-border) !important;
+    box-shadow: none !important;
+    color: var(--kylo-dark-text) !important;
+    -webkit-text-fill-color: var(--kylo-dark-text) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.tag-item:hover, .tag-item:active) {
+    background: var(--kylo-dark-hot) !important;
+    border-color: var(--kylo-dark-hot) !important;
+    color: var(--kylo-dark-invert) !important;
+    -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+  }
+
+  html body:not(.theme-force-light) .categories-container .view-button,
+  html body:not(.theme-force-light) .content.categories-page .view-button {
+    background: rgba(255, 248, 234, .08) !important;
+    background-image: none !important;
+    border: 1px solid var(--kylo-dark-border) !important;
+    box-shadow: none !important;
+    color: var(--kylo-dark-text) !important;
+    -webkit-text-fill-color: var(--kylo-dark-text) !important;
+  }
+
+  html body:not(.theme-force-light) .categories-container .view-button:hover,
+  html body:not(.theme-force-light) .categories-container .view-button:active,
+  html body:not(.theme-force-light) .content.categories-page .view-button:hover,
+  html body:not(.theme-force-light) .content.categories-page .view-button:active {
+    background: var(--kylo-dark-hot) !important;
+    background-image: none !important;
+    border-color: var(--kylo-dark-hot) !important;
+    color: var(--kylo-dark-invert) !important;
+    -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+  }
+
+  html body:not(.theme-force-light) .game-platform-tab,
+  html body:not(.theme-force-light) .game-platform-pill {
+    --game-platform-icon-inner: var(--kylo-dark-invert);
+  }
+
+  html body:not(.theme-force-light) .game-platform-tab:hover,
+  html body:not(.theme-force-light) .game-platform-tab.active {
+    --game-platform-icon-inner: var(--kylo-dark-hot);
+  }
+
+  html body:not(.theme-force-light) .game-platform-pill {
+    background: #111 !important;
+    border: 1px solid var(--kylo-dark-border) !important;
+    color: var(--kylo-dark-text) !important;
+  }
+
+  html body:not(.theme-force-light) .platform-epic-mark path:first-child {
+    fill: currentColor !important;
+  }
+
+  html body:not(.theme-force-light) .platform-epic-mark path:nth-child(2),
+  html body:not(.theme-force-light) .platform-epic-text {
+    fill: var(--game-platform-icon-inner, var(--kylo-dark-invert)) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.game-achievement, .game-achievement-more) {
+    background: var(--kylo-dark-card) !important;
+    border-color: var(--kylo-dark-border) !important;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .22) !important;
+    color: var(--kylo-dark-text) !important;
+    -webkit-text-fill-color: var(--kylo-dark-text) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.game-achievement:hover, .game-achievement-more:hover) {
+    background: var(--kylo-dark-hot) !important;
+    border-color: var(--kylo-dark-hot) !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, .28) !important;
+    color: var(--kylo-dark-invert) !important;
+    -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.game-achievement:hover *, .game-achievement-more:hover *) {
+    color: var(--kylo-dark-invert) !important;
+    -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.bake-card:hover, .book-card:hover, .movie-card:hover, .album-card:hover, .gallery-card:hover, .photo-frame:hover, .game-card:hover, .diary-card:hover, .project-card:hover) {
+    border-color: var(--kylo-dark-border-strong) !important;
+    box-shadow: 0 22px 52px rgba(0, 0, 0, .42) !important;
+  }
+
+  html body:not(.theme-force-light) .footer {
+    background: transparent !important;
+    color: var(--kylo-dark-muted) !important;
+  }
+}
+
+html body.theme-force-dark {
+  --kylo-dark-bg: #12110f;
+  --kylo-dark-panel: #1f1d1a;
+  --kylo-dark-card: #292621;
+  --kylo-dark-soft: #343028;
+  --kylo-dark-border: rgba(255, 246, 232, .14);
+  --kylo-dark-border-strong: rgba(255, 246, 232, .24);
+  --kylo-dark-text: #f4efe6;
+  --kylo-dark-muted: #d7cfc2;
+  --kylo-dark-faint: #aaa094;
+  --kylo-dark-invert: #151311;
+  --kylo-dark-hot: #fff8ea;
+  color-scheme: dark;
+}
+
+html body.theme-force-dark :is(.main-inner, .content-wrap, .content, .sidebar, .sidebar-inner, .sidebar-inner.affix, .site-overview-wrap, .site-author-widget, .sidebar-panel, .site-author, .site-state-wrap, .links-of-author, .load-more-container, .diary-footer, .post-footer, .games-container, .gallery-wrapper, .album-wrapper, .books-wrapper, .movies-wrapper, .bake-wrapper, .diary-wrapper, .categories-container, .album-page-shell, .gallery-container, .books-container, .movies-container, .bake-container, .diary-container) {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark :is(.main-inner, .content-wrap, .content, .sidebar, .sidebar-inner, .site-overview-wrap, .site-author-widget, .sidebar-panel, .gallery-wrapper, .album-wrapper, .books-wrapper, .movies-wrapper, .bake-wrapper, .diary-wrapper, .categories-container, .gallery-container, .books-container, .movies-container, .bake-container, .diary-container)::before,
+html body.theme-force-dark :is(.main-inner, .content-wrap, .content, .sidebar, .sidebar-inner, .site-overview-wrap, .site-author-widget, .sidebar-panel, .gallery-wrapper, .album-wrapper, .books-wrapper, .movies-wrapper, .bake-wrapper, .diary-wrapper, .categories-container, .gallery-container, .books-container, .movies-container, .bake-container, .diary-container)::after {
+  background: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark :is(.post-block, .post-card-preview, .sidebar-profile-card, .sidebar-card, .links-of-blogroll, .post-toc-wrap, .post-toc, .album-card, .gallery-card, .photo-frame, .photo-item, .book-card, .movie-card, .bake-card, .diary-card, .diary-entry, .categories-header-glass, .category-card-glass, .category-stat-card, .category-count-card, .stat-card, .tag-cloud-section, .category-all-page, .lab-wrapper, .project-card, .games-header, .game-card, .game-empty, .comments, .giscus, .lightbox-content, .book-detail, .movie-detail, .popup.search-popup) {
+  background: var(--kylo-dark-panel) !important;
+  background-color: var(--kylo-dark-panel) !important;
+  background-image: none !important;
+  border: 1px solid var(--kylo-dark-border) !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .34) !important;
+  color: var(--kylo-dark-text) !important;
+}
+
+html body.theme-force-dark :is(.post-card-info, .site-state, .book-actions, .movie-actions, .movie-buttons, .game-actions, .book-summary, .movie-summary, .book-detail-footer, .movie-detail-footer, .book-rating, .movie-rating, .category-selector, .main-category-selector, .sub-category-dropdown, .category-dropdown, .category-option, .main-category-option, .sub-category-option, .game-cover-placeholder, .photo-caption, .search-header, .search-input-container, #search-result, .search-result-list, .search-result-title, .search-result) {
+  background: var(--kylo-dark-card) !important;
+  background-color: var(--kylo-dark-card) !important;
+  background-image: none !important;
+  border-color: var(--kylo-dark-border) !important;
+  color: var(--kylo-dark-text) !important;
+}
+
+html body.theme-force-dark :is(.post-card-info, .book-detail-footer, .movie-detail-footer, .lightbox-content, .book-summary, .movie-summary, .diary-content)::before,
+html body.theme-force-dark :is(.post-card-info, .book-detail-footer, .movie-detail-footer, .lightbox-content, .book-summary, .movie-summary, .diary-content)::after {
+  background: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark :is(.site-title, .site-author-name, .sidebar-card-title, .links-of-blogroll-title, .post-title, .post-title a, .page-title, .album-title, .movie-title, .movie-title-overlay h3, .book-title, .diary-date, .category-title, .category-all-title, .tag-cloud-title, .games-title, .game-name, .game-name a, .lab-wrapper h1, .lab-wrapper h2, .lab-wrapper h3, h1, h2, h3, h4) {
+  color: var(--kylo-dark-text) !important;
+  -webkit-text-fill-color: var(--kylo-dark-text) !important;
+  text-shadow: none !important;
+}
+
+html body.theme-force-dark :is(.post-body, .post-body p, .post-meta, .post-description, .post-card-info, .post-card-info p, .site-description, .page-subtitle, .sidebar-popular-item a, .sidebar-popular-item a span, .sidebar-popular-item time, .site-state-item-name, .site-state-item-count, .album-desc, .book-desc, .book-meta, .book-meta strong, .movie-desc, .movie-meta, .movie-meta strong, .diary-text, .diary-content, .work-info, .games-subtitle, .games-kicker, .game-stats, .game-note, .pagination-info, .footer-wrapper, .footer-wrapper *, .footer-inner, .footer-inner *) {
+  color: var(--kylo-dark-muted) !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+html body.theme-force-dark .content.index .post-card-info :is(.post-meta, .post-meta *, .post-description, .post-body, .post-body *, .post-meta-item, .post-meta-item *, time, i) {
+  color: var(--kylo-dark-muted) !important;
+  -webkit-text-fill-color: var(--kylo-dark-muted) !important;
+}
+
+html body.theme-force-dark .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a,
+html body.theme-force-dark .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a > span,
+html body.theme-force-dark .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a > time {
+  color: var(--kylo-dark-muted) !important;
+  -webkit-text-fill-color: var(--kylo-dark-muted) !important;
+}
+
+html body.theme-force-dark .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a:hover,
+html body.theme-force-dark .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a:focus-visible {
+  background: var(--kylo-dark-hot) !important;
+  border-color: var(--kylo-dark-hot) !important;
+  color: var(--kylo-dark-invert) !important;
+  -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+}
+
+html body.theme-force-dark .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a:hover > span,
+html body.theme-force-dark .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a:hover > time,
+html body.theme-force-dark .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a:focus-visible > span,
+html body.theme-force-dark .sidebar-popular .sidebar-popular-list .sidebar-popular-item > a:focus-visible > time {
+  color: var(--kylo-dark-invert) !important;
+  -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+}
+
+html body.theme-force-dark :is(a, a span, .post-button .btn, .btn, .load-more-btn, .download-btn, .game-action, .game-page-button, .pagination a, .pagination span, .page-number, .extend, .main-menu .menu-item a, .main-menu .menu-item span.exturl, .links-of-author-item a, .links-of-blogroll-item a, .sidebar-popular-item a, .sidebar-tag-cloud-list a, .tag-cloud-tags a, .tag-cloud-link, .post-tags a, .category-selector, .main-category-selector, .category-option, .main-category-option, .sub-category-option, .game-platform-tab, .game-achievement-more) {
+  text-decoration: none !important;
+}
+
+html body.theme-force-dark :is(.post-button .btn, .btn, .load-more-btn, .download-btn, .game-action, .game-page-button, .pagination a, .pagination span.page-number, .pagination .extend, .page-number, .extend, .main-menu .menu-item a, .main-menu .menu-item span.exturl, .links-of-author-item a, .links-of-blogroll-item a, .sidebar-popular-item a, .sidebar-tag-cloud-list a, .tag-cloud-tags a, .tag-cloud-link, .post-tags a, .category-selector, .main-category-selector, .category-option, .main-category-option, .sub-category-option, .game-platform-tab, .game-achievement-more) {
+  background: rgba(255, 248, 234, .08) !important;
+  background-image: none !important;
+  border: 1px solid var(--kylo-dark-border) !important;
+  box-shadow: none !important;
+  color: var(--kylo-dark-text) !important;
+  -webkit-text-fill-color: var(--kylo-dark-text) !important;
+}
+
+html body.theme-force-dark :is(.post-button .btn, .btn, .load-more-btn, .download-btn, .game-action, .game-page-button, .pagination a, .pagination span.page-number, .pagination .extend, .main-menu .menu-item a, .main-menu .menu-item span.exturl, .links-of-author-item a, .links-of-blogroll-item a, .sidebar-popular-item a, .sidebar-tag-cloud-list a, .tag-cloud-tags a, .tag-cloud-link, .post-tags a, .category-selector, .main-category-selector, .category-option, .main-category-option, .sub-category-option, .game-platform-tab, .game-achievement-more):hover,
+html body.theme-force-dark :is(.post-button .btn, .btn, .load-more-btn, .download-btn, .game-action, .game-page-button, .pagination a, .pagination span.page-number, .pagination .extend, .main-menu .menu-item a, .main-menu .menu-item span.exturl, .links-of-author-item a, .links-of-blogroll-item a, .sidebar-popular-item a, .sidebar-tag-cloud-list a, .tag-cloud-tags a, .tag-cloud-link, .post-tags a, .category-selector, .main-category-selector, .category-option, .main-category-option, .sub-category-option, .game-platform-tab, .game-achievement-more):focus-visible,
+html body.theme-force-dark :is(.main-menu .menu-item-active > a, .main-menu .menu-item-active > span.exturl, .menu-item-active > a, .menu-item-active > span.exturl, .game-platform-tab.active, .game-page-button.active, .pagination .current, .pagination .page-number.current, .pagination span.current, .category-option.active, .main-category-option.active, .sub-category-option.active) {
+  background: var(--kylo-dark-hot) !important;
+  background-image: none !important;
+  border-color: var(--kylo-dark-hot) !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .28) !important;
+  color: var(--kylo-dark-invert) !important;
+  -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+}
+
+html body.theme-force-dark :is(.post-button .btn, .btn, .load-more-btn, .download-btn, .game-action, .game-page-button, .pagination a, .pagination span.page-number, .pagination .extend, .main-menu .menu-item a, .main-menu .menu-item span.exturl, .links-of-author-item a, .links-of-blogroll-item a, .sidebar-popular-item a, .sidebar-tag-cloud-list a, .tag-cloud-tags a, .tag-cloud-link, .post-tags a, .category-selector, .main-category-selector, .category-option, .main-category-option, .sub-category-option, .game-platform-tab, .game-achievement-more):hover *,
+html body.theme-force-dark :is(.main-menu .menu-item-active > a, .main-menu .menu-item-active > span.exturl, .menu-item-active > a, .menu-item-active > span.exturl, .game-platform-tab.active, .game-page-button.active, .pagination .current, .pagination .page-number.current, .pagination span.current, .category-option.active, .main-category-option.active, .sub-category-option.active) * {
+  color: var(--kylo-dark-invert) !important;
+  -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+}
+
+html body.theme-force-dark :is(.pagination a, .pagination span.page-number, .pagination .extend, .game-page-button) {
+  border-radius: 10px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  min-width: 38px !important;
+  padding: 0 10px !important;
+}
+
+html body.theme-force-dark :is(.post-toc-wrap, .post-toc, .post-toc .nav) {
+  background: var(--kylo-dark-panel) !important;
+  border-color: var(--kylo-dark-border) !important;
+  color: var(--kylo-dark-text) !important;
+}
+
+html body.theme-force-dark :is(.post-toc .nav-link, .post-toc .nav-link span, .post-toc ol, .post-toc li) {
+  background: transparent !important;
+  border-color: transparent !important;
+  color: var(--kylo-dark-muted) !important;
+  -webkit-text-fill-color: var(--kylo-dark-muted) !important;
+}
+
+html body.theme-force-dark :is(.post-toc .nav-link:hover, .post-toc .nav .active > .nav-link) {
+  background: rgba(255, 248, 234, .1) !important;
+  border-radius: 8px !important;
+  color: var(--kylo-dark-text) !important;
+  -webkit-text-fill-color: var(--kylo-dark-text) !important;
+}
+
+html body.theme-force-dark :is(input, textarea, select, .search-input) {
+  background: var(--kylo-dark-soft) !important;
+  border: 1px solid var(--kylo-dark-border) !important;
+  color: var(--kylo-dark-text) !important;
+  -webkit-text-fill-color: var(--kylo-dark-text) !important;
+}
+
+html body.theme-force-dark input::placeholder,
+html body.theme-force-dark textarea::placeholder,
+html body.theme-force-dark .search-input::placeholder {
+  color: var(--kylo-dark-faint) !important;
+  -webkit-text-fill-color: var(--kylo-dark-faint) !important;
+}
+
+html body.theme-force-dark :is(.search-pop-overlay, .search-pop-overlay.search-active) {
+  background: rgba(18, 17, 15, .72) !important;
+  backdrop-filter: blur(7px) !important;
+}
+
+html body.theme-force-dark :is(.local-search-pop-overlay, .popup.search-popup, .search-popup) {
+  background: var(--kylo-dark-panel) !important;
+  border: 1px solid var(--kylo-dark-border-strong) !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .5) !important;
+  color: var(--kylo-dark-text) !important;
+}
+
+html body.theme-force-dark :is(.search-result-list a, .search-result-title a, .search-result, #search-result a) {
+  color: var(--kylo-dark-text) !important;
+  -webkit-text-fill-color: var(--kylo-dark-text) !important;
+}
+
+html body.theme-force-dark :is(.comments, .giscus, .giscus-frame, iframe.giscus-frame) {
+  background: var(--kylo-dark-panel) !important;
+  border-color: var(--kylo-dark-border) !important;
+  color-scheme: dark;
+}
+
+html body.theme-force-dark :is(.book-detail, .movie-detail, .lightbox-content) {
+  scrollbar-color: rgba(255, 248, 234, .24) transparent;
+}
+
+html body.theme-force-dark :is(.book-summary, .movie-summary) {
+  border-left-color: var(--kylo-dark-border-strong) !important;
+}
+
+html body.theme-force-dark :is(.book-category-tag, .movie-category-tag, .diary-tag, .post-count, .tag-item) {
+  background: rgba(255, 248, 234, .08) !important;
+  background-image: none !important;
+  border-color: var(--kylo-dark-border) !important;
+  box-shadow: none !important;
+  color: var(--kylo-dark-text) !important;
+  -webkit-text-fill-color: var(--kylo-dark-text) !important;
+}
+
+html body.theme-force-dark :is(.tag-item:hover, .tag-item:active) {
+  background: var(--kylo-dark-hot) !important;
+  border-color: var(--kylo-dark-hot) !important;
+  color: var(--kylo-dark-invert) !important;
+  -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+}
+
+html body.theme-force-dark .categories-container .view-button,
+html body.theme-force-dark .content.categories-page .view-button {
+  background: rgba(255, 248, 234, .08) !important;
+  background-image: none !important;
+  border: 1px solid var(--kylo-dark-border) !important;
+  box-shadow: none !important;
+  color: var(--kylo-dark-text) !important;
+  -webkit-text-fill-color: var(--kylo-dark-text) !important;
+}
+
+html body.theme-force-dark .categories-container .view-button:hover,
+html body.theme-force-dark .categories-container .view-button:active,
+html body.theme-force-dark .content.categories-page .view-button:hover,
+html body.theme-force-dark .content.categories-page .view-button:active {
+  background: var(--kylo-dark-hot) !important;
+  background-image: none !important;
+  border-color: var(--kylo-dark-hot) !important;
+  color: var(--kylo-dark-invert) !important;
+  -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+}
+
+html body.theme-force-dark .game-platform-tab,
+html body.theme-force-dark .game-platform-pill {
+  --game-platform-icon-inner: var(--kylo-dark-invert);
+}
+
+html body.theme-force-dark .game-platform-tab:hover,
+html body.theme-force-dark .game-platform-tab.active {
+  --game-platform-icon-inner: var(--kylo-dark-hot);
+}
+
+html body.theme-force-dark .game-platform-pill {
+  background: #111 !important;
+  border: 1px solid var(--kylo-dark-border) !important;
+  color: var(--kylo-dark-text) !important;
+}
+
+html body.theme-force-dark .platform-epic-mark path:first-child {
+  fill: currentColor !important;
+}
+
+html body.theme-force-dark .platform-epic-mark path:nth-child(2),
+html body.theme-force-dark .platform-epic-text {
+  fill: var(--game-platform-icon-inner, var(--kylo-dark-invert)) !important;
+}
+
+html body.theme-force-dark :is(.game-achievement, .game-achievement-more) {
+  background: var(--kylo-dark-card) !important;
+  border-color: var(--kylo-dark-border) !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .22) !important;
+  color: var(--kylo-dark-text) !important;
+  -webkit-text-fill-color: var(--kylo-dark-text) !important;
+}
+
+html body.theme-force-dark :is(.game-achievement:hover, .game-achievement-more:hover) {
+  background: var(--kylo-dark-hot) !important;
+  border-color: var(--kylo-dark-hot) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, .28) !important;
+  color: var(--kylo-dark-invert) !important;
+  -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+}
+
+html body.theme-force-dark :is(.game-achievement:hover *, .game-achievement-more:hover *) {
+  color: var(--kylo-dark-invert) !important;
+  -webkit-text-fill-color: var(--kylo-dark-invert) !important;
+}
+
+html body.theme-force-dark :is(.bake-card:hover, .book-card:hover, .movie-card:hover, .album-card:hover, .gallery-card:hover, .photo-frame:hover, .game-card:hover, .diary-card:hover, .project-card:hover) {
+  border-color: var(--kylo-dark-border-strong) !important;
+  box-shadow: 0 22px 52px rgba(0, 0, 0, .42) !important;
+}
+
+html body.theme-force-dark .footer {
+  background: transparent !important;
+  color: var(--kylo-dark-muted) !important;
+}
+
+/* 2026-07-06 final component cleanup: keep dark mode neutral, remove leftover white caps/corners. */
+html body.theme-force-light {
+  background: #f6f7f9 !important;
+  background-image: none !important;
+  color: #111 !important;
+}
+
+html body.theme-force-light :is(.album-wrapper, .photo-frame, .photo-caption, .load-more-container, .pagination-info) {
+  background-image: none !important;
+}
+
+html body.theme-force-light .album-wrapper {
+  background: #fff !important;
+  border: 1px solid rgba(17, 17, 17, .08) !important;
+  box-shadow: 0 10px 28px rgba(17, 17, 17, .08) !important;
+  color: #111 !important;
+}
+
+html body.theme-force-light .photo-frame {
+  background: #f6f8fc !important;
+  border: 1px solid rgba(17, 17, 17, .08) !important;
+  box-shadow: 0 8px 22px rgba(17, 17, 17, .1) !important;
+}
+
+html body.theme-force-light .photo-image {
+  background: #f6f8fc !important;
+}
+
+html body.theme-force-light .photo-caption,
+html body.theme-force-light .pagination-info,
+html body.theme-force-light .album-wrapper .page-subtitle {
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body.theme-force-light .load-more-container {
+  border-top-color: rgba(17, 17, 17, .08) !important;
+}
+
+html body.theme-force-light .load-more-btn {
+  background: #fff !important;
+  border: 1px solid #111 !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body.theme-force-light .load-more-btn:hover:not(:disabled) {
+  background: #111 !important;
+  border-color: #111 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+html body :is(.categories-container .view-button, .content.categories-page .view-button) {
+  background: #fff !important;
+  background-image: none !important;
+  border: 1px solid #111 !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body :is(.categories-container .view-button, .content.categories-page .view-button) svg {
+  fill: currentColor !important;
+}
+
+html body :is(.categories-container .view-button, .content.categories-page .view-button):is(:hover, :focus-visible, :active) {
+  background: #111 !important;
+  background-image: none !important;
+  border-color: #111 !important;
+  box-shadow: 0 12px 24px rgba(17, 17, 17, .16) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+html body .categories-container .category-card-wrapper:hover .category-card-glass,
+html body .categories-container .category-card-wrapper.hover-active .category-card-glass {
+  transform: translateY(-12px) !important;
+  box-shadow: 0 20px 42px rgba(17, 17, 17, .16) !important;
+}
+
+html body .categories-container .category-card-wrapper:hover .category-card-image,
+html body .categories-container .category-card-wrapper.hover-active .category-card-image {
+  transform: scale(1.06) !important;
+}
+
+html body .categories-container .category-card-wrapper:hover .hover-overlay,
+html body .categories-container .category-card-wrapper.hover-active .hover-overlay {
+  opacity: 1 !important;
+}
+
+html body.theme-force-dark :is(
+  .album-wrapper,
+  .photo-frame,
+  .photo-item,
+  .book-card,
+  .movie-card,
+  .bake-card,
+  .diary-content,
+  .game-card,
+  .category-card-glass,
+  .tag-cloud-section,
+  .post-toc-wrap,
+  .post-toc,
+  .sidebar-card,
+  .comments,
+  .giscus-comments,
+  .lightbox-content,
+  .book-detail,
+  .movie-detail
+)::before,
+html body.theme-force-dark :is(
+  .album-wrapper,
+  .photo-frame,
+  .photo-item,
+  .book-card,
+  .movie-card,
+  .bake-card,
+  .diary-content,
+  .game-card,
+  .category-card-glass,
+  .tag-cloud-section,
+  .post-toc-wrap,
+  .post-toc,
+  .sidebar-card,
+  .comments,
+  .giscus-comments,
+  .lightbox-content,
+  .book-detail,
+  .movie-detail
+)::after {
+  background: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark :is(.post-toc-wrap, .sidebar-panel.post-toc-wrap) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding-top: 0 !important;
+}
+
+html body.theme-force-dark :is(.post-toc, .post-toc .nav) {
+  background: #1d1b18 !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 248, 234, .14) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, .4) !important;
+  color: #f4efe7 !important;
+  overflow: hidden !important;
+}
+
+html body.theme-force-dark .post-toc::before,
+html body.theme-force-dark .post-toc::after,
+html body.theme-force-dark .post-toc-wrap::before,
+html body.theme-force-dark .post-toc-wrap::after,
+html body.theme-force-dark .sidebar-panel.post-toc-wrap::before,
+html body.theme-force-dark .sidebar-panel.post-toc-wrap::after {
+  display: none !important;
+}
+
+html body.theme-force-dark .post-toc-title {
+  background: #111 !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  margin: 14px 16px 10px !important;
+  padding: 10px 18px !important;
+  text-align: center !important;
+}
+
+html body.theme-force-dark .post-toc :is(.nav-item, .nav-link) {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark .post-toc .nav-link:hover,
+html body.theme-force-dark .post-toc .nav .active > .nav-link {
+  background: rgba(255, 248, 234, .1) !important;
+  color: #fff8ea !important;
+  -webkit-text-fill-color: #fff8ea !important;
+}
+
+html body.theme-force-dark :is(.comments, .giscus-comments, .giscus, iframe.giscus-frame) {
+  background: #1d1b18 !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 248, 234, .14) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  color-scheme: dark !important;
+}
+
+html body.theme-force-dark :is(.album-wrapper, .photo-frame, .photo-caption, .photo-info-overlay, .load-more-container) {
+  background-image: none !important;
+}
+
+html body.theme-force-dark .album-wrapper {
+  background: #1d1b18 !important;
+  border: 1px solid rgba(255, 248, 234, .13) !important;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, .38) !important;
+}
+
+html body.theme-force-dark .photo-frame {
+  background: #151412 !important;
+  border: 1px solid rgba(255, 248, 234, .12) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .32) !important;
+}
+
+html body.theme-force-dark .photo-image {
+  background: #151412 !important;
+}
+
+html body.theme-force-dark .photo-caption {
+  background: transparent !important;
+  border: 0 !important;
+  color: #f4efe7 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+  margin-top: 9px !important;
+}
+
+html body.theme-force-dark :is(.book-detail, .movie-detail, .lightbox-content) {
+  background: #1d1b18 !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 248, 234, .14) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, .52) !important;
+}
+
+html body.theme-force-dark :is(.book-summary, .movie-summary, .book-detail-footer, .movie-detail-footer, .book-actions, .movie-actions, .movie-buttons) {
+  background: #171614 !important;
+  background-image: none !important;
+  border-color: rgba(255, 248, 234, .12) !important;
+  color: #e7dfd2 !important;
+  -webkit-text-fill-color: #e7dfd2 !important;
+}
+
+html body.theme-force-dark :is(.diary-content, .diary-card .diary-content) {
+  background: #1d1b18 !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 248, 234, .13) !important;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, .32) !important;
+  color: #f4efe7 !important;
+}
+
+html body.theme-force-dark .diary-content::before {
+  background: rgba(255, 248, 234, .14) !important;
+  height: 1px !important;
+  transform: none !important;
+}
+
+html body.theme-force-dark .diary-card:hover .diary-content {
+  box-shadow: 0 22px 54px rgba(0, 0, 0, .42) !important;
+  transform: translateY(-6px) !important;
+}
+
+html body.theme-force-dark :is(.diary-body, .diary-text, .diary-text p, .diary-date, .diary-meta, .diary-weekday, .diary-mood) {
+  color: #f0e9dc !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+html body.theme-force-dark :is(.diary-weekday, .diary-mood, .diary-tag) {
+  background: rgba(255, 248, 234, .08) !important;
+  border-color: rgba(255, 248, 234, .16) !important;
+}
+
+html body.theme-force-dark .diary-footer {
+  border-top-color: rgba(255, 248, 234, .12) !important;
+}
+
+html body.theme-force-dark :is(.pagination, .diary-pagination, .game-pagination) {
+  background: transparent !important;
+  background-image: none !important;
+  border-color: rgba(255, 248, 234, .12) !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark :is(.pagination .page-number, .pagination .extend, .pagination-btn, .page-selector, .pagination-info, .game-page-button) {
+  background: rgba(255, 248, 234, .08) !important;
+  border: 1px solid rgba(255, 248, 234, .16) !important;
+  color: #f4efe7 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark :is(.pagination .page-number.current, .pagination span.page-number.current, .pagination span.current, .pagination a:hover, .pagination .extend:hover, .pagination-btn:not(:disabled):hover, .game-page-button.active, .game-page-button:hover) {
+  background: #fff8ea !important;
+  border-color: #fff8ea !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body.theme-force-dark :is(.tag-cloud-section, .tag-cloud, .tag-cloud-tags) {
+  background: #1d1b18 !important;
+  background-image: none !important;
+  border-color: rgba(255, 248, 234, .13) !important;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, .34) !important;
+  color: #f4efe7 !important;
+  overflow: visible !important;
+}
+
+html body.theme-force-dark .tag-cloud-title {
+  background: transparent !important;
+  color: #f4efe7 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark :is(.tag-cloud-tags a, .tag-cloud-link, .sidebar-tag-cloud-list a) {
+  border: 1px solid rgba(255, 248, 234, .12) !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark :is(.tag-cloud-tags a:hover, .tag-cloud-link:hover, .sidebar-tag-cloud-list a:hover) {
+  background: #fff8ea !important;
+  border-color: #fff8ea !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body.theme-force-dark .categories-container .category-card-wrapper:hover .category-card-glass,
+html body.theme-force-dark .categories-container .category-card-wrapper.hover-active .category-card-glass {
+  background: #211f1c !important;
+  border-color: rgba(255, 248, 234, .22) !important;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, .46) !important;
+}
+
+html body.theme-force-dark :is(.categories-container .view-button, .content.categories-page .view-button) {
+  background: rgba(255, 248, 234, .08) !important;
+  border-color: rgba(255, 248, 234, .18) !important;
+  color: #f4efe7 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark :is(.categories-container .view-button, .content.categories-page .view-button):is(:hover, :focus-visible, :active) {
+  background: #fff8ea !important;
+  border-color: #fff8ea !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body.theme-force-dark :is(.game-stats, .game-stats span, .game-stats span:first-child) {
+  color: #f0e9dc !important;
+  -webkit-text-fill-color: #f0e9dc !important;
+}
+
+html body.theme-force-dark :is(.game-achievement, .game-achievement-more) {
+  background: #171614 !important;
+  border-color: rgba(255, 248, 234, .16) !important;
+  box-shadow: none !important;
+  color: #f4efe7 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark :is(.game-achievement:hover, .game-achievement-more:hover) {
+  background: rgba(255, 248, 234, .1) !important;
+  border-color: rgba(255, 248, 234, .22) !important;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, .24) !important;
+  color: #f4efe7 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark :is(.site-state, .site-state-item, .sidebar-popular-item > a) {
+  background: transparent !important;
+  border-color: rgba(255, 248, 234, .1) !important;
+  color: #e7dfd2 !important;
+}
+
+html body.theme-force-dark .site-state-item-count {
+  color: #fff8ea !important;
+  -webkit-text-fill-color: #fff8ea !important;
+}
+
+html body.theme-force-dark .footer,
+html body.theme-force-dark .footer-inner,
+html body.theme-force-dark .footer-wrapper {
+  background: transparent !important;
+  color: #d8cfc2 !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) :is(
+    .album-wrapper,
+    .photo-frame,
+    .photo-item,
+    .book-card,
+    .movie-card,
+    .bake-card,
+    .diary-content,
+    .game-card,
+    .category-card-glass,
+    .tag-cloud-section,
+    .post-toc-wrap,
+    .post-toc,
+    .sidebar-card,
+    .comments,
+    .giscus-comments,
+    .lightbox-content,
+    .book-detail,
+    .movie-detail
+  )::before,
+  html body:not(.theme-force-light) :is(
+    .album-wrapper,
+    .photo-frame,
+    .photo-item,
+    .book-card,
+    .movie-card,
+    .bake-card,
+    .diary-content,
+    .game-card,
+    .category-card-glass,
+    .tag-cloud-section,
+    .post-toc-wrap,
+    .post-toc,
+    .sidebar-card,
+    .comments,
+    .giscus-comments,
+    .lightbox-content,
+    .book-detail,
+    .movie-detail
+  )::after {
+    background: transparent !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.post-toc-wrap, .sidebar-panel.post-toc-wrap) {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding-top: 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.post-toc, .post-toc .nav) {
+    background: #1d1b18 !important;
+    background-image: none !important;
+    border: 1px solid rgba(255, 248, 234, .14) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 18px 46px rgba(0, 0, 0, .4) !important;
+    color: #f4efe7 !important;
+    overflow: hidden !important;
+  }
+
+  html body:not(.theme-force-light) .post-toc::before,
+  html body:not(.theme-force-light) .post-toc::after,
+  html body:not(.theme-force-light) .post-toc-wrap::before,
+  html body:not(.theme-force-light) .post-toc-wrap::after,
+  html body:not(.theme-force-light) .sidebar-panel.post-toc-wrap::before,
+  html body:not(.theme-force-light) .sidebar-panel.post-toc-wrap::after {
+    display: none !important;
+  }
+
+  html body:not(.theme-force-light) .post-toc-title {
+    background: #111 !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    margin: 14px 16px 10px !important;
+    padding: 10px 18px !important;
+    text-align: center !important;
+  }
+
+  html body:not(.theme-force-light) .post-toc :is(.nav-item, .nav-link) {
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .post-toc .nav-link:hover,
+  html body:not(.theme-force-light) .post-toc .nav .active > .nav-link {
+    background: rgba(255, 248, 234, .1) !important;
+    color: #fff8ea !important;
+    -webkit-text-fill-color: #fff8ea !important;
+  }
+
+  html body:not(.theme-force-light) :is(.comments, .giscus-comments, .giscus, iframe.giscus-frame) {
+    background: #1d1b18 !important;
+    background-image: none !important;
+    border: 1px solid rgba(255, 248, 234, .14) !important;
+    border-radius: 16px !important;
+    box-shadow: none !important;
+    color-scheme: dark !important;
+  }
+
+  html body:not(.theme-force-light) .album-wrapper {
+    background: #1d1b18 !important;
+    border: 1px solid rgba(255, 248, 234, .13) !important;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, .38) !important;
+  }
+
+  html body:not(.theme-force-light) .photo-frame {
+    background: #151412 !important;
+    border: 1px solid rgba(255, 248, 234, .12) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .32) !important;
+  }
+
+  html body:not(.theme-force-light) .photo-image {
+    background: #151412 !important;
+  }
+
+  html body:not(.theme-force-light) .photo-caption {
+    background: transparent !important;
+    border: 0 !important;
+    color: #f4efe7 !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+    margin-top: 9px !important;
+  }
+
+  html body:not(.theme-force-light) :is(.book-detail, .movie-detail, .lightbox-content) {
+    background: #1d1b18 !important;
+    background-image: none !important;
+    border: 1px solid rgba(255, 248, 234, .14) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, .52) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.book-summary, .movie-summary, .book-detail-footer, .movie-detail-footer, .book-actions, .movie-actions, .movie-buttons) {
+    background: #171614 !important;
+    background-image: none !important;
+    border-color: rgba(255, 248, 234, .12) !important;
+    color: #e7dfd2 !important;
+    -webkit-text-fill-color: #e7dfd2 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.diary-content, .diary-card .diary-content) {
+    background: #1d1b18 !important;
+    background-image: none !important;
+    border: 1px solid rgba(255, 248, 234, .13) !important;
+    box-shadow: 0 16px 42px rgba(0, 0, 0, .32) !important;
+    color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) .diary-content::before {
+    background: rgba(255, 248, 234, .14) !important;
+    height: 1px !important;
+    transform: none !important;
+  }
+
+  html body:not(.theme-force-light) .diary-card:hover .diary-content {
+    box-shadow: 0 22px 54px rgba(0, 0, 0, .42) !important;
+    transform: translateY(-6px) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.diary-body, .diary-text, .diary-text p, .diary-date, .diary-meta, .diary-weekday, .diary-mood) {
+    color: #f0e9dc !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  html body:not(.theme-force-light) :is(.diary-weekday, .diary-mood, .diary-tag) {
+    background: rgba(255, 248, 234, .08) !important;
+    border-color: rgba(255, 248, 234, .16) !important;
+  }
+
+  html body:not(.theme-force-light) .diary-footer {
+    border-top-color: rgba(255, 248, 234, .12) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.pagination, .diary-pagination, .game-pagination) {
+    background: transparent !important;
+    background-image: none !important;
+    border-color: rgba(255, 248, 234, .12) !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.pagination .page-number, .pagination .extend, .pagination-btn, .page-selector, .pagination-info, .game-page-button) {
+    background: rgba(255, 248, 234, .08) !important;
+    border: 1px solid rgba(255, 248, 234, .16) !important;
+    color: #f4efe7 !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.pagination .page-number.current, .pagination span.page-number.current, .pagination span.current, .pagination a:hover, .pagination .extend:hover, .pagination-btn:not(:disabled):hover, .game-page-button.active, .game-page-button:hover) {
+    background: #fff8ea !important;
+    border-color: #fff8ea !important;
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.tag-cloud-section, .tag-cloud, .tag-cloud-tags) {
+    background: #1d1b18 !important;
+    background-image: none !important;
+    border-color: rgba(255, 248, 234, .13) !important;
+    box-shadow: 0 18px 46px rgba(0, 0, 0, .34) !important;
+    color: #f4efe7 !important;
+    overflow: visible !important;
+  }
+
+  html body:not(.theme-force-light) .tag-cloud-title {
+    background: transparent !important;
+    color: #f4efe7 !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.tag-cloud-tags a, .tag-cloud-link, .sidebar-tag-cloud-list a) {
+    border: 1px solid rgba(255, 248, 234, .12) !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.tag-cloud-tags a:hover, .tag-cloud-link:hover, .sidebar-tag-cloud-list a:hover) {
+    background: #fff8ea !important;
+    border-color: #fff8ea !important;
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+
+  html body:not(.theme-force-light) .categories-container .category-card-wrapper:hover .category-card-glass,
+  html body:not(.theme-force-light) .categories-container .category-card-wrapper.hover-active .category-card-glass {
+    background: #211f1c !important;
+    border-color: rgba(255, 248, 234, .22) !important;
+    box-shadow: 0 24px 56px rgba(0, 0, 0, .46) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.categories-container .view-button, .content.categories-page .view-button) {
+    background: rgba(255, 248, 234, .08) !important;
+    border-color: rgba(255, 248, 234, .18) !important;
+    color: #f4efe7 !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.categories-container .view-button, .content.categories-page .view-button):is(:hover, :focus-visible, :active) {
+    background: #fff8ea !important;
+    border-color: #fff8ea !important;
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.game-stats, .game-stats span, .game-stats span:first-child) {
+    color: #f0e9dc !important;
+    -webkit-text-fill-color: #f0e9dc !important;
+  }
+
+  html body:not(.theme-force-light) :is(.game-achievement, .game-achievement-more) {
+    background: #171614 !important;
+    border-color: rgba(255, 248, 234, .16) !important;
+    box-shadow: none !important;
+    color: #f4efe7 !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.game-achievement:hover, .game-achievement-more:hover) {
+    background: rgba(255, 248, 234, .1) !important;
+    border-color: rgba(255, 248, 234, .22) !important;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, .24) !important;
+    color: #f4efe7 !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.site-state, .site-state-item, .sidebar-popular-item > a) {
+    background: transparent !important;
+    border-color: rgba(255, 248, 234, .1) !important;
+    color: #e7dfd2 !important;
+  }
+
+  html body:not(.theme-force-light) .site-state-item-count {
+    color: #fff8ea !important;
+    -webkit-text-fill-color: #fff8ea !important;
+  }
+
+  html body:not(.theme-force-light) .footer,
+  html body:not(.theme-force-light) .footer-inner,
+  html body:not(.theme-force-light) .footer-wrapper {
+    background: transparent !important;
+    color: #d8cfc2 !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+}
+
+/* 2026-07-06 dark polish pass 2: remove hard blocks introduced by broad overrides. */
+html body :is(.categories-container .view-button, .content.categories-page .view-button) {
+  background: rgba(255, 255, 255, .78) !important;
+  border-color: rgba(17, 17, 17, .24) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 10px 24px rgba(17, 17, 17, .08) !important;
+  color: #111 !important;
+  min-height: 48px !important;
+  padding: 0 24px !important;
+}
+
+html body :is(.categories-container .view-button, .content.categories-page .view-button):is(:hover, :focus-visible, :active) {
+  background: #111 !important;
+  border-color: #111 !important;
+  box-shadow: 0 14px 28px rgba(17, 17, 17, .18) !important;
+  color: #fff !important;
+}
+
+html body :is(.categories-container .view-button, .content.categories-page .view-button):is(:hover, :focus-visible, :active) * {
+  color: #fff !important;
+  fill: currentColor !important;
+}
+
+html body.theme-force-dark :is(.container, .headband, .header, .main, .main-inner, .content-wrap),
+html body.theme-force-dark :is(.container, .headband, .header, .main, .main-inner, .content-wrap)::before,
+html body.theme-force-dark :is(.container, .headband, .header, .main, .main-inner, .content-wrap)::after {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark .header-inner {
+  background: rgba(31, 29, 26, .66) !important;
+  border-color: rgba(255, 248, 234, .14) !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .34) !important;
+}
+
+html body.theme-force-dark .header-inner::before,
+html body.theme-force-dark .header-inner::after {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark canvas.fireworks,
+html body.theme-force-dark #canvas-nest,
+html body.theme-force-dark .canvas-nest {
+  opacity: .9 !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+html body.theme-force-dark .container {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+html body.theme-force-dark .sidebar-inner .sidebar-nav {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 0 10px !important;
+  padding: 0 2px !important;
+}
+
+html body.theme-force-dark .sidebar-inner .sidebar-nav li {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: #f4efe7 !important;
+  justify-content: flex-start !important;
+  min-height: 0 !important;
+  padding: 0 0 10px !important;
+  text-align: left !important;
+  width: auto !important;
+}
+
+html body.theme-force-dark .sidebar-inner .post-toc-wrap {
+  background: rgba(31, 29, 26, .9) !important;
+  border: 1px solid rgba(255, 248, 234, .16) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .32) !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  padding: 14px !important;
+}
+
+html body.theme-force-dark .sidebar-inner .post-toc-wrap .post-toc,
+html body.theme-force-dark .sidebar-inner .post-toc-wrap .post-toc .nav {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  padding: 0 !important;
+}
+
+html body.theme-force-dark .sidebar-inner .post-toc-wrap .nav {
+  gap: 4px !important;
+}
+
+html body.theme-force-dark .sidebar-inner .post-toc-wrap .nav-link {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  color: #d8cfc2 !important;
+  padding: 7px 8px !important;
+}
+
+html body.theme-force-dark .sidebar-inner .post-toc-wrap .nav-link * {
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+html body.theme-force-dark .sidebar-inner .post-toc-wrap .nav-link:is(:hover, :focus-visible),
+html body.theme-force-dark .sidebar-inner .post-toc-wrap .nav .active > .nav-link {
+  background: rgba(255, 248, 234, .08) !important;
+  color: #fff8ea !important;
+  -webkit-text-fill-color: #fff8ea !important;
+}
+
+html body.theme-force-dark .sidebar-inner .post-toc-wrap::before,
+html body.theme-force-dark .sidebar-inner .post-toc-wrap::after,
+html body.theme-force-dark .sidebar-inner .post-toc-wrap .post-toc::before,
+html body.theme-force-dark .sidebar-inner .post-toc-wrap .post-toc::after {
+  display: none !important;
+}
+
+html body.theme-force-dark .sidebar-profile-card .site-state-wrap,
+html body.theme-force-dark .sidebar-profile-card .site-state,
+html body.theme-force-dark .sidebar-profile-card .site-state-item,
+html body.theme-force-dark .sidebar-profile-card .site-state-item a {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark .sidebar-profile-card .site-state {
+  gap: 10px !important;
+  overflow: visible !important;
+}
+
+html body.theme-force-dark .sidebar-profile-card .site-state-item,
+html body.theme-force-dark .sidebar-profile-card .site-state-item a {
+  min-width: 0 !important;
+  padding: 0 !important;
+}
+
+html body.theme-force-dark .site-state-item-count {
+  color: #f4efe7 !important;
+  font-weight: 800 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark .site-state-item-name {
+  color: #d8cfc2 !important;
+  -webkit-text-fill-color: #d8cfc2 !important;
+}
+
+html body.theme-force-dark .sidebar-popular-item a::before {
+  background: rgba(255, 248, 234, .08) !important;
+  border: 1px solid rgba(255, 248, 234, .18) !important;
+  color: #d8cfc2 !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark .sidebar-popular-item a:is(:hover, :focus-visible)::before {
+  background: #111 !important;
+  border-color: rgba(255, 248, 234, .28) !important;
+  color: #fff8ea !important;
+}
+
+html body.theme-force-dark :is(.game-actions, .game-pagination) {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+html body.theme-force-dark .game-actions:empty {
+  display: none !important;
+}
+
+html body.theme-force-dark :is(.game-action, .game-page-button, .game-achievement-more) {
+  background: rgba(255, 248, 234, .08) !important;
+  border: 1px solid rgba(255, 248, 234, .16) !important;
+  color: #f4efe7 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark :is(.game-action, .game-page-button, .game-achievement-more):is(:hover, :focus-visible),
+html body.theme-force-dark .game-page-button.active {
+  background: #fff8ea !important;
+  border-color: #fff8ea !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body.theme-force-dark :is(.photo-wall, .photo-item, .photo-caption) {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark .photo-frame {
+  background: transparent !important;
+  border: 1px solid rgba(255, 248, 234, .12) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .28) !important;
+  overflow: hidden !important;
+}
+
+html body.theme-force-dark .photo-image {
+  background: transparent !important;
+  border-radius: inherit !important;
+}
+
+html body.theme-force-dark .photo-caption {
+  color: #f4efe7 !important;
+  margin: 8px 0 0 !important;
+  padding: 0 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark :is(.diary-card, .diary-content) {
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark .diary-card {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+html body.theme-force-dark .diary-content {
+  background: rgba(31, 29, 26, .9) !important;
+  border: 1px solid rgba(255, 248, 234, .16) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, .28) !important;
+  overflow: hidden !important;
+}
+
+html body.theme-force-dark .diary-content::before {
+  background: linear-gradient(135deg, var(--card-color1, #ff9a9e), var(--card-color2, #fad0c4)) !important;
+  content: "" !important;
+  display: block !important;
+  height: 4px !important;
+  left: 0 !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  transform: scaleX(0) !important;
+  transform-origin: left center !important;
+  transition: transform .3s ease !important;
+}
+
+html body.theme-force-dark .diary-card:hover .diary-content::before {
+  transform: scaleX(1) !important;
+}
+
+html body.theme-force-dark :is(.book-detail-footer, .movie-detail-footer, .book-actions, .movie-actions, .movie-buttons) {
+  background: transparent !important;
+  background-image: none !important;
+  border-color: rgba(255, 248, 234, .12) !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark :is(.book-summary, .movie-summary) {
+  background: rgba(255, 248, 234, .06) !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  color: #f0e9dc !important;
+}
+
+html body.theme-force-dark .download-btn {
+  background: rgba(255, 248, 234, .08) !important;
+  border: 1px solid rgba(255, 248, 234, .18) !important;
+  box-shadow: none !important;
+  color: #f4efe7 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark .download-btn:is(:hover, :focus-visible) {
+  background: #fff8ea !important;
+  border-color: #fff8ea !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) :is(.container, .headband, .header, .main, .main-inner, .content-wrap),
+  html body:not(.theme-force-light) :is(.container, .headband, .header, .main, .main-inner, .content-wrap)::before,
+  html body:not(.theme-force-light) :is(.container, .headband, .header, .main, .main-inner, .content-wrap)::after {
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .header-inner {
+    background: rgba(31, 29, 26, .66) !important;
+    border-color: rgba(255, 248, 234, .14) !important;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .34) !important;
+  }
+
+  html body:not(.theme-force-light) .header-inner::before,
+  html body:not(.theme-force-light) .header-inner::after {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) canvas.fireworks,
+  html body:not(.theme-force-light) #canvas-nest,
+  html body:not(.theme-force-light) .canvas-nest {
+    opacity: .9 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .container {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-inner .sidebar-nav {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 0 10px !important;
+    padding: 0 2px !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-inner .sidebar-nav li {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    color: #f4efe7 !important;
+    justify-content: flex-start !important;
+    min-height: 0 !important;
+    padding: 0 0 10px !important;
+    text-align: left !important;
+    width: auto !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-inner .post-toc-wrap {
+    background: rgba(31, 29, 26, .9) !important;
+    border: 1px solid rgba(255, 248, 234, .16) !important;
+    border-radius: 22px !important;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .32) !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    padding: 14px !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-inner .post-toc-wrap .post-toc,
+  html body:not(.theme-force-light) .sidebar-inner .post-toc-wrap .post-toc .nav {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-inner .post-toc-wrap .nav {
+    gap: 4px !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-inner .post-toc-wrap .nav-link {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 10px !important;
+    color: #d8cfc2 !important;
+    padding: 7px 8px !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-inner .post-toc-wrap .nav-link * {
+    color: inherit !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-inner .post-toc-wrap .nav-link:is(:hover, :focus-visible),
+  html body:not(.theme-force-light) .sidebar-inner .post-toc-wrap .nav .active > .nav-link {
+    background: rgba(255, 248, 234, .08) !important;
+    color: #fff8ea !important;
+    -webkit-text-fill-color: #fff8ea !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-inner .post-toc-wrap::before,
+  html body:not(.theme-force-light) .sidebar-inner .post-toc-wrap::after,
+  html body:not(.theme-force-light) .sidebar-inner .post-toc-wrap .post-toc::before,
+  html body:not(.theme-force-light) .sidebar-inner .post-toc-wrap .post-toc::after {
+    display: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-wrap,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-item,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-item a {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state {
+    gap: 10px !important;
+    overflow: visible !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-item,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-item a {
+    min-width: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .site-state-item-count {
+    color: #f4efe7 !important;
+    font-weight: 800 !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) .site-state-item-name {
+    color: #d8cfc2 !important;
+    -webkit-text-fill-color: #d8cfc2 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-popular-item a::before {
+    background: rgba(255, 248, 234, .08) !important;
+    border: 1px solid rgba(255, 248, 234, .18) !important;
+    color: #d8cfc2 !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-popular-item a:is(:hover, :focus-visible)::before {
+    background: #111 !important;
+    border-color: rgba(255, 248, 234, .28) !important;
+    color: #fff8ea !important;
+  }
+
+  html body:not(.theme-force-light) :is(.game-actions, .game-pagination) {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .game-actions:empty {
+    display: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.game-action, .game-page-button, .game-achievement-more) {
+    background: rgba(255, 248, 234, .08) !important;
+    border: 1px solid rgba(255, 248, 234, .16) !important;
+    color: #f4efe7 !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.game-action, .game-page-button, .game-achievement-more):is(:hover, :focus-visible),
+  html body:not(.theme-force-light) .game-page-button.active {
+    background: #fff8ea !important;
+    border-color: #fff8ea !important;
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.photo-wall, .photo-item, .photo-caption) {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .photo-frame {
+    background: transparent !important;
+    border: 1px solid rgba(255, 248, 234, .12) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .28) !important;
+    overflow: hidden !important;
+  }
+
+  html body:not(.theme-force-light) .photo-image {
+    background: transparent !important;
+    border-radius: inherit !important;
+  }
+
+  html body:not(.theme-force-light) .photo-caption {
+    color: #f4efe7 !important;
+    margin: 8px 0 0 !important;
+    padding: 0 !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.diary-card, .diary-content) {
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .diary-card {
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .diary-content {
+    background: rgba(31, 29, 26, .9) !important;
+    border: 1px solid rgba(255, 248, 234, .16) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 16px 42px rgba(0, 0, 0, .28) !important;
+    overflow: hidden !important;
+  }
+
+  html body:not(.theme-force-light) .diary-content::before {
+    background: linear-gradient(135deg, var(--card-color1, #ff9a9e), var(--card-color2, #fad0c4)) !important;
+    content: "" !important;
+    display: block !important;
+    height: 4px !important;
+    left: 0 !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    transform: scaleX(0) !important;
+    transform-origin: left center !important;
+    transition: transform .3s ease !important;
+  }
+
+  html body:not(.theme-force-light) .diary-card:hover .diary-content::before {
+    transform: scaleX(1) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.book-detail-footer, .movie-detail-footer, .book-actions, .movie-actions, .movie-buttons) {
+    background: transparent !important;
+    background-image: none !important;
+    border-color: rgba(255, 248, 234, .12) !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.book-summary, .movie-summary) {
+    background: rgba(255, 248, 234, .06) !important;
+    border: 0 !important;
+    border-radius: 14px !important;
+    color: #f0e9dc !important;
+  }
+
+  html body:not(.theme-force-light) .download-btn {
+    background: rgba(255, 248, 234, .08) !important;
+    border: 1px solid rgba(255, 248, 234, .18) !important;
+    box-shadow: none !important;
+    color: #f4efe7 !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) .download-btn:is(:hover, :focus-visible) {
+    background: #fff8ea !important;
+    border-color: #fff8ea !important;
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+}
+
+/* Final dark pass. Keep this block last. */
+html body.theme-force-dark :is(.container, .headband, .main, .main-inner, .content-wrap, .content, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .diary-wrapper, .diary-container, .bake-container, .games-container),
+html body.theme-force-dark :is(.container, .headband, .main, .main-inner, .content-wrap, .content, .album-page-shell, .album-wrapper, .books-wrapper, .movies-wrapper, .diary-wrapper)::before,
+html body.theme-force-dark :is(.container, .headband, .main, .main-inner, .content-wrap, .content, .album-page-shell, .album-wrapper, .books-wrapper, .movies-wrapper, .diary-wrapper)::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark .sidebar-profile-card .site-state-wrap,
+html body.theme-force-dark .sidebar-profile-card .site-state,
+html body.theme-force-dark .sidebar-profile-card .site-state-item,
+html body.theme-force-dark .sidebar-profile-card .site-state-item a,
+html body.theme-force-dark .sidebar-profile-card .site-state-wrap::before,
+html body.theme-force-dark .sidebar-profile-card .site-state-wrap::after,
+html body.theme-force-dark .sidebar-profile-card .site-state::before,
+html body.theme-force-dark .sidebar-profile-card .site-state::after,
+html body.theme-force-dark .sidebar-profile-card .site-state-item::before,
+html body.theme-force-dark .sidebar-profile-card .site-state-item::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body.theme-force-dark :is(.photo-wall, .photo-item, .photo-frame, .photo-caption),
+html body.theme-force-dark :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::before,
+html body.theme-force-dark :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body.theme-force-dark .photo-frame {
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+html body.theme-force-dark .photo-caption {
+  color: #f4efe7 !important;
+  margin-top: 8px !important;
+  padding: 0 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark :is(#bookLightbox, #movieLightbox) .lightbox-content {
+  background: rgba(31, 29, 26, .96) !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 248, 234, .13) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .48) !important;
+  color: #f4efe7 !important;
+}
+
+html body.theme-force-dark :is(#bookLightbox, #movieLightbox) :is(.book-detail, .movie-detail, .book-detail-header, .movie-detail-header, .book-info-container, .movie-info-container, .book-meta, .movie-meta, .book-detail-footer, .movie-detail-footer, .book-actions, .movie-actions, .movie-buttons),
+html body.theme-force-dark :is(#bookLightbox, #movieLightbox) :is(.book-detail, .movie-detail, .book-detail-header, .movie-detail-header, .book-summary, .movie-summary, .book-detail-footer, .movie-detail-footer)::before,
+html body.theme-force-dark :is(#bookLightbox, #movieLightbox) :is(.book-detail, .movie-detail, .book-detail-header, .movie-detail-header, .book-summary, .movie-summary, .book-detail-footer, .movie-detail-footer)::after {
+  background-image: none !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body.theme-force-dark :is(#bookLightbox, #movieLightbox) :is(.book-summary, .movie-summary) {
+  background: rgba(255, 248, 234, .055) !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  color: #f0e9dc !important;
+}
+
+html body.theme-force-dark :is(.movies-wrapper .movie-buttons, .books-wrapper .book-buttons) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark .diary-card,
+html body.theme-force-dark .diary-card::before,
+html body.theme-force-dark .diary-card::after {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark .diary-content {
+  background: rgba(31, 29, 26, .9) !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .28) !important;
+  transition: transform .34s cubic-bezier(.2, .9, .2, 1), box-shadow .34s ease, background-color .34s ease !important;
+  will-change: transform !important;
+}
+
+html body.theme-force-dark .diary-card:hover .diary-content {
+  box-shadow: 0 18px 46px rgba(0, 0, 0, .36) !important;
+  transform: translateY(-8px) !important;
+}
+
+html body.theme-force-dark .diary-content::before {
+  background: linear-gradient(135deg, var(--card-color1, #ff9a9e), var(--card-color2, #fad0c4)) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  content: "" !important;
+  height: 4px !important;
+  left: 0 !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  transform: scaleX(0) !important;
+  transform-origin: left center !important;
+  transition: transform .3s ease !important;
+}
+
+html body.theme-force-dark .diary-card:hover .diary-content::before {
+  transform: scaleX(1) !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+  align-self: start !important;
+  background: transparent !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  max-height: calc(100vh - 24px) !important;
+  overflow: hidden !important;
+  position: sticky !important;
+  top: 18px !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) :is(.site-overview-wrap, .sidebar-profile-card, .sidebar-card, .links-of-blogroll, .sidebar-button, .cc-license, .back-to-top) {
+  display: none !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  background: rgba(31, 29, 26, .92) !important;
+  border: 1px solid rgba(255, 248, 234, .14) !important;
+  border-radius: 0 0 24px 24px !important;
+  border-top: 0 !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .32) !important;
+  flex: 1 1 auto !important;
+  margin: -1px 0 0 !important;
+  max-height: calc(100vh - 80px) !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 12px 14px 14px !important;
+  position: relative !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  max-height: calc(100vh - 112px) !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  scrollbar-width: none !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc::-webkit-scrollbar,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav::-webkit-scrollbar {
+  display: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) :is(.container, .headband, .main, .main-inner, .content-wrap, .content, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .diary-wrapper, .diary-container, .bake-container, .games-container),
+  html body:not(.theme-force-light) :is(.container, .headband, .main, .main-inner, .content-wrap, .content, .album-page-shell, .album-wrapper, .books-wrapper, .movies-wrapper, .diary-wrapper)::before,
+  html body:not(.theme-force-light) :is(.container, .headband, .main, .main-inner, .content-wrap, .content, .album-page-shell, .album-wrapper, .books-wrapper, .movies-wrapper, .diary-wrapper)::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+    align-self: start !important;
+    background: transparent !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    max-height: calc(100vh - 24px) !important;
+    overflow: hidden !important;
+    position: sticky !important;
+    top: 18px !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) :is(.site-overview-wrap, .sidebar-profile-card, .sidebar-card, .links-of-blogroll, .sidebar-button, .cc-license, .back-to-top) {
+    display: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav {
+    max-height: calc(100vh - 112px) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    scrollbar-width: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc::-webkit-scrollbar,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav::-webkit-scrollbar {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
+  }
+}

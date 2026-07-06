@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/cardlink"></script>
+  <link rel="stylesheet" href="/css/_common/codeblock.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yeluogui.cloud","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+  <meta name="description" content="个人理解: 两者虽然都是用芯片组成新的内存条，但是位拓展是逻辑上让这些芯片属于一个新的内存条，拓展了每个存储单元的大小。 而多体交叉编址并未改变其存储单元大小，只是让数据以他的规则进行排序  以本题为例，已经确定为按字节编址，故每个存储单元位数都为一字节，自然不能使用位拓展将存储单元的位数扩大 则必须使用多模块交叉编址 多模块交叉编址的分类 顺序编址（高位交叉）这种情形下，我们按地址的前几位进行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多模块交叉编址与位拓展的区别💻">
+<meta property="og:url" content="http://yeluogui.cloud/2025/08/31/%E5%A4%9A%E6%A8%A1%E5%9D%97%E4%BA%A4%E5%8F%89%E7%BC%96%E5%9D%80%E4%B8%8E%E4%BD%8D%E6%8B%93%E5%B1%95%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="穿过长长的隧道，便是雪国">
+<meta property="og:description" content="个人理解: 两者虽然都是用芯片组成新的内存条，但是位拓展是逻辑上让这些芯片属于一个新的内存条，拓展了每个存储单元的大小。 而多体交叉编址并未改变其存储单元大小，只是让数据以他的规则进行排序  以本题为例，已经确定为按字节编址，故每个存储单元位数都为一字节，自然不能使用位拓展将存储单元的位数扩大 则必须使用多模块交叉编址 多模块交叉编址的分类 顺序编址（高位交叉）这种情形下，我们按地址的前几位进行">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/19/dd7abadf3c59a52e.gif">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/31/8c78993f463a8702.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/31/27dcf2ba27269f94.png">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2025/08/31/1788f6bd5ecc69ac.png">
+<meta property="article:published_time" content="2025-08-31T10:24:54.000Z">
+<meta property="article:modified_time" content="2026-07-06T12:27:30.801Z">
+<meta property="article:author" content="叶落归">
+<meta property="article:tag" content="408">
+<meta property="article:tag" content="计算机组成原理">
+<meta property="article:tag" content="存储器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.bmp.ovh/imgs/2025/08/19/dd7abadf3c59a52e.gif">
+
+<link rel="canonical" href="http://yeluogui.cloud/2025/08/31/%E5%A4%9A%E6%A8%A1%E5%9D%97%E4%BA%A4%E5%8F%89%E7%BC%96%E5%9D%80%E4%B8%8E%E4%BD%8D%E6%8B%93%E5%B1%95%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <link rel="stylesheet" href="/css/apple-final-fix.css?v=20260704-apple-5">
+  <link rel="stylesheet" href="/css/makima-pet.css?v=20260703-game-dock-1">
+  <link rel="stylesheet" href="/css/visual-hotfix.css?v=20260706-visual-6">
+  <link rel="stylesheet" href="/css/mobile-fix.css?v=20260629-mobile-1">
+  <link rel="stylesheet" href="/css/mobile-restore.css?v=20260706-mobile-restore-7">
+  
+  <title>多模块交叉编址与位拓展的区别💻 | 穿过长长的隧道，便是雪国</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">穿过长长的隧道，便是雪国</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        
+        
+  <li class="menu-item menu-item-pages menu-item-has-children">
+
+    <a href="/gallery/" rel="section"><i class="fa fa-layer-group fa-fw"></i>页面</a>
+
+    <ul class="menu-child">
+          
+  <li class="menu-item menu-item-gallery">
+
+    <a href="/gallery/" rel="section"><i class="fa fa-camera fa-fw"></i>画廊</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书单</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-film fa-fw"></i>影视</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-diary">
+
+    <a href="/diary/" rel="section"><i class="fa fa-book-open fa-fw"></i>日记</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-bake">
+
+    <a href="/bake/" rel="section"><i class="fa fa-birthday-cake fa-fw"></i>烘焙</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-steam">
+
+    <a href="/steamgames/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a>
+
+  </li>
+
+
+    </ul>
+
+  </li>
+
+
+      
+        
+        
+  <li class="menu-item menu-item-archives menu-item-has-children">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+    <ul class="menu-child">
+          
+  <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+
+
+    </ul>
+
+  </li>
+
+
+      
+        <li class="menu-item menu-item-lab">
+
+    <a href="/lab/" rel="section"><i class="fa fa-flask fa-fw"></i>实验室</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yeluogui.cloud/2025/08/31/%E5%A4%9A%E6%A8%A1%E5%9D%97%E4%BA%A4%E5%8F%89%E7%BC%96%E5%9D%80%E4%B8%8E%E4%BD%8D%E6%8B%93%E5%B1%95%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="叶落归">
+      <meta itemprop="description" content="”我这辈子一直想信仰某种东西，“圣地亚哥说道,”然而却一直在撒谎，我没有信仰“">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="穿过长长的隧道，便是雪国">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          多模块交叉编址与位拓展的区别💻
+        </h1>
+
+        <div class="post-meta">
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-08-31 18:24:54" itemprop="dateCreated datePublished" datetime="2025-08-31T18:24:54+08:00">2025-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-07-06 20:27:30" itemprop="dateModified" datetime="2026-07-06T20:27:30+08:00">2026-07-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%83%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">考研</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>549</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://s3.bmp.ovh/imgs/2025/08/19/dd7abadf3c59a52e.gif"></p>
+<p>个人理解:</p>
+<p>两者虽然都是用芯片组成新的内存条，但是位拓展是逻辑上让这些芯片属于一个新的内存条，拓展了每个存储单元的大小。</p>
+<p>而多体交叉编址并未改变其存储单元大小，只是让数据以他的规则进行排序</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/31/8c78993f463a8702.png"></p>
+<p>以本题为例，已经确定为按字节编址，故每个存储单元位数都为一字节，自然不能使用位拓展将存储单元的位数扩大</p>
+<p>则必须使用多模块交叉编址</p>
+<p>多模块交叉编址的分类</p>
+<h2 id="顺序编址（高位交叉）"><a href="#顺序编址（高位交叉）" class="headerlink" title="顺序编址（高位交叉）"></a>顺序编址（高位交叉）</h2><p>这种情形下，我们按地址的前几位进行存储数据，如果有4个芯片，则前两位作为区分所在模块的位置如<strong>01</strong>000000——<strong>01</strong>1111111，将数据顺序存储起来。</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/31/27dcf2ba27269f94.png"></p>
+<p>但是这样无法让他们并行启动，假如总线周期是1，而一个存期周期是4，那么当总线占用完传完数据后只能等待3才能继续下一个存储单元的使用</p>
+<h2 id="交叉编址（低位交叉）"><a href="#交叉编址（低位交叉）" class="headerlink" title="交叉编址（低位交叉）"></a>交叉编址（低位交叉）</h2><p>交叉编址则是以后几位为标准进行存储，这样就能把顺序数据均匀的分布在四个芯片上了</p>
+<p>如何区分这四个是轮流启动还是一起启动呢？要看总线宽度和DRAM的位数，如果4个DRAM的位数合在一起是32位，而总线宽度也是32，则可以一起启动，四个一起传输到总线上</p>
+<p>如果一个DRAM的位数和总线宽度一致，那么每次总线只能传输一个存储单元，则需要流水线的方式来进行传输。模块个数也就是大于等于T/r，否则总线周期已经结束，下一个芯片的存取周期还没结束只能干等着</p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/31/1788f6bd5ecc69ac.png"></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>叶落归
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yeluogui.cloud/2025/08/31/%E5%A4%9A%E6%A8%A1%E5%9D%97%E4%BA%A4%E5%8F%89%E7%BC%96%E5%9D%80%E4%B8%8E%E4%BD%8D%E6%8B%93%E5%B1%95%E7%9A%84%E5%8C%BA%E5%88%AB/" title="多模块交叉编址与位拓展的区别💻">http://yeluogui.cloud/2025/08/31/多模块交叉编址与位拓展的区别/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/408/" rel="tag"># 408</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag"># 计算机组成原理</a>
+              <a href="/tags/%E5%AD%98%E5%82%A8%E5%99%A8/" rel="tag"># 存储器</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/08/29/%E8%8A%92%E6%9E%9C%E6%85%95%E6%96%AF%E5%B8%83%E4%B8%81/" rel="prev" title="芒果慕斯布丁🍮">
+      <i class="fa fa-chevron-left"></i> 芒果慕斯布丁🍮
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/09/19/%E6%98%AF%E7%99%BD%E7%97%B4%E4%B9%9F%E6%98%AF%E5%9F%BA%E7%9D%A3/" rel="next" title="是白痴也是基督">
+      是白痴也是基督 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+  
+  <div class="comments giscus-comments">
+    <script src="https://giscus.app/client.js"
+      data-repo="yeluogui233/yeluogui233.github.io"
+      data-repo-id="R_kgDOPT5T4w"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOPT5T484CtiNz"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="light"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+    </script>
+    <script>
+      (function() {
+        var DARK_THEME = new URL('/css/giscus-kylo-dark.css?v=20260706-2', window.location.origin).href;
+        var LIGHT_THEME = 'light';
+        var systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+        function isDark() {
+          if (document.body.classList.contains('theme-force-dark')) return true;
+          if (document.body.classList.contains('theme-force-light')) return false;
+          return !!(systemDark && systemDark.matches);
+        }
+
+        function syncGiscusTheme() {
+          var theme = isDark() ? DARK_THEME : LIGHT_THEME;
+          var script = document.querySelector('.giscus-comments script[src^="https://giscus.app/client.js"]');
+          if (script) script.setAttribute('data-theme', theme);
+
+          var frame = document.querySelector('iframe.giscus-frame');
+          if (!frame || !frame.contentWindow) return;
+          frame.contentWindow.postMessage({
+            giscus: {
+              setConfig: { theme: theme }
+            }
+          }, 'https://giscus.app');
+        }
+
+        window.KyloSyncGiscusTheme = syncGiscusTheme;
+        window.addEventListener('kylo:theme-change', syncGiscusTheme);
+        window.addEventListener('message', function(event) {
+          if (event.origin === 'https://giscus.app') {
+            window.setTimeout(syncGiscusTheme, 80);
+          }
+        });
+
+        if (systemDark) {
+          if (typeof systemDark.addEventListener === 'function') {
+            systemDark.addEventListener('change', syncGiscusTheme);
+          } else if (typeof systemDark.addListener === 'function') {
+            systemDark.addListener(syncGiscusTheme);
+          }
+        }
+
+        if (document.body && window.MutationObserver) {
+          new MutationObserver(syncGiscusTheme).observe(document.body, {
+            attributes: true,
+            attributeFilter: ['class']
+          });
+        }
+
+        syncGiscusTheme();
+        window.setTimeout(syncGiscusTheme, 400);
+        window.setTimeout(syncGiscusTheme, 1200);
+      })();
+    </script>
+  </div>
+
+        </div>
+          
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc">
+            文章目录
+          </li>
+        </ul>
+
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel sidebar-panel-active">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E7%BC%96%E5%9D%80%EF%BC%88%E9%AB%98%E4%BD%8D%E4%BA%A4%E5%8F%89%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">顺序编址（高位交叉）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E7%BC%96%E5%9D%80%EF%BC%88%E4%BD%8E%E4%BD%8D%E4%BA%A4%E5%8F%89%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">交叉编址（低位交叉）</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <!-- Footer -->
+<div class="footer-wrapper" style="text-align:center; font-size:14px; color:#222; max-width:900px; margin:auto; padding:20px 0;">
+
+  <!-- 第一行：版权 + 总字数 + 阅读时间 -->
+  <div class="footer-line footer-line-1" style="display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap;">
+    <span>© 2026 <span style="color:#e25555;">&#10084;</span> 叶落归</span>
+
+    <i class="fa-solid fa-file-lines" style="color:#000;"></i>
+    <span>总字数: <span id="local_word_count">0</span></span>
+
+    <i class="fa-regular fa-clock" style="color:#000;"></i>
+    <span>预计阅读时间: <span id="local_read_time">0</span> 分钟</span>
+  </div>
+
+  <!-- 第二行：驱动信息 -->
+  <div class="footer-line footer-line-2" style="margin-top:10px; color:#555; font-size:13px;">
+    由 
+    <a href="https://hexo.io" target="_blank" rel="noopener" style="color:#555; text-decoration:none; font-weight:600;">Hexo</a>
+    &amp;
+    <a href="https://theme-next.org/" target="_blank" rel="noopener" style="color:#555; text-decoration:none; font-weight:600;">NexT.Gemini</a>
+    强力驱动
+  </div>
+
+  <!-- 第三行：访客数 | 浏览量 -->
+  <div class="footer-line footer-line-3" style="margin-top:15px; display:flex; justify-content:center; gap:30px; font-size:14px; color:#222;">
+    <div style="display:flex; align-items:center; gap:6px;">
+      <i class="fa-regular fa-eye" style="color:#000; font-size:18px;"></i>
+      <span>访客数 <span id="local_uv_count">0</span></span>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <i class="fa-solid fa-user" style="color:#000; font-size:18px;"></i>
+      <span>浏览量 <span id="local_pv_count">0</span></span>
+    </div>
+  </div>
+
+</div>
+
+<!-- 本地统计脚本 -->
+<script>
+(function() {
+  const pvKey = 'local_pv_count';
+  const uvKey = 'local_uv_count';
+  const uvFlagKey = 'local_uv_flag';
+
+  let pvCount = parseInt(localStorage.getItem(pvKey)) || 0;
+  let uvCount = parseInt(localStorage.getItem(uvKey)) || 0;
+
+  // PV 每次访问+1
+  pvCount++;
+  localStorage.setItem(pvKey, pvCount);
+
+  // UV 仅第一次访问+1
+  if (!localStorage.getItem(uvFlagKey)) {
+    uvCount++;
+    localStorage.setItem(uvKey, uvCount);
+    localStorage.setItem(uvFlagKey, 'true');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('local_pv_count').textContent = pvCount.toLocaleString();
+    document.getElementById('local_uv_count').textContent = uvCount.toLocaleString();
+
+    const content = document.querySelector('.main-inner');
+    const text = content ? (content.innerText || content.textContent) : '';
+    const length = text.trim().length;
+
+    document.getElementById('local_word_count').textContent = length.toLocaleString();
+    document.getElementById('local_read_time').textContent = Math.ceil(length / 200);
+  });
+})();
+</script>
+
+<!-- 确保在 head 里引入 Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/password-gate.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<!-- 网易云播放器 -->
+<div id="netease-player">
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0"
+    width="330" height="86"
+    src="//music.163.com/outchain/player?type=2&id=1886731595&auto=0&height=66">
+  </iframe>
+</div>
+
+<style>
+  #netease-player {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 99998;
+  }
+</style>
+
+<style>
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/firework.js"></script>
+<script src="/libs/codeBlock/codeBlockFuction.js"></script>
+<script src="/libs/codeBlock/codeLang.js"></script>
+<script src="/libs/codeBlock/codeCopy.js"></script>
+<script src="/libs/codeBlock/clipboard.min.js"></script>
+<script src="/libs/codeBlock/codeShrink.js"></script>
+<link rel="stylesheet" href="/css/mobile-restore.css?v=20260706-mobile-restore-late-7">
+<link rel="stylesheet" href="/css/dark-mode.css?v=20260706-dark-9">
+<script src="/js/touch-menu.js?v=20260629-touch-1"></script>
+<script src="/js/menu-active-restore.js?v=20260706-menu-active-4"></script>
+<script src="/js/makima-pet.js?v=20260703-game-dock-1"></script>
+<script>
+// 为文章内容中的所有外部链接生成卡�?
+document.addEventListener('DOMContentLoaded', function() {
+  var postContent = document.querySelector('.post-body') || 
+                    document.querySelector('.post-block') ||
+                    document.querySelector('.entry-content');
+  if (postContent) {
+    var externalLinks = postContent.querySelectorAll('a[target="_blank"]');
+    if (externalLinks.length > 0) {
+      cardLink(externalLinks);
+    }
+  }
+});
+</script>
+</body>
+</html>
+
+

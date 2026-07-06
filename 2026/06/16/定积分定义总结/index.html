@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/cardlink"></script>
+  <link rel="stylesheet" href="/css/_common/codeblock.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yeluogui.cloud","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+  <meta name="description" content="关于(a,b)区间的问题1.平时学的公式大多数都是（0，1）区间，说一下这个a，b区间的先分析公式b-a是图像上a到b的长度我们既然要计算定积分，按往常的定义思路就是，将图像的这部分区间切成无数个小块（n-&gt;∞）计算每个小块的函数值加在一起。也就是求无数个矩形：Δxf（Δx），但是区间若是从a出发，那Δx的长度便是b-a&#x2F;n。总长度除分出来的小块总数（n）2.（0，1）区间只需要Δxf（Δx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="定积分定义总结">
+<meta property="og:url" content="http://yeluogui.cloud/2026/06/16/%E5%AE%9A%E7%A7%AF%E5%88%86%E5%AE%9A%E4%B9%89%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="穿过长长的隧道，便是雪国">
+<meta property="og:description" content="关于(a,b)区间的问题1.平时学的公式大多数都是（0，1）区间，说一下这个a，b区间的先分析公式b-a是图像上a到b的长度我们既然要计算定积分，按往常的定义思路就是，将图像的这部分区间切成无数个小块（n-&gt;∞）计算每个小块的函数值加在一起。也就是求无数个矩形：Δxf（Δx），但是区间若是从a出发，那Δx的长度便是b-a&#x2F;n。总长度除分出来的小块总数（n）2.（0，1）区间只需要Δxf（Δx">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.bmp.ovh/2026/06/16/crewWYKu.png">
+<meta property="og:image" content="https://s3.bmp.ovh/2026/06/16/rZUmciO5.png">
+<meta property="og:image" content="https://s3.bmp.ovh/2026/06/16/KyvnmU9c.png">
+<meta property="og:image" content="https://s3.bmp.ovh/2026/06/16/KyvnmU9c.png">
+<meta property="og:image" content="https://s3.bmp.ovh/2026/06/16/GwYwlqs7.png">
+<meta property="og:image" content="https://s3.bmp.ovh/2026/06/16/3bnbtdpv.jpg">
+<meta property="article:published_time" content="2026-06-16T10:17:00.000Z">
+<meta property="article:modified_time" content="2026-07-06T12:27:30.742Z">
+<meta property="article:author" content="叶落归">
+<meta property="article:tag" content="高等数学">
+<meta property="article:tag" content="积分">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.bmp.ovh/2026/06/16/crewWYKu.png">
+
+<link rel="canonical" href="http://yeluogui.cloud/2026/06/16/%E5%AE%9A%E7%A7%AF%E5%88%86%E5%AE%9A%E4%B9%89%E6%80%BB%E7%BB%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <link rel="stylesheet" href="/css/apple-final-fix.css?v=20260704-apple-5">
+  <link rel="stylesheet" href="/css/makima-pet.css?v=20260703-game-dock-1">
+  <link rel="stylesheet" href="/css/visual-hotfix.css?v=20260706-visual-6">
+  <link rel="stylesheet" href="/css/mobile-fix.css?v=20260629-mobile-1">
+  <link rel="stylesheet" href="/css/mobile-restore.css?v=20260706-mobile-restore-7">
+  
+  <title>定积分定义总结 | 穿过长长的隧道，便是雪国</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">穿过长长的隧道，便是雪国</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        
+        
+  <li class="menu-item menu-item-pages menu-item-has-children">
+
+    <a href="/gallery/" rel="section"><i class="fa fa-layer-group fa-fw"></i>页面</a>
+
+    <ul class="menu-child">
+          
+  <li class="menu-item menu-item-gallery">
+
+    <a href="/gallery/" rel="section"><i class="fa fa-camera fa-fw"></i>画廊</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书单</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-film fa-fw"></i>影视</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-diary">
+
+    <a href="/diary/" rel="section"><i class="fa fa-book-open fa-fw"></i>日记</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-bake">
+
+    <a href="/bake/" rel="section"><i class="fa fa-birthday-cake fa-fw"></i>烘焙</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-steam">
+
+    <a href="/steamgames/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a>
+
+  </li>
+
+
+    </ul>
+
+  </li>
+
+
+      
+        
+        
+  <li class="menu-item menu-item-archives menu-item-has-children">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+    <ul class="menu-child">
+          
+  <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+
+
+          
+  <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+
+
+    </ul>
+
+  </li>
+
+
+      
+        <li class="menu-item menu-item-lab">
+
+    <a href="/lab/" rel="section"><i class="fa fa-flask fa-fw"></i>实验室</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yeluogui.cloud/2026/06/16/%E5%AE%9A%E7%A7%AF%E5%88%86%E5%AE%9A%E4%B9%89%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="叶落归">
+      <meta itemprop="description" content="”我这辈子一直想信仰某种东西，“圣地亚哥说道,”然而却一直在撒谎，我没有信仰“">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="穿过长长的隧道，便是雪国">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          定积分定义总结
+        </h1>
+
+        <div class="post-meta">
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-06-16 18:17:00" itemprop="dateCreated datePublished" datetime="2026-06-16T18:17:00+08:00">2026-06-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-07-06 20:27:30" itemprop="dateModified" datetime="2026-07-06T20:27:30+08:00">2026-07-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%83%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">考研</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>808</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <div class="hbe hbe-container password-gate" id="hexo-blog-password-gate"
+            data-password="1004"
+            data-wrong-message="密码不正确，请再试一次。">
+            <div class="hbe hbe-content">
+              <form id="hbeForm" class="hbe hbe-form" onsubmit="return window.unlockPasswordGate ? window.unlockPasswordGate(this) : false">
+                <div class="hbe hbe-input hbe-input-default">
+                  <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass" autocomplete="current-password" inputmode="numeric">
+                  <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+                    <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入密码继续阅读。</span>
+                  </label>
+                </div>
+                <button class="hbe hbe-button" type="submit">解锁文章</button>
+                <div class="hbe hbe-error" role="alert" aria-live="polite"></div>
+              </form>
+            </div>
+            <template class="password-gate-content">
+              <h1 id="关于-a-b-区间的问题"><a href="#关于-a-b-区间的问题" class="headerlink" title="关于(a,b)区间的问题"></a>关于(a,b)区间的问题</h1><p><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -2.63ex;" xmlns="http://www.w3.org/2000/svg" width="44.069ex" height="6.391ex" role="img" focusable="false" viewBox="0 -1662.4 19478.4 2824.7"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,83.6)"><g data-mml-node="mtd"><g data-mml-node="msubsup"><g data-mml-node="mo" transform="translate(0 1)"><path data-c="222B" d="M114 -798Q132 -824 165 -824H167Q195 -824 223 -764T275 -600T320 -391T362 -164Q365 -143 367 -133Q439 292 523 655T645 1127Q651 1145 655 1157T672 1201T699 1257T733 1306T777 1346T828 1360Q884 1360 912 1325T944 1245Q944 1220 932 1205T909 1186T887 1183Q866 1183 849 1198T832 1239Q832 1287 885 1296L882 1300Q879 1303 874 1307T866 1313Q851 1323 833 1323Q819 1323 807 1311T775 1255T736 1139T689 936T633 628Q574 293 510 -5T410 -437T355 -629Q278 -862 165 -862Q125 -862 92 -831T55 -746Q55 -711 74 -698T112 -685Q133 -685 150 -700T167 -741Q167 -789 114 -798Z"></path></g><g data-mml-node="mi" transform="translate(1046.4,1088.1) scale(0.707)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g><g data-mml-node="mi" transform="translate(589,-896.4) scale(0.707)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g></g><g data-mml-node="mi" transform="translate(1566.4,0)"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g><g data-mml-node="mo" transform="translate(2116.4,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(2505.4,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mo" transform="translate(3077.4,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(3466.4,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(3911.1,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></g><g data-mml-node="mi" transform="translate(4431.1,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g></g><g data-mml-node="mtd" transform="translate(5003.1,0)"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(277.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="munder" transform="translate(1333.6,0)"><g data-mml-node="mo" transform="translate(224.7,0)"><path data-c="6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"></path><path data-c="69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z" transform="translate(278,0)"></path><path data-c="6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z" transform="translate(556,0)"></path></g><g data-mml-node="TeXAtom" transform="translate(0,-600) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(600,0)"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g><g data-mml-node="mi" transform="translate(1600,0)"><path data-c="221E" d="M55 217Q55 305 111 373T254 442Q342 442 419 381Q457 350 493 303L507 284L514 294Q618 442 747 442Q833 442 888 374T944 214Q944 128 889 59T743 -11Q657 -11 580 50Q542 81 506 128L492 147L485 137Q381 -11 252 -11Q166 -11 111 57T55 217ZM907 217Q907 285 869 341T761 397Q740 397 720 392T682 378T648 359T619 335T594 310T574 285T559 263T548 246L543 238L574 198Q605 158 622 138T664 94T714 61T765 51Q827 51 867 100T907 217ZM92 214Q92 145 131 89T239 33Q357 33 456 193L425 233Q364 312 334 337Q285 380 233 380Q171 380 132 331T92 214Z"></path></g></g></g><g data-mml-node="munderover" transform="translate(3338.7,0)"><g data-mml-node="mo"><path data-c="2211" d="M60 948Q63 950 665 950H1267L1325 815Q1384 677 1388 669H1348L1341 683Q1320 724 1285 761Q1235 809 1174 838T1033 881T882 898T699 902H574H543H251L259 891Q722 258 724 252Q725 250 724 246Q721 243 460 -56L196 -356Q196 -357 407 -357Q459 -357 548 -357T676 -358Q812 -358 896 -353T1063 -332T1204 -283T1307 -196Q1328 -170 1348 -124H1388Q1388 -125 1381 -145T1356 -210T1325 -294L1267 -449L666 -450Q64 -450 61 -448Q55 -446 55 -439Q55 -437 57 -433L590 177Q590 178 557 222T452 366T322 544L56 909L55 924Q55 945 60 948Z"></path></g><g data-mml-node="TeXAtom" transform="translate(148.2,-1087.9) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(345,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mn" transform="translate(1123,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g><g data-mml-node="TeXAtom" transform="translate(509.9,1150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g><g data-mml-node="mfrac" transform="translate(4949.4,0)"><g data-mml-node="mrow" transform="translate(220,676)"><g data-mml-node="mi"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g><g data-mml-node="mo" transform="translate(651.2,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mi" transform="translate(1651.4,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g></g><g data-mml-node="mi" transform="translate(1010.2,-686)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><rect width="2380.4" height="60" x="120" y="220"></rect></g><g data-mml-node="mi" transform="translate(7569.8,0)"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g><g data-mml-node="mrow" transform="translate(8286.5,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><path data-c="28" d="M701 -940Q701 -943 695 -949H664Q662 -947 636 -922T591 -879T537 -818T475 -737T412 -636T350 -511T295 -362T250 -186T221 17T209 251Q209 962 573 1361Q596 1386 616 1405T649 1437T664 1450H695Q701 1444 701 1441Q701 1436 681 1415T629 1356T557 1261T476 1118T400 927T340 675T308 359Q306 321 306 250Q306 -139 400 -430T690 -924Q701 -936 701 -940Z"></path></g><g data-mml-node="mi" transform="translate(736,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mo" transform="translate(1487.2,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mfrac" transform="translate(2487.4,0)"><g data-mml-node="mrow" transform="translate(220,676)"><g data-mml-node="mi"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g><g data-mml-node="mo" transform="translate(651.2,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mi" transform="translate(1651.4,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g></g><g data-mml-node="mi" transform="translate(1010.2,-686)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><rect width="2380.4" height="60" x="120" y="220"></rect></g><g data-mml-node="mi" transform="translate(5107.9,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(5452.9,0) translate(0 -0.5)"><path data-c="29" d="M34 1438Q34 1446 37 1448T50 1450H56H71Q73 1448 99 1423T144 1380T198 1319T260 1238T323 1137T385 1013T440 864T485 688T514 485T526 251Q526 134 519 53Q472 -519 162 -860Q139 -885 119 -904T86 -936T71 -949H56Q43 -949 39 -947T34 -937Q88 -883 140 -813Q428 -430 428 251Q428 453 402 628T338 922T245 1146T145 1309T46 1425Q44 1427 42 1429T39 1433T36 1436L34 1438Z"></path></g></g></g></g></g></g></g></svg></mjx-container><br>1.<br><img src="https://s3.bmp.ovh/2026/06/16/crewWYKu.png" alt="函数图像.png"><br>平时学的公式大多数都是（0，1）区间，说一下这个a，b区间的<br>先分析公式<br><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -1.577ex;" xmlns="http://www.w3.org/2000/svg" width="5.929ex" height="4.676ex" role="img" focusable="false" viewBox="0 -1370 2620.4 2067"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mfrac"><g data-mml-node="mrow" transform="translate(220,676)"><g data-mml-node="mi"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g><g data-mml-node="mo" transform="translate(651.2,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mi" transform="translate(1651.4,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g></g><g data-mml-node="mi" transform="translate(1010.2,-686)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><rect width="2380.4" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container><br><strong>b-a</strong>是图像上a到b的长度<br>我们既然要计算定积分，按往常的定义思路就是，将图像的这部分区间切成无数个小块（n-&gt;∞）计算每个小块的函数值加在一起。也就是求无数个矩形：Δx<em>f（Δx），但是区间若是从a出发，那Δx的长度便是b-a/n。总长度除分出来的小块总数（n）<br>2.<br><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -2.148ex;" xmlns="http://www.w3.org/2000/svg" width="15.623ex" height="5.428ex" role="img" focusable="false" viewBox="0 -1449.5 6905.6 2399"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g><g data-mml-node="mrow" transform="translate(716.7,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><path data-c="28" d="M701 -940Q701 -943 695 -949H664Q662 -947 636 -922T591 -879T537 -818T475 -737T412 -636T350 -511T295 -362T250 -186T221 17T209 251Q209 962 573 1361Q596 1386 616 1405T649 1437T664 1450H695Q701 1444 701 1441Q701 1436 681 1415T629 1356T557 1261T476 1118T400 927T340 675T308 359Q306 321 306 250Q306 -139 400 -430T690 -924Q701 -936 701 -940Z"></path></g><g data-mml-node="mi" transform="translate(736,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mo" transform="translate(1487.2,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mfrac" transform="translate(2487.4,0)"><g data-mml-node="mrow" transform="translate(220,676)"><g data-mml-node="mi"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g><g data-mml-node="mo" transform="translate(651.2,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mi" transform="translate(1651.4,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g></g><g data-mml-node="mi" transform="translate(1010.2,-686)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><rect width="2380.4" height="60" x="120" y="220"></rect></g><g data-mml-node="mi" transform="translate(5107.9,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(5452.9,0) translate(0 -0.5)"><path data-c="29" d="M34 1438Q34 1446 37 1448T50 1450H56H71Q73 1448 99 1423T144 1380T198 1319T260 1238T323 1137T385 1013T440 864T485 688T514 485T526 251Q526 134 519 53Q472 -519 162 -860Q139 -885 119 -904T86 -936T71 -949H56Q43 -949 39 -947T34 -937Q88 -883 140 -813Q428 -430 428 251Q428 453 402 628T338 922T245 1146T145 1309T46 1425Q44 1427 42 1429T39 1433T36 1436L34 1438Z"></path></g></g></g></g></svg></mjx-container><br>（0，1）区间只需要Δx</em>f（Δx）。可是在（a，b）情况变了是f（a+Δx），只有这样才能对应上（a，b）上的函数值<br><img src="https://s3.bmp.ovh/2026/06/16/rZUmciO5.png" alt="f（a+Δx）点.png"></p>
+<h1 id="步长问题"><a href="#步长问题" class="headerlink" title="步长问题"></a>步长问题</h1><p><img src="https://s3.bmp.ovh/2026/06/16/KyvnmU9c.png" alt="步长题.png"><br>此类问题可以带入i数值看</p>
+<h2 id="A选项"><a href="#A选项" class="headerlink" title="A选项"></a>A选项</h2><p>a分成了n小块，但是却把小矩形的宽度设成了1/2n，无法求出矩形面具</p>
+<h2 id="B选项"><a href="#B选项" class="headerlink" title="B选项"></a>B选项</h2><p>b是a的正确版本</p>
+<h2 id="C选项"><a href="#C选项" class="headerlink" title="C选项"></a>C选项</h2><p>将区间分成2n块，矩形宽度却是1/n</p>
+<h2 id="D选项"><a href="#D选项" class="headerlink" title="D选项"></a>D选项</h2><p>分成2n项，宽度是2/n</p>
+<h1 id="取点问题"><a href="#取点问题" class="headerlink" title="取点问题"></a>取点问题</h1><p>还是以刚才题目为例（前提是0到1）<br><img src="https://s3.bmp.ovh/2026/06/16/KyvnmU9c.png" alt="步长题.png"><br>以这种方面可以更快做出答案<br>做定义题可以看咱们取哪个点<br>例如，咱们将（0，1）切成n个小格（也就是题目中的从1到n）<br>咱们现在在计算某个方块的面积<br><img src="https://s3.bmp.ovh/2026/06/16/GwYwlqs7.png" alt="取点.png"><br>可以取前一个点，后一个点，该点，或者他们中间的点，就出现了B<br>若是B呢<br><img src="https://s3.bmp.ovh/2026/06/16/3bnbtdpv.jpg" alt="B选项.jpg"><br>首先ab都是切成n小块，说明图不可能画成这样，画成这样也取不到2k-1/2n<br>并且纠正一个观点，如果要按这样的取点问题的话，那只能按照第一个取点图来找，并证明是n个小块需要1/n的大小</p>
+<h2 id="若是0到2呢"><a href="#若是0到2呢" class="headerlink" title="若是0到2呢"></a>若是0到2呢</h2><p>那ab切成n个小格，每个小格宽度需要2/n</p>
+
+            </template>
+            <script>
+            window.unlockPasswordGate = window.unlockPasswordGate || function(form) {
+              function normalize(value) {
+                return (value || '').trim().replace(/[\u00A0\u2000-\u200D\uFEFF]/g, '').replace(/[０-９]/g, function(ch) {
+                  return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
+                });
+              }
+              var wrapper = form && form.closest ? form.closest('.password-gate') : document.getElementById('hexo-blog-password-gate');
+              if (!wrapper) return false;
+              var input = wrapper.querySelector('#hbePass');
+              var error = wrapper.querySelector('[role="alert"]');
+              var template = wrapper.querySelector('template.password-gate-content');
+              var password = normalize(wrapper.getAttribute('data-password') || '');
+              var value = normalize(input ? input.value : '');
+              if (error) error.textContent = '';
+              if (password && value === password && template && wrapper.parentNode) {
+                var container = document.createElement('div');
+                container.id = 'password-gate-unlocked';
+                container.appendChild(template.content.cloneNode(true));
+                wrapper.parentNode.replaceChild(container, wrapper);
+                try { window.dispatchEvent(new Event('hexo-blog-decrypt')); } catch (e) {}
+              } else {
+                if (error) error.textContent = wrapper.getAttribute('data-wrong-message') || '密码不正确，请再试一次。';
+                if (input) {
+                  input.value = '';
+                  input.focus();
+                }
+              }
+              return false;
+            };
+            </script>
+          </div>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>叶落归
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yeluogui.cloud/2026/06/16/%E5%AE%9A%E7%A7%AF%E5%88%86%E5%AE%9A%E4%B9%89%E6%80%BB%E7%BB%93/" title="定积分定义总结">http://yeluogui.cloud/2026/06/16/定积分定义总结/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" rel="tag"># 高等数学</a>
+              <a href="/tags/%E7%A7%AF%E5%88%86/" rel="tag"># 积分</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/05/25/2666/" rel="prev" title="2666——圣特莱沙谋杀案">
+      <i class="fa fa-chevron-left"></i> 2666——圣特莱沙谋杀案
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/07/01/%E5%B7%A7%E5%85%8B%E5%8A%9B%E5%B8%83%E6%9C%97%E5%B0%BC%E6%9B%B2%E5%A5%87/" rel="next" title="巧克力布朗尼曲奇">
+      巧克力布朗尼曲奇 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+  
+  <div class="comments giscus-comments">
+    <script src="https://giscus.app/client.js"
+      data-repo="yeluogui233/yeluogui233.github.io"
+      data-repo-id="R_kgDOPT5T4w"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOPT5T484CtiNz"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="light"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+    </script>
+    <script>
+      (function() {
+        var DARK_THEME = new URL('/css/giscus-kylo-dark.css?v=20260706-2', window.location.origin).href;
+        var LIGHT_THEME = 'light';
+        var systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+        function isDark() {
+          if (document.body.classList.contains('theme-force-dark')) return true;
+          if (document.body.classList.contains('theme-force-light')) return false;
+          return !!(systemDark && systemDark.matches);
+        }
+
+        function syncGiscusTheme() {
+          var theme = isDark() ? DARK_THEME : LIGHT_THEME;
+          var script = document.querySelector('.giscus-comments script[src^="https://giscus.app/client.js"]');
+          if (script) script.setAttribute('data-theme', theme);
+
+          var frame = document.querySelector('iframe.giscus-frame');
+          if (!frame || !frame.contentWindow) return;
+          frame.contentWindow.postMessage({
+            giscus: {
+              setConfig: { theme: theme }
+            }
+          }, 'https://giscus.app');
+        }
+
+        window.KyloSyncGiscusTheme = syncGiscusTheme;
+        window.addEventListener('kylo:theme-change', syncGiscusTheme);
+        window.addEventListener('message', function(event) {
+          if (event.origin === 'https://giscus.app') {
+            window.setTimeout(syncGiscusTheme, 80);
+          }
+        });
+
+        if (systemDark) {
+          if (typeof systemDark.addEventListener === 'function') {
+            systemDark.addEventListener('change', syncGiscusTheme);
+          } else if (typeof systemDark.addListener === 'function') {
+            systemDark.addListener(syncGiscusTheme);
+          }
+        }
+
+        if (document.body && window.MutationObserver) {
+          new MutationObserver(syncGiscusTheme).observe(document.body, {
+            attributes: true,
+            attributeFilter: ['class']
+          });
+        }
+
+        syncGiscusTheme();
+        window.setTimeout(syncGiscusTheme, 400);
+        window.setTimeout(syncGiscusTheme, 1200);
+      })();
+    </script>
+  </div>
+
+        </div>
+          
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc">
+            文章目录
+          </li>
+        </ul>
+
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel sidebar-panel-active">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-a-b-%E5%8C%BA%E9%97%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">关于(a,b)区间的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%95%BF%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">步长问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A%E9%80%89%E9%A1%B9"><span class="nav-number">2.1.</span> <span class="nav-text">A选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B%E9%80%89%E9%A1%B9"><span class="nav-number">2.2.</span> <span class="nav-text">B选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C%E9%80%89%E9%A1%B9"><span class="nav-number">2.3.</span> <span class="nav-text">C选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D%E9%80%89%E9%A1%B9"><span class="nav-number">2.4.</span> <span class="nav-text">D选项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%96%E7%82%B9%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">取点问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8B%A5%E6%98%AF0%E5%88%B02%E5%91%A2"><span class="nav-number">3.1.</span> <span class="nav-text">若是0到2呢</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <!-- Footer -->
+<div class="footer-wrapper" style="text-align:center; font-size:14px; color:#222; max-width:900px; margin:auto; padding:20px 0;">
+
+  <!-- 第一行：版权 + 总字数 + 阅读时间 -->
+  <div class="footer-line footer-line-1" style="display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap;">
+    <span>© 2026 <span style="color:#e25555;">&#10084;</span> 叶落归</span>
+
+    <i class="fa-solid fa-file-lines" style="color:#000;"></i>
+    <span>总字数: <span id="local_word_count">0</span></span>
+
+    <i class="fa-regular fa-clock" style="color:#000;"></i>
+    <span>预计阅读时间: <span id="local_read_time">0</span> 分钟</span>
+  </div>
+
+  <!-- 第二行：驱动信息 -->
+  <div class="footer-line footer-line-2" style="margin-top:10px; color:#555; font-size:13px;">
+    由 
+    <a href="https://hexo.io" target="_blank" rel="noopener" style="color:#555; text-decoration:none; font-weight:600;">Hexo</a>
+    &amp;
+    <a href="https://theme-next.org/" target="_blank" rel="noopener" style="color:#555; text-decoration:none; font-weight:600;">NexT.Gemini</a>
+    强力驱动
+  </div>
+
+  <!-- 第三行：访客数 | 浏览量 -->
+  <div class="footer-line footer-line-3" style="margin-top:15px; display:flex; justify-content:center; gap:30px; font-size:14px; color:#222;">
+    <div style="display:flex; align-items:center; gap:6px;">
+      <i class="fa-regular fa-eye" style="color:#000; font-size:18px;"></i>
+      <span>访客数 <span id="local_uv_count">0</span></span>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <i class="fa-solid fa-user" style="color:#000; font-size:18px;"></i>
+      <span>浏览量 <span id="local_pv_count">0</span></span>
+    </div>
+  </div>
+
+</div>
+
+<!-- 本地统计脚本 -->
+<script>
+(function() {
+  const pvKey = 'local_pv_count';
+  const uvKey = 'local_uv_count';
+  const uvFlagKey = 'local_uv_flag';
+
+  let pvCount = parseInt(localStorage.getItem(pvKey)) || 0;
+  let uvCount = parseInt(localStorage.getItem(uvKey)) || 0;
+
+  // PV 每次访问+1
+  pvCount++;
+  localStorage.setItem(pvKey, pvCount);
+
+  // UV 仅第一次访问+1
+  if (!localStorage.getItem(uvFlagKey)) {
+    uvCount++;
+    localStorage.setItem(uvKey, uvCount);
+    localStorage.setItem(uvFlagKey, 'true');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('local_pv_count').textContent = pvCount.toLocaleString();
+    document.getElementById('local_uv_count').textContent = uvCount.toLocaleString();
+
+    const content = document.querySelector('.main-inner');
+    const text = content ? (content.innerText || content.textContent) : '';
+    const length = text.trim().length;
+
+    document.getElementById('local_word_count').textContent = length.toLocaleString();
+    document.getElementById('local_read_time').textContent = Math.ceil(length / 200);
+  });
+})();
+</script>
+
+<!-- 确保在 head 里引入 Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/password-gate.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<!-- 网易云播放器 -->
+<div id="netease-player">
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0"
+    width="330" height="86"
+    src="//music.163.com/outchain/player?type=2&id=1886731595&auto=0&height=66">
+  </iframe>
+</div>
+
+<style>
+  #netease-player {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 99998;
+  }
+</style>
+
+<style>
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/firework.js"></script>
+<script src="/libs/codeBlock/codeBlockFuction.js"></script>
+<script src="/libs/codeBlock/codeLang.js"></script>
+<script src="/libs/codeBlock/codeCopy.js"></script>
+<script src="/libs/codeBlock/clipboard.min.js"></script>
+<script src="/libs/codeBlock/codeShrink.js"></script>
+<link rel="stylesheet" href="/css/mobile-restore.css?v=20260706-mobile-restore-late-7">
+<link rel="stylesheet" href="/css/dark-mode.css?v=20260706-dark-9">
+<script src="/js/touch-menu.js?v=20260629-touch-1"></script>
+<script src="/js/menu-active-restore.js?v=20260706-menu-active-4"></script>
+<script src="/js/makima-pet.js?v=20260703-game-dock-1"></script>
+<script>
+// 为文章内容中的所有外部链接生成卡�?
+document.addEventListener('DOMContentLoaded', function() {
+  var postContent = document.querySelector('.post-body') || 
+                    document.querySelector('.post-block') ||
+                    document.querySelector('.entry-content');
+  if (postContent) {
+    var externalLinks = postContent.querySelectorAll('a[target="_blank"]');
+    if (externalLinks.length > 0) {
+      cardLink(externalLinks);
+    }
+  }
+});
+</script>
+</body>
+</html>
+
+

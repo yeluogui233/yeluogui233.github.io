@@ -1,0 +1,83 @@
+:root {
+  color-scheme: light;
+  --color-canvas-default: #fff;
+  --color-canvas-subtle: #f7f7f5;
+  --color-canvas-inset: #f2f2ef;
+  --color-fg-default: #111;
+  --color-fg-muted: #444;
+  --color-fg-subtle: #666;
+  --color-border-default: rgba(17, 17, 17, .16);
+  --color-border-muted: rgba(17, 17, 17, .1);
+  --color-neutral-muted: rgba(17, 17, 17, .06);
+  --color-accent-fg: #111;
+  --color-accent-emphasis: #111;
+  --color-accent-muted: rgba(17, 17, 17, .18);
+  --color-accent-subtle: rgba(17, 17, 17, .06);
+  --color-btn-text: #111;
+  --color-btn-bg: #fff;
+  --color-btn-border: #111;
+  --color-btn-hover-bg: #111;
+  --color-btn-hover-border: #111;
+  --color-btn-active-bg: #111;
+  --color-btn-active-border: #111;
+}
+
+html,
+body,
+.gsc-main {
+  background: transparent !important;
+  color: var(--color-fg-default) !important;
+}
+
+a,
+.Link--primary,
+.gsc-comment-author {
+  color: var(--color-fg-default) !important;
+}
+
+.gsc-comment-box,
+.gsc-comment,
+.gsc-reactions-menu,
+.gsc-timeline,
+.gsc-header,
+.gsc-comment-box-tabs,
+.gsc-comment-box-main,
+.gsc-comment-content,
+.gsc-reply-box {
+  background: var(--color-canvas-default) !important;
+  border-color: var(--color-border-muted) !important;
+  box-shadow: none !important;
+}
+
+.gsc-comment-box-textarea,
+.gsc-comment-box-preview,
+.gsc-comment-box-bottom,
+.gsc-reply-box textarea,
+.form-control {
+  background: var(--color-canvas-subtle) !important;
+  border-color: var(--color-border-default) !important;
+  color: var(--color-fg-default) !important;
+}
+
+.btn,
+.gsc-comment-box-buttons button,
+.gsc-reactions-button,
+.gsc-social-reaction-summary-item {
+  background: var(--color-btn-bg) !important;
+  border-color: var(--color-btn-border) !important;
+  color: var(--color-btn-text) !important;
+}
+
+.btn:hover,
+.gsc-comment-box-buttons button:hover,
+.gsc-reactions-button:hover,
+.gsc-social-reaction-summary-item:hover {
+  background: var(--color-btn-hover-bg) !important;
+  border-color: var(--color-btn-hover-border) !important;
+  color: #fff !important;
+}
+
+.gsc-comment-box-tabs button.selected {
+  border-color: var(--color-accent-emphasis) !important;
+  color: var(--color-accent-fg) !important;
+}
