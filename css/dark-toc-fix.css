@@ -1,0 +1,687 @@
+/* Dark TOC: mirror the light TOC structure, only recolor it. */
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) {
+  --kylo-toc-shell: rgba(30, 27, 24, .96);
+  --kylo-toc-shell-border: rgba(255, 244, 224, .18);
+  --kylo-toc-title-bg: #fff3dc;
+  --kylo-toc-title-text: #15120f;
+  --kylo-toc-item-bg: rgba(255, 244, 224, .075);
+  --kylo-toc-item-bg-sub: rgba(255, 244, 224, .055);
+  --kylo-toc-item-border: rgba(255, 244, 224, .16);
+  --kylo-toc-text: #f4ecdf;
+  --kylo-toc-muted: rgba(244, 236, 223, .72);
+  --kylo-toc-active-bg: #fff3dc;
+  --kylo-toc-active-text: #15120f;
+}
+
+/* Final dark TOC behavior: inherit the fixed light-mode TOC mechanics. */
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) {
+  align-self: flex-start !important;
+  height: max-content !important;
+  max-height: calc(100vh - 96px) !important;
+  overflow: visible !important;
+  position: sticky !important;
+  top: 88px !important;
+  z-index: 6 !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+  background: transparent !important;
+  box-shadow: none !important;
+  display: flex !important;
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, .32)) !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  height: auto !important;
+  max-height: calc(100vh - 96px) !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  position: static !important;
+  top: auto !important;
+  transform: none !important;
+  width: 100% !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-nav,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  background-clip: padding-box !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-nav {
+  border-radius: 26px 26px 0 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  border-radius: 0 0 26px 26px !important;
+  margin: -1px 0 0 !important;
+  max-height: calc(100vh - 158px) !important;
+  overflow: hidden !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav {
+  max-height: calc(100vh - 186px) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  scrollbar-width: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) {
+    align-self: flex-start !important;
+    height: max-content !important;
+    max-height: calc(100vh - 96px) !important;
+    overflow: visible !important;
+    position: sticky !important;
+    top: 88px !important;
+    z-index: 6 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+    background: transparent !important;
+    box-shadow: none !important;
+    display: flex !important;
+    filter: drop-shadow(0 18px 34px rgba(0, 0, 0, .32)) !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    height: auto !important;
+    max-height: calc(100vh - 96px) !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    position: static !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-nav,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+    background-clip: padding-box !important;
+    box-shadow: none !important;
+    position: relative !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-nav {
+    border-radius: 26px 26px 0 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+    border-radius: 0 0 26px 26px !important;
+    margin: -1px 0 0 !important;
+    max-height: calc(100vh - 158px) !important;
+    overflow: hidden !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav {
+    max-height: calc(100vh - 186px) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    scrollbar-width: none !important;
+  }
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap),
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+  align-self: start !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  max-height: calc(100vh - 24px) !important;
+  min-height: 0 !important;
+  position: sticky !important;
+  top: 18px !important;
+  width: 100% !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) :is(
+  .site-overview-wrap,
+  .sidebar-profile-card,
+  .sidebar-card,
+  .links-of-blogroll,
+  .sidebar-button,
+  .cc-license,
+  .back-to-top
+) {
+  display: none !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-nav {
+  background: var(--kylo-toc-shell) !important;
+  border: 1px solid var(--kylo-toc-shell-border) !important;
+  border-bottom-color: rgba(255, 244, 224, .1) !important;
+  border-radius: 26px 26px 0 0 !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .26) !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  padding: 14px 14px 10px !important;
+  width: 100% !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-nav li,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-nav li.sidebar-nav-toc {
+  align-items: center !important;
+  background: var(--kylo-toc-title-bg) !important;
+  border: 1px solid var(--kylo-toc-title-bg) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  color: var(--kylo-toc-title-text) !important;
+  display: flex !important;
+  font-size: .88rem !important;
+  font-weight: 800 !important;
+  justify-content: center !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  min-height: 40px !important;
+  padding: 0 12px !important;
+  text-align: center !important;
+  text-shadow: none !important;
+  width: 100% !important;
+  -webkit-text-fill-color: var(--kylo-toc-title-text) !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  background: var(--kylo-toc-shell) !important;
+  border: 1px solid var(--kylo-toc-shell-border) !important;
+  border-radius: 0 0 26px 26px !important;
+  border-top: 0 !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .26) !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  flex: 1 1 auto !important;
+  margin: -1px 0 0 !important;
+  max-height: calc(100vh - 80px) !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 14px 16px 18px !important;
+  position: relative !important;
+  width: 100% !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: grid !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  max-height: calc(100vh - 112px) !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: 0 !important;
+  scrollbar-width: none !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc::-webkit-scrollbar,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav::-webkit-scrollbar {
+  display: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc :is(ol, ul, li),
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-item {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-child {
+  display: grid !important;
+  gap: 6px !important;
+  margin: 6px 0 0 10px !important;
+  padding: 0 !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-link {
+  align-items: flex-start !important;
+  background: var(--kylo-toc-item-bg) !important;
+  border: 1px solid var(--kylo-toc-item-border) !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  color: var(--kylo-toc-text) !important;
+  display: flex !important;
+  gap: 6px !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+  min-height: 44px !important;
+  padding: 9px 11px !important;
+  text-decoration: none !important;
+  text-shadow: none !important;
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease, transform .18s ease !important;
+  width: 100% !important;
+  -webkit-text-fill-color: var(--kylo-toc-text) !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-child .nav-link {
+  background: var(--kylo-toc-item-bg-sub) !important;
+  min-height: 38px !important;
+  padding: 8px 10px !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-link::before,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-link::after,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-item::before,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-item::after,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc::before,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc::after,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc-wrap::before,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc-wrap::after {
+  display: none !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-link *,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-link span {
+  background: transparent !important;
+  border: 0 !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-number {
+  color: var(--kylo-toc-muted) !important;
+  flex: 0 0 auto !important;
+  -webkit-text-fill-color: var(--kylo-toc-muted) !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-text {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-link:is(:hover, :focus-visible),
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav .active > .nav-link,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav .active-current > .nav-link {
+  background: var(--kylo-toc-active-bg) !important;
+  border-color: var(--kylo-toc-active-bg) !important;
+  color: var(--kylo-toc-active-text) !important;
+  transform: translateY(-1px) !important;
+  -webkit-text-fill-color: var(--kylo-toc-active-text) !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav-link:is(:hover, :focus-visible) *,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav .active > .nav-link *,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav .active-current > .nav-link * {
+  color: var(--kylo-toc-active-text) !important;
+  -webkit-text-fill-color: var(--kylo-toc-active-text) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) {
+    --kylo-toc-shell: rgba(30, 27, 24, .96);
+    --kylo-toc-shell-border: rgba(255, 244, 224, .18);
+    --kylo-toc-title-bg: #fff3dc;
+    --kylo-toc-title-text: #15120f;
+    --kylo-toc-item-bg: rgba(255, 244, 224, .075);
+    --kylo-toc-item-bg-sub: rgba(255, 244, 224, .055);
+    --kylo-toc-item-border: rgba(255, 244, 224, .16);
+    --kylo-toc-text: #f4ecdf;
+    --kylo-toc-muted: rgba(244, 236, 223, .72);
+    --kylo-toc-active-bg: #fff3dc;
+    --kylo-toc-active-text: #15120f;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap),
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+    align-self: start !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    max-height: calc(100vh - 24px) !important;
+    min-height: 0 !important;
+    position: sticky !important;
+    top: 18px !important;
+    width: 100% !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) :is(
+    .site-overview-wrap,
+    .sidebar-profile-card,
+    .sidebar-card,
+    .links-of-blogroll,
+    .sidebar-button,
+    .cc-license,
+    .back-to-top
+  ) {
+    display: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-nav {
+    background: var(--kylo-toc-shell) !important;
+    border: 1px solid var(--kylo-toc-shell-border) !important;
+    border-bottom-color: rgba(255, 244, 224, .1) !important;
+    border-radius: 26px 26px 0 0 !important;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .26) !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    padding: 14px 14px 10px !important;
+    width: 100% !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-nav li,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-nav li.sidebar-nav-toc {
+    align-items: center !important;
+    background: var(--kylo-toc-title-bg) !important;
+    border: 1px solid var(--kylo-toc-title-bg) !important;
+    border-radius: 999px !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    color: var(--kylo-toc-title-text) !important;
+    display: flex !important;
+    font-size: .88rem !important;
+    font-weight: 800 !important;
+    justify-content: center !important;
+    letter-spacing: 0 !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    min-height: 40px !important;
+    padding: 0 12px !important;
+    text-align: center !important;
+    text-shadow: none !important;
+    width: 100% !important;
+    -webkit-text-fill-color: var(--kylo-toc-title-text) !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+    background: var(--kylo-toc-shell) !important;
+    border: 1px solid var(--kylo-toc-shell-border) !important;
+    border-radius: 0 0 26px 26px !important;
+    border-top: 0 !important;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .26) !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    flex: 1 1 auto !important;
+    margin: -1px 0 0 !important;
+    max-height: calc(100vh - 80px) !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    padding: 14px 16px 18px !important;
+    position: relative !important;
+    width: 100% !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    display: grid !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    max-height: calc(100vh - 112px) !important;
+    min-height: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding: 0 !important;
+    scrollbar-width: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc::-webkit-scrollbar,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav::-webkit-scrollbar {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc :is(ol, ul, li),
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-item {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-child {
+    display: grid !important;
+    gap: 6px !important;
+    margin: 6px 0 0 10px !important;
+    padding: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-link {
+    align-items: flex-start !important;
+    background: var(--kylo-toc-item-bg) !important;
+    border: 1px solid var(--kylo-toc-item-border) !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    color: var(--kylo-toc-text) !important;
+    display: flex !important;
+    gap: 6px !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+    min-height: 44px !important;
+    padding: 9px 11px !important;
+    text-decoration: none !important;
+    text-shadow: none !important;
+    transition: background-color .18s ease, border-color .18s ease, color .18s ease, transform .18s ease !important;
+    width: 100% !important;
+    -webkit-text-fill-color: var(--kylo-toc-text) !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-child .nav-link {
+    background: var(--kylo-toc-item-bg-sub) !important;
+    min-height: 38px !important;
+    padding: 8px 10px !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-link::before,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-link::after,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-item::before,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-item::after,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc::before,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc::after,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc-wrap::before,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc-wrap::after {
+    display: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-link *,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-link span {
+    background: transparent !important;
+    border: 0 !important;
+    color: inherit !important;
+    text-decoration: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-number {
+    color: var(--kylo-toc-muted) !important;
+    flex: 0 0 auto !important;
+    -webkit-text-fill-color: var(--kylo-toc-muted) !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-text {
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-link:is(:hover, :focus-visible),
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav .active > .nav-link,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav .active-current > .nav-link {
+    background: var(--kylo-toc-active-bg) !important;
+    border-color: var(--kylo-toc-active-bg) !important;
+    color: var(--kylo-toc-active-text) !important;
+    transform: translateY(-1px) !important;
+    -webkit-text-fill-color: var(--kylo-toc-active-text) !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav-link:is(:hover, :focus-visible) *,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav .active > .nav-link *,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav .active-current > .nav-link * {
+    color: var(--kylo-toc-active-text) !important;
+    -webkit-text-fill-color: var(--kylo-toc-active-text) !important;
+  }
+}
+
+/* Final pass: keep dark TOC behavior identical to the repaired light TOC. */
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) {
+  align-self: flex-start !important;
+  height: max-content !important;
+  max-height: calc(100vh - 96px) !important;
+  overflow: visible !important;
+  position: sticky !important;
+  top: 88px !important;
+  z-index: 6 !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+  background: transparent !important;
+  box-shadow: none !important;
+  display: flex !important;
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, .32)) !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  height: auto !important;
+  max-height: calc(100vh - 96px) !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  position: static !important;
+  top: auto !important;
+  transform: none !important;
+  width: 100% !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-nav,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  background-clip: padding-box !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-nav {
+  border-radius: 26px 26px 0 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  border-radius: 0 0 26px 26px !important;
+  margin: -1px 0 0 !important;
+  max-height: calc(100vh - 158px) !important;
+  overflow: hidden !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav {
+  max-height: calc(100vh - 186px) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  scrollbar-width: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) {
+    align-self: flex-start !important;
+    height: max-content !important;
+    max-height: calc(100vh - 96px) !important;
+    overflow: visible !important;
+    position: sticky !important;
+    top: 88px !important;
+    z-index: 6 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+    background: transparent !important;
+    box-shadow: none !important;
+    display: flex !important;
+    filter: drop-shadow(0 18px 34px rgba(0, 0, 0, .32)) !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    height: auto !important;
+    max-height: calc(100vh - 96px) !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    position: static !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-nav,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+    background-clip: padding-box !important;
+    box-shadow: none !important;
+    position: relative !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-nav {
+    border-radius: 26px 26px 0 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+    border-radius: 0 0 26px 26px !important;
+    margin: -1px 0 0 !important;
+    max-height: calc(100vh - 158px) !important;
+    overflow: hidden !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav {
+    max-height: calc(100vh - 186px) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    scrollbar-width: none !important;
+  }
+}

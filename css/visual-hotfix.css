@@ -1314,3 +1314,78 @@ html body .sidebar:has(.post-toc-wrap) .post-toc .nav::-webkit-scrollbar {
   height: 0 !important;
   width: 0 !important;
 }
+
+/* Final TOC behavior lock: keep light-mode TOC sticky and remove clipped square shadows. */
+html body .sidebar:has(.post-toc-wrap) {
+  align-self: flex-start !important;
+  height: max-content !important;
+  max-height: calc(100vh - 96px) !important;
+  overflow: visible !important;
+  position: sticky !important;
+  top: 88px !important;
+  z-index: 6 !important;
+}
+
+html body .sidebar:has(.post-toc-wrap) .sidebar-inner,
+html body .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+html body .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+html body .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+  background: transparent !important;
+  box-shadow: none !important;
+  display: flex !important;
+  filter: drop-shadow(0 18px 34px rgba(30, 42, 68, .08)) !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  height: auto !important;
+  max-height: calc(100vh - 96px) !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  position: static !important;
+  top: auto !important;
+  transform: none !important;
+  width: 100% !important;
+}
+
+html body .sidebar:has(.post-toc-wrap) .sidebar-nav,
+html body .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  background-clip: padding-box !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+
+html body .sidebar:has(.post-toc-wrap) .sidebar-nav {
+  border-radius: 26px 26px 0 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+html body .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  border-radius: 0 0 26px 26px !important;
+  margin: -1px 0 0 !important;
+  max-height: calc(100vh - 158px) !important;
+  overflow: hidden !important;
+}
+
+html body .sidebar:has(.post-toc-wrap) .post-toc,
+html body .sidebar:has(.post-toc-wrap) .post-toc .nav {
+  max-height: calc(100vh - 186px) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  scrollbar-width: none !important;
+}
+
+html body .sidebar:has(.post-toc-wrap) .post-toc-wrap::before,
+html body .sidebar:has(.post-toc-wrap) .post-toc-wrap::after,
+html body .sidebar:has(.post-toc-wrap) .post-toc::before,
+html body .sidebar:has(.post-toc-wrap) .post-toc::after,
+html body .sidebar:has(.post-toc-wrap) .nav-item::before,
+html body .sidebar:has(.post-toc-wrap) .nav-item::after {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  html body .sidebar:has(.post-toc-wrap) {
+    display: none !important;
+    position: static !important;
+  }
+}
