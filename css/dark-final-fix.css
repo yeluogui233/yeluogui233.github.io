@@ -405,3 +405,423 @@ html body.theme-force-dark :is(#bookLightbox, #movieLightbox) :is(.book-summary,
     -webkit-text-fill-color: #f0e9dc !important;
   }
 }
+
+/* Keep dark TOC top spacing identical to the repaired light TOC. */
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) {
+  max-height: calc(100vh - 28px) !important;
+  top: 14px !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+  max-height: calc(100vh - 28px) !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  max-height: calc(100vh - 90px) !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav {
+  max-height: calc(100vh - 118px) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) {
+    max-height: calc(100vh - 28px) !important;
+    top: 14px !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+    max-height: calc(100vh - 28px) !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+    max-height: calc(100vh - 90px) !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav {
+    max-height: calc(100vh - 118px) !important;
+  }
+}
+
+/* Final dark cleanup: keep one background layer and remove hard inner blocks. */
+html body.theme-force-dark {
+  background-color: #151411 !important;
+  background-image: none !important;
+}
+
+html body.theme-force-dark :is(.container, .main, .main-inner, .content-wrap, .content, .content.index, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .movies-front, .movies-friends, .diary-wrapper, .diary-container, .bake-container, .games-container, .lab-container, .categories-container),
+html body.theme-force-dark :is(.container, .main, .main-inner, .content-wrap, .content, .content.index, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .movies-front, .movies-friends, .diary-wrapper, .diary-container, .bake-container, .games-container, .lab-container, .categories-container)::before,
+html body.theme-force-dark :is(.container, .main, .main-inner, .content-wrap, .content, .content.index, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .movies-front, .movies-friends, .diary-wrapper, .diary-container, .bake-container, .games-container, .lab-container, .categories-container)::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body.theme-force-dark canvas.fireworks,
+html body.theme-force-dark #canvas-nest,
+html body.theme-force-dark .canvas-nest {
+  inset: 0 !important;
+  opacity: .9 !important;
+  pointer-events: none !important;
+  position: fixed !important;
+  z-index: 0 !important;
+}
+
+html body.theme-force-dark .container {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+html body.theme-force-dark .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span),
+html body.theme-force-dark .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span)::before,
+html body.theme-force-dark .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span)::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body.theme-force-dark .sidebar-profile-card .site-state-wrap {
+  margin-top: 8px !important;
+  padding-top: 8px !important;
+}
+
+html body.theme-force-dark .sidebar-profile-card .site-state {
+  gap: 10px !important;
+  overflow: visible !important;
+}
+
+html body.theme-force-dark :is(.movies-container, .movies-wrapper) .movie-card.card,
+html body.theme-force-dark :is(.movies-container, .movies-wrapper) .movie-card {
+  background: rgba(31, 29, 26, .82) !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 248, 234, .1) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .28) !important;
+  overflow: hidden !important;
+}
+
+html body.theme-force-dark :is(.movies-container, .movies-wrapper) .movie-card::before,
+html body.theme-force-dark :is(.movies-container, .movies-wrapper) .movie-card::after,
+html body.theme-force-dark :is(.movies-container, .movies-wrapper) .movie-buttons::before,
+html body.theme-force-dark :is(.movies-container, .movies-wrapper) .movie-buttons::after {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  content: none !important;
+  display: none !important;
+}
+
+html body.theme-force-dark :is(.movies-container, .movies-wrapper) .movie-buttons {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  outline: 0 !important;
+  padding: 10px 8px 12px !important;
+  width: 100% !important;
+}
+
+html body.theme-force-dark :is(.movies-container, .movies-wrapper) .movie-buttons .btn {
+  background: rgba(255, 248, 234, .08) !important;
+  border: 1px solid rgba(255, 248, 234, .18) !important;
+  box-shadow: none !important;
+  color: #f4efe7 !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark :is(.movies-container, .movies-wrapper) .movie-buttons .btn:is(:hover, :focus-visible) {
+  background: #fff8ea !important;
+  border-color: #fff8ea !important;
+  color: #111 !important;
+  transform: translateY(-1px) !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body.theme-force-dark :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption),
+html body.theme-force-dark :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::before,
+html body.theme-force-dark :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body.theme-force-dark :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) .photo-frame {
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+html body.theme-force-dark :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) .photo-image {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: inherit !important;
+  box-shadow: none !important;
+  display: block !important;
+}
+
+html body.theme-force-dark :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) .photo-caption {
+  color: #f4efe7 !important;
+  line-height: 1.45 !important;
+  margin: 10px 0 0 !important;
+  padding: 0 4px !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body.theme-force-dark :is(.diary-wrapper, .diary-container) .diary-card,
+html body.theme-force-dark :is(.diary-wrapper, .diary-container) .diary-card::before,
+html body.theme-force-dark :is(.diary-wrapper, .diary-container) .diary-card::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body.theme-force-dark :is(.diary-wrapper, .diary-container) .diary-content {
+  background: rgba(31, 29, 26, .9) !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, .28) !important;
+  outline: 0 !important;
+  overflow: hidden !important;
+}
+
+html body.theme-force-dark :is(.diary-wrapper, .diary-container) .diary-content::after {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  content: none !important;
+  display: none !important;
+}
+
+html body.theme-force-dark :is(.diary-wrapper, .diary-container) .diary-card:hover .diary-content {
+  box-shadow: 0 20px 48px rgba(0, 0, 0, .36) !important;
+  transform: translateY(-8px) !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) {
+  max-height: calc(100vh - 16px) !important;
+  top: 8px !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+  max-height: calc(100vh - 16px) !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  max-height: calc(100vh - 78px) !important;
+}
+
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc,
+html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav {
+  max-height: calc(100vh - 106px) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) {
+    background-color: #151411 !important;
+    background-image: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.container, .main, .main-inner, .content-wrap, .content, .content.index, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .movies-front, .movies-friends, .diary-wrapper, .diary-container, .bake-container, .games-container, .lab-container, .categories-container),
+  html body:not(.theme-force-light) :is(.container, .main, .main-inner, .content-wrap, .content, .content.index, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .movies-front, .movies-friends, .diary-wrapper, .diary-container, .bake-container, .games-container, .lab-container, .categories-container)::before,
+  html body:not(.theme-force-light) :is(.container, .main, .main-inner, .content-wrap, .content, .content.index, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .movies-front, .movies-friends, .diary-wrapper, .diary-container, .bake-container, .games-container, .lab-container, .categories-container)::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  html body:not(.theme-force-light) canvas.fireworks,
+  html body:not(.theme-force-light) #canvas-nest,
+  html body:not(.theme-force-light) .canvas-nest {
+    inset: 0 !important;
+    opacity: .9 !important;
+    pointer-events: none !important;
+    position: fixed !important;
+    z-index: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .container {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span),
+  html body:not(.theme-force-light) .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span)::before,
+  html body:not(.theme-force-light) .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span)::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.movies-container, .movies-wrapper) .movie-card.card,
+  html body:not(.theme-force-light) :is(.movies-container, .movies-wrapper) .movie-card {
+    background: rgba(31, 29, 26, .82) !important;
+    background-image: none !important;
+    border: 1px solid rgba(255, 248, 234, .1) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .28) !important;
+    overflow: hidden !important;
+  }
+
+  html body:not(.theme-force-light) :is(.movies-container, .movies-wrapper) .movie-card::before,
+  html body:not(.theme-force-light) :is(.movies-container, .movies-wrapper) .movie-card::after,
+  html body:not(.theme-force-light) :is(.movies-container, .movies-wrapper) .movie-buttons::before,
+  html body:not(.theme-force-light) :is(.movies-container, .movies-wrapper) .movie-buttons::after {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    content: none !important;
+    display: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.movies-container, .movies-wrapper) .movie-buttons {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    outline: 0 !important;
+    padding: 10px 8px 12px !important;
+    width: 100% !important;
+  }
+
+  html body:not(.theme-force-light) :is(.movies-container, .movies-wrapper) .movie-buttons .btn {
+    background: rgba(255, 248, 234, .08) !important;
+    border: 1px solid rgba(255, 248, 234, .18) !important;
+    box-shadow: none !important;
+    color: #f4efe7 !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.movies-container, .movies-wrapper) .movie-buttons .btn:is(:hover, :focus-visible) {
+    background: #fff8ea !important;
+    border-color: #fff8ea !important;
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption),
+  html body:not(.theme-force-light) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::before,
+  html body:not(.theme-force-light) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) .photo-frame {
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) .photo-image {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: inherit !important;
+    box-shadow: none !important;
+    display: block !important;
+  }
+
+  html body:not(.theme-force-light) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) .photo-caption {
+    color: #f4efe7 !important;
+    line-height: 1.45 !important;
+    margin: 10px 0 0 !important;
+    padding: 0 4px !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.diary-wrapper, .diary-container) .diary-card,
+  html body:not(.theme-force-light) :is(.diary-wrapper, .diary-container) .diary-card::before,
+  html body:not(.theme-force-light) :is(.diary-wrapper, .diary-container) .diary-card::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.diary-wrapper, .diary-container) .diary-content {
+    background: rgba(31, 29, 26, .9) !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 18px !important;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, .28) !important;
+    outline: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html body:not(.theme-force-light) :is(.diary-wrapper, .diary-container) .diary-content::after {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    content: none !important;
+    display: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) {
+    max-height: calc(100vh - 16px) !important;
+    top: 8px !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+    max-height: calc(100vh - 16px) !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+    max-height: calc(100vh - 78px) !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc,
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc .nav {
+    max-height: calc(100vh - 106px) !important;
+  }
+}

@@ -1389,3 +1389,47 @@ html body .sidebar:has(.post-toc-wrap) .nav-item::after {
     position: static !important;
   }
 }
+
+/* Keep the article TOC close to the viewport top while preserving its inner scroll. */
+html body .sidebar:has(.post-toc-wrap) {
+  max-height: calc(100vh - 28px) !important;
+  top: 14px !important;
+}
+
+html body .sidebar:has(.post-toc-wrap) .sidebar-inner,
+html body .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+html body .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+html body .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+  max-height: calc(100vh - 28px) !important;
+}
+
+html body .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  max-height: calc(100vh - 90px) !important;
+}
+
+html body .sidebar:has(.post-toc-wrap) .post-toc,
+html body .sidebar:has(.post-toc-wrap) .post-toc .nav {
+  max-height: calc(100vh - 118px) !important;
+}
+
+/* Final TOC top offset: keep it close to the viewport edge. */
+html body .sidebar:has(.post-toc-wrap) {
+  max-height: calc(100vh - 16px) !important;
+  top: 8px !important;
+}
+
+html body .sidebar:has(.post-toc-wrap) .sidebar-inner,
+html body .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
+html body .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
+html body .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-bottom {
+  max-height: calc(100vh - 16px) !important;
+}
+
+html body .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  max-height: calc(100vh - 78px) !important;
+}
+
+html body .sidebar:has(.post-toc-wrap) .post-toc,
+html body .sidebar:has(.post-toc-wrap) .post-toc .nav {
+  max-height: calc(100vh - 106px) !important;
+}
