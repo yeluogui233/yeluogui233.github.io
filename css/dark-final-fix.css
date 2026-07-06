@@ -825,3 +825,434 @@ html body.theme-force-dark .sidebar:has(.post-toc-wrap) .post-toc .nav {
     max-height: calc(100vh - 106px) !important;
   }
 }
+
+/* Hard lock for the real Three.js line background and legacy dark-mode entry. */
+html body > #kylo-canvas-lines,
+html body > .kylo-canvas-lines,
+html body > div[style*="z-index: -1"]:has(canvas),
+html body > div[style*="opacity: 0.5"]:has(canvas) {
+  background: transparent !important;
+  display: block !important;
+  height: 100vh !important;
+  inset: 0 !important;
+  opacity: .52 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  position: fixed !important;
+  visibility: visible !important;
+  width: 100vw !important;
+  z-index: 0 !important;
+}
+
+html body > #kylo-canvas-lines canvas,
+html body > .kylo-canvas-lines canvas,
+html body > div[style*="z-index: -1"]:has(canvas) canvas,
+html body > div[style*="opacity: 0.5"]:has(canvas) canvas {
+  background: transparent !important;
+  display: block !important;
+  height: 100vh !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  width: 100vw !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode),
+html.dark-mode body {
+  background-color: #151411 !important;
+  background-image: none !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.container, .headband, .main, .main-inner, .content-wrap, .content, .content.index, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .movies-front, .movies-friends, .diary-wrapper, .diary-container, .bake-container, .games-container, .lab-container, .categories-container),
+html body:is(.theme-force-dark, .dark-mode) :is(.container, .headband, .main, .main-inner, .content-wrap, .content, .content.index, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .movies-front, .movies-friends, .diary-wrapper, .diary-container, .bake-container, .games-container, .lab-container, .categories-container)::before,
+html body:is(.theme-force-dark, .dark-mode) :is(.container, .headband, .main, .main-inner, .content-wrap, .content, .content.index, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .movies-front, .movies-friends, .diary-wrapper, .diary-container, .bake-container, .games-container, .lab-container, .categories-container)::after,
+html.dark-mode body :is(.container, .headband, .main, .main-inner, .content-wrap, .content, .content.index, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .movies-front, .movies-friends, .diary-wrapper, .diary-container, .bake-container, .games-container, .lab-container, .categories-container),
+html.dark-mode body :is(.container, .headband, .main, .main-inner, .content-wrap, .content, .content.index, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .movies-front, .movies-friends, .diary-wrapper, .diary-container, .bake-container, .games-container, .lab-container, .categories-container)::before,
+html.dark-mode body :is(.container, .headband, .main, .main-inner, .content-wrap, .content, .content.index, .album-page-shell, .album-container, .album-wrapper, .gallery-container, .gallery-wrapper, .books-container, .books-wrapper, .movies-container, .movies-wrapper, .movies-front, .movies-friends, .diary-wrapper, .diary-container, .bake-container, .games-container, .lab-container, .categories-container)::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .container,
+html.dark-mode body .container {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span, .site-state-item-count, .site-state-item-name),
+html body:is(.theme-force-dark, .dark-mode) .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span, .site-state-item-count, .site-state-item-name)::before,
+html body:is(.theme-force-dark, .dark-mode) .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span, .site-state-item-count, .site-state-item-name)::after,
+html.dark-mode body .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span, .site-state-item-count, .site-state-item-name),
+html.dark-mode body .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span, .site-state-item-count, .site-state-item-name)::before,
+html.dark-mode body .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span, .site-state-item-count, .site-state-item-name)::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .sidebar-profile-card .site-state,
+html.dark-mode body .sidebar-profile-card .site-state {
+  display: grid !important;
+  gap: 0 !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  overflow: visible !important;
+  width: 100% !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .sidebar-profile-card .site-state-item a,
+html.dark-mode body .sidebar-profile-card .site-state-item a {
+  align-items: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.search-pop-overlay, .local-search-pop-overlay).search-active,
+html.dark-mode body :is(.search-pop-overlay, .local-search-pop-overlay).search-active {
+  background: rgba(7, 7, 6, .56) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.popup.search-popup, .search-popup),
+html.dark-mode body :is(.popup.search-popup, .search-popup) {
+  background: rgba(31, 29, 26, .98) !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 248, 234, .14) !important;
+  border-radius: 26px !important;
+  box-shadow: 0 28px 78px rgba(0, 0, 0, .52) !important;
+  color: #f4efe7 !important;
+  overflow: hidden !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .search-header,
+html.dark-mode body .search-header {
+  background: transparent !important;
+  background-image: none !important;
+  border-bottom: 1px solid rgba(255, 248, 234, .12) !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.search-icon, .search-icon *, .popup-btn-close, .popup-btn-close *),
+html.dark-mode body :is(.search-icon, .search-icon *, .popup-btn-close, .popup-btn-close *) {
+  color: #d8d0c3 !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  -webkit-text-fill-color: #d8d0c3 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .search-input-container,
+html.dark-mode body .search-input-container {
+  background: rgba(255, 248, 234, .07) !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 248, 234, .16) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(input.search-input, .search-popup input.search-input),
+html.dark-mode body :is(input.search-input, .search-popup input.search-input) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: #f4efe7 !important;
+  outline: 0 !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) #search-result,
+html.dark-mode body #search-result {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  overflow-x: hidden !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .search-result-list,
+html.dark-mode body .search-result-list {
+  display: grid !important;
+  gap: 10px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .search-result-list li,
+html.dark-mode body .search-result-list li {
+  background: rgba(255, 248, 234, .07) !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 248, 234, .13) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  color: #f4efe7 !important;
+  list-style: none !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .search-result-list li::before,
+html body:is(.theme-force-dark, .dark-mode) .search-result-list li::after,
+html body:is(.theme-force-dark, .dark-mode) .search-result-list li > a::before,
+html body:is(.theme-force-dark, .dark-mode) .search-result-list li > a::after,
+html body:is(.theme-force-dark, .dark-mode) .search-result-title::before,
+html body:is(.theme-force-dark, .dark-mode) .search-result-title::after,
+html body:is(.theme-force-dark, .dark-mode) .search-result::before,
+html body:is(.theme-force-dark, .dark-mode) .search-result::after,
+html.dark-mode body .search-result-list li::before,
+html.dark-mode body .search-result-list li::after,
+html.dark-mode body .search-result-list li > a::before,
+html.dark-mode body .search-result-list li > a::after,
+html.dark-mode body .search-result-title::before,
+html.dark-mode body .search-result-title::after,
+html.dark-mode body .search-result::before,
+html.dark-mode body .search-result::after {
+  content: none !important;
+  display: none !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .search-result-list li > a,
+html.dark-mode body .search-result-list li > a {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: inherit !important;
+  display: block !important;
+  overflow: visible !important;
+  padding: 0 16px 12px !important;
+  text-decoration: none !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .search-result-list li > a.search-result-title,
+html.dark-mode body .search-result-list li > a.search-result-title {
+  padding: 13px 16px 7px !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.search-result-title, a.search-result-title),
+html.dark-mode body :is(.search-result-title, a.search-result-title) {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: #fff8ea !important;
+  display: block !important;
+  font-weight: 800 !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  text-decoration: none !important;
+  -webkit-text-fill-color: #fff8ea !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.search-result, p.search-result),
+html.dark-mode body :is(.search-result, p.search-result) {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: rgba(244, 239, 231, .82) !important;
+  line-height: 1.65 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  -webkit-text-fill-color: rgba(244, 239, 231, .82) !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption),
+html body:is(.theme-force-dark, .dark-mode) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::before,
+html body:is(.theme-force-dark, .dark-mode) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::after,
+html.dark-mode body :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption),
+html.dark-mode body :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::before,
+html.dark-mode body :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) .photo-caption,
+html.dark-mode body :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) .photo-caption {
+  color: #f4efe7 !important;
+  display: block !important;
+  line-height: 1.45 !important;
+  margin: 10px 0 0 !important;
+  padding: 0 4px !important;
+  text-align: center !important;
+  -webkit-text-fill-color: #f4efe7 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) {
+    background-color: #151411 !important;
+    background-image: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span, .site-state-item-count, .site-state-item-name),
+  html body:not(.theme-force-light) .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span, .site-state-item-count, .site-state-item-name)::before,
+  html body:not(.theme-force-light) .sidebar-profile-card :is(.site-state-wrap, .site-state, .site-state-item, .site-state-item a, .site-state-item span, .site-state-item-count, .site-state-item-name)::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state {
+    display: grid !important;
+    gap: 0 !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  html body:not(.theme-force-light) :is(.search-pop-overlay, .local-search-pop-overlay).search-active {
+    background: rgba(7, 7, 6, .56) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.popup.search-popup, .search-popup) {
+    background: rgba(31, 29, 26, .98) !important;
+    background-image: none !important;
+    border: 1px solid rgba(255, 248, 234, .14) !important;
+    border-radius: 26px !important;
+    box-shadow: 0 28px 78px rgba(0, 0, 0, .52) !important;
+    color: #f4efe7 !important;
+    overflow: hidden !important;
+  }
+
+  html body:not(.theme-force-light) .search-header {
+    background: transparent !important;
+    background-image: none !important;
+    border-bottom: 1px solid rgba(255, 248, 234, .12) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.search-icon, .search-icon *, .popup-btn-close, .popup-btn-close *) {
+    color: #d8d0c3 !important;
+    fill: currentColor !important;
+    stroke: currentColor !important;
+    -webkit-text-fill-color: #d8d0c3 !important;
+  }
+
+  html body:not(.theme-force-light) .search-input-container {
+    background: rgba(255, 248, 234, .07) !important;
+    background-image: none !important;
+    border: 1px solid rgba(255, 248, 234, .16) !important;
+    border-radius: 999px !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(input.search-input, .search-popup input.search-input) {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #f4efe7 !important;
+    outline: 0 !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+
+  html body:not(.theme-force-light) .search-result-list {
+    display: grid !important;
+    gap: 10px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .search-result-list li {
+    background: rgba(255, 248, 234, .07) !important;
+    background-image: none !important;
+    border: 1px solid rgba(255, 248, 234, .13) !important;
+    border-radius: 16px !important;
+    box-shadow: none !important;
+    color: #f4efe7 !important;
+    list-style: none !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .search-result-list li::before,
+  html body:not(.theme-force-light) .search-result-list li::after,
+  html body:not(.theme-force-light) .search-result-list li > a::before,
+  html body:not(.theme-force-light) .search-result-list li > a::after,
+  html body:not(.theme-force-light) .search-result-title::before,
+  html body:not(.theme-force-light) .search-result-title::after,
+  html body:not(.theme-force-light) .search-result::before,
+  html body:not(.theme-force-light) .search-result::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  html body:not(.theme-force-light) .search-result-list li > a {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: inherit !important;
+    display: block !important;
+    overflow: visible !important;
+    padding: 0 16px 12px !important;
+    text-decoration: none !important;
+  }
+
+  html body:not(.theme-force-light) .search-result-list li > a.search-result-title {
+    padding: 13px 16px 7px !important;
+  }
+
+  html body:not(.theme-force-light) :is(.search-result-title, a.search-result-title) {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #fff8ea !important;
+    display: block !important;
+    font-weight: 800 !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    text-decoration: none !important;
+    -webkit-text-fill-color: #fff8ea !important;
+  }
+
+  html body:not(.theme-force-light) :is(.search-result, p.search-result) {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: rgba(244, 239, 231, .82) !important;
+    line-height: 1.65 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    -webkit-text-fill-color: rgba(244, 239, 231, .82) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption),
+  html body:not(.theme-force-light) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::before,
+  html body:not(.theme-force-light) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) :is(.photo-wall, .photo-item, .photo-frame, .photo-caption)::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.album-wrapper, .album-container, .gallery-wrapper, .gallery-container) .photo-caption {
+    color: #f4efe7 !important;
+    display: block !important;
+    line-height: 1.45 !important;
+    margin: 10px 0 0 !important;
+    padding: 0 4px !important;
+    text-align: center !important;
+    -webkit-text-fill-color: #f4efe7 !important;
+  }
+}
