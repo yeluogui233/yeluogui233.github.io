@@ -1433,3 +1433,175 @@ html body .sidebar:has(.post-toc-wrap) .post-toc,
 html body .sidebar:has(.post-toc-wrap) .post-toc .nav {
   max-height: calc(100vh - 106px) !important;
 }
+
+/* Movies lightbox: keep the detail card compact without changing the page grid. */
+html body #movieLightbox .lightbox-content {
+  box-sizing: border-box !important;
+  margin: clamp(18px, 4vh, 34px) auto !important;
+  max-height: calc(100vh - 40px) !important;
+  max-width: min(620px, calc(100vw - 32px)) !important;
+  padding: clamp(18px, 2vw, 24px) !important;
+  width: min(620px, calc(100vw - 32px)) !important;
+}
+
+html body #movieLightbox .lightbox-close {
+  height: 38px !important;
+  right: 14px !important;
+  top: 14px !important;
+  width: 38px !important;
+}
+
+html body #movieLightbox .movie-detail-header h2 {
+  border-bottom-width: 1px !important;
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem) !important;
+  margin: 0 0 16px !important;
+  padding: 0 42px 12px !important;
+}
+
+html body #movieLightbox .movie-info-container {
+  gap: 20px !important;
+  margin-bottom: 18px !important;
+}
+
+html body #movieLightbox .movie-poster-large {
+  width: clamp(118px, 23vw, 154px) !important;
+}
+
+html body #movieLightbox .movie-poster-large img {
+  border-radius: 14px !important;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .22) !important;
+}
+
+html body #movieLightbox .movie-meta {
+  font-size: .94rem !important;
+  line-height: 1.48 !important;
+}
+
+html body #movieLightbox .movie-meta div {
+  margin-bottom: 4px !important;
+  padding: 1px 0 !important;
+}
+
+html body #movieLightbox .movie-meta strong {
+  font-size: .94rem !important;
+  min-width: 74px !important;
+}
+
+html body #movieLightbox .movie-category-tag {
+  font-size: .74rem !important;
+  margin: 2px !important;
+  padding: 3px 8px !important;
+}
+
+html body #movieLightbox .movie-summary {
+  border-left-width: 4px !important;
+  border-radius: 14px !important;
+  font-size: .96rem !important;
+  line-height: 1.62 !important;
+  margin-bottom: 16px !important;
+  padding: 14px 16px !important;
+}
+
+html body #movieLightbox .movie-detail-footer {
+  margin-top: 8px !important;
+}
+
+html body #movieLightbox .download-btn {
+  min-height: 34px !important;
+  padding: 0 16px !important;
+}
+
+@media (max-width: 767px) {
+  html body .movies-container .movie-card,
+  html body .movies-wrapper .movie-card {
+    min-width: 0 !important;
+  }
+
+  html body .movies-container .movie-rating,
+  html body .movies-wrapper .movie-rating {
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+    max-width: calc(100% - 8px) !important;
+    overflow: hidden !important;
+    padding: 2px 4px !important;
+    right: 4px !important;
+    top: 4px !important;
+  }
+
+  html body .movies-container .movie-rating .stars,
+  html body .movies-wrapper .movie-rating .stars {
+    align-items: center !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+  }
+
+  html body .movies-container .movie-rating .star,
+  html body .movies-wrapper .movie-rating .star {
+    flex: 0 0 .58em !important;
+    font-size: clamp(.48rem, 2.15vw, .58rem) !important;
+    line-height: 1 !important;
+    width: .58em !important;
+  }
+
+  html body .movies-container .movie-rating .rating-number,
+  html body .movies-wrapper .movie-rating .rating-number {
+    flex: 0 0 auto !important;
+    font-size: clamp(.56rem, 2.25vw, .66rem) !important;
+    line-height: 1 !important;
+    margin-left: 2px !important;
+  }
+
+  html body #movieLightbox .lightbox-content {
+    margin: 16px auto !important;
+    max-height: calc(100vh - 32px) !important;
+    max-width: calc(100vw - 24px) !important;
+    padding: 16px !important;
+    width: calc(100vw - 24px) !important;
+  }
+
+  html body #movieLightbox .movie-detail-header h2 {
+    font-size: 1.22rem !important;
+    margin-bottom: 12px !important;
+    padding: 0 36px 10px !important;
+  }
+
+  html body #movieLightbox .movie-info-container {
+    gap: 10px !important;
+    margin-bottom: 12px !important;
+  }
+
+  html body #movieLightbox .movie-poster-large {
+    width: 92px !important;
+  }
+
+  html body #movieLightbox .movie-summary {
+    font-size: .9rem !important;
+    margin-bottom: 12px !important;
+    padding: 12px 13px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  html body .movies-container .movie-rating,
+  html body .movies-wrapper .movie-rating {
+    padding: 2px 3px !important;
+  }
+
+  html body .movies-container .movie-rating .star,
+  html body .movies-wrapper .movie-rating .star {
+    flex-basis: .54em !important;
+    font-size: .48rem !important;
+    width: .54em !important;
+  }
+
+  html body .movies-container .movie-rating .rating-number,
+  html body .movies-wrapper .movie-rating .rating-number {
+    font-size: .56rem !important;
+    margin-left: 1px !important;
+  }
+}
