@@ -406,6 +406,44 @@ html body.theme-force-dark :is(#bookLightbox, #movieLightbox) :is(.book-summary,
   }
 }
 
+/* The profile counters are always part of the parent card, never a nested panel. */
+html body .sidebar-profile-card .site-state-wrap,
+html body .sidebar-profile-card .site-state-wrap > .site-state,
+html body .sidebar-profile-card .site-state > .site-state-item,
+html body .sidebar-profile-card .site-state > .site-state-item > a,
+html body .sidebar-profile-card .site-state > .site-state-item > span,
+html body .sidebar-profile-card .site-state > .site-state-item > a > span {
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  isolation: auto !important;
+  mask: none !important;
+  opacity: 1 !important;
+  outline: 0 !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+html body .sidebar-profile-card .site-state-wrap::before,
+html body .sidebar-profile-card .site-state-wrap::after,
+html body .sidebar-profile-card .site-state::before,
+html body .sidebar-profile-card .site-state::after,
+html body .sidebar-profile-card .site-state-item::before,
+html body .sidebar-profile-card .site-state-item::after,
+html body .sidebar-profile-card .site-state-item > a::before,
+html body .sidebar-profile-card .site-state-item > a::after,
+html body .sidebar-profile-card .site-state-item > span::before,
+html body .sidebar-profile-card .site-state-item > span::after {
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  content: none !important;
+  display: none !important;
+}
+
 /* Keep dark TOC top spacing identical to the repaired light TOC. */
 html body.theme-force-dark .sidebar:has(.post-toc-wrap) {
   max-height: calc(100vh - 28px) !important;
@@ -1373,4 +1411,39 @@ html.dark-mode body .album-container .photo-item > .photo-caption {
     padding: 0 4px !important;
     width: auto !important;
   }
+}
+
+/* Absolute EOF: profile counters belong directly to the profile card. */
+html body .sidebar-profile-card .site-state-wrap,
+html body .sidebar-profile-card .site-state-wrap > .site-state,
+html body .sidebar-profile-card .site-state > .site-state-item,
+html body .sidebar-profile-card .site-state > .site-state-item > a,
+html body .sidebar-profile-card .site-state > .site-state-item > span,
+html body .sidebar-profile-card .site-state > .site-state-item > a > span {
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  outline: 0 !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+html body .sidebar-profile-card .site-state-wrap::before,
+html body .sidebar-profile-card .site-state-wrap::after,
+html body .sidebar-profile-card .site-state::before,
+html body .sidebar-profile-card .site-state::after,
+html body .sidebar-profile-card .site-state-item::before,
+html body .sidebar-profile-card .site-state-item::after,
+html body .sidebar-profile-card .site-state-item > a::before,
+html body .sidebar-profile-card .site-state-item > a::after,
+html body .sidebar-profile-card .site-state-item > span::before,
+html body .sidebar-profile-card .site-state-item > span::after {
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  content: none !important;
+  display: none !important;
 }
