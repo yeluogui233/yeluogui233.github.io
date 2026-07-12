@@ -1256,3 +1256,121 @@ html.dark-mode body :is(.album-wrapper, .album-container, .gallery-wrapper, .gal
     -webkit-text-fill-color: #f4efe7 !important;
   }
 }
+
+/* 2026-07-12: final dark surface cleanup. Keep this block at the real EOF. */
+html.dark-mode,
+html:has(body.theme-force-dark),
+html:has(body.dark-mode) {
+  background: #151411 !important;
+  background-image: none !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode),
+html.dark-mode body {
+  background: #151411 !important;
+  background-image: none !important;
+  min-height: 100vh !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) > #kylo-canvas-lines,
+html body:is(.theme-force-dark, .dark-mode) > .kylo-canvas-lines,
+html.dark-mode body > #kylo-canvas-lines,
+html.dark-mode body > .kylo-canvas-lines,
+html body:is(.theme-force-dark, .dark-mode) > #kylo-canvas-lines canvas,
+html body:is(.theme-force-dark, .dark-mode) > .kylo-canvas-lines canvas,
+html.dark-mode body > #kylo-canvas-lines canvas,
+html.dark-mode body > .kylo-canvas-lines canvas {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.container, .main, .main-inner, .content-wrap, .content, .sidebar, .sidebar-inner, .site-overview-wrap),
+html.dark-mode body :is(.container, .main, .main-inner, .content-wrap, .content, .sidebar, .sidebar-inner, .site-overview-wrap) {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .sidebar-profile-card .site-state-wrap,
+html body:is(.theme-force-dark, .dark-mode) .sidebar-profile-card .site-state-wrap > .site-state,
+html body:is(.theme-force-dark, .dark-mode) .sidebar-profile-card .site-state > .site-state-item,
+html body:is(.theme-force-dark, .dark-mode) .sidebar-profile-card .site-state > .site-state-item > a,
+html body:is(.theme-force-dark, .dark-mode) .sidebar-profile-card .site-state > .site-state-item > span,
+html body:is(.theme-force-dark, .dark-mode) .sidebar-profile-card .site-state > .site-state-item > a > span,
+html.dark-mode body .sidebar-profile-card .site-state-wrap,
+html.dark-mode body .sidebar-profile-card .site-state-wrap > .site-state,
+html.dark-mode body .sidebar-profile-card .site-state > .site-state-item,
+html.dark-mode body .sidebar-profile-card .site-state > .site-state-item > a,
+html.dark-mode body .sidebar-profile-card .site-state > .site-state-item > span,
+html.dark-mode body .sidebar-profile-card .site-state > .site-state-item > a > span {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  outline: 0 !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .album-wrapper .photo-item > .photo-caption,
+html body:is(.theme-force-dark, .dark-mode) .album-container .photo-item > .photo-caption,
+html.dark-mode body .album-wrapper .photo-item > .photo-caption,
+html.dark-mode body .album-container .photo-item > .photo-caption {
+  align-self: center !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: inline-block !important;
+  filter: none !important;
+  margin: 10px auto 0 !important;
+  max-width: 100% !important;
+  outline: 0 !important;
+  padding: 0 4px !important;
+  width: auto !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:has(body:not(.theme-force-light)) {
+    background: #151411 !important;
+    background-image: none !important;
+  }
+
+  html body:not(.theme-force-light),
+  html body:not(.theme-force-light) :is(.container, .main, .main-inner, .content-wrap, .content, .sidebar, .sidebar-inner, .site-overview-wrap) {
+    background-image: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-wrap,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state-wrap > .site-state,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state > .site-state-item,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state > .site-state-item > a,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state > .site-state-item > span,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state > .site-state-item > a > span {
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  html body:not(.theme-force-light) .album-wrapper .photo-item > .photo-caption,
+  html body:not(.theme-force-light) .album-container .photo-item > .photo-caption {
+    align-self: center !important;
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    display: inline-block !important;
+    margin: 10px auto 0 !important;
+    padding: 0 4px !important;
+    width: auto !important;
+  }
+}
