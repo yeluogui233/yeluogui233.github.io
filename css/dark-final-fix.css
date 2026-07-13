@@ -1414,6 +1414,17 @@ html.dark-mode body .album-container .photo-item > .photo-caption {
 }
 
 /* Absolute EOF: profile counters belong directly to the profile card. */
+html body .sidebar-profile-card .site-state-wrap {
+  display: contents !important;
+}
+
+html body .sidebar-profile-card .site-state {
+  box-sizing: border-box !important;
+  margin-top: 8px !important;
+  padding-top: 8px !important;
+  width: 100% !important;
+}
+
 html body .sidebar-profile-card .site-state-wrap,
 html body .sidebar-profile-card .site-state-wrap > .site-state,
 html body .sidebar-profile-card .site-state > .site-state-item,
