@@ -1414,6 +1414,27 @@ html.dark-mode body .album-container .photo-item > .photo-caption {
 }
 
 /* Absolute EOF: profile counters belong directly to the profile card. */
+/* Lock the card and counters to one rendered dark color, including forced browser dark mode. */
+html body.theme-force-dark .sidebar-profile-card,
+html body.dark-mode .sidebar-profile-card,
+html.dark-mode body .sidebar-profile-card,
+html body.theme-force-dark .sidebar-profile-card .site-state,
+html body.dark-mode .sidebar-profile-card .site-state,
+html.dark-mode body .sidebar-profile-card .site-state {
+  background: #1f1d1a !important;
+  background-color: #1f1d1a !important;
+  background-image: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .sidebar-profile-card,
+  html body:not(.theme-force-light) .sidebar-profile-card .site-state {
+    background: #1f1d1a !important;
+    background-color: #1f1d1a !important;
+    background-image: none !important;
+  }
+}
+
 html body .sidebar-profile-card .site-state-wrap {
   display: contents !important;
 }
