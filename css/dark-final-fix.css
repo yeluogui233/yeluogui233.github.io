@@ -1414,6 +1414,271 @@ html.dark-mode body .album-container .photo-item > .photo-caption {
 }
 
 /* Absolute EOF: profile counters belong directly to the profile card. */
+/* 2026-07-14: dark pagination, diary jump, and comments refinement. */
+html body.theme-force-dark .pagination span.space,
+html body.dark-mode .pagination span.space,
+html.dark-mode body .pagination span.space {
+  align-items: center !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: #d7cfc2 !important;
+  display: inline-flex !important;
+  height: auto !important;
+  justify-content: center !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  padding: 0 5px !important;
+  width: auto !important;
+  -webkit-text-fill-color: #d7cfc2 !important;
+}
+
+html body.theme-force-dark .page-jump-container,
+html body.dark-mode .page-jump-container,
+html.dark-mode body .page-jump-container {
+  background: #1f1d1a !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 248, 234, .13) !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark .page-jump-label,
+html body.dark-mode .page-jump-label,
+html.dark-mode body .page-jump-label {
+  color: #f4efe6 !important;
+  -webkit-text-fill-color: #f4efe6 !important;
+}
+
+html body.theme-force-dark :is(.page-selector-wrapper, .selector-arrow),
+html body.dark-mode :is(.page-selector-wrapper, .selector-arrow),
+html.dark-mode body :is(.page-selector-wrapper, .selector-arrow) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: #d7cfc2 !important;
+}
+
+html body.theme-force-dark .page-selector,
+html body.dark-mode .page-selector,
+html.dark-mode body .page-selector {
+  background: #292621 !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 248, 234, .16) !important;
+  box-shadow: none !important;
+  color: #f4efe6 !important;
+  -webkit-text-fill-color: #f4efe6 !important;
+}
+
+html body.theme-force-dark .page-selector option,
+html body.dark-mode .page-selector option,
+html.dark-mode body .page-selector option {
+  background: #1f1d1a !important;
+  color: #f4efe6 !important;
+}
+
+html body.theme-force-dark .page-selector:is(:hover, :focus-visible),
+html body.dark-mode .page-selector:is(:hover, :focus-visible),
+html.dark-mode body .page-selector:is(:hover, :focus-visible) {
+  background: #fff8ea !important;
+  border-color: #fff8ea !important;
+  color: #111 !important;
+  outline: 0 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body.theme-force-dark .comments.giscus-comments,
+html body.dark-mode .comments.giscus-comments,
+html.dark-mode body .comments.giscus-comments {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin-top: 30px !important;
+  overflow: visible !important;
+  padding: 0 !important;
+}
+
+html body.theme-force-dark .comments.giscus-comments :is(.giscus, iframe.giscus-frame),
+html body.dark-mode .comments.giscus-comments :is(.giscus, iframe.giscus-frame),
+html.dark-mode body .comments.giscus-comments :is(.giscus, iframe.giscus-frame) {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color-scheme: dark !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .pagination span.space {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #d7cfc2 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    padding: 0 5px !important;
+    width: auto !important;
+    -webkit-text-fill-color: #d7cfc2 !important;
+  }
+
+  html body:not(.theme-force-light) .page-jump-container {
+    background: #1f1d1a !important;
+    background-image: none !important;
+    border: 1px solid rgba(255, 248, 234, .13) !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .page-jump-label {
+    color: #f4efe6 !important;
+    -webkit-text-fill-color: #f4efe6 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.page-selector-wrapper, .selector-arrow) {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #d7cfc2 !important;
+  }
+
+  html body:not(.theme-force-light) .page-selector {
+    background: #292621 !important;
+    background-image: none !important;
+    border: 1px solid rgba(255, 248, 234, .16) !important;
+    box-shadow: none !important;
+    color: #f4efe6 !important;
+    -webkit-text-fill-color: #f4efe6 !important;
+  }
+
+  html body:not(.theme-force-light) .page-selector option {
+    background: #1f1d1a !important;
+    color: #f4efe6 !important;
+  }
+
+  html body:not(.theme-force-light) .page-selector:is(:hover, :focus-visible) {
+    background: #fff8ea !important;
+    border-color: #fff8ea !important;
+    color: #111 !important;
+    outline: 0 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+
+  html body:not(.theme-force-light) .comments.giscus-comments {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin-top: 30px !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .comments.giscus-comments :is(.giscus, iframe.giscus-frame) {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color-scheme: dark !important;
+  }
+}
+
+/* 2026-07-14: remove remaining blue accents from dark categories and search states. */
+html body.theme-force-dark .categories-container :is(.stat-number, .category-card-title),
+html body.dark-mode .categories-container :is(.stat-number, .category-card-title),
+html.dark-mode body .categories-container :is(.stat-number, .category-card-title) {
+  color: #f4efe6 !important;
+  -webkit-text-fill-color: #f4efe6 !important;
+}
+
+html body.theme-force-dark .categories-container :is(.stat-label, .category-card-description, .category-card-description *),
+html body.dark-mode .categories-container :is(.stat-label, .category-card-description, .category-card-description *),
+html.dark-mode body .categories-container :is(.stat-label, .category-card-description, .category-card-description *) {
+  color: #cfc5b8 !important;
+  -webkit-text-fill-color: #cfc5b8 !important;
+}
+
+html body.theme-force-dark .categories-container :is(.tag-item, .post-count),
+html body.dark-mode .categories-container :is(.tag-item, .post-count),
+html.dark-mode body .categories-container :is(.tag-item, .post-count) {
+  background: #292621 !important;
+  background-image: none !important;
+  border-color: rgba(255, 248, 234, .14) !important;
+  box-shadow: none !important;
+  color: #e7dfd2 !important;
+  -webkit-text-fill-color: #e7dfd2 !important;
+}
+
+html body.theme-force-dark .categories-container :is(.tag-item, .post-count):is(:hover, :focus-visible),
+html body.dark-mode .categories-container :is(.tag-item, .post-count):is(:hover, :focus-visible),
+html.dark-mode body .categories-container :is(.tag-item, .post-count):is(:hover, :focus-visible) {
+  background: #fff8ea !important;
+  border-color: #fff8ea !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
+
+html body.theme-force-dark #no-result,
+html body.dark-mode #no-result,
+html.dark-mode body #no-result,
+html body.theme-force-dark #no-result :is(i, .fa, .fas, .far, .search-status),
+html body.dark-mode #no-result :is(i, .fa, .fas, .far, .search-status),
+html.dark-mode body #no-result :is(i, .fa, .fas, .far, .search-status) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: #d8d0c3 !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #d8d0c3 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .categories-container :is(.stat-number, .category-card-title) {
+    color: #f4efe6 !important;
+    -webkit-text-fill-color: #f4efe6 !important;
+  }
+
+  html body:not(.theme-force-light) .categories-container :is(.stat-label, .category-card-description, .category-card-description *) {
+    color: #cfc5b8 !important;
+    -webkit-text-fill-color: #cfc5b8 !important;
+  }
+
+  html body:not(.theme-force-light) .categories-container :is(.tag-item, .post-count) {
+    background: #292621 !important;
+    background-image: none !important;
+    border-color: rgba(255, 248, 234, .14) !important;
+    box-shadow: none !important;
+    color: #e7dfd2 !important;
+    -webkit-text-fill-color: #e7dfd2 !important;
+  }
+
+  html body:not(.theme-force-light) .categories-container :is(.tag-item, .post-count):is(:hover, :focus-visible) {
+    background: #fff8ea !important;
+    border-color: #fff8ea !important;
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+
+  html body:not(.theme-force-light) #no-result,
+  html body:not(.theme-force-light) #no-result :is(i, .fa, .fas, .far, .search-status) {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #d8d0c3 !important;
+    fill: currentColor !important;
+    stroke: currentColor !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: #d8d0c3 !important;
+  }
+}
+
 /* Lock the card and counters to one rendered dark color, including forced browser dark mode. */
 html body.theme-force-dark .sidebar-profile-card,
 html body.dark-mode .sidebar-profile-card,

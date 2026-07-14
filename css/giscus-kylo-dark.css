@@ -126,3 +126,233 @@ textarea {
   border: 0 !important;
   color: var(--color-fg-default) !important;
 }
+
+/* 2026-07-14: compact warm-dark comment surface. */
+:root {
+  --kylo-comment-panel: #1f1d1a;
+  --kylo-comment-input: #151412;
+  --kylo-comment-raised: #292621;
+  --kylo-comment-border: rgba(255, 248, 234, .14);
+  --kylo-comment-border-strong: rgba(255, 248, 234, .24);
+  --kylo-comment-text: #f4efe6;
+  --kylo-comment-muted: #cfc5b8;
+  --kylo-comment-hot: #fff8ea;
+}
+
+html,
+body,
+.gsc-main,
+.gsc-comments,
+.gsc-timeline,
+.gsc-reactions {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.gsc-main {
+  color: var(--kylo-comment-text) !important;
+  padding: 2px !important;
+}
+
+.gsc-header {
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--kylo-comment-muted) !important;
+  margin-bottom: 12px !important;
+  padding: 0 2px !important;
+}
+
+.gsc-comment-box {
+  background: var(--kylo-comment-panel) !important;
+  border: 1px solid var(--kylo-comment-border) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, .24) !important;
+  margin-bottom: 18px !important;
+  overflow: hidden !important;
+}
+
+.gsc-comment-box-main,
+.gsc-comment-box-bottom,
+.gsc-comment-box-tabs,
+.gsc-comment-content,
+.gsc-reply-box {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.gsc-comment-box-tabs {
+  border: 0 !important;
+  border-bottom: 1px solid var(--kylo-comment-border) !important;
+  gap: 4px !important;
+  padding: 7px 10px 0 !important;
+}
+
+.gsc-comment-box-tabs button {
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  color: var(--kylo-comment-muted) !important;
+  min-height: 38px !important;
+  padding: 0 10px !important;
+  transition: border-color .18s ease, color .18s ease !important;
+}
+
+.gsc-comment-box-tabs button.selected {
+  background: transparent !important;
+  border-color: var(--kylo-comment-hot) !important;
+  color: var(--kylo-comment-hot) !important;
+}
+
+.gsc-comment-box-textarea,
+.gsc-comment-box-preview,
+.gsc-reply-box textarea,
+textarea.form-control,
+.form-control {
+  background: var(--kylo-comment-input) !important;
+  border: 1px solid var(--kylo-comment-border) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: var(--kylo-comment-text) !important;
+  line-height: 1.65 !important;
+  min-height: 108px !important;
+  outline: 0 !important;
+  padding: 12px 14px !important;
+  transition: border-color .18s ease, box-shadow .18s ease !important;
+}
+
+.gsc-comment-box-textarea:focus,
+.gsc-reply-box textarea:focus,
+textarea.form-control:focus,
+.form-control:focus {
+  border-color: var(--kylo-comment-border-strong) !important;
+  box-shadow: 0 0 0 3px rgba(255, 248, 234, .07) !important;
+}
+
+textarea::placeholder,
+.form-control::placeholder {
+  color: rgba(207, 197, 184, .62) !important;
+  opacity: 1 !important;
+}
+
+.gsc-comment-box-bottom {
+  border: 0 !important;
+  padding: 10px 12px 12px !important;
+}
+
+.gsc-comment-box-buttons {
+  gap: 8px !important;
+}
+
+.btn,
+.gsc-comment-box-buttons button,
+.gsc-reactions-button,
+.gsc-social-reaction-summary-item {
+  background: var(--kylo-comment-raised) !important;
+  border: 1px solid var(--kylo-comment-border) !important;
+  border-radius: 9px !important;
+  box-shadow: none !important;
+  color: var(--kylo-comment-text) !important;
+  min-height: 36px !important;
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease !important;
+}
+
+.btn-primary,
+.gsc-comment-box-buttons .btn-primary {
+  background: var(--kylo-comment-hot) !important;
+  border-color: var(--kylo-comment-hot) !important;
+  color: #111 !important;
+}
+
+.btn:hover,
+.btn:focus-visible,
+.gsc-comment-box-buttons button:hover,
+.gsc-comment-box-buttons button:focus-visible,
+.gsc-reactions-button:hover,
+.gsc-reactions-button:focus-visible,
+.gsc-social-reaction-summary-item:hover {
+  background: var(--kylo-comment-hot) !important;
+  border-color: var(--kylo-comment-hot) !important;
+  color: #111 !important;
+}
+
+.gsc-comment {
+  background: var(--kylo-comment-panel) !important;
+  border: 1px solid var(--kylo-comment-border) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  margin-bottom: 12px !important;
+  overflow: hidden !important;
+}
+
+.gsc-comment-header {
+  background: var(--kylo-comment-raised) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--kylo-comment-border) !important;
+  color: var(--kylo-comment-muted) !important;
+  padding: 10px 12px !important;
+}
+
+.gsc-comment-content {
+  color: var(--kylo-comment-text) !important;
+  line-height: 1.72 !important;
+  padding: 14px !important;
+}
+
+.gsc-comment-footer,
+.gsc-replies {
+  background: transparent !important;
+  border-color: var(--kylo-comment-border) !important;
+}
+
+.gsc-reactions-menu {
+  background: var(--kylo-comment-panel) !important;
+  border: 1px solid var(--kylo-comment-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .34) !important;
+}
+
+a,
+.Link--primary,
+.gsc-comment-author {
+  color: var(--kylo-comment-hot) !important;
+  text-decoration-color: rgba(255, 248, 234, .34) !important;
+}
+
+.color-fg-muted,
+.text-small,
+.gsc-comment-header,
+.gsc-comments-count,
+.gsc-reactions-count {
+  color: var(--kylo-comment-muted) !important;
+}
+
+img.avatar,
+.avatar {
+  border: 1px solid var(--kylo-comment-border) !important;
+  box-shadow: none !important;
+}
+
+pre,
+code,
+.blob-code {
+  background: var(--kylo-comment-input) !important;
+  border-color: var(--kylo-comment-border) !important;
+  color: var(--kylo-comment-text) !important;
+}
+
+@media (max-width: 560px) {
+  .gsc-main {
+    padding: 0 !important;
+  }
+
+  .gsc-comment-box,
+  .gsc-comment {
+    border-radius: 13px !important;
+  }
+
+  .gsc-comment-content {
+    padding: 12px !important;
+  }
+}
