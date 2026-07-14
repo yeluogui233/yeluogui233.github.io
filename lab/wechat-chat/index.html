@@ -1483,6 +1483,7 @@ html.dark-mode body .wechat-image-preview svg {
   if (!root) return;
 
   const assets = {
+    inputbar: 'https://images.weserv.nl/?url=s3.bmp.ovh/2026/07/08/V14Renkh.jpg&output=jpg',
     leftAvatar: 'https://images.weserv.nl/?url=s3.bmp.ovh/2026/07/08/SSXvIXNO.jpg&output=jpg',
     rightAvatar: 'https://images.weserv.nl/?url=s3.bmp.ovh/2026/07/08/cNuy1gpk.jpg&output=jpg'
   };
@@ -1837,6 +1838,18 @@ html.dark-mode body .wechat-image-preview svg {
 
   function drawInputbar(width, height) {
     const y = height - 44;
+    const inputbarImage = getLoadedImage(assets.inputbar);
+    if (inputbarImage) {
+      drawImageCover(inputbarImage, 0, y, width, 44, 0);
+      context.strokeStyle = 'rgba(0,0,0,.08)';
+      context.lineWidth = 1;
+      context.beginPath();
+      context.moveTo(0, y + .5);
+      context.lineTo(width, y + .5);
+      context.stroke();
+      return;
+    }
+
     context.fillStyle = '#f6f6f6';
     context.fillRect(0, y, width, 44);
     context.strokeStyle = 'rgba(0,0,0,.08)';
@@ -1948,12 +1961,17 @@ html.dark-mode body .wechat-image-preview svg {
   function drawPreview() {
     const width = Math.max(280, Math.round(preview.canvas.clientWidth || 330));
     const height = Math.max(560, Math.round(preview.canvas.clientHeight || 680));
-    if (preview.canvas.width !== width || preview.canvas.height !== height) {
-      preview.canvas.width = width;
-      preview.canvas.height = height;
+    const pixelRatio = Math.max(2, Math.min(3, window.devicePixelRatio || 2));
+    const renderWidth = Math.round(width * pixelRatio);
+    const renderHeight = Math.round(height * pixelRatio);
+    if (preview.canvas.width !== renderWidth || preview.canvas.height !== renderHeight) {
+      preview.canvas.width = renderWidth;
+      preview.canvas.height = renderHeight;
     }
 
-    context.clearRect(0, 0, width, height);
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    context.clearRect(0, 0, preview.canvas.width, preview.canvas.height);
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     context.imageSmoothingEnabled = true;
     context.imageSmoothingQuality = 'high';
     context.fillStyle = '#ededed';
@@ -2039,7 +2057,7 @@ html.dark-mode body .wechat-image-preview svg {
     setStatus('正在生成截图...');
     try {
       const items = fields.script.value.split(/\r?\n/).map(parseLine).filter(Boolean);
-      const sources = [avatars.me, avatars.other];
+      const sources = [avatars.me, avatars.other, assets.inputbar];
       items.forEach(function(item) {
         if (item.type === 'image' && chatImages.get(item.imageId)) {
           sources.push(chatImages.get(item.imageId));
@@ -2110,6 +2128,7 @@ html.dark-mode body .wechat-image-preview svg {
   });
 
   fields.time.value = fields.time.value.trim() || formatCurrentTime();
+  loadImage(assets.inputbar);
   loadImage(avatars.me);
   loadImage(avatars.other);
   if ('ResizeObserver' in window) {
