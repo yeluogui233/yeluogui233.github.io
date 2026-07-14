@@ -351,7 +351,7 @@
             </div>
             <div class="wechat-messages" data-preview-messages></div>
             <div class="wechat-inputbar" aria-hidden="true">
-              <img class="wechat-inputbar-bg" src="https://s3.bmp.ovh/2026/07/08/V14Renkh.jpg" referrerpolicy="no-referrer" alt="">
+              <img class="wechat-inputbar-bg" src="https://images.weserv.nl/?url=s3.bmp.ovh/2026/07/08/V14Renkh.jpg&amp;output=jpg" crossorigin="anonymous" referrerpolicy="no-referrer" alt="">
             </div>
           </div>
         </div>
@@ -402,20 +402,47 @@
           <label class="wechat-avatar-upload">
             <span>我的头像</span>
             <input type="file" data-avatar-input="me" accept="image/*">
-            <i data-avatar-preview="me"><img src="https://s3.bmp.ovh/2026/07/08/cNuy1gpk.jpg" referrerpolicy="no-referrer" alt=""></i>
+            <i data-avatar-preview="me"><img src="https://images.weserv.nl/?url=s3.bmp.ovh/2026/07/08/cNuy1gpk.jpg&amp;output=jpg" crossorigin="anonymous" referrerpolicy="no-referrer" alt=""></i>
           </label>
           <label class="wechat-avatar-upload">
             <span>对方头像</span>
             <input type="file" data-avatar-input="other" accept="image/*">
-            <i data-avatar-preview="other"><img src="https://s3.bmp.ovh/2026/07/08/SSXvIXNO.jpg" referrerpolicy="no-referrer" alt=""></i>
+            <i data-avatar-preview="other"><img src="https://images.weserv.nl/?url=s3.bmp.ovh/2026/07/08/SSXvIXNO.jpg&amp;output=jpg" crossorigin="anonymous" referrerpolicy="no-referrer" alt=""></i>
           </label>
         </div>
       </div>
 
       <div class="wechat-control-section">
         <div class="wechat-editor-label">
+          <h2>图片消息</h2>
+          <span data-image-file-name>未选择图片</span>
+        </div>
+        <div class="wechat-image-tools">
+          <label class="wechat-image-picker">
+            <input type="file" data-chat-image-input accept="image/*">
+            <span class="wechat-image-preview" data-chat-image-preview aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3H5Zm0 2h14a1 1 0 0 1 1 1v8.17l-3.1-3.1a2 2 0 0 0-2.82 0l-1.62 1.62-3.03-3.03a2 2 0 0 0-2.83 0L4 12.26V6a1 1 0 0 1 1-1Zm-1 10.09 4.01-4.02 3.74 3.74a1 1 0 0 0 1.42 0l2.32-2.32L20 17v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2.91ZM16.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"></path></svg>
+            </span>
+            <span>选择图片</span>
+          </label>
+          <label class="wechat-image-side">
+            <span>发送方</span>
+            <select data-field="imageSide">
+              <option value="A">我（A）</option>
+              <option value="B">对方（B）</option>
+            </select>
+          </label>
+          <button class="wechat-add-image" type="button" data-action="add-image">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5a1 1 0 0 1 1 1v5h5a1 1 0 1 1 0 2h-5v5a1 1 0 1 1-2 0v-5H6a1 1 0 1 1 0-2h5V6a1 1 0 0 1 1-1Z"></path></svg>
+            加入对话
+          </button>
+        </div>
+      </div>
+
+      <div class="wechat-control-section">
+        <div class="wechat-editor-label">
           <h2>对话内容</h2>
-          <span>A说 / B说 / 时间 / 红包</span>
+          <span>A说 / B说 / 时间 / 红包 / 图片</span>
         </div>
         <textarea data-field="script" spellcheck="false">时间：14:20
 B说：银酱，给我零花钱阿鲁。
@@ -846,6 +873,23 @@ html body .content.wechat-chat-page {
   display: none;
 }
 
+.wechat-image-message {
+  border-radius: 7px;
+  display: inline-block;
+  max-height: 220px;
+  max-width: 190px;
+  overflow: hidden;
+}
+
+.wechat-image-message img {
+  display: block;
+  height: auto;
+  max-height: 220px;
+  max-width: 190px;
+  object-fit: cover;
+  width: auto;
+}
+
 .wechat-inputbar {
   background: #f6f6f6;
   border-top: 1px solid rgba(0, 0, 0, .08);
@@ -978,6 +1022,116 @@ html body .content.wechat-chat-page {
   width: 100%;
 }
 
+.wechat-image-tools {
+  align-items: stretch;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(180px, 1fr) minmax(126px, 160px) auto;
+}
+
+.wechat-image-picker {
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid rgba(217, 224, 235, .96);
+  border-radius: 12px;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-size: .86rem;
+  font-weight: 760;
+  gap: 10px;
+  min-height: 58px;
+  padding: 6px 10px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.wechat-image-picker:hover,
+.wechat-image-picker:focus-within {
+  border-color: #111;
+  box-shadow: 0 0 0 4px rgba(17, 17, 17, .07);
+}
+
+.wechat-image-picker input {
+  display: none;
+}
+
+.wechat-image-preview {
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(217, 224, 235, .9);
+  border-radius: 9px;
+  display: inline-flex;
+  flex: 0 0 44px;
+  height: 44px;
+  justify-content: center;
+  overflow: hidden;
+  width: 44px;
+}
+
+.wechat-image-preview svg {
+  fill: #6d7480;
+  height: 20px;
+  width: 20px;
+}
+
+.wechat-image-preview img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.wechat-image-side {
+  display: grid;
+  gap: 7px;
+}
+
+.wechat-image-side > span {
+  color: #6d7480;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.wechat-image-side select {
+  background: #f8fafc;
+  border: 1px solid rgba(217, 224, 235, .96);
+  border-radius: 12px;
+  color: #111;
+  font: inherit;
+  min-height: 40px;
+  outline: 0;
+  padding: 0 12px;
+  width: 100%;
+}
+
+.wechat-add-image {
+  align-items: center;
+  align-self: end;
+  background: #111;
+  border: 1px solid #111;
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 780;
+  gap: 6px;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 14px;
+}
+
+.wechat-add-image svg {
+  fill: currentColor;
+  height: 16px;
+  width: 16px;
+}
+
+.wechat-add-image:hover,
+.wechat-add-image:focus-visible {
+  background: #fff;
+  color: #111;
+}
+
 .wechat-editor-label {
   align-items: baseline;
   display: flex;
@@ -1096,6 +1250,132 @@ html.dark-mode body .wechat-control-section textarea {
   color: #fff7ea;
 }
 
+html body:is(.theme-force-dark, .dark-mode) :is(.wechat-lab-back, .wechat-icon-btn, .wechat-actions button, .wechat-image-picker, .wechat-image-side select),
+html.dark-mode body :is(.wechat-lab-back, .wechat-icon-btn, .wechat-actions button, .wechat-image-picker, .wechat-image-side select) {
+  background: #292621 !important;
+  background-image: none !important;
+  border-color: rgba(255, 248, 234, .15) !important;
+  box-shadow: none !important;
+  color: #f4efe6 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.wechat-actions button:first-child, .wechat-add-image),
+html.dark-mode body :is(.wechat-actions button:first-child, .wechat-add-image) {
+  background: #fff8ea !important;
+  border-color: #fff8ea !important;
+  color: #111 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.wechat-lab-back, .wechat-icon-btn, .wechat-actions button, .wechat-add-image):is(:hover, :focus-visible),
+html.dark-mode body :is(.wechat-lab-back, .wechat-icon-btn, .wechat-actions button, .wechat-add-image):is(:hover, :focus-visible) {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: #111 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.wechat-image-preview, .wechat-avatar-upload i),
+html.dark-mode body :is(.wechat-image-preview, .wechat-avatar-upload i) {
+  background: #151412 !important;
+  border: 1px solid rgba(255, 248, 234, .14) !important;
+  box-shadow: none !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.wechat-image-side > span, [data-image-file-name]),
+html.dark-mode body :is(.wechat-image-side > span, [data-image-file-name]) {
+  color: rgba(244, 239, 230, .68) !important;
+  -webkit-text-fill-color: rgba(244, 239, 230, .68) !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .wechat-image-preview svg,
+html.dark-mode body .wechat-image-preview svg {
+  fill: #cfc5b8 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .content.wechat-chat-page {
+    background: #1f1d1a !important;
+    background-image: none !important;
+    border-color: rgba(255, 248, 234, .13) !important;
+    box-shadow: 0 18px 46px rgba(0, 0, 0, .32) !important;
+  }
+
+  html body:not(.theme-force-light) .wechat-lab-tool {
+    color: #f4efe6 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.wechat-lab-header h1, .wechat-control-section h2, .wechat-panel-title span) {
+    color: #fff8ea !important;
+    -webkit-text-fill-color: #fff8ea !important;
+  }
+
+  html body:not(.theme-force-light) :is(.wechat-lab-header p, .wechat-lab-kicker, .wechat-export-status, .wechat-form-grid span, .wechat-avatar-upload span, .wechat-editor-label span, .wechat-image-side > span, [data-image-file-name]) {
+    color: rgba(244, 239, 230, .68) !important;
+    -webkit-text-fill-color: rgba(244, 239, 230, .68) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.wechat-preview-panel, .wechat-control-panel) {
+    background: #292621 !important;
+    background-image: none !important;
+    border-color: rgba(255, 248, 234, .12) !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .wechat-control-section {
+    background: #1f1d1a !important;
+    background-image: none !important;
+    border-color: rgba(255, 248, 234, .12) !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.wechat-form-grid input, .wechat-form-grid select, .wechat-control-section textarea, .wechat-image-picker, .wechat-image-side select) {
+    background: #151412 !important;
+    background-image: none !important;
+    border-color: rgba(255, 248, 234, .14) !important;
+    box-shadow: none !important;
+    color: #f4efe6 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.wechat-form-grid input, .wechat-form-grid select, .wechat-control-section textarea, .wechat-image-side select):focus {
+    border-color: rgba(255, 248, 234, .32) !important;
+    box-shadow: 0 0 0 4px rgba(255, 248, 234, .06) !important;
+  }
+
+  html body:not(.theme-force-light) :is(.wechat-lab-back, .wechat-icon-btn, .wechat-actions button) {
+    background: #292621 !important;
+    background-image: none !important;
+    border-color: rgba(255, 248, 234, .15) !important;
+    box-shadow: none !important;
+    color: #f4efe6 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.wechat-actions button:first-child, .wechat-add-image) {
+    background: #fff8ea !important;
+    border-color: #fff8ea !important;
+    color: #111 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.wechat-lab-back, .wechat-icon-btn, .wechat-actions button, .wechat-add-image):is(:hover, :focus-visible) {
+    background: #fff !important;
+    border-color: #fff !important;
+    color: #111 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.wechat-image-preview, .wechat-avatar-upload i) {
+    background: #151412 !important;
+    border: 1px solid rgba(255, 248, 234, .14) !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .wechat-image-preview svg {
+    fill: #cfc5b8 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.wechat-form-grid select option, .wechat-image-side select option) {
+    background: #1f1d1a !important;
+    color: #f4efe6 !important;
+  }
+}
+
 @media (max-width: 1180px) {
   .wechat-lab-grid {
     grid-template-columns: 1fr;
@@ -1121,8 +1401,13 @@ html.dark-mode body .wechat-control-section textarea {
   }
 
   .wechat-form-grid,
-  .wechat-avatar-grid {
+  .wechat-avatar-grid,
+  .wechat-image-tools {
     grid-template-columns: 1fr;
+  }
+
+  .wechat-add-image {
+    align-self: stretch;
   }
 
   .wechat-phone {
@@ -1144,9 +1429,9 @@ html.dark-mode body .wechat-control-section textarea {
   if (!root) return;
 
   const assets = {
-    redpacket: 'https://s3.bmp.ovh/2026/07/08/tKtCcmf2.png',
-    leftAvatar: 'https://s3.bmp.ovh/2026/07/08/SSXvIXNO.jpg',
-    rightAvatar: 'https://s3.bmp.ovh/2026/07/08/cNuy1gpk.jpg'
+    redpacket: 'https://images.weserv.nl/?url=s3.bmp.ovh/2026/07/08/tKtCcmf2.png&output=png',
+    leftAvatar: 'https://images.weserv.nl/?url=s3.bmp.ovh/2026/07/08/SSXvIXNO.jpg&output=jpg',
+    rightAvatar: 'https://images.weserv.nl/?url=s3.bmp.ovh/2026/07/08/cNuy1gpk.jpg&output=jpg'
   };
   const sample = root.querySelector('[data-field="script"]').value;
   const fields = {
@@ -1155,6 +1440,7 @@ html.dark-mode body .wechat-control-section textarea {
     network: root.querySelector('[data-field="network"]'),
     signal: root.querySelector('[data-field="signal"]'),
     battery: root.querySelector('[data-field="battery"]'),
+    imageSide: root.querySelector('[data-field="imageSide"]'),
     script: root.querySelector('[data-field="script"]')
   };
   const preview = {
@@ -1170,6 +1456,13 @@ html.dark-mode body .wechat-control-section textarea {
     me: assets.rightAvatar,
     other: assets.leftAvatar
   };
+  const chatImages = new Map();
+  const chatImageInput = root.querySelector('[data-chat-image-input]');
+  const chatImagePreview = root.querySelector('[data-chat-image-preview]');
+  const chatImageName = root.querySelector('[data-image-file-name]');
+  const chatImagePlaceholder = chatImagePreview.innerHTML;
+  let pendingChatImage = null;
+  let chatImageSequence = 0;
 
   function formatCurrentTime() {
     const now = new Date();
@@ -1202,13 +1495,15 @@ html.dark-mode body .wechat-control-section textarea {
     const content = message[2].trim();
     const red = content.match(/^\[?红包\s*[:：]\s*(.+?)\]?$/);
     if (red) return { type: 'redpacket', side, content: red[1].trim() || '恭喜发财，大吉大利' };
+    const image = content.match(/^\[?图片\s*[:：]\s*([\w-]+)\]?$/);
+    if (image) return { type: 'image', side, imageId: image[1].trim() };
     return { type: 'message', side, content };
   }
 
   function avatarHtml(side) {
     const label = side === 'me' ? 'A' : 'B';
     const src = avatars[side];
-    if (src) return '<i class="wechat-avatar"><img src="' + text(src) + '" crossorigin="anonymous" alt="' + label + '"></i>';
+    if (src) return '<i class="wechat-avatar"><img src="' + text(src) + '" crossorigin="anonymous" referrerpolicy="no-referrer" alt="' + label + '"></i>';
     return '<i class="wechat-avatar">' + label + '</i>';
   }
 
@@ -1222,10 +1517,18 @@ html.dark-mode body .wechat-control-section textarea {
       return '<div class="wechat-message ' + item.side + '">' +
         avatar +
         '<div class="wechat-redpacket">' +
-          '<img class="wechat-redpacket-bg" src="' + assets.redpacket + '" crossorigin="anonymous" alt="">' +
+          '<img class="wechat-redpacket-bg" src="' + assets.redpacket + '" crossorigin="anonymous" referrerpolicy="no-referrer" alt="">' +
           '<div class="wechat-redpacket-copy"><strong>' + text(item.content) + '</strong></div>' +
         '</div>' +
       '</div>';
+    }
+
+    if (item.type === 'image') {
+      const src = chatImages.get(item.imageId);
+      const content = src
+        ? '<div class="wechat-image-message"><img src="' + text(src) + '" alt="聊天图片"></div>'
+        : '<div class="wechat-bubble">图片不可用</div>';
+      return '<div class="wechat-message ' + item.side + '">' + avatar + content + '</div>';
     }
 
     return '<div class="wechat-message ' + item.side + '">' +
@@ -1270,26 +1573,108 @@ html.dark-mode body .wechat-control-section textarea {
     reader.readAsDataURL(file);
   }
 
-  function downloadShot() {
+  function readChatImage(input) {
+    const file = input.files && input.files[0];
+    if (!file) return;
+    if (!file.type.startsWith('image/')) {
+      setStatus('请选择图片文件。');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      pendingChatImage = {
+        name: file.name,
+        src: event.target.result
+      };
+      chatImageName.textContent = file.name;
+      chatImagePreview.innerHTML = '<img src="' + pendingChatImage.src + '" alt="">';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function resetChatImagePicker() {
+    pendingChatImage = null;
+    chatImageInput.value = '';
+    chatImageName.textContent = '未选择图片';
+    chatImagePreview.innerHTML = chatImagePlaceholder;
+  }
+
+  function addChatImage() {
+    if (!pendingChatImage) {
+      setStatus('先选择一张图片。');
+      return;
+    }
+    const imageId = 'image-' + (++chatImageSequence);
+    const side = fields.imageSide.value === 'B' ? 'B' : 'A';
+    chatImages.set(imageId, pendingChatImage.src);
+    fields.script.value = fields.script.value.replace(/\s+$/, '') + '\n' + side + '说：[图片：' + imageId + ']';
+    resetChatImagePicker();
+    render();
+    setStatus('图片已加入对话。');
+  }
+
+  function waitForImage(image) {
+    if (image.complete && image.naturalWidth > 0) {
+      return typeof image.decode === 'function' ? image.decode().catch(function() {}) : Promise.resolve();
+    }
+    if (image.complete) {
+      return Promise.reject(new Error('image-load-failed'));
+    }
+    return new Promise(function(resolve, reject) {
+      const timer = window.setTimeout(function() {
+        cleanup();
+        reject(new Error('image-timeout'));
+      }, 12000);
+      function cleanup() {
+        window.clearTimeout(timer);
+        image.removeEventListener('load', onLoad);
+        image.removeEventListener('error', onError);
+      }
+      function onLoad() {
+        cleanup();
+        resolve();
+      }
+      function onError() {
+        cleanup();
+        reject(new Error('image-load-failed'));
+      }
+      image.addEventListener('load', onLoad, { once: true });
+      image.addEventListener('error', onError, { once: true });
+    });
+  }
+
+  function waitForImages(node) {
+    return Promise.all(Array.from(node.querySelectorAll('img')).map(waitForImage));
+  }
+
+  async function downloadShot() {
     const node = document.getElementById('wechatShot');
     if (!window.html2canvas) {
       setStatus('截图组件还没加载好，稍等一下再点。');
       return;
     }
     setStatus('正在生成截图...');
-    window.html2canvas(node, {
-      backgroundColor: '#ededed',
-      scale: Math.min(3, window.devicePixelRatio || 2),
-      useCORS: true
-    }).then(function(canvas) {
+    try {
+      if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      await waitForImages(node);
+      const canvas = await window.html2canvas(node, {
+        allowTaint: false,
+        backgroundColor: '#ededed',
+        imageTimeout: 12000,
+        logging: false,
+        removeContainer: true,
+        scale: Math.min(3, window.devicePixelRatio || 2),
+        useCORS: true
+      });
       const link = document.createElement('a');
       link.download = 'wechat-chat.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
+      link.remove();
       setStatus('截图已生成。');
-    }).catch(function() {
-      setStatus('截图生成失败，可以刷新后再试。');
-    });
+    } catch (error) {
+      setStatus('图片资源尚未加载完成，请稍后再试。');
+    }
   }
 
   root.addEventListener('input', function(event) {
@@ -1298,6 +1683,7 @@ html.dark-mode body .wechat-control-section textarea {
       readAvatar(avatarInput, avatarInput.dataset.avatarInput);
       return;
     }
+    if (event.target.matches('[data-chat-image-input]')) return;
     render();
   });
 
@@ -1305,6 +1691,10 @@ html.dark-mode body .wechat-control-section textarea {
     const avatarInput = event.target.closest('[data-avatar-input]');
     if (avatarInput) {
       readAvatar(avatarInput, avatarInput.dataset.avatarInput);
+      return;
+    }
+    if (event.target.matches('[data-chat-image-input]')) {
+      readChatImage(event.target);
       return;
     }
     render();
@@ -1322,6 +1712,9 @@ html.dark-mode body .wechat-control-section textarea {
       fields.script.value = sample;
       render();
       setStatus('已恢复示例。');
+    }
+    if (type === 'add-image') {
+      addChatImage();
     }
     if (type === 'copy') {
       navigator.clipboard && navigator.clipboard.writeText(fields.script.value).then(function() {
