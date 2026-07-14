@@ -2388,7 +2388,7 @@ html body .bake-card:hover .bake-card-image {
     color: var(--kylo-dark-text) !important;
   }
 
-  html body:not(.theme-force-light) :is(.post-card-info, .site-state, .book-actions, .movie-actions, .movie-buttons, .game-actions, .book-summary, .movie-summary, .book-detail-footer, .movie-detail-footer, .book-rating, .movie-rating, .category-selector, .main-category-selector, .sub-category-dropdown, .category-dropdown, .category-option, .main-category-option, .sub-category-option, .game-cover-placeholder, .photo-caption, .search-header, .search-input-container, #search-result, .search-result-list, .search-result-title, .search-result) {
+  html body:not(.theme-force-light) :is(.post-card-info, .book-actions, .movie-actions, .movie-buttons, .game-actions, .book-summary, .movie-summary, .book-detail-footer, .movie-detail-footer, .book-rating, .movie-rating, .category-selector, .main-category-selector, .sub-category-dropdown, .category-dropdown, .category-option, .main-category-option, .sub-category-option, .game-cover-placeholder, .photo-caption, .search-header, .search-input-container, #search-result, .search-result-list, .search-result-title, .search-result) {
     background: var(--kylo-dark-card) !important;
     background-color: var(--kylo-dark-card) !important;
     background-image: none !important;
@@ -2680,7 +2680,7 @@ html body.theme-force-dark :is(.post-block, .post-card-preview, .sidebar-profile
   color: var(--kylo-dark-text) !important;
 }
 
-html body.theme-force-dark :is(.post-card-info, .site-state, .book-actions, .movie-actions, .movie-buttons, .game-actions, .book-summary, .movie-summary, .book-detail-footer, .movie-detail-footer, .book-rating, .movie-rating, .category-selector, .main-category-selector, .sub-category-dropdown, .category-dropdown, .category-option, .main-category-option, .sub-category-option, .game-cover-placeholder, .photo-caption, .search-header, .search-input-container, #search-result, .search-result-list, .search-result-title, .search-result) {
+html body.theme-force-dark :is(.post-card-info, .book-actions, .movie-actions, .movie-buttons, .game-actions, .book-summary, .movie-summary, .book-detail-footer, .movie-detail-footer, .book-rating, .movie-rating, .category-selector, .main-category-selector, .sub-category-dropdown, .category-dropdown, .category-option, .main-category-option, .sub-category-option, .game-cover-placeholder, .photo-caption, .search-header, .search-input-container, #search-result, .search-result-list, .search-result-title, .search-result) {
   background: var(--kylo-dark-card) !important;
   background-color: var(--kylo-dark-card) !important;
   background-image: none !important;
