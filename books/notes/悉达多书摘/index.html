@@ -35,7 +35,7 @@
 <meta property="og:description" content="知识可以传授，但智慧不能。人们可以寻见智慧，在生命中体现出智慧，以智慧自强，以智慧来创造奇迹，但人们不可能去传授智慧。我年少时就有过这种疑问，正是我的怀疑驱使我远离教师们。我还有过一种思想，侨文达，你又会认为那是玩笑或只是一种愚蠢的念头，就是说，每一真理的反面也同样真实。比如说，只有片面的真理才能形诸于言辞；事实上，以语言表达或思维的一切都只能是片面的，只是半个真理而已，它们都缺乏完备、圆融与统">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-22T07:01:16.000Z">
-<meta property="article:modified_time" content="2026-07-15T15:19:47.606Z">
+<meta property="article:modified_time" content="2026-07-15T15:35:39.513Z">
 <meta property="article:author" content="叶落归">
 <meta property="article:tag" content="德国文学&#x2F;文学">
 <meta property="article:tag" content="书摘">
@@ -530,6 +530,38 @@
 .notes-content ul li:hover::before {
   font-size: 1.4rem;
   color: var(--primary-color);
+}
+
+html body.theme-force-dark .notes-container .notes-content ul li:hover,
+html body.dark-mode .notes-container .notes-content ul li:hover,
+html.dark-mode body .notes-container .notes-content ul li:hover {
+  background: #262421 !important;
+  border-color: rgba(255, 248, 234, 0.16) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28) !important;
+  color: #f0e9dc !important;
+  -webkit-text-fill-color: #f0e9dc !important;
+}
+
+html body.theme-force-dark .notes-container .notes-content ul li:hover::before,
+html body.dark-mode .notes-container .notes-content ul li:hover::before,
+html.dark-mode body .notes-container .notes-content ul li:hover::before {
+  color: #cfc5b8 !important;
+  -webkit-text-fill-color: #cfc5b8 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .notes-container .notes-content ul li:hover {
+    background: #262421 !important;
+    border-color: rgba(255, 248, 234, 0.16) !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28) !important;
+    color: #f0e9dc !important;
+    -webkit-text-fill-color: #f0e9dc !important;
+  }
+
+  html body:not(.theme-force-light) .notes-container .notes-content ul li:hover::before {
+    color: #cfc5b8 !important;
+    -webkit-text-fill-color: #cfc5b8 !important;
+  }
 }
 
 /* 多级列表支持 - 使用不同样式的点 */

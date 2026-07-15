@@ -35,7 +35,7 @@
 <meta property="og:description" content="他们以为学校是座教养所，”皮塔卢加在桌子上拍了一下说道，“在秘鲁，什么事情都是半途而废，所以什么事情都弄得很糟。拉到兵营里来的人都是些肮脏不堪、长满司子的歹徒。要用棍子吓唬，前方才能变得文明。在军队里待过一年，身上才能去掉土气，只留下一些硬毛。可是这里正相反，人长得越大，越糟糕。五年级的比三年级的狗崽子坏多了。” 一次我打算对她说：“昨天晚上我梦见咱俩长大结了婚。”我想她一定会问我很多问题，为了">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-24T14:22:22.000Z">
-<meta property="article:modified_time" content="2026-07-15T15:19:47.554Z">
+<meta property="article:modified_time" content="2026-07-15T15:35:39.460Z">
 <meta property="article:author" content="叶落归">
 <meta property="article:tag" content="拉美文学&#x2F;文学">
 <meta property="article:tag" content="书摘">
@@ -530,6 +530,38 @@
 .notes-content ul li:hover::before {
   font-size: 1.4rem;
   color: var(--primary-color);
+}
+
+html body.theme-force-dark .notes-container .notes-content ul li:hover,
+html body.dark-mode .notes-container .notes-content ul li:hover,
+html.dark-mode body .notes-container .notes-content ul li:hover {
+  background: #262421 !important;
+  border-color: rgba(255, 248, 234, 0.16) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28) !important;
+  color: #f0e9dc !important;
+  -webkit-text-fill-color: #f0e9dc !important;
+}
+
+html body.theme-force-dark .notes-container .notes-content ul li:hover::before,
+html body.dark-mode .notes-container .notes-content ul li:hover::before,
+html.dark-mode body .notes-container .notes-content ul li:hover::before {
+  color: #cfc5b8 !important;
+  -webkit-text-fill-color: #cfc5b8 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .notes-container .notes-content ul li:hover {
+    background: #262421 !important;
+    border-color: rgba(255, 248, 234, 0.16) !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28) !important;
+    color: #f0e9dc !important;
+    -webkit-text-fill-color: #f0e9dc !important;
+  }
+
+  html body:not(.theme-force-light) .notes-container .notes-content ul li:hover::before {
+    color: #cfc5b8 !important;
+    -webkit-text-fill-color: #cfc5b8 !important;
+  }
 }
 
 /* 多级列表支持 - 使用不同样式的点 */

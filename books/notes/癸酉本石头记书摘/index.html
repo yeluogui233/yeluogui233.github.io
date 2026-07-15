@@ -530,6 +530,38 @@
   color: var(--primary-color);
 }
 
+html body.theme-force-dark .notes-container .notes-content ul li:hover,
+html body.dark-mode .notes-container .notes-content ul li:hover,
+html.dark-mode body .notes-container .notes-content ul li:hover {
+  background: #262421 !important;
+  border-color: rgba(255, 248, 234, 0.16) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28) !important;
+  color: #f0e9dc !important;
+  -webkit-text-fill-color: #f0e9dc !important;
+}
+
+html body.theme-force-dark .notes-container .notes-content ul li:hover::before,
+html body.dark-mode .notes-container .notes-content ul li:hover::before,
+html.dark-mode body .notes-container .notes-content ul li:hover::before {
+  color: #cfc5b8 !important;
+  -webkit-text-fill-color: #cfc5b8 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .notes-container .notes-content ul li:hover {
+    background: #262421 !important;
+    border-color: rgba(255, 248, 234, 0.16) !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28) !important;
+    color: #f0e9dc !important;
+    -webkit-text-fill-color: #f0e9dc !important;
+  }
+
+  html body:not(.theme-force-light) .notes-container .notes-content ul li:hover::before {
+    color: #cfc5b8 !important;
+    -webkit-text-fill-color: #cfc5b8 !important;
+  }
+}
+
 /* 多级列表支持 - 使用不同样式的点 */
 .notes-content ul ul {
   margin: 8px 0 8px 20px; /* 从10px改为8px */

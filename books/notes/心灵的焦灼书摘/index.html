@@ -35,7 +35,7 @@
 <meta property="og:description" content="同情恰好有两种。一种同情怯懦感伤，实际上只是心灵的焦灼。看到别人的不幸，急于尽快地脱身出来，以免受到感动，陷入难堪的境地。这种同情根本不是对别人的痛苦抱有同感，而只是本能地予以抗拒，免得它触及自己的心灵。另一种同情才算得上真正的同情。它毫无感伤的色彩，但富有积极的精神。这种同情对自己想要达到的目的十分清楚。它下定决心耐心地和别人一起经历一切磨难，直到力量耗尽，甚至力竭也不歇息。 康多尔顿了顿。“">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-08T09:04:20.000Z">
-<meta property="article:modified_time" content="2026-07-15T15:19:47.452Z">
+<meta property="article:modified_time" content="2026-07-15T15:35:39.312Z">
 <meta property="article:author" content="叶落归">
 <meta property="article:tag" content="奥地利文学&#x2F;文学">
 <meta property="article:tag" content="书摘">
@@ -529,6 +529,38 @@
 .notes-content ul li:hover::before {
   font-size: 1.4rem;
   color: var(--primary-color);
+}
+
+html body.theme-force-dark .notes-container .notes-content ul li:hover,
+html body.dark-mode .notes-container .notes-content ul li:hover,
+html.dark-mode body .notes-container .notes-content ul li:hover {
+  background: #262421 !important;
+  border-color: rgba(255, 248, 234, 0.16) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28) !important;
+  color: #f0e9dc !important;
+  -webkit-text-fill-color: #f0e9dc !important;
+}
+
+html body.theme-force-dark .notes-container .notes-content ul li:hover::before,
+html body.dark-mode .notes-container .notes-content ul li:hover::before,
+html.dark-mode body .notes-container .notes-content ul li:hover::before {
+  color: #cfc5b8 !important;
+  -webkit-text-fill-color: #cfc5b8 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .notes-container .notes-content ul li:hover {
+    background: #262421 !important;
+    border-color: rgba(255, 248, 234, 0.16) !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28) !important;
+    color: #f0e9dc !important;
+    -webkit-text-fill-color: #f0e9dc !important;
+  }
+
+  html body:not(.theme-force-light) .notes-container .notes-content ul li:hover::before {
+    color: #cfc5b8 !important;
+    -webkit-text-fill-color: #cfc5b8 !important;
+  }
 }
 
 /* 多级列表支持 - 使用不同样式的点 */
