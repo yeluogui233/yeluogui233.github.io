@@ -444,6 +444,31 @@ html body .sidebar-profile-card .site-state-item > span::after {
   display: none !important;
 }
 
+/* Keep article lists neutral in dark mode instead of inheriting the link blue. */
+html body.theme-force-dark .post-body :is(ol, ul, li),
+html body.dark-mode .post-body :is(ol, ul, li),
+html.dark-mode body .post-body :is(ol, ul, li) {
+  color: var(--kylo-dark-muted, #d7cfc2) !important;
+  -webkit-text-fill-color: var(--kylo-dark-muted, #d7cfc2) !important;
+}
+
+html body.theme-force-dark .post-body li::marker,
+html body.dark-mode .post-body li::marker,
+html.dark-mode body .post-body li::marker {
+  color: #a9a195 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .post-body :is(ol, ul, li) {
+    color: var(--kylo-dark-muted, #d7cfc2) !important;
+    -webkit-text-fill-color: var(--kylo-dark-muted, #d7cfc2) !important;
+  }
+
+  html body:not(.theme-force-light) .post-body li::marker {
+    color: #a9a195 !important;
+  }
+}
+
 /* Keep dark TOC top spacing identical to the repaired light TOC. */
 html body.theme-force-dark .sidebar:has(.post-toc-wrap) {
   max-height: calc(100vh - 28px) !important;
