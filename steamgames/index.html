@@ -9115,9 +9115,9 @@
               
               
               
-              
-              
                 
+              
+              
               
               
               
@@ -9193,9 +9193,9 @@
               
               
               
-              
-              
                 
+              
+              
               
               
               
@@ -9681,9 +9681,9 @@
               
               
               
-              
-              
                 
+              
+              
               
               
               
@@ -44161,44 +44161,26 @@
 
     .game-family-badge {
       align-items: center;
-      background: rgba(17,17,17,.9);
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 7px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.2);
-      color: #fff;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      background: rgba(18,18,18,.76);
+      border: 0;
+      border-radius: 0 13px 0 10px;
+      box-shadow: none;
+      color: rgba(255,255,255,.92);
       display: inline-flex;
-      font-size: .7rem;
-      font-weight: 700;
+      font-size: .76rem;
+      font-weight: 600;
+      justify-content: center;
       line-height: 1;
-      padding: 6px 8px;
+      min-height: 36px;
+      padding: 0 11px 0 13px;
       position: absolute;
-      right: 9px;
-      top: 9px;
+      right: 0;
+      top: 0;
       white-space: nowrap;
+      -webkit-text-fill-color: rgba(255,255,255,.92);
       z-index: 2;
-    }
-
-    html body.theme-force-dark .game-family-badge {
-      background: rgba(255,255,255,.92);
-      border-color: rgba(0,0,0,.18);
-      color: #111;
-      -webkit-text-fill-color: #111;
-    }
-
-    html body.theme-force-light .game-family-badge {
-      background: rgba(17,17,17,.9);
-      border-color: rgba(255,255,255,.3);
-      color: #fff;
-      -webkit-text-fill-color: #fff;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      html body:not(.theme-force-light) .game-family-badge {
-        background: rgba(255,255,255,.92);
-        border-color: rgba(0,0,0,.18);
-        color: #111;
-        -webkit-text-fill-color: #111;
-      }
     }
 
     .game-cover-placeholder {
@@ -44504,11 +44486,10 @@
       }
 
       .game-family-badge {
-        border-radius: 6px;
-        font-size: .58rem;
-        padding: 5px 6px;
-        right: 6px;
-        top: 6px;
+        border-radius: 0 13px 0 8px;
+        font-size: .6rem;
+        min-height: 29px;
+        padding: 0 7px 0 9px;
       }
 
       .game-mainline {
