@@ -444,6 +444,192 @@ html body .sidebar-profile-card .site-state-item > span::after {
   display: none !important;
 }
 
+/* Keep dark code tables flush with their full-width window. */
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight,
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight table,
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight tbody,
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight tr,
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight td,
+html.dark-mode body .post-body figure.highlight,
+html.dark-mode body .post-body figure.highlight table,
+html.dark-mode body .post-body figure.highlight tbody,
+html.dark-mode body .post-body figure.highlight tr,
+html.dark-mode body .post-body figure.highlight td {
+  background: #171615 !important;
+  background-image: none !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight,
+html.dark-mode body .post-body figure.highlight {
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight table,
+html.dark-mode body .post-body figure.highlight table {
+  table-layout: auto !important;
+  width: 100% !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight td.code,
+html.dark-mode body .post-body figure.highlight td.code {
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight td.gutter,
+html.dark-mode body .post-body figure.highlight td.gutter {
+  width: 1% !important;
+  white-space: nowrap !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight pre,
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight code,
+html.dark-mode body .post-body figure.highlight pre,
+html.dark-mode body .post-body figure.highlight code {
+  background: #171615 !important;
+  color: #f3efe9 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight .gutter pre,
+html.dark-mode body .post-body figure.highlight .gutter pre {
+  background: #211f1c !important;
+  color: #aaa196 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight::before,
+html.dark-mode body .post-body figure.highlight::before {
+  background: #2b2926 !important;
+  border-bottom-color: rgba(255, 248, 234, .1) !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight :is(.code_copy, .code-expand, .code_lang),
+html.dark-mode body .post-body figure.highlight :is(.code_copy, .code-expand, .code_lang) {
+  color: #d4cbc0 !important;
+  -webkit-text-fill-color: #d4cbc0 !important;
+}
+
+/* One scroll owner prevents long dark TOCs from being clipped. */
+html body:is(.theme-force-dark, .dark-mode) .sidebar:has(.post-toc-wrap) .post-toc-wrap,
+html.dark-mode body .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .sidebar:has(.post-toc-wrap) .post-toc,
+html.dark-mode body .sidebar:has(.post-toc-wrap) .post-toc {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+  padding-bottom: 16px !important;
+  scroll-padding-block: 12px 20px !important;
+  scrollbar-width: none !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .sidebar:has(.post-toc-wrap) .post-toc > .nav,
+html.dark-mode body .sidebar:has(.post-toc-wrap) .post-toc > .nav {
+  max-height: none !important;
+  overflow: visible !important;
+  padding-bottom: 8px !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .sidebar:has(.post-toc-wrap) .post-toc::-webkit-scrollbar,
+html.dark-mode body .sidebar:has(.post-toc-wrap) .post-toc::-webkit-scrollbar {
+  display: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .post-body figure.highlight,
+  html body:not(.theme-force-light) .post-body figure.highlight table,
+  html body:not(.theme-force-light) .post-body figure.highlight tbody,
+  html body:not(.theme-force-light) .post-body figure.highlight tr,
+  html body:not(.theme-force-light) .post-body figure.highlight td {
+    background: #171615 !important;
+    background-image: none !important;
+  }
+
+  html body:not(.theme-force-light) .post-body figure.highlight {
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+
+  html body:not(.theme-force-light) .post-body figure.highlight table {
+    table-layout: auto !important;
+    width: 100% !important;
+  }
+
+  html body:not(.theme-force-light) .post-body figure.highlight td.code {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  html body:not(.theme-force-light) .post-body figure.highlight td.gutter {
+    width: 1% !important;
+    white-space: nowrap !important;
+  }
+
+  html body:not(.theme-force-light) .post-body figure.highlight pre,
+  html body:not(.theme-force-light) .post-body figure.highlight code {
+    background: #171615 !important;
+    color: #f3efe9 !important;
+  }
+
+  html body:not(.theme-force-light) .post-body figure.highlight .gutter pre {
+    background: #211f1c !important;
+    color: #aaa196 !important;
+  }
+
+  html body:not(.theme-force-light) .post-body figure.highlight::before {
+    background: #2b2926 !important;
+    border-bottom-color: rgba(255, 248, 234, .1) !important;
+  }
+
+  html body:not(.theme-force-light) .post-body figure.highlight :is(.code_copy, .code-expand, .code_lang) {
+    color: #d4cbc0 !important;
+    -webkit-text-fill-color: #d4cbc0 !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc-wrap {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    padding-bottom: 16px !important;
+    scroll-padding-block: 12px 20px !important;
+    scrollbar-width: none !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc > .nav {
+    max-height: none !important;
+    overflow: visible !important;
+    padding-bottom: 8px !important;
+  }
+
+  html body:not(.theme-force-light) .sidebar:has(.post-toc-wrap) .post-toc::-webkit-scrollbar {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
+  }
+}
+
 /* Keep article lists neutral in dark mode instead of inheriting the link blue. */
 html body.theme-force-dark .post-body :is(ol, ul, li),
 html body.dark-mode .post-body :is(ol, ul, li),

@@ -2555,6 +2555,16 @@ html body .bake-card:hover .bake-card-image {
     -webkit-text-fill-color: var(--kylo-dark-text) !important;
   }
 
+  html body:not(.theme-force-light) .book-category-tag {
+    background: rgba(255, 248, 234, .08) !important;
+    background-image: none !important;
+    border: 1px solid var(--kylo-dark-border) !important;
+    box-shadow: none !important;
+    color: var(--kylo-dark-text) !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: var(--kylo-dark-text) !important;
+  }
+
   html body:not(.theme-force-light) :is(.tag-item:hover, .tag-item:active) {
     background: var(--kylo-dark-hot) !important;
     border-color: var(--kylo-dark-hot) !important;
@@ -2844,6 +2854,16 @@ html body.theme-force-dark :is(.book-category-tag, .movie-category-tag, .diary-t
   border-color: var(--kylo-dark-border) !important;
   box-shadow: none !important;
   color: var(--kylo-dark-text) !important;
+  -webkit-text-fill-color: var(--kylo-dark-text) !important;
+}
+
+html body.theme-force-dark .book-category-tag {
+  background: rgba(255, 248, 234, .08) !important;
+  background-image: none !important;
+  border: 1px solid var(--kylo-dark-border) !important;
+  box-shadow: none !important;
+  color: var(--kylo-dark-text) !important;
+  text-shadow: none !important;
   -webkit-text-fill-color: var(--kylo-dark-text) !important;
 }
 
