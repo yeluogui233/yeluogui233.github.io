@@ -83,7 +83,9 @@
       });
 
       if (active) {
-        markItem(document.querySelector('.main-menu > .menu-item-' + group));
+        markItem(document.querySelector(
+          '.main-menu > .menu-item-' + group + '.menu-item-has-children:not(.mobile-menu-clone)'
+        ));
       }
     });
   }

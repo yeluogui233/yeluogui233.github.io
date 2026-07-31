@@ -444,6 +444,127 @@ html body .sidebar-profile-card .site-state-item > span::after {
   display: none !important;
 }
 
+/* 2026-07-31: centered desktop navigation and icon-only utility controls. */
+@media (min-width: 981px) {
+  html body .container .header .header-inner {
+    display: grid !important;
+    gap: 18px !important;
+    grid-template-columns: minmax(180px, 1fr) auto minmax(180px, 1fr) !important;
+  }
+
+  html body .site-brand-container {
+    justify-self: start !important;
+    min-width: 0 !important;
+  }
+
+  html body .header-inner .site-nav {
+    flex: none !important;
+    justify-content: center !important;
+    justify-self: center !important;
+    margin: 0 !important;
+    max-width: calc(100vw - 420px) !important;
+    min-width: 0 !important;
+    width: max-content !important;
+  }
+
+  html body .header-inner .main-menu {
+    justify-content: center !important;
+    margin: 0 !important;
+    width: max-content !important;
+  }
+}
+
+html body .site-nav-tools {
+  align-items: center !important;
+  display: flex !important;
+  gap: 6px !important;
+  justify-self: end !important;
+}
+
+html body .site-nav-tool {
+  align-items: center !important;
+  appearance: none !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+  color: #202938 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  flex: 0 0 38px !important;
+  font-size: .95rem !important;
+  height: 38px !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease !important;
+  width: 38px !important;
+}
+
+html body .site-nav-tool:is(:hover, :focus-visible) {
+  background: #111 !important;
+  border-color: #111 !important;
+  color: #fff !important;
+  outline: 0 !important;
+  transform: translateY(-1px) !important;
+}
+
+html body .site-nav-tool i {
+  color: currentColor !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 980px) {
+  html body .header-inner {
+    position: relative !important;
+  }
+
+  html body .site-brand-container {
+    box-sizing: border-box !important;
+    padding-right: 92px !important;
+  }
+
+  html body .site-nav-tools {
+    position: absolute !important;
+    right: 12px !important;
+    top: 10px !important;
+    z-index: 4 !important;
+  }
+
+  html body .site-nav-tool {
+    flex-basis: 34px !important;
+    height: 34px !important;
+    width: 34px !important;
+  }
+}
+
+html body.theme-force-dark .site-nav-tool,
+html body.dark-mode .site-nav-tool,
+html.dark-mode body .site-nav-tool {
+  color: #f4efe6 !important;
+}
+
+html body.theme-force-dark .site-nav-tool:is(:hover, :focus-visible),
+html body.dark-mode .site-nav-tool:is(:hover, :focus-visible),
+html.dark-mode body .site-nav-tool:is(:hover, :focus-visible) {
+  background: #f4efe6 !important;
+  border-color: #f4efe6 !important;
+  color: #111 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .site-nav-tool {
+    color: #f4efe6 !important;
+  }
+
+  html body:not(.theme-force-light) .site-nav-tool:is(:hover, :focus-visible) {
+    background: #f4efe6 !important;
+    border-color: #f4efe6 !important;
+    color: #111 !important;
+  }
+}
+
 /* Keep dark code tables flush with their full-width window. */
 html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight,
 html body:is(.theme-force-dark, .dark-mode) .post-body figure.highlight table,

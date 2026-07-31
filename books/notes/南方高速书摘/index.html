@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/cardlink"></script>
   <link rel="stylesheet" href="/css/_common/codeblock.css">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 7.3.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://giscus.app" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -35,7 +39,7 @@
 <meta property="og:description" content="自行车是驯良且举止谦逊的实体，张贴���示、在城市美丽的玻璃门前高傲地阻止它的人内，于它而言意味着侮辱和嘲弄。据悉自行车已经尝试了各种方法来挽救自己悲惨的社会地位。但是，地球上所有的国家都禁止携带自行车入内。某些国家还会加上“与狗”，这加重了自行车与狗的自卑情绪。猫、免子、乌龟原则上都能进人邦奇与博恩公司或圣马丁大街的律师事务所，只会引发惊讶，激起焦虑中的话务员强烈的喜爱之情——《禁止携带自行车">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-05-10T15:48:21.000Z">
-<meta property="article:modified_time" content="2026-07-30T15:22:22.777Z">
+<meta property="article:modified_time" content="2026-07-31T10:26:56.108Z">
 <meta property="article:author" content="叶落归">
 <meta property="article:tag" content="拉美文学&#x2F;文学">
 <meta property="article:tag" content="书摘">
@@ -254,12 +258,19 @@
     <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
+
   </ul>
 </nav>
+
+<div class="site-nav-tools" role="group" aria-label="页面工具">
+    <button type="button" class="site-nav-tool site-nav-search popup-trigger" aria-label="搜索" title="搜索">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+  <button type="button" class="site-nav-tool site-theme-toggle" data-theme-toggle aria-label="切换到暗黑模式" title="切换到暗黑模式" aria-pressed="false">
+    <i class="fa fa-moon" aria-hidden="true"></i>
+  </button>
+</div>
+<script defer src="/js/theme-toggle.js?v=20260731-theme-1"></script>
 
 
 
@@ -990,8 +1001,8 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
     <script>
       (function() {
-        var DARK_THEME = new URL('/css/giscus-kylo-dark.css?v=20260714-3', window.location.origin).href;
-        var LIGHT_THEME = 'light';
+        var DARK_THEME = new URL('/css/giscus-kylo-dark.css?v=20260731-apple-1', window.location.origin).href;
+        var LIGHT_THEME = new URL('/css/giscus-kylo-light.css?v=20260731-apple-1', window.location.origin).href;
         var systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
         function isDark() {
@@ -1361,34 +1372,20 @@ document.addEventListener('DOMContentLoaded', function() {
 code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
 </style>
 <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
-<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-<script type="text/javascript" src="/js/firework.js"></script>
-<script src="/libs/codeBlock/codeBlockFuction.js"></script>
-<script src="/libs/codeBlock/codeLang.js"></script>
-<script src="/libs/codeBlock/codeCopy.js"></script>
-<script src="/libs/codeBlock/clipboard.min.js"></script>
-<script src="/libs/codeBlock/codeShrink.js"></script>
+<script defer type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script defer type="text/javascript" src="/js/firework.js"></script>
+<script defer src="/libs/codeBlock/codeBlockFuction.js"></script>
+<script defer src="/libs/codeBlock/codeLang.js"></script>
+<script defer src="/libs/codeBlock/codeCopy.js"></script>
+<script defer src="/libs/codeBlock/clipboard.min.js"></script>
+<script defer src="/libs/codeBlock/codeShrink.js"></script>
 <link rel="stylesheet" href="/css/mobile-restore.css?v=20260706-mobile-restore-late-7">
 <link rel="stylesheet" href="/css/dark-mode.css?v=20260714-dark-11">
 <link rel="stylesheet" href="/css/dark-toc-fix.css?v=20260706-dark-toc-2">
 <link rel="stylesheet" href="/css/dark-final-fix.css?v=20260714-dark-final-10">
-<script src="/js/touch-menu.js?v=20260629-touch-1"></script>
-<script src="/js/menu-active-restore.js?v=20260706-menu-active-4"></script>
-<script src="/js/makima-pet.js?v=20260703-game-dock-1"></script>
-<script>
-// 为文章内容中的所有外部链接生成卡�?
-document.addEventListener('DOMContentLoaded', function() {
-  var postContent = document.querySelector('.post-body') || 
-                    document.querySelector('.post-block') ||
-                    document.querySelector('.entry-content');
-  if (postContent) {
-    var externalLinks = postContent.querySelectorAll('a[target="_blank"]');
-    if (externalLinks.length > 0) {
-      cardLink(externalLinks);
-    }
-  }
-});
-</script>
+<script defer src="/js/touch-menu.js?v=20260629-touch-1"></script>
+<script defer src="/js/menu-active-restore.js?v=20260731-menu-active-5"></script>
+<script defer src="/js/makima-pet.js?v=20260703-game-dock-1"></script>
 </body>
 </html>
 
