@@ -1090,10 +1090,41 @@
 }
 
 .mm-notepad-content details summary {
+  align-items: center;
   color: var(--mm-accent);
   cursor: pointer;
+  display: flex;
   font-size: 11px;
   font-weight: 800;
+  justify-content: space-between;
+  list-style: none;
+  min-height: 30px;
+}
+
+.mm-notepad-content details summary::-webkit-details-marker { display: none; }
+
+.mm-notepad-content details summary::after {
+  content: '\f078';
+  font-family: 'Font Awesome 5 Free';
+  font-size: 9px;
+  font-weight: 900;
+  transition: transform .2s ease;
+}
+
+.mm-notepad-content details[open] summary::after { transform: rotate(180deg); }
+
+.mm-notepad-chapter { margin-top: 12px; }
+
+.mm-notepad-chapter + .mm-notepad-chapter {
+  border-top: 1px solid var(--mm-line);
+  padding-top: 12px;
+}
+
+.mm-notepad-chapter > strong {
+  color: var(--mm-muted);
+  display: block;
+  font-size: 10px;
+  margin-bottom: 8px;
 }
 
 .mm-notepad-words {
@@ -1469,14 +1500,29 @@ body.theme-force-dark .mm-notepad-words span {
       const list = Array.isArray(notepad.list) ? notepad.list : [];
       const words = list.filter(function(item) { return item.type === 'WORD'; });
       const chapters = list.filter(function(item) { return item.type === 'CHAPTER'; });
+      const groupedWords = [];
+      words.forEach(function(item) {
+        const chapterName = item.chapter || (item.data && item.data.chapter) || '未分组';
+        let group = groupedWords.find(function(entry) { return entry.name === chapterName; });
+        if (!group) {
+          group = { name: chapterName, words: [] };
+          groupedWords.push(group);
+        }
+        const value = item.word || (item.data && item.data.word);
+        if (value) group.words.push(value);
+      });
       return '<article class="mm-card"><h3>' + escapeHtml(notepad.title || '未命名词本') + '</h3>'
         + '<p>' + escapeHtml(notepad.brief || '暂无简介') + '</p>'
         + '<div class="mm-card-meta"><span>' + words.length + ' 个词</span><span>' + chapters.length + ' 个章节</span><span>'
         + escapeHtml(notepad.status || '') + '</span></div>'
         + '<div class="mm-card-tags">' + (notepad.tags || []).map(function(tag) { return '<span>' + escapeHtml(tag) + '</span>'; }).join('') + '</div>'
-        + '<div class="mm-notepad-content"><details><summary>展开词表</summary><div class="mm-notepad-words">'
-        + words.map(function(item) { return '<span>' + escapeHtml(item.data && item.data.word) + '</span>'; }).join('')
-        + '</div></details></div></article>';
+        + '<div class="mm-notepad-content"><details><summary>展开词表</summary>'
+        + groupedWords.map(function(group) {
+          return '<div class="mm-notepad-chapter"><strong>' + escapeHtml(group.name) + '</strong><div class="mm-notepad-words">'
+            + group.words.map(function(word) { return '<span>' + escapeHtml(word) + '</span>'; }).join('')
+            + '</div></div>';
+        }).join('')
+        + '</details></div></article>';
     }).join('');
   }
 
