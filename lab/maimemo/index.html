@@ -1551,7 +1551,7 @@ body.theme-force-dark .mm-notepad-words span {
     setText('[data-content-result-count]', words.length + ' 个单词');
     const target = root.querySelector('[data-content-list]');
     if (!words.length) {
-      target.innerHTML = '<div class="mm-empty">尚无已发布的自定义释义、例句或助记。</div>';
+      target.innerHTML = '<div class="mm-empty">尚未扫描到开放 API 词条，后续生成会继续补全最近单词。</div>';
       return;
     }
     target.innerHTML = words.map(function(word) {
