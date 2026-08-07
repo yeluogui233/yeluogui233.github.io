@@ -77,6 +77,23 @@
       }
     });
 
+    // A submenu represents a section. Keep its parent highlighted for every
+    // descendant route, instead of relying on a fixed list of section paths.
+    document.querySelectorAll('.main-menu > .menu-item-has-children').forEach(function (parent) {
+      var activeChild = Array.prototype.some.call(
+        parent.querySelectorAll(':scope > .menu-child .menu-item a[href]'),
+        function (link) {
+          var href = link.getAttribute('href');
+          if (!href || href.charAt(0) === '#') return false;
+
+          var target = cleanPath(href);
+          return target !== '/' && current.indexOf(target) === 0;
+        }
+      );
+
+      if (activeChild) markItem(parent);
+    });
+
     Object.keys(groups).forEach(function (group) {
       var active = groups[group].some(function (target) {
         return current.indexOf(target) === 0;
