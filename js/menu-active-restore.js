@@ -43,7 +43,9 @@
     });
 
     document.querySelectorAll('.main-menu > .menu-item-has-children').forEach(function (parent) {
-      var childMenu = parent.querySelector(':scope > .menu-child');
+      var childMenu = Array.prototype.find.call(parent.children, function (node) {
+        return node.classList && node.classList.contains('menu-child');
+      });
       if (!childMenu) return;
 
       Array.prototype.slice.call(childMenu.children).forEach(function (child) {
@@ -80,8 +82,13 @@
     // A submenu represents a section. Keep its parent highlighted for every
     // descendant route, instead of relying on a fixed list of section paths.
     document.querySelectorAll('.main-menu > .menu-item-has-children').forEach(function (parent) {
+      var childMenu = Array.prototype.find.call(parent.children, function (node) {
+        return node.classList && node.classList.contains('menu-child');
+      });
+      if (!childMenu) return;
+
       var activeChild = Array.prototype.some.call(
-        parent.querySelectorAll(':scope > .menu-child .menu-item a[href]'),
+        childMenu.querySelectorAll('.menu-item a[href]'),
         function (link) {
           var href = link.getAttribute('href');
           if (!href || href.charAt(0) === '#') return false;
