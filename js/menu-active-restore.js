@@ -1,11 +1,6 @@
 (function () {
   'use strict';
 
-  var groups = {
-    pages: ['/gallery/', '/books/', '/movies/', '/diary/', '/bake/', '/steamgames/', '/games/', '/steam/'],
-    archives: ['/archives/', '/tags/', '/categories/']
-  };
-
   function cleanPath(value) {
     try {
       var url = new URL(value, window.location.origin);
@@ -14,7 +9,7 @@
       value = String(value || '');
     }
 
-    value = value.replace(/\/index\.html$/i, '/');
+    value = decodeURIComponent(value).replace(/\/index\.html$/i, '/');
     if (!value.startsWith('/')) value = '/' + value;
     if (value.length > 1 && !value.endsWith('/')) value += '/';
     return value;
@@ -94,23 +89,26 @@
           if (!href || href.charAt(0) === '#') return false;
 
           var target = cleanPath(href);
-          return target !== '/' && current.indexOf(target) === 0;
+          return target !== '/' && (current === target || current.indexOf(target) === 0);
         }
       );
 
       if (activeChild) markItem(parent);
     });
 
-    Object.keys(groups).forEach(function (group) {
-      var active = groups[group].some(function (target) {
-        return current.indexOf(target) === 0;
-      });
-
-      if (active) {
-        markItem(document.querySelector(
-          '.main-menu > .menu-item-' + group + '.menu-item-has-children:not(.mobile-menu-clone)'
-        ));
-      }
+    // Also account for nested menu levels. This keeps the top-level item active
+    // on category, tag, archive, and custom child pages alike.
+    document.querySelectorAll('.main-menu > .menu-item-has-children:not(.mobile-menu-clone)').forEach(function (parent) {
+      var hasActiveDescendant = Array.prototype.some.call(
+        parent.querySelectorAll('.menu-child a[href]'),
+        function (link) {
+          var href = link.getAttribute('href');
+          if (!href || href.charAt(0) === '#') return false;
+          var target = cleanPath(href);
+          return target !== '/' && (current === target || current.indexOf(target) === 0);
+        }
+      );
+      if (hasActiveDescendant) markItem(parent);
     });
   }
 

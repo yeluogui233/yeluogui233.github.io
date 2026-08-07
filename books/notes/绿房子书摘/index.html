@@ -1009,15 +1009,16 @@ document.addEventListener('DOMContentLoaded', function() {
       data-reactions-enabled="1"
       data-emit-metadata="0"
       data-input-position="bottom"
-      data-theme="light"
+      data-theme="https://yeluogui.cloud/css/giscus-kylo-light.css?v=20260807-apple-3"
       data-lang="zh-CN"
       crossorigin="anonymous"
       async>
     </script>
     <script>
       (function() {
-        var DARK_THEME = new URL('/css/giscus-kylo-dark.css?v=20260731-apple-1', window.location.origin).href;
-        var LIGHT_THEME = new URL('/css/giscus-kylo-light.css?v=20260731-apple-1', window.location.origin).href;
+        var THEME_ORIGIN = 'https://yeluogui.cloud';
+        var DARK_THEME = THEME_ORIGIN + '/css/giscus-kylo-dark.css?v=20260807-apple-3';
+        var LIGHT_THEME = THEME_ORIGIN + '/css/giscus-kylo-light.css?v=20260807-apple-3';
         var systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
         function isDark() {
@@ -1398,6 +1399,8 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 <link rel="stylesheet" href="/css/dark-mode.css?v=20260714-dark-11">
 <link rel="stylesheet" href="/css/dark-toc-fix.css?v=20260706-dark-toc-2">
 <link rel="stylesheet" href="/css/dark-final-fix.css?v=20260714-dark-final-10">
+<link rel="stylesheet" href="/css/comments-apple-final.css?v=20260807-apple-2">
+<link rel="stylesheet" href="/css/menu-active-final.css?v=20260807-menu-active-1">
 <script defer src="/js/touch-menu.js?v=20260629-touch-1"></script>
 <script defer src="/js/menu-active-restore.js?v=20260807-menu-active-8"></script>
 <script defer src="/js/makima-pet.js?v=20260703-game-dock-1"></script>

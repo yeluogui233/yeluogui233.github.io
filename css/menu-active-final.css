@@ -1,0 +1,38 @@
+/* Keep parent menu items highlighted when any nested page is active. */
+html body .main-menu > .menu-item-has-children:has(> .menu-child .menu-item-active) > a,
+html body .main-menu > .menu-item-has-children.menu-item-active > a {
+  background: #111 !important;
+  border-color: #111 !important;
+  color: #fff !important;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .16) !important;
+}
+
+html body.theme-force-dark .main-menu > .menu-item-has-children:has(> .menu-child .menu-item-active) > a,
+html body.theme-force-dark .main-menu > .menu-item-has-children.menu-item-active > a {
+  background: #f4f4f2 !important;
+  border-color: #f4f4f2 !important;
+  color: #151515 !important;
+  -webkit-text-fill-color: #151515 !important;
+}
+
+html body.theme-force-dark .main-menu > .menu-item-has-children:has(> .menu-child .menu-item-active) > a *,
+html body.theme-force-dark .main-menu > .menu-item-has-children.menu-item-active > a * {
+  color: #151515 !important;
+  -webkit-text-fill-color: #151515 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .main-menu > .menu-item-has-children:has(> .menu-child .menu-item-active) > a,
+  html body:not(.theme-force-light) .main-menu > .menu-item-has-children.menu-item-active > a {
+    background: #f4f4f2 !important;
+    border-color: #f4f4f2 !important;
+    color: #151515 !important;
+    -webkit-text-fill-color: #151515 !important;
+  }
+
+  html body:not(.theme-force-light) .main-menu > .menu-item-has-children:has(> .menu-child .menu-item-active) > a *,
+  html body:not(.theme-force-light) .main-menu > .menu-item-has-children.menu-item-active > a * {
+    color: #151515 !important;
+    -webkit-text-fill-color: #151515 !important;
+  }
+}
