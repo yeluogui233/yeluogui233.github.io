@@ -549,6 +549,207 @@ html body .sidebar-profile-card .site-state-item > span::after {
   display: none !important;
 }
 
+/* Absolute final HBE pass: placed after the broad component overrides. */
+html body.theme-force-dark .hbe.hbe-input,
+html body.dark-mode .hbe.hbe-input,
+html.dark-mode body .hbe.hbe-input {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+html body.theme-force-dark .hbe.hbe-input-field,
+html body.theme-force-dark .hbe.hbe-input-field-default,
+html body.dark-mode .hbe.hbe-input-field,
+html body.dark-mode .hbe.hbe-input-field-default,
+html.dark-mode body .hbe.hbe-input-field,
+html.dark-mode body .hbe.hbe-input-field-default {
+  background: #1a1815 !important;
+  border: 1px solid rgba(255, 250, 241, .24) !important;
+  border-radius: 16px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 250, 241, .05) !important;
+  color: #fffaf1 !important;
+  caret-color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body.theme-force-dark .hbe.hbe-input-label,
+html body.theme-force-dark .hbe.hbe-input-label-default,
+html body.dark-mode .hbe.hbe-input-label,
+html body.dark-mode .hbe.hbe-input-label-default,
+html.dark-mode body .hbe.hbe-input-label,
+html.dark-mode body .hbe.hbe-input-label-default {
+  background: transparent !important;
+  border: 0 !important;
+  color: #d7cfc2 !important;
+  display: block !important;
+  line-height: 1.5 !important;
+  margin: 8px 0 0 !important;
+  padding: 0 !important;
+  position: static !important;
+}
+
+html body.theme-force-dark .hbe.hbe-input-label-content,
+html body.theme-force-dark .hbe.hbe-input-label-content-default,
+html body.dark-mode .hbe.hbe-input-label-content,
+html body.dark-mode .hbe.hbe-input-label-content-default,
+html.dark-mode body .hbe.hbe-input-label-content,
+html.dark-mode body .hbe.hbe-input-label-content-default {
+  color: #d7cfc2 !important;
+  -webkit-text-fill-color: #d7cfc2 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .hbe.hbe-input {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .hbe.hbe-input-field,
+  html body:not(.theme-force-light) .hbe.hbe-input-field-default {
+    background: #1a1815 !important;
+    border: 1px solid rgba(255, 250, 241, .24) !important;
+    border-radius: 16px !important;
+    box-shadow: inset 0 1px 0 rgba(255, 250, 241, .05) !important;
+    color: #fffaf1 !important;
+    caret-color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) .hbe.hbe-input-label,
+  html body:not(.theme-force-light) .hbe.hbe-input-label-default {
+    background: transparent !important;
+    border: 0 !important;
+    color: #d7cfc2 !important;
+    display: block !important;
+    line-height: 1.5 !important;
+    margin: 8px 0 0 !important;
+    padding: 0 !important;
+    position: static !important;
+  }
+
+  html body:not(.theme-force-light) .hbe.hbe-input-label-content,
+  html body:not(.theme-force-light) .hbe.hbe-input-label-content-default {
+    color: #d7cfc2 !important;
+    -webkit-text-fill-color: #d7cfc2 !important;
+  }
+}
+
+/* Keep the password field itself readable. The base HBE skin targets these
+   exact classes, so the dark override deliberately mirrors that specificity. */
+html body.theme-force-dark .hbe.hbe-input,
+html body.dark-mode .hbe.hbe-input,
+html.dark-mode body .hbe.hbe-input {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+html body.theme-force-dark .hbe.hbe-input-field,
+html body.theme-force-dark .hbe.hbe-input-field-default,
+html body.dark-mode .hbe.hbe-input-field,
+html body.dark-mode .hbe.hbe-input-field-default,
+html.dark-mode body .hbe.hbe-input-field,
+html.dark-mode body .hbe.hbe-input-field-default {
+  background: #1a1815 !important;
+  border: 1px solid rgba(255, 250, 241, .24) !important;
+  border-radius: 16px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 250, 241, .05) !important;
+  color: #fffaf1 !important;
+  caret-color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body.theme-force-dark .hbe.hbe-input-field:focus,
+html body.theme-force-dark .hbe.hbe-input-field-default:focus,
+html body.dark-mode .hbe.hbe-input-field:focus,
+html body.dark-mode .hbe.hbe-input-field-default:focus,
+html.dark-mode body .hbe.hbe-input-field:focus,
+html.dark-mode body .hbe.hbe-input-field-default:focus {
+  background: #1a1815 !important;
+  border-color: #fffaf1 !important;
+  box-shadow: 0 0 0 4px rgba(255, 250, 241, .10) !important;
+}
+
+html body.theme-force-dark .hbe.hbe-input-label,
+html body.theme-force-dark .hbe.hbe-input-label-default,
+html body.dark-mode .hbe.hbe-input-label,
+html body.dark-mode .hbe.hbe-input-label-default,
+html.dark-mode body .hbe.hbe-input-label,
+html.dark-mode body .hbe.hbe-input-label-default {
+  background: transparent !important;
+  border: 0 !important;
+  color: #d7cfc2 !important;
+  display: block !important;
+  line-height: 1.5 !important;
+  margin: 8px 0 0 !important;
+  padding: 0 !important;
+  position: static !important;
+}
+
+html body.theme-force-dark .hbe.hbe-input-label-content,
+html body.theme-force-dark .hbe.hbe-input-label-content-default,
+html body.dark-mode .hbe.hbe-input-label-content,
+html body.dark-mode .hbe.hbe-input-label-content-default,
+html.dark-mode body .hbe.hbe-input-label-content,
+html.dark-mode body .hbe.hbe-input-label-content-default {
+  color: #d7cfc2 !important;
+  -webkit-text-fill-color: #d7cfc2 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .hbe.hbe-input {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  html body:not(.theme-force-light) .hbe.hbe-input-field,
+  html body:not(.theme-force-light) .hbe.hbe-input-field-default {
+    background: #1a1815 !important;
+    border: 1px solid rgba(255, 250, 241, .24) !important;
+    border-radius: 16px !important;
+    box-shadow: inset 0 1px 0 rgba(255, 250, 241, .05) !important;
+    color: #fffaf1 !important;
+    caret-color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) .hbe.hbe-input-field:focus,
+  html body:not(.theme-force-light) .hbe.hbe-input-field-default:focus {
+    background: #1a1815 !important;
+    border-color: #fffaf1 !important;
+    box-shadow: 0 0 0 4px rgba(255, 250, 241, .10) !important;
+  }
+
+  html body:not(.theme-force-light) .hbe.hbe-input-label,
+  html body:not(.theme-force-light) .hbe.hbe-input-label-default {
+    background: transparent !important;
+    border: 0 !important;
+    color: #d7cfc2 !important;
+    display: block !important;
+    line-height: 1.5 !important;
+    margin: 8px 0 0 !important;
+    padding: 0 !important;
+    position: static !important;
+  }
+
+  html body:not(.theme-force-light) .hbe.hbe-input-label-content,
+  html body:not(.theme-force-light) .hbe.hbe-input-label-content-default {
+    color: #d7cfc2 !important;
+    -webkit-text-fill-color: #d7cfc2 !important;
+  }
+}
+
 /* Final override for the books category selector. */
 html body:is(.theme-force-dark, .dark-mode) .main-category-selector,
 html.dark-mode body .main-category-selector {

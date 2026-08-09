@@ -1,0 +1,94 @@
+/* Loaded last for the books category picker. It preserves the daytime shape. */
+html body.theme-force-dark .main-category-selector,
+html body.dark-mode .main-category-selector,
+html.dark-mode body .main-category-selector {
+  background: rgba(255, 250, 241, .10) !important;
+  border: 1px solid rgba(255, 250, 241, .20) !important;
+  border-radius: 50px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .18) !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body.theme-force-dark .main-category-selector *,
+html body.dark-mode .main-category-selector *,
+html.dark-mode body .main-category-selector *,
+html body.theme-force-dark .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option),
+html body.dark-mode .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option),
+html.dark-mode body .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option) {
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body.theme-force-dark .sub-category-dropdown,
+html body.dark-mode .sub-category-dropdown,
+html.dark-mode body .sub-category-dropdown {
+  background: #27231f !important;
+  border: 1px solid rgba(255, 250, 241, .14) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, .28) !important;
+  padding: 8px 0 !important;
+}
+
+html body.theme-force-dark .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option),
+html body.dark-mode .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option),
+html.dark-mode body .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option) {
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255, 250, 241, .10) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+html body.theme-force-dark .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option):is(:hover, .active),
+html body.dark-mode .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option):is(:hover, .active),
+html.dark-mode body .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option):is(:hover, .active) {
+  background: rgba(255, 250, 241, .12) !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body.theme-force-dark .sub-category-dropdown .main-category-option::after,
+html body.dark-mode .sub-category-dropdown .main-category-option::after,
+html.dark-mode body .sub-category-dropdown .main-category-option::after {
+  color: #fffaf1 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .main-category-selector {
+    background: rgba(255, 250, 241, .10) !important;
+    border: 1px solid rgba(255, 250, 241, .20) !important;
+    border-radius: 50px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .18) !important;
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) .main-category-selector *,
+  html body:not(.theme-force-light) .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option) {
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) .sub-category-dropdown {
+    background: #27231f !important;
+    border: 1px solid rgba(255, 250, 241, .14) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, .28) !important;
+    padding: 8px 0 !important;
+  }
+
+  html body:not(.theme-force-light) .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option) {
+    background: transparent !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(255, 250, 241, .10) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option):is(:hover, .active) {
+    background: rgba(255, 250, 241, .12) !important;
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+}
