@@ -7,6 +7,9 @@ html.dark-mode body .main-category-selector {
   border-radius: 50px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, .15) !important;
   color: #fffaf1 !important;
+  gap: 8px !important;
+  min-width: 140px !important;
+  padding: 8px 16px !important;
   -webkit-text-fill-color: #fffaf1 !important;
 }
 
@@ -23,10 +26,14 @@ html.dark-mode body .sub-category-dropdown :is(.category-option-all, .main-categ
 html body.theme-force-dark .sub-category-dropdown,
 html body.dark-mode .sub-category-dropdown,
 html.dark-mode body .sub-category-dropdown {
-  background: #27231f !important;
+  background: #2b2722 !important;
   border: 0 !important;
   border-radius: 12px !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, .15) !important;
+  margin-top: 8px !important;
+  max-width: 300px !important;
+  min-width: 200px !important;
+  overflow: hidden !important;
   padding: 8px 0 !important;
 }
 
@@ -35,7 +42,7 @@ html body.dark-mode .sub-category-dropdown :is(.category-option-all, .main-categ
 html.dark-mode body .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option) {
   background: transparent !important;
   border: 0 !important;
-  border-bottom: 1px solid rgba(255, 250, 241, .10) !important;
+  border-bottom: 1px solid rgba(255, 250, 241, .05) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
 }
@@ -71,17 +78,21 @@ html.dark-mode body .sub-category-dropdown .main-category-option::after {
   }
 
   html body:not(.theme-force-light) .sub-category-dropdown {
-    background: #27231f !important;
+    background: #2b2722 !important;
     border: 0 !important;
     border-radius: 12px !important;
     box-shadow: 0 8px 24px rgba(0, 0, 0, .15) !important;
+    margin-top: 8px !important;
+    max-width: 300px !important;
+    min-width: 200px !important;
+    overflow: hidden !important;
     padding: 8px 0 !important;
   }
 
   html body:not(.theme-force-light) .sub-category-dropdown :is(.category-option-all, .main-category-option, .sub-category-option) {
     background: transparent !important;
     border: 0 !important;
-    border-bottom: 1px solid rgba(255, 250, 241, .10) !important;
+    border-bottom: 1px solid rgba(255, 250, 241, .05) !important;
     border-radius: 0 !important;
     box-shadow: none !important;
   }
