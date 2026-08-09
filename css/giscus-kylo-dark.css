@@ -1,30 +1,30 @@
 :root {
   color-scheme: dark;
-  --color-canvas-default: #1c1c1e;
-  --color-canvas-overlay: #2c2c2e;
-  --color-canvas-inset: #151517;
-  --color-canvas-subtle: #242426;
-  --color-fg-default: #f5f5f7;
-  --color-fg-muted: #aeaeb2;
-  --color-fg-subtle: #8e8e93;
-  --color-border-default: rgba(255, 255, 255, .16);
-  --color-border-muted: rgba(255, 255, 255, .1);
-  --color-neutral-muted: rgba(255, 255, 255, .08);
-  --color-accent-fg: #f5f5f7;
-  --color-accent-emphasis: #f5f5f7;
-  --color-accent-muted: rgba(255, 255, 255, .18);
-  --color-accent-subtle: rgba(255, 255, 255, .08);
-  --color-btn-text: #f5f5f7;
-  --color-btn-bg: #2c2c2e;
-  --color-btn-border: rgba(255, 255, 255, .16);
+  --color-canvas-default: #24211d;
+  --color-canvas-overlay: #2c2823;
+  --color-canvas-inset: #1a1815;
+  --color-canvas-subtle: #302b25;
+  --color-fg-default: #fffaf1;
+  --color-fg-muted: #d7cfc2;
+  --color-fg-subtle: #aaa194;
+  --color-border-default: rgba(255, 250, 241, .16);
+  --color-border-muted: rgba(255, 250, 241, .1);
+  --color-neutral-muted: rgba(255, 250, 241, .08);
+  --color-accent-fg: #fffaf1;
+  --color-accent-emphasis: #fffaf1;
+  --color-accent-muted: rgba(255, 250, 241, .18);
+  --color-accent-subtle: rgba(255, 250, 241, .08);
+  --color-btn-text: #fffaf1;
+  --color-btn-bg: #2c2823;
+  --color-btn-border: rgba(255, 250, 241, .16);
   --color-btn-shadow: 0 1px 2px rgba(0, 0, 0, .22);
   --color-btn-inset-shadow: none;
-  --color-btn-hover-bg: #3a3a3c;
-  --color-btn-hover-border: rgba(255, 255, 255, .24);
-  --color-btn-active-bg: #48484a;
-  --color-btn-active-border: rgba(255, 255, 255, .28);
-  --color-btn-selected-bg: #48484a;
-  --color-primer-shadow-focus: 0 0 0 3px rgba(255, 255, 255, .1);
+  --color-btn-hover-bg: #3a342d;
+  --color-btn-hover-border: rgba(255, 250, 241, .24);
+  --color-btn-active-bg: #4b4339;
+  --color-btn-active-border: rgba(255, 250, 241, .28);
+  --color-btn-selected-bg: #4b4339;
+  --color-primer-shadow-focus: 0 0 0 3px rgba(255, 250, 241, .1);
 }
 
 html,
