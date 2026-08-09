@@ -9,8 +9,8 @@ html body .main-menu > .menu-item-has-children.menu-item-active > a {
 
 html body.theme-force-dark .main-menu > .menu-item-has-children:has(> .menu-child .menu-item-active) > a,
 html body.theme-force-dark .main-menu > .menu-item-has-children.menu-item-active > a {
-  background: #f4f4f2 !important;
-  border-color: #f4f4f2 !important;
+  background: #fffaf1 !important;
+  border-color: #fffaf1 !important;
   color: #151515 !important;
   -webkit-text-fill-color: #151515 !important;
 }
@@ -24,8 +24,8 @@ html body.theme-force-dark .main-menu > .menu-item-has-children.menu-item-active
 @media (prefers-color-scheme: dark) {
   html body:not(.theme-force-light) .main-menu > .menu-item-has-children:has(> .menu-child .menu-item-active) > a,
   html body:not(.theme-force-light) .main-menu > .menu-item-has-children.menu-item-active > a {
-    background: #f4f4f2 !important;
-    border-color: #f4f4f2 !important;
+    background: #fffaf1 !important;
+    border-color: #fffaf1 !important;
     color: #151515 !important;
     -webkit-text-fill-color: #151515 !important;
   }
