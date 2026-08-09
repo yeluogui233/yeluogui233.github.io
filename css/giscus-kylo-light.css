@@ -243,3 +243,76 @@ code,
     padding: 12px !important;
   }
 }
+
+/* Final flat-card pass: no table-like rules or full-width framing. */
+.gsc-main,
+.gsc-comments,
+.gsc-timeline,
+.gsc-reactions,
+.gsc-header,
+.gsc-comment-header,
+.gsc-comment-content,
+.gsc-comment-footer,
+.gsc-replies,
+.gsc-reply-box,
+.gsc-comment-box-main,
+.gsc-comment-box-bottom,
+.gsc-comment-box-tabs {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.gsc-comment-box,
+.gsc-comment,
+.gsc-reply-box {
+  background: #ffffff !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 10px 26px rgba(29, 29, 31, .07) !important;
+  overflow: hidden !important;
+}
+
+.gsc-comment {
+  margin: 0 0 14px !important;
+  padding: 2px !important;
+}
+
+.gsc-comment .gsc-comment-header,
+.gsc-comment .gsc-comment-content,
+.gsc-comment .gsc-comment-footer {
+  border: 0 !important;
+}
+
+.gsc-comment-box-textarea,
+.gsc-comment-box-preview,
+.gsc-reply-box textarea,
+textarea.form-control,
+.form-control {
+  background: #f5f5f7 !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+}
+
+.btn,
+.gsc-comment-box-buttons button,
+.gsc-reactions-button,
+.gsc-social-reaction-summary-item {
+  background: #f5f5f7 !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: #1d1d1f !important;
+}
+
+.btn-primary,
+.gsc-comment-box-buttons .btn-primary,
+.btn:hover,
+.gsc-comment-box-buttons button:hover,
+.gsc-reactions-button:hover,
+.gsc-social-reaction-summary-item:hover {
+  background: #1d1d1f !important;
+  border: 0 !important;
+  color: #ffffff !important;
+}
