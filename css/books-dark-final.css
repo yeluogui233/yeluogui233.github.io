@@ -3,9 +3,9 @@ html body.theme-force-dark .main-category-selector,
 html body.dark-mode .main-category-selector,
 html.dark-mode body .main-category-selector {
   background: rgba(255, 250, 241, .10) !important;
-  border: 1px solid rgba(255, 250, 241, .20) !important;
+  border: 0 !important;
   border-radius: 50px !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, .18) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .15) !important;
   color: #fffaf1 !important;
   -webkit-text-fill-color: #fffaf1 !important;
 }
@@ -24,9 +24,9 @@ html body.theme-force-dark .sub-category-dropdown,
 html body.dark-mode .sub-category-dropdown,
 html.dark-mode body .sub-category-dropdown {
   background: #27231f !important;
-  border: 1px solid rgba(255, 250, 241, .14) !important;
-  border-radius: 14px !important;
-  box-shadow: 0 16px 34px rgba(0, 0, 0, .28) !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .15) !important;
   padding: 8px 0 !important;
 }
 
@@ -57,9 +57,9 @@ html.dark-mode body .sub-category-dropdown .main-category-option::after {
 @media (prefers-color-scheme: dark) {
   html body:not(.theme-force-light) .main-category-selector {
     background: rgba(255, 250, 241, .10) !important;
-    border: 1px solid rgba(255, 250, 241, .20) !important;
+    border: 0 !important;
     border-radius: 50px !important;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, .18) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15) !important;
     color: #fffaf1 !important;
     -webkit-text-fill-color: #fffaf1 !important;
   }
@@ -72,9 +72,9 @@ html.dark-mode body .sub-category-dropdown .main-category-option::after {
 
   html body:not(.theme-force-light) .sub-category-dropdown {
     background: #27231f !important;
-    border: 1px solid rgba(255, 250, 241, .14) !important;
-    border-radius: 14px !important;
-    box-shadow: 0 16px 34px rgba(0, 0, 0, .28) !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .15) !important;
     padding: 8px 0 !important;
   }
 
