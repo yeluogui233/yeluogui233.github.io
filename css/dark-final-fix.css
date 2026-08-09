@@ -10,6 +10,111 @@ html body.theme-force-dark .sidebar:has(.post-toc-wrap) {
   z-index: 6 !important;
 }
 
+/* Books category menu: retain the light-theme hierarchy in dark mode. */
+html body:is(.theme-force-dark, .dark-mode) .main-category-selector,
+html.dark-mode body .main-category-selector {
+  background: rgba(255, 250, 241, .10) !important;
+  border: 1px solid rgba(255, 250, 241, .20) !important;
+  border-radius: 50px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .18) !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .main-category-selector *,
+html.dark-mode body .main-category-selector * {
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .sub-category-dropdown,
+html.dark-mode body .sub-category-dropdown {
+  background: #27231f !important;
+  border: 1px solid rgba(255, 250, 241, .14) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, .28) !important;
+  padding: 8px 0 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.category-option-all, .main-category-option, .sub-category-option),
+html.dark-mode body :is(.category-option-all, .main-category-option, .sub-category-option) {
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255, 250, 241, .10) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.category-option-all, .main-category-option, .sub-category-option):last-child,
+html.dark-mode body :is(.category-option-all, .main-category-option, .sub-category-option):last-child {
+  border-bottom: 0 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.category-option-all, .main-category-option, .sub-category-option):hover,
+html body:is(.theme-force-dark, .dark-mode) :is(.category-option-all, .main-category-option, .sub-category-option).active,
+html.dark-mode body :is(.category-option-all, .main-category-option, .sub-category-option):hover,
+html.dark-mode body :is(.category-option-all, .main-category-option, .sub-category-option).active {
+  background: rgba(255, 250, 241, .12) !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .main-category-option::after,
+html.dark-mode body .main-category-option::after {
+  color: #fffaf1 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .main-category-selector {
+    background: rgba(255, 250, 241, .10) !important;
+    border: 1px solid rgba(255, 250, 241, .20) !important;
+    border-radius: 50px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .18) !important;
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) .main-category-selector * {
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) .sub-category-dropdown {
+    background: #27231f !important;
+    border: 1px solid rgba(255, 250, 241, .14) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, .28) !important;
+    padding: 8px 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.category-option-all, .main-category-option, .sub-category-option) {
+    background: transparent !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(255, 250, 241, .10) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.category-option-all, .main-category-option, .sub-category-option):last-child {
+    border-bottom: 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.category-option-all, .main-category-option, .sub-category-option):hover,
+  html body:not(.theme-force-light) :is(.category-option-all, .main-category-option, .sub-category-option).active {
+    background: rgba(255, 250, 241, .12) !important;
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) .main-category-option::after {
+    color: #fffaf1 !important;
+  }
+}
+
 html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner,
 html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix,
 html body.theme-force-dark .sidebar:has(.post-toc-wrap) .sidebar-inner.affix-top,
@@ -442,6 +547,111 @@ html body .sidebar-profile-card .site-state-item > span::after {
   box-shadow: none !important;
   content: none !important;
   display: none !important;
+}
+
+/* Final override for the books category selector. */
+html body:is(.theme-force-dark, .dark-mode) .main-category-selector,
+html.dark-mode body .main-category-selector {
+  background: rgba(255, 250, 241, .10) !important;
+  border: 1px solid rgba(255, 250, 241, .20) !important;
+  border-radius: 50px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .18) !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .main-category-selector *,
+html.dark-mode body .main-category-selector * {
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .sub-category-dropdown,
+html.dark-mode body .sub-category-dropdown {
+  background: #27231f !important;
+  border: 1px solid rgba(255, 250, 241, .14) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, .28) !important;
+  padding: 8px 0 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.category-option-all, .main-category-option, .sub-category-option),
+html.dark-mode body :is(.category-option-all, .main-category-option, .sub-category-option) {
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255, 250, 241, .10) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.category-option-all, .main-category-option, .sub-category-option):last-child,
+html.dark-mode body :is(.category-option-all, .main-category-option, .sub-category-option):last-child {
+  border-bottom: 0 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.category-option-all, .main-category-option, .sub-category-option):hover,
+html body:is(.theme-force-dark, .dark-mode) :is(.category-option-all, .main-category-option, .sub-category-option).active,
+html.dark-mode body :is(.category-option-all, .main-category-option, .sub-category-option):hover,
+html.dark-mode body :is(.category-option-all, .main-category-option, .sub-category-option).active {
+  background: rgba(255, 250, 241, .12) !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .main-category-option::after,
+html.dark-mode body .main-category-option::after {
+  color: #fffaf1 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .main-category-selector {
+    background: rgba(255, 250, 241, .10) !important;
+    border: 1px solid rgba(255, 250, 241, .20) !important;
+    border-radius: 50px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .18) !important;
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) .main-category-selector * {
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) .sub-category-dropdown {
+    background: #27231f !important;
+    border: 1px solid rgba(255, 250, 241, .14) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, .28) !important;
+    padding: 8px 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.category-option-all, .main-category-option, .sub-category-option) {
+    background: transparent !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(255, 250, 241, .10) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.category-option-all, .main-category-option, .sub-category-option):last-child {
+    border-bottom: 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.category-option-all, .main-category-option, .sub-category-option):hover,
+  html body:not(.theme-force-light) :is(.category-option-all, .main-category-option, .sub-category-option).active {
+    background: rgba(255, 250, 241, .12) !important;
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) .main-category-option::after {
+    color: #fffaf1 !important;
+  }
 }
 
 /* 2026-07-31: centered desktop navigation and icon-only utility controls. */
@@ -2029,6 +2239,96 @@ html.dark-mode body .sidebar-profile-card .site-state {
     background: #1f1d1a !important;
     background-color: #1f1d1a !important;
     background-image: none !important;
+  }
+}
+
+/* Final books selector override, placed after all generic dark controls. */
+html body:is(.theme-force-dark, .dark-mode) .main-category-selector,
+html.dark-mode body .main-category-selector {
+  background: rgba(255, 250, 241, .10) !important;
+  border: 1px solid rgba(255, 250, 241, .20) !important;
+  border-radius: 50px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .18) !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .main-category-selector *,
+html.dark-mode body .main-category-selector * {
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .sub-category-dropdown,
+html.dark-mode body .sub-category-dropdown {
+  background: #27231f !important;
+  border: 1px solid rgba(255, 250, 241, .14) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, .28) !important;
+  padding: 8px 0 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.category-option-all, .main-category-option, .sub-category-option),
+html.dark-mode body :is(.category-option-all, .main-category-option, .sub-category-option) {
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255, 250, 241, .10) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(.category-option-all, .main-category-option, .sub-category-option):hover,
+html body:is(.theme-force-dark, .dark-mode) :is(.category-option-all, .main-category-option, .sub-category-option).active,
+html.dark-mode body :is(.category-option-all, .main-category-option, .sub-category-option):hover,
+html.dark-mode body :is(.category-option-all, .main-category-option, .sub-category-option).active {
+  background: rgba(255, 250, 241, .12) !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) .main-category-option::after,
+html.dark-mode body .main-category-option::after {
+  color: #fffaf1 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) .main-category-selector {
+    background: rgba(255, 250, 241, .10) !important;
+    border: 1px solid rgba(255, 250, 241, .20) !important;
+    border-radius: 50px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .18) !important;
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) .main-category-selector *,
+  html body:not(.theme-force-light) :is(.category-option-all, .main-category-option, .sub-category-option),
+  html body:not(.theme-force-light) .main-category-option::after {
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) .sub-category-dropdown {
+    background: #27231f !important;
+    border: 1px solid rgba(255, 250, 241, .14) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, .28) !important;
+    padding: 8px 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.category-option-all, .main-category-option, .sub-category-option) {
+    background: transparent !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(255, 250, 241, .10) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.category-option-all, .main-category-option, .sub-category-option):hover,
+  html body:not(.theme-force-light) :is(.category-option-all, .main-category-option, .sub-category-option).active {
+    background: rgba(255, 250, 241, .12) !important;
   }
 }
 
