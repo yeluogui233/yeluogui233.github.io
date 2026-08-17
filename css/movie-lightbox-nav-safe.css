@@ -1,0 +1,12 @@
+/* Keep the movie detail dialog clear of the fixed site navigation. */
+html body #movieLightbox .lightbox-content {
+  margin: 112px auto 28px !important;
+  max-height: calc(100vh - 140px) !important;
+}
+
+@media (max-width: 767px) {
+  html body #movieLightbox .lightbox-content {
+    margin: 84px auto 16px !important;
+    max-height: calc(100vh - 100px) !important;
+  }
+}
