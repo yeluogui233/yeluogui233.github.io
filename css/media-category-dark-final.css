@@ -20,9 +20,20 @@ html.dark-mode body :is(.books-wrapper .sub-category-dropdown, .movies-wrapper .
   border-radius: 12px !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, .24) !important;
   color: #fffaf1 !important;
+  max-height: min(420px, calc(100dvh - 128px)) !important;
   margin-top: 8px !important;
   overflow-x: hidden !important;
+  overflow-y: auto !important;
   padding: 8px 0 !important;
+  scrollbar-width: none !important;
+}
+
+html body.theme-force-dark :is(.books-wrapper .sub-category-dropdown, .movies-wrapper .category-dropdown)::-webkit-scrollbar,
+html body.dark-mode :is(.books-wrapper .sub-category-dropdown, .movies-wrapper .category-dropdown)::-webkit-scrollbar,
+html.dark-mode body :is(.books-wrapper .sub-category-dropdown, .movies-wrapper .category-dropdown)::-webkit-scrollbar {
+  display: none !important;
+  height: 0 !important;
+  width: 0 !important;
 }
 
 html body.theme-force-dark :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option),
@@ -52,6 +63,13 @@ html.dark-mode body :is(.books-wrapper .main-category-selector, .movies-wrapper 
   -webkit-text-fill-color: #fffaf1 !important;
 }
 
+html body.theme-force-dark :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option) *,
+html body.dark-mode :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option) *,
+html.dark-mode body :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option) * {
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
 @media (prefers-color-scheme: dark) {
   html body:not(.theme-force-light) :is(.books-wrapper .main-category-selector, .movies-wrapper .category-selector) {
     background: #2b2722 !important;
@@ -70,9 +88,18 @@ html.dark-mode body :is(.books-wrapper .main-category-selector, .movies-wrapper 
     border-radius: 12px !important;
     box-shadow: 0 8px 24px rgba(0, 0, 0, .24) !important;
     color: #fffaf1 !important;
+    max-height: min(420px, calc(100dvh - 128px)) !important;
     margin-top: 8px !important;
     overflow-x: hidden !important;
+    overflow-y: auto !important;
     padding: 8px 0 !important;
+    scrollbar-width: none !important;
+  }
+
+  html body:not(.theme-force-light) :is(.books-wrapper .sub-category-dropdown, .movies-wrapper .category-dropdown)::-webkit-scrollbar {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
   }
 
   html body:not(.theme-force-light) :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option) {
@@ -94,5 +121,109 @@ html.dark-mode body :is(.books-wrapper .main-category-selector, .movies-wrapper 
   html body:not(.theme-force-light) :is(.books-wrapper .main-category-selector, .movies-wrapper .category-selector) * {
     color: #fffaf1 !important;
     -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option) * {
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+}
+
+/* ID-scoped final pass beats the legacy global button selector. */
+html body:is(.theme-force-dark, .dark-mode) :is(#mainCategorySelector, #categorySelector),
+html.dark-mode body :is(#mainCategorySelector, #categorySelector) {
+  background: #2b2722 !important;
+  border: 0 !important;
+  border-radius: 50px !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(#mainCategorySelector, #categorySelector) > span,
+html.dark-mode body :is(#mainCategorySelector, #categorySelector) > span,
+html body:is(.theme-force-dark, .dark-mode) :is(#subCategoryDropdown, #categoryDropdown) button,
+html.dark-mode body :is(#subCategoryDropdown, #categoryDropdown) button,
+html body:is(.theme-force-dark, .dark-mode) :is(#subCategoryDropdown, #categoryDropdown) button *,
+html.dark-mode body :is(#subCategoryDropdown, #categoryDropdown) button * {
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(#subCategoryDropdown, #categoryDropdown),
+html.dark-mode body :is(#subCategoryDropdown, #categoryDropdown) {
+  background: #2b2722 !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  color: #fffaf1 !important;
+  max-height: min(420px, calc(100dvh - 128px)) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  scrollbar-width: none !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(#subCategoryDropdown, #categoryDropdown).show,
+html.dark-mode body :is(#subCategoryDropdown, #categoryDropdown).show {
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(#subCategoryDropdown, #categoryDropdown) button:is(:hover, .active),
+html.dark-mode body :is(#subCategoryDropdown, #categoryDropdown) button:is(:hover, .active) {
+  background: rgba(255, 250, 241, .10) !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body:is(.theme-force-dark, .dark-mode) :is(#subCategoryDropdown, #categoryDropdown)::-webkit-scrollbar,
+html.dark-mode body :is(#subCategoryDropdown, #categoryDropdown)::-webkit-scrollbar {
+  display: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) :is(#mainCategorySelector, #categorySelector) {
+    background: #2b2722 !important;
+    border: 0 !important;
+    border-radius: 50px !important;
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) :is(#mainCategorySelector, #categorySelector) > span,
+  html body:not(.theme-force-light) :is(#subCategoryDropdown, #categoryDropdown) button,
+  html body:not(.theme-force-light) :is(#subCategoryDropdown, #categoryDropdown) button * {
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) :is(#subCategoryDropdown, #categoryDropdown) {
+    background: #2b2722 !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    color: #fffaf1 !important;
+    max-height: min(420px, calc(100dvh - 128px)) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    scrollbar-width: none !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) :is(#subCategoryDropdown, #categoryDropdown).show {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  html body:not(.theme-force-light) :is(#subCategoryDropdown, #categoryDropdown) button:is(:hover, .active) {
+    background: rgba(255, 250, 241, .10) !important;
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) :is(#subCategoryDropdown, #categoryDropdown)::-webkit-scrollbar {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
   }
 }

@@ -1,5 +1,5 @@
 :root {
-  color-scheme: dark;
+  color-scheme: only dark;
   --color-canvas-default: #24211d;
   --color-canvas-overlay: #2c2823;
   --color-canvas-inset: #1a1815;
@@ -25,6 +25,11 @@
   --color-btn-active-border: rgba(255, 250, 241, .28);
   --color-btn-selected-bg: #4b4339;
   --color-primer-shadow-focus: 0 0 0 3px rgba(255, 250, 241, .1);
+}
+
+html,
+body {
+  color-scheme: only dark !important;
 }
 
 html,
@@ -398,4 +403,97 @@ textarea.form-control {
   background: transparent !important;
   min-height: 42px !important;
   padding: 9px 10px !important;
+}
+
+/* Keep avatars and card shadows clear of the iframe viewport edge. */
+.gsc-main {
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  padding: 8px !important;
+  width: 100% !important;
+}
+
+.gsc-comment-box,
+.gsc-comment,
+.gsc-comment-header,
+.gsc-comment-content,
+.gsc-comment-footer,
+.gsc-replies,
+.gsc-reply-box {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 560px) {
+  .gsc-main {
+    padding: 6px !important;
+  }
+}
+
+/* Comment order switch: one clean segmented control, no nested frames. */
+.gsc-right-header.BtnGroup {
+  align-items: center !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  display: flex !important;
+  gap: 5px !important;
+  overflow: visible !important;
+  padding: 0 !important;
+}
+
+.gsc-right-header.BtnGroup::before,
+.gsc-right-header.BtnGroup::after,
+.gsc-right-header .BtnGroup-item::before,
+.gsc-right-header .BtnGroup-item::after,
+.gsc-right-header .BtnGroup-item .btn::before,
+.gsc-right-header .BtnGroup-item .btn::after {
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  content: none !important;
+}
+
+.gsc-right-header .BtnGroup-item,
+.gsc-right-header .BtnGroup-item--selected {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  padding: 0 !important;
+}
+
+.gsc-right-header .BtnGroup-item .btn {
+  appearance: none !important;
+  background: rgba(255, 250, 241, .10) !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  color: #fffaf1 !important;
+  min-height: 36px !important;
+  padding: 0 11px !important;
+  transform: none !important;
+}
+
+.gsc-right-header .BtnGroup-item--selected .btn,
+.gsc-right-header .BtnGroup-item .btn:hover,
+.gsc-right-header .BtnGroup-item .btn:focus-visible {
+  background: #fffaf1 !important;
+  color: #211e1a !important;
+  transform: none !important;
+}
+
+html body ul.gsc-right-header.BtnGroup > li.BtnGroup-item[aria-current="true"] > button.btn {
+  background: #fffaf1 !important;
+  color: #211e1a !important;
+}
+
+html body ul.gsc-right-header.BtnGroup > li.BtnGroup-item[aria-current="false"] > button.btn {
+  background: rgba(255, 250, 241, .10) !important;
+  color: #fffaf1 !important;
 }

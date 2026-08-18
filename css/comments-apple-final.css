@@ -13,8 +13,11 @@ html body .comments.giscus-comments {
 html body .comments.giscus-comments :is(.giscus, iframe.giscus-frame) {
   background: transparent !important;
   border: 0 !important;
-  border-radius: 20px !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  width: 100% !important;
 }
 
 /* Giscus renders its own controls inside the iframe. Keep every visible
@@ -71,5 +74,11 @@ html.dark-mode body .comments.giscus-comments :is(.gsc-comment-header, .gsc-comm
   html body .comments.giscus-comments {
     border-radius: 0 !important;
     padding: 0 !important;
+  }
+
+  html body .comments.giscus-comments :is(.giscus, iframe.giscus-frame) {
+    border-radius: 0 !important;
+    margin-inline: 0 !important;
+    max-width: 100% !important;
   }
 }

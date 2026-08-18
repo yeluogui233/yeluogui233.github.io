@@ -1,6 +1,1 @@
-{
-  "id": "kagura-pixel",
-  "displayName": "神乐（低像素）",
-  "description": "纯低像素风格的Q版神乐动画桌宠。",
-  "spritesheetPath": "spritesheet.webp"
-}
+{"id":"kagura-pixel","displayName":"神乐（低像素）","description":"纯低像素风格的Q版神乐动画桌宠。","spritesheetPath":"spritesheet.webp"}
