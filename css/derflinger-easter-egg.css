@@ -1,0 +1,118 @@
+.derflinger-easter-egg {
+  height: 12px;
+  margin: -4px 0 8px;
+  position: relative;
+  width: 100%;
+  z-index: 8;
+}
+
+.derflinger-trigger {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  bottom: -13px;
+  cursor: pointer;
+  height: 44px;
+  left: 82%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  transform: translateX(-50%);
+  touch-action: manipulation;
+  width: 44px;
+}
+
+.derflinger-trigger::before {
+  background: #d8b567;
+  box-shadow: 0 0 5px rgba(216, 181, 103, .48);
+  content: '';
+  height: 4px;
+  left: 20px;
+  opacity: .34;
+  position: absolute;
+  top: 20px;
+  transform: rotate(45deg);
+  transition: opacity .2s ease, transform .2s ease;
+  width: 4px;
+}
+
+.derflinger-trigger:hover::before,
+.derflinger-trigger:focus-visible::before {
+  opacity: .78;
+  transform: rotate(135deg) scale(1.12);
+}
+
+.derflinger-trigger:focus-visible {
+  outline: 0;
+}
+
+.derflinger-figure {
+  bottom: -5px;
+  height: 248px;
+  left: 82%;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transform: translate(-50%, 92%) rotate(2deg) scale(.88);
+  transform-origin: 50% 100%;
+  transition: opacity .16s ease, transform .48s cubic-bezier(.2, .8, .2, 1);
+  width: 72px;
+}
+
+.derflinger-easter-egg.is-awake .derflinger-figure {
+  opacity: 1;
+  transform: translate(-50%, 2%) rotate(-1deg) scale(.88);
+}
+
+.derflinger-sprite {
+  background-image: url('/images/easter-eggs/derflinger.png?v=20260818-brown');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 400% 100%;
+  display: block;
+  height: 248px;
+  image-rendering: pixelated;
+  user-select: none;
+  width: 72px;
+}
+
+.derflinger-easter-egg.is-talking .derflinger-sprite {
+  animation: derflinger-talk .34s step-end infinite;
+}
+
+@keyframes derflinger-talk {
+  0%, 24% { background-position: 0 0; }
+  25%, 49% { background-position: 33.333% 0; }
+  50%, 74% { background-position: 66.667% 0; }
+  75%, 100% { background-position: 100% 0; }
+}
+
+@media (max-width: 767px) {
+  .derflinger-trigger,
+  .derflinger-figure {
+    left: 80%;
+  }
+
+  .derflinger-figure,
+  .derflinger-sprite {
+    height: 220px;
+    width: 64px;
+  }
+
+  .derflinger-figure {
+    transform: translate(-50%, 92%) rotate(2deg) scale(.88);
+  }
+
+  .derflinger-easter-egg.is-awake .derflinger-figure {
+    transform: translate(-50%, 2%) rotate(-1deg) scale(.88);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .derflinger-figure,
+  .derflinger-trigger::before {
+    transition-duration: .01ms;
+  }
+
+  .derflinger-easter-egg.is-talking .derflinger-sprite { animation: none; }
+}

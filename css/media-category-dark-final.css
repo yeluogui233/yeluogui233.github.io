@@ -129,6 +129,23 @@ html.dark-mode body :is(.books-wrapper .category-option-all, .books-wrapper .mai
   }
 }
 
+/* Dynamic movie group labels use inline colors; keep them readable while open/hovered. */
+html body:is(.theme-force-dark, .dark-mode) :is(#categoryDropdown, #categoryDropdownFriends) .category-group-header,
+html.dark-mode body :is(#categoryDropdown, #categoryDropdownFriends) .category-group-header,
+html body:is(.theme-force-dark, .dark-mode) :is(#categorySelector, #categorySelectorFriends):is(:hover, :focus-within) .category-group-header,
+html.dark-mode body :is(#categorySelector, #categorySelectorFriends):is(:hover, :focus-within) .category-group-header {
+  color: #d7cfc2 !important;
+  -webkit-text-fill-color: #d7cfc2 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) :is(#categoryDropdown, #categoryDropdownFriends) .category-group-header,
+  html body:not(.theme-force-light) :is(#categorySelector, #categorySelectorFriends):is(:hover, :focus-within) .category-group-header {
+    color: #d7cfc2 !important;
+    -webkit-text-fill-color: #d7cfc2 !important;
+  }
+}
+
 /* ID-scoped final pass beats the legacy global button selector. */
 html body:is(.theme-force-dark, .dark-mode) :is(#mainCategorySelector, #categorySelector),
 html.dark-mode body :is(#mainCategorySelector, #categorySelector) {
