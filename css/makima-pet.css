@@ -1,6 +1,6 @@
-#makima-pet {
+#kagura-pet {
   --makima-size: 112px;
-  background-image: url("/images/pets/makima/spritesheet.webp");
+  background-image: url("/images/pets/kagura-pixel/spritesheet.webp");
   background-repeat: no-repeat;
   background-size: 800% 900%;
   bottom: 28px;
@@ -15,32 +15,32 @@
   z-index: 99997;
 }
 
-#makima-pet.is-dragging {
+#kagura-pet.is-dragging {
   cursor: grabbing;
   filter: drop-shadow(0 18px 26px rgba(20, 24, 32, .22));
   transform: scale(1.04);
 }
 
-#makima-pet.is-page-docked,
-body:has(.content.games-page) #makima-pet {
+#kagura-pet.is-page-docked,
+body:has(.content.games-page) #kagura-pet {
   bottom: 24px !important;
   left: auto !important;
   right: 24px !important;
   top: auto !important;
 }
 
-#makima-pet.is-jumping {
+#kagura-pet.is-jumping {
   animation: makima-hop .42s cubic-bezier(.2, .9, .25, 1);
 }
 
-#makima-pet::after {
+#kagura-pet::after {
   background: rgba(255, 255, 255, .88);
   border: 1px solid rgba(210, 218, 230, .9);
   border-radius: 999px;
   bottom: 6px;
   box-shadow: 0 10px 24px rgba(20, 30, 46, .13);
   color: #202938;
-  content: "Makima";
+  content: "神乐";
   font-size: 12px;
   font-weight: 760;
   left: 50%;
@@ -53,7 +53,7 @@ body:has(.content.games-page) #makima-pet {
   white-space: nowrap;
 }
 
-#makima-pet:hover::after {
+#kagura-pet:hover::after {
   opacity: 1;
   transform: translate(-50%, 0);
 }
@@ -69,14 +69,14 @@ body:has(.content.games-page) #makima-pet {
 }
 
 @media (max-width: 720px) {
-  #makima-pet {
+  #kagura-pet {
     --makima-size: 88px;
     bottom: 18px;
     right: 16px;
   }
 
-  #makima-pet.is-page-docked,
-  body:has(.content.games-page) #makima-pet {
+  #kagura-pet.is-page-docked,
+  body:has(.content.games-page) #kagura-pet {
     bottom: 16px !important;
     right: 14px !important;
   }

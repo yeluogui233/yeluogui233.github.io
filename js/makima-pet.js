@@ -229,13 +229,13 @@
   }
 
   function mount() {
-    if (document.getElementById('makima-pet')) return;
+    if (document.getElementById('kagura-pet')) return;
 
     const pet = document.createElement('div');
-    pet.id = 'makima-pet';
+    pet.id = 'kagura-pet';
     pet.setAttribute('role', 'img');
-    pet.setAttribute('aria-label', 'Makima pixel pet, draggable');
-    pet.title = 'Makima';
+    pet.setAttribute('aria-label', '神乐像素宠物，可拖动');
+    pet.title = '神乐';
     document.body.appendChild(pet);
 
     if (isDockedPage()) {
