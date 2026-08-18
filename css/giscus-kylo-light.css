@@ -102,8 +102,7 @@ a,
 .gsc-comment-box-textarea,
 .gsc-comment-box-preview,
 .gsc-reply-box textarea,
-textarea.form-control,
-.form-control {
+textarea.form-control {
   background: #f5f5f7 !important;
   border: 0 !important;
   border-radius: 12px !important;
@@ -118,8 +117,7 @@ textarea.form-control,
 
 .gsc-comment-box-textarea:focus,
 .gsc-reply-box textarea:focus,
-textarea.form-control:focus,
-.form-control:focus {
+textarea.form-control:focus {
   border-color: rgba(29, 29, 31, .36) !important;
   box-shadow: 0 0 0 3px rgba(29, 29, 31, .08) !important;
 }
@@ -287,8 +285,7 @@ code,
 .gsc-comment-box-textarea,
 .gsc-comment-box-preview,
 .gsc-reply-box textarea,
-textarea.form-control,
-.form-control {
+textarea.form-control {
   background: #f5f5f7 !important;
   border: 0 !important;
   border-radius: 14px !important;
@@ -315,4 +312,86 @@ textarea.form-control,
   background: #1d1d1f !important;
   border: 0 !important;
   color: #ffffff !important;
+}
+
+/* Compact card layout. Keep generic form containers from becoming textareas. */
+.form-control:not(textarea) {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+
+.gsc-comment-box {
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(29, 29, 31, .07) !important;
+  margin-bottom: 14px !important;
+}
+
+.gsc-comment-box-tabs {
+  min-height: 0 !important;
+  padding: 8px 10px 2px !important;
+}
+
+.gsc-comment-box-tabs button {
+  min-height: 34px !important;
+  padding: 0 8px !important;
+}
+
+.gsc-comment-box-main {
+  padding: 0 10px !important;
+}
+
+.gsc-comment-box-textarea,
+.gsc-comment-box-preview,
+.gsc-reply-box textarea,
+textarea.form-control {
+  min-height: 88px !important;
+  padding: 10px 12px !important;
+}
+
+.gsc-comment-box-bottom {
+  min-height: 0 !important;
+  padding: 8px 10px 10px !important;
+}
+
+.gsc-comment-box-buttons,
+.gsc-comment-box-bottom .d-flex {
+  min-height: 0 !important;
+}
+
+.gsc-comment {
+  border-radius: 16px !important;
+  box-shadow: 0 6px 20px rgba(29, 29, 31, .06) !important;
+  padding: 0 !important;
+}
+
+.gsc-comment .gsc-comment-header {
+  padding: 9px 12px 4px !important;
+}
+
+.gsc-comment .gsc-comment-content {
+  line-height: 1.65 !important;
+  padding: 8px 12px !important;
+}
+
+.gsc-comment .gsc-comment-footer {
+  padding: 4px 10px 9px !important;
+}
+
+.gsc-reply-box {
+  background: #f5f5f7 !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  min-height: 42px !important;
+  padding: 6px 8px !important;
+}
+
+.gsc-reply-box textarea,
+.gsc-reply-box textarea.form-control {
+  background: transparent !important;
+  min-height: 42px !important;
+  padding: 9px 10px !important;
 }

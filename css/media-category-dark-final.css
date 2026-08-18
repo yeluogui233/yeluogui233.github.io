@@ -1,0 +1,98 @@
+/* Books and movies keep their light-theme geometry in dark mode. */
+html body.theme-force-dark :is(.books-wrapper .main-category-selector, .movies-wrapper .category-selector),
+html body.dark-mode :is(.books-wrapper .main-category-selector, .movies-wrapper .category-selector),
+html.dark-mode body :is(.books-wrapper .main-category-selector, .movies-wrapper .category-selector) {
+  background: #2b2722 !important;
+  border: 0 !important;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .20) !important;
+  color: #fffaf1 !important;
+  gap: 8px !important;
+  padding: 8px 16px !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body.theme-force-dark :is(.books-wrapper .sub-category-dropdown, .movies-wrapper .category-dropdown),
+html body.dark-mode :is(.books-wrapper .sub-category-dropdown, .movies-wrapper .category-dropdown),
+html.dark-mode body :is(.books-wrapper .sub-category-dropdown, .movies-wrapper .category-dropdown) {
+  background: #2b2722 !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .24) !important;
+  color: #fffaf1 !important;
+  margin-top: 8px !important;
+  overflow-x: hidden !important;
+  padding: 8px 0 !important;
+}
+
+html body.theme-force-dark :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option),
+html body.dark-mode :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option),
+html.dark-mode body :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option) {
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255, 250, 241, .055) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body.theme-force-dark :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option):is(:hover, .active),
+html body.dark-mode :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option):is(:hover, .active),
+html.dark-mode body :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option):is(:hover, .active) {
+  background: rgba(255, 250, 241, .10) !important;
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+html body.theme-force-dark :is(.books-wrapper .main-category-selector, .movies-wrapper .category-selector) *,
+html body.dark-mode :is(.books-wrapper .main-category-selector, .movies-wrapper .category-selector) *,
+html.dark-mode body :is(.books-wrapper .main-category-selector, .movies-wrapper .category-selector) * {
+  color: #fffaf1 !important;
+  -webkit-text-fill-color: #fffaf1 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) :is(.books-wrapper .main-category-selector, .movies-wrapper .category-selector) {
+    background: #2b2722 !important;
+    border: 0 !important;
+    border-radius: 50px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .20) !important;
+    color: #fffaf1 !important;
+    gap: 8px !important;
+    padding: 8px 16px !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.books-wrapper .sub-category-dropdown, .movies-wrapper .category-dropdown) {
+    background: #2b2722 !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .24) !important;
+    color: #fffaf1 !important;
+    margin-top: 8px !important;
+    overflow-x: hidden !important;
+    padding: 8px 0 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option) {
+    background: transparent !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(255, 250, 241, .055) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.books-wrapper .category-option-all, .books-wrapper .main-category-option, .books-wrapper .sub-category-option, .movies-wrapper .category-option):is(:hover, .active) {
+    background: rgba(255, 250, 241, .10) !important;
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+
+  html body:not(.theme-force-light) :is(.books-wrapper .main-category-selector, .movies-wrapper .category-selector) * {
+    color: #fffaf1 !important;
+    -webkit-text-fill-color: #fffaf1 !important;
+  }
+}
