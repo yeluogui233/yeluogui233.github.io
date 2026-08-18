@@ -2,60 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yeluogui.cloud/lab/maimemo/data/word-content.json</loc>
-    
-    <lastmod>2026-08-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/lab/maimemo/data/markji.json</loc>
-    
-    <lastmod>2026-08-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/lab/maimemo/data/notepads.json</loc>
-    
-    <lastmod>2026-08-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/lab/maimemo/data/records.json</loc>
-    
-    <lastmod>2026-08-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/lab/maimemo/data/today.json</loc>
-    
-    <lastmod>2026-08-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/lab/maimemo/data/summary.json</loc>
-    
-    <lastmod>2026-08-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yeluogui.cloud/gallery/yunnan/index.html</loc>
     
     <lastmod>2026-08-18</lastmod>
@@ -875,7 +821,70 @@
   </url>
   
   <url>
+    <loc>http://yeluogui.cloud/books/notes/%E8%8D%92%E9%87%8E%E4%BE%A6%E6%8E%A2%E4%B9%A6%E6%91%98/index.html</loc>
+    
+    <lastmod>2026-08-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yeluogui.cloud/diary/index.html</loc>
+    
+    <lastmod>2026-08-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/lab/maimemo/data/word-content.json</loc>
+    
+    <lastmod>2026-08-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/lab/maimemo/data/markji.json</loc>
+    
+    <lastmod>2026-08-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/lab/maimemo/data/notepads.json</loc>
+    
+    <lastmod>2026-08-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/lab/maimemo/data/records.json</loc>
+    
+    <lastmod>2026-08-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/lab/maimemo/data/today.json</loc>
+    
+    <lastmod>2026-08-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/lab/maimemo/data/summary.json</loc>
     
     <lastmod>2026-08-18</lastmod>
     
@@ -1185,7 +1194,14 @@
   </url>
   
   <url>
-    <loc>http://yeluogui.cloud/tags/KMP%E7%AE%97%E6%B3%95/</loc>
+    <loc>http://yeluogui.cloud/tags/%EF%BF%BD%EF%BF%BD%E8%AF%84/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/tags/%E8%83%A1%E9%87%8C%E5%A5%A5%C2%B7%E7%A7%91%E5%A1%94%E5%B0%94%E8%90%A8/</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1206,14 +1222,7 @@
   </url>
   
   <url>
-    <loc>http://yeluogui.cloud/tags/%EF%BF%BD%EF%BF%BD%E8%AF%84/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/tags/%E8%83%A1%E9%87%8C%E5%A5%A5%C2%B7%E7%A7%91%E5%A1%94%E5%B0%94%E8%90%A8/</loc>
+    <loc>http://yeluogui.cloud/tags/KMP%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1234,7 +1243,14 @@
   </url>
   
   <url>
-    <loc>http://yeluogui.cloud/tags/%E9%A9%AC%E9%87%8C%E5%A5%A5%C2%B7%E5%B7%B4%E5%B0%94%E5%8A%A0%E6%96%AF%C2%B7%E7%95%A5%E8%90%A8/</loc>
+    <loc>http://yeluogui.cloud/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/tags/%E5%AD%98%E5%82%A8%E5%99%A8/</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1255,42 +1271,14 @@
   </url>
   
   <url>
+    <loc>http://yeluogui.cloud/tags/%E9%A9%AC%E9%87%8C%E5%A5%A5%C2%B7%E5%B7%B4%E5%B0%94%E5%8A%A0%E6%96%AF%C2%B7%E7%95%A5%E8%90%A8/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://yeluogui.cloud/tags/%E5%88%97%E5%A4%AB%E6%89%98%E5%B0%94%E6%96%AF%E6%B3%B0/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/tags/%E5%AD%98%E5%82%A8%E5%99%A8/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/tags/%E7%83%98%E7%84%99/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/tags/%E6%9B%B2%E5%A5%87/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/tags/%E5%8F%AF%E5%8F%AF/</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1312,6 +1300,34 @@
   
   <url>
     <loc>http://yeluogui.cloud/tags/%E6%9F%A5%E6%89%BE/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/tags/%E6%A0%91/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/tags/%E7%83%98%E7%84%99/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/tags/%E6%9B%B2%E5%A5%87/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yeluogui.cloud/tags/%E5%8F%AF%E5%8F%AF/</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1367,7 +1383,7 @@
   </url>
   
   <url>
-    <loc>http://yeluogui.cloud/tags/%E6%A0%91/</loc>
+    <loc>http://yeluogui.cloud/tags/%E6%85%95%E6%96%AF%E8%9B%8B%E7%B3%95/</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1389,13 +1405,6 @@
   
   <url>
     <loc>http://yeluogui.cloud/tags/%E9%9D%A2%E5%8C%85/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yeluogui.cloud/tags/%E6%85%95%E6%96%AF%E8%9B%8B%E7%B3%95/</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
