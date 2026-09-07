@@ -555,7 +555,7 @@ body {
     <span style="font-size:0.75em;opacity:0.85;line-height:1.7;display:inline-block;margin-top:8px;">我实在是太想更快地祝福你，更快的看到你开心的样子，<br>想给你鼓劲，一定一定会有很好很好的结果的，<br>在此之前不要自我怀疑，一定要自信！</span><br>
     <span style="font-size:0.7em;opacity:0.7;margin-top:6px;display:inline-block;">然后我准备了几个生日挑战，你花几秒试一下会有一个小惊喜哦</span>
   </div>
-  <button class="start-btn" onclick="goToScene(1)">开始挑战</button>
+  <button class="start-btn" id="startChallenge" type="button">开始挑战</button>
 </div>
 
 <!-- ===== Scene 1: Candles ===== -->
@@ -620,6 +620,12 @@ function goToScene(idx) {
     if (idx === 1) initCandles();
     if (idx === 2) initBalloons();
   }, 400);
+}
+
+// Bind through the page script so static hosting and PJAX do not block inline handlers.
+const startChallenge = document.getElementById('startChallenge');
+if (startChallenge) {
+  startChallenge.addEventListener('click', () => goToScene(1));
 }
 
 function updateProgress() {
