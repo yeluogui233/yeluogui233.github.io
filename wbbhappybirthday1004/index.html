@@ -584,11 +584,7 @@ body {
     <div class="reveal-line" id="rl1">🎉 恭喜你完成挑战！</div>
     <div class="reveal-line" id="rl2" style="font-size:clamp(15px,2.5vw,22px);line-height:1.7;margin-top:4px;">未来的考研也一定会这么顺利 ✨</div>
     <div class="reveal-line" id="rl2b" style="font-size:clamp(13px,2.2vw,20px);color:rgba(255,255,255,0.75);line-height:1.6;margin-top:4px;">今年很辛苦很累啦，但是冰冰很坚强很厉害了，<br>希望我的一点小鼓励能给你带来一些力量噢 💕</div>
-    <div class="reveal-line" id="rl3">奖品是——</div>
-    <div class="prize-name" id="prizeName">瑞幸十次卡</div>
-    <div class="code-section" id="codeSection">
-      <div style="font-size:clamp(13px,2.2vw,18px);color:rgba(255,255,255,0.8);line-height:1.6;">给我发送 <span style="color:var(--gold);font-weight:bold;font-size:clamp(16px,2.8vw,22px);letter-spacing:2px;">mj</span> 领取惊喜 🎁</div>
-    </div>
+    <div class="reveal-line" id="rl3">给我发送mj领取惊喜</div>
   </div>
 </div>
 
@@ -916,17 +912,6 @@ function openGift() {
   setTimeout(() => {
     document.getElementById('rl3').classList.add('show');
   }, 3400);
-
-  setTimeout(() => {
-    document.getElementById('prizeName').classList.add('show');
-    // Extra sparkles around the prize
-    const pr = document.getElementById('prizeName').getBoundingClientRect();
-    burstSparkles(pr.left + pr.width/2, pr.top + 22, 15);
-  }, 4200);
-
-  setTimeout(() => {
-    document.getElementById('codeSection').classList.add('show');
-  }, 5000);
 
   setTimeout(() => {
     // Grand finale confetti
