@@ -2,16 +2,28 @@
   'use strict';
 
   function isTouchMenuMode() {
-    return window.matchMedia('(hover: none), (pointer: coarse), (max-width: 760px)').matches;
+    var mediaTouch = window.matchMedia('(hover: none), (pointer: coarse), (max-width: 760px)').matches;
+    var deviceTouch = typeof navigator.maxTouchPoints === 'number' && navigator.maxTouchPoints > 0;
+    return mediaTouch || deviceTouch;
   }
 
   function closeAll(except) {
     document.querySelectorAll('.main-menu .menu-item-has-children.is-touch-open').forEach(function (item) {
-      if (item !== except) item.classList.remove('is-touch-open');
+      if (item !== except) {
+        item.classList.remove('is-touch-open');
+        var link = item.querySelector(':scope > a');
+        if (link) link.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
   function bind() {
+    if (isTouchMenuMode()) {
+      document.documentElement.classList.add('touch-menu-device');
+    } else {
+      document.documentElement.classList.remove('touch-menu-device');
+    }
+
     document.querySelectorAll('.main-menu .menu-item-has-children > a').forEach(function (link) {
       if (link.dataset.touchMenuBound === 'true') return;
       link.dataset.touchMenuBound = 'true';
@@ -26,16 +38,20 @@
           event.preventDefault();
           closeAll(item);
           item.classList.add('is-touch-open');
+          link.setAttribute('aria-expanded', 'true');
         }
       });
     });
 
-    document.addEventListener('click', function (event) {
-      if (!isTouchMenuMode()) return;
-      if (!event.target.closest('.main-menu .menu-item-has-children')) {
-        closeAll();
-      }
-    });
+    if (document.documentElement.dataset.touchMenuDocumentBound !== 'true') {
+      document.documentElement.dataset.touchMenuDocumentBound = 'true';
+      document.addEventListener('click', function (event) {
+        if (!isTouchMenuMode()) return;
+        if (!event.target.closest('.main-menu .menu-item-has-children')) {
+          closeAll();
+        }
+      });
+    }
   }
 
   if (document.readyState === 'loading') {

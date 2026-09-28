@@ -1482,6 +1482,70 @@ html body .pagination span.current {
   pointer-events: none !important;
 }
 
+/* Make nested navigation usable on touch tablets. */
+@media (min-width: 768px) and (max-width: 1199px) and (hover: none),
+  (min-width: 768px) and (max-width: 1199px) and (pointer: coarse) {
+  html body .header,
+  html body .header-inner,
+  html body .main-menu,
+  html body .main-menu > .menu-item-has-children {
+    overflow: visible !important;
+  }
+
+  html body .main-menu {
+    position: relative !important;
+    z-index: 1001 !important;
+  }
+
+  html body .main-menu > .menu-item-has-children.is-touch-open > .menu-child {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) translateY(0) !important;
+    visibility: visible !important;
+  }
+}
+
+/* Keep tablet game covers on one stable grid and crop all source ratios equally. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  html.touch-menu-device body .header,
+  html.touch-menu-device body .header-inner,
+  html.touch-menu-device body .main-menu,
+  html.touch-menu-device body .main-menu > .menu-item-has-children {
+    overflow: visible !important;
+  }
+
+  html.touch-menu-device body .main-menu {
+    position: relative !important;
+    z-index: 1001 !important;
+  }
+
+  html.touch-menu-device body .main-menu > .menu-item-has-children.is-touch-open > .menu-child {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) translateY(0) !important;
+    visibility: visible !important;
+  }
+
+  html body .games-container .game-card {
+    grid-template-columns: clamp(170px, 34%, 250px) minmax(0, 1fr) !important;
+  }
+
+  html body .games-container .game-cover {
+    align-self: center !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    width: 100% !important;
+  }
+
+  html body .games-container .game-cover img {
+    display: block !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    width: 100% !important;
+  }
+}
+
 /* Keep the book category picker attached to its button on mobile. */
 @media (max-width: 767px) {
   html body .books-wrapper .main-category-selector {
