@@ -10,8 +10,8 @@
   };
 
   var clues = [
-    { key: 'derflinger', label: '德鲁弗林格', words: ['德鲁弗林格', '魔剑', '零之使魔'], line: '哼，原来你已经发现那把会说话的剑了。眼光不错，阿鲁。' },
-    { key: 'kagura', label: '神乐', words: ['神乐', '红发小人'], line: '阿鲁！叫我做什么？我正在认真看守这个秘密基地呢。' }
+    { key: 'derflinger', label: '德鲁弗林格', words: ['德鲁弗林格', '魔剑', '零之使魔'], line: 'あっ、これってデルフリンガーじゃないアルか！？ しゃべる剣アルな。『ゼロの使い魔』のルイズお嬢様の声、ずっと素敵だと思ってたアル。', voiceKey: 'kagura-derflinger' },
+    { key: 'kagura', label: '神乐', words: ['神乐', '红发小人'], line: 'そうアル、この私アル！ 今ごろ気づいたアルか？', voiceKey: 'kagura' }
   ];
 
   function setup(root) {
@@ -20,6 +20,10 @@
     var status = root.querySelector('[data-kagura-status]');
     var form = root.querySelector('[data-easter-form]');
     var input = root.querySelector('[data-easter-input]');
+    var voiceByKey = {};
+    root.querySelectorAll('[data-easter-voice]').forEach(function (audio) {
+      voiceByKey[audio.getAttribute('data-easter-voice')] = audio;
+    });
     var list = root.querySelector('[data-discovery-list]');
     var count = root.querySelector('[data-discovery-count]');
     var label = root.querySelector('[data-discovery-label]');
@@ -28,6 +32,13 @@
     var timer = 0;
     var speechTimer = 0;
     var found = readFound();
+    var voiceMeta = {
+      derflinger: { status: '德鲁弗林格正在说话', lang: 'zh-CN' },
+      'kagura-derflinger': { status: '神乐正在说话', lang: 'ja-JP' },
+      kagura: { status: '神乐正在说话', lang: 'ja-JP' },
+      'kagura-talk': { status: '神乐正在说话', lang: 'ja-JP' },
+      'kagura-unknown': { status: '神乐正在说话', lang: 'ja-JP' }
+    };
 
     function readFound() {
       try {
@@ -94,19 +105,36 @@
       });
     }
 
-    function say(line, nextState) {
+    function say(line, nextState, voiceKey) {
       window.clearTimeout(speechTimer);
       speech.textContent = line;
       speech.classList.add('is-visible');
-      status.textContent = '神乐正在说话';
+      var meta = voiceMeta[voiceKey] || voiceMeta.kagura;
+      status.textContent = meta.status;
       play(nextState || 'talk');
-      if ('speechSynthesis' in window) {
+      var voice = voiceKey ? voiceByKey[voiceKey] : null;
+      var playback = null;
+      if (voice) {
+        voice.currentTime = 0;
+        playback = voice.play();
+      }
+      if (!voice && 'speechSynthesis' in window) {
         window.speechSynthesis.cancel();
         var voiceLine = new SpeechSynthesisUtterance(line);
-        voiceLine.lang = 'zh-CN';
+        voiceLine.lang = meta.lang;
         voiceLine.rate = 1.05;
         voiceLine.pitch = 1.12;
         window.speechSynthesis.speak(voiceLine);
+      }
+      if (playback && typeof playback.catch === 'function') {
+        playback.catch(function () {
+          if ('speechSynthesis' in window) {
+            var fallback = new SpeechSynthesisUtterance(line);
+            fallback.lang = meta.lang;
+            fallback.rate = 1.05;
+            window.speechSynthesis.speak(fallback);
+          }
+        });
       }
       speechTimer = window.setTimeout(function () {
         speech.classList.remove('is-visible');
@@ -118,7 +146,7 @@
     function submit(value) {
       var clue = findClue(value);
       if (!clue) {
-        say('唔……这个我还没认出来，再仔细找找吧，阿鲁。', 'talk');
+        say('うーん……それは、まだわからないアルなぁ。もっとよく探してみるアル！', 'talk', 'kagura-unknown');
         return;
       }
       if (found.indexOf(clue.key) === -1) {
@@ -126,7 +154,7 @@
         saveFound();
         renderFound();
       }
-      say(clue.line, 'talk');
+      say(clue.line, 'talk', clue.voiceKey);
     }
 
     form.addEventListener('submit', function (event) {
@@ -145,7 +173,7 @@
     root.querySelectorAll('[data-action]').forEach(function (button) {
       button.addEventListener('click', function () {
         var action = button.getAttribute('data-action');
-        if (action === 'talk') say('今天也要认真找彩蛋，阿鲁！', 'talk');
+        if (action === 'talk') say('今日もイースターエッグを、しっかり探すアルよ！ えへへ、見つけたらすぐ教えるアル！', 'talk', 'kagura-talk');
         if (action === 'wake') { speech.classList.remove('is-visible'); status.textContent = '神乐醒来了'; play('action', 1700); }
         if (action === 'sleep') { speech.classList.remove('is-visible'); status.textContent = '神乐开始打瞌睡'; play('sleep'); }
         if (action === 'random') {
