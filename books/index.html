@@ -54,7 +54,7 @@
   };
 </script>
 
-  <link rel="stylesheet" href="/css/site-head.a4b6919aaa4d.css">
+  <link rel="stylesheet" href="/css/site-head.438f6a5a61f2.css">
   
   <title>
   个人书单 | 穿过长长的隧道，便是雪国
@@ -314,6 +314,7 @@
 
           <div class="content ">
             
+<script defer src="/js/media-performance.js?v=20261023-1"></script>
 <style>
 /* === 新增的响应式样式 === */
 /* === 改进后的响应式样式（手机端三列优化） === */
@@ -11707,27 +11708,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 浏览器原生懒加载通常会提前请求多屏书封；只在接近视口时提供真实地址。
-  const pendingCovers = document.querySelectorAll('#myBooksGrid .book-cover-img[data-src]');
-  function loadBookCover(image) {
-    image.src = image.dataset.src;
-    image.removeAttribute('data-src');
-  }
-  if (typeof window.IntersectionObserver === 'function') {
-    const coverObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          loadBookCover(entry.target);
-          coverObserver.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '240px 0px' });
-    pendingCovers.forEach(image => coverObserver.observe(image));
-  } else {
-    // 旧浏览器回退到原生 loading="lazy"；禁用脚本时使用上面的 noscript。
-    pendingCovers.forEach(loadBookCover);
-  }
-
   const lightbox = document.getElementById('bookLightbox');
   const lightboxTitle = document.getElementById('lightbox-title');
   const lightboxCover = document.getElementById('lightbox-cover');
@@ -12481,7 +12461,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/canvas_lines.min.js?v=20260706-lines-2"></script>
+    <script defer src="/lib/three/canvas_lines.min.js?v=20261023-performance-1"></script>
 
 
   

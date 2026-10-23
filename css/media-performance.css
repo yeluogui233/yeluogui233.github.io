@@ -1,0 +1,113 @@
+.photo-image[data-src],
+.album-thumb img[data-src] { visibility: hidden; }
+
+/* These surfaces already have a fixed aspect ratio, so skipping their offscreen
+   children does not change card heights, scrolling positions or image framing. */
+#myBooksGrid .book-cover,
+.album-grid .album-thumb,
+#photo-wall .photo-frame {
+  content-visibility: auto;
+}
+
+/* Album pagination replaces the growing load-more list. */
+#album-pagination {
+  --album-page-ink: #41464e;
+  --album-page-muted: #777d85;
+  --album-page-surface: #f3f4f6;
+  --album-page-hover: #e9ecf0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  max-width: 680px;
+  margin: 32px auto 0;
+  padding-top: 22px;
+}
+#album-pagination[hidden], #photoLightbox[hidden] { display: none !important; }
+#album-pagination .album-page-button,
+#album-pagination select {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 40px;
+  margin: 0;
+  padding: 8px 15px;
+  background: var(--album-page-surface) !important;
+  border: 0 !important;
+  border-radius: 11px;
+  box-shadow: none !important;
+  color: var(--album-page-ink) !important;
+  -webkit-text-fill-color: currentColor !important;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color .16s ease;
+}
+#prev-photo-page { justify-self: start; }
+#next-photo-page { justify-self: end; }
+#album-pagination .album-page-button:disabled {
+  background: transparent !important;
+  color: var(--album-page-muted) !important;
+  opacity: .5;
+  cursor: default;
+}
+#album-pagination .album-page-button:not(:disabled):hover,
+#album-pagination select:hover { background: var(--album-page-hover) !important; }
+#album-pagination :is(button, select):focus-visible {
+  outline: 2px solid #8592a1 !important;
+  outline-offset: 3px;
+}
+#album-pagination .album-page-info {
+  color: var(--album-page-muted) !important;
+  font-size: 14px;
+  white-space: nowrap;
+}
+#album-pagination .album-page-info span {
+  color: var(--album-page-ink) !important;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+#album-pagination .album-page-jump {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--album-page-muted) !important;
+  font-size: 13px;
+}
+#album-pagination select { min-height: 36px; font-size: 13px; }
+html body:is(.theme-force-dark, .dark-mode) #album-pagination,
+html.dark-mode body #album-pagination {
+  --album-page-ink: #eee8df;
+  --album-page-muted: #b6ad9f;
+  --album-page-surface: rgba(255, 248, 234, .07);
+  --album-page-hover: rgba(255, 248, 234, .13);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) #album-pagination {
+    --album-page-ink: #eee8df;
+    --album-page-muted: #b6ad9f;
+    --album-page-surface: rgba(255, 248, 234, .07);
+    --album-page-hover: rgba(255, 248, 234, .13);
+    color-scheme: dark;
+  }
+}
+@media (max-width: 480px) {
+  #album-pagination { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #album-pagination .album-page-info { grid-column: 1 / -1; grid-row: 1; text-align: center; }
+  #album-pagination .album-page-button { justify-self: stretch; }
+}
+#photoLightbox .lightbox-arrow, #photoLightbox .lightbox-close {
+  appearance: none;
+  border: 0;
+  font-family: inherit;
+  line-height: inherit;
+}
+#photoLightbox .lightbox-close { padding: 0; }
+#photoLightbox .lightbox-arrow { background: transparent; }
+#photoLightbox :is(button, img):focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+#photoLightbox [hidden] { display: none !important; }
