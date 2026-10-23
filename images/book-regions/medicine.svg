@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>医学：诊疗箱与心电波形</title>
+  <g stroke="#4a8068" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="80" y="4" width="17" height="11" rx="2" fill="#f5f0de" fill-opacity=".2" stroke-width=".85" opacity=".75"/>
+    <path d="M85 4V2h7v2m-3.5 3v5m-2.5-2.5h5" stroke-width=".85" opacity=".85"/>
+    <path d="M0 37h10l3-3 3 6 4-12 4 9h12m30 0h17l3-3 3 6 4-10 4 7h3" stroke-width=".8" opacity=".4"/>
+    <path d="M6 8c0-4 4-5 6-6-1 4-2 6-6 6Zm0 0 6-6" stroke-width=".65" opacity=".4"/>
+  </g>
+</svg>

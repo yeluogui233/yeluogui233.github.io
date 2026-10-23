@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>反乌托邦：监视之眼与秩序栅格</title>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M78 8q10-9 20 0-10 9-20 0Z" stroke="#c7bcb6" stroke-width=".85" opacity=".75"/>
+    <circle cx="88" cy="8" r="3" stroke="#c7bcb6" stroke-width=".85" opacity=".8"/>
+    <circle cx="88" cy="8" r="1" fill="#ce827f"/>
+    <path d="M76 2h4m14 12h4M3 35h24m-24 4h24m-20-7v8m6-8v8m6-8v8m6-8v8M70 38h27" stroke="#b1b1b6" stroke-width=".65" opacity=".3"/>
+    <path d="M3 5h13m3 0h4M52 38h10" stroke="#ce827f" stroke-width="1.1" opacity=".5"/>
+  </g>
+</svg>

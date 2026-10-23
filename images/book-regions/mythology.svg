@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>神话：太阳纹、星座与古典回纹</title>
+  <g stroke="#d0b787" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="88" cy="8" r="4.2" fill="#d0b787" fill-opacity=".1" stroke-width=".8" opacity=".85"/>
+    <path d="M88 0v2m0 12v2M80 8h2m12 0h2M82.5 2.5 84 4m8 8 1.5 1.5m-11 0L84 12m8-8 1.5-1.5" stroke-width=".8" opacity=".7"/>
+    <path d="m4 4 10 4 8-6m-8 6 5 5" stroke-width=".65" opacity=".35"/>
+    <path d="M59 39h9v-3h-5v-4h13v7h9v-3h-5v-4h14v7h6" stroke-width=".7" opacity=".3"/>
+    <g fill="#e9d7b0" stroke="none" opacity=".7"><circle cx="4" cy="4" r=".7"/><circle cx="14" cy="8" r=".7"/><circle cx="22" cy="2" r=".7"/><circle cx="19" cy="13" r=".7"/></g>
+  </g>
+</svg>

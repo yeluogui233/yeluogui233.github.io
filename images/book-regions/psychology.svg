@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>心理学：思维轮廓与神经节点</title>
+  <g stroke="#8b729e" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M82 17v-5c-7-9 0-15 8-11 4 1 5 4 5 7l3 3h-4v4h-5v3" stroke-width=".85" opacity=".8"/>
+    <path d="m84 6 5-3 4 5-6 3-3-5Z" stroke-width=".65" opacity=".65"/>
+    <g fill="#8b729e" stroke="none" opacity=".8"><circle cx="84" cy="6" r="1"/><circle cx="89" cy="3" r="1"/><circle cx="93" cy="8" r="1"/><circle cx="87" cy="11" r="1"/></g>
+    <path d="M0 40c-1-14 23-14 23-4 0 7-17 7-17-1 0-5 10-6 11-1m17 5c14-6 23-6 33 0" stroke-width=".75" opacity=".35"/>
+  </g>
+</svg>

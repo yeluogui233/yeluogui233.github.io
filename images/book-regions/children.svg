@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>儿童文学：风筝、云朵与小星星</title>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="m88 1 8 6-7 8-7-7Z" fill="#71a5a1" fill-opacity=".22" stroke="#578d8a" stroke-width=".85"/>
+    <path d="m88 1 1 14m-7-7 14-1M89 15c-9 7 8 8 0 15" stroke="#578d8a" stroke-width=".7" opacity=".75"/>
+    <path d="m88 20-3-1 1 4m5 4 3-1-1 4" stroke="#b46c69" stroke-width=".8" opacity=".8"/>
+    <path d="M0 38h27c1-5-4-8-8-5-1-7-12-7-13 0-4-2-7 1-6 5Z" fill="#fff8df" fill-opacity=".55"/>
+    <path d="M8 4v4M6 6h4m43 29v4m-2-2h4" stroke="#b3914a" stroke-width=".8" opacity=".6"/>
+  </g>
+</svg>

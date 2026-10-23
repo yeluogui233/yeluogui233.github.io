@@ -759,6 +759,104 @@
   color: white;
   border-left: 2px solid #F1C40F; /* 金色点缀，象征尊严与平等 */
 }
+
+/* 题材标签：仅替换配色与 SVG 背景，保留原有尺寸、字体和边框宽度。 */
+.category-反乌托邦 {
+  --book-region-art: url("/images/book-regions/dystopia.svg");
+  --book-region-day: linear-gradient(135deg, #513a42, #30383e);
+  --book-region-day-ink: #f2e3da;
+  --book-region-night: #2c2b33;
+  --book-region-night-ink: #ead8ca;
+  --book-region-edge: #8b7479;
+}
+.category-恐怖小说 {
+  --book-region-art: url("/images/book-regions/horror.svg");
+  --book-region-day: #342c3e;
+  --book-region-day-ink: #f0dcbe;
+  --book-region-night: #282330;
+  --book-region-night-ink: #e5d5b7;
+  --book-region-edge: #87757f;
+}
+.category-儿童文学 {
+  --book-region-art: url("/images/book-regions/children.svg");
+  --book-region-day: #e7d69b;
+  --book-region-day-ink: #665026;
+  --book-region-night: #493f2c;
+  --book-region-night-ink: #f5e5bb;
+  --book-region-edge: #ab9361;
+}
+.category-科普 {
+  --book-region-art: url("/images/book-regions/science.svg");
+  --book-region-day: #b8d9de;
+  --book-region-day-ink: #285361;
+  --book-region-night: #294049;
+  --book-region-night-ink: #d6edf0;
+  --book-region-edge: #779ea7;
+}
+.category-医学 {
+  --book-region-art: url("/images/book-regions/medicine.svg");
+  --book-region-day: #c0d9cb;
+  --book-region-day-ink: #315c4b;
+  --book-region-night: #2e4037;
+  --book-region-night-ink: #dfede3;
+  --book-region-edge: #809f8d;
+}
+.category-心理学 {
+  --book-region-art: url("/images/book-regions/psychology.svg");
+  --book-region-day: #d3c9de;
+  --book-region-day-ink: #59486c;
+  --book-region-night: #3b3346;
+  --book-region-night-ink: #e7ddeb;
+  --book-region-edge: #9885ab;
+}
+.category-经济 {
+  --book-region-art: url("/images/book-regions/economics.svg");
+  --book-region-day: #c7d0b8;
+  --book-region-day-ink: #4b5a35;
+  --book-region-night: #363e2f;
+  --book-region-night-ink: #e3e9d5;
+  --book-region-edge: #91a174;
+}
+.category-商业 {
+  --book-region-art: url("/images/book-regions/business.svg");
+  --book-region-day: #365656;
+  --book-region-day-ink: #ede5cd;
+  --book-region-night: #293d3e;
+  --book-region-night-ink: #e4d9bb;
+  --book-region-edge: #8a9f91;
+}
+.category-女性主义 {
+  --book-region-art: url("/images/book-regions/feminism.svg");
+  --book-region-day: #bfa9ba;
+  --book-region-day-ink: #4d354b;
+  --book-region-night: #42303e;
+  --book-region-night-ink: #f0dce6;
+  --book-region-edge: #9e7b95;
+}
+.category-史诗 {
+  --book-region-art: url("/images/book-regions/epic.svg");
+  --book-region-day: #304a67;
+  --book-region-day-ink: #f2dfb7;
+  --book-region-night: #25374e;
+  --book-region-night-ink: #e8d6af;
+  --book-region-edge: #9a8b67;
+}
+.category-传说 {
+  --book-region-art: url("/images/book-regions/legend.svg");
+  --book-region-day: #dfc49e;
+  --book-region-day-ink: #6a4c2a;
+  --book-region-night: #473b2c;
+  --book-region-night-ink: #efdcc0;
+  --book-region-edge: #a98c61;
+}
+.category-神话 {
+  --book-region-art: url("/images/book-regions/mythology.svg");
+  --book-region-day: #514363;
+  --book-region-day-ink: #f1e5c8;
+  --book-region-night: #352d45;
+  --book-region-night-ink: #e9ddc1;
+  --book-region-edge: #a394b0;
+}
 .category-漫画 {
   background: #FF6B6B;
   color: white;
@@ -11801,7 +11899,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 获取所有存在的分类（从书籍数据中提取）
   const decoratedCategories = new Set([
-    ...categoryHierarchy['地区文学'], '加拿大文学', '中国古典文学', '推理小说', '科幻小说'
+    ...categoryHierarchy['地区文学'], '加拿大文学', '中国古典文学', '推理小说', '科幻小说',
+    '反乌托邦', '恐怖小说', '儿童文学', '科普', '医学', '心理学',
+    '经济', '商业', '女性主义', '史诗', '传说', '神话'
   ]);
 
   function getExistingCategories() {

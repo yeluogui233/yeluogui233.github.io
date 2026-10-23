@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>经济：供需曲线、坐标与钱币</title>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M78 1v14h20M81 12l5-3 5-1 5-6M81 3l5 2 5 4 5 3" stroke="#71864b" stroke-width=".85" opacity=".8"/>
+    <circle cx="89" cy="8" r="1.2" fill="#aa8d5a" opacity=".8"/>
+    <g stroke="#9b844f" stroke-width=".7" opacity=".5">
+      <ellipse cx="9" cy="33" rx="5" ry="2"/>
+      <path d="M4 33v5c0 3 10 3 10 0v-5M4 36c0 3 10 3 10 0m4 1h15m4 0h10"/>
+    </g>
+  </g>
+</svg>

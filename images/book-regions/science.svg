@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>科普：原子轨道与测量刻度</title>
+  <g stroke="#4d8292" stroke-linecap="round">
+    <g opacity=".7" stroke-width=".7">
+      <ellipse cx="88" cy="8" rx="9" ry="3"/>
+      <ellipse cx="88" cy="8" rx="9" ry="3" transform="rotate(60 88 8)"/>
+      <ellipse cx="88" cy="8" rx="9" ry="3" transform="rotate(120 88 8)"/>
+    </g>
+    <circle cx="88" cy="8" r="1.2" fill="#4d8292" stroke="none" opacity=".8"/>
+    <path d="M3 38h94M7 35v3m6-2v2m6-3v3m6-2v2m6-3v3m6-2v2m6-3v3M8 4h7m-3.5-3.5v7" stroke-width=".65" opacity=".35"/>
+  </g>
+</svg>
