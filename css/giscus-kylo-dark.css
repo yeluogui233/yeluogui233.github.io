@@ -143,9 +143,7 @@ textarea::placeholder,
 }
 
 .btn,
-.gsc-comment-box-buttons button,
-.gsc-reactions-button,
-.gsc-social-reaction-summary-item {
+.gsc-comment-box-buttons button {
   background: #2c2c2e !important;
   border: 1px solid var(--color-btn-border) !important;
   border-radius: 10px !important;
@@ -165,10 +163,7 @@ textarea::placeholder,
 .btn:hover,
 .btn:focus-visible,
 .gsc-comment-box-buttons button:hover,
-.gsc-comment-box-buttons button:focus-visible,
-.gsc-reactions-button:hover,
-.gsc-reactions-button:focus-visible,
-.gsc-social-reaction-summary-item:hover {
+.gsc-comment-box-buttons button:focus-visible {
   background: #f5f5f7 !important;
   border-color: #f5f5f7 !important;
   color: #1d1d1f !important;
@@ -299,9 +294,7 @@ textarea.form-control {
 }
 
 .btn,
-.gsc-comment-box-buttons button,
-.gsc-reactions-button,
-.gsc-social-reaction-summary-item {
+.gsc-comment-box-buttons button {
   background: rgba(255, 250, 241, .11) !important;
   border: 0 !important;
   border-radius: 999px !important;
@@ -312,9 +305,7 @@ textarea.form-control {
 .btn-primary,
 .gsc-comment-box-buttons .btn-primary,
 .btn:hover,
-.gsc-comment-box-buttons button:hover,
-.gsc-reactions-button:hover,
-.gsc-social-reaction-summary-item:hover {
+.gsc-comment-box-buttons button:hover {
   background: #fffaf1 !important;
   border: 0 !important;
   color: #211e1a !important;
@@ -550,5 +541,116 @@ html body ul.gsc-right-header.BtnGroup > li.BtnGroup-item[aria-current="false"] 
 
   .gsc-comment .gsc-comment-replies-count {
     justify-self: start !important;
+  }
+}
+
+:root {
+  --reaction-surface: rgba(255, 248, 234, .025);
+  --reaction-border: rgba(255, 248, 234, .10);
+  --reaction-hover: rgba(255, 248, 234, .08);
+  --reaction-hover-border: rgba(255, 248, 234, .20);
+  --reaction-ink: #c8c0b4;
+  --reaction-focus: #b8a781;
+  --reaction-selected: #3a3428;
+  --reaction-selected-border: #75664a;
+  --reaction-selected-ink: #e6d0a4;
+  --reaction-shadow: rgba(0, 0, 0, .25);
+}
+/* Reactions use their own compact control style instead of the generic pills. */
+.gsc-main :is(.gsc-social-reaction-summary-item, .gsc-reactions-button) {
+  align-items: center !important;
+  justify-content: center !important;
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  gap: 6px !important;
+  box-sizing: border-box !important;
+  min-width: 34px !important;
+  min-height: 32px !important;
+  height: 32px !important;
+  margin: 0 !important;
+  padding: 0 9px !important;
+  background: var(--reaction-surface) !important;
+  border: 1px solid var(--reaction-border) !important;
+  border-radius: 9px !important;
+  box-shadow: none !important;
+  color: var(--reaction-ink) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  font-variant-numeric: tabular-nums;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  transform: none !important;
+  transition: background-color .16s ease, border-color .16s ease, color .16s ease !important;
+}
+
+.gsc-main :is(.gsc-social-reaction-summary-item, .gsc-reactions-button):hover {
+  background: var(--reaction-hover) !important;
+  border-color: var(--reaction-hover-border) !important;
+  color: var(--reaction-ink) !important;
+  transform: none !important;
+}
+
+.gsc-main :is(.gsc-social-reaction-summary-item, .gsc-reactions-button):focus-visible {
+  background: var(--reaction-hover) !important;
+  color: var(--reaction-ink) !important;
+  outline: 2px solid var(--reaction-focus) !important;
+  outline-offset: 2px !important;
+  transform: none !important;
+}
+
+.gsc-main .gsc-social-reaction-summary-item:is(.has-reacted, [aria-pressed="true"]) {
+  background: var(--reaction-selected) !important;
+  border-color: var(--reaction-selected-border) !important;
+  color: var(--reaction-selected-ink) !important;
+}
+
+.gsc-main :is(.gsc-social-reaction-summary-item, .gsc-reactions-button) > span {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 !important;
+  line-height: 1 !important;
+}
+
+.gsc-main :is(.gsc-social-reaction-summary-item, .gsc-reactions-button) :is(g-emoji, .gsc-emoji) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px !important;
+  line-height: 1 !important;
+}
+
+.gsc-main :is(.gsc-social-reaction-summary-item, .gsc-reactions-button) svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+/* The details element is only the anchor; the popover owns the floating surface. */
+.gsc-main details.gsc-reactions-menu {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.gsc-main .gsc-reactions-popover {
+  padding: 6px !important;
+  background: var(--color-canvas-overlay) !important;
+  border: 1px solid var(--reaction-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px var(--reaction-shadow) !important;
+}
+
+@media (pointer: coarse) {
+  .gsc-main :is(.gsc-social-reaction-summary-item, .gsc-reactions-button) {
+    min-height: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gsc-main :is(.gsc-social-reaction-summary-item, .gsc-reactions-button) {
+    transition: none !important;
   }
 }

@@ -1681,19 +1681,19 @@
 
     <!-- 分页控件 -->
     <div id="pagination-wrapper" style="display: none;">
-      <nav class="diary-pagination">
-        <button id="prev-page" class="pagination-btn pagination-prev" disabled>
+      <nav class="diary-pagination" aria-label="日记分页">
+        <button type="button" id="prev-page" class="pagination-btn pagination-prev" disabled>
           <svg style="margin-right: 6px; width: 18px; height: 18px;" fill="currentColor" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
           </svg>
           上一页
         </button>
         
-        <div id="page-info" class="pagination-info">
+        <div id="page-info" class="pagination-info" role="status" aria-live="polite" aria-atomic="true">
           第 <span id="current-page">1</span> 页 / 共 <span id="total-pages">?</span> 页
         </div>
         
-        <button id="next-page" class="pagination-btn pagination-next">
+        <button type="button" id="next-page" class="pagination-btn pagination-next">
           下一页
           <svg style="margin-left: 6px; width: 18px; height: 18px;" fill="currentColor" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
@@ -1703,14 +1703,14 @@
       
       <!-- 页面跳转 -->
       <div class="page-jump-container">
-        <span class="page-jump-label">📄 跳转到</span>
+        <label class="page-jump-label" for="page-selector">跳转到</label>
         <div class="page-selector-wrapper">
           <select id="page-selector" class="page-selector">
             <!-- 选项将通过JavaScript动态生成 -->
           </select>
           <div class="selector-arrow">
-            <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+            <svg width="14" height="14" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
         </div>
@@ -2364,150 +2364,239 @@
       transform: translateY(-1px);
     }
 
-    /* ========== 分页样式 ========== */
-    .diary-pagination {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 50px;
-      padding-top: 25px;
-      border-top: 1px solid #e2e8f0;
+    /* Quiet pagination: shared theme tokens keep the controls consistent. */
+    #pagination-wrapper {
+      --diary-control-ink: #41464e;
+      --diary-control-muted: #777d85;
+      --diary-control-surface: #f3f4f6;
+      --diary-control-hover: #e9ecf0;
+      --diary-control-focus: #7b8b9e;
+      --diary-control-divider: rgba(65, 70, 78, .08);
+      padding-bottom: 4px;
     }
 
-    /* 黑白分页按钮 */
-    .pagination-btn {
-      padding: 14px 32px;
-      background: #fff;
-      color: #111;
-      text-decoration: none;
-      border-radius: 16px;
-      font-weight: 600;
-      transition: all 0.25s ease;
-      box-shadow: none;
-      border: 1px solid #111;
-      cursor: pointer;
-      font-size: 16px;
-      letter-spacing: 0.5px;
-      display: flex;
+    html body.theme-force-dark #pagination-wrapper,
+    html body.dark-mode #pagination-wrapper,
+    html.dark-mode body #pagination-wrapper {
+      --diary-control-ink: #eee8df;
+      --diary-control-muted: #b6ad9f;
+      --diary-control-surface: rgba(255, 248, 234, .07);
+      --diary-control-hover: rgba(255, 248, 234, .13);
+      --diary-control-focus: #b7aa91;
+      --diary-control-divider: rgba(255, 248, 234, .08);
+      color-scheme: dark;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html body:not(.theme-force-light) #pagination-wrapper {
+        --diary-control-ink: #eee8df;
+        --diary-control-muted: #b6ad9f;
+        --diary-control-surface: rgba(255, 248, 234, .07);
+        --diary-control-hover: rgba(255, 248, 234, .13);
+        --diary-control-focus: #b7aa91;
+        --diary-control-divider: rgba(255, 248, 234, .08);
+        color-scheme: dark;
+      }
+    }
+
+    #pagination-wrapper .diary-pagination {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 16px;
+      max-width: 680px;
+      margin: 38px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--diary-control-divider);
+    }
+
+    #pagination-wrapper .pagination-btn {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 140px;
-    }
-
-    .pagination-btn:disabled {
-      background: #f5f5f5;
-      color: #aaa;
-      border-color: #d0d0d0;
-      cursor: not-allowed;
-      opacity: 0.75;
-      box-shadow: none;
-    }
-
-    .pagination-btn:disabled:hover {
-      transform: none;
-      box-shadow: none;
-    }
-
-    .pagination-btn:not(:disabled):hover {
-      background: #111;
-      color: #fff;
-      border-color: #111;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.14);
-    }
-
-    .pagination-btn:not(:disabled):active {
-      transform: translateY(0);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    }
-
-    /* 页面信息 */
-    .pagination-info {
-      color: #111;
-      font-size: 1.1rem;
-      font-weight: 700;
-      padding: 12px 24px;
-      background: #fff;
-      border-radius: 14px;
-      border: 1px solid #111;
-      text-align: center;
-      min-width: 180px;
-    }
-
-    /* 页面跳转容器 */
-    .page-jump-container {
-      text-align: center;
-      margin-top: 25px;
-      padding: 20px;
-      background: #fff;
-      border-radius: 16px;
-      border: 1px solid #111;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .page-jump-label {
-      color: #111;
-      font-weight: 600;
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* 下拉选择器容器 */
-    .page-selector-wrapper {
-      position: relative;
-      width: 200px;
-    }
-
-    /* 美化下拉选择器 */
-    .page-selector {
-      width: 100%;
-      padding: 14px 20px;
-      border-radius: 12px;
-      border: 1px solid #111;
-      background: white;
-      color: #111;
-      font-weight: 600;
-      font-size: 15px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      appearance: none;
-      text-align: center;
-    }
-
-    .page-selector:hover {
-      border-color: #111;
-      box-shadow: none;
-      background-color: #111;
-      color: #fff;
-    }
-
-    .page-selector:focus {
-      outline: none;
-      border-color: #111;
-      box-shadow: none;
-      background-color: #fff;
-    }
-
-    .page-selector option {
-      padding: 12px;
-      background: white;
-      color: #333;
+      justify-self: start;
+      box-sizing: border-box;
+      min-width: 104px;
+      min-height: 42px;
+      width: auto;
+      max-width: none;
+      margin: 0;
+      padding: 10px 16px;
+      background: var(--diary-control-surface) !important;
+      border: 0 !important;
+      border-radius: 12px !important;
+      box-shadow: none !important;
+      color: var(--diary-control-ink) !important;
+      -webkit-text-fill-color: currentColor !important;
+      font: inherit;
+      font-size: 14px;
       font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0;
+      cursor: pointer;
+      transition: background-color .18s ease, color .18s ease;
     }
 
-    /* 下拉箭头 */
-    .selector-arrow {
+    #pagination-wrapper .pagination-next {
+      justify-self: end;
+    }
+
+    #pagination-wrapper .pagination-btn svg {
+      width: 15px !important;
+      height: 15px !important;
+      opacity: .72;
+    }
+
+    #pagination-wrapper .pagination-btn:disabled {
+      background: transparent !important;
+      color: var(--diary-control-muted) !important;
+      opacity: .5;
+      cursor: default;
+    }
+
+    #pagination-wrapper .pagination-btn:not(:disabled):hover,
+    #pagination-wrapper .page-selector:hover {
+      background: var(--diary-control-hover) !important;
+      color: var(--diary-control-ink) !important;
+      -webkit-text-fill-color: currentColor !important;
+      box-shadow: none !important;
+      transform: none;
+    }
+
+    #pagination-wrapper .pagination-btn:active,
+    #pagination-wrapper .pagination-btn:disabled:hover {
+      box-shadow: none !important;
+      transform: none;
+    }
+
+    #pagination-wrapper .pagination-info {
+      order: 0;
+      min-width: 0;
+      width: auto;
+      margin: 0;
+      padding: 0 4px;
+      background: transparent !important;
+      border: 0 !important;
+      border-radius: 0;
+      box-shadow: none !important;
+      color: var(--diary-control-muted) !important;
+      -webkit-text-fill-color: currentColor !important;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.6;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    #pagination-wrapper .pagination-info span {
+      color: var(--diary-control-ink) !important;
+      -webkit-text-fill-color: currentColor !important;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    #pagination-wrapper .page-jump-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 14px auto 0;
+      padding: 0;
+      background: transparent !important;
+      border: 0 !important;
+      border-radius: 0;
+      box-shadow: none !important;
+    }
+
+    #pagination-wrapper .page-jump-label {
+      margin: 0;
+      padding: 0;
+      color: var(--diary-control-muted) !important;
+      -webkit-text-fill-color: currentColor !important;
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    #pagination-wrapper .page-selector-wrapper {
+      position: relative;
+      width: 104px;
+      max-width: none;
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+    }
+
+    #pagination-wrapper .page-selector {
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 36px;
+      padding: 7px 30px 7px 12px;
+      appearance: none;
+      background: var(--diary-control-surface) !important;
+      border: 0 !important;
+      border-radius: 10px !important;
+      box-shadow: none !important;
+      color: var(--diary-control-ink) !important;
+      -webkit-text-fill-color: currentColor !important;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.5;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color .18s ease;
+    }
+
+    #pagination-wrapper .pagination-btn:focus-visible,
+    #pagination-wrapper .page-selector:focus-visible {
+      outline: 2px solid var(--diary-control-focus) !important;
+      outline-offset: 3px;
+    }
+
+    #pagination-wrapper .page-selector option {
+      background: #fff;
+      color: #41464e;
+    }
+
+    #pagination-wrapper .selector-arrow {
       position: absolute;
-      right: 18px;
       top: 50%;
+      right: 11px;
+      display: flex;
+      align-items: center;
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      color: var(--diary-control-muted) !important;
       transform: translateY(-50%);
-      color: #111;
       pointer-events: none;
+    }
+
+    @media (max-width: 480px) {
+      #pagination-wrapper .diary-pagination {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 28px;
+        padding-top: 18px;
+      }
+
+      #pagination-wrapper .pagination-info {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+
+      #pagination-wrapper .pagination-btn {
+        justify-self: stretch;
+        min-width: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #pagination-wrapper .pagination-btn,
+      #pagination-wrapper .page-selector {
+        transition: none;
+      }
     }
 
     /* 灯箱样式 */
@@ -2641,28 +2730,7 @@
         gap: 6px;
       }
 
-      /* 响应式分页 */
-      .diary-pagination {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-      }
-      
-      .pagination-btn {
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto;
-      }
-      
-      .pagination-info {
-        order: -1;
-        width: 100%;
-      }
-      
-      .page-selector-wrapper {
-        width: 100%;
-        max-width: 250px;
-      }
+
     }
 
     @media (max-width: 480px) {
@@ -2703,16 +2771,7 @@
         font-size: 1.2rem;
       }
       
-      .pagination-btn {
-        padding: 12px 20px;
-        font-size: 14px;
-        min-width: 120px;
-      }
-      
-      .pagination-info {
-        font-size: 1rem;
-        padding: 10px 16px;
-      }
+
     }
 
     /* 卡片动画延迟 */
@@ -3221,16 +3280,20 @@ function createDiaryCard(diary, globalIndex) {
       data-reactions-enabled="1"
       data-emit-metadata="0"
       data-input-position="bottom"
-      data-theme="https://cdn.jsdelivr.net/gh/yeluogui233/yeluogui233.github.io@27ce2f5d/css/giscus-kylo-light.css?v=20260818-apple-12"
+      data-theme="https://yeluogui.cloud/css/giscus-kylo-light.css?v=20261023-refined-1"
       data-lang="zh-CN"
       crossorigin="anonymous"
       async>
     </script>
     <script>
       (function() {
-        var THEME_ORIGIN = 'https://cdn.jsdelivr.net/gh/yeluogui233/yeluogui233.github.io@27ce2f5d/css';
-        var DARK_THEME = THEME_ORIGIN + '/giscus-kylo-dark.css?v=20260818-apple-12';
-        var LIGHT_THEME = THEME_ORIGIN + '/giscus-kylo-light.css?v=20260818-apple-12';
+        // Follow this deployment's CSS instead of an immutable historical CDN copy.
+        var themeBase = new URL('/css/', window.location.href);
+        if (themeBase.protocol === 'http:' && !/^(localhost|127\.0\.0\.1|\[::1\])$/.test(themeBase.hostname)) {
+          themeBase.protocol = 'https:';
+        }
+        var DARK_THEME = new URL('giscus-kylo-dark.css?v=20261023-refined-1', themeBase).href;
+        var LIGHT_THEME = new URL('giscus-kylo-light.css?v=20261023-refined-1', themeBase).href;
         var systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
         function isDark() {

@@ -988,16 +988,20 @@ document.addEventListener('DOMContentLoaded', function() {
       data-reactions-enabled="1"
       data-emit-metadata="0"
       data-input-position="bottom"
-      data-theme="https://cdn.jsdelivr.net/gh/yeluogui233/yeluogui233.github.io@27ce2f5d/css/giscus-kylo-light.css?v=20260818-apple-12"
+      data-theme="https://yeluogui.cloud/css/giscus-kylo-light.css?v=20261023-refined-1"
       data-lang="zh-CN"
       crossorigin="anonymous"
       async>
     </script>
     <script>
       (function() {
-        var THEME_ORIGIN = 'https://cdn.jsdelivr.net/gh/yeluogui233/yeluogui233.github.io@27ce2f5d/css';
-        var DARK_THEME = THEME_ORIGIN + '/giscus-kylo-dark.css?v=20260818-apple-12';
-        var LIGHT_THEME = THEME_ORIGIN + '/giscus-kylo-light.css?v=20260818-apple-12';
+        // Follow this deployment's CSS instead of an immutable historical CDN copy.
+        var themeBase = new URL('/css/', window.location.href);
+        if (themeBase.protocol === 'http:' && !/^(localhost|127\.0\.0\.1|\[::1\])$/.test(themeBase.hostname)) {
+          themeBase.protocol = 'https:';
+        }
+        var DARK_THEME = new URL('giscus-kylo-dark.css?v=20261023-refined-1', themeBase).href;
+        var LIGHT_THEME = new URL('giscus-kylo-light.css?v=20261023-refined-1', themeBase).href;
         var systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
         function isDark() {

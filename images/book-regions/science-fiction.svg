@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>科幻小说：深空、星轨与环形行星</title>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="86" cy="8" r="4.8" fill="#c0dcea" fill-opacity=".12" stroke="#c4dfea" stroke-width=".8" opacity=".8"/>
+    <ellipse cx="86" cy="8" rx="10" ry="2.8" transform="rotate(-28 86 8)" stroke="#a6c8db" stroke-width=".8" opacity=".7"/>
+    <path d="M0 37c21-11 47-7 74 3M0 40c26-16 54-14 82 0" stroke="#829fbd" stroke-width=".65" opacity=".28"/>
+    <path d="M63 4v4m-2-2h4M96 26v5m-2.5-2.5h5" stroke="#d0e9ef" stroke-width=".7" opacity=".65"/>
+    <path d="m25 4 6-2m39 31 6-2" stroke="#a4c9dd" stroke-width=".7" opacity=".4"/>
+  </g>
+  <g fill="#d5e9f2">
+    <circle cx="12" cy="7" r=".55" opacity=".45"/>
+    <circle cx="44" cy="3" r=".5" opacity=".5"/>
+    <circle cx="74" cy="18" r=".6" opacity=".45"/>
+    <circle cx="89" cy="37" r=".6" opacity=".6"/>
+    <circle cx="38" cy="36" r=".45" opacity=".4"/>
+  </g>
+</svg>
