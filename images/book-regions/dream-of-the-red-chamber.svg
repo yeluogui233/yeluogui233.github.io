@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 40" fill="none">
+  <title>红楼梦：海棠、朱窗与通灵宝玉</title>
+  <g stroke="#974b59" stroke-width=".8" stroke-linejoin="round" opacity=".24">
+    <path d="M106 0v40m4-40v40M110 2h14m-14 10h14m-14 10h14m-14 10h14M110 7l7-5 7 5-7 5zm0 20 7-5 7 5-7 5z"/>
+    <path d="M0 37h16v-4h6v4h16v-4h6v4h16v-4h6v4h16v-4h6v4h16"/>
+  </g>
+  <path d="M99 0q-2 6-12 9m8-5-2 9m7-11 6 4" stroke="#8d5c55" stroke-width=".9" stroke-linecap="round" opacity=".46"/>
+  <g fill="#be6d7c" stroke="#974557" stroke-width=".55" opacity=".76">
+    <path d="M94 4c-3-5-7-1-3 2-6-1-5 5-1 4-3 5 3 6 4 2 3 4 8 0 4-3 6-2 1-7-2-3 1-5-4-6-2-2z"/>
+    <path d="M102 1c-2-3-4 0-2 1-3 0-2 3 0 2-1 3 2 3 2 1 2 2 4-1 1-2 3-1 0-4-1-2z"/>
+  </g>
+  <circle cx="93.7" cy="8" r="1.2" fill="#f4dfad" opacity=".9"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M117 0v4m-3-1 3 2 3-2" stroke="#ac5b58" stroke-width=".9" opacity=".76"/>
+    <path d="M113 5q4-2 8 0l1 8q-5 4-10 0z" fill="#9ab6a4" fill-opacity=".84" stroke="#698e7d" stroke-width=".9" stroke-opacity=".7"/>
+    <path d="M115 7h4m-4 3h4m-2-3v6" stroke="#eff0d6" stroke-width=".75" opacity=".9"/>
+    <path d="M117 16v4m-2-1 2-2 2 2m-4 0v5m2-4v6m2-7v5" stroke="#b77867" stroke-width=".75" opacity=".58"/>
+  </g>
+  <path d="M11 34q5-6 9-1-4 4-9 1m68 0q4-4 7-1-3 3-7 1" fill="#b57380" opacity=".26"/>
+</svg>
