@@ -1,0 +1,164 @@
+/* Page menus share the blog's soft borders and translucent rounded surfaces. */
+html body :is(#pagination-wrapper, #album-pagination) {
+  --page-jump-surface: rgba(255, 255, 255, .88);
+  --page-jump-menu: rgba(255, 255, 255, .94);
+  --page-jump-ink: #38495e;
+  --page-jump-muted: #7a8898;
+  --page-jump-line: rgba(188, 203, 222, .68);
+  --page-jump-hover: #f0f4f9;
+  --page-jump-active: #e8eff8;
+  --page-jump-focus: rgba(112, 143, 180, .18);
+  --page-jump-shadow: rgba(30, 42, 68, .13);
+}
+html body :is(#pagination-wrapper, #album-pagination) [data-page-jump-native],
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-menu[hidden],
+html body #pagination-wrapper .page-jump-control > .selector-arrow {
+  display: none !important;
+}
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-control {
+  display: inline-block;
+  position: relative;
+  width: 104px;
+  vertical-align: middle;
+}
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-open { z-index: 1000; }
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 12px;
+  appearance: none;
+  background: var(--page-jump-surface) !important;
+  border: 1px solid var(--page-jump-line) !important;
+  border-radius: 13px !important;
+  box-shadow: 0 3px 10px rgba(30, 42, 68, .04) !important;
+  color: var(--page-jump-ink) !important;
+  -webkit-text-fill-color: currentColor !important;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-trigger > svg {
+  flex: 0 0 14px;
+  color: var(--page-jump-muted);
+  transition: transform .16s ease;
+}
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-open .page-jump-trigger > svg { transform: rotate(180deg); }
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-trigger:hover,
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-open .page-jump-trigger {
+  background: var(--page-jump-hover) !important;
+  box-shadow: 0 4px 14px var(--page-jump-focus) !important;
+}
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-trigger:focus-visible {
+  outline: 0 !important;
+  box-shadow: 0 0 0 3px var(--page-jump-focus) !important;
+}
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-menu {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  z-index: 1001;
+  box-sizing: border-box;
+  display: grid;
+  gap: 3px;
+  width: max(100%, 132px);
+  max-height: min(240px, 60vh);
+  padding: 6px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  background: var(--page-jump-menu) !important;
+  border: 1px solid var(--page-jump-line) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 12px 32px var(--page-jump-shadow) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  transform: translateX(-50%);
+  animation: page-jump-appear .14s ease-out;
+}
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-menu[data-side="below"] {
+  bottom: auto;
+  top: calc(100% + 9px);
+}
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  min-height: 34px;
+  padding: 7px 10px;
+  appearance: none;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  color: var(--page-jump-ink) !important;
+  -webkit-text-fill-color: currentColor !important;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color .12s ease;
+}
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-option > svg { opacity: 0; }
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-option[aria-selected="true"] {
+  background: var(--page-jump-hover) !important;
+}
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-option[aria-selected="true"] > svg { opacity: 1; }
+html body :is(#pagination-wrapper, #album-pagination) .page-jump-option:is(:hover, .page-jump-active) {
+  background: var(--page-jump-active) !important;
+}
+html body:is(.theme-force-dark, .dark-mode) :is(#pagination-wrapper, #album-pagination),
+html.dark-mode body :is(#pagination-wrapper, #album-pagination) {
+  --page-jump-surface: rgba(47, 43, 37, .82);
+  --page-jump-menu: rgba(43, 39, 34, .94);
+  --page-jump-ink: #eee8df;
+  --page-jump-muted: #b6ad9f;
+  --page-jump-line: rgba(205, 190, 165, .2);
+  --page-jump-hover: rgba(255, 248, 234, .07);
+  --page-jump-active: rgba(255, 248, 234, .12);
+  --page-jump-focus: rgba(198, 179, 145, .15);
+  --page-jump-shadow: rgba(0, 0, 0, .3);
+}
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) :is(#pagination-wrapper, #album-pagination) {
+    --page-jump-surface: rgba(47, 43, 37, .82);
+    --page-jump-menu: rgba(43, 39, 34, .94);
+    --page-jump-ink: #eee8df;
+    --page-jump-muted: #b6ad9f;
+    --page-jump-line: rgba(205, 190, 165, .2);
+    --page-jump-hover: rgba(255, 248, 234, .07);
+    --page-jump-active: rgba(255, 248, 234, .12);
+    --page-jump-focus: rgba(198, 179, 145, .15);
+    --page-jump-shadow: rgba(0, 0, 0, .3);
+  }
+}
+@keyframes page-jump-appear {
+  from { opacity: 0; transform: translate(-50%, 4px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+#photo-wall.page-turn-content,
+#current-page-diary.page-turn-content { scroll-margin-top: 20px; }
+#photo-wall.page-turn-content { opacity: 1; animation: none !important; }
+#current-page-diary.page-turn-content > .diary-card {
+  opacity: 1;
+  transform: none;
+  animation: none !important;
+}
+@media (pointer: coarse) {
+  html body :is(#pagination-wrapper, #album-pagination) .page-jump-option { min-height: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body :is(#pagination-wrapper, #album-pagination) :is(.page-jump-trigger, .page-jump-trigger > svg, .page-jump-menu, .page-jump-option) {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -55,7 +55,11 @@
       select.value = page;
       previous.disabled = page === 1;
       next.disabled = page === total;
-      if (scroll) wall.scrollIntoView({ block: 'start', behavior: 'instant' });
+      window.KyloPageControls?.sync(select);
+      if (scroll) {
+        if (window.KyloPageControls) window.KyloPageControls.reveal(wall);
+        else wall.scrollIntoView({ block: 'start', behavior: 'instant' });
+      }
     }
 
     function createDialog() {
