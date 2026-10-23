@@ -12,6 +12,8 @@ NexT.utils = {
    * Wrap images with fancybox.
    */
   wrapImageWithFancyBox: function() {
+    const $ = window.jQuery;
+    if (!$ || !$.fancybox) return;
     document.querySelectorAll('.post-body :not(a) > img, .post-body > img').forEach(element => {
       var $image = $(element);
       var imageLink = $image.attr('data-src') || $image.attr('src');
@@ -138,22 +140,34 @@ NexT.utils = {
     var THRESHOLD = 50;
     var backToTop = document.querySelector('.back-to-top');
     var readingProgressBar = document.querySelector('.reading-progress-bar');
-    // For init back to top in sidebar if page was scrolled after page refresh.
-    window.addEventListener('scroll', () => {
+    var scrollFrame = null;
+    var previousPercent = null;
+    function updateScrollPercent() {
+      scrollFrame = null;
       if (backToTop || readingProgressBar) {
         var docHeight = document.querySelector('.container').offsetHeight;
         var winHeight = window.innerHeight;
         var contentVisibilityHeight = docHeight > winHeight ? docHeight - winHeight : document.body.scrollHeight - winHeight;
-        var scrollPercent = Math.min(100 * window.scrollY / contentVisibilityHeight, 100);
+        var scrollPercent = Math.max(0, Math.min(100 * window.scrollY / Math.max(contentVisibilityHeight, 1), 100));
         if (backToTop) {
           backToTop.classList.toggle('back-to-top-on', window.scrollY > THRESHOLD);
-          backToTop.querySelector('span').innerText = Math.round(scrollPercent) + '%';
+          var percent = Math.round(scrollPercent);
+          if (percent !== previousPercent) {
+            backToTop.querySelector('span').textContent = percent + '%';
+            previousPercent = percent;
+          }
         }
         if (readingProgressBar) {
           readingProgressBar.style.width = scrollPercent.toFixed(2) + '%';
         }
       }
-    });
+    }
+    function scheduleScrollPercent() {
+      if (scrollFrame === null) scrollFrame = window.requestAnimationFrame(updateScrollPercent);
+    }
+    window.addEventListener('scroll', scheduleScrollPercent, { passive: true });
+    window.addEventListener('resize', scheduleScrollPercent, { passive: true });
+    updateScrollPercent();
 
     backToTop && backToTop.addEventListener('click', () => {
       window.anime({

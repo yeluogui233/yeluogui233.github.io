@@ -58,8 +58,7 @@ function animateParticules(e, t) {
 		duration: anime.random(1000, 1500),
 		easing: "easeOutExpo",
 		update: renderParticule,
-		offset: 0
-	})
+	}, 0)
 }
 function debounce(e, t) {
 	var a;

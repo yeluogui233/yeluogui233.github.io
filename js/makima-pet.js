@@ -64,12 +64,16 @@
     return { x: rect.left, y: rect.top };
   }
 
-  function setPosition(element, x, y) {
-    const position = clampPosition(x, y, element);
-    element.style.left = `${position.x}px`;
-    element.style.top = `${position.y}px`;
+  function writePosition(element, x, y) {
+    element.style.left = `${x}px`;
+    element.style.top = `${y}px`;
     element.style.right = 'auto';
     element.style.bottom = 'auto';
+  }
+
+  function setPosition(element, x, y) {
+    const position = clampPosition(x, y, element);
+    writePosition(element, position.x, position.y);
     return position;
   }
 
@@ -155,7 +159,7 @@
       const progress = Math.min((now - startedAt) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       const x = start.x + (target.x - start.x) * eased;
-      setPosition(element, x, target.y);
+      writePosition(element, x, target.y);
 
       if (progress < 1) {
         autoMoveFrame = window.requestAnimationFrame(step);
@@ -193,7 +197,7 @@
       const to = returning ? secondTarget : firstTarget;
       const eased = 1 - Math.pow(1 - localProgress, 2);
       setState(element, to.x >= from.x ? 'runRight' : 'runLeft');
-      setPosition(element, from.x + (to.x - from.x) * eased, start.y);
+      writePosition(element, from.x + (to.x - from.x) * eased, start.y);
 
       if (progress < 1) {
         autoMoveFrame = window.requestAnimationFrame(step);
@@ -245,11 +249,29 @@
     }
     setFrame(pet, states.idle, 0);
 
-    window.setInterval(() => {
-      const state = states[stateName] || states.idle;
-      frame = (frame + 1) % state.frames;
-      setFrame(pet, state, frame);
-    }, 95);
+    let spriteTimer = null;
+    function startSpriteAnimation() {
+      if (spriteTimer !== null || document.hidden) return;
+      spriteTimer = window.setInterval(() => {
+        const state = states[stateName] || states.idle;
+        frame = (frame + 1) % state.frames;
+        setFrame(pet, state, frame);
+      }, 95);
+    }
+    startSpriteAnimation();
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        window.clearInterval(spriteTimer);
+        spriteTimer = null;
+        clearMotion();
+        isDragging = false;
+        pet.classList.remove('is-dragging');
+        setState(pet, 'idle');
+      } else {
+        startSpriteAnimation();
+        scheduleAutoAction(pet);
+      }
+    });
 
     pet.addEventListener('pointerdown', event => {
       isDragging = true;
@@ -317,23 +339,33 @@
     });
 
     window.addEventListener('resize', () => {
+      clearMotion();
       if (isDockedPage()) {
         dockPosition(pet);
+        scheduleAutoAction(pet);
         return;
       }
       const position = getPosition(pet);
       setPosition(pet, position.x, position.y);
       savePosition(pet);
+      scheduleAutoAction(pet);
     });
 
     window.addEventListener('pjax:success', () => applyPageMode(pet));
 
-    scheduleAutoAction(pet);
+    if (!document.hidden) scheduleAutoAction(pet);
+  }
+
+  function scheduleMount() {
+    window.requestAnimationFrame(() => {
+      if (window.requestIdleCallback) window.requestIdleCallback(mount, { timeout: 700 });
+      else window.setTimeout(mount, 0);
+    });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', mount);
+    document.addEventListener('DOMContentLoaded', scheduleMount, { once: true });
   } else {
-    mount();
+    scheduleMount();
   }
 })();

@@ -2,7 +2,6 @@
 <html lang="zh-CN">
 <head>
     <script defer src="https://cdn.jsdelivr.net/npm/cardlink"></script>
-  <link rel="stylesheet" href="/css/_common/codeblock.css">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -25,7 +24,6 @@
   <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
   <script src="/lib/pace/pace.min.js"></script>
 
-<script defer src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yeluogui.cloud","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
@@ -65,11 +63,7 @@
   };
 </script>
 
-  <link rel="stylesheet" href="/css/apple-final-fix.css?v=20260704-apple-5">
-  <link rel="stylesheet" href="/css/makima-pet.css?v=20260818-kagura-1">
-  <link rel="stylesheet" href="/css/visual-hotfix.css?v=20260706-visual-9">
-  <link rel="stylesheet" href="/css/mobile-fix.css?v=20260629-mobile-1">
-  <link rel="stylesheet" href="/css/mobile-restore.css?v=20260928-tablet-1">
+  <link rel="stylesheet" href="/css/site-head.a4b6919aaa4d.css">
   
   <title>多模块交叉编址与位拓展的区别💻 | 穿过长长的隧道，便是雪国</title>
   
@@ -511,21 +505,21 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="https://s3.bmp.ovh/imgs/2025/08/19/dd7abadf3c59a52e.gif"></p>
+          <p><img src="https://s3.bmp.ovh/imgs/2025/08/19/dd7abadf3c59a52e.gif" decoding="async"></p>
 <p>个人理解:</p>
 <p>两者虽然都是用芯片组成新的内存条，但是位拓展是逻辑上让这些芯片属于一个新的内存条，拓展了每个存储单元的大小。</p>
 <p>而多体交叉编址并未改变其存储单元大小，只是让数据以他的规则进行排序</p>
-<p><img src="https://s3.bmp.ovh/imgs/2025/08/31/8c78993f463a8702.png"></p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/31/8c78993f463a8702.png" decoding="async"></p>
 <p>以本题为例，已经确定为按字节编址，故每个存储单元位数都为一字节，自然不能使用位拓展将存储单元的位数扩大</p>
 <p>则必须使用多模块交叉编址</p>
 <p>多模块交叉编址的分类</p>
 <h2 id="顺序编址（高位交叉）"><a href="#顺序编址（高位交叉）" class="headerlink" title="顺序编址（高位交叉）"></a>顺序编址（高位交叉）</h2><p>这种情形下，我们按地址的前几位进行存储数据，如果有4个芯片，则前两位作为区分所在模块的位置如<strong>01</strong>000000——<strong>01</strong>1111111，将数据顺序存储起来。</p>
-<p><img src="https://s3.bmp.ovh/imgs/2025/08/31/27dcf2ba27269f94.png"></p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/31/27dcf2ba27269f94.png" loading="lazy" decoding="async"></p>
 <p>但是这样无法让他们并行启动，假如总线周期是1，而一个存期周期是4，那么当总线占用完传完数据后只能等待3才能继续下一个存储单元的使用</p>
 <h2 id="交叉编址（低位交叉）"><a href="#交叉编址（低位交叉）" class="headerlink" title="交叉编址（低位交叉）"></a>交叉编址（低位交叉）</h2><p>交叉编址则是以后几位为标准进行存储，这样就能把顺序数据均匀的分布在四个芯片上了</p>
 <p>如何区分这四个是轮流启动还是一起启动呢？要看总线宽度和DRAM的位数，如果4个DRAM的位数合在一起是32位，而总线宽度也是32，则可以一起启动，四个一起传输到总线上</p>
 <p>如果一个DRAM的位数和总线宽度一致，那么每次总线只能传输一个存储单元，则需要流水线的方式来进行传输。模块个数也就是大于等于T/r，否则总线周期已经结束，下一个芯片的存取周期还没结束只能干等着</p>
-<p><img src="https://s3.bmp.ovh/imgs/2025/08/31/1788f6bd5ecc69ac.png"></p>
+<p><img src="https://s3.bmp.ovh/imgs/2025/08/31/1788f6bd5ecc69ac.png" loading="lazy" decoding="async"></p>
 
     </div>
 
@@ -827,8 +821,8 @@ mjx-container[display="true"] + br {
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
 
+<script src="/js/utils.js?v=20261023-performance-1"></script>
 <script src="/js/motion.js"></script>
 
 
@@ -926,9 +920,14 @@ mjx-container[display="true"] + br {
 <!-- 网易云播放器 -->
 <div id="netease-player">
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0"
-    width="330" height="86"
-    src="//music.163.com/outchain/player?type=2&id=1886731595&auto=0&height=66">
+    width="330" height="86" title="网易云音乐播放器"
+    data-deferred-src="//music.163.com/outchain/player?type=2&id=1886731595&auto=0&height=66">
   </iframe>
+  <noscript>
+    <style>#netease-player > iframe[data-deferred-src] { display: none; }</style>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" title="网易云音乐播放器"
+      src="//music.163.com/outchain/player?type=2&id=1886731595&auto=0&height=66"></iframe>
+  </noscript>
 </div>
 
 <style>
@@ -944,26 +943,12 @@ mjx-container[display="true"] + br {
 code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
 </style>
 <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
-<script defer type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-<script defer type="text/javascript" src="/js/firework.js"></script>
-<script defer src="/libs/codeBlock/codeBlockFuction.js"></script>
-<script defer src="/libs/codeBlock/codeLang.js"></script>
-<script defer src="/libs/codeBlock/codeCopy.js"></script>
-<script defer src="/libs/codeBlock/clipboard.min.js"></script>
-<script defer src="/libs/codeBlock/codeShrink.js"></script>
-<link rel="stylesheet" href="/css/mobile-restore.css?v=20260928-tablet-late-1">
-<link rel="stylesheet" href="/css/dark-mode.css?v=20260714-dark-11">
-<link rel="stylesheet" href="/css/dark-toc-fix.css?v=20260706-dark-toc-2">
-<link rel="stylesheet" href="/css/dark-final-fix.css?v=20260809-dark-final-11">
-<link rel="stylesheet" href="/css/password-dark-final.css?v=20260809-password-dark-1">
-<link rel="stylesheet" href="/css/books-dark-final.css?v=20260809-books-dark-3">
-<link rel="stylesheet" href="/css/media-category-dark-final.css?v=20260818-media-category-3">
-<link rel="stylesheet" href="/css/movie-lightbox-nav-safe.css?v=20260817-movie-lightbox-1">
-<link rel="stylesheet" href="/css/comments-apple-final.css?v=20260818-apple-shell-6">
-<link rel="stylesheet" href="/css/menu-active-final.css?v=20260807-menu-active-1">
+<script defer type="text/javascript" src="/js/firework.js?v=20261023-performance-1"></script>
+<link rel="stylesheet" href="/css/site-late.a6dd4db45e3a.css">
+<script defer src="/js/site-performance.js?v=20261023-1"></script>
 <script defer src="/js/touch-menu.js?v=20260928-touch-tablet-1"></script>
 <script defer src="/js/menu-active-restore.js?v=20260807-menu-active-8"></script>
-<script defer src="/js/makima-pet.js?v=20260818-kagura-1"></script>
+<script defer src="/js/makima-pet.js?v=20261023-performance-1"></script>
 <script>
 // Generate cards for external links in article content.
 document.addEventListener('DOMContentLoaded', function() {
