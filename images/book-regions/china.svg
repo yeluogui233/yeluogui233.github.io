@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>中国：竹影、远山与朱印</title>
+  <g stroke="#9a4a46" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M94 0 89 30m3-20 7-6m-6 2-7-4m4 18 8-6M92 9l-2-1m1 9-2-1m1 9-2-1" opacity=".42"/>
+    <path d="M1 39q9-9 16-4l7-5 13 9m-5 0 12-7 6 3 10-7 16 11M59 39l13-6 11 5 9-4 8 5" opacity=".22"/>
+  </g>
+  <g fill="#7c6551" opacity=".32">
+    <path d="M95 7q0-7 5-7-1 5-5 7M92 10q-6-1-7-7 5 1 7 7M92 16q4-7 8-5-2 5-8 5"/>
+  </g>
+  <rect x="73" y="1" width="8" height="8" rx="1" fill="#bb4d48" opacity=".38"/>
+  <path d="M75 3h4m-4 2h4m-2-2v4" stroke="#ffe0d0" stroke-width=".7" opacity=".85"/>
+</svg>

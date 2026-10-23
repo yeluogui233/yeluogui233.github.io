@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>瑞典：北欧云杉与湖泊</title>
+  <g fill="#156e5d" fill-opacity=".32" stroke="#156e5d" stroke-opacity=".42" stroke-width=".8" stroke-linejoin="round">
+    <path d="m90 1-6 8h3l-6 8h4l-6 8h22l-6-8h4l-6-8h3z"/>
+    <path d="M90 25v8" fill="none"/>
+    <path d="m73 22-4 6h2l-4 6h12l-4-6h2z" fill-opacity=".18" stroke="none"/>
+  </g>
+  <g stroke="#d7efda" stroke-width=".9" stroke-linecap="round" opacity=".55">
+    <path d="M0 36h22m7 0h25m6 0h36M12 39h22m8 0h31m7 0h20M72 1v7m-3-3h6"/>
+    <path d="m86 10 4 3 4-3m-7 8 3 2 3-2" opacity=".65"/>
+  </g>
+</svg>

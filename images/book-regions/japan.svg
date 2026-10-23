@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>日本：樱花与青海波</title>
+  <path d="M100 2Q86 4 77 0m15 3-4 8m5-8 4 9" stroke="#ad5664" stroke-width="1" opacity=".45"/>
+  <g fill="#fff1e8" stroke="#b75a70" stroke-width=".65" stroke-linejoin="round" opacity=".85">
+    <path d="M85 5c-5-5-6 2-2 3-5 1-2 6 1 3-1 5 5 5 4 1 3 4 7-1 2-3 5-2 2-7-1-4 1-5-5-5-4 0z"/>
+    <path d="M98 12c-3-4-5 0-2 2-4-1-4 4-1 3-2 3 2 5 3 1 2 3 5 0 2-2 4 0 3-4 0-3 2-3-2-5-2-1z"/>
+  </g>
+  <g fill="#b75a70"><circle cx="86" cy="8.5" r="1" opacity=".65"/><circle cx="98" cy="15.5" r=".7" opacity=".65"/></g>
+  <g stroke="#a86a54" stroke-width=".8" opacity=".28">
+    <path d="M-6 41a10 10 0 0 1 20 0 10 10 0 0 1 20 0 10 10 0 0 1 20 0 10 10 0 0 1 20 0 10 10 0 0 1 20 0 10 10 0 0 1 20 0"/>
+    <path d="M-3 41a7 7 0 0 1 14 0m6 0a7 7 0 0 1 14 0m6 0a7 7 0 0 1 14 0m6 0a7 7 0 0 1 14 0m6 0a7 7 0 0 1 14 0"/>
+  </g>
+</svg>

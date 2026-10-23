@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>德国：木构山墙与黑森林</title>
+  <g stroke="#4f6945" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M80 15 89 3l9 12M82 13v21h14V13M89 5v29M82 16h14M82 25h14M82 16l14 9m0-9L82 25M86 34v-6h6v6" opacity=".4"/>
+    <path d="m7 31-4 6h8zm14 0-4 6h8zm42-1-5 7h10zm10 2-4 5h8z" fill="#4f6945" stroke="none" opacity=".22"/>
+    <path d="M0 39h100M35 36l5-3 5 3 5-3 5 3" opacity=".25"/>
+    <path d="M74 4h4m-2-2v4" opacity=".45"/>
+  </g>
+</svg>

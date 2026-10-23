@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>俄国：深蓝夜色中的银白十字架与斧头</title>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M95 1v20M92.5 4h5M90 9h10M92 15l6 2" stroke="#e4edf9" stroke-width="1.3" opacity=".88"/>
+    <path d="M83 1 73 21" stroke="#bdcde1" stroke-width="1.8" opacity=".85"/>
+    <path d="M81 3c4-1 8 1 9 4l-5 5c-1-3-4-4-7-4z" fill="#dce7f5" fill-opacity=".82" stroke="#f4f7fc" stroke-width=".65" stroke-opacity=".8"/>
+    <path d="m83 5 4 3" stroke="#8fa7c4" stroke-width=".7" opacity=".8"/>
+    <path d="M0 39h14v-5h7v5h7v-7l4-3 4 3v7h8v-5h7v5h7v-7h7v7h7v-4h9v4h19" stroke="#acc1dc" stroke-width=".8" opacity=".28"/>
+    <path d="M5 36h4m34 0h3m31 1h2" stroke="#e3dfca" stroke-width="1.1" opacity=".4"/>
+    <path d="M64 2v5m-2.5-2.5h5" stroke="#d2dff0" stroke-width=".7" opacity=".55"/>
+  </g>
+  <g fill="#e2ecfa" opacity=".5"><circle cx="72" cy="2" r=".8"/><circle cx="45" cy="3" r=".6"/><circle cx="99" cy="26" r=".7"/></g>
+</svg>

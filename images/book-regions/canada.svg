@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>加拿大：枫叶、山脉与湖光</title>
+  <path d="m89 0 2.5 5 3-1-1 5 4-2 2 4-5 5 .7 3-5-1V23h-1v-5l-5 1 .7-3-5-5 2-4 4 2-1-5 3 1z" fill="#976d39" opacity=".43"/>
+  <path d="m89 6 .5 12m-5-7 5 5 5-5" stroke="#f2e4bd" stroke-width=".7" opacity=".55"/>
+  <g stroke="#8d7455" stroke-width=".85" stroke-linecap="round" stroke-linejoin="round" opacity=".3">
+    <path d="m41 38 10-10 6 6 7-9 13 13m-18-7 5 2 2-4M0 39h33m48 0h19M5 35h15m60 0h16M20 37h9"/>
+  </g>
+</svg>

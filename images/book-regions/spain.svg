@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>西班牙：彩釉瓷砖与摩尔拱纹</title>
+  <g stroke="#597981" stroke-width=".85" stroke-linejoin="round" opacity=".4">
+    <path d="M82 0h18v18H82zM82 0l18 18M100 0 82 18"/>
+    <path d="m91 1 2.5 5.5L99 9l-5.5 2.5L91 17l-2.5-5.5L83 9l5.5-2.5z" fill="#81a5a5" fill-opacity=".9"/>
+    <path d="m91 5 4 4-4 4-4-4z" fill="#fff1d6" fill-opacity=".8"/>
+    <path d="M0 40q0-8 8-8t8 8q0-8 8-8t8 8q0-8 8-8t8 8q0-8 8-8t8 8q0-8 8-8t8 8q0-8 8-8t8 8q0-8 8-8"/>
+  </g>
+  <g fill="#81a5a5" opacity=".6"><circle cx="8" cy="38" r="1"/><circle cx="40" cy="38" r="1"/><circle cx="72" cy="38" r="1"/></g>
+</svg>

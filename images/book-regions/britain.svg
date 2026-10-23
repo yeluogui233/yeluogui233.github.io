@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>英国：钟楼与泰晤士河</title>
+  <g stroke="#285a83" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M83 36V12h10v24M81 12h14L92 8h-8zM85 8l3-6 3 6M88 2V0" opacity=".42"/>
+    <circle cx="88" cy="17" r="3.4" fill="#e9f9ff" fill-opacity=".7" stroke-opacity=".45"/>
+    <path d="M88 14.5V17l1.8 1M85 24v6m3-6v6m3-6v6M80 36h16" opacity=".35"/>
+    <path d="M1 36q8-4 16 0t16 0 16 0 16 0 16 0 16 0M8 39q8-4 16 0t16 0 16 0 16 0 16 0" opacity=".22"/>
+    <path d="M63 4h12M68 2h10" stroke-dasharray="1 3" opacity=".35"/>
+  </g>
+</svg>

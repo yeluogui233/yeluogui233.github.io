@@ -484,6 +484,161 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* 地区文学：SVG 只在背景层绘制，沿用标签原有的尺寸、间距和字体。 */
+.book-region-tag {
+  position: relative;
+  isolation: isolate;
+  --book-region-surface: var(--book-region-day);
+  --book-region-lettering: var(--book-region-day-ink);
+}
+
+/* 夜间主题也保留各地区的专属配色。 */
+.book-meta .book-category-tag.book-region-tag {
+  background: var(--book-region-surface) !important;
+  color: var(--book-region-lettering) !important;
+  -webkit-text-fill-color: var(--book-region-lettering) !important;
+  border-color: var(--book-region-edge) !important;
+}
+
+.book-region-tag::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background-image: var(--book-region-art);
+  background-position: right center;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.category-英国文学 {
+  --book-region-art: url("/images/book-regions/britain.svg");
+  --book-region-day: #c8d5df;
+  --book-region-day-ink: #3b5266;
+  --book-region-night: #293846;
+  --book-region-night-ink: #d2dfe9;
+  --book-region-edge: #8298ab;
+}
+.category-美国文学 {
+  --book-region-art: url("/images/book-regions/america.svg");
+  --book-region-day: #3c5b7a;
+  --book-region-day-ink: #f8edcf;
+  --book-region-night: #25384f;
+  --book-region-night-ink: #eee3c4;
+  --book-region-edge: #7f96ad;
+}
+.category-法国文学 {
+  --book-region-art: url("/images/book-regions/france.svg");
+  --book-region-day: #dccbe5;
+  --book-region-day-ink: #654674;
+  --book-region-night: #3d3148;
+  --book-region-night-ink: #ead8f1;
+  --book-region-edge: #a48bab;
+}
+.category-俄国文学 {
+  --book-region-art: url("/images/book-regions/russia.svg");
+  --book-region-day: linear-gradient(135deg, #14233b, #2c4667);
+  --book-region-day-ink: #edf2fb;
+  --book-region-night: linear-gradient(135deg, #111d30, #263c58);
+  --book-region-night-ink: #e3ecfa;
+  --book-region-edge: #8fa8c5;
+}
+.category-德国文学 {
+  --book-region-art: url("/images/book-regions/germany.svg");
+  --book-region-day: #bacaaf;
+  --book-region-day-ink: #3b5433;
+  --book-region-night: #303e2f;
+  --book-region-night-ink: #dce8ce;
+  --book-region-edge: #819777;
+}
+.category-日本文学 {
+  --book-region-art: url("/images/book-regions/japan.svg");
+  --book-region-day: #efc9d0;
+  --book-region-day-ink: #7e3e4f;
+  --book-region-night: #49343e;
+  --book-region-night-ink: #f2d9df;
+  --book-region-edge: #bf8796;
+}
+.category-拉美文学 {
+  --book-region-art: url("/images/book-regions/latin-america.svg");
+  --book-region-day: #a6cfb6;
+  --book-region-day-ink: #274f39;
+  --book-region-night: #293f32;
+  --book-region-night-ink: #deebca;
+  --book-region-edge: #719b7b;
+}
+.category-韩国文学 {
+  --book-region-art: url("/images/book-regions/korea.svg");
+  --book-region-day: #c4d9d2;
+  --book-region-day-ink: #35594f;
+  --book-region-night: #2e413d;
+  --book-region-night-ink: #d7ece3;
+  --book-region-edge: #83a79b;
+}
+.category-西班牙文学 {
+  --book-region-art: url("/images/book-regions/spain.svg");
+  --book-region-day: #efcc86;
+  --book-region-day-ink: #704720;
+  --book-region-night: #493a27;
+  --book-region-night-ink: #f6e1b7;
+  --book-region-edge: #b28a4a;
+}
+.category-奥地利文学 {
+  --book-region-art: url("/images/book-regions/austria.svg");
+  --book-region-day: #e5d7bc;
+  --book-region-day-ink: #6b5336;
+  --book-region-night: #40392d;
+  --book-region-night-ink: #efe2c6;
+  --book-region-edge: #ae9772;
+}
+.category-中国文学 {
+  --book-region-art: url("/images/book-regions/china.svg");
+  --book-region-day: #e8b6a4;
+  --book-region-day-ink: #76372c;
+  --book-region-night: #48332e;
+  --book-region-night-ink: #f2d4c2;
+  --book-region-edge: #b67762;
+}
+.category-瑞典文学 {
+  --book-region-art: url("/images/book-regions/sweden.svg");
+  --book-region-day: #bdd8e1;
+  --book-region-day-ink: #335968;
+  --book-region-night: #2a3e47;
+  --book-region-night-ink: #d4eaf0;
+  --book-region-edge: #7da5b5;
+}
+.category-加拿大文学 {
+  --book-region-art: url("/images/book-regions/canada.svg");
+  --book-region-day: #d5b89c;
+  --book-region-day-ink: #603e28;
+  --book-region-night: #41382e;
+  --book-region-night-ink: #ebd8be;
+  --book-region-edge: #98754f;
+}
+
+/* 夜间降低底色明度，并提亮图案。 */
+:is(html.dark-mode body, body.dark-mode, body.theme-force-dark) .book-region-tag {
+  --book-region-surface: var(--book-region-night);
+  --book-region-lettering: var(--book-region-night-ink);
+}
+
+:is(html.dark-mode body, body.dark-mode, body.theme-force-dark) .book-region-tag::before {
+  filter: brightness(1.65) saturate(.8);
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not(.theme-force-light) .book-region-tag {
+    --book-region-surface: var(--book-region-night);
+    --book-region-lettering: var(--book-region-night-ink);
+  }
+
+  body:not(.theme-force-light) .book-region-tag::before {
+    filter: brightness(1.65) saturate(.8);
+  }
+}
+
 /* 活力多巴胺配色方案 */
 .category-文学 { 
   background: linear-gradient(135deg, #FF6B9D, #FF8EAF) !important;
@@ -492,10 +647,8 @@
   box-shadow: 0 2px 8px rgba(255,107,157,0.3) !important;
 }
 .category-奥地利文学 {
-  background: linear-gradient(135deg, #B76E79, #E6B8B7); /* 玫瑰金渐变，灵感来自维也纳艺术史博物馆和经典建筑 */
-  color: #2C2A2A; /* 深灰色文字，确保在浅色背景上可读 */
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3); /* 柔和白色文字阴影 */
-  box-shadow: 0 2px 8px rgba(183, 110, 121, 0.4); /* 与主色呼应的阴影 */
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(143, 115, 72, 0.22);
 }
 .category-存在主义 {
   background: linear-gradient(135deg, #34495e, #6b7b8d);
@@ -534,28 +687,15 @@
 .category-经济 { background-color: #7AFFA3; } /* 亮薄荷绿 */
 .category-政治 { background-color: #FFD47A; } /* 亮珊瑚色 */
 .category-社会学 { background-color: #7AD4FF; } /* 亮天蓝色 */
-.category-中国文学 { background-color: #ff9c9c; } /* 浅粉色 - 与文学区分 */
 .category-中国古典文学 { background-color: #FFF9A3; } /* 亮米色 */
 .category-乡土文学 { background-color: #D9B4FF; } /* 亮淡紫色 */
 .category-红色文学 { background-color: #e90035;  color: #ffff4e; } /* 亮浅红色 */
-.category-英国文学 { background-color: #7AE6FF; } /* 亮粉蓝色 */
-.category-美国文学 { background-color: #A3FFA3; } /* 亮淡绿色 */
-.category-法国文学 { background-color: #FF7AFF; } /* 亮梅红色 */
-.category-俄国文学 { background-color: #FFF07A; } /* 亮卡其色 */
-.category-德国文学 { background-color: #33B5E5; } /* 深天蓝 - 与小说区分 */
-.category-日本文学 { background-color: #FFB47A; } /* 亮浅橙色 */
-.category-拉美文学 {color: #007073;background-color: #a9ebe7;} /* 亮海绿色 */
-.category-韩国文学 { background-color: #FF47B4; } /* 亮热粉色 */
 .category-加拿大文学 {
-  background: linear-gradient(135deg, #FF0000, #FFFFFF 70%);
-  color: #333;
   font-weight: 600;
   text-shadow: 0 1px 2px rgba(255,255,255,0.4);
-  box-shadow: 0 2px 8px rgba(255,0,0,0.25);
-  border-left: 3px solid #FF0000;
+  box-shadow: 0 2px 8px rgba(128, 91, 54, 0.2);
+  border-left: 3px solid var(--book-region-edge);
 }
-.category-西班牙文学 { 
-background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学保持一致 */
 .category-推理小说 {
   background: repeating-linear-gradient(
     45deg,
@@ -588,7 +728,6 @@ background-color: #FF7AFF; color: white;}/* 亮梅红色，和其他国家文学
 .category-诗歌 { background-color: #FF47E6; color: white; } /* 亮中兰花紫 */
 .category-史诗 { background-color: #E647FF; color: white; } /* 亮深兰花紫 */
 .category-儿童文学 {color: #ffffff;background-color: #ffa7e2;}/* 粉色 */
-.category-瑞典文学 { background-color: #00CC99; color: white; } /* 北欧绿 - 象征瑞典的自然风光 */
 .category-杂文 { background-color: #A347FF; color: white; } /* 亮蓝紫色 */
 .category-书信 { background-color: #7A47FF; color: white; } /* 亮靛蓝色 */
 .category-戏剧 { background-color: #7A7AFF; color: white; } /* 亮板岩蓝 */
@@ -11381,6 +11520,8 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   // 获取所有存在的分类（从书籍数据中提取）
+  const regionalCategories = new Set([...categoryHierarchy['地区文学'], '加拿大文学']);
+
   function getExistingCategories() {
     const categories = new Set(['all']);
     books.forEach(book => {
@@ -11588,7 +11729,7 @@ document.addEventListener('DOMContentLoaded', function() {
           // 分割分类字符串并创建彩色标签
           const categories = book.category.split(' ').filter(cat => cat.trim() !== '');
           const categoryTags = categories.map(cat => 
-            `<span class="book-category-tag category-${cat}">${cat}</span>`
+            `<span class="book-category-tag category-${cat}${regionalCategories.has(cat) ? ' book-region-tag' : ''}">${cat}</span>`
           ).join('');
           
           metaHTML += `<div><strong>分类:</strong> ${categoryTags}</div>`;

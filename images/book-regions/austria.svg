@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>奥地利：维也纳乐谱与阿尔卑斯山</title>
+  <g stroke="#927247" stroke-width=".7" opacity=".24">
+    <path d="M0 30h100M0 32h100M0 34h100M0 36h100M0 38h100"/>
+    <path d="m62 38 9-10 5 5 7-9 11 14m-16-8 5 2 2-4"/>
+  </g>
+  <g fill="#927247" opacity=".56">
+    <ellipse cx="84" cy="13" rx="3" ry="2" transform="rotate(-20 84 13)"/>
+    <ellipse cx="95" cy="10" rx="3" ry="2" transform="rotate(-20 95 10)"/>
+    <path d="M86 13V3l11-3v10h-1V4l-9 2v7z"/>
+    <ellipse cx="21" cy="34" rx="2" ry="1.3" transform="rotate(-20 21 34)" opacity=".55"/>
+    <path d="M22 34v-6h1v6z" opacity=".55"/>
+  </g>
+  <path d="m72 3 1-3 1 3 3 1-3 1-1 3-1-3-3-1z" fill="#ffe7b0" opacity=".8"/>
+</svg>

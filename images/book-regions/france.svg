@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" fill="none">
+  <title>法国：埃菲尔铁塔与鸢尾花纹</title>
+  <g stroke="#81396c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M88 1v5m0 0c-1 11-4 20-11 30h7q4-12 8 0h7C92 26 89 17 88 6zM83 20h10M80 29h16M85 14h6M84 29l8-9m-9 0 13 9" opacity=".34"/>
+    <path d="M2 37q10-6 20 0t20 0 20 0M9 37l3-3 3 3m14 0 3-3 3 3m14 0 3-3 3 3" opacity=".2"/>
+    <path d="M71 10V4m0 3c-5-5-5 2 0 2 5-7 5-7 0-2m-2 4h4" opacity=".45"/>
+  </g>
+</svg>
