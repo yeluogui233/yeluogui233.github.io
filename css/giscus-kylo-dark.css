@@ -378,7 +378,7 @@ textarea.form-control {
 }
 
 .gsc-comment .gsc-comment-footer {
-  padding: 4px 10px 9px !important;
+  padding: 4px 12px 9px !important;
 }
 
 .gsc-reply-box {
@@ -506,6 +506,11 @@ html body ul.gsc-right-header.BtnGroup > li.BtnGroup-item[aria-current="false"] 
   max-width: 100% !important;
   min-width: 0 !important;
   width: fit-content !important;
+}
+
+/* Giscus adds a 16px margin here; the footer already supplies the content inset. */
+.gsc-comment .gsc-comment-footer > .gsc-comment-reactions {
+  margin: 0 !important;
 }
 
 .gsc-comment .gsc-direct-reaction-buttons {

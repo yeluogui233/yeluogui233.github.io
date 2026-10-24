@@ -384,7 +384,7 @@
       data-reactions-enabled="1"
       data-emit-metadata="0"
       data-input-position="bottom"
-      data-theme="https://yeluogui.cloud/css/giscus-kylo-light.css?v=20261024-monochrome-1"
+      data-theme="https://yeluogui.cloud/css/giscus-kylo-light.css?v=20261024-aligned-2"
       data-lang="zh-CN"
       crossorigin="anonymous"
       async>
@@ -396,8 +396,8 @@
         if (themeBase.protocol === 'http:' && !/^(localhost|127\.0\.0\.1|\[::1\])$/.test(themeBase.hostname)) {
           themeBase.protocol = 'https:';
         }
-        var DARK_THEME = new URL('giscus-kylo-dark.css?v=20261024-monochrome-1', themeBase).href;
-        var LIGHT_THEME = new URL('giscus-kylo-light.css?v=20261024-monochrome-1', themeBase).href;
+        var DARK_THEME = new URL('giscus-kylo-dark.css?v=20261024-aligned-2', themeBase).href;
+        var LIGHT_THEME = new URL('giscus-kylo-light.css?v=20261024-aligned-2', themeBase).href;
         var systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
         function isDark() {
