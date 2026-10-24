@@ -2,7 +2,7 @@
   'use strict';
 
   function create(grid, source, controls) {
-    const size = 40;
+    const size = Number(grid.dataset.pageSize) || 30;
     // Later cards stay inert until their page is displayed. Reuse the original
     // rendered markup so ratings, links, blur layers and card styles stay intact.
     const cards = [...grid.children, ...source.content.children];

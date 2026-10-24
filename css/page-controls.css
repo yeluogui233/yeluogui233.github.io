@@ -201,21 +201,22 @@ html body :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pa
   margin: 0;
   padding: 9px 16px;
   appearance: none;
-  background: #202020 !important;
+  background: #fff !important;
   border: 1px solid #202020 !important;
   border-radius: 12px !important;
   box-shadow: none !important;
-  color: #fff !important;
+  color: #202020 !important;
   -webkit-text-fill-color: currentColor !important;
   font: inherit;
   font-size: 14px;
   line-height: 1.5;
   cursor: pointer;
   transform: none !important;
-  transition: opacity .16s ease;
+  transition: background-color .16s ease, color .16s ease, border-color .16s ease;
 }
-html body :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pagination-btn, .album-page-button, .media-page-button):not(:disabled):hover {
-  background: #383838 !important;
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pagination-btn, .album-page-button, .media-page-button):not(:disabled):is(:hover, :active) {
+  background: #202020 !important;
+  border-color: #202020 !important;
   color: #fff !important;
 }
 html body :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pagination-btn, .album-page-button, .media-page-button):disabled {
@@ -237,19 +238,6 @@ html body #album-pagination .album-page-jump {
 }
 html body #pagination-wrapper .pagination-info span,
 html body #album-pagination .album-page-info span { color: var(--page-jump-ink) !important; }
-html body:is(.theme-force-dark, .dark-mode) :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pagination-btn, .album-page-button, .media-page-button):not(:disabled),
-html.dark-mode body :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pagination-btn, .album-page-button, .media-page-button):not(:disabled) {
-  background: #eee !important;
-  border-color: #eee !important;
-  color: #202020 !important;
-}
-@media (prefers-color-scheme: dark) {
-  html body:not(.theme-force-light) :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pagination-btn, .album-page-button, .media-page-button):not(:disabled) {
-    background: #eee !important;
-    border-color: #eee !important;
-    color: #202020 !important;
-  }
-}
 #myBooksGrid.page-turn-content, #myMoviesGrid.page-turn-content, #friendsMoviesGrid.page-turn-content { scroll-margin-top: 20px; }
 @media (max-width: 480px) {
   html body .media-pagination { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
