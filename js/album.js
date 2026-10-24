@@ -44,6 +44,7 @@
 
     function renderPage(number, scroll = true) {
       if (number < 1 || number > total) return;
+      const direction = Math.sign(number - page);
       page = number;
       const fragment = document.createDocumentFragment();
       const start = (page - 1) * perPage;
@@ -57,7 +58,7 @@
       next.disabled = page === total;
       window.KyloPageControls?.sync(select);
       if (scroll) {
-        if (window.KyloPageControls) window.KyloPageControls.reveal(wall);
+        if (window.KyloPageControls) window.KyloPageControls.reveal(wall, direction);
         else wall.scrollIntoView({ block: 'start', behavior: 'instant' });
       }
     }

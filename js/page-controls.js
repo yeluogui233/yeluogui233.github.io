@@ -141,7 +141,7 @@
     if (select.disabled) close(record);
   }
 
-  function reveal(container) {
+  function reveal(container, direction = 1) {
     for (const animation of pageAnimations.get(container) || []) animation.cancel();
     container.classList.add('page-turn-content');
     // The mobile theme also has scrollable card wrappers. Bring every scroll
@@ -154,10 +154,14 @@
       const rect = card.getBoundingClientRect();
       return rect.bottom > 0 && rect.top < innerHeight;
     }).slice(0, 8);
-    const animations = cards.map(card => card.animate([
-      { opacity: .55, transform: 'translateY(4px)' },
-      { opacity: 1, transform: 'translateY(0)' }
-    ], { duration: 180, easing: 'cubic-bezier(.2,.65,.3,1)' }));
+    // Read every resting transform before starting animations, preserving each
+    // card's existing hover treatment. Only visible cards receive short effects.
+    const transforms = cards.map(card => getComputedStyle(card).transform);
+    const offset = direction < 0 ? -8 : 8;
+    const animations = cards.map((card, index) => card.animate([
+      { opacity: .35, transform: `translate3d(${offset}px, 6px, 0)${transforms[index] === 'none' ? '' : ' ' + transforms[index]}` },
+      { opacity: 1, transform: transforms[index] }
+    ], { duration: 260, delay: Math.min(index * 12, 48), easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' }));
     pageAnimations.set(container, animations);
   }
 

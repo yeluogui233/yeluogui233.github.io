@@ -19,6 +19,7 @@
       const total = Math.max(1, Math.ceil(filtered.length / size));
       const target = Math.max(1, Math.min(total, Number(page) || 1));
       const changed = current !== target;
+      const direction = Math.sign(target - current);
       current = target;
       window.KyloMedia?.release(grid);
       const fragment = document.createDocumentFragment();
@@ -36,7 +37,7 @@
       controls.hidden = total === 1;
       window.KyloPageControls?.sync(select);
       if (changed && reveal) {
-        if (window.KyloPageControls) window.KyloPageControls.reveal(grid);
+        if (window.KyloPageControls) window.KyloPageControls.reveal(grid, direction);
         else grid.scrollIntoView({ block: 'start', behavior: 'instant' });
       }
       window.KyloMedia?.observe(grid);
