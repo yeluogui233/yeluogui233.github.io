@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  const selector = '.book-cover-img[data-src], .photo-image[data-src], .album-thumb img[data-src]';
+  const selector = '.book-cover-img[data-src], .movie-poster-img[data-src], .photo-image[data-src], .album-thumb img[data-src]';
   const records = new WeakMap();
   const waiting = new Set();
   const active = new Set();
@@ -44,6 +44,9 @@
         schedule();
       }
       record.cancel = () => {
+        // A paginated card may return while its previous request was pending.
+        // Retain its source so observation can restart the interrupted load.
+        image.dataset.src = image.src;
         image.removeAttribute('src');
         finish();
       };
@@ -72,7 +75,7 @@
 
   function observe(root = document) {
     root.querySelectorAll(selector).forEach(image => {
-      const target = image.closest('.book-card, .album-card, .photo-frame') || image;
+      const target = image.closest('.book-card, .movie-card, .album-card, .photo-frame') || image;
       if (records.has(target)) return;
       const record = { image, target, cancel: null };
       records.set(target, record);
@@ -86,8 +89,8 @@
 
   function release(root) {
     const cancelled = [];
-    root.querySelectorAll('.photo-image, .book-cover-img, .album-thumb img').forEach(image => {
-      const target = image.closest('.book-card, .album-card, .photo-frame') || image;
+    root.querySelectorAll('.photo-image, .book-cover-img, .movie-poster-img, .album-thumb img').forEach(image => {
+      const target = image.closest('.book-card, .movie-card, .album-card, .photo-frame') || image;
       const record = records.get(target);
       if (!record) return;
       observer?.unobserve(target);

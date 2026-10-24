@@ -1,28 +1,28 @@
 /* Page menus share the blog's soft borders and translucent rounded surfaces. */
-html body :is(#pagination-wrapper, #album-pagination) {
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) {
   --page-jump-surface: rgba(255, 255, 255, .88);
   --page-jump-menu: rgba(255, 255, 255, .94);
-  --page-jump-ink: #38495e;
-  --page-jump-muted: #7a8898;
-  --page-jump-line: rgba(188, 203, 222, .68);
-  --page-jump-hover: #f0f4f9;
-  --page-jump-active: #e8eff8;
-  --page-jump-focus: rgba(112, 143, 180, .18);
-  --page-jump-shadow: rgba(30, 42, 68, .13);
+  --page-jump-ink: #242424;
+  --page-jump-muted: #777;
+  --page-jump-line: rgba(0, 0, 0, .14);
+  --page-jump-hover: #f3f3f3;
+  --page-jump-active: #e9e9e9;
+  --page-jump-focus: rgba(0, 0, 0, .12);
+  --page-jump-shadow: rgba(0, 0, 0, .12);
 }
-html body :is(#pagination-wrapper, #album-pagination) [data-page-jump-native],
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-menu[hidden],
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) [data-page-jump-native],
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-menu[hidden],
 html body #pagination-wrapper .page-jump-control > .selector-arrow {
   display: none !important;
 }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-control {
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-control {
   display: inline-block;
   position: relative;
   width: 104px;
   vertical-align: middle;
 }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-open { z-index: 1000; }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-trigger {
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-open { z-index: 1000; }
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-trigger {
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
@@ -35,7 +35,7 @@ html body :is(#pagination-wrapper, #album-pagination) .page-jump-trigger {
   background: var(--page-jump-surface) !important;
   border: 1px solid var(--page-jump-line) !important;
   border-radius: 13px !important;
-  box-shadow: 0 3px 10px rgba(30, 42, 68, .04) !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .04) !important;
   color: var(--page-jump-ink) !important;
   -webkit-text-fill-color: currentColor !important;
   font: inherit;
@@ -44,22 +44,22 @@ html body :is(#pagination-wrapper, #album-pagination) .page-jump-trigger {
   cursor: pointer;
   transition: background-color .16s ease, border-color .16s ease, box-shadow .16s ease;
 }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-trigger > svg {
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-trigger > svg {
   flex: 0 0 14px;
   color: var(--page-jump-muted);
   transition: transform .16s ease;
 }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-open .page-jump-trigger > svg { transform: rotate(180deg); }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-trigger:hover,
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-open .page-jump-trigger {
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-open .page-jump-trigger > svg { transform: rotate(180deg); }
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-trigger:hover,
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-open .page-jump-trigger {
   background: var(--page-jump-hover) !important;
   box-shadow: 0 4px 14px var(--page-jump-focus) !important;
 }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-trigger:focus-visible {
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-trigger:focus-visible {
   outline: 0 !important;
   box-shadow: 0 0 0 3px var(--page-jump-focus) !important;
 }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-menu {
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-menu {
   position: absolute;
   bottom: calc(100% + 9px);
   left: 50%;
@@ -82,11 +82,11 @@ html body :is(#pagination-wrapper, #album-pagination) .page-jump-menu {
   transform: translateX(-50%);
   animation: page-jump-appear .14s ease-out;
 }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-menu[data-side="below"] {
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-menu[data-side="below"] {
   bottom: auto;
   top: calc(100% + 9px);
 }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-option {
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-option {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -108,36 +108,36 @@ html body :is(#pagination-wrapper, #album-pagination) .page-jump-option {
   cursor: pointer;
   transition: background-color .12s ease;
 }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-option > svg { opacity: 0; }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-option[aria-selected="true"] {
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-option > svg { opacity: 0; }
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-option[aria-selected="true"] {
   background: var(--page-jump-hover) !important;
 }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-option[aria-selected="true"] > svg { opacity: 1; }
-html body :is(#pagination-wrapper, #album-pagination) .page-jump-option:is(:hover, .page-jump-active) {
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-option[aria-selected="true"] > svg { opacity: 1; }
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-option:is(:hover, .page-jump-active) {
   background: var(--page-jump-active) !important;
 }
-html body:is(.theme-force-dark, .dark-mode) :is(#pagination-wrapper, #album-pagination),
-html.dark-mode body :is(#pagination-wrapper, #album-pagination) {
-  --page-jump-surface: rgba(47, 43, 37, .82);
-  --page-jump-menu: rgba(43, 39, 34, .94);
-  --page-jump-ink: #eee8df;
-  --page-jump-muted: #b6ad9f;
-  --page-jump-line: rgba(205, 190, 165, .2);
-  --page-jump-hover: rgba(255, 248, 234, .07);
-  --page-jump-active: rgba(255, 248, 234, .12);
-  --page-jump-focus: rgba(198, 179, 145, .15);
+html body:is(.theme-force-dark, .dark-mode) :is(#pagination-wrapper, #album-pagination, .media-pagination),
+html.dark-mode body :is(#pagination-wrapper, #album-pagination, .media-pagination) {
+  --page-jump-surface: rgba(36, 36, 36, .88);
+  --page-jump-menu: rgba(32, 32, 32, .94);
+  --page-jump-ink: #f3f3f3;
+  --page-jump-muted: #aaa;
+  --page-jump-line: rgba(255, 255, 255, .2);
+  --page-jump-hover: rgba(255, 255, 255, .07);
+  --page-jump-active: rgba(255, 255, 255, .12);
+  --page-jump-focus: rgba(255, 255, 255, .16);
   --page-jump-shadow: rgba(0, 0, 0, .3);
 }
 @media (prefers-color-scheme: dark) {
-  html body:not(.theme-force-light) :is(#pagination-wrapper, #album-pagination) {
-    --page-jump-surface: rgba(47, 43, 37, .82);
-    --page-jump-menu: rgba(43, 39, 34, .94);
-    --page-jump-ink: #eee8df;
-    --page-jump-muted: #b6ad9f;
-    --page-jump-line: rgba(205, 190, 165, .2);
-    --page-jump-hover: rgba(255, 248, 234, .07);
-    --page-jump-active: rgba(255, 248, 234, .12);
-    --page-jump-focus: rgba(198, 179, 145, .15);
+  html body:not(.theme-force-light) :is(#pagination-wrapper, #album-pagination, .media-pagination) {
+    --page-jump-surface: rgba(36, 36, 36, .88);
+    --page-jump-menu: rgba(32, 32, 32, .94);
+    --page-jump-ink: #f3f3f3;
+    --page-jump-muted: #aaa;
+    --page-jump-line: rgba(255, 255, 255, .2);
+    --page-jump-hover: rgba(255, 255, 255, .07);
+    --page-jump-active: rgba(255, 255, 255, .12);
+    --page-jump-focus: rgba(255, 255, 255, .16);
     --page-jump-shadow: rgba(0, 0, 0, .3);
   }
 }
@@ -154,11 +154,105 @@ html.dark-mode body :is(#pagination-wrapper, #album-pagination) {
   animation: none !important;
 }
 @media (pointer: coarse) {
-  html body :is(#pagination-wrapper, #album-pagination) .page-jump-option { min-height: 40px; }
+  html body :is(#pagination-wrapper, #album-pagination, .media-pagination) .page-jump-option { min-height: 40px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  html body :is(#pagination-wrapper, #album-pagination) :is(.page-jump-trigger, .page-jump-trigger > svg, .page-jump-menu, .page-jump-option) {
+  html body :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.page-jump-trigger, .page-jump-trigger > svg, .page-jump-menu, .page-jump-option) {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* All collection pages use the same quiet black-and-white navigation. */
+html body .media-pagination {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  max-width: 680px;
+  margin: 38px auto 0;
+  padding-top: 24px;
+  font-size: 14px;
+}
+html body .media-pagination[hidden] { display: none !important; }
+html body .media-pagination [data-page-prev] { justify-self: start; }
+html body .media-pagination [data-page-next] { justify-self: end; }
+html body .media-pagination .media-page-info {
+  color: var(--page-jump-muted) !important;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+html body .media-pagination .media-page-jump {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--page-jump-muted) !important;
+  font-size: 13px;
+}
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pagination-btn, .album-page-button, .media-page-button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+  min-height: 40px;
+  margin: 0;
+  padding: 9px 16px;
+  appearance: none;
+  background: #202020 !important;
+  border: 1px solid #202020 !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  -webkit-text-fill-color: currentColor !important;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+  transform: none !important;
+  transition: opacity .16s ease;
+}
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pagination-btn, .album-page-button, .media-page-button):not(:disabled):hover {
+  background: #383838 !important;
+  color: #fff !important;
+}
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pagination-btn, .album-page-button, .media-page-button):disabled {
+  background: transparent !important;
+  border-color: var(--page-jump-line) !important;
+  color: var(--page-jump-muted) !important;
+  opacity: .5;
+  cursor: default;
+}
+html body :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pagination-btn, .album-page-button, .media-page-button):focus-visible {
+  outline: 2px solid var(--page-jump-ink) !important;
+  outline-offset: 3px;
+}
+html body #pagination-wrapper .pagination-info,
+html body #pagination-wrapper .page-jump-label,
+html body #album-pagination .album-page-info,
+html body #album-pagination .album-page-jump {
+  color: var(--page-jump-muted) !important;
+}
+html body #pagination-wrapper .pagination-info span,
+html body #album-pagination .album-page-info span { color: var(--page-jump-ink) !important; }
+html body:is(.theme-force-dark, .dark-mode) :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pagination-btn, .album-page-button, .media-page-button):not(:disabled),
+html.dark-mode body :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pagination-btn, .album-page-button, .media-page-button):not(:disabled) {
+  background: #eee !important;
+  border-color: #eee !important;
+  color: #202020 !important;
+}
+@media (prefers-color-scheme: dark) {
+  html body:not(.theme-force-light) :is(#pagination-wrapper, #album-pagination, .media-pagination) :is(.pagination-btn, .album-page-button, .media-page-button):not(:disabled) {
+    background: #eee !important;
+    border-color: #eee !important;
+    color: #202020 !important;
+  }
+}
+#myBooksGrid.page-turn-content, #myMoviesGrid.page-turn-content, #friendsMoviesGrid.page-turn-content { scroll-margin-top: 20px; }
+@media (max-width: 480px) {
+  html body .media-pagination { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  html body .media-pagination .media-page-info { grid-column: 1 / -1; grid-row: 1; text-align: center; }
+  html body .media-pagination .media-page-button { justify-self: stretch; }
 }

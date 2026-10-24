@@ -546,10 +546,10 @@ html body ul.gsc-right-header.BtnGroup > li.BtnGroup-item[aria-current="false"] 
   --reaction-hover: #edf0f2;
   --reaction-hover-border: rgba(70, 78, 88, .18);
   --reaction-ink: #626a73;
-  --reaction-focus: #7a9387;
-  --reaction-selected: #edf4ef;
-  --reaction-selected-border: #becfc3;
-  --reaction-selected-ink: #3e6450;
+  --reaction-focus: #777;
+  --reaction-selected: #202020;
+  --reaction-selected-border: #202020;
+  --reaction-selected-ink: #fff;
   --reaction-shadow: rgba(29, 29, 31, .10);
 }
 /* Reactions use their own compact control style instead of the generic pills. */
@@ -616,9 +616,15 @@ html body ul.gsc-right-header.BtnGroup > li.BtnGroup-item[aria-current="false"] 
 }
 
 .gsc-main :is(.gsc-social-reaction-summary-item, .gsc-reactions-button) svg {
-  flex-shrink: 0;
-  width: 16px;
-  height: 16px;
+  display: block !important;
+  flex: 0 0 16px;
+  align-self: center;
+  position: static !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  width: 16px !important;
+  height: 16px !important;
 }
 
 /* The details element is only the anchor; the popover owns the floating surface. */
@@ -650,3 +656,14 @@ html body ul.gsc-right-header.BtnGroup > li.BtnGroup-item[aria-current="false"] 
     transition: none !important;
   }
 }
+
+/* Reset the upstream icon/count offsets inside the centered flex control. */
+.gsc-main :is(.gsc-social-reaction-summary-item, .gsc-reactions-button) > span {
+  position: static !important;
+  transform: none !important;
+  padding: 0 !important;
+  align-self: center;
+  justify-content: center;
+}
+.gsc-main summary.gsc-reactions-button { list-style: none !important; }
+.gsc-main summary.gsc-reactions-button::-webkit-details-marker { display: none !important; }

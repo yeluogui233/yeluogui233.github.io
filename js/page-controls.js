@@ -169,7 +169,7 @@
   });
   window.addEventListener('resize', () => { if (opened) place(opened); }, { passive: true });
   window.KyloPageControls = { sync, reveal };
-  const initialize = () => document.querySelectorAll('#page-selector, #photo-page-select').forEach(sync);
+  const initialize = () => document.querySelectorAll('#page-selector, #photo-page-select, [data-media-page-select]').forEach(sync);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialize, { once: true });
   else initialize();
 })();

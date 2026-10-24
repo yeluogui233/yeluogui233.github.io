@@ -1,4 +1,5 @@
 .photo-image[data-src],
+.movie-poster-img[data-src],
 .album-thumb img[data-src] { visibility: hidden; }
 
 /* These surfaces already have a fixed aspect ratio, so skipping their offscreen
